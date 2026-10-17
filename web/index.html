@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0b1020">
+<title>DoodLive · 涂色天使 AR</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body>
+<video id="video" playsinline muted autoplay></video>
+<canvas id="gl"></canvas>
+<svg id="guide" class="hidden"><polygon id="guideQuad"/><g id="corners"></g></svg>
+<div id="flash"></div>
+
+<section id="start" class="panel">
+  <h1>DoodLive</h1>
+  <p class="sub">给天使涂上颜色，用手机一扫——她会活过来</p>
+  <button id="btnScan" class="primary">开始扫描涂色纸</button>
+  <button id="btnDemo">没有纸？看演示</button>
+  <a id="lnkPrint" href="print.html">打印涂色纸</a>
+</section>
+
+<div id="hud" class="hidden">
+  <div id="status"></div>
+  <div class="bar">
+    <button id="btnShoot" class="primary">拍下识别</button>
+    <button id="btnRescan" class="hidden">重新扫描</button>
+    <button id="btnMode" class="hidden">展示模式</button>
+    <button id="btnLines" class="hidden">线条：隐藏</button>
+  </div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

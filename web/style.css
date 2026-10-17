@@ -1,0 +1,27 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1020; color: #fff;
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Samsung One", sans-serif; touch-action: none; }
+#video, #gl, #guide { position: fixed; inset: 0; width: 100vw; height: 100dvh; }
+#video { object-fit: cover; }
+#gl { z-index: 1; }
+#guide { z-index: 2; pointer-events: none; }
+#guide polygon { fill: none; stroke: rgba(255,255,255,.85); stroke-width: 3; stroke-dasharray: 14 10; }
+#guide.ok polygon { stroke: #5df59a; stroke-dasharray: none; }
+#guide circle { fill: #5df59a; }
+#flash { position: fixed; inset: 0; z-index: 5; background: #fff; opacity: 0; pointer-events: none; transition: opacity .5s; }
+#flash.on { opacity: .9; transition: none; }
+.panel { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: radial-gradient(circle at 50% 35%, #2a3570 0%, #0b1020 70%); padding: 24px; text-align: center; }
+h1 { font-size: 44px; margin: 0; letter-spacing: 1px; background: linear-gradient(90deg,#ffe9a0,#ffb6d9,#9ecbff); -webkit-background-clip: text; color: transparent; }
+.sub { margin: 0 0 18px; opacity: .85; }
+button { font: inherit; font-size: 16px; color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px; padding: 12px 22px; backdrop-filter: blur(8px); }
+button.primary { background: #ffcf4a; color: #2a1d00; border-color: #ffcf4a; font-weight: 600; }
+.panel button { width: min(320px, 86vw); }
+a { color: #cfe0ff; }
+#hud { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+#status { position: absolute; top: max(16px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: max-content; max-width: 92vw;
+  background: rgba(0,0,0,.55); padding: 10px 16px; border-radius: 14px; font-size: 15px; text-align: center; }
+.bar { position: absolute; bottom: max(22px, env(safe-area-inset-bottom)); left: 0; right: 0; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 0 12px; }
+.bar button { pointer-events: auto; padding: 10px 16px; font-size: 15px; }
+.hidden { display: none !important; }
