@@ -93,6 +93,12 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   `navigator.onLine` and `dumpsys connectivity` first.
 - **Fix:** connect the phone to any Wi-Fi (internet not needed). This is a phone setting, so the user does it.
 
+### L19 · Dialogue lines cut each other off · 2026-10-21 · confirmed
+- `say()` called `speechSynthesis.cancel()` first, so David's reply killed Goliath's line (`error: interrupted`).
+  The interrupted line's `onend` then cleared David's subtitle.
+- Fix: dialogue uses `say(…, { queue: true })`. The subtitle appears on `start`, and only its own line can clear it.
+  Measure line lengths on the device (Android TTS at pitch 0.35 / rate 0.82 ran ~6 s for 20 characters).
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

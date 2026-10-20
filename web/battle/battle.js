@@ -112,16 +112,19 @@ const fallenSpear = { active: false, v: new THREE.Vector3(), w: 0 };
 
 // ---------------- script ----------------
 const LINES = {
-  goliath: '你这小子，竟敢拿着木杖来见我？过来！我要把你的肉喂给天上的飞鸟！',
-  david: '你来攻击我，是靠着刀枪；我来攻击你，是靠着万军之神的名！',
+  goliath: '小子，拿根木棍就敢来见我？我要把你喂给飞鸟！',
+  david: '你靠的是刀枪，我靠的是万军之神的名！',
   narrator: '大卫用一块小小的石子，打倒了巨人歌利亚。勇气，比身材更重要！',
 };
 const subtitle = t => { $('sub').textContent = t; $('sub').classList.toggle('hidden', !t); };
 function speak(who, text) {
-  const opt = { goliath: { pitch: 0.35, rate: 0.82 }, david: { pitch: 1.45, rate: 1.05 }, narrator: { pitch: 1.0, rate: 0.95 } }[who];
+  const opt = { goliath: { pitch: 0.35, rate: 0.95 }, david: { pitch: 1.45, rate: 1.15 }, narrator: { pitch: 1.0, rate: 0.95 } }[who];
   const actor = who === 'goliath' ? goliath : who === 'david' ? david : null;
-  subtitle((who === 'goliath' ? '歌利亚：' : who === 'david' ? '大卫：' : '') + text);
-  say(text, { ...opt, onstart: () => { if (actor) actor.talking = true; }, onend: () => { if (actor) actor.talking = false; setTimeout(() => subtitle(''), 600); } });
+  const line = (who === 'goliath' ? '歌利亚：' : who === 'david' ? '大卫：' : '') + text;
+  // queued, never interrupting; the subtitle shows while that line plays and only that line may clear it
+  say(text, { ...opt, queue: true,
+    onstart: () => { subtitle(line); if (actor) actor.talking = true; },
+    onend: () => { if (actor) actor.talking = false; setTimeout(() => { if ($('sub').textContent === line) subtitle(''); }, 500); } });
 }
 
 // one-shot cues fire once when the scene clock passes them
@@ -129,7 +132,8 @@ const CUES = [
   [0.1, () => { music.start(); music.set(0.3, 104); }],
   [3.9, () => { sfx.roar(); shake(0.08); }],
   [4.6, () => speak('goliath', LINES.goliath)],
-  [8.4, () => { music.set(0.5, 112); speak('david', LINES.david); }],
+  [8.4, () => { music.set(0.5, 112); }],
+  [9.0, () => speak('david', LINES.david)],
   [12.6, () => { music.set(0.8, 126); }],
   [12.85, () => { sfx.wave(); spawnWave('ground', goliathTipGround(), 7); dust(goliathTipGround(), 18); shake(0.15); }],
   [15.05, () => { sfx.slash(); spawnWave('slash', V(0, 0.75, -1.6), 9); }],
@@ -314,7 +318,7 @@ const SHOTS = [
   [0, t => [V(7 - t * 0.5, 1.4, 1.5), V(0, 1.3, -4)]],
   [3.6, t => [V(1.0, 0.45, 3.6), V(0, 2.6, -2.8)]],
   [7.8, t => [V(-1.6, 3.4, -5.2), V(0, 0.7, 1.9)]],
-  [12, t => [V(4.6, 1.5, 0.9 - t * 0.15), V(0, 0.9, -0.2)]],
+  [12, t => [V(4.6, 1.5, 0.5 - t * 0.15), V(0, 0.9, -0.6)]],
   [17, t => [V(0.5, 6, 7.5), V(0, 0, -1)]],
   [19.5, t => [V(0.9, 1.25, 4.2 - t * 0.5), V(0, 1.6, -2.8)]],
   [23.6, t => [V(2.6, 1.8, -0.2), (flyingStone.visible ? flyingStone.position.clone() : V(0, 2.4, -2.6)).lerp(V(0, 2.4, -2.6), 0.5)]],   // side-on tracking of the stone
@@ -326,7 +330,7 @@ function cinematic() {
   for (const sh of SHOTS) if (T >= sh[0]) s = sh;
   const [p, look] = s[1](T - s[0]);
   // shots are framed for landscape; in portrait the horizontal FOV is narrow, so dolly out (LESSONS L17)
-  const k = camera.aspect < 1 ? Math.min(1.9, 0.8 / camera.aspect) : 1;
+  const k = camera.aspect < 1 ? Math.min(2.3, 0.95 / camera.aspect) : 1;
   camera.position.copy(look).addScaledVector(p.clone().sub(look), k);
   if (shakeAmt > 0.001) camera.position.add(V(rnd(-1, 1), rnd(-1, 1), rnd(-1, 1)).multiplyScalar(shakeAmt * 0.35));
   camera.lookAt(look);
@@ -368,7 +372,7 @@ function layout() {
 }
 addEventListener('resize', layout); layout();
 
-function start() { resetScene(); playing = true; $('status').textContent = ''; }
+function start() { resetScene(); speechSynthesis?.cancel(); playing = true; $('status').textContent = ''; }
 $('btnPlay').onclick = () => { unlockAudio(); $('start').classList.add('hidden'); $('hud').classList.remove('hidden'); start(); };
 $('btnAR').onclick = () => enterXR().catch(e => { $('status').textContent = '进入 AR 失败：' + (e.message || e); });
 $('btnReplay').onclick = () => { unlockAudio(); speechSynthesis?.cancel(); start(); };

@@ -65,9 +65,9 @@ export function chime() {
 
 export const audioCtx = () => ctx;
 
-export function say(text, { onstart, onend, pitch = 1.25, rate = 0.95 } = {}) {
+export function say(text, { onstart, onend, pitch = 1.25, rate = 0.95, queue = false } = {}) {
   try {
-    speechSynthesis.cancel();
+    if (!queue) speechSynthesis.cancel();   // queue: let the current line finish (dialogue)
     const u = new SpeechSynthesisUtterance(text);
     const voices = speechSynthesis.getVoices();
     const zh = voices.find(v => /zh[-_]CN/i.test(v.lang)) || voices.find(v => /^zh/i.test(v.lang));
