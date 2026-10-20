@@ -227,7 +227,7 @@ function action() {
 }
 
 async function startScan() {
-  unlockAudio();
+  unlockAudio(); keepAwake();
   show('start', false); show('hud', true);
   status('正在打开相机…');
   try { await startCamera(); } catch (e) {
@@ -247,10 +247,17 @@ function capture(ptsV) {
   reveal(ptsV ? 'paper' : 'show');
 }
 
+// Keep the screen on while the camera / AR is in use (the phone slept mid-session, LESSONS L21)
+let wakeLock = null;
+async function keepAwake() {
+  try { if ('wakeLock' in navigator && !wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); } } catch { /* not allowed: fine */ }
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && S.mode !== 'start') keepAwake(); });
+
 // ---------------- WebXR (ARCore) ----------------
 let hitSource = null, xrRef = null;
 async function enterXR() {
-  unlockAudio();
+  unlockAudio(); keepAwake();
   stopCamera();                                   // ARCore needs the camera
   angel.root.visible = false;
   const session = await navigator.xr.requestSession('immersive-ar', {

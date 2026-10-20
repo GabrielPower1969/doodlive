@@ -99,6 +99,11 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - Fix: dialogue uses `say(…, { queue: true })`. The subtitle appears on `start`, and only its own line can clear it.
   Measure line lengths on the device (Android TTS at pitch 0.35 / rate 0.82 ran ~6 s for 20 characters).
 
+### L21 · Phone slept in the middle of an AR test · 2026-10-21 · confirmed
+- Twice the page went `hidden` / the camera image went black (mean 3/255) while waiting for the user to place the angel,
+  so rAF and ARCore stopped. Fix: `navigator.wakeLock.request('screen')` when scanning or entering AR, re-acquired on
+  `visibilitychange`. For AR tests: the user must hold the phone. A phone lying on the desk never starts tracking.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed
