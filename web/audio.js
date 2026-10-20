@@ -63,14 +63,16 @@ export function chime() {
   });
 }
 
-export function say(text, { onstart, onend } = {}) {
+export const audioCtx = () => ctx;
+
+export function say(text, { onstart, onend, pitch = 1.25, rate = 0.95 } = {}) {
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     const voices = speechSynthesis.getVoices();
     const zh = voices.find(v => /zh[-_]CN/i.test(v.lang)) || voices.find(v => /^zh/i.test(v.lang));
     if (zh) u.voice = zh;
-    u.lang = zh?.lang || 'zh-CN'; u.rate = 0.95; u.pitch = 1.25;
+    u.lang = zh?.lang || 'zh-CN'; u.rate = rate; u.pitch = pitch;
     // some engines never fire onend: also stop after an estimate
     const guard = setTimeout(() => onend?.(), 1500 + text.length * 260);
     u.onstart = () => onstart?.();

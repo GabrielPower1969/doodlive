@@ -58,6 +58,19 @@ Desktop only (demo, no camera): `python3 scripts/serve.py`, open http://localhos
 
 Regenerate the sheet and the assets: `python3 tools/make_template.py`.
 
+## David vs Goliath (battle theatre)
+
+`/battle.html`: a 33-second choreographed fight. Goliath marches in and taunts, then sends a ground shockwave, a flying spear
+slash and a shield-slam ring. David jumps, ducks, charges and winds up the sling. The stone hits in bullet time, Goliath
+topples, and victory light follows. Synth score (drums, D-minor ostinato, brass), synth SFX, TTS voices with
+subtitles. Plays as a cinematic, or with **放到桌上看（AR）** on a real table (WebXR). Code: `web/battle/`.
+
+## Themed colouring sheets
+
+`print/angel-fiery.pdf`, `angel-wrath.pdf`, `angel-holy.pdf`: same angel and markers (they work with the AR app), three
+styles, one shared 6-colour palette (`tools/palette.py`). Page 2 is a coloured example. Regenerate with
+`python3 tools/make_theme_sheets.py`.
+
 ## Known limits
 
 - Paper mode uses an assumed focal length (≈65° FOV), so alignment to the sheet is approximate. WebXR mode is world-locked

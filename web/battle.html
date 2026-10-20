@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#2a1f3a">
+<title>DoodLive · 大卫战歌利亚</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body { background: #2a1f3a; }
+  #sub { position: absolute; left: 50%; bottom: 96px; transform: translateX(-50%); width: min(92vw, 640px); text-align: center;
+    background: rgba(0,0,0,.6); border-radius: 12px; padding: 10px 14px; font-size: 17px; line-height: 1.45; }
+  #flash { z-index: 6; }
+</style>
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="flash"></div>
+<section id="start" class="panel">
+  <h1>大卫 vs 歌利亚</h1>
+  <p class="sub">一个牧羊少年，一根甩石机弦，一个三米高的巨人</p>
+  <button id="btnPlay" class="primary">开始战斗</button>
+  <button id="btnAR" class="hidden">放到桌上看（AR）</button>
+  <a href="index.html">返回涂色天使</a>
+</section>
+<div id="hud" class="hidden">
+  <div id="status"></div>
+  <div id="sub" class="hidden"></div>
+  <div class="bar"><button id="btnReplay" class="hidden primary">再看一次</button></div>
+</div>
+<script type="module" src="battle/battle.js"></script>
+</body>
+</html>

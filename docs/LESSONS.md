@@ -79,6 +79,20 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **Fix:** the status line now says what ARCore needs (light, texture, slow sideways motion), and a tap without a surface
   says so. Diagnose with `adb logcat | grep -i VisualInertialState` and a viewer-pose / hit-test probe over DevTools.
 
+### L17 · Portrait phone cut the battle shots · 2026-10-21 · confirmed
+- Cinematic shots framed for landscape lost the characters on a portrait phone (horizontal FOV ≈ 35°).
+- Fix: in portrait, dolly the camera out by `min(1.9, 0.8/aspect)` along the look direction (`battle.js cinematic()`).
+
+### L18 · Phone page went "Offline", every request failed · 2026-10-21 · confirmed
+- **Symptom:** a reload showed Chrome's "Offline" chip. `fetch('localhost:8080/…')` failed although the Mac server
+  answered and `adb reverse --list` looked fine.
+- **Cause:** the phone had **no network at all** (`dumpsys connectivity`: `Active default network: none`), so
+  `navigator.onLine === false`. Chrome then fails requests immediately, even to localhost through `adb reverse`.
+  Wi-Fi without internet is fine; *no* network is not.
+- **Wrong turns:** `adb reconnect`, `adb usb` (restarting adbd) and new ports changed nothing. Check
+  `navigator.onLine` and `dumpsys connectivity` first.
+- **Fix:** connect the phone to any Wi-Fi (internet not needed). This is a phone setting, so the user does it.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed
@@ -107,4 +121,6 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **手机还在跑旧代码：** 用 `scripts/serve.py` 启动服务（禁用缓存）。已经缓存了的，用 DevTools 清缓存后再刷新。
 - **天使总是露出头顶：** “上”方向必须取重力或 AR 世界坐标，不能取纸面法线。
 - **进入 AR 卡住：** 手机上在等用户回答“允许建 3D 地图”的权限弹窗。
+- **手机页面显示 Offline：** 手机完全没有网络时，Chrome 连 localhost 都不请求。连上任意 Wi-Fi 就行，有没有外网都可以。
+- **竖屏看战斗：** 竖屏时镜头要自动拉远。
 - **其他：** 演示涂色不能用洪水填充，因为线稿不封闭；UV 必须在静止姿态下计算；深色蜡笔会被当成线条擦掉；Java 用 Android Studio 自带的 JBR；装 Unity 前先查磁盘空间。
