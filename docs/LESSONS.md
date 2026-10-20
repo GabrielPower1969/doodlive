@@ -5,16 +5,19 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 
 ## Device connection (adb)
 
-### L1 · `unauthorized` that will not clear · 2026-10-18 → 10-21 · confirmed symptom, suspected cause
-- **Symptom:** `adb devices` lists the phone as `unauthorized`. It stays that way after "I tapped Allow",
-  after `adb kill-server`, and after a re-plug (Samsung `<samsung-serial>`; later Pixel 8 `<pixel-serial>`).
-- **Cause (suspected):** the RSA prompt was dismissed or timed out on a locked screen, or it was accepted for an
-  older key. The Mac's key fingerprint was `<old-key-fingerprint>`. The phone shows this
-  number in the prompt; if it differs, the prompt is for another computer's key.
-- **Fix:** unlock the phone → Developer options → *Revoke USB debugging authorisations* → toggle USB debugging
-  off/on → unplug and replug → accept the prompt with *Always allow*. Then wait until `adb get-state` prints `device`.
-- **Prevention:** `scripts/run-on-phone.sh` checks the state and prints these steps instead of failing later. Do not
-  loop `adb kill-server` either: every restart cancels the prompt that is on screen.
+### L1 · `unauthorized` that will not clear · 2026-10-18 → 10-21 · confirmed (fixed 2026-10-21)
+- **Symptom:** `adb devices` shows `unauthorized` on two different phones (Samsung `<samsung-serial>`, Pixel 8
+  `<pixel-serial>`). It stayed that way after accepting "Always allow", revoking authorisations, re-plugging, and
+  restarting adb, both inside and outside the sandbox.
+- **Cause:** the Mac's adb key pair (`~/.android/adbkey`, created 2026-10-18) was bad. The phones never accepted its
+  signature. It was not a phone problem; the giveaway was that **both** phones failed the same way.
+- **Fix:** with adb stopped, move the key aside (`mv ~/.android/adbkey{,.bak-DATE}` and the same for `adbkey.pub`), start
+  adb so it generates a new pair, then accept the new prompt once. The new key's fingerprint was `<new-key-fingerprint>`.
+  The phone was authorised 162 s later.
+- **Prevention:** when two phones are both stuck as `unauthorized`, suspect the Mac's key first. Do not loop `adb kill-server`: each
+  restart cancels the prompt on screen. Start one server and wait.
+- Print the Mac's key fingerprint (it should match the phone's prompt):
+  `cut -d' ' -f1 ~/.android/adbkey.pub | base64 -d | md5 | sed 's/../&:/g;s/:$//' | tr a-z A-Z`
 
 ### L2 · Phone not listed at all · 2026-10-20 · confirmed
 - **Symptom:** `adb devices` is empty, even after an adb restart.
@@ -70,7 +73,7 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 
 ## 中文速览
 
-- **手机显示 unauthorized：** 先解锁手机。进入开发者选项，点“撤销 USB 调试授权”，再把 USB 调试关一下、开一下，拔插数据线，最后在弹窗里勾选“始终允许”。不要反复执行 `adb kill-server`，每重启一次，屏幕上的弹窗就会被取消。
+- **手机一直显示 unauthorized：** 这次的真正原因是电脑上的 adb 密钥坏了，两台手机都一样连不上，这就是判断依据。解决办法：先把 `~/.android/adbkey*` 改名备份，让 adb 重新生成一对密钥，再在手机上点一次“始终允许”。不要反复执行 `adb kill-server`，每重启一次，屏幕上的弹窗就会被取消。
 - **完全看不到手机：** 换成数据线，并把 USB 模式设为“文件传输”。
 - **多台设备：** 每条 adb 命令都加 `-s 序列号`，脚本里用 `ADB_SERIAL` 指定。
 - **相机打不开：** 必须用 localhost（`adb reverse`）或 HTTPS 访问。

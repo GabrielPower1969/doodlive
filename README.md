@@ -4,7 +4,7 @@ Colour the printed angel sheet, scan it with an Android phone, and a 3D angel we
 of the page, with skeletal animation, a trumpet fanfare and a spoken voice.
 
 **Status:** web prototype (three.js in Chrome on the phone, no build step). The demo mode and the scan pipeline
-are verified on desktop. On-device testing is pending (see [docs/LESSONS.md](docs/LESSONS.md) L1). A Unity +
+are verified on desktop. Runs on a Pixel 8 (Android 17, Chrome 151): demo mode and the camera scan view checked on 2026-10-21; a full scan of a printed sheet is not yet tested. A Unity +
 AR Foundation + OpenCV port is in progress under `unity/` ([docs/UPGRADE.md](docs/UPGRADE.md)).
 
 ## Requirements
