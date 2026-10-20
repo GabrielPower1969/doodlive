@@ -29,15 +29,17 @@ Mac at `http://localhost`, the camera works without HTTPS. With more than one ph
 ADB_SERIAL=<pixel-serial> scripts/run-on-phone.sh
 ```
 
-Desktop only (demo, no camera): `python3 -m http.server 8080 -d web`, open http://localhost:8080, press **看演示**.
+Desktop only (demo, no camera): `python3 scripts/serve.py`, open http://localhost:8080, press **看演示**.
 
 ## Use
 
 1. Print `print/doodlive-angel-A4.pdf` (or open `/print.html`) and colour it in. Keep the 4 black squares clean.
 2. Press **开始扫描涂色纸** and fit the whole sheet in the dashed frame. The scan fires by itself once all 4 squares
    are found and steady. **拍下识别** forces a shot using the frame corners.
-3. The angel enters. Tap her for the trumpet, wing flaps and voice. **展示模式 / AR 模式** switches between
-   tracking the paper and a turntable view (drag to spin). **线条** shows or hides the ink lines on the model.
+3. The angel rises out of the page. Tap her for the trumpet, wing flaps and voice. **线条** shows or hides the ink lines.
+4. **放到桌上（AR）** (ARCore phones): she leaves the page and stands on a real surface, world-locked (WebXR).
+   Move the phone until a gold ring appears, then tap to place her. Tap her for the fanfare; tap elsewhere to move her.
+   **纸上模式 / 展示模式** switches between following the sheet (upright by gravity) and a turntable (drag to spin).
 
 ## How it works
 
@@ -47,7 +49,9 @@ Desktop only (demo, no camera): `python3 -m http.server 8080 -d web`, open http:
 | Homography + perspective warp to a 1024² texture | `homography`, `warpArt` |
 | Paper white balance + saturation, ink-line removal | `whiteBalance`, `eraseLines` |
 | Paper pose from the homography (planar PnP) | `poseFromH` |
-| Rigged angel; UV = position on the page (front projection) | `web/angel.js` |
+| Rigged angel, 3D face (blink, lip flap), feathered skinned wings; UV = page position | `web/angel.js` |
+| Light pillar, magic circle, falling feathers, burst ring | `web/fx.js` |
+| World-locked placement (WebXR hit-test) / gravity-up paper placement | `web/app.js` `enterXR`, `placeOnPaper` |
 | Unpainted paper → per-part default colour, rim light (shader patch) | `makeMaterial` |
 | State machine: scan → bake → enter → idle ⇄ action | `web/app.js` |
 | Trumpet / chime synth, zh-CN TTS voice | `web/audio.js` |
@@ -56,7 +60,8 @@ Regenerate the sheet and the assets: `python3 tools/make_template.py`.
 
 ## Known limits
 
-- The pose uses an assumed focal length (≈65° FOV), so AR alignment is approximate. The Unity/ARCore version fixes this.
+- Paper mode uses an assumed focal length (≈65° FOV), so alignment to the sheet is approximate. WebXR mode is world-locked
+  but no longer tied to the sheet (WebXR image tracking is still behind a Chrome flag).
 - Dark crayon colours (navy, black) are treated as ink by the line eraser.
 - The voice uses the phone's TTS. Its quality depends on the installed Chinese voice.
 

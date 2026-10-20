@@ -63,7 +63,7 @@ export function chime() {
   });
 }
 
-export function say(text) {
+export function say(text, { onstart, onend } = {}) {
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -71,6 +71,10 @@ export function say(text) {
     const zh = voices.find(v => /zh[-_]CN/i.test(v.lang)) || voices.find(v => /^zh/i.test(v.lang));
     if (zh) u.voice = zh;
     u.lang = zh?.lang || 'zh-CN'; u.rate = 0.95; u.pitch = 1.25;
+    // some engines never fire onend: also stop after an estimate
+    const guard = setTimeout(() => onend?.(), 1500 + text.length * 260);
+    u.onstart = () => onstart?.();
+    u.onend = u.onerror = () => { clearTimeout(guard); onend?.(); };
     speechSynthesis.speak(u);
-  } catch { /* no TTS on this device */ }
+  } catch { onend?.(); /* no TTS on this device */ }
 }

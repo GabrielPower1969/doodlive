@@ -44,7 +44,7 @@ adb_() { "$ADB" -s "$ADB_SERIAL" "$@"; }
 
 # --- serve + forward + open ---------------------------------------------------------------------
 if ! lsof -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
-  nohup python3 -m http.server "$PORT" -d web >/tmp/doodlive-http.log 2>&1 &
+  nohup python3 scripts/serve.py "$PORT" >/tmp/doodlive-http.log 2>&1 &
   echo "http server pid $! (log /tmp/doodlive-http.log)"
   sleep 1
 fi

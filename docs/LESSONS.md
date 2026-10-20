@@ -52,6 +52,26 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - With `max(rgb) < 120`, anti-aliased grey line edges survived as ghost lines. `< 175` with low chroma removes them
   and still keeps light crayon colours. Dark crayon (navy, black) will be treated as ink. This is a known limit.
 
+### L13 · Phone kept running old JS after an edit · 2026-10-21 · confirmed
+- **Symptom:** desktop showed the new face and feathers, but the Pixel still rendered the old model.
+- **Cause:** `python3 -m http.server` sends no `Cache-Control`, so Chrome caches ES modules heuristically. The `?t=` on
+  the page URL does not reach the imported modules.
+- **Fix / prevention:** serve with `scripts/serve.py` (`Cache-Control: no-store`). To flush a phone that already
+  cached files, use DevTools: `Network.clearBrowserCache`, then `Page.reload {ignoreCache:true}`.
+
+### L14 · Angel "looks up from the page", always showing the top of her head · 2026-10-21 · confirmed
+- **Cause:** the first version stood her along the **paper normal**. On a monitor or a sheet held up, that points
+  straight at the camera.
+- **Fix:** "up" comes from gravity, never from the paper. WebXR mode uses ARCore world tracking (y = up). Paper mode
+  uses `devicemotion` gravity and chooses between "stand on a flat sheet" and "lean out of an upright sheet".
+- **Prevention:** any new placement code must take up from gravity or the AR world, not from an image pose.
+
+### L15 · WebXR session waits on a permission sheet · 2026-10-21 · confirmed
+- `navigator.xr.requestSession('immersive-ar')` does not resolve until the user answers Chrome's
+  "create a 3D map of your surroundings" sheet. Automation sees a hang. The answer is the user's to give on the phone.
+- Outside XR the camera uses px units (`near=10`). In XR, three.js passes `camera.near/far` to the session, so switch to
+  metres (`0.02 / 50`) before `setSession`, or everything closer than 10 m is clipped.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed
@@ -77,4 +97,7 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **完全看不到手机：** 换成数据线，并把 USB 模式设为“文件传输”。
 - **多台设备：** 每条 adb 命令都加 `-s 序列号`，脚本里用 `ADB_SERIAL` 指定。
 - **相机打不开：** 必须用 localhost（`adb reverse`）或 HTTPS 访问。
+- **手机还在跑旧代码：** 用 `scripts/serve.py` 启动服务（禁用缓存）。已经缓存了的，用 DevTools 清缓存后再刷新。
+- **天使总是露出头顶：** “上”方向必须取重力或 AR 世界坐标，不能取纸面法线。
+- **进入 AR 卡住：** 手机上在等用户回答“允许建 3D 地图”的权限弹窗。
 - **其他：** 演示涂色不能用洪水填充，因为线稿不封闭；UV 必须在静止姿态下计算；深色蜡笔会被当成线条擦掉；Java 用 Android Studio 自带的 JBR；装 Unity 前先查磁盘空间。
