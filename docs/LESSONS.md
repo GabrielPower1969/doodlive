@@ -72,6 +72,13 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - Outside XR the camera uses px units (`near=10`). In XR, three.js passes `camera.near/far` to the session, so switch to
   metres (`0.02 / 50`) before `setSession`, or everything closer than 10 m is clipped.
 
+### L16 · Tapped to place, nothing happened · 2026-10-21 · confirmed
+- **Symptom:** WebXR session running, no gold ring, taps did nothing.
+- **Cause:** ARCore was not tracking. Its log said `VisualInertialState is kNotTracking` with no feature points; the camera
+  image was nearly black (mean 33/255, σ 5). Without tracking there are no hit results, so `select` was ignored silently.
+- **Fix:** the status line now says what ARCore needs (light, texture, slow sideways motion), and a tap without a surface
+  says so. Diagnose with `adb logcat | grep -i VisualInertialState` and a viewer-pose / hit-test probe over DevTools.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

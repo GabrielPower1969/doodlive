@@ -261,7 +261,7 @@ async function enterXR() {
   await renderer.xr.setSession(session);
   xrRef = renderer.xr.getReferenceSpace();
   hitSource = await session.requestHitTestSource({ space: await session.requestReferenceSpace('viewer') });
-  S.xr = session; S.xrPlaced = false;
+  S.xr = session; S.xrPlaced = false; S.xrHint = null;
   document.body.classList.add('xr');
   session.addEventListener('select', onXRSelect);
   session.addEventListener('end', onXREnd);
@@ -277,7 +277,7 @@ function onXRSelect(e) {
     ray.set(new THREE.Vector3(p.x, p.y, p.z), dir);
     if (ray.intersectObject(angel.root, true).length) { action(); return; }
   }
-  if (!reticle.visible) return;
+  if (!reticle.visible) { if (!S.xrPlaced) status('还没找到平面，先慢慢移动手机，等金色光圈出现再点'); return; }
   const at = new THREE.Vector3().setFromMatrixPosition(reticle.matrix);
   const cam = renderer.xr.getCamera().getWorldPosition(new THREE.Vector3());
   xrHolder.position.copy(at);
@@ -346,6 +346,15 @@ function frame(now, xrFrame) {
     const pose = hits.length && hits[0].getPose(xrRef);
     reticle.visible = !!pose;
     if (pose) reticle.matrix.fromArray(pose.transform.matrix);
+    // tell the user what ARCore needs (LESSONS L16): no pose = not tracking at all; pose but no hit = no surface yet
+    const tracking = !!xrFrame.getViewerPose(xrRef);
+    const hint = !tracking ? 'notrack' : !pose ? 'nosurface' : 'ok';
+    if (!S.xrPlaced && hint !== S.xrHint) {
+      S.xrHint = hint;
+      status({ notrack: 'AR 还没开始追踪：对着明亮、有花纹的桌面或地面，左右慢慢平移手机',
+        nosurface: '在找平面…对准桌面或地面，稍微移动一下',
+        ok: '找到了！点一下屏幕，把天使放在金色光圈上' }[hint]);
+    }
   }
 
   detAcc += dt;
