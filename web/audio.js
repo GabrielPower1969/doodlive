@@ -65,14 +65,15 @@ export function chime() {
 
 export const audioCtx = () => ctx;
 
-export function say(text, { onstart, onend, pitch = 1.25, rate = 0.95, queue = false } = {}) {
+export function say(text, { onstart, onend, pitch = 1.25, rate = 0.95, queue = false, lang = 'zh' } = {}) {
   try {
     if (!queue) speechSynthesis.cancel();   // queue: let the current line finish (dialogue)
     const u = new SpeechSynthesisUtterance(text);
     const voices = speechSynthesis.getVoices();
-    const zh = voices.find(v => /zh[-_]CN/i.test(v.lang)) || voices.find(v => /^zh/i.test(v.lang));
-    if (zh) u.voice = zh;
-    u.lang = zh?.lang || 'zh-CN'; u.rate = rate; u.pitch = pitch;
+    const want = lang === 'en' ? /^en[-_](GB|US|AU|NZ)/i : /zh[-_]CN/i;
+    const v = voices.find(v => want.test(v.lang) && /natural|premium|enhanced|google/i.test(v.name)) || voices.find(v => want.test(v.lang)) || voices.find(v => v.lang.startsWith(lang));
+    if (v) u.voice = v;
+    u.lang = v?.lang || (lang === 'en' ? 'en-GB' : 'zh-CN'); u.rate = rate; u.pitch = pitch;
     // some engines never fire onend: also stop after an estimate
     const guard = setTimeout(() => onend?.(), 1500 + text.length * 260);
     u.onstart = () => onstart?.();

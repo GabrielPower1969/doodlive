@@ -118,6 +118,12 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - After `resize_window mobile`, zoom regions must use the new frame reported by the last screenshot (750×1624), not
   the old one.
 
+### L20 · Web Speech sounds robotic; pitch tricks make it worse · 2026-10-21 · confirmed
+- **Symptom:** Goliath's line via `speechSynthesis` at `pitch 0.35` sounded like a broken robot; the Chinese voice on Android is a 2010-era formant voice.
+- **Cause:** Web Speech uses whatever engine the phone has; quality is not ours to choose and extreme pitch values distort it.
+- **Fix:** recorded English clips in `web/assets/voice/en/` from Microsoft neural voices (`tools/make_voice.sh`, edge-tts, no key), Goliath pitched down and widened with ffmpeg. `web/battle/voice.js` plays them queued with the same onstart/onend contract and falls back to Web Speech (English voice preferred) when a clip is missing or autoplay is blocked.
+- **Prevention:** a spoken line is content, not a runtime effect: record it. Keep Goliath ≤ 6 s so David's cue at 9.0 s is not pushed into the fight (12.85 s). Re-run the script after editing `LINES`.
+
 ## 中文速览
 
 - **手机一直显示 unauthorized：** 这次的真正原因是电脑上的 adb 密钥坏了，两台手机都一样连不上，这就是判断依据。解决办法：先把 `~/.android/adbkey*` 改名备份，让 adb 重新生成一对密钥，再在手机上点一次“始终允许”。不要反复执行 `adb kill-server`，每重启一次，屏幕上的弹窗就会被取消。
@@ -129,4 +135,5 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **进入 AR 卡住：** 手机上在等用户回答“允许建 3D 地图”的权限弹窗。
 - **手机页面显示 Offline：** 手机完全没有网络时，Chrome 连 localhost 都不请求。连上任意 Wi-Fi 就行，有没有外网都可以。
 - **竖屏看战斗：** 竖屏时镜头要自动拉远。
+- **机器人声音：** 对白改为预录的英文配音（微软神经网络语音，`tools/make_voice.sh`），不再靠手机自带 TTS；缺文件时才退回 TTS。歌利亚一句控制在 6 秒内。
 - **其他：** 演示涂色不能用洪水填充，因为线稿不封闭；UV 必须在静止姿态下计算；深色蜡笔会被当成线条擦掉；Java 用 Android Studio 自带的 JBR；装 Unity 前先查磁盘空间。

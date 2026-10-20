@@ -3,7 +3,8 @@
 import * as THREE from 'three';
 import { buildHumanoid, resetPose, idle, walk, setMouth } from './character.js';
 import { sfx, music } from './sound.js';
-import { unlockAudio, say } from '../audio.js';
+import { unlockAudio } from '../audio.js';
+import { preloadVoice, voice, stopVoice } from './voice.js';
 import { radialTexture } from '../angel.js';
 
 const $ = id => document.getElementById(id);
@@ -111,18 +112,24 @@ flyingStone.visible = false; arena.add(flyingStone);
 const fallenSpear = { active: false, v: new THREE.Vector3(), w: 0 };
 
 // ---------------- script ----------------
+// English voice-over (web/assets/voice/en/*.mp3, Microsoft neural voices via tools/make_voice.sh).
+// `text` is what the clip says (also the TTS fallback); `zh` is the second subtitle line.
+const VOICE_LANG = 'en';
 const LINES = {
-  goliath: '小子，拿根木棍就敢来见我？我要把你喂给飞鸟！',
-  david: '你靠的是刀枪，我靠的是万军之神的名！',
-  narrator: '大卫用一块小小的石子，打倒了巨人歌利亚。勇气，比身材更重要！',
+  goliath: { text: "Am I a dog, that you come at me with a stick? I'll feed you to the birds!", zh: '小子，拿根木棍就敢来见我？我要把你喂给飞鸟！' },
+  david: { text: 'You come with a sword and a spear. I come in the name of the Lord of Hosts!', zh: '你靠的是刀枪，我靠的是万军之神的名！' },
+  narrator: { text: 'With one small stone, David brought down the giant Goliath. Courage matters more than size.', zh: '大卫用一块小小的石子，打倒了巨人歌利亚。勇气，比身材更重要！' },
 };
+preloadVoice(VOICE_LANG, Object.keys(LINES));
 const subtitle = t => { $('sub').textContent = t; $('sub').classList.toggle('hidden', !t); };
-function speak(who, text) {
-  const opt = { goliath: { pitch: 0.35, rate: 0.95 }, david: { pitch: 1.45, rate: 1.15 }, narrator: { pitch: 1.0, rate: 0.95 } }[who];
+function speak(who) {
+  const { text, zh } = LINES[who];
+  const fallback = { goliath: { pitch: 0.5, rate: 0.9 }, david: { pitch: 1.3, rate: 1.1 }, narrator: { pitch: 1.0, rate: 0.95 } }[who];
   const actor = who === 'goliath' ? goliath : who === 'david' ? david : null;
-  const line = (who === 'goliath' ? '歌利亚：' : who === 'david' ? '大卫：' : '') + text;
+  const name = who === 'goliath' ? 'Goliath: ' : who === 'david' ? 'David: ' : '';
+  const line = name + text + '\n' + zh;
   // queued, never interrupting; the subtitle shows while that line plays and only that line may clear it
-  say(text, { ...opt, queue: true,
+  voice(VOICE_LANG, who, text, { fallback,
     onstart: () => { subtitle(line); if (actor) actor.talking = true; },
     onend: () => { if (actor) actor.talking = false; setTimeout(() => { if ($('sub').textContent === line) subtitle(''); }, 500); } });
 }
@@ -131,9 +138,9 @@ function speak(who, text) {
 const CUES = [
   [0.1, () => { music.start(); music.set(0.3, 104); }],
   [3.9, () => { sfx.roar(); shake(0.08); }],
-  [4.6, () => speak('goliath', LINES.goliath)],
+  [4.6, () => speak('goliath')],
   [8.4, () => { music.set(0.5, 112); }],
-  [9.0, () => speak('david', LINES.david)],
+  [9.0, () => speak('david')],
   [12.6, () => { music.set(0.8, 126); }],
   [12.85, () => { sfx.wave(); spawnWave('ground', goliathTipGround(), 7); dust(goliathTipGround(), 18); shake(0.15); }],
   [15.05, () => { sfx.slash(); spawnWave('slash', V(0, 0.75, -1.6), 9); }],
@@ -144,7 +151,7 @@ const CUES = [
   [24.05, () => { hitGoliath(); }],
   [26.0, () => { sfx.thud(); dust(V(0, 0, -1.2), 50, 2.4); shake(0.5); }],
   [26.6, () => { music.victory(); rays.visible = true; }],
-  [27.6, () => speak('narrator', LINES.narrator)],
+  [27.6, () => speak('narrator')],
   [33.5, () => { $('btnReplay').classList.remove('hidden'); }],
 ];
 const SLOWMO = [[13.35, 14.05, 0.3], [23.6, 24.1, 0.22], [24.05, 24.6, 0.4]];
@@ -375,7 +382,7 @@ addEventListener('resize', layout); layout();
 function start() { resetScene(); speechSynthesis?.cancel(); playing = true; $('status').textContent = ''; }
 $('btnPlay').onclick = () => { unlockAudio(); $('start').classList.add('hidden'); $('hud').classList.remove('hidden'); start(); };
 $('btnAR').onclick = () => enterXR().catch(e => { $('status').textContent = '进入 AR 失败：' + (e.message || e); });
-$('btnReplay').onclick = () => { unlockAudio(); speechSynthesis?.cancel(); start(); };
+$('btnReplay').onclick = () => { unlockAudio(); stopVoice(); start(); };
 navigator.xr?.isSessionSupported('immersive-ar').then(ok => $('btnAR').classList.toggle('hidden', !ok)).catch(() => {});
 
 resetScene();
