@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>DoodLive scan test</title>
+<style>body{font:14px system-ui;margin:16px;background:#fff;color:#111}img,canvas{max-width:45%;border:1px solid #ccc;margin:4px}</style></head>
+<body><h1>Scan pipeline test</h1><p id="out">running…</p><div id="imgs"></div>
+<script type="module">
+// Synthetic end-to-end check of web/vision.js: perspective + colour cast in, flat white-balanced art out.
+import * as V from './vision.js';
+const out = document.getElementById('out');
+const tpl = await (await fetch('assets/template.json')).json();
+const img = new Image(); img.src = 'assets/demo-sheet.png'; await img.decode();
+const [PW, PH] = tpl.page, W = 1080, H = 1920;
+const sc = Object.assign(document.createElement('canvas'), { width: PW, height: PH });
+sc.getContext('2d').drawImage(img, 0, 0);
+const sheet = sc.getContext('2d').getImageData(0, 0, PW, PH);
+const corners = [[230, 420], [880, 450], [1010, 1500], [90, 1460]];
+const page = [[0, 0], [PW, 0], [PW, PH], [0, PH]];
+const Hp = V.homography(page, corners), Hinv = V.homography(corners, page);
+const frame = new ImageData(W, H);
+for (let i = 0; i < frame.data.length; i += 4) { frame.data[i] = 138; frame.data[i + 1] = 117; frame.data[i + 2] = 96; frame.data[i + 3] = 255; }
+for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+  const [u, v] = V.applyH(Hinv, x, y);
+  if (u < 0 || v < 0 || u >= PW || v >= PH) continue;
+  const s = ((v | 0) * PW + (u | 0)) * 4, d = (y * W + x) * 4;
+  frame.data[d] = Math.min(255, sheet.data[s] * 0.98 + 10); frame.data[d + 1] = sheet.data[s + 1] * 0.9; frame.data[d + 2] = sheet.data[s + 2] * 0.75;
+}
+const truth = tpl.markers.map(([a, b]) => V.applyH(Hp, a, b));
+const found = V.detectMarkers(frame, truth.map(([x, y]) => [x + 25, y + 25]), 90);
+const err = found ? Math.max(...found.map((p, i) => Math.hypot(p[0] - truth[i][0], p[1] - truth[i][1]))) : Infinity;
+const show = (id) => { const c = Object.assign(document.createElement('canvas'), { width: id.width, height: id.height }); c.getContext('2d').putImageData(id, 0, 0); document.getElementById('imgs').append(c); };
+show(frame);
+if (found) show(V.whiteBalance(V.warpArt(frame, V.homography(tpl.markers, found), tpl, 512)));
+const pass = err <= 3;
+out.textContent = `${pass ? 'PASS' : 'FAIL'} — max marker error ${err.toFixed(2)} px`;
+document.title = pass ? 'PASS' : 'FAIL';
+</script></body></html>
