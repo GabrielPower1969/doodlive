@@ -104,6 +104,15 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   so rAF and ARCore stopped. Fix: `navigator.wakeLock.request('screen')` when scanning or entering AR, re-acquired on
   `visibilitychange`. For AR tests: the user must hold the phone. A phone lying on the desk never starts tracking.
 
+### L22 · Unity batch build: "script class layout is incompatible between the editor and the player" · 2026-10-22 · confirmed
+- **Symptom:** `SetupAndBuild` in one `-batchmode` run imported all packages, then failed (4 errors) on URP's
+  `DebugActionDesc` fields (`buttonAction: InputAction` vs legacy axis strings).
+- **Cause:** `Setup()` switches `activeInputHandler` to *Both*, which changes scripting defines, but the editor domain
+  was compiled before the switch, so the editor's and the player's serialized layouts differ.
+- **Fix / prevention:** two runs, `Setup` then `Build`, each in a fresh editor (`scripts/build-apk.sh`). Earlier the
+  batch import also hung because Unity 2022.3's Package Manager is x86-only: install Rosetta 2 first
+  (`softwareupdate --install-rosetta --agree-to-license`).
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

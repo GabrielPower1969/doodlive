@@ -31,6 +31,23 @@ ADB_SERIAL=<pixel-serial> scripts/run-on-phone.sh
 
 Desktop only (demo, no camera): `python3 scripts/serve.py`, open http://localhost:8080, press **看演示**.
 
+## Native Android app (Unity, no computer needed at runtime)
+
+Build once on a Mac with Unity 2022.3 LTS + Android module (and Rosetta 2 on Apple Silicon):
+
+```bash
+scripts/build-apk.sh
+```
+
+The output is `unity/Builds/DoodLive.apk` (ARM64, IL2CPP, about 24 MB). Any computer that has adb, and no Unity, can install it:
+
+```bash
+adb install -r DoodLive.apk
+```
+
+The phone needs ARCore support ("Google Play Services for AR"). The app tracks the printed sheet with ARCore image
+tracking, warps your colouring onto the angel, and plays Enter → Idle → Blow with fanfare and voice.
+
 ## Use
 
 1. Print `print/doodlive-angel-A4.pdf` (or open `/print.html`) and colour it in. Keep the 4 black squares clean.
