@@ -41,3 +41,7 @@ Desktop: open the demo (看演示), confirm the angel renders and `window.__dood
 Scan pipeline: open http://localhost:8080/test.html — renders `assets/demo-sheet.png` in a tilted, warm-tinted fake
 camera frame, runs `detectMarkers` → `warpArt` → `whiteBalance`, prints PASS when every marker is within 3 px.
 Phone: `scripts/run-on-phone.sh`, then scan the printed sheet (or the sheet shown on a monitor).
+
+## Hours
+
+Why this project exists, its department and its decisions live in Gabriel's private Hours vault, note `项目-doodlive` (`~/Documents/workspace/hours/30-项目/`). Code facts stay here; reasons stay there.
