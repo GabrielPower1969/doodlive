@@ -34,3 +34,8 @@ button.seg { padding: 4px; display: inline-flex; gap: 2px; background: rgba(255,
 button.seg span { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: #cfd8e3; }
 button.seg span.on { background: #ffcf4a; color: #2a1d00; font-weight: 700; }
 #build { position: fixed; right: 8px; bottom: 4px; font-size: 10px; color: rgba(255,255,255,.45); font-family: ui-monospace, Menlo, monospace; pointer-events: none; z-index: 5; }
+button.lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px; z-index: 11; padding: 7px 12px; font-size: 13px; font-weight: 700; letter-spacing: .5px; pointer-events: auto; }
+#hud button.lang { top: auto; bottom: max(70px, calc(env(safe-area-inset-bottom) + 58px)); right: 10px; z-index: 6; }
+#sub { position: absolute; left: 50%; bottom: max(84px, calc(env(safe-area-inset-bottom) + 72px)); transform: translateX(-50%); width: min(92vw, 640px); text-align: center;
+  background: rgba(0,0,0,.6); border-radius: 12px; padding: 8px 14px; font-size: 16px; line-height: 1.45; }
+#sub small { display: block; color: #cfd8e3; font-size: 13px; margin-top: 2px; }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="theme-color" content="#0b1020">
-<title>DoodLive · 涂色天使 AR</title>
+<title>DoodLive</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
@@ -16,25 +16,28 @@
 <div id="flash"></div>
 
 <section id="start" class="panel">
+  <button id="langStart" class="lang" data-lang-toggle>EN</button>
   <h1>DoodLive</h1>
-  <p class="sub">给天使涂上颜色，用手机一扫——她会活过来</p>
-  <button id="btnScan" class="primary">开始扫描涂色纸</button>
-  <button id="btnDemo">没有纸？看演示</button>
-  <a id="lnkPrint" href="print.html">打印涂色纸</a>
-  <a href="battle.html">⚔️ 大卫 vs 歌利亚（战斗剧场）</a>
+  <p class="sub" data-i18n="tagline">给天使涂上颜色，用手机一扫——她会活过来</p>
+  <button id="btnScan" class="primary" data-i18n="scan">开始扫描涂色纸</button>
+  <button id="btnDemo" data-i18n="demo">没有纸？看演示</button>
+  <a id="lnkPrint" href="print.html" data-i18n="print">打印涂色纸</a>
+  <a href="battle.html" data-i18n="battle">⚔️ 大卫 vs 歌利亚（战斗剧场）</a>
 </section>
 
 <div id="hud" class="hidden">
   <div id="status"></div>
+  <div id="sub" class="hidden"></div>
+  <button id="langHud" class="lang" data-lang-toggle>EN</button>
   <div id="build" title="build fingerprint"></div>
   <div class="bar">
-    <button id="btnShoot" class="primary">拍下识别</button>
-    <button id="btnRescan" class="hidden">重新扫描</button>
+    <button id="btnShoot" class="primary" data-i18n="shoot">拍下识别</button>
+    <button id="btnRescan" class="hidden" data-i18n="rescan">重新扫描</button>
     <button id="btnMode" class="hidden">展示模式</button>
     <button id="btnLines" class="hidden">线条：隐藏</button>
-    <button id="btnTitle" class="hidden seg" aria-label="拼音/英文"><span class="on">拼音</span><span>ABC</span></button>
-    <button id="btnXR" class="hidden primary">放到桌上（AR）</button>
-    <button id="btnExitXR" class="hidden">退出 AR</button>
+    <button id="btnTitle" class="hidden seg" aria-label="pinyin / ABC"><span class="on" data-i18n="pinyin">拼音</span><span data-i18n="abc">ABC</span></button>
+    <button id="btnXR" class="hidden primary" data-i18n="xr">放到桌上（AR）</button>
+    <button id="btnExitXR" class="hidden" data-i18n="exitXR">退出 AR</button>
   </div>
 </div>
 <script type="module" src="app.js"></script>
