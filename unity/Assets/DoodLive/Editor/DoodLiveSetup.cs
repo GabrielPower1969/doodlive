@@ -284,11 +284,12 @@ namespace DoodLive.EditorTools
                 r.sharedMaterials = ms;
                 r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             }
-            A.halo.gameObject.AddComponent<Spin>().axis = Vector3.forward;
+            A.halo.gameObject.AddComponent<Spin>().axis = Vector3.up;
             var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
             // 3D titles (pipeline/make_title.py): Chinese over English, one per sheet theme; the controller enables the right one
             var titles = new GameObject("titles"); titles.transform.SetParent(A.root.transform, false);
-            titles.transform.localPosition = new Vector3(0, 1.42f, 0); titles.transform.localScale = Vector3.one * 0.6f;
+            titles.transform.localPosition = new Vector3(0, 1.42f, 0);
+            titles.transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);   // glTFast mirrors X: undo it or the glyphs read backwards
             titles.AddComponent<Billboard>();
             foreach (var key in new[] { "angel", "fiery", "wrath", "holy" })
             {

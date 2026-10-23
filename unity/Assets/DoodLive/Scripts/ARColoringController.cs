@@ -275,7 +275,7 @@ namespace DoodLive
             fwd.Normalize();
             holder.SetParent(null, false);
             holder.position = cam.position + fwd * 0.7f - Vector3.up * 0.25f;
-            holder.rotation = Quaternion.LookRotation(fwd, Vector3.up);
+            holder.rotation = Quaternion.LookRotation(-fwd, Vector3.up);   // model front = +Z (glTFast), so face the camera
             holder.localScale = Vector3.one * 0.35f;
             AnchorHere();   // stays where it appeared when you walk around
         }

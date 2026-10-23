@@ -434,7 +434,7 @@ export function animate(angel, state, time) {
   angel.face.jaw.position.y = (angel.fromGLB ? -PX(4) : -PX(6)) * talk;
   angel.face.mouthIn.scale.y = PX(3 + 9 * talk);
 
-  angel.halo.rotation.z = time * 0.6;
+  if (angel.fromGLB) angel.halo.rotation.y = time * 0.6; else angel.halo.rotation.z = time * 0.6;   // GLB halo ring lies flat (spin about Y)
   angel.glow.material.opacity = 0.6 + 0.25 * s(time * 2);
   angel.cloud.rotation.y = time * 0.1;
   angel.cloud.position.y = -0.02 * s(time * 0.8);

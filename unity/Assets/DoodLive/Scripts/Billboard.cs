@@ -16,7 +16,7 @@ namespace DoodLive
             if (cam)
             {
                 var to = cam.transform.position - transform.position; to.y = 0;
-                if (to.sqrMagnitude > 1e-6f) transform.rotation = Quaternion.LookRotation(-to.normalized, Vector3.up);   // glTF text faces -Z
+                if (to.sqrMagnitude > 1e-6f) transform.rotation = Quaternion.LookRotation(to.normalized, Vector3.up);    // text front = +Z after import
             }
             transform.localPosition = start + Vector3.up * (Mathf.Sin(Time.time * bobSpeed) * bobAmplitude);
         }
