@@ -404,6 +404,11 @@ function frame(now, xrFrame) {
 
   if (angel.root.visible) {
     animate(angel, { phase: S.phase, t: S.phaseT }, time);
+    if (angel.title) {   // billboard about Y, gentle bob (glTF text faces +Z in three.js)
+      const cw = (renderer.xr.isPresenting ? renderer.xr.getCamera() : camera).getWorldPosition(new THREE.Vector3());
+      const tw = angel.title.getWorldPosition(new THREE.Vector3()); cw.y = tw.y;
+      angel.title.lookAt(cw); angel.title.position.y = 1.42 + 0.02 * Math.sin(time * 1.1);
+    }
     fx.update(dt, time);
     const burst = S.phase === 'enter' ? 1 : S.phase === 'action' ? 0.9 : 0.3;
     for (let i = 0; i < SPARK; i++) {

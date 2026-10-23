@@ -180,6 +180,7 @@ namespace DoodLive
             ApplyPage();
 
             PlaceOnSheet(sheet);
+            ShowTitle(sheet.referenceImage.name);
             capturing = false;
             Reveal();
         }
@@ -293,6 +294,15 @@ namespace DoodLive
         }
 
         // ---------------- flow ----------------
+        /// <summary>Show the 3D title matching the sheet that was scanned (reference image name), default "angel".</summary>
+        void ShowTitle(string sheetName)
+        {
+            var titles = angel.transform.Find("titles"); if (!titles) return;
+            string key = "angel";
+            foreach (var k in new[] { "fiery", "wrath", "holy" }) if (sheetName != null && sheetName.StartsWith(k)) key = k;
+            foreach (Transform t in titles) t.gameObject.SetActive(t.name == key);
+        }
+
         void Reveal()
         {
             mode = Mode.Live;

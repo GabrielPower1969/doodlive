@@ -286,6 +286,19 @@ namespace DoodLive.EditorTools
             }
             A.halo.gameObject.AddComponent<Spin>().axis = Vector3.forward;
             var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
+            // 3D titles (pipeline/make_title.py): Chinese over English, one per sheet theme; the controller enables the right one
+            var titles = new GameObject("titles"); titles.transform.SetParent(A.root.transform, false);
+            titles.transform.localPosition = new Vector3(0, 1.42f, 0); titles.transform.localScale = Vector3.one * 0.6f;
+            titles.AddComponent<Billboard>();
+            foreach (var key in new[] { "angel", "fiery", "wrath", "holy" })
+            {
+                string tsrc = Path.Combine(RepoRoot, $"assets/titles/{key}.glb"), tdst = $"{Root}/Angel/title_{key}.glb";
+                if (!File.Exists(tsrc)) continue;
+                Copy(tsrc, tdst); AssetDatabase.ImportAsset(tdst, ImportAssetOptions.ForceUpdate);
+                var tm = AssetDatabase.LoadAssetAtPath<GameObject>(tdst); if (!tm) continue;
+                var ti = (GameObject)PrefabUtility.InstantiatePrefab(tm); PrefabUtility.UnpackPrefabInstance(ti, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+                ti.name = key; ti.transform.SetParent(titles.transform, false); ti.SetActive(key == "angel");
+            }
             var animator = A.root.AddComponent<Animator>();
             animator.applyRootMotion = false; animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
             glbRig = true; animator.runtimeAnimatorController = MakeController(A); glbRig = false;

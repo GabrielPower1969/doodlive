@@ -53,5 +53,11 @@ export async function loadAngelGLB(texture, url = 'assets/model/angel.glb') {
   const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialTexture('rgba(255,240,190,0.85)'), depthWrite: false, transparent: true, blending: THREE.AdditiveBlending }));
   glow.scale.set(0.55, 0.55, 1); glow.position.set(0, 0.08, -0.15); (B.head || rig).add(glow);
 
-  return { root, rig, bones: B, meshes: [], materials: pageMats, halo, glow, cloud, wings: [], face, talking: false, fromGLB: true };
+  // 3D title (Chinese over English) floats above her and turns to face the viewer (app.js updates it)
+  let title = null;
+  try {
+    const t = await new GLTFLoader().loadAsync('assets/model/titles/angel.glb');
+    title = t.scene; title.position.set(0, 1.42, 0); title.scale.setScalar(0.6); root.add(title);
+  } catch (e) { console.warn('title glb missing', e); }
+  return { root, rig, bones: B, meshes: [], materials: pageMats, halo, glow, cloud, wings: [], face, talking: false, fromGLB: true, title };
 }

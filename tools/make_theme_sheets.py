@@ -355,7 +355,7 @@ class Ctx:
         for cx, cy in MARKERS:
             h = MS // 2 + KEEP
             keep[max(0, cy - h):cy + h + 1, max(0, cx - h):cx + h + 1] = True
-        keep[28:152, 250:990] = True  # title
+        keep[20:175, 330:910] = True  # 田字格 title block
         keep[1652:, :] = True  # footer / swatches
         self.keep = keep
 
@@ -765,17 +765,17 @@ def theme_holy(ctx):
 # ------------------------------------------------------------------------------------------------
 THEMES = {
     "fiery": dict(
-        key="fiery", file="angel-fiery", title="炙热的天使", sub="Fiery Angel", draw=theme_fiery,
+        key="fiery", file="angel-fiery", title="炙热的天使", hanzi="炙热天使", sub="Fiery Angel", draw=theme_fiery,
         angel=dict(wings=["gold", "ivory"], wing_cuts=[4], hair="ember", skin="ivory", robe="ivory",
                    robe2="gold", accent="ember", rope="gold", gold="ember", skirt="ivory"),
     ),
     "wrath": dict(
-        key="wrath", file="angel-wrath", title="愤怒的天使", sub="Wrathful Angel", draw=theme_wrath,
+        key="wrath", file="angel-wrath", title="愤怒的天使", hanzi="愤怒天使", sub="Wrathful Angel", draw=theme_wrath,
         angel=dict(wings=["sky", "ivory"], wing_cuts=[4], hair="gold", skin="ivory", robe="ivory",
                    robe2="sky", accent="ember", rope="gold", gold="gold", skirt="ivory"),
     ),
     "holy": dict(
-        key="holy", file="angel-holy", title="神圣的天使", sub="Holy Angel", draw=theme_holy,
+        key="holy", file="angel-holy", title="神圣的天使", hanzi="神圣天使", sub="Holy Angel", draw=theme_holy,
         angel=dict(wings=["ivory", "gold"], wing_cuts=[4], hair="gold", skin="ivory", robe="ivory",
                    robe2="sky", accent="gold", rope="violet", gold="gold", skirt="ivory"),
     ),
@@ -809,8 +809,9 @@ def build(theme, ctx):
     d = ImageDraw.Draw(page)
     for cx, cy in MARKERS:
         d.rectangle((cx - MS // 2, cy - MS // 2, cx + MS // 2, cy + MS // 2), fill="black")
-    d.text((PW // 2, 82), theme["title"], fill=(0, 0, 0), font=font(78), anchor="mm")
-    d.text((PW // 2, 130), "DoodLive · " + theme["sub"], fill=(90, 90, 90), font=font(24), anchor="mm")
+    # 田字格 title: the theme's four characters (e.g. 炙 热 天 使) + English; see tools/tianzige.py
+    import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); from tianzige import draw_title
+    draw_title(page, theme["hanzi"], theme["sub"], cy=78, box=96, gap=14)
     p1 = page.copy()
     d1 = ImageDraw.Draw(p1)
     d1.text((PW // 2, 1708), "四个黑方块要完整拍进画面 · 不要涂到黑方块上", fill=(120, 120, 120), font=font(28), anchor="mm")
