@@ -12,7 +12,7 @@ Colour-in AR angel prototype. Static web app (three.js 0.170 vendored in `web/ve
 
 ## Map
 ```
-source/                original line art (input) + target look reference
+source/                original line art (input); the stock look reference stays local (git-ignored)
 tools/make_template.py crop + clean line art, A4 sheet with 4 markers, template.json, demo colouring
 web/app.js             UI + state machine + render loop + AR anchor
 web/vision.js          markers, homography, warp, white balance, line erase, pose  (OpenCV replacement point)
