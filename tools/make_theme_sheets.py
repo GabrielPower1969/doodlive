@@ -258,6 +258,9 @@ SEEDS = {
     "gold": [(900, 710), (810, 1120), (850, 860)],
     "robe2": [(500, 740), (440, 760)],
 }
+SRC_W, SRC_H = 1128, 1384  # lineart.png size; wing outlines below are traced in these coordinates
+WING_L = [(8, 22), (60, 42), (110, 70), (155, 105), (195, 150), (225, 195), (250, 240), (275, 285), (310, 330), (345, 380), (385, 425), (425, 458), (400, 490), (370, 492), (330, 520), (302, 560), (300, 600), (292, 640), (262, 672), (240, 720), (225, 760), (213, 790), (195, 790), (150, 745), (100, 690), (50, 640), (0, 602), (0, 442), (28, 420), (69, 454), (87, 492), (135, 470), (138, 435), (145, 375), (170, 335), (195, 316), (240, 305), (245, 295), (215, 238), (165, 162), (110, 102), (60, 62)]
+WING_R = [(1088, 16), (998, 50), (908, 95), (858, 125), (813, 160), (783, 200), (763, 250), (733, 320), (698, 380), (658, 430), (618, 470), (668, 500), (708, 545), (753, 615), (783, 680), (790, 690), (823, 730), (868, 745), (893, 722), (943, 660), (963, 600), (998, 550), (1038, 500), (1068, 455), (1108, 420), (1128, 412), (1128, 270), (1090, 284), (1035, 319), (990, 383), (972, 453), (945, 502), (907, 557), (877, 602), (868, 575), (885, 520), (905, 470), (915, 420), (912, 370), (905, 330), (885, 290), (850, 278), (800, 296), (783, 245), (796, 215), (833, 170), (888, 130), (948, 98), (1008, 72), (1068, 30)]
 SKIRT = [(310, 930), (650, 840), (665, 880), (722, 1227), (235, 1227)]
 
 
@@ -297,19 +300,40 @@ def angel_colour_layer(theme, lab, open_mask, fig):
     sk_zone = open_mask & skirt
     out[sk_zone] = COL[cfg["skirt"]]
     painted |= sk_zone
-    wing_zone = open_mask & fig & (yy < 740) & ~skirt
-    wing_zone &= ~((xx > 740) & (yy > 700 - (xx - 740) * 0.40))  # hull spill under the right wing tips
-    wing_zone &= ~((xx < 260) & (yy > 640 + (xx - 100) * 0.25) & (yy > 690))
-    # wing bands run along the feather direction: angle around the shoulder root, mirrored for the right wing
-    root_x = np.where(xx < 500, 330, 650)
-    ang = np.degrees(np.arctan2(yy - 430, np.abs(xx - root_x)))
-    ramp = cfg["wings"]
-    b = np.digitize(ang, cfg["wing_cuts"])
-    for i, c in enumerate(ramp):
-        z = wing_zone & (b == i)
-        out[z] = COL[c]
-    painted |= wing_zone
-    return out, painted
+    # wings: hand-traced outline polygons (open hatch strokes make flood fill leak), grown a few px so the
+    # edge hides under the ink, body regions carved out, then a base->tip gradient in the theme's palette
+    alpha = painted.astype(np.float32)
+    inside_any = np.zeros((AH, AW), bool)
+    wing_a = np.zeros((AH, AW), np.float32)
+    for poly, (rx, ry) in ((WING_L, (330, 470)), (WING_R, (650, 470))):
+        im = Image.new("L", (AW, AH), 0)
+        ImageDraw.Draw(im).polygon([(x * AW / SRC_W, y * AH / SRC_H) for x, y in poly], fill=255)
+        inside = np.array(im) > 0
+        frac = ndi.mean(inside.astype(np.float32), lab, range(1, n + 1))
+        body = np.zeros(n + 1, bool)
+        for l in range(1, n + 1):
+            if is_closed[l] and frac[l - 1] < 0.5:
+                body[l] = True
+        body_m = body[lab]
+        m = ndi.binary_dilation(inside, structure=np.ones((3, 3)), iterations=3) & ~(body_m & ~inside)
+        m &= ~ndi.binary_dilation(body_m & ~inside, iterations=1) | inside
+        # gradient t: 0 at the shoulder root, 1 at the farthest tip of this wing
+        dist = np.hypot((xx - rx * AW / SRC_W), (yy - ry * AH / SRC_H))
+        t = np.clip(dist / dist[m].max(), 0, 1)
+        t = np.clip((t - 0.18) / 0.72, 0, 1)
+        t = (t * t * (3 - 2 * t)) * 0.7
+        c0 = np.array(COL[cfg["wings"][0]], np.float32)
+        c1 = np.array(COL[cfg["wings"][-1]], np.float32)
+        col = c0 + (c1 - c0) * t[..., None]
+        w = ndi.gaussian_filter(m.astype(np.float32), 1.1)
+        # fade where the art is cropped by its own rectangle (left/right edge) so no square edge shows
+        edge = np.minimum(xx, AW - 1 - xx).astype(np.float32)
+        w *= np.clip(edge / 14.0, 0, 1)
+        out = (out * (1 - w[..., None]) + col * w[..., None]).astype(np.uint8)
+        wing_a = np.maximum(wing_a, w)
+    alpha = np.maximum(alpha, wing_a)
+    painted |= wing_a > 0.02
+    return out, painted, alpha
 
 
 # ------------------------------------------------------------------------------------------------
@@ -771,11 +795,12 @@ def build(theme, ctx):
     L[kill] = 255
     C[ctx.keep] = 255
     # angel colours over the colour layer (page 2)
-    ang, painted = angel_colour_layer(theme, ctx.lab, ctx.open_mask, ctx.fig)
-    pp = to_page(painted.astype(np.uint8)) > 0
+    ang, painted, alpha = angel_colour_layer(theme, ctx.lab, ctx.open_mask, ctx.fig)
+    pa = np.zeros((PH, PW), np.float32)
+    pa[AY:AY + AH, AX:AX + AW] = alpha
     pang = np.full((PH, PW, 3), 255, np.uint8)
     pang[AY:AY + AH, AX:AX + AW] = ang
-    C[pp] = pang[pp]
+    C = (C * (1 - pa[..., None]) + pang * pa[..., None]).astype(np.uint8)
     # page 1 content: angel line art + deco lines
     page = Image.new("RGB", (PW, PH), "white")
     page.paste(ctx.art, (AX, AY))
