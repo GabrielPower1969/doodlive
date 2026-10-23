@@ -307,7 +307,7 @@ namespace DoodLive
             var titles = angel.transform.Find("titles"); if (!titles) return;
             foreach (Transform t in titles)
             {
-                t.gameObject.SetActive(t.name == titleKey);
+                t.gameObject.SetActive(t.name == titleKey || t.name.StartsWith("holder_") || t.name.StartsWith(titleKey + "_"));
                 foreach (Transform part in t.GetComponentsInChildren<Transform>(true))     // "english" / "pinyin" share the lower slot
                 {
                     if (part.name == "english") part.gameObject.SetActive(!pinyinMode);
