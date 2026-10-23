@@ -303,7 +303,8 @@ namespace DoodLive.EditorTools
                 foreach (var t in ti.GetComponentsInChildren<Transform>(true)) { if (t.name == "mark_left") left = t; if (t.name == "mark_front") front = t; }
                 if (left && front)
                 {
-                    var lp = titles.transform.InverseTransformPoint(left.position), fp = titles.transform.InverseTransformPoint(front.position);
+                    var lp = titles.transform.InverseTransformPoint(left.position);
+                    var fp = titles.transform.InverseTransformPoint(front.position);
                     if (lp.x > 0) ti.transform.localScale = new Vector3(-1, 1, 1);          // glyphs mirrored -> un-mirror this model
                     bb.frontSign = fp.z >= 0 ? 1 : -1;                                        // which local axis faces the reader
                     Debug.Log($"DoodLive title {key}: left.x={lp.x:F2} front.z={fp.z:F2} -> mirror={(lp.x > 0)} frontSign={bb.frontSign}");
