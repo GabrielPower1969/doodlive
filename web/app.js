@@ -202,7 +202,17 @@ function refreshButtons() {
   $('btnMode').textContent = S.view === 'paper' ? '展示模式' : '纸上模式';
 }
 
-function speak(text) { say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }); }
+// Recorded lines (Gabriel's own voice, tools/process_voice.py) with Web Speech as the fallback.
+const VOICE_SET = 'assets/voice/gabriel', CLIP = { '哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！': 'voice_hello' };
+let currentClip = null;
+function speak(text) {
+  const key = CLIP[text] ?? ('voice_' + LINES.indexOf(text));
+  const a = new Audio(`${VOICE_SET}/${key}.mp3`);
+  currentClip?.pause(); currentClip = a;
+  a.onplay = () => { angel.talking = true; };
+  a.onended = a.onerror = () => { angel.talking = false; if (a.error) say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }); };
+  a.play().catch(() => say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }));
+}
 
 function enterScene(holder) {
   holder.add(angel.root);
