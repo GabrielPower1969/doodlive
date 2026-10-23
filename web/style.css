@@ -39,3 +39,23 @@ button.lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 
 #sub { position: absolute; left: 50%; bottom: max(84px, calc(env(safe-area-inset-bottom) + 72px)); transform: translateX(-50%); width: min(92vw, 640px); text-align: center;
   background: rgba(0,0,0,.6); border-radius: 12px; padding: 8px 14px; font-size: 16px; line-height: 1.45; }
 #sub small { display: block; color: #cfd8e3; font-size: 13px; margin-top: 2px; }
+
+/* M1: subtitle fade, help card, 更多 drawer, lost dim, button transitions */
+#sub { opacity: 0; transition: opacity .25s; pointer-events: none; }
+#sub.show { opacity: 1; }
+.bar button, .drawer button, #btnMore { transition: opacity .2s, transform .2s; }
+.bar button:disabled { opacity: .45; transform: scale(.97); }
+#btnMore { position: absolute; right: 10px; bottom: max(118px, calc(env(safe-area-inset-bottom) + 106px)); pointer-events: auto; padding: 8px 14px; font-size: 13px; z-index: 6; }
+.drawer { position: absolute; right: 10px; bottom: max(160px, calc(env(safe-area-inset-bottom) + 148px)); display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+  opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .2s, transform .2s; }
+.drawer.show { opacity: 1; transform: none; }
+.drawer.show button { pointer-events: auto; }
+.card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); width: min(88vw, 420px); padding: 20px 22px; border-radius: 18px;
+  background: rgba(20, 24, 34, .92); color: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 7; }
+.card.show { opacity: 1; transform: translate(-50%, -50%); pointer-events: auto; }
+.card h2 { margin: 0 0 10px; font-size: 18px; }
+.card ol { margin: 0 0 14px; padding-left: 20px; line-height: 1.6; font-size: 15px; }
+.card button { width: 100%; }
+body.lost #gl { filter: brightness(.55) saturate(.6); transition: filter .4s; }
+#gl { transition: filter .4s; }
+.panel button.lang { width: auto; }

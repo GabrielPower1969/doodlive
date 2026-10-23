@@ -8,7 +8,8 @@ import { buildAngel, animate, radialTexture } from './angel.js';
 import { loadAngelGLB } from './angel_glb.js';
 import { buildFx } from './fx.js';
 import { homography, detectMarkers, warpArt, whiteBalance, eraseLines, poseFromH } from './vision.js';
-import { unlockAudio, fanfare, chime, say } from './audio.js';
+import { unlockAudio, fanfare, chime, say, audioCtx } from './audio.js';
+import { t, other, lang, setLang, apply as applyLang } from './i18n.js';
 
 const $ = id => document.getElementById(id);
 const video = $('video'), glCanvas = $('gl');
@@ -175,9 +176,11 @@ function bakeFromCamera(ptsV) {
 }
 function setTextureData(img) { S.rawTex = img; S.cleanTex = eraseLines(img); paintTexture(); }
 function paintTexture() {
+  $('btnLines').textContent = t(S.lines ? 'linesOn' : 'linesOff');
+  if (!S.rawTex) return;
   canvasTex.getContext('2d').putImageData(S.lines ? S.rawTex : S.cleanTex, 0, 0);
   texture.needsUpdate = true;
-  $('btnLines').textContent = S.lines ? '线条：显示' : '线条：隐藏';
+  $('btnLines').textContent = t(S.lines ? 'linesOn' : 'linesOff');
 }
 async function loadDemoTexture() {
   const img = new Image(); img.src = 'assets/demo-colored.png'; await img.decode();
@@ -201,30 +204,44 @@ function refreshButtons() {
   show('btnMode', live && !S.xr && !!video.srcObject);
   show('btnXR', live && !S.xr && xrSupported);
   show('btnExitXR', !!S.xr);
-  $('btnMode').textContent = S.view === 'paper' ? '展示模式' : '纸上模式';
+  $('btnMode').textContent = t(S.view === 'paper' ? 'modeShow' : 'modePaper');
+  $('btnMore').classList.toggle('hidden', !live);
+  show('btnRead', live && !!angel.title); show('btnAction', live);
 }
 
-// Recorded lines (Gabriel's own voice, tools/process_voice.py) with Web Speech as the fallback.
-const VOICE_SET = 'assets/voice/gabriel', CLIP = { '哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！': 'voice_hello' };
+// Recorded lines (Gabriel's own voice, zh and en sets) with Web Speech as the fallback; voices never overlap.
+const VOICE_FILE = { hello: 'voice_hello', line0: 'voice_0', line1: 'voice_1', line2: 'voice_2', line3: 'voice_3', greet0: 'greet0', greet1: 'greet1', greet2: 'greet2' };
 let currentClip = null;
 const theme = new Audio('assets/music/theme.mp3'); theme.loop = true; const MUSIC_BED = 0.22;
 function duck(on) { const target = on ? MUSIC_BED * 0.4 : MUSIC_BED; const step = () => { theme.volume += Math.sign(target - theme.volume) * 0.02; if (Math.abs(theme.volume - target) > 0.021) requestAnimationFrame(step); else theme.volume = target; }; step(); }
-function speak(text) {
-  const key = CLIP[text] ?? ('voice_' + LINES.indexOf(text));
-  const a = new Audio(`${VOICE_SET}/${key}.mp3`);
-  currentClip?.pause(); currentClip = a;
-  a.onplay = () => { angel.talking = true; duck(true); };
-  a.onended = a.onerror = () => { angel.talking = false; duck(false); if (a.error) say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }); };
-  a.play().catch(() => say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }));
+function subtitle(key) {
+  const el = $('sub'); if (!key) { el.classList.remove('show'); return; }
+  el.innerHTML = `${t(key)}<small>${other(key)}</small>`; el.classList.add('show');
 }
-
+function speak(key) {
+  subtitle(key);
+  const start = () => { angel.talking = true; duck(true); };
+  const end = () => { angel.talking = false; duck(false); setTimeout(() => subtitle(null), 800); };
+  if (currentClip) { const old = currentClip; let v = old.volume; const fade = () => { v -= 0.12; if (v <= 0) old.pause(); else { old.volume = v; setTimeout(fade, 20); } }; fade(); }  // 150 ms fade, never overlap
+  const a = new Audio(`assets/voice/${lang === 'en' ? 'gabriel-en' : 'gabriel'}/${VOICE_FILE[key]}.mp3`);
+  currentClip = a; a.onplay = start; a.onended = end;
+  a.onerror = () => say(t(key), { lang, onstart: start, onend: end });
+  a.play().catch(() => say(t(key), { lang, onstart: start, onend: end }));
+}
+// tiny UI cues (click / lock / lost) — same as Unity's MakeCues
+function cue(kind) {
+  const ctx = audioCtx(); if (!ctx) return;
+  const [hz, secs, decay, amp] = { click: [1400, 0.045, 60, 0.5], lock: [1568, 0.28, 9, 0.35], lost: [220, 0.16, 14, 0.4] }[kind];
+  const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = hz; const t0 = ctx.currentTime;
+  g.gain.setValueAtTime(amp, t0); g.gain.exponentialRampToValueAtTime(0.0001, t0 + secs); o.connect(g).connect(ctx.destination); o.start(t0); o.stop(t0 + secs + 0.02);
+}
 function enterScene(holder) {
   holder.add(angel.root);
   angel.root.visible = true;
   setPhase('enter'); fx.trigger('enter'); chime();
   new Audio('assets/music/swell.mp3').play().catch(() => {});
   if (theme.paused) { theme.volume = MUSIC_BED; theme.play().catch(() => {}); }
-  setTimeout(() => speak('哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！'), 900);
+  setTimeout(() => speak('hello'), 900);
 }
 
 function reveal(viewMode) {
@@ -232,30 +249,31 @@ function reveal(viewMode) {
   show('guide', false);
   enterScene(viewMode === 'paper' ? paperHolder : showHolder);
   refreshButtons();
-  status(xrSupported ? '点天使听号角 · 点“放到桌上”让她站进真实空间' : '点一下天使，听她吹响号角');
+  status(t(xrSupported ? 'tapXR' : 'tap')); S.idleSince = performance.now(); S.greetCount = 0;
 }
 
-const LINES = ['听！天堂的号角为你吹响！', '你画得真好看，我好喜欢这些颜色！', '愿你今天平安、快乐！', '再给我画一件新衣服吧！'];
+const LINES = ['line0', 'line1', 'line2', 'line3'], GREETS = ['greet0', 'greet1', 'greet2'];
 function action() {
-  if (S.phase === 'action' || S.phase === 'enter') return;
+  if (S.phase === 'action' || S.phase === 'enter' || S.busy) return;
   setPhase('action'); fx.trigger('action');
   const d = fanfare();
+  cue('click'); S.idleSince = performance.now();
   setTimeout(() => speak(LINES[S.voiceIdx++ % LINES.length]), d * 1000);
 }
 
 async function startScan() {
   unlockAudio(); keepAwake();
   show('start', false); show('hud', true);
-  status('正在打开相机…');
+  status(t('openingCam'));
   try { await startCamera(); } catch (e) {
-    status('打不开相机：' + (e.message || e) + '。可以先看演示'); show('start', true); return;
+    status(t('camFail', { e: e.message || e })); show('start', true); return;
   }
   resetScan();
 }
 function resetScan() {
   S.mode = 'scan'; S.good = 0; S.lastPts = null; S.havePose = false; angel.root.visible = false;
   show('guide', true); refreshButtons();
-  status('把整张涂色纸放进框里，四个黑方块对准四个角');
+  status(t('fit')); S.scanStart = performance.now(); S.helpShown = false;
 }
 function capture(ptsV) {
   $('flash').classList.add('on'); setTimeout(() => $('flash').classList.remove('on'), 60);
@@ -290,7 +308,7 @@ async function enterXR() {
   session.addEventListener('select', onXRSelect);
   session.addEventListener('end', onXREnd);
   refreshButtons();
-  status('慢慢移动手机找到桌面或地面，出现金色光圈后点一下屏幕');
+  status(t('xrFind'));
 }
 const ray = new THREE.Raycaster();
 function onXRSelect(e) {
@@ -301,12 +319,12 @@ function onXRSelect(e) {
     ray.set(new THREE.Vector3(p.x, p.y, p.z), dir);
     if (ray.intersectObject(angel.root, true).length) { action(); return; }
   }
-  if (!reticle.visible) { if (!S.xrPlaced) status('还没找到平面，先慢慢移动手机，等金色光圈出现再点'); return; }
+  if (!reticle.visible) { if (!S.xrPlaced) status(t('xrNoPlane')); return; }
   const at = new THREE.Vector3().setFromMatrixPosition(reticle.matrix);
   const cam = renderer.xr.getCamera().getWorldPosition(new THREE.Vector3());
   xrHolder.position.copy(at);
   xrHolder.rotation.set(0, Math.atan2(cam.x - at.x, cam.z - at.z), 0);   // face the viewer, stay upright
-  if (!S.xrPlaced) { S.xrPlaced = true; enterScene(xrHolder); status('点天使听号角 · 点别处的地面可以挪动她'); }
+  if (!S.xrPlaced) { S.xrPlaced = true; enterScene(xrHolder); status(t('xrPlaced')); }
 }
 function onXREnd() {
   hitSource = null; S.xr = null; reticle.visible = false;
@@ -314,10 +332,52 @@ function onXREnd() {
   camera.near = 10; camera.far = 1e5;
   S.view = 'show'; showHolder.add(angel.root); angel.root.visible = true;
   layout(); refreshButtons();
-  status('已退出 AR · 点“重新扫描”可以再拍一张');
+  status(t('xrExit'));
 }
 
+// ---------------- read-aloud, idle greeting, help card, pause ----------------
+async function readTitle() {
+  if (S.mode !== 'live' || S.busy || !angel.title) return;
+  S.busy = true; cue('click');
+  const py = (localStorage.getItem('titleMode') || 'py') === 'py';
+  const order = ['hanzi', py ? 'pinyin' : 'english', py ? 'english' : 'pinyin'], keys = ['readHanzi', py ? 'readPinyin' : 'readEnglish', py ? 'readEnglish' : 'readPinyin'];
+  for (let i = 0; i < 3; i++) {
+    status(t(keys[i])); chime();
+    const part = angel.title.getObjectByName(order[i]); const was = part?.visible;
+    if (part) { part.visible = true; const s0 = part.scale.clone(); const t0 = performance.now();
+      await new Promise(r => { const step = () => { const k = (performance.now() - t0) / 1300; part.scale.copy(s0).multiplyScalar(1 + 0.18 * Math.sin(Math.PI * Math.min(1, k * 1.25))); if (k < 1) requestAnimationFrame(step); else { part.scale.copy(s0); r(); } }; step(); });
+      part.visible = was; }
+    else await new Promise(r => setTimeout(r, 1300));
+  }
+  status(t(xrSupported ? 'tapXR' : 'tap')); S.busy = false; S.idleSince = performance.now();
+}
+function maybeGreet(now) {
+  if (S.mode !== 'live' || S.busy || angel.talking || S.phase !== 'idle') return;
+  if (now - S.idleSince > 20000 && (S.greetCount || 0) < 2 && now - (S.lastGreet || 0) > 25000) {
+    S.greetCount = (S.greetCount || 0) + 1; S.lastGreet = now; S.idleSince = now;
+    speak(GREETS[S.greetCount % GREETS.length]);
+  }
+}
+function maybeHelp(now) {
+  if (S.mode === 'scan' && !S.helpShown && now - S.scanStart > 30000) { S.helpShown = true; $('help').classList.add('show'); }
+  if (S.mode !== 'scan' || S.good > 0) $('help').classList.remove('show');
+}
+function setLost(lost) {
+  if (lost === S.lost) return; S.lost = lost;
+  document.body.classList.toggle('lost', lost);
+  if (lost) { cue('lost'); status(t('lost')); } else status(t(xrSupported ? 'tapXR' : 'tap'));
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { theme.volume = 0; currentClip?.pause(); } else { if (!theme.paused) duck(false); currentClip?.play().catch(() => {}); S.idleSince = performance.now(); }
+});
+
 // ---------------- buttons + pointer ----------------
+applyLang();
+for (const b of document.querySelectorAll('[data-lang-toggle]')) b.onclick = () => { setLang(lang === 'zh' ? 'en' : 'zh'); refreshButtons(); paintTexture(); if (S.mode === 'live') status(t(xrSupported ? 'tapXR' : 'tap')); };
+$('btnAction').onclick = () => { unlockAudio(); action(); };
+$('btnRead').onclick = () => { unlockAudio(); readTitle(); };
+$('btnMore').onclick = () => { $('more').classList.toggle('show'); $('btnMore').textContent = t($('more').classList.contains('show') ? 'close' : 'more'); };
+$('helpDemo').onclick = () => { $('help').classList.remove('show'); $('btnDemo').click(); };
 $('btnScan').onclick = startScan;
 $('btnDemo').onclick = async () => {
   unlockAudio(); show('start', false); show('hud', true);
@@ -331,7 +391,7 @@ $('btnRescan').onclick = () => { speechSynthesis?.cancel(); video.srcObject ? re
 $('btnMode').onclick = () => {
   S.view = S.view === 'paper' ? 'show' : 'paper';
   (S.view === 'paper' ? paperHolder : showHolder).add(angel.root);
-  if (S.view === 'paper' && !S.havePose) status('先让四个黑方块进入画面');
+  if (S.view === 'paper' && !S.havePose) status(t('needMarkers'));
   refreshButtons();
 };
 $('btnLines').onclick = () => { S.lines = !S.lines; paintTexture(); };
@@ -341,7 +401,7 @@ $('btnTitle').onclick = () => {   // 拼音 <-> English under the 3D title
   angel.title?.userData.setMode?.(mode);
   const [a, b] = $('btnTitle').querySelectorAll('span'); a.classList.toggle('on', mode === 'py'); b.classList.toggle('on', mode === 'en');
 };
-$('btnXR').onclick = () => enterXR().catch(e => { status('进入 AR 失败：' + (e.message || e)); refreshButtons(); });
+$('btnXR').onclick = () => enterXR().catch(e => { status(t('xrFail', { e: e.message || e })); refreshButtons(); });
 $('btnExitXR').onclick = () => S.xr?.end();
 for (const b of document.querySelectorAll('#hud button')) b.addEventListener('beforexrselect', e => e.preventDefault());
 
@@ -370,6 +430,7 @@ function frame(now, xrFrame) {
   S.phaseT += dt;
   if (S.phase === 'enter' && S.phaseT > 1.4) setPhase('idle');
   if (S.phase === 'action' && S.phaseT > 3.3) setPhase('idle');
+  $('btnAction').disabled = $('btnRead').disabled = S.phase !== 'idle' || !!S.busy;
 
   if (xrFrame && hitSource) {
     const hits = xrFrame.getHitTestResults(hitSource);
@@ -381,27 +442,27 @@ function frame(now, xrFrame) {
     const hint = !tracking ? 'notrack' : !pose ? 'nosurface' : 'ok';
     if (!S.xrPlaced && hint !== S.xrHint) {
       S.xrHint = hint;
-      status({ notrack: 'AR 还没开始追踪：对着明亮、有花纹的桌面或地面，左右慢慢平移手机',
-        nosurface: '在找平面…对准桌面或地面，稍微移动一下',
-        ok: '找到了！点一下屏幕，把天使放在金色光圈上' }[hint]);
+      status(t(hint));
     }
   }
 
+  maybeGreet(now); maybeHelp(now);
+  if (S.mode === 'live' && S.view === 'paper' && !S.xr) setLost(S.lost ? S.lost && S.good === 0 : S.lostFor > 1.5);
   detAcc += dt;
   const wantDetect = !S.xr && video.srcObject && (S.mode === 'scan' || (S.mode === 'live' && S.view === 'paper'));
   if (wantDetect && detAcc > (S.mode === 'scan' ? 0.12 : 0.066)) {
     detAcc = 0;
     const pts = detect();
     if (pts) {
-      S.lastPts = pts; S.good++; S.lost = 0;
+      S.lastPts = pts; S.good++; S.lostFor = 0; if (S.good === 1 && S.mode === 'scan') cue('lock');
       if (S.mode === 'scan') {
         drawGuide(pts.map(toScreen));
-        status(S.good < 6 ? '找到了！拿稳别动…' : '识别成功');
+        status(t(S.good < 6 ? 'found' : 'recognised'));
         if (S.good >= 6) capture(pts);
       } else updatePose(pts);
     } else {
-      S.good = 0; S.lost++;
-      if (S.lost > 8) S.lastPts = null;
+      S.good = 0; S.lostFor = (S.lostFor || 0) + (S.mode === 'scan' ? 0.12 : 0.066);
+      if (S.lostFor > 1) S.lastPts = null;
       if (S.mode === 'scan') drawGuide();
     }
   }

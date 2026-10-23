@@ -27,12 +27,22 @@
 
 <div id="hud" class="hidden">
   <div id="status"></div>
-  <div id="sub" class="hidden"></div>
+  <div id="sub"></div>
   <button id="langHud" class="lang" data-lang-toggle>EN</button>
   <div id="build" title="build fingerprint"></div>
+  <div id="help" class="card">
+    <h2 data-i18n="helpTitle">帮我找到你的画</h2>
+    <ol><li data-i18n="help1">把手机抬高一点，让整张纸都在画面里</li><li data-i18n="help2">对着亮一点的地方，别背光</li><li data-i18n="help3">四个黑方块都要看得见，不要被手挡住</li></ol>
+    <button id="helpDemo" data-i18n="helpDemo">先看演示</button>
+  </div>
   <div class="bar">
     <button id="btnShoot" class="primary" data-i18n="shoot">拍下识别</button>
-    <button id="btnRescan" class="hidden" data-i18n="rescan">重新扫描</button>
+    <button id="btnAction" class="hidden primary" data-i18n="blow">吹号角</button>
+    <button id="btnRead" class="hidden" data-i18n="read">读一读</button>
+    <button id="btnRescan" class="hidden" data-i18n="rescan">再来一张</button>
+  </div>
+  <button id="btnMore" class="hidden" data-i18n="more">更多</button>
+  <div id="more" class="drawer">
     <button id="btnMode" class="hidden">展示模式</button>
     <button id="btnLines" class="hidden">线条：隐藏</button>
     <button id="btnTitle" class="hidden seg" aria-label="pinyin / ABC"><span class="on" data-i18n="pinyin">拼音</span><span data-i18n="abc">ABC</span></button>
