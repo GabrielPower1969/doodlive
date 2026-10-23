@@ -118,8 +118,11 @@ namespace DoodLive.EditorTools
                 lib.Add();
                 lib.SetTexture(i, sheets[i], false);
                 lib.SetName(i, sheets[i].name);
-                lib.SetSpecifySize(i, true);
-                lib.SetSize(i, new Vector2(0.210f, 0.297f)); // A4 portrait, metres
+                // Do NOT pin the size to A4: sheets are also scanned off laptop / iPad screens. A wrong physical size puts
+                // the image (and the angel) at the wrong depth, so she slides against the drawing as you move (LESSONS L25).
+                // ARCore estimates the real size instead; the controller re-fits to it every frame.
+                lib.SetSpecifySize(i, false);
+                lib.SetSize(i, new Vector2(0.210f, 0.297f)); // hint only (A4 portrait, metres)
             }
             EditorUtility.SetDirty(lib);
             return lib;
@@ -343,7 +346,11 @@ namespace DoodLive.EditorTools
             PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.Android, false);
             PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, new[] { GraphicsDeviceType.OpenGLES3 });
             PlayerSettings.colorSpace = ColorSpace.Linear;
-            PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
+            PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;   // phones + tablets (Akita is used landscape)
+            PlayerSettings.allowedAutorotateToPortrait = true;
+            PlayerSettings.allowedAutorotateToPortraitUpsideDown = false;
+            PlayerSettings.allowedAutorotateToLandscapeLeft = true;
+            PlayerSettings.allowedAutorotateToLandscapeRight = true;
             PlayerSettings.Android.startInFullscreen = true;
 
             // Input: legacy (touches / IMGUI) and the Input System (TrackedPoseDriver) together

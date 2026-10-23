@@ -134,6 +134,18 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **Web app:** paper mode cannot do this. Without world tracking it can only follow the sheet while the markers are
   visible. Use **放到桌上（AR）** (WebXR hit-test, world-locked) for walk-around viewing.
 
+### L25 · Still drifting on screens / tablets; app stuck in portrait · 2026-10-23 · fix built, on-device check pending
+- **Symptom:** after the L24 anchoring the angel still slid against the drawing when the camera moved, especially with
+  a sheet shown on a laptop or iPad screen. On the Akita tablet the app would not rotate to landscape.
+- **Cause (suspected, strongest candidate):** every reference image was pinned to A4 (21 × 29.7 cm). A sheet on a
+  screen is a different physical size, so ARCore placed the image, and the angel, at the wrong depth. Wrong depth means
+  wrong parallax, so she slides as you move. The orientation was locked to Portrait in `SetupPlayer`.
+- **Fix:** `SetSpecifySize(false)` lets ARCore estimate the real size. `FitToSheet` re-fits position and scale to the
+  latest estimate every frame (smoothed), with rotation fixed gravity-up at the placement yaw. Capture waits 1.5 s.
+  The app auto-rotates (portrait plus both landscapes), and the IMGUI sizes come from the short screen edge.
+- **If it still drifts only on the Akita:** compare with the Pixel on the same sheet. Drift on the Akita alone points
+  to the device's VIO/IMU calibration (the ARCore certification work), not to this app.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

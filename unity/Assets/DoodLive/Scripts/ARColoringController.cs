@@ -124,7 +124,7 @@ namespace DoodLive
                 var sheet = Sheet();
                 trackedFor = sheet ? trackedFor + Time.deltaTime : 0;
                 status = sheet ? "找到了！拿稳别动…" : "把整张涂色纸平放，用手机对准它";
-                if (sheet && trackedFor > 1.0f) StartCoroutine(Capture(sheet));
+                if (sheet && trackedFor > 1.5f) StartCoroutine(Capture(sheet));   // let ARCore settle pose + size first
             }
             if (mode == Mode.Live && TappedOutsideUI()) Blow();
         }
@@ -203,20 +203,43 @@ namespace DoodLive
         // anchor, keeps refining its pose and remembers it when you walk away, so she stays on the page instead of
         // drifting with the world map (LESSONS L24). If ARCore drops the image we fall back to a plain ARAnchor.
         ARTrackedImage anchoredSheet;
+        Vector2 placePage;          // where she stands, in template px
+        float placeFlat, placeYaw;  // 1 = sheet lying flat; world yaw facing the viewer at placement
+
         void PlaceOnSheet(ARTrackedImage sheet)
         {
             var st = sheet.transform;
-            float flat = Mathf.InverseLerp(0.45f, 0.85f, Mathf.Abs(Vector3.Dot(st.up, Vector3.up)));   // 1 = lying flat
-            var centre = new Vector2(tpl.art.x + tpl.art.width / 2, tpl.art.y + tpl.art.height / 2);
-            var pos = st.TransformPoint(PageToLocal(sheet, centre)) + st.up * (0.03f * (1 - flat) * sheet.size.x);
+            placeFlat = Mathf.InverseLerp(0.45f, 0.85f, Mathf.Abs(Vector3.Dot(st.up, Vector3.up)));
+            placePage = new Vector2(tpl.art.x + tpl.art.width / 2, tpl.art.y + tpl.art.height / 2);
+            var pos = st.TransformPoint(PageToLocal(sheet, placePage));
             var toViewer = Vector3.ProjectOnPlane(arCamera.transform.position - pos, Vector3.up);
             if (toViewer.sqrMagnitude < 1e-4f) toViewer = Vector3.ProjectOnPlane(-st.forward, Vector3.up);   // towards the sheet's bottom edge
+            placeYaw = Quaternion.LookRotation(toViewer.normalized, Vector3.up).eulerAngles.y;
             var oldAnchor = holder.parent && holder.parent.GetComponent<ARAnchor>() ? holder.parent.gameObject : null;
             holder.SetParent(st, false);
             if (oldAnchor) Destroy(oldAnchor);
-            holder.SetPositionAndRotation(pos, Quaternion.LookRotation(toViewer.normalized, Vector3.up));
-            holder.localScale = Vector3.one * (tpl.art.width / tpl.page.x * sheet.size.x * Mathf.Lerp(1f, scaleOnSheet, flat));
             anchoredSheet = sheet;
+            FitToSheet(1f);
+        }
+
+        // Re-fit every frame to ARCore's latest estimate of the sheet (pose AND physical size both get refined after
+        // placement). Position/scale follow the sheet; rotation stays gravity-up at the placement yaw.
+        void FitToSheet(float k)
+        {
+            var sheet = anchoredSheet; if (!sheet) return;
+            var st = sheet.transform;
+            var pos = st.TransformPoint(PageToLocal(sheet, placePage)) + st.up * (0.03f * (1 - placeFlat) * sheet.size.x);
+            float scale = tpl.art.width / tpl.page.x * sheet.size.x * Mathf.Lerp(1f, scaleOnSheet, placeFlat);
+            holder.position = Vector3.Lerp(holder.position, pos, k);
+            holder.rotation = Quaternion.Euler(0, placeYaw, 0);
+            var ls = holder.parent ? holder.parent.lossyScale : Vector3.one;
+            holder.localScale = Vector3.Lerp(holder.localScale, Vector3.one * scale / Mathf.Max(1e-4f, ls.x), k);
+        }
+
+        void LateUpdate()
+        {
+            if (mode == Mode.Live && !showMode && anchoredSheet && anchoredSheet.trackingState != TrackingState.None)
+                FitToSheet(Mathf.Clamp01(Time.deltaTime * 8f));   // smooth out per-frame jitter
         }
 
         /// <summary>Pin the angel to a world anchor at her current pose (show mode, or the sheet trackable went away).</summary>
@@ -323,13 +346,13 @@ namespace DoodLive
             if (button == null)
             {
                 var font = Font.CreateDynamicFontFromOSFont(new[] { "Noto Sans CJK SC", "Noto Sans SC", "SamsungOneUI", "Droid Sans Fallback", "PingFang SC", "sans-serif" }, 32);
-                int fs = Mathf.RoundToInt(Screen.height / 42f);
+                int fs = Mathf.RoundToInt(Mathf.Min(Screen.width, Screen.height) / 26f);   // same in portrait and landscape
                 button = new GUIStyle(GUI.skin.button) { font = font, fontSize = fs };
                 label = new GUIStyle(GUI.skin.label) { font = font, fontSize = fs, alignment = TextAnchor.MiddleCenter, wordWrap = true };
                 label.normal.textColor = Color.white;
             }
             uiRects.Clear();
-            float u = Screen.height / 20f, w = Screen.width;
+            float u = Mathf.Min(Screen.width, Screen.height) / 12.5f, w = Screen.width;
             float top = Screen.height - Screen.safeArea.yMax, bottom = Screen.safeArea.yMin; // safeArea is y-up, GUI is y-down
             GUI.Box(new Rect(0, top, w, u * 1.6f), GUIContent.none);
             GUI.Label(new Rect(u * 0.3f, top, w - u * 0.6f, u * 1.6f), status, label);
