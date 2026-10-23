@@ -277,7 +277,8 @@ namespace DoodLive
             if (fwd.sqrMagnitude < 1e-4f) fwd = Vector3.forward;
             fwd.Normalize();
             holder.SetParent(null, false);
-            holder.position = cam.position + fwd * 0.7f - Vector3.up * 0.25f;
+            // 0.8 m along the camera's real line of sight (works with the phone pointing down at a desk), upright, facing back
+            holder.position = cam.position + cam.forward * 0.8f;
             holder.rotation = Quaternion.LookRotation(-fwd, Vector3.up);   // model front = +Z (glTFast), so face the camera
             holder.localScale = Vector3.one * 0.35f;
             AnchorHere();   // stays where it appeared when you walk around

@@ -19,7 +19,7 @@ run() {
       grep -E "error CS|Error building|BuildFailedException|DoodLive build" "$log" | head -20; exit 1; }
 }
 # fingerprint = git short sha (+dirty) . UTC time; baked into versionName and Resources by DoodLiveSetup.Build
-FP="$(git -C .. rev-parse --short HEAD)$(git -C .. diff --quiet HEAD -- . ../web ../assets ../tools 2>/dev/null || echo -dirty).$(date -u +%Y%m%d-%H%M)"
+FP="$(git -C .. rev-parse --short HEAD)$(git -C .. diff --quiet HEAD -- unity web assets tools ':!web/build.json' 2>/dev/null || echo -dirty).$(date -u +%Y%m%d-%H%M)"
 export DOODLIVE_FINGERPRINT="$FP"
 [ "${1:-}" = "--skip-setup" ] || run Setup
 run Build
