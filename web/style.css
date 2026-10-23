@@ -15,8 +15,8 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--c-pape
 #video { object-fit: cover; }
 #gl { z-index: 1; transition: filter .4s; }
 #guide { z-index: 2; pointer-events: none; }
-#guide polygon { fill: none; stroke: var(--c-paper); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1 16; }
-#guide.ok polygon { stroke: var(--c-ok); stroke-dasharray: none; }
+#guide path { fill: none; stroke: var(--c-paper); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 15; filter: drop-shadow(0 2px 0 rgba(43,33,24,.5)); transition: stroke .15s; }
+#guide.ok path { stroke: var(--c-ok); stroke-dasharray: none; }
 #guide circle { fill: var(--c-ok); }
 #flash { position: fixed; inset: 0; z-index: 5; background: #fff8dc; opacity: 0; pointer-events: none; transition: opacity .5s; }
 #flash.on { opacity: .9; transition: none; }
@@ -31,13 +31,33 @@ button.primary { background: var(--c-sun); }
 button:disabled { opacity: .45; }
 a { color: var(--c-ink-soft); }
 
-/* ---- home (screen 01 comes last in the build order; for now: paper + crayon logo) ---- */
-.panel { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-  background: var(--c-paper); padding: 24px; text-align: center; }
-h1 { margin: 0; font-family: var(--f-display), sans-serif; font-weight: 900; font-size: 56px; letter-spacing: -1px; color: var(--c-red);
-  -webkit-text-stroke: 2px var(--c-ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--c-ink); }
-.sub { margin: 0 0 18px; color: var(--c-ink-soft); }
-.panel button { width: min(320px, 86vw); }
+/* ---- home (screen 01): a sheet of paper with the angel already climbing out of the drawing ---- */
+.panel { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  background: var(--c-paper); padding: 24px; text-align: center; overflow: hidden; }
+.logo { margin: 0; display: flex; font-family: var(--f-display), sans-serif; font-weight: 900; font-size: clamp(48px, 15vw, 72px); line-height: 1; }
+.logo span { display: inline-block; -webkit-text-stroke: 2.5px var(--c-ink); paint-order: stroke fill; text-shadow: 0 5px 0 var(--c-ink); }
+.logo span:nth-child(1) { color: var(--c-red); transform: rotate(-6deg); }   .logo span:nth-child(2) { color: var(--c-orange); transform: rotate(4deg); }
+.logo span:nth-child(3) { color: var(--c-sun); transform: rotate(-3deg); }   .logo span:nth-child(4) { color: var(--c-leaf); transform: rotate(5deg); }
+.logo span:nth-child(5) { color: var(--c-sky); transform: rotate(-4deg); }   .logo span:nth-child(6) { color: var(--c-grape); transform: rotate(6deg); }
+.logo span:nth-child(7) { color: var(--c-pink); transform: rotate(-5deg); }  .logo span:nth-child(8) { color: var(--c-red); transform: rotate(3deg); }
+.sub { margin: 0 0 4px; color: var(--c-ink-soft); font-size: 16px; }
+.stage { position: relative; width: min(300px, 72vw); aspect-ratio: 1 / 1; margin: 6px 0 4px; }
+.stage .sheet { position: absolute; left: 4%; top: 6%; width: 64%; transform: rotate(-4deg); border: 2px solid var(--c-paper-deep); box-shadow: 0 8px 18px rgba(43,33,24,.18); background: #fff; }
+.stage .tape { position: absolute; width: 22%; height: 8%; background: rgba(247,226,160,.85); }
+.stage .t1 { left: 6%; top: 3%; transform: rotate(-18deg); } .stage .t2 { left: 50%; top: 1%; transform: rotate(14deg); }
+.stage .climber { position: absolute; right: 0; top: 4%; width: 52%; filter: drop-shadow(0 10px 12px rgba(43,33,24,.25)); animation: climb 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes climb { 50% { transform: translateY(-6px) rotate(2deg); } }
+button.shutter.big { width: var(--s-shutter); height: var(--s-shutter); }
+.scan-label b { display: block; font-family: var(--f-zh-ui), var(--f-ui); font-size: 28px; font-weight: 400; }
+.scan-label small { color: var(--c-ink-soft); font-size: 14px; }
+button.tag { width: auto !important; font-size: 16px; padding: 10px 20px; }
+.doodles i { position: absolute; width: 34px; height: 34px; opacity: .7; background: no-repeat center / contain; }
+.doodles .d1 { left: 7%; top: 14%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4l4.5 10.5L36 16l-8.5 7.5L30 35l-10-6-10 6 2.5-11.5L4 16l11.5-1.5z' fill='none' stroke='%23FFC93C' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E"); transform: rotate(-10deg); }
+.doodles .d2 { right: 9%; top: 18%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 34S5 25 5 14.5C5 9 9 6 13 6c3.5 0 6 2.5 7 5 1-2.5 3.5-5 7-5 4 0 8 3 8 8.5C35 25 20 34 20 34z' fill='none' stroke='%23F49AC1' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.doodles .d3 { left: 8%; top: 62%; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 20c0-2.5 3.5-2.5 3.5 0 0 5-7.5 5-7.5 0 0-7.5 11.5-7.5 11.5 0 0 10-15.5 10-15.5 0' fill='none' stroke='%234BA3E3' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E"); }
+.doodles .d4 { right: 7%; top: 66%; width: 60px; height: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20'%3E%3Cpath d='M3 15l9-10 9 10 9-10 9 10 9-10 9 10' fill='none' stroke='%234DB37A' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.doodles .d5 { right: 12%; bottom: 9%; width: 28px; height: 28px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4l4.5 10.5L36 16l-8.5 7.5L30 35l-10-6-10 6 2.5-11.5L4 16l11.5-1.5z' fill='none' stroke='%238A6FD1' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E"); transform: rotate(14deg); }
+.doodles .d6 { left: 11%; bottom: 10%; width: 26px; height: 26px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 34S5 25 5 14.5C5 9 9 6 13 6c3.5 0 6 2.5 7 5 1-2.5 3.5-5 7-5 4 0 8 3 8 8.5C35 25 20 34 20 34z' fill='none' stroke='%23F59A2F' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 body.demo { background: radial-gradient(circle at 50% 40%, #b98557, #6e4527 75%); }
 body.xr { background: transparent; }
 body.xr #video, body.xr #guide { display: none; }
@@ -106,3 +126,67 @@ button.lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 
 body.lost #gl { filter: brightness(.55) saturate(.6); }
 #build { position: fixed; right: 8px; bottom: 4px; font-size: 10px; color: rgba(43,33,24,.5); font-family: ui-monospace, Menlo, monospace; pointer-events: none; z-index: 5; }
 body.demo #build, body.cam #build { color: rgba(255,255,255,.55); }
+
+/* ---- scan (screens 02-03): coach phone sweeps over the page; stamp + shutter ring on lock ---- */
+#coach { position: absolute; left: 50%; top: 46%; width: 120px; height: 150px; margin: -75px 0 0 -60px; animation: coach 2.6s ease-in-out infinite; }
+#coach svg { width: 100%; height: 100%; }
+@keyframes coach { 0%, 100% { transform: translate(-26px, 10px) rotate(-8deg); } 50% { transform: translate(26px, -8px) rotate(8deg); } }
+#stamp { position: absolute; left: 50%; top: 44%; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; background: var(--c-ok); border: 6px solid var(--c-paper);
+  box-shadow: 0 6px 0 var(--c-ink); display: grid; place-items: center; transform: scale(0) rotate(-30deg); opacity: 0; transition: transform .25s cubic-bezier(.3,1.6,.5,1), opacity .15s; }
+#stamp.show { transform: scale(1) rotate(-8deg); opacity: 1; }
+#stamp svg { width: 60px; height: 60px; }
+button.shutter { position: relative; }
+button.shutter.locking::after { content: ""; position: absolute; inset: -12px; border-radius: 50%;
+  background: conic-gradient(var(--c-ok) calc(var(--p, 0) * 360deg), transparent 0); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px)); mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px)); }
+body:not(.live) #status::before { content: "🔊 "; }
+
+/* ---- help (screen 04): the angel peeks over a paper card and thinks in pictures ---- */
+#help { top: auto; bottom: max(20px, env(safe-area-inset-bottom)); transform: translate(-50%, 30px); text-align: center; overflow: visible; padding-top: 18px; }
+#help.show { transform: translate(-50%, 0); }
+#help .peek { position: absolute; right: 8px; top: -150px; width: 130px; z-index: -1; filter: drop-shadow(0 8px 10px rgba(43,33,24,.3)); }
+#help .thought { display: flex; justify-content: space-around; gap: 6px; border: var(--s-stroke) solid var(--c-ink); border-radius: 36px; padding: 12px 8px; margin-bottom: 12px; position: relative; }
+#help .thought::after { content: ""; position: absolute; right: 64px; top: -16px; width: 16px; height: 16px; border-radius: 50%; border: var(--s-stroke) solid var(--c-ink); background: var(--c-paper); }
+#help figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 15px; }
+#help figure svg { width: 52px; height: 52px; }
+#help h2 { font-family: var(--f-zh-ui), var(--f-ui); font-weight: 400; font-size: 24px; margin: 4px 0 12px; }
+
+/* ---- lost (screen 08): a drawn sheet + arrow shows where the paper goes ---- */
+#lostCard { position: absolute; left: 50%; top: 52%; width: 160px; height: 200px; margin: -100px 0 0 -80px; opacity: 0; transition: opacity .3s; pointer-events: none; }
+#lostCard svg { width: 100%; height: 100%; }
+#lostCard .arrow { animation: drop 1.2s ease-in-out infinite; }
+@keyframes drop { 50% { transform: translateY(10px); } }
+body.lost #lostCard { opacity: 1; }
+body.lost #gl { filter: brightness(.5) saturate(.4); }
+body.live.lost #status { opacity: 1; }
+
+/* ---- reveal (screen 05): crayon stars burst out of the page ---- */
+#burst { position: absolute; left: 50%; top: 60%; width: 0; height: 0; pointer-events: none; }
+#burst i { position: absolute; width: 30px; height: 30px; margin: -15px; opacity: 0; animation: burst 1.6s ease-out var(--delay) forwards; }
+#burst i.star { background: var(--c); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4l4.5 10.5L36 16l-8.5 7.5L30 35l-10-6-10 6 2.5-11.5L4 16l11.5-1.5z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 4l4.5 10.5L36 16l-8.5 7.5L30 35l-10-6-10 6 2.5-11.5L4 16l11.5-1.5z'/%3E%3C/svg%3E") center / contain no-repeat; }
+#burst i.spark { width: 10px; height: 10px; margin: -5px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px var(--c-paper); }
+@keyframes burst { 0% { opacity: 0; transform: translate(0, 0) scale(.2) rotate(0); } 15% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1) rotate(var(--r)); } }
+
+/* ---- grown-ups (screen 09) ---- */
+#ui > #btnGate, #ui > .drawer { z-index: 12; }
+#ui > #btnGate { position: fixed; }
+#ui > .drawer { position: fixed; }
+.drawer .extra { display: flex; flex-direction: column; gap: 8px; }
+.drawer .extra:empty { display: none; }
+.drawer .extra a { font-size: 14px; text-align: center; }
+button.toggle { width: 56px; height: 32px; padding: 0; border-radius: 16px; background: var(--c-paper-deep); box-shadow: 0 3px 0 var(--c-ink); position: relative; }
+button.toggle i { position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--c-paper); border: 2px solid var(--c-ink); transition: left .15s; }
+button.toggle.on { background: var(--c-leaf); }
+button.toggle.on i { left: 26px; }
+.drawer input[type=range] { width: 120px; accent-color: var(--c-orange); }
+
+/* ---- landscape (screen 10): same rules, chips stay on the right edge ---- */
+@media (orientation: landscape) and (max-height: 500px) {
+  .panel { flex-direction: row; flex-wrap: wrap; align-content: center; gap: 8px 24px; }
+  .panel .stage { width: 34vh; }
+  .logo { width: 100%; justify-content: center; font-size: 48px; }
+  #sub { left: auto; right: 84px; top: 50%; bottom: auto; transform: translateY(-40%); max-width: 32vw; font-size: 16px; }
+  #sub.show { transform: translateY(-50%); }
+  #help { width: min(70vw, 520px); }
+  #help .peek { display: none; }
+  .drawer { max-height: calc(100dvh - 90px); overflow: auto; }
+}

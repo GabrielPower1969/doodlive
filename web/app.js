@@ -82,6 +82,7 @@ function layout() {
   view.scale = Math.max(view.sw / vw, view.sh / vh);
   view.ox = (view.sw - vw * view.scale) / 2; view.oy = (view.sh - vh * view.scale) / 2;
   view.f = 0.8 * Math.max(vw, vh) * view.scale;            // ~65° on the long side; good enough for a phone
+  if (!video.srcObject && view.sw > view.sh) view.f = 0.8 * view.sh;   // demo in landscape (Akita): same vertical framing as portrait (screen 10)
   camera.aspect = view.sw / view.sh;
   camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(view.sh / 2 / view.f));
   camera.updateProjectionMatrix();
@@ -100,9 +101,15 @@ function guideQuad() {
 function drawGuide(pts) {
   const q = guideQuad();
   $('guide').setAttribute('viewBox', `0 0 ${view.sw} ${view.sh}`);
-  $('guideQuad').setAttribute('points', q.map(p => p.join(',')).join(' '));
+  const L = Math.min(44, (q[1][0] - q[0][0]) * 0.18);
+  const br = ([x, y], dx, dy) => `M${x},${y + dy * L} L${x},${y} L${x + dx * L},${y}`;
+  $('guideQuad').setAttribute('d', [br(q[0], 1, 1), br(q[1], -1, 1), br(q[2], -1, -1), br(q[3], 1, -1)].join(' '));
   $('corners').innerHTML = (pts || []).map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9"/>`).join('');
   $('guide').classList.toggle('ok', !!pts);
+  const p = Math.min(1, (S.good || 0) / 6);
+  $('btnShoot').style.setProperty('--p', p); $('btnShoot').classList.toggle('locking', p > 0);
+  $('stamp').classList.toggle('show', S.mode === 'scan' && (S.good || 0) >= 3);
+  show('coach', S.mode === 'scan' && !pts);
 }
 const toVideo = ([x, y]) => [(x - view.ox) / view.scale, (y - view.oy) / view.scale];
 const toScreen = ([x, y]) => [x * view.scale + view.ox, y * view.scale + view.oy];
@@ -183,7 +190,8 @@ function paintTexture() {
   $('btnLines').textContent = t(S.lines ? 'linesOn' : 'linesOff');
 }
 async function loadDemoTexture() {
-  const img = new Image(); img.src = 'assets/demo-colored.png'; await img.decode();
+  const img = new Image();   // onload, not decode(): decode() can stall while the tab is in the background
+  await new Promise((ok, fail) => { img.onload = ok; img.onerror = fail; img.src = 'assets/demo-colored.png'; });
   const c = document.createElement('canvas'); c.width = c.height = TEX;
   const x = c.getContext('2d'); x.drawImage(img, 0, 0, TEX, TEX);
   setTextureData(x.getImageData(0, 0, TEX, TEX));
@@ -199,21 +207,27 @@ navigator.xr?.isSessionSupported('immersive-ar').then(v => { xrSupported = v; re
 function refreshButtons() {
   const live = S.mode === 'live';
   show('btnShoot', S.mode === 'scan');
-  show('btnNew', live && !S.xr); show('btnGate', live);
-  show('btnLines', live); show('btnTitle', live && !!angel.title);
+  show('btnNew', live && !S.xr); show('btnGate', live || S.mode === 'start' || !!S.xr);
+  show('coach', S.mode === 'scan' && S.good === 0);
+  show('btnLines', live);
   show('btnMode', live && !S.xr && !!video.srcObject);
   show('btnXR', live && !S.xr && xrSupported);
   show('btnExitXR', !!S.xr);
   $('btnMode').textContent = t(S.view === 'paper' ? 'modeShow' : 'modePaper');
   document.body.classList.toggle('live', live && !S.xr);
-  if (!live) { $('more').classList.remove('show'); show('hint', false); }
+  if (S.mode === 'scan') $('more').classList.remove('show');
+  if (!live) show('hint', false);
   for (const sp of $('langHud').querySelectorAll('span')) sp.classList.toggle('on', sp.dataset.l === lang);
 }
 
 // Recorded lines (Gabriel's own voice, zh and en sets) with Web Speech as the fallback; voices never overlap.
 const VOICE_FILE = { hello: 'voice_hello', line0: 'voice_0', line1: 'voice_1', line2: 'voice_2', line3: 'voice_3', greet0: 'greet0', greet1: 'greet1', greet2: 'greet2' };
 let currentClip = null;
-const theme = new Audio('assets/music/theme.mp3'); theme.loop = true; const MUSIC_BED = 0.22;
+const SET = (() => { try { return { sound: true, haptics: true, music: 0.22, ...JSON.parse(localStorage.getItem('settings') || '{}') }; } catch { return { sound: true, haptics: true, music: 0.22 }; } })();
+const saveSet = () => { try { localStorage.setItem('settings', JSON.stringify(SET)); } catch {} };
+const theme = new Audio('assets/music/theme.mp3'); theme.loop = true; let MUSIC_BED = SET.music;
+const playEl = a => { a.muted = !SET.sound; return a.play(); };
+const buzz = ms => { if (SET.haptics) navigator.vibrate?.(ms); };
 function duck(on) { const target = on ? MUSIC_BED * 0.4 : MUSIC_BED; const step = () => { theme.volume += Math.sign(target - theme.volume) * 0.02; if (Math.abs(theme.volume - target) > 0.021) requestAnimationFrame(step); else theme.volume = target; }; step(); }
 function subtitle(key) {
   const el = $('sub'); if (!key) { el.classList.remove('show'); return; }
@@ -224,14 +238,16 @@ function speak(key) {
   const start = () => { angel.talking = true; duck(true); };
   const end = () => { angel.talking = false; duck(false); setTimeout(() => subtitle(null), 800); };
   if (currentClip) { const old = currentClip; let v = old.volume; const fade = () => { v -= 0.12; if (v <= 0) old.pause(); else { old.volume = v; setTimeout(fade, 20); } }; fade(); }  // 150 ms fade, never overlap
-  const a = new Audio(`assets/voice/${lang === 'en' ? 'gabriel-en' : 'gabriel'}/${VOICE_FILE[key]}.mp3`);
+  const ZH_GREET = { greet0: 'fly', greet1: 'wow', greet2: 'laugh' };   // the zh set was recorded with these names
+  const file = lang === 'en' ? VOICE_FILE[key] : (ZH_GREET[key] || VOICE_FILE[key]);
+  const a = new Audio(`assets/voice/${lang === 'en' ? 'gabriel-en' : 'gabriel'}/${file}.mp3`);
   currentClip = a; a.onplay = start; a.onended = end;
   a.onerror = () => say(t(key), { lang, onstart: start, onend: end });
-  a.play().catch(() => say(t(key), { lang, onstart: start, onend: end }));
+  playEl(a).catch(() => SET.sound && say(t(key), { lang, onstart: start, onend: end }));
 }
 // tiny UI cues (click / lock / lost) — same as Unity's MakeCues
 function cue(kind) {
-  const ctx = audioCtx(); if (!ctx) return;
+  const ctx = audioCtx(); if (!ctx || !SET.sound) return;
   const [hz, secs, decay, amp] = { click: [1400, 0.045, 60, 0.5], lock: [1568, 0.28, 9, 0.35], lost: [220, 0.16, 14, 0.4] }[kind];
   const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = hz; const t0 = ctx.currentTime;
   g.gain.setValueAtTime(amp, t0); g.gain.exponentialRampToValueAtTime(0.0001, t0 + secs); o.connect(g).connect(ctx.destination); o.start(t0); o.stop(t0 + secs + 0.02);
@@ -240,8 +256,9 @@ function enterScene(holder) {
   holder.add(angel.root);
   angel.root.visible = true;
   setPhase('enter'); fx.trigger('enter'); chime();
-  new Audio('assets/music/swell.mp3').play().catch(() => {});
-  if (theme.paused) { theme.volume = MUSIC_BED; theme.play().catch(() => {}); }
+  playEl(new Audio('assets/music/swell.mp3')).catch(() => {});
+  if (theme.paused) { theme.volume = MUSIC_BED; playEl(theme).catch(() => {}); }
+  crayonBurst(); setTimeout(() => buzz(30), 1400);   // one soft bump when she lands (screen 05)
   setTimeout(() => speak('hello'), 900);
 }
 
@@ -297,7 +314,7 @@ async function enterXR() {
   stopCamera();                                   // ARCore needs the camera
   angel.root.visible = false;
   const session = await navigator.xr.requestSession('immersive-ar', {
-    requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay', 'local-floor'], domOverlay: { root: $('hud') },
+    requiredFeatures: ['hit-test'], optionalFeatures: ['dom-overlay', 'local-floor'], domOverlay: { root: $('ui') },
   });
   camera.near = 0.02; camera.far = 50; camera.updateProjectionMatrix();
   renderer.xr.setReferenceSpaceType('local');
@@ -376,6 +393,17 @@ document.addEventListener('visibilitychange', () => {
 applyLang();
 for (const b of document.querySelectorAll('[data-lang-toggle]')) b.onclick = () => { setLang(lang === 'zh' ? 'en' : 'zh'); refreshButtons(); paintTexture(); if (S.mode === 'live') status(t(xrSupported ? 'tapXR' : 'tap')); };
 $('langHud').onclick = () => { setLang(lang === 'zh' ? 'en' : 'zh'); refreshButtons(); paintTexture(); if (S.mode === 'live') status(t(xrSupported ? 'tapXR' : 'tap')); };
+$('btnDone').onclick = () => { $('more').classList.remove('show'); cue('click'); };
+const paintSettings = () => {
+  for (const [id, on] of [['tglSound', SET.sound], ['tglHaptics', SET.haptics]]) { $(id).classList.toggle('on', on); $(id).setAttribute('aria-checked', on); }
+  $('rngMusic').value = Math.round(SET.music * 100);
+  const py = (localStorage.getItem('titleMode') || 'py') === 'py';
+  const [a, b] = $('btnTitle').querySelectorAll('span'); a.classList.toggle('on', py); b.classList.toggle('on', !py);
+};
+$('tglSound').onclick = () => { SET.sound = !SET.sound; saveSet(); paintSettings(); theme.muted = !SET.sound; if (currentClip) currentClip.muted = !SET.sound; if (!SET.sound) speechSynthesis?.cancel(); };
+$('tglHaptics').onclick = () => { SET.haptics = !SET.haptics; saveSet(); paintSettings(); buzz(20); };
+$('rngMusic').oninput = e => { SET.music = MUSIC_BED = e.target.value / 100; theme.volume = MUSIC_BED; saveSet(); };
+paintSettings();
 // Grown-up gate (screen 09): hold the lock for 2 s; the ring fills while held (DESIGN-DIRECTION §5)
 let gateTimer = null;
 const gateCancel = () => { clearTimeout(gateTimer); gateTimer = null; $('btnGate').classList.remove('holding'); };
@@ -412,7 +440,7 @@ $('btnTitle').onclick = () => {   // 拼音 <-> English under the 3D title
 };
 $('btnXR').onclick = () => enterXR().catch(e => { status(t('xrFail', { e: e.message || e })); refreshButtons(); });
 $('btnExitXR').onclick = () => S.xr?.end();
-for (const b of document.querySelectorAll('#hud button')) b.addEventListener('beforexrselect', e => e.preventDefault());
+for (const b of document.querySelectorAll('#ui button')) b.addEventListener('beforexrselect', e => e.preventDefault());
 
 let down = null;
 glCanvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, ry: showHolder.rotation.y, moved: false }; });
@@ -431,6 +459,20 @@ glCanvas.addEventListener('pointerup', e => {
   if (angel.title && ray.intersectObject(angel.title, true).length) readTitle();
   else if (ray.intersectObject(angel.root, true).length || nearAngel(e.clientX, e.clientY)) action();
 });
+
+// ---------------- reveal burst (screen 05): crayon stars and sparks fly out of the page ----------------
+const BURST = ['var(--c-sun)', 'var(--c-red)', 'var(--c-sky)', 'var(--c-pink)', 'var(--c-leaf)', 'var(--c-grape)', 'var(--c-orange)'];
+function crayonBurst() {
+  const box = $('burst'); box.innerHTML = '';
+  for (let i = 0; i < 14; i++) {
+    const el = document.createElement('i'); const a = (i / 14) * Math.PI * 2 + Math.random() * 0.4, d = 120 + Math.random() * 110;
+    el.className = i % 3 ? 'star' : 'spark';
+    el.style.setProperty('--dx', `${Math.cos(a) * d}px`); el.style.setProperty('--dy', `${Math.sin(a) * d - 60}px`);
+    el.style.setProperty('--c', BURST[i % BURST.length]); el.style.setProperty('--r', `${Math.random() * 360}deg`); el.style.setProperty('--delay', `${0.35 + Math.random() * 0.25}s`);
+    box.appendChild(el);
+  }
+  setTimeout(() => { box.innerHTML = ''; }, 2400);
+}
 
 // ---------------- tap hint (screen 06): dotted ring + hand around the angel after 5 s without a touch ----------------
 const HINT_AFTER = 5000, hintBox = new THREE.Box3(), hintV = new THREE.Vector3();
@@ -484,7 +526,7 @@ function frame(now, xrFrame) {
   }
 
   maybeGreet(now); maybeHelp(now);
-  if (S.mode === 'live' && S.view === 'paper' && !S.xr) setLost(S.lost ? S.lost && S.good === 0 : S.lostFor > 1.5);
+  if (S.mode === 'live' && S.view === 'paper' && !S.xr) setLost(S.lost ? S.lost && S.good === 0 : S.lostFor > 1.0);
   detAcc += dt;
   const wantDetect = !S.xr && video.srcObject && (S.mode === 'scan' || (S.mode === 'live' && S.view === 'paper'));
   if (wantDetect && detAcc > (S.mode === 'scan' ? 0.12 : 0.066)) {
