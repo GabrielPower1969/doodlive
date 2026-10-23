@@ -10,13 +10,15 @@ Two apps share one design: a **web prototype** (three.js, runs in Chrome, nothin
 (Unity + AR Foundation + ARCore, an APK). Everything else in the repo makes the things they need: colouring sheets,
 the 3D model, music, voice and the bilingual strings.
 
-![M1 build on a Pixel 8: home · scan · demo · trumpet · read · pinyin→ABC](docs/images/qa-grid-m1.png)
+![Paper & Crayon build on a Pixel 8: home · grown-ups · scan · reveal · live · tap hint · trumpet · read · new sheet](docs/images/qa-grid-paper.png)
 
-> **Status (2026-10-24):** M1 of the [UX plan](docs/UX-PLAN.md) is done on both apps — state machine, stop/go rules,
-> transitions, bilingual UI, audio rules, Gabriel's own recorded voice in zh and en. Verified by per-state screenshots on a
-> Pixel 8 (grid above) and in a desktop browser. Scanning a real printed sheet with the newest build and the Akita
-> (TSC710, landscape) are the next checks. Later milestones: M2 scene/face polish, M3 stroke order, M4 David vs Goliath
-> inside the state machine, M5 store release.
+> **Status (2026-10-24):** the **Paper & Crayon redesign** ([design direction](docs/DESIGN-DIRECTION.md), Figma mocks) is
+> built in both apps on top of M1 (state machine, stop/go rules, bilingual UI, Gabriel's own voice in zh and en).
+> The angel is now the button: tap her for the trumpet, tap the 3D title to read it. A dotted ring and hand appear after
+> 5 s without a touch, and settings sit behind a 2-second hold on the lock. Verified by per-state screenshots on a Pixel 8
+> (grid above) and in a desktop browser. **Not yet checked:** a real printed sheet scanned with this build, the Akita
+> (TSC710, landscape) and a test with children. Later milestones: M2 scene/face polish, M3 stroke order, M4 David vs
+> Goliath inside the state machine, M5 store release.
 
 ---
 
@@ -358,6 +360,7 @@ page is one of those runs.
   estimated sheet size and is steady.
 - Very dark crayon (navy, black) is treated as ink by the line eraser.
 - Fonts used for the 3D titles are extracted system fonts kept out of git; swap for Noto before any public release.
+  (The UI fonts are OFL subsets in `web/fonts/` and `unity/.../Resources/Fonts/`, with their licences.)
 - Coloured/themed sheets are in the Unity reference-image library since L23; a fresh on-device scan with the newest build is still to be done.
 
 Thirty concrete pitfalls, each with the symptom, the cause and the fix, are in [docs/LESSONS.md](docs/LESSONS.md).
