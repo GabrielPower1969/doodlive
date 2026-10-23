@@ -1,61 +1,108 @@
+/* Paper & Crayon (docs/DESIGN-DIRECTION.md). Colours, sizes and font names come from tokens.css,
+   which tools/gen_tokens.py generates from tools/design/tokens.json. */
+@import url("tokens.css");
+@font-face { font-family: "Grandstander"; src: url("fonts/Grandstander-Black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Fredoka"; src: url("fonts/Fredoka-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("fonts/Nunito-ExtraBold.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "ZCOOL KuaiLe"; src: url("fonts/ZCOOLKuaiLe-Regular.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Ma Shan Zheng"; src: url("fonts/MaShanZheng-Regular.woff2") format("woff2"); font-display: swap; }
+
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1020; color: #fff;
-  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Samsung One", sans-serif; touch-action: none; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--c-paper); color: var(--c-ink);
+  font-family: var(--f-ui), var(--f-zh-ui), "PingFang SC", "Noto Sans SC", sans-serif; font-weight: 600; touch-action: none; }
+:lang(zh-CN) body, html:lang(zh-CN) { font-family: var(--f-zh-ui), var(--f-ui), "PingFang SC", sans-serif; }
 #video, #gl, #guide { position: fixed; inset: 0; width: 100vw; height: 100dvh; }
 #video { object-fit: cover; }
-#gl { z-index: 1; }
+#gl { z-index: 1; transition: filter .4s; }
 #guide { z-index: 2; pointer-events: none; }
-#guide polygon { fill: none; stroke: rgba(255,255,255,.85); stroke-width: 3; stroke-dasharray: 14 10; }
-#guide.ok polygon { stroke: #5df59a; stroke-dasharray: none; }
-#guide circle { fill: #5df59a; }
-#flash { position: fixed; inset: 0; z-index: 5; background: #fff; opacity: 0; pointer-events: none; transition: opacity .5s; }
+#guide polygon { fill: none; stroke: var(--c-paper); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 1 16; }
+#guide.ok polygon { stroke: var(--c-ok); stroke-dasharray: none; }
+#guide circle { fill: var(--c-ok); }
+#flash { position: fixed; inset: 0; z-index: 5; background: #fff8dc; opacity: 0; pointer-events: none; transition: opacity .5s; }
 #flash.on { opacity: .9; transition: none; }
-.panel { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-  background: radial-gradient(circle at 50% 35%, #2a3570 0%, #0b1020 70%); padding: 24px; text-align: center; }
-h1 { font-size: 44px; margin: 0; letter-spacing: 1px; background: linear-gradient(90deg,#ffe9a0,#ffb6d9,#9ecbff); -webkit-background-clip: text; color: transparent; }
-.sub { margin: 0 0 18px; opacity: .85; }
-button { font: inherit; font-size: 16px; color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
-  border-radius: 999px; padding: 12px 22px; backdrop-filter: blur(8px); }
-button.primary { background: #ffcf4a; color: #2a1d00; border-color: #ffcf4a; font-weight: 600; }
-.panel button { width: min(320px, 86vw); }
-a { color: #cfe0ff; }
-#hud { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
-#status { position: absolute; top: max(16px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: max-content; max-width: 92vw;
-  background: rgba(0,0,0,.55); padding: 10px 16px; border-radius: 14px; font-size: 15px; text-align: center; }
-.bar { position: absolute; bottom: max(22px, env(safe-area-inset-bottom)); left: 0; right: 0; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 0 12px; }
-.bar button { pointer-events: auto; padding: 10px 16px; font-size: 15px; }
 .hidden { display: none !important; }
-body.demo { background: radial-gradient(circle at 50% 40%, #33407a, #0b1020 70%); }
+
+/* ---- buttons: pencil outline + solid lip that sinks when pressed ---- */
+button { font: inherit; font-size: 17px; color: var(--c-ink); background: var(--c-paper); cursor: pointer;
+  border: var(--s-stroke) solid var(--c-ink); border-radius: var(--s-radius-button); padding: 12px 22px;
+  box-shadow: 0 var(--s-lip) 0 var(--c-ink); transition: transform .08s, box-shadow .08s, opacity .2s; }
+button:active { transform: translateY(calc(var(--s-lip) - var(--s-lip-pressed))); box-shadow: 0 var(--s-lip-pressed) 0 var(--c-ink); }
+button.primary { background: var(--c-sun); }
+button:disabled { opacity: .45; }
+a { color: var(--c-ink-soft); }
+
+/* ---- home (screen 01 comes last in the build order; for now: paper + crayon logo) ---- */
+.panel { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: var(--c-paper); padding: 24px; text-align: center; }
+h1 { margin: 0; font-family: var(--f-display), sans-serif; font-weight: 900; font-size: 56px; letter-spacing: -1px; color: var(--c-red);
+  -webkit-text-stroke: 2px var(--c-ink); paint-order: stroke fill; text-shadow: 0 4px 0 var(--c-ink); }
+.sub { margin: 0 0 18px; color: var(--c-ink-soft); }
+.panel button { width: min(320px, 86vw); }
+body.demo { background: radial-gradient(circle at 50% 40%, #b98557, #6e4527 75%); }
 body.xr { background: transparent; }
 body.xr #video, body.xr #guide { display: none; }
-#status:empty { display: none; }
-/* segmented toggle: 拼音 | ABC */
-button.seg { padding: 4px; display: inline-flex; gap: 2px; background: rgba(255,255,255,.12); }
-button.seg span { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: #cfd8e3; }
-button.seg span.on { background: #ffcf4a; color: #2a1d00; font-weight: 700; }
-#build { position: fixed; right: 8px; bottom: 4px; font-size: 10px; color: rgba(255,255,255,.45); font-family: ui-monospace, Menlo, monospace; pointer-events: none; z-index: 5; }
-button.lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px; z-index: 11; padding: 7px 12px; font-size: 13px; font-weight: 700; letter-spacing: .5px; pointer-events: auto; }
-#hud button.lang { top: auto; bottom: max(70px, calc(env(safe-area-inset-bottom) + 58px)); right: 10px; z-index: 6; }
-#sub { position: absolute; left: 50%; bottom: max(84px, calc(env(safe-area-inset-bottom) + 72px)); transform: translateX(-50%); width: min(92vw, 640px); text-align: center;
-  background: rgba(0,0,0,.6); border-radius: 12px; padding: 8px 14px; font-size: 16px; line-height: 1.45; }
-#sub small { display: block; color: #cfd8e3; font-size: 13px; margin-top: 2px; }
 
-/* M1: subtitle fade, help card, 更多 drawer, lost dim, button transitions */
-#sub { opacity: 0; transition: opacity .25s; pointer-events: none; }
-#sub.show { opacity: 1; }
-.bar button, .drawer button, #btnMore { transition: opacity .2s, transform .2s; }
-.bar button:disabled { opacity: .45; transform: scale(.97); }
-#btnMore { position: absolute; right: 10px; bottom: max(118px, calc(env(safe-area-inset-bottom) + 106px)); pointer-events: auto; padding: 8px 14px; font-size: 13px; z-index: 6; }
-.drawer { position: absolute; right: 10px; bottom: max(160px, calc(env(safe-area-inset-bottom) + 148px)); display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
-  opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .2s, transform .2s; }
-.drawer.show { opacity: 1; transform: none; }
-.drawer.show button { pointer-events: auto; }
-.card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); width: min(88vw, 420px); padding: 20px 22px; border-radius: 18px;
-  background: rgba(20, 24, 34, .92); color: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 7; }
+/* ---- HUD ---- */
+#hud { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+#status { position: absolute; top: max(16px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); width: max-content; max-width: 76vw;
+  background: var(--c-paper); border: var(--s-stroke) solid var(--c-ink); box-shadow: 0 4px 0 var(--c-ink); padding: 9px 16px; border-radius: 18px; font-size: 15px; text-align: center; }
+#status:empty { display: none; }
+/* live: the angel and the tap hint teach; the status line only speaks up when the sheet is lost */
+body.live:not(.lost) #status { opacity: 0; pointer-events: none; }
+#status { transition: opacity .25s; }
+.bar { position: absolute; bottom: max(26px, env(safe-area-inset-bottom)); left: 0; right: 0; display: flex; justify-content: center; }
+.bar button { pointer-events: auto; }
+button.shutter { width: var(--s-shutter); height: var(--s-shutter); padding: 0; border-radius: 50%; border-width: 4px; background: var(--c-sun); box-shadow: 0 7px 0 var(--c-ink); display: grid; place-items: center; }
+button.shutter svg { width: 56px; height: 56px; }
+button.chip { position: absolute; width: var(--s-chip); height: var(--s-chip); padding: 0; border-radius: 50%; display: grid; place-items: center; pointer-events: auto; box-shadow: 0 4px 0 var(--c-ink); }
+button.chip svg { width: 30px; height: 30px; grid-area: 1 / 1; }
+#btnNew { right: 16px; bottom: max(24px, env(safe-area-inset-bottom)); }
+#btnGate { right: 16px; top: max(14px, env(safe-area-inset-top)); width: 48px; height: 48px; }
+#btnGate svg { width: 24px; height: 24px; }
+#btnGate .gate-ring { position: absolute; left: -11px; top: -11px; width: 64px; height: 64px; transform: rotate(-90deg); overflow: visible; }
+#btnGate .gate-ring circle { fill: none; stroke: var(--c-red); stroke-width: 6; stroke-linecap: round; stroke-dasharray: 183; stroke-dashoffset: 183; }
+#btnGate.holding .gate-ring circle { stroke-dashoffset: 0; transition: stroke-dashoffset 2s linear; }
+
+/* speech bubble: what she says, the other language underneath */
+#sub { position: absolute; left: 50%; bottom: max(100px, calc(env(safe-area-inset-bottom) + 88px)); transform: translateX(-50%) translateY(8px); width: max-content; max-width: min(84vw, 560px);
+  background: var(--c-paper); border: var(--s-stroke) solid var(--c-ink); box-shadow: 0 4px 0 var(--c-ink); border-radius: var(--s-radius-card);
+  padding: 10px 18px; font-family: var(--f-zh-ui), var(--f-ui), sans-serif; font-size: 19px; line-height: 1.35; text-align: center;
+  opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; }
+#sub.show { opacity: 1; transform: translateX(-50%); }
+#sub small { display: block; font-family: var(--f-ui), sans-serif; color: var(--c-ink-soft); font-size: 14px; margin-top: 2px; }
+
+/* tap hint: dotted gold ring + drawn hand, positioned on the angel by app.js (--x/--y/--w/--h) */
+#hint { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); pointer-events: none; animation: hint-in .3s ease-out; }
+#hint .ring { position: absolute; inset: 0; border-radius: 50%; border: 4px dotted var(--c-sun); animation: hint-pulse 1.6s ease-in-out infinite; }
+#hint .hand { position: absolute; right: -20px; top: 55%; width: 48px; height: 56px; animation: hint-tap 1.6s ease-in-out infinite; }
+#hint span { position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); white-space: nowrap; background: var(--c-sun); border: var(--s-stroke) solid var(--c-ink);
+  border-radius: 14px; padding: 3px 12px; font-size: 15px; box-shadow: 0 3px 0 var(--c-ink); }
+@keyframes hint-in { from { opacity: 0; transform: scale(.92); } }
+@keyframes hint-pulse { 50% { transform: scale(1.04); } }
+@keyframes hint-tap { 0%, 60%, 100% { transform: none; } 30% { transform: translate(-6px, -6px) scale(.92); } }
+
+/* grown-ups drawer (opened by the 2 s hold on the lock) */
+.drawer { position: absolute; right: 12px; top: calc(max(14px, env(safe-area-inset-top)) + 62px); width: min(300px, 86vw); display: flex; flex-direction: column; gap: 10px; align-items: stretch;
+  background: var(--c-paper); border: var(--s-stroke) solid var(--c-ink); box-shadow: 0 6px 0 var(--c-ink); border-radius: 24px; padding: 16px;
+  opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .2s, transform .2s; z-index: 6; }
+.drawer.show { opacity: 1; transform: none; pointer-events: auto; }
+.drawer h3 { margin: 0 0 2px; font-family: var(--f-display), var(--f-zh-ui), sans-serif; font-weight: 900; font-size: 20px; }
+.drawer .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 15px; }
+.drawer button { font-size: 15px; padding: 9px 14px; }
+button.seg { padding: 4px; display: inline-flex; gap: 2px; background: var(--c-paper-shade); box-shadow: 0 3px 0 var(--c-ink); }
+button.seg span { padding: 6px 12px; border-radius: 14px; font-size: 14px; color: var(--c-ink-soft); }
+button.seg span.on { background: var(--c-sun); color: var(--c-ink); }
+button.lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px; z-index: 11; padding: 7px 12px; font-size: 13px; pointer-events: auto; }
+.panel button.lang { width: auto; }
+
+/* help card (screen 04 restyle comes in step 3) */
+.card { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(.96); width: min(88vw, 420px); padding: 20px 22px; border-radius: 28px;
+  background: var(--c-paper); border: var(--s-stroke) solid var(--c-ink); box-shadow: 0 6px 0 var(--c-ink); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; z-index: 7; }
 .card.show { opacity: 1; transform: translate(-50%, -50%); pointer-events: auto; }
-.card h2 { margin: 0 0 10px; font-size: 18px; }
+.card h2 { margin: 0 0 10px; font-size: 20px; }
 .card ol { margin: 0 0 14px; padding-left: 20px; line-height: 1.6; font-size: 15px; }
 .card button { width: 100%; }
-body.lost #gl { filter: brightness(.55) saturate(.6); transition: filter .4s; }
-#gl { transition: filter .4s; }
-.panel button.lang { width: auto; }
+
+body.lost #gl { filter: brightness(.55) saturate(.6); }
+#build { position: fixed; right: 8px; bottom: 4px; font-size: 10px; color: rgba(43,33,24,.5); font-family: ui-monospace, Menlo, monospace; pointer-events: none; z-index: 5; }
+body.demo #build, body.cam #build { color: rgba(255,255,255,.55); }

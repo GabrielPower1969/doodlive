@@ -24,6 +24,7 @@ export function apply() {{
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
   document.title = t('appTitle');
   for (const el of document.querySelectorAll('[data-i18n]')) el.textContent = t(el.dataset.i18n);
+  for (const el of document.querySelectorAll('[data-i18n-aria]')) el.setAttribute('aria-label', t(el.dataset.i18nAria));
   for (const el of document.querySelectorAll('[data-lang-toggle]')) el.textContent = lang === 'zh' ? 'EN' : '中';
   document.dispatchEvent(new CustomEvent('langchange', {{ detail: lang }}));
 }}

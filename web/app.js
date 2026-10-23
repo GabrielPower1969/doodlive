@@ -199,14 +199,15 @@ navigator.xr?.isSessionSupported('immersive-ar').then(v => { xrSupported = v; re
 function refreshButtons() {
   const live = S.mode === 'live';
   show('btnShoot', S.mode === 'scan');
-  show('btnRescan', live && !S.xr);
+  show('btnNew', live && !S.xr); show('btnGate', live);
   show('btnLines', live); show('btnTitle', live && !!angel.title);
   show('btnMode', live && !S.xr && !!video.srcObject);
   show('btnXR', live && !S.xr && xrSupported);
   show('btnExitXR', !!S.xr);
   $('btnMode').textContent = t(S.view === 'paper' ? 'modeShow' : 'modePaper');
-  $('btnMore').classList.toggle('hidden', !live);
-  show('btnRead', live && !!angel.title); show('btnAction', live);
+  document.body.classList.toggle('live', live && !S.xr);
+  if (!live) { $('more').classList.remove('show'); show('hint', false); }
+  for (const sp of $('langHud').querySelectorAll('span')) sp.classList.toggle('on', sp.dataset.l === lang);
 }
 
 // Recorded lines (Gabriel's own voice, zh and en sets) with Web Speech as the fallback; voices never overlap.
@@ -249,7 +250,7 @@ function reveal(viewMode) {
   show('guide', false);
   enterScene(viewMode === 'paper' ? paperHolder : showHolder);
   refreshButtons();
-  status(t(xrSupported ? 'tapXR' : 'tap')); S.idleSince = performance.now(); S.greetCount = 0;
+  status(t(xrSupported ? 'tapXR' : 'tap')); S.idleSince = performance.now(); S.greetCount = 0; S.lastTouch = 0;
 }
 
 const LINES = ['line0', 'line1', 'line2', 'line3'], GREETS = ['greet0', 'greet1', 'greet2'];
@@ -374,9 +375,17 @@ document.addEventListener('visibilitychange', () => {
 // ---------------- buttons + pointer ----------------
 applyLang();
 for (const b of document.querySelectorAll('[data-lang-toggle]')) b.onclick = () => { setLang(lang === 'zh' ? 'en' : 'zh'); refreshButtons(); paintTexture(); if (S.mode === 'live') status(t(xrSupported ? 'tapXR' : 'tap')); };
-$('btnAction').onclick = () => { unlockAudio(); action(); };
-$('btnRead').onclick = () => { unlockAudio(); readTitle(); };
-$('btnMore').onclick = () => { $('more').classList.toggle('show'); $('btnMore').textContent = t($('more').classList.contains('show') ? 'close' : 'more'); };
+$('langHud').onclick = () => { setLang(lang === 'zh' ? 'en' : 'zh'); refreshButtons(); paintTexture(); if (S.mode === 'live') status(t(xrSupported ? 'tapXR' : 'tap')); };
+// Grown-up gate (screen 09): hold the lock for 2 s; the ring fills while held (DESIGN-DIRECTION §5)
+let gateTimer = null;
+const gateCancel = () => { clearTimeout(gateTimer); gateTimer = null; $('btnGate').classList.remove('holding'); };
+$('btnGate').addEventListener('pointerdown', e => {
+  e.preventDefault();
+  if ($('more').classList.contains('show')) { $('more').classList.remove('show'); cue('click'); return; }
+  $('btnGate').classList.add('holding');
+  gateTimer = setTimeout(() => { gateCancel(); $('more').classList.add('show'); cue('lock'); }, 2000);
+});
+for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) $('btnGate').addEventListener(ev, gateCancel);
 $('helpDemo').onclick = () => { $('help').classList.remove('show'); $('btnDemo').click(); };
 $('btnScan').onclick = startScan;
 $('btnDemo').onclick = async () => {
@@ -387,7 +396,7 @@ $('btnDemo').onclick = async () => {
   reveal('show');
 };
 $('btnShoot').onclick = () => { unlockAudio(); capture(S.good >= 2 ? S.lastPts : null); };
-$('btnRescan').onclick = () => { speechSynthesis?.cancel(); video.srcObject ? resetScan() : startScan(); };
+$('btnNew').onclick = () => { cue('click'); speechSynthesis?.cancel(); video.srcObject ? resetScan() : startScan(); };
 $('btnMode').onclick = () => {
   S.view = S.view === 'paper' ? 'show' : 'paper';
   (S.view === 'paper' ? paperHolder : showHolder).add(angel.root);
@@ -417,10 +426,38 @@ glCanvas.addEventListener('pointerup', e => {
   if (!down) return;
   const tap = !down.moved; down = null;
   if (!tap || S.mode !== 'live' || S.xr) return;
-  unlockAudio();
+  unlockAudio(); S.lastTouch = performance.now(); $('more').classList.remove('show');
   ray.setFromCamera(new THREE.Vector2((e.clientX / view.sw) * 2 - 1, -(e.clientY / view.sh) * 2 + 1), camera);
-  if (ray.intersectObject(angel.root, true).length) action();
+  if (angel.title && ray.intersectObject(angel.title, true).length) readTitle();
+  else if (ray.intersectObject(angel.root, true).length || nearAngel(e.clientX, e.clientY)) action();
 });
+
+// ---------------- tap hint (screen 06): dotted ring + hand around the angel after 5 s without a touch ----------------
+const HINT_AFTER = 5000, hintBox = new THREE.Box3(), hintV = new THREE.Vector3();
+let hintRect = null, hintAt = 0;
+function angelScreenRect() {
+  hintBox.setFromObject(angel.rig || angel.root);   // the body only: not the title, sparks or shadow blob
+  if (hintBox.isEmpty()) return null;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (let i = 0; i < 8; i++) {
+    hintV.set(i & 1 ? hintBox.max.x : hintBox.min.x, i & 2 ? hintBox.max.y : hintBox.min.y, i & 4 ? hintBox.max.z : hintBox.min.z).project(camera);
+    const x = (hintV.x + 1) / 2 * view.sw, y = (1 - hintV.y) / 2 * view.sh;
+    x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y);
+  }
+  return { x0, y0, x1, y1 };
+}
+// forgiving taps: a touch close to her outline counts (Apple AR HIG, "within reasonable proximity")
+function nearAngel(x, y) { const r = hintRect || angelScreenRect(); const pad = 24; return !!r && x > r.x0 - pad && x < r.x1 + pad && y > r.y0 - pad && y < r.y1 + pad; }
+function updateHint(now) {
+  const want = S.mode === 'live' && !S.xr && S.phase === 'idle' && !S.busy && !angel.talking && now - (S.lastTouch || S.idleSince || now) > HINT_AFTER;
+  show('hint', want);
+  if (!want || now - hintAt < 120) return;
+  hintAt = now; hintRect = angelScreenRect(); if (!hintRect) return;
+  const h = $('hint'), m = 10, pad = 6;   // keep the ring and the hand on screen
+  const r = { x0: Math.max(m, hintRect.x0), y0: Math.max(m + 60, hintRect.y0), x1: Math.min(view.sw - m - 30, hintRect.x1), y1: Math.min(view.sh - m - 90, hintRect.y1) };
+  h.style.setProperty('--x', `${r.x0 - pad}px`); h.style.setProperty('--y', `${r.y0 - pad}px`);
+  h.style.setProperty('--w', `${r.x1 - r.x0 + pad * 2}px`); h.style.setProperty('--h', `${r.y1 - r.y0 + pad * 2}px`);
+}
 
 // ---------------- loop ----------------
 let last = performance.now(), detAcc = 0;
@@ -430,7 +467,7 @@ function frame(now, xrFrame) {
   S.phaseT += dt;
   if (S.phase === 'enter' && S.phaseT > 1.4) setPhase('idle');
   if (S.phase === 'action' && S.phaseT > 3.3) setPhase('idle');
-  $('btnAction').disabled = $('btnRead').disabled = S.phase !== 'idle' || !!S.busy;
+  updateHint(now);
 
   if (xrFrame && hitSource) {
     const hits = xrFrame.getHitTestResults(hitSource);

@@ -68,6 +68,11 @@ namespace DoodLive
             { "greet0", "我飞起来啦！" },
             { "greet1", "哇——！" },
             { "greet2", "哈哈哈！" },
+            { "grownups", "大人专区" },
+            { "holdGate", "大人按住 2 秒" },
+            { "language", "界面语言" },
+            { "tapHer", "点点我！" },
+            { "newSheet", "换一张纸" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -129,6 +134,11 @@ namespace DoodLive
             { "greet0", "I'm flying!" },
             { "greet1", "Wow!" },
             { "greet2", "Ha ha ha!" },
+            { "grownups", "Grown-ups" },
+            { "holdGate", "Grown-ups: hold for 2 s" },
+            { "language", "Language" },
+            { "tapHer", "Tap me!" },
+            { "newSheet", "New sheet" },
         };
         static string lang;
         public static string Lang

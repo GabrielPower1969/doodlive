@@ -60,6 +60,11 @@ export const STR = {
     greet0: "我飞起来啦！",
     greet1: "哇——！",
     greet2: "哈哈哈！",
+    grownups: "大人专区",
+    holdGate: "大人按住 2 秒",
+    language: "界面语言",
+    tapHer: "点点我！",
+    newSheet: "换一张纸",
   },
   en: {
     appTitle: "DoodLive · Colour-in Angel AR",
@@ -120,6 +125,11 @@ export const STR = {
     greet0: "I'm flying!",
     greet1: "Wow!",
     greet2: "Ha ha ha!",
+    grownups: "Grown-ups",
+    holdGate: "Grown-ups: hold for 2 s",
+    language: "Language",
+    tapHer: "Tap me!",
+    newSheet: "New sheet",
   },
 };
 const saved = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();
@@ -132,6 +142,7 @@ export function apply() {
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
   document.title = t('appTitle');
   for (const el of document.querySelectorAll('[data-i18n]')) el.textContent = t(el.dataset.i18n);
+  for (const el of document.querySelectorAll('[data-i18n-aria]')) el.setAttribute('aria-label', t(el.dataset.i18nAria));
   for (const el of document.querySelectorAll('[data-lang-toggle]')) el.textContent = lang === 'zh' ? 'EN' : '中';
   document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
 }
