@@ -484,7 +484,7 @@ namespace DoodLive.EditorTools
             var ctl = app.AddComponent<ARColoringController>();
             ctl.session = session; ctl.trackedImages = images; ctl.cameraManager = camMgr; ctl.cameraBackground = bg; ctl.arCamera = cam;
             ctl.angel = angel.GetComponent<Animator>();
-            ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"], mats["cloud"] };
+            ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"] };   // cloud stays white (not page-coloured)
             ctl.demoTexture = demo;
             ctl.sfx = app.AddComponent<AudioSource>();
             ctl.voice = app.AddComponent<AudioSource>();
