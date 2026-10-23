@@ -544,6 +544,7 @@ namespace DoodLive.EditorTools
             ctl.fanfare = Clip("fanfare"); ctl.chime = Clip("chime"); ctl.hello = Clip("voice_hello");
             ctl.music.clip = Clip("theme"); ctl.swell = Clip("swell");
             ctl.lines = new[] { Clip("voice_0"), Clip("voice_1"), Clip("voice_2"), Clip("voice_3") };
+            ctl.greets = new[] { Clip("fly"), Clip("wow"), Clip("laugh") };
 
             string path = $"{Root}/Scenes/DoodLive.unity";
             EditorSceneManager.SaveScene(scene, path);
