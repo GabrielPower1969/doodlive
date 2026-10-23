@@ -1,12 +1,14 @@
 """Blender (headless): a 3D extruded title — Chinese on top, English below — exported as GLB for the AR scene.
 Units: metres-ish model units, overall width ≈ 1.0 (the app scales it). Node names: "title", "hanzi", "english".
-Run: blender -b --python pipeline/make_title.py -- "天使" "Angel" assets/titles/angel.glb [preview.png]
+Run: blender -b --python pipeline/make_title.py -- "天使" "Angel" assets/titles/angel.glb "tiān shǐ" [preview.png]
+Nodes "english" and "pinyin" share the same slot; the app shows one of them (toggle button).
 Fonts: pipeline/fonts/*.ttf (extracted from macOS collections; swap for Noto Sans SC before shipping).
 """
 import bpy, sys, os, math
 argv = sys.argv[sys.argv.index("--") + 1:]
 HANZI, ENGLISH, OUT = argv[0], argv[1], argv[2]
-PREVIEW = argv[3] if len(argv) > 3 else None
+PINYIN = argv[3] if len(argv) > 3 else ""
+PREVIEW = argv[4] if len(argv) > 4 else None
 HERE = os.path.dirname(os.path.abspath(__file__))
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
@@ -35,17 +37,20 @@ def text(name, body, font_path, size, depth, bevel, material, z):
 root = bpy.data.objects.new("title", None); sc.collection.objects.link(root)
 h = text("hanzi", HANZI, f"{HERE}/fonts/hiragino-sans-gb-bold.ttf", 0.42, 0.045, 0.006, GOLD, 0.26)
 e = text("english", ENGLISH, f"{HERE}/fonts/hiragino-sans-gb-bold.ttf", 0.16, 0.025, 0.003, IVORY, 0.0)
-for o in (h, e): o.parent = root
+objs = [h, e]
+if PINYIN:
+    py = text("pinyin", PINYIN, f"{HERE}/fonts/hiragino-sans-gb-bold.ttf", 0.16, 0.025, 0.003, IVORY, 0.0); objs.append(py)
+for o in objs: o.parent = root
 # normalise width to ~1.0
 bpy.context.view_layer.update()
-w = max(o.dimensions.x for o in (h, e)); s = 1.0 / w
-for o in (h, e): o.location.x *= s; o.location.z *= s; o.scale = (s, s, s)
+w = max(o.dimensions.x for o in objs); s = 1.0 / w
+for o in objs: o.location.x *= s; o.location.z *= s; o.scale = (s, s, s)
 bpy.context.view_layer.update()
 bpy.ops.object.select_all(action='DESELECT')
-for o in (root, h, e): o.select_set(True)
+for o in [root] + objs: o.select_set(True)
 os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
 bpy.ops.export_scene.gltf(filepath=OUT, use_selection=True, export_apply=True, export_yup=True)
-print("exported", OUT, "faces", sum(len(o.data.polygons) for o in (h, e)))
+print("exported", OUT, "faces", sum(len(o.data.polygons) for o in objs))
 if PREVIEW:
     sc.render.engine = 'BLENDER_WORKBENCH'; sh = sc.display.shading; sh.light = 'STUDIO'; sh.color_type = 'MATERIAL'; sh.show_cavity = True
     sc.render.resolution_x, sc.render.resolution_y = 800, 500

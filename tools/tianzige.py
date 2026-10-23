@@ -14,7 +14,7 @@ def _font(path, size):
     try: return ImageFont.truetype(path, size)
     except OSError: return ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", size)
 
-def draw_title(page, hanzi, english, cy=80, box=104, gap=18, label=None):
+def draw_title(page, hanzi, english, cy=80, box=104, gap=18, label=None, pinyin=None):
     """Draw `hanzi` (one 田字格 per character) centred at y=cy, `english` below. Returns the block's bottom y."""
     d = ImageDraw.Draw(page); W = page.width
     n = len(hanzi); total = n * box + (n - 1) * gap; x0 = (W - total) // 2; top = cy - box // 2
@@ -26,6 +26,10 @@ def draw_title(page, hanzi, english, cy=80, box=104, gap=18, label=None):
             d.line((x + k, top + box // 2, x + min(k + 6, box), top + box // 2), fill=RED, width=1)
             d.line((x + box // 2, top + k, x + box // 2, top + min(k + 6, box)), fill=RED, width=1)
         d.text((x + box // 2, top + box // 2 + box * 0.04), ch, fill=(30, 30, 30), font=kai, anchor="mm")
+    if pinyin:                                                       # one syllable above each box, with tones
+        pf = _font(KAI, int(box * 0.26))
+        for i, syl in enumerate(pinyin.split()):
+            d.text((x0 + i * (box + gap) + box // 2, top - 16), syl, fill=(70, 70, 70), font=pf, anchor="mm")
     ey = top + box + 34
     d.text((W // 2, ey), english, fill=(40, 40, 40), font=_font(SANS, int(box * 0.34)), anchor="mm")
     if label: d.text((W // 2, ey + 30), label, fill=GREY, font=_font(SANS, 18), anchor="mm")

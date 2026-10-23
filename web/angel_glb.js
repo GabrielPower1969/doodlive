@@ -58,6 +58,8 @@ export async function loadAngelGLB(texture, url = 'assets/model/angel.glb') {
   try {
     const t = await new GLTFLoader().loadAsync('assets/model/titles/angel.glb');
     title = t.scene; title.position.set(0, 1.42, 0); title.scale.setScalar(0.6); root.add(title);
+    title.userData.setMode = mode => title.traverse(o => { if (o.name === 'english') o.visible = mode === 'en'; if (o.name === 'pinyin') o.visible = mode === 'py'; });
+    title.userData.setMode(localStorage.getItem('titleMode') || 'py');
   } catch (e) { console.warn('title glb missing', e); }
   return { root, rig, bones: B, meshes: [], materials: pageMats, halo, glow, cloud, wings: [], face, talking: false, fromGLB: true, title };
 }

@@ -40,7 +40,7 @@ def sheet(art_img):
         d.rectangle((cx - MS // 2, cy - MS // 2, cx + MS // 2, cy + MS // 2), fill="black")
     # title block: 天 使 in 田字格 + "Angel" (kids learn the characters while colouring); markers/art untouched
     import sys; sys.path.insert(0, str(ROOT / "tools")); from tianzige import draw_title
-    draw_title(page, "天使", "Angel", cy=84, box=100, label="DoodLive · 涂上颜色，再用手机扫一扫")
+    draw_title(page, "天使", "Angel", cy=96, box=96, pinyin="tiān shǐ", label="DoodLive · 涂上颜色，再用手机扫一扫")
     try:
         f = ImageFont.truetype("/System/Library/Fonts/STHeiti Medium.ttc", 26)
         d.text((PW // 2, PH - 50), "四个黑方块要完整拍进画面 · 不要涂到黑方块上", fill=(120, 120, 120), font=f, anchor="mm")

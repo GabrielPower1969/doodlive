@@ -195,7 +195,7 @@ function refreshButtons() {
   const live = S.mode === 'live';
   show('btnShoot', S.mode === 'scan');
   show('btnRescan', live && !S.xr);
-  show('btnLines', live);
+  show('btnLines', live); show('btnTitle', live && !!angel.title);
   show('btnMode', live && !S.xr && !!video.srcObject);
   show('btnXR', live && !S.xr && xrSupported);
   show('btnExitXR', !!S.xr);
@@ -333,6 +333,12 @@ $('btnMode').onclick = () => {
   refreshButtons();
 };
 $('btnLines').onclick = () => { S.lines = !S.lines; paintTexture(); };
+$('btnTitle').onclick = () => {   // 拼音 <-> English under the 3D title
+  const mode = (localStorage.getItem('titleMode') || 'py') === 'py' ? 'en' : 'py';
+  try { localStorage.setItem('titleMode', mode); } catch {}
+  angel.title?.userData.setMode?.(mode);
+  const [a, b] = $('btnTitle').querySelectorAll('span'); a.classList.toggle('on', mode === 'py'); b.classList.toggle('on', mode === 'en');
+};
 $('btnXR').onclick = () => enterXR().catch(e => { status('进入 AR 失败：' + (e.message || e)); refreshButtons(); });
 $('btnExitXR').onclick = () => S.xr?.end();
 for (const b of document.querySelectorAll('#hud button')) b.addEventListener('beforexrselect', e => e.preventDefault());

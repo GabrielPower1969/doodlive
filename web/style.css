@@ -29,3 +29,7 @@ body.demo { background: radial-gradient(circle at 50% 40%, #33407a, #0b1020 70%)
 body.xr { background: transparent; }
 body.xr #video, body.xr #guide { display: none; }
 #status:empty { display: none; }
+/* segmented toggle: 拼音 | ABC */
+button.seg { padding: 4px; display: inline-flex; gap: 2px; background: rgba(255,255,255,.12); }
+button.seg span { padding: 7px 12px; border-radius: 999px; font-size: 14px; color: #cfd8e3; }
+button.seg span.on { background: #ffcf4a; color: #2a1d00; font-weight: 700; }
