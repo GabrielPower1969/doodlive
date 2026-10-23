@@ -36,7 +36,8 @@ namespace DoodLive
         [Header("Sound")]
         public AudioSource sfx;
         public AudioSource voice;
-        public AudioClip fanfare, chime, hello;
+        public AudioSource music;               // theme loop, starts at the reveal
+        public AudioClip fanfare, chime, hello, swell;
         public AudioClip[] lines;
 
         enum Mode { Boot, NoAR, Scan, Live }
@@ -295,6 +296,8 @@ namespace DoodLive
             angel.gameObject.SetActive(true);
             angel.Play("Enter", 0, 0);
             sfx.PlayOneShot(chime);
+            if (swell) sfx.PlayOneShot(swell, 0.8f);
+            if (music && !music.isPlaying) music.Play();
             voice.Stop(); voice.clip = hello; voice.PlayDelayed(0.9f);
             status = "点一下天使，听她吹响号角";
         }

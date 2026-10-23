@@ -5,6 +5,7 @@
 //   show  turntable over a dark backdrop (no camera / demo).
 import * as THREE from 'three';
 import { buildAngel, animate, radialTexture } from './angel.js';
+import { loadAngelGLB } from './angel_glb.js';
 import { buildFx } from './fx.js';
 import { homography, detectMarkers, warpArt, whiteBalance, eraseLines, poseFromH } from './vision.js';
 import { unlockAudio, fanfare, chime, say } from './audio.js';
@@ -30,7 +31,7 @@ const fill = new THREE.DirectionalLight(0xbfd4ff, 0.6); fill.position.set(-1, 0.
 const canvasTex = document.createElement('canvas'); canvasTex.width = canvasTex.height = TEX;
 const texture = new THREE.CanvasTexture(canvasTex);
 texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4;
-const angel = buildAngel(texture);
+const angel = await loadAngelGLB(texture).catch(e => { console.warn('GLB angel failed, using the code-built one', e); return buildAngel(texture); });
 angel.root.visible = false;
 const fx = buildFx(angel.root);
 

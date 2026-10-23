@@ -146,6 +146,17 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **If it still drifts only on the Akita:** compare with the Pixel on the same sheet. Drift on the Akita alone points
   to the device's VIO/IMU calibration (the ARCore certification work), not to this app.
 
+### L26 · Blender pivots exported with world offsets; glTFast mirrors X · 2026-10-24 · confirmed
+- **Symptom:** Unity logged `wristR at (-0.76, 2.55, 0)` for the GLB rig (expected ≈ (+0.35, 0.33)). Stills looked
+  right, so the bug only shows once bones rotate.
+- **Cause 1:** empties were parented with `matrix_parent_inverse`; the glTF exporter wrote their `location` (a world
+  point) as the local translation, so the chain accumulated. Meshes attached the same way got compensated and sat
+  correctly, hiding the error. **Fix:** parent with an identity parent-inverse and set the real local offset
+  (`pipeline/angel_build.py empty()/attach()`). Check with pygltflib: walk parents and sum translations.
+- **Cause 2:** glTFast converts glTF→Unity by mirroring X; AngelBuilder/AngelPose mirror Z. They differ by a 180°
+  turn about Y, so GLB clips conjugate every bone quaternion: (x, y, z, w) → (−x, y, −z, w) (`ForRig` in DoodLiveSetup).
+- **Web:** three.js keeps glTF axes, but glTF UV v points down while our CanvasTexture flips Y: flip v once on load.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

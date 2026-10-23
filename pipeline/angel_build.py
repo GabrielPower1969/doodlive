@@ -74,12 +74,24 @@ def front_uv(o):
             w = mw @ me.vertices[me.loops[li].vertex_index].co
             uv.data[li].uv = (w.x + 0.5, w.z / ASPECT)
 def empty(name, at, parent=None):
-    e = bpy.data.objects.new(name, None); e.empty_display_size = 0.02; e.location = at
+    """Pivot node at world point `at`. Parent WITHOUT matrix_parent_inverse and set the true local offset, so the
+    glTF/FBX exporters write correct local translations (with the inverse trick they wrote world offsets, LESSONS L26)."""
+    e = bpy.data.objects.new(name, None); e.empty_display_size = 0.02
     sc.collection.objects.link(e)
-    if parent: e.parent = parent; e.matrix_parent_inverse = parent.matrix_world.inverted()
+    if parent:
+        bpy.context.view_layer.update()
+        e.parent = parent; e.matrix_parent_inverse = Matrix.Identity(4)
+        e.location = at - parent.matrix_world.translation
+    else:
+        e.location = at
+    bpy.context.view_layer.update()
     return e
 def attach(o, parent):
-    o.parent = parent; o.matrix_parent_inverse = parent.matrix_world.inverted()
+    """Parent a mesh to a pivot keeping its world transform, with an identity parent-inverse (see empty())."""
+    bpy.context.view_layer.update()
+    mw = o.matrix_world.copy()
+    o.parent = parent; o.matrix_parent_inverse = Matrix.Identity(4)
+    o.matrix_world = mw
 
 # ---------------- rig points (line-art px; same as web/angel.js) ----------------
 B = {}

@@ -55,7 +55,9 @@ function ellipsoid(c, rx, ry, rz, ws = 32, hs = 24) {
   return g;
 }
 
-function makeMaterial(tex, base, opts = {}) {
+export const BONE_NAMES = ['hips','spine','neck','head','shoulderL','elbowL','wristL','shoulderR','elbowR','wristR','wingL','wingLmid','wingLtip','wingR','wingRmid','wingRtip'];
+
+export function makeMaterial(tex, base, opts = {}) {
   const m = new THREE.MeshStandardMaterial({ map: tex, roughness: opts.roughness ?? 0.75, metalness: opts.metalness ?? 0, side: opts.side ?? THREE.FrontSide });
   m.userData.uniforms = { uBase: { value: new THREE.Color(base) }, uBaseAmt: { value: opts.baseAmt ?? 0.9 }, uRim: { value: opts.rim ?? 0.25 }, uInk: { value: opts.ink ?? 0 } };
   m.onBeforeCompile = sh => {
@@ -426,10 +428,10 @@ export function animate(angel, state, time) {
   // face: blink every ~4 s, wide eyes during the fanfare, mouth flaps while the voice plays
   const bt = (time + 0.7) % 4.2, blink = bt < 0.14 ? Math.sin((bt / 0.14) * Math.PI) : 0;
   const wide = state.phase === 'action' ? 0.25 : 0;
-  for (const lid of angel.face.lids) lid.rotation.x = THREE.MathUtils.lerp(-0.55 - wide, 1.5, blink);
+  for (const lid of angel.face.lids) lid.rotation.x = angel.fromGLB ? (lid.userData.restX || 0) + THREE.MathUtils.lerp(-0.15 * wide, 1.3, blink) : THREE.MathUtils.lerp(-0.55 - wide, 1.5, blink);
   for (const e of angel.face.eyes) e.rotation.set(0.05 * s(time * 0.37), 0.12 * s(time * 0.29), 0);
   const talk = angel.talking ? 0.3 + 0.7 * Math.abs(s(time * 13) * s(time * 5.3 + 1)) : 0;
-  angel.face.jaw.position.y = -PX(6) * talk;
+  angel.face.jaw.position.y = (angel.fromGLB ? -PX(4) : -PX(6)) * talk;
   angel.face.mouthIn.scale.y = PX(3 + 9 * talk);
 
   angel.halo.rotation.z = time * 0.6;

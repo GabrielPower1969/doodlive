@@ -42,7 +42,7 @@ namespace DoodLive.EditorTools
             var library = MakeReferenceLibrary(sheets);
             SetupRenderPipeline();
             var mats = MakeMaterials(demo);
-            var prefab = MakeAngelPrefab(mats);
+            var prefab = MakeAngelPrefabFromGlb(mats) ?? MakeAngelPrefab(mats);   // Blender model (assets/angel) first, code-built fallback
             SetupXR();
             SetupPlayer();
             MakeScene(library, prefab, mats, demo);
@@ -205,6 +205,14 @@ namespace DoodLive.EditorTools
             Paper("gold", "#d9a43a", metal: 0.85f, rough: 0.3f, rim: 0.3f);
             Paper("cloud", "#ffffff", baseAmt: 1, rough: 1, rim: 0.3f);
             M["cloud"].SetTexture("_BaseMap", Texture2D.whiteTexture);
+            var lit = Shader.Find("Universal Render Pipeline/Lit");
+            void Plain(string name, string hex, float smooth = 0.4f)
+            {
+                var m = Mat(name, lit); ColorUtility.TryParseHtmlString(hex, out var c);
+                m.SetColor("_BaseColor", c); m.SetFloat("_Smoothness", smooth);
+            }
+            Plain("eyewhite", "#f7f5ee", 0.75f); Plain("iris", "#4d85b8", 0.7f); Plain("pupil", "#08080a", 0.8f);
+            Plain("lash", "#2b1a12", 0.3f); Plain("brow", "#7a4d29", 0.2f); Plain("lip", "#d97a78", 0.5f); Plain("sash", "#cfae66", 0.45f);
             var halo = Mat("halo", Shader.Find("Universal Render Pipeline/Unlit"));
             ColorUtility.TryParseHtmlString("#ffe9a0", out var hc);
             halo.SetColor("_BaseColor", hc);
@@ -235,6 +243,59 @@ namespace DoodLive.EditorTools
             return prefab;
         }
 
+        /// <summary>
+        /// The Blender-built angel (pipeline/angel_build.py -> assets/angel/angel.glb), imported by glTFast. Its node
+        /// hierarchy carries the rig names (hips … wingRtip) as plain Transforms with identity rotation, so the same
+        /// AngelPose clips drive it. Materials are remapped by name to the PaperLit set (page-coloured parts) or the
+        /// plain Lit face materials. Returns null when the model or the importer is missing (code-built fallback).
+        /// </summary>
+        static GameObject MakeAngelPrefabFromGlb(Dictionary<string, Material> mats)
+        {
+            string src = Path.Combine(RepoRoot, "assets/angel/angel.glb"), dst = $"{Root}/Angel/angel.glb";
+            if (!File.Exists(src)) { Debug.LogWarning("DoodLive: assets/angel/angel.glb not found, using the code-built angel"); return null; }
+            Copy(src, dst); AssetDatabase.ImportAsset(dst, ImportAssetOptions.ForceUpdate);
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>(dst);
+            if (!model) { Debug.LogWarning("DoodLive: angel.glb did not import (is com.unity.cloud.gltfast installed?)"); return null; }
+
+            var A = new AngelBuilder.Parts { root = new GameObject("Angel"), rig = new GameObject("rig") };
+            A.rig.transform.SetParent(A.root.transform, false);
+            var inst = (GameObject)PrefabUtility.InstantiatePrefab(model);
+            PrefabUtility.UnpackPrefabInstance(inst, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+            inst.name = "model"; inst.transform.SetParent(A.rig.transform, false);
+            foreach (var t in inst.GetComponentsInChildren<Transform>(true))
+            {
+                if (System.Array.IndexOf(AngelBuilder.BoneNames, t.name) >= 0) A.bones[t.name] = t;
+                if (t.name == "halo") A.halo = t;
+                if (t.name == "cloud") A.cloud = t;
+            }
+            foreach (var n in AngelBuilder.BoneNames) if (!A.bones.ContainsKey(n)) Debug.LogError($"DoodLive: angel.glb has no node '{n}'");
+            var w = A.bones["wristR"].position; Debug.Log($"DoodLive glb rig check: wristR at {w} (expect x>0, y>0), head at {A.bones["head"].position}");
+
+            var byName = new Dictionary<string, string> { ["sash"] = "sash" };
+            foreach (var r in inst.GetComponentsInChildren<Renderer>(true))
+            {
+                var ms = r.sharedMaterials;
+                for (int i = 0; i < ms.Length; i++)
+                {
+                    string n = ms[i] ? ms[i].name.Replace(" (Instance)", "") : "robe";
+                    if (byName.TryGetValue(n, out var alias)) n = alias;
+                    ms[i] = mats.TryGetValue(n, out var m) ? m : mats["robe"];
+                }
+                r.sharedMaterials = ms;
+                r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            }
+            A.halo.gameObject.AddComponent<Spin>().axis = Vector3.forward;
+            var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
+            var animator = A.root.AddComponent<Animator>();
+            animator.applyRootMotion = false; animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            glbRig = true; animator.runtimeAnimatorController = MakeController(A); glbRig = false;
+            string prefabPath = $"{Root}/Angel/Angel.prefab";
+            var prefab = PrefabUtility.SaveAsPrefabAsset(A.root, prefabPath);
+            Object.DestroyImmediate(A.root);
+            Debug.Log("DoodLive: angel prefab built from assets/angel/angel.glb");
+            return prefab;
+        }
+
         static AnimatorController MakeController(AngelBuilder.Parts A)
         {
             var enter = BakeClip(A, Phase.Enter, AngelPose.EnterLength, loop: false);
@@ -260,6 +321,12 @@ namespace DoodLive.EditorTools
             t.hasExitTime = true; t.exitTime = 0.92f; t.duration = 0.25f; t.hasFixedDuration = true;
             return c;
         }
+
+        // glTFast maps glTF (right-handed, = three.js) to Unity by mirroring X, while AngelBuilder / AngelPose.ToUnity
+        // mirror Z. The two differ by a 180° turn about Y, so for the GLB rig every bone rotation is conjugated by that
+        // turn: quaternion (x, y, z, w) -> (-x, y, -z, w). Set while the GLB prefab is being baked.
+        static bool glbRig;
+        static Quaternion ForRig(Quaternion q) => glbRig ? new Quaternion(-q.x, q.y, -q.z, q.w) : q;
 
         static AnimationClip BakeClip(AngelBuilder.Parts A, Phase phase, float length, bool loop)
         {
@@ -294,7 +361,7 @@ namespace DoodLive.EditorTools
                 {
                     var bone = A.bones[kv.Key];
                     string path = AnimationUtility.CalculateTransformPath(bone, A.root.transform);
-                    Rot(path, t, AngelPose.ToUnity(kv.Value));
+                    Rot(path, t, ForRig(AngelPose.ToUnity(kv.Value)));
                 }
             }
             foreach (var kv in curves) clip.SetCurve(kv.Key.path, typeof(Transform), kv.Key.prop, kv.Value);
@@ -417,13 +484,16 @@ namespace DoodLive.EditorTools
             var ctl = app.AddComponent<ARColoringController>();
             ctl.session = session; ctl.trackedImages = images; ctl.cameraManager = camMgr; ctl.cameraBackground = bg; ctl.arCamera = cam;
             ctl.angel = angel.GetComponent<Animator>();
-            ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"] };
+            ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"], mats["cloud"] };
             ctl.demoTexture = demo;
             ctl.sfx = app.AddComponent<AudioSource>();
             ctl.voice = app.AddComponent<AudioSource>();
-            ctl.sfx.playOnAwake = ctl.voice.playOnAwake = false;
+            ctl.music = app.AddComponent<AudioSource>();
+            ctl.sfx.playOnAwake = ctl.voice.playOnAwake = ctl.music.playOnAwake = false;
+            ctl.music.loop = true; ctl.music.volume = 0.35f;
             AudioClip Clip(string n) => AssetDatabase.LoadAssetAtPath<AudioClip>($"{Root}/Audio/{n}.wav");
             ctl.fanfare = Clip("fanfare"); ctl.chime = Clip("chime"); ctl.hello = Clip("voice_hello");
+            ctl.music.clip = Clip("theme"); ctl.swell = Clip("swell");
             ctl.lines = new[] { Clip("voice_0"), Clip("voice_1"), Clip("voice_2"), Clip("voice_3") };
 
             string path = $"{Root}/Scenes/DoodLive.unity";
