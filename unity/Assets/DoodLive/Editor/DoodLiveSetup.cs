@@ -392,6 +392,7 @@ namespace DoodLive.EditorTools
             var images = originGo.AddComponent<ARTrackedImageManager>();
             images.referenceLibrary = library;
             images.requestedMaxNumberOfMovingImages = 1;
+            originGo.AddComponent<ARAnchorManager>();   // fallback anchors (ARColoringController.AnchorHere)
 
             var light = new GameObject("Directional Light").AddComponent<Light>();
             light.type = LightType.Directional;

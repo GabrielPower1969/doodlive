@@ -124,6 +124,16 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   `ReferenceImages.asset` at A4 size. They share markers and the art rectangle, so the capture code is unchanged.
 - **Prevention:** a new printable sheet must be added to `Sheets` in the same commit, then run `scripts/build-apk.sh`.
 
+### L24 · Angel "drifts" instead of staying on the page · 2026-10-23 · fix built, on-device check pending
+- **Symptom:** after placement the angel slowly floated away; walking around her made it worse.
+- **Cause:** the L14 fix put her at a fixed **world** position with no parent and no anchor. ARCore keeps correcting
+  its map, and unanchored content slides with those corrections. She also stood at 66% down the page, not the middle.
+- **Fix:** parent her to the `ARTrackedImage` (an augmented image is an ARCore anchor: refined while seen, remembered at
+  its last pose when out of view), at the centre of the drawing, up = gravity. If the trackable is removed, re-pin her to an
+  `ARAnchor` at the same pose (`ARAnchorManager` added in setup). Show mode is anchored the same way.
+- **Web app:** paper mode cannot do this. Without world tracking it can only follow the sheet while the markers are
+  visible. Use **放到桌上（AR）** (WebXR hit-test, world-locked) for walk-around viewing.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

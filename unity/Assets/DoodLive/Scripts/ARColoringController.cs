@@ -198,32 +198,58 @@ namespace DoodLive
             return new Vector3((px.x / tpl.page.x - 0.5f) * size.x, 0, (0.5f - px.y / tpl.page.y) * size.y);
         }
 
-        // Up = ARCore world up (gravity), never the sheet normal: on an upright sheet (monitor, wall) the normal points
-        // at the camera and the angel would show the top of her head (docs/LESSONS.md L14). She is placed once in world
-        // space (ARCore keeps it put), facing the viewer: flat sheet -> stands on it; upright sheet -> in front of it.
+        // Where she stands: the centre of the drawing (paper or tablet screen), up = gravity (never the sheet normal,
+        // LESSONS L14), facing the viewer. She is parented to the tracked sheet: ARCore treats an augmented image as an
+        // anchor, keeps refining its pose and remembers it when you walk away, so she stays on the page instead of
+        // drifting with the world map (LESSONS L24). If ARCore drops the image we fall back to a plain ARAnchor.
+        ARTrackedImage anchoredSheet;
         void PlaceOnSheet(ARTrackedImage sheet)
         {
             var st = sheet.transform;
             float flat = Mathf.InverseLerp(0.45f, 0.85f, Mathf.Abs(Vector3.Dot(st.up, Vector3.up)));   // 1 = lying flat
-            var foot = new Vector2(tpl.art.x + tpl.art.width / 2, tpl.art.y + tpl.art.height * Mathf.Lerp(1f, 0.66f, flat));
-            holder.SetParent(null, false);
-            holder.position = st.TransformPoint(PageToLocal(sheet, foot)) + st.up * (0.04f * (1 - flat) * sheet.size.x);
-            var toViewer = Vector3.ProjectOnPlane(arCamera.transform.position - holder.position, Vector3.up);
+            var centre = new Vector2(tpl.art.x + tpl.art.width / 2, tpl.art.y + tpl.art.height / 2);
+            var pos = st.TransformPoint(PageToLocal(sheet, centre)) + st.up * (0.03f * (1 - flat) * sheet.size.x);
+            var toViewer = Vector3.ProjectOnPlane(arCamera.transform.position - pos, Vector3.up);
             if (toViewer.sqrMagnitude < 1e-4f) toViewer = Vector3.ProjectOnPlane(-st.forward, Vector3.up);   // towards the sheet's bottom edge
-            holder.rotation = Quaternion.LookRotation(toViewer.normalized, Vector3.up);
+            var oldAnchor = holder.parent && holder.parent.GetComponent<ARAnchor>() ? holder.parent.gameObject : null;
+            holder.SetParent(st, false);
+            if (oldAnchor) Destroy(oldAnchor);
+            holder.SetPositionAndRotation(pos, Quaternion.LookRotation(toViewer.normalized, Vector3.up));
             holder.localScale = Vector3.one * (tpl.art.width / tpl.page.x * sheet.size.x * Mathf.Lerp(1f, scaleOnSheet, flat));
+            anchoredSheet = sheet;
+        }
+
+        /// <summary>Pin the angel to a world anchor at her current pose (show mode, or the sheet trackable went away).</summary>
+        void AnchorHere()
+        {
+            if (!arReady) { holder.SetParent(null, true); return; }
+            var go = new GameObject("AngelAnchor");
+            go.transform.SetPositionAndRotation(holder.position, holder.rotation);
+            go.AddComponent<ARAnchor>();
+            var old = holder.parent;
+            holder.SetParent(go.transform, true);
+            if (old && old.GetComponent<ARAnchor>()) Destroy(old.gameObject);
+            anchoredSheet = null;
+        }
+
+        void OnEnable() { if (trackedImages) trackedImages.trackedImagesChanged += OnImagesChanged; }
+        void OnDisable() { if (trackedImages) trackedImages.trackedImagesChanged -= OnImagesChanged; }
+        void OnImagesChanged(ARTrackedImagesChangedEventArgs e)
+        {
+            if (anchoredSheet && e.removed.Contains(anchoredSheet)) AnchorHere();   // never let her be destroyed with it
         }
 
         void PlaceInFront()
         {
-            holder.SetParent(null, false);
             var cam = arCamera.transform;
             var fwd = Vector3.ProjectOnPlane(cam.forward, Vector3.up);
             if (fwd.sqrMagnitude < 1e-4f) fwd = Vector3.forward;
             fwd.Normalize();
+            holder.SetParent(null, false);
             holder.position = cam.position + fwd * 0.7f - Vector3.up * 0.25f;
             holder.rotation = Quaternion.LookRotation(fwd, Vector3.up);
             holder.localScale = Vector3.one * 0.35f;
+            AnchorHere();   // stays where it appeared when you walk around
         }
 
         void ApplyPage()
