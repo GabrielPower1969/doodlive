@@ -295,12 +295,21 @@ namespace DoodLive
 
         // ---------------- flow ----------------
         /// <summary>Show the 3D title matching the sheet that was scanned (reference image name), default "angel".</summary>
+        string titleKey = "angel";
+        bool pinyinMode { get => PlayerPrefs.GetInt("titlePinyin", 1) == 1; set => PlayerPrefs.SetInt("titlePinyin", value ? 1 : 0); }
         void ShowTitle(string sheetName)
         {
+            if (sheetName != null) { titleKey = "angel"; foreach (var k in new[] { "fiery", "wrath", "holy" }) if (sheetName.StartsWith(k)) titleKey = k; }
             var titles = angel.transform.Find("titles"); if (!titles) return;
-            string key = "angel";
-            foreach (var k in new[] { "fiery", "wrath", "holy" }) if (sheetName != null && sheetName.StartsWith(k)) key = k;
-            foreach (Transform t in titles) t.gameObject.SetActive(t.name == key);
+            foreach (Transform t in titles)
+            {
+                t.gameObject.SetActive(t.name == titleKey);
+                foreach (Transform part in t.GetComponentsInChildren<Transform>(true))     // "english" / "pinyin" share the lower slot
+                {
+                    if (part.name == "english") part.gameObject.SetActive(!pinyinMode);
+                    if (part.name == "pinyin") part.gameObject.SetActive(pinyinMode);
+                }
+            }
         }
 
         void Reveal()
@@ -337,6 +346,7 @@ namespace DoodLive
             }
             UseDemoTexture();
             PlaceInFront();
+            ShowTitle("angel");
             Reveal();
         }
 
@@ -344,7 +354,7 @@ namespace DoodLive
 
         // ---------------- UI (IMGUI keeps the prototype scene-free) ----------------
         readonly List<Rect> uiRects = new List<Rect>();
-        GUIStyle button, label;
+        GUIStyle button, label, segOn, segOff; Texture2D pillOn, pillOff;
 
         bool TappedOutsideUI()
         {
@@ -357,6 +367,17 @@ namespace DoodLive
             return true;
         }
 
+        static Texture2D Pill(Color c)
+        {
+            const int S = 48; var t = new Texture2D(S, S, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+            for (int y = 0; y < S; y++) for (int x = 0; x < S; x++)
+            {
+                float dx = Mathf.Max(0, Mathf.Abs(x - S / 2f + 0.5f) - (S / 2f - 20)), dy = Mathf.Max(0, Mathf.Abs(y - S / 2f + 0.5f) - (S / 2f - 20));
+                float d = Mathf.Sqrt(dx * dx + dy * dy); t.SetPixel(x, y, new Color(c.r, c.g, c.b, c.a * Mathf.Clamp01(19.5f - d)));
+            }
+            t.Apply(); return t;
+        }
+
         void OnGUI()
         {
             if (button == null)
@@ -366,6 +387,10 @@ namespace DoodLive
                 button = new GUIStyle(GUI.skin.button) { font = font, fontSize = fs };
                 label = new GUIStyle(GUI.skin.label) { font = font, fontSize = fs, alignment = TextAnchor.MiddleCenter, wordWrap = true };
                 label.normal.textColor = Color.white;
+                pillOn = Pill(new Color(1f, 0.81f, 0.29f)); pillOff = Pill(new Color(1, 1, 1, 0.14f));
+                segOn = new GUIStyle(GUI.skin.label) { font = font, fontSize = Mathf.RoundToInt(fs * 0.85f), alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold };
+                segOn.normal.background = pillOn; segOn.normal.textColor = new Color(0.16f, 0.11f, 0f); segOn.border = new RectOffset(20, 20, 20, 20);
+                segOff = new GUIStyle(segOn) { fontStyle = FontStyle.Normal }; segOff.normal.background = pillOff; segOff.normal.textColor = new Color(0.85f, 0.88f, 0.92f);
             }
             uiRects.Clear();
             float u = Mathf.Min(Screen.width, Screen.height) / 12.5f, w = Screen.width;
@@ -373,6 +398,15 @@ namespace DoodLive
             GUI.Box(new Rect(0, top, w, u * 1.6f), GUIContent.none);
             GUI.Label(new Rect(u * 0.3f, top, w - u * 0.6f, u * 1.6f), status, label);
 
+            if (mode == Mode.Live && angel.transform.Find("titles"))
+            {
+                float sw = u * 2.1f, sh = u * 0.95f, sy = top + u * 1.9f, sx = w - u * 0.3f - sw * 2 - 4;
+                var r1 = new Rect(sx, sy, sw, sh); var r2 = new Rect(sx + sw + 4, sy, sw, sh);
+                GUI.Box(new Rect(sx - 6, sy - 6, sw * 2 + 16, sh + 12), GUIContent.none);
+                if (GUI.Button(r1, "拼音", pinyinMode ? segOn : segOff)) { pinyinMode = true; ShowTitle(null); }
+                if (GUI.Button(r2, "ABC", pinyinMode ? segOff : segOn)) { pinyinMode = false; ShowTitle(null); }
+                uiRects.Add(r1); uiRects.Add(r2);
+            }
             var buttons = new List<(string, System.Action)>();
             if (mode == Mode.NoAR || mode == Mode.Scan) buttons.Add(("看演示", ShowDemo));
             if (mode == Mode.Scan && Sheet() && !capturing) buttons.Add(("拍下来", () => StartCoroutine(Capture(Sheet()))));
