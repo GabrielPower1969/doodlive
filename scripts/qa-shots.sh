@@ -16,17 +16,18 @@ tap() { a shell input tap $(python3 -c "print(int($1*$W), int($2*$H))"); }
 echo "== QA shots for $FP on $S ($W x $H) -> $OUT"
 a shell am force-stop $PKG; a shell input keyevent KEYCODE_WAKEUP; a shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 shot home 6
-tap 0.93 0.05;  shot home-en 1            # 中/EN toggle (top-right)
-tap 0.93 0.05;  sleep 0.5                 # back to zh
-tap 0.5 0.72;   shot scan 5               # 扫一扫 → permission (already granted) → Scan.Search
+# tap points follow ARColoringController.OnGUI: u = min(W,H)/12.5; Home buttons at 0.62H / 0.62H+1.7u; top-right pills at top+0.4u
+tap 0.917 0.073; shot home-en 1           # 中/EN toggle (top-right)
+tap 0.917 0.073; sleep 0.5                # back
+tap 0.5 0.644;  shot scan 5               # 扫一扫 → permission (already granted) → Scan.Search
 [ "$QUICK" = "--quick" ] || { shot help 31; }   # 30 s without a sheet → help card
 a shell am force-stop $PKG; a shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 5
-tap 0.5 0.79;   shot demo-reveal 0.8      # 看演示 → Reveal (flash + enter)
+tap 0.5 0.70;   shot demo-reveal 0.8      # 看演示 → Reveal (flash + enter)
 shot live 4                               # Live.Idle with title + 3 buttons
-tap 0.17 0.95;  shot blow 1.5             # 吹号角
-sleep 3; tap 0.5 0.95; shot read 1.6      # 读一读 (mid sequence)
-sleep 4; tap 0.93 0.86; shot more 1       # 更多 drawer
-tap 0.93 0.86; tap 0.93 0.12; shot pinyin-abc 1   # close drawer, toggle ABC
+tap 0.167 0.966; shot blow 1.5            # 吹号角
+sleep 3; tap 0.5 0.966; shot read 1.6     # 读一读 (mid sequence)
+sleep 4; tap 0.917 0.906; shot more 1     # 更多 drawer
+tap 0.917 0.906; tap 0.917 0.164; shot pinyin-abc 1   # close drawer, toggle ABC
 [ "$QUICK" = "--quick" ] || { shot greet 22; }     # idle ≥ 20 s → greeting
 a logcat -d | grep -oE "DoodLive state [A-Za-z]+ -> [A-Za-z]+" | uniq > "$OUT/states.log" || true
 echo "== done: $(ls "$OUT" | wc -l | tr -d ' ') files; state log in $OUT/states.log"

@@ -401,7 +401,8 @@ namespace DoodLive
             Cue(cueClick);
             showMode = true;
             if (!arReady)
-            {
+            {   // no AR session: stop the pose driver (it would snap the camera back to the origin), sky backdrop, fixed camera
+                var tpd = arCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>(); if (tpd) tpd.enabled = false;
                 if (cameraBackground) cameraBackground.enabled = false;
                 arCamera.clearFlags = CameraClearFlags.SolidColor; arCamera.backgroundColor = new Color(0.55f, 0.72f, 0.92f);
                 arCamera.transform.SetPositionAndRotation(new Vector3(0, 1.2f, 0), Quaternion.identity);
@@ -550,7 +551,7 @@ namespace DoodLive
             var rLang = new Rect(sx, sy, sw, sh); uiRects.Add(rLang);
             if (GUI.Button(rLang, L10n.IsZh ? "EN" : "中", segOff)) { Cue(cueClick); L10n.Toggle(); }
             var rMute = new Rect(sx - sw - 6, sy, sw, sh); uiRects.Add(rMute);
-            if (GUI.Button(rMute, muted ? "🔇" : "🔊", segOff)) { muted = !muted; PlayerPrefs.SetInt("muted", muted ? 1 : 0); AudioListener.volume = muted ? 0 : 1; }
+            if (GUI.Button(rMute, L10n.T(muted ? "unmute" : "mute"), segOff)) { muted = !muted; PlayerPrefs.SetInt("muted", muted ? 1 : 0); AudioListener.volume = muted ? 0 : 1; }
             float segA = Fade("seg", live && Titles, 4f);
             if (segA > 0)
             {
