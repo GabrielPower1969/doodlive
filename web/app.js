@@ -205,12 +205,14 @@ function refreshButtons() {
 // Recorded lines (Gabriel's own voice, tools/process_voice.py) with Web Speech as the fallback.
 const VOICE_SET = 'assets/voice/gabriel', CLIP = { '哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！': 'voice_hello' };
 let currentClip = null;
+const theme = new Audio('assets/music/theme.mp3'); theme.loop = true; const MUSIC_BED = 0.22;
+function duck(on) { const target = on ? MUSIC_BED * 0.4 : MUSIC_BED; const step = () => { theme.volume += Math.sign(target - theme.volume) * 0.02; if (Math.abs(theme.volume - target) > 0.021) requestAnimationFrame(step); else theme.volume = target; }; step(); }
 function speak(text) {
   const key = CLIP[text] ?? ('voice_' + LINES.indexOf(text));
   const a = new Audio(`${VOICE_SET}/${key}.mp3`);
   currentClip?.pause(); currentClip = a;
-  a.onplay = () => { angel.talking = true; };
-  a.onended = a.onerror = () => { angel.talking = false; if (a.error) say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }); };
+  a.onplay = () => { angel.talking = true; duck(true); };
+  a.onended = a.onerror = () => { angel.talking = false; duck(false); if (a.error) say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }); };
   a.play().catch(() => say(text, { onstart: () => { angel.talking = true; }, onend: () => { angel.talking = false; } }));
 }
 
@@ -218,6 +220,8 @@ function enterScene(holder) {
   holder.add(angel.root);
   angel.root.visible = true;
   setPhase('enter'); fx.trigger('enter'); chime();
+  new Audio('assets/music/swell.mp3').play().catch(() => {});
+  if (theme.paused) { theme.volume = MUSIC_BED; theme.play().catch(() => {}); }
   setTimeout(() => speak('哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！'), 900);
 }
 

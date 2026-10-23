@@ -490,7 +490,7 @@ namespace DoodLive.EditorTools
             ctl.voice = app.AddComponent<AudioSource>();
             ctl.music = app.AddComponent<AudioSource>();
             ctl.sfx.playOnAwake = ctl.voice.playOnAwake = ctl.music.playOnAwake = false;
-            ctl.music.loop = true; ctl.music.volume = 0.35f;
+            ctl.music.loop = true; ctl.music.volume = 0.22f; ctl.voice.volume = 1f; ctl.sfx.volume = 0.8f;
             AudioClip Clip(string n) => AssetDatabase.LoadAssetAtPath<AudioClip>($"{Root}/Audio/{n}.wav");
             ctl.fanfare = Clip("fanfare"); ctl.chime = Clip("chime"); ctl.hello = Clip("voice_hello");
             ctl.music.clip = Clip("theme"); ctl.swell = Clip("swell");

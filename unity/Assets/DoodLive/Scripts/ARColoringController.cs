@@ -37,6 +37,7 @@ namespace DoodLive
         public AudioSource sfx;
         public AudioSource voice;
         public AudioSource music;               // theme loop, starts at the reveal
+        public float musicBed = 0.22f;          // theme volume under speech-free moments
         public AudioClip fanfare, chime, hello, swell;
         public AudioClip[] lines;
 
@@ -120,6 +121,8 @@ namespace DoodLive
 
         void Update()
         {
+            // the voice must stay in front: music ducks to 40% while a line plays (Gabriel: 人声太靠后)
+            if (music && music.isPlaying) music.volume = Mathf.MoveTowards(music.volume, voice && voice.isPlaying ? musicBed * 0.4f : musicBed, Time.deltaTime * 1.5f);
             if (mode == Mode.Scan && !capturing)
             {
                 var sheet = Sheet();
@@ -297,7 +300,7 @@ namespace DoodLive
             angel.Play("Enter", 0, 0);
             sfx.PlayOneShot(chime);
             if (swell) sfx.PlayOneShot(swell, 0.8f);
-            if (music && !music.isPlaying) music.Play();
+            if (music && !music.isPlaying) { music.volume = musicBed; music.Play(); }
             voice.Stop(); voice.clip = hello; voice.PlayDelayed(0.9f);
             status = "点一下天使，听她吹响号角";
         }
