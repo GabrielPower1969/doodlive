@@ -41,13 +41,17 @@ objs = [h, e]
 if PINYIN:
     py = text("pinyin", PINYIN, f"{HERE}/fonts/hiragino-sans-gb-bold.ttf", 0.16, 0.025, 0.003, IVORY, 0.0); objs.append(py)
 for o in objs: o.parent = root
+# orientation markers: importers differ in how they mirror axes (glTFast flips X). "mark_left" sits at the text's
+# left end, "mark_front" in front of the text (towards the reader); the app reads them and corrects itself.
+for name, loc in (("mark_left", (-0.45, 0, 0.1)), ("mark_front", (0, -0.3, 0.1))):
+    m = bpy.data.objects.new(name, None); m.empty_display_size = 0.02; m.location = loc; sc.collection.objects.link(m); m.parent = root
 # normalise width to ~1.0
 bpy.context.view_layer.update()
 w = max(o.dimensions.x for o in objs); s = 1.0 / w
 for o in objs: o.location.x *= s; o.location.z *= s; o.scale = (s, s, s)
 bpy.context.view_layer.update()
 bpy.ops.object.select_all(action='DESELECT')
-for o in [root] + objs: o.select_set(True)
+for o in [root] + objs + [bpy.data.objects['mark_left'], bpy.data.objects['mark_front']]: o.select_set(True)
 os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
 bpy.ops.export_scene.gltf(filepath=OUT, use_selection=True, export_apply=True, export_yup=True)
 print("exported", OUT, "faces", sum(len(o.data.polygons) for o in objs))

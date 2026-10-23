@@ -288,9 +288,8 @@ namespace DoodLive.EditorTools
             var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
             // 3D titles (pipeline/make_title.py): Chinese over English, one per sheet theme; the controller enables the right one
             var titles = new GameObject("titles"); titles.transform.SetParent(A.root.transform, false);
-            titles.transform.localPosition = new Vector3(0, 1.42f, 0);
-            titles.transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);   // glTFast mirrors X: undo it or the glyphs read backwards
-            titles.AddComponent<Billboard>();
+            titles.transform.localPosition = new Vector3(0, 1.42f, 0); titles.transform.localScale = Vector3.one * 0.6f;
+            var bb = titles.AddComponent<Billboard>();
             foreach (var key in new[] { "angel", "fiery", "wrath", "holy" })
             {
                 string tsrc = Path.Combine(RepoRoot, $"assets/titles/{key}.glb"), tdst = $"{Root}/Angel/title_{key}.glb";
@@ -299,6 +298,16 @@ namespace DoodLive.EditorTools
                 var tm = AssetDatabase.LoadAssetAtPath<GameObject>(tdst); if (!tm) continue;
                 var ti = (GameObject)PrefabUtility.InstantiatePrefab(tm); PrefabUtility.UnpackPrefabInstance(ti, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
                 ti.name = key; ti.transform.SetParent(titles.transform, false); ti.SetActive(key == "angel");
+                // self-correct against importer axis conventions using the marker nodes baked into the GLB
+                Transform left = null, front = null;
+                foreach (var t in ti.GetComponentsInChildren<Transform>(true)) { if (t.name == "mark_left") left = t; if (t.name == "mark_front") front = t; }
+                if (left && front)
+                {
+                    var lp = titles.transform.InverseTransformPoint(left.position), fp = titles.transform.InverseTransformPoint(front.position);
+                    if (lp.x > 0) ti.transform.localScale = new Vector3(-1, 1, 1);          // glyphs mirrored -> un-mirror this model
+                    bb.frontSign = fp.z >= 0 ? 1 : -1;                                        // which local axis faces the reader
+                    Debug.Log($"DoodLive title {key}: left.x={lp.x:F2} front.z={fp.z:F2} -> mirror={(lp.x > 0)} frontSign={bb.frontSign}");
+                }
             }
             var animator = A.root.AddComponent<Animator>();
             animator.applyRootMotion = false; animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
