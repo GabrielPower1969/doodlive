@@ -297,9 +297,9 @@ namespace DoodLive.EditorTools
             A.halo.gameObject.AddComponent<Spin>().axis = Vector3.up;
             var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
             // 3D titles (pipeline/make_title.py): Chinese over English/pinyin, one per sheet theme; the controller enables
-            // the right one. Orientation: each instance gets its own Billboard; the readable side / mirroring come from
-            // TitleMirror / TitleFront (env DOODLIVE_TITLE_MIRROR / DOODLIVE_TITLE_FRONT, decided empirically on device,
-            // LESSONS L30). DOODLIVE_TITLE_TEST=1 lays out all four combinations in a grid for one on-device photo.
+            // the right one. Each instance gets its own Billboard; mirroring / readable side come from the env
+            // (DOODLIVE_TITLE_MIRROR=1, DOODLIVE_TITLE_FRONT=-1), decided empirically on device (LESSONS L30).
+            // DOODLIVE_TITLE_TEST=1 lays out all four combinations in a grid for one on-device photo.
             var titles = new GameObject("titles"); titles.transform.SetParent(A.root.transform, false);
             titles.transform.localPosition = new Vector3(0, 1.42f, 0); titles.transform.localScale = Vector3.one * 0.6f;
             bool test = System.Environment.GetEnvironmentVariable("DOODLIVE_TITLE_TEST") == "1";
@@ -333,82 +333,6 @@ namespace DoodLive.EditorTools
                     var ti = LoadTitle(key, key); if (!ti) continue;
                     ti.SetActive(key == "angel"); ti.transform.localScale = new Vector3(mirror, 1, 1);
                     ti.AddComponent<Billboard>().frontSign = front;
-                }
-            }
-            var animator = A.root.AddComponent<Animator>();
-            animator.applyRootMotion = false;
-            animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-            animator.runtimeAnimatorController = MakeController(A);
-            var prefab = PrefabUtility.SaveAsPrefabAsset(A.root, prefabPath);
-            Object.DestroyImmediate(A.root);
-            return prefab;
-        }
-
-        /// <summary>
-        /// The Blender-built angel (pipeline/angel_build.py -> assets/angel/angel.glb), imported by glTFast. Its node
-        /// hierarchy carries the rig names (hips … wingRtip) as plain Transforms with identity rotation, so the same
-        /// AngelPose clips drive it. Materials are remapped by name to the PaperLit set (page-coloured parts) or the
-        /// plain Lit face materials. Returns null when the model or the importer is missing (code-built fallback).
-        /// </summary>
-        static GameObject MakeAngelPrefabFromGlb(Dictionary<string, Material> mats)
-        {
-            string src = Path.Combine(RepoRoot, "assets/angel/angel.glb"), dst = $"{Root}/Angel/angel.glb";
-            if (!File.Exists(src)) { Debug.LogWarning("DoodLive: assets/angel/angel.glb not found, using the code-built angel"); return null; }
-            Copy(src, dst); AssetDatabase.ImportAsset(dst, ImportAssetOptions.ForceUpdate);
-            var model = AssetDatabase.LoadAssetAtPath<GameObject>(dst);
-            if (!model) { Debug.LogWarning("DoodLive: angel.glb did not import (is com.unity.cloud.gltfast installed?)"); return null; }
-
-            var A = new AngelBuilder.Parts { root = new GameObject("Angel"), rig = new GameObject("rig") };
-            A.rig.transform.SetParent(A.root.transform, false);
-            var inst = (GameObject)PrefabUtility.InstantiatePrefab(model);
-            PrefabUtility.UnpackPrefabInstance(inst, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
-            inst.name = "model"; inst.transform.SetParent(A.rig.transform, false);
-            foreach (var t in inst.GetComponentsInChildren<Transform>(true))
-            {
-                if (System.Array.IndexOf(AngelBuilder.BoneNames, t.name) >= 0) A.bones[t.name] = t;
-                if (t.name == "halo") A.halo = t;
-                if (t.name == "cloud") A.cloud = t;
-            }
-            foreach (var n in AngelBuilder.BoneNames) if (!A.bones.ContainsKey(n)) Debug.LogError($"DoodLive: angel.glb has no node '{n}'");
-            var w = A.bones["wristR"].position; Debug.Log($"DoodLive glb rig check: wristR at {w} (expect x>0, y>0), head at {A.bones["head"].position}");
-
-            var byName = new Dictionary<string, string> { ["sash"] = "sash" };
-            foreach (var r in inst.GetComponentsInChildren<Renderer>(true))
-            {
-                var ms = r.sharedMaterials;
-                for (int i = 0; i < ms.Length; i++)
-                {
-                    string n = ms[i] ? ms[i].name.Replace(" (Instance)", "") : "robe";
-                    if (byName.TryGetValue(n, out var alias)) n = alias;
-                    ms[i] = mats.TryGetValue(n, out var m) ? m : mats["robe"];
-                }
-                r.sharedMaterials = ms;
-                r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            }
-            A.halo.gameObject.AddComponent<Spin>().axis = Vector3.up;
-            var cs = A.cloud.gameObject.AddComponent<Spin>(); cs.axis = Vector3.up; cs.radiansPerSecond = 0.1f; cs.bobAmplitude = 0.02f;
-            // 3D titles (pipeline/make_title.py): Chinese over English, one per sheet theme; the controller enables the right one
-            var titles = new GameObject("titles"); titles.transform.SetParent(A.root.transform, false);
-            titles.transform.localPosition = new Vector3(0, 1.42f, 0); titles.transform.localScale = Vector3.one * 0.6f;
-            var bb = titles.AddComponent<Billboard>();
-            foreach (var key in new[] { "angel", "fiery", "wrath", "holy" })
-            {
-                string tsrc = Path.Combine(RepoRoot, $"assets/titles/{key}.glb"), tdst = $"{Root}/Angel/title_{key}.glb";
-                if (!File.Exists(tsrc)) continue;
-                Copy(tsrc, tdst); AssetDatabase.ImportAsset(tdst, ImportAssetOptions.ForceUpdate);
-                var tm = AssetDatabase.LoadAssetAtPath<GameObject>(tdst); if (!tm) continue;
-                var ti = (GameObject)PrefabUtility.InstantiatePrefab(tm); PrefabUtility.UnpackPrefabInstance(ti, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
-                ti.name = key; ti.transform.SetParent(titles.transform, false); ti.SetActive(key == "angel");
-                // self-correct against importer axis conventions using the marker nodes baked into the GLB
-                Transform left = null, front = null;
-                foreach (var t in ti.GetComponentsInChildren<Transform>(true)) { if (t.name == "mark_left") left = t; if (t.name == "mark_front") front = t; }
-                if (left && front)
-                {
-                    var lp = titles.transform.InverseTransformPoint(left.position);
-                    var fp = titles.transform.InverseTransformPoint(front.position);
-                    if (lp.x > 0) ti.transform.localScale = new Vector3(-1, 1, 1);          // glyphs mirrored -> un-mirror this model
-                    bb.frontSign = fp.z >= 0 ? 1 : -1;                                        // which local axis faces the reader
-                    Debug.Log($"DoodLive title {key}: left.x={lp.x:F2} front.z={fp.z:F2} -> mirror={(lp.x > 0)} frontSign={bb.frontSign}");
                 }
             }
             var animator = A.root.AddComponent<Animator>();
