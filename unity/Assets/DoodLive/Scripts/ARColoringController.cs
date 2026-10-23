@@ -54,8 +54,11 @@ namespace DoodLive
         static readonly int BlowId = Animator.StringToHash("Blow");
         static readonly int BlowState = Animator.StringToHash("Blow");
 
+        public static string Fingerprint => Resources.Load<TextAsset>("build_fingerprint")?.text.Trim() ?? Application.version;
+
         void Start()
         {
+            Debug.Log($"DoodLive build {Fingerprint}");          // scripts/install-apk.sh greps this line
             tpl = Template.Load();
             pageTex = new Texture2D(TexSize, TexSize, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp, name = "ScannedPage" };
             holder = new GameObject("AngelHolder").transform;
@@ -425,6 +428,9 @@ namespace DoodLive
                 if (GUI.Button(r, buttons[i].Item1, button)) buttons[i].Item2();
             }
             uiRects.Add(new Rect(0, 0, w, top + u * 1.8f));
+            var fpStyle = new GUIStyle(GUI.skin.label) { fontSize = Mathf.RoundToInt(u * 0.28f), alignment = TextAnchor.LowerRight };
+            fpStyle.normal.textColor = new Color(1, 1, 1, 0.45f);
+            GUI.Label(new Rect(0, Screen.height - bottom - u * 0.4f, w - u * 0.2f, u * 0.4f), Fingerprint, fpStyle);
         }
     }
 }

@@ -18,7 +18,11 @@ run() {
     -executeMethod "DoodLive.EditorTools.DoodLiveSetup.$method" -logFile "$PWD/$log" || {
       grep -E "error CS|Error building|BuildFailedException|DoodLive build" "$log" | head -20; exit 1; }
 }
+# fingerprint = git short sha (+dirty) . UTC time; baked into versionName and Resources by DoodLiveSetup.Build
+FP="$(git -C .. rev-parse --short HEAD)$(git -C .. diff --quiet HEAD -- . ../web ../assets ../tools 2>/dev/null || echo -dirty).$(date -u +%Y%m%d-%H%M)"
+export DOODLIVE_FINGERPRINT="$FP"
 [ "${1:-}" = "--skip-setup" ] || run Setup
 run Build
+echo "$FP" > Builds/DoodLive.apk.fingerprint
 ls -la Builds/DoodLive.apk
-echo "Install on a phone:  adb install -r unity/Builds/DoodLive.apk"
+echo "build fingerprint: $FP   (install + verify with scripts/install-apk.sh)"

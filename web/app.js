@@ -13,6 +13,8 @@ import { unlockAudio, fanfare, chime, say } from './audio.js';
 const $ = id => document.getElementById(id);
 const video = $('video'), glCanvas = $('gl');
 const tpl = await (await fetch('assets/template.json')).json();
+const build = await fetch('build.json').then(r => r.json()).catch(() => ({ sha: 'dev', time: '' }));
+console.log(`DoodLive web build ${build.sha}.${build.time}`);
 const TEX = 1024;
 const [AX, AY, AWT, AHT] = tpl.art;   // art rectangle on the sheet, template px
 
@@ -434,4 +436,5 @@ layout();
 renderer.setAnimationLoop(frame);
 
 // debug hook for automated checks
-window.__doodlive = { S, angel, action, scene, camera, grav, enterXR };
+window.__doodlive = { S, angel, action, scene, camera, grav, enterXR, build };
+document.getElementById('build').textContent = `${build.sha}.${build.time}`;

@@ -57,6 +57,16 @@ namespace DoodLive.EditorTools
                 EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
             EditorUserBuildSettings.buildAppBundle = false;
             Directory.CreateDirectory("Builds");
+            // Build fingerprint (scripts/build-apk.sh exports DOODLIVE_FINGERPRINT = <sha>[-dirty].<UTC>): versionName,
+            // a Resources text asset (shown in the HUD, logged at start) and a monotonically increasing versionCode.
+            string fp = System.Environment.GetEnvironmentVariable("DOODLIVE_FINGERPRINT");
+            if (string.IsNullOrEmpty(fp)) fp = "local." + System.DateTime.UtcNow.ToString("yyyyMMdd-HHmm");
+            PlayerSettings.bundleVersion = fp;
+            PlayerSettings.Android.bundleVersionCode = (int)(System.DateTime.UtcNow - new System.DateTime(2026, 1, 1)).TotalMinutes;
+            Directory.CreateDirectory($"{Root}/Resources");
+            File.WriteAllText($"{Root}/Resources/build_fingerprint.txt", fp);
+            AssetDatabase.ImportAsset($"{Root}/Resources/build_fingerprint.txt", ImportAssetOptions.ForceUpdate);
+            Debug.Log($"DoodLive build fingerprint: {fp}");
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = new[] { $"{Root}/Scenes/DoodLive.unity" },

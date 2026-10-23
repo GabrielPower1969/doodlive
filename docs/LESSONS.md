@@ -161,6 +161,20 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - The page loads ~10 ES modules in parallel; `ThreadingHTTPServer` keeps Python's default listen backlog of 5, so a
   burst of connections gets reset (always a different file). Fix: `request_queue_size = 128` in `scripts/serve.py`.
 
+### L28 · "Fixed" twice, phone still showed the old title · 2026-10-24 · confirmed
+- **Symptom:** two rebuilds in a row, the mirrored 3D title never changed on the Pixel.
+- **Cause:** a CS0819 compile error made `Setup` fail; `scripts/build-apk.sh … | tail -1` swallowed the non-zero exit,
+  `Build` then packaged the stale prefab, and `adb install` happily installed it. Nothing checked that the APK on the
+  phone was the code just written.
+- **Fix (Gabriel's rule: 每次修改都要留指纹，install 要对指纹):** build fingerprint `<sha>[-dirty].<UTC>` in versionName,
+  in `Resources/build_fingerprint.txt` and in the app's first log line; `scripts/install-apk.sh` compares the installed
+  versionName and the running log against `Builds/DoodLive.apk.fingerprint` and exits non-zero on any mismatch.
+  Shell chains use `set -o pipefail`. Web pages carry `build.json` the same way.
+
+### L29 · Editing a shell script while it runs · 2026-10-24 · confirmed
+- bash reads a script incrementally; I rewrote `build-apk.sh` while a build was running and it died with
+  `line 23: ked: command not found` after the build step. Never edit a script that is executing; edit, then start.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

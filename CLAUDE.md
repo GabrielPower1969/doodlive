@@ -34,7 +34,12 @@ unity/, tools/make_audio.py   Unity port, owned by a separate session while in p
 5. Every adb command targets one device with `-s <serial>`. Never `adb kill-server` while another session may be
    using the phone; a restart also cancels the on-screen authorisation prompt (LESSONS L1, L4).
 6. "Up" comes from gravity (devicemotion) or the WebXR world, never from the paper normal (LESSONS L14).
-7. When you hit a new pitfall, add it to `docs/LESSONS.md` in the same commit as the fix.
+7. **Every build carries a fingerprint and every install verifies it.** `scripts/build-apk.sh` bakes
+   `<git sha>[-dirty].<UTC time>` into the APK's versionName, `Resources/build_fingerprint.txt` and the first log line
+   `DoodLive build <fp>`; `scripts/install-apk.sh` refuses to report success unless the installed versionName AND the
+   running app's log match `Builds/DoodLive.apk.fingerprint`. Never `adb install` by hand; never pipe the build script
+   into `tail` (it hides the exit code). Web: `scripts/stamp-web.sh` → `web/build.json`, shown bottom-right (LESSONS L28).
+8. When you hit a new pitfall, add it to `docs/LESSONS.md` in the same commit as the fix.
 
 ## Verify
 Desktop: open the demo (看演示), confirm the angel renders and `window.__doodlive.action()` animates.
