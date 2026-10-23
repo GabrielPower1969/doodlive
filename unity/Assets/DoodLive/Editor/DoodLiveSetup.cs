@@ -39,6 +39,8 @@ namespace DoodLive.EditorTools
             CopyInputs();
             var sheets = Sheets.Select(n => ImportTexture($"{Root}/Tracking/{n}.png", readable: true, maxSize: 2048)).ToArray();
             var demo = ImportTexture($"{Root}/Textures/demo-colored.png", readable: false, maxSize: 1024);
+            foreach (var ui in Directory.GetFiles($"{Root}/Resources/UI", "*.png"))   // Paper & Crayon icons (tools/make_ui_icons.py): crisp, uncompressed
+                ImportTexture(ui.Replace('\\', '/'), readable: false, maxSize: 1024);
             var library = MakeReferenceLibrary(sheets);
             SetupRenderPipeline();
             var mats = MakeMaterials(demo);
@@ -107,6 +109,7 @@ namespace DoodLive.EditorTools
             ti.wrapMode = TextureWrapMode.Clamp;
             ti.maxTextureSize = maxSize;
             ti.sRGBTexture = true;
+            ti.alphaIsTransparency = true;
             ti.SaveAndReimport();
             return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }

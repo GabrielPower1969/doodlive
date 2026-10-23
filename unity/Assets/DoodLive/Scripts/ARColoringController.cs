@@ -2,7 +2,7 @@
 //
 //   Home ─► Permission ─► Scan.Search ─► Scan.Locked(1.5 s) ─► Reveal(≤4 s, uninterruptible) ─► Live.Idle
 //                            │  └─30 s─► Scan.Help                                              │  ▲
-//                            └──────────────────────────────── Live.Lost ◄── tracking lost 1.5 s ─┘  │
+//                            └──────────────────────────────── Live.Lost ◄── tracking lost 1.0 s ─┘  │
 //                                                   Live.Blow / Live.Read / Live.Greet ───────────────┘
 //   Paused: app in background — music fades out 0.3 s, back in 0.6 s, no re-scan.
 //
@@ -24,7 +24,7 @@ using UnityEngine.Android;
 
 namespace DoodLive
 {
-    public class ARColoringController : MonoBehaviour
+    public partial class ARColoringController : MonoBehaviour
     {
         public const int TexSize = 1024;
 
@@ -55,8 +55,8 @@ namespace DoodLive
         AudioClip[] Greets => !L10n.IsZh && greetsEn != null && greetsEn.Length > 0 ? greetsEn : greets;
 
         // ---------------- timings (seconds) — UX-PLAN §3/§4 ----------------
-        const float LockSeconds = 1.5f, HelpAfter = 30f, LostAfter = 1.5f, GreetAfter = 20f, GreetEvery = 25f, GreetMax = 2;
-        const float RevealSeconds = 1.4f, BlowSeconds = 3.3f, ReadStep = 1.3f;
+        const float LockSeconds = 1.5f, HelpAfter = 30f, LostAfter = 1.0f, GreetAfter = 20f, GreetEvery = 25f, GreetMax = 2;
+        const float RevealSeconds = 1.4f, BlowSeconds = 3.3f, ReadStep = 1.3f, HintAfter = 5f, GateHold = 2f;
 
         public enum State { Home, Permission, ScanSearch, ScanLocked, ScanHelp, Reveal, LiveIdle, LiveBlow, LiveRead, LiveGreet, LiveLost }
         public State state = State.Home;
@@ -67,9 +67,9 @@ namespace DoodLive
         Transform holder;
         Texture2D pageTex;
         Color32[] rawPx, cleanPx;
-        bool showLines, arReady, arUnsupported, showMode, capturing, moreOpen, muted;
+        bool showLines, arReady, arUnsupported, showMode, capturing, moreOpen, muted, haptics = true;
         string statusKey = "", statusArg = "";
-        float lockedFor, untracked, idleSince, lastGreet; int greetCount, lineIdx, greetIdx;
+        float lockedFor, untracked, idleSince, lastGreet, lastTouch; int greetCount, lineIdx, greetIdx;
         static readonly int BlowId = Animator.StringToHash("Blow"), BlowState = Animator.StringToHash("Blow");
 
         public static string Fingerprint => Resources.Load<TextAsset>("build_fingerprint")?.text.Trim() ?? Application.version;
@@ -86,6 +86,7 @@ namespace DoodLive
             if (session) session.enabled = false;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             muted = PlayerPrefs.GetInt("muted", 0) == 1; AudioListener.volume = muted ? 0 : 1;
+            haptics = PlayerPrefs.GetInt("haptics", 1) == 1; musicBed = PlayerPrefs.GetFloat("musicBed", musicBed);
             MakeCues();
             Go(State.Home);
         }
@@ -94,6 +95,7 @@ namespace DoodLive
         {
             if (state == s) return;
             Debug.Log($"DoodLive state {state} -> {s}");
+            if (state == State.Reveal && s == State.LiveIdle) Buzz(30);   // one soft bump when she lands (screen 05)
             state = s; stateT = 0;
             switch (s)
             {
@@ -161,7 +163,12 @@ namespace DoodLive
                 case State.LiveIdle:
                     if (TrackingLost()) { untracked += dt; if (untracked > LostAfter) Go(State.LiveLost); } else untracked = 0;
                     if (Time.time - idleSince > GreetAfter && greetCount < GreetMax && Time.time - lastGreet > GreetEvery && !voice.isPlaying) Greet();
-                    if (TappedOutsideUI()) Blow();
+                    var tap = TapOutsideUI();
+                    if (tap.HasValue)
+                    {   // the angel is the button (screen 06): tap the 3D title = read it, anywhere else = trumpet
+                        lastTouch = Time.time; moreOpen = false;
+                        if (OnTitle(tap.Value)) { Cue(cueClick); StartCoroutine(ReadSequence()); } else Blow();
+                    }
                     break;
                 case State.LiveBlow:
                     if (stateT >= BlowSeconds) Go(State.LiveIdle);
@@ -345,8 +352,8 @@ namespace DoodLive
             sfx.PlayOneShot(chime);
             if (swell) sfx.PlayOneShot(swell, 0.8f);
             if (music && !music.isPlaying) { music.volume = musicBed; music.Play(); }
-            PlayVoice(Hello, 0.9f);
-            greetCount = 0; moreOpen = false; flashT = Time.time;
+            PlayVoice(Hello, 0.9f, "hello");
+            greetCount = 0; moreOpen = false; flashT = Time.time; lastTouch = Time.time + 1.5f;
             statusKey = "tap";
         }
 
@@ -357,7 +364,7 @@ namespace DoodLive
             Go(State.LiveBlow);
             angel.SetTrigger(BlowId);
             sfx.PlayOneShot(fanfare);
-            var L = Lines; if (L != null && L.Length > 0) PlayVoice(L[lineIdx++ % L.Length], fanfare.length * 0.95f);
+            var L = Lines; if (L != null && L.Length > 0) { int i = lineIdx++ % L.Length; PlayVoice(L[i], fanfare.length * 0.95f, "line" + i); }
             idleSince = Time.time;
         }
 
@@ -366,7 +373,7 @@ namespace DoodLive
             var G = Greets; if (G == null || G.Length == 0) { idleSince = Time.time; return; }
             Go(State.LiveGreet);
             greetCount++; lastGreet = Time.time; idleSince = Time.time;
-            PlayVoice(G[greetIdx++ % G.Length], 0);
+            int g = greetIdx++ % G.Length; PlayVoice(G[g], 0, "greet" + g);
             titleBounce = Time.time;
         }
 
@@ -379,16 +386,17 @@ namespace DoodLive
             string[] keys = { "readHanzi", pinyinMode ? "readPinyin" : "readEnglish", pinyinMode ? "readEnglish" : "readPinyin" };
             for (int i = 0; i < order.Length && titles; i++)
             {
-                statusKey = keys[i]; sfx.PlayOneShot(chime, 0.5f);
+                statusKey = keys[i]; readKey = keys[i]; sfx.PlayOneShot(chime, 0.5f);
                 var part = FindPart(titles, order[i]);
                 bool wasActive = part && part.gameObject.activeSelf;
                 if (part) { part.gameObject.SetActive(true); StartCoroutine(Punch(part, ReadStep)); }
                 yield return new WaitForSeconds(ReadStep);
                 if (part && !wasActive) part.gameObject.SetActive(false);
             }
-            statusKey = "tap"; idleSince = Time.time;
+            statusKey = "tap"; readKey = null; idleSince = Time.time; lastTouch = Time.time;
             Go(State.LiveIdle);
         }
+        string readKey;
         Transform FindPart(Transform titles, string name)
         {
             foreach (Transform t in titles) if (t.gameObject.activeSelf) foreach (var p in t.GetComponentsInChildren<Transform>(true)) if (p.name == name) return p;
@@ -421,9 +429,11 @@ namespace DoodLive
         // ---------------- audio director: voice > sfx > music, voices never overlap ----------------
         AudioSource voiceOld; float voiceFade;
         AudioClip cueClick, cueLock, cueLost;
-        void PlayVoice(AudioClip clip, float delay)
+        string voiceKey; float voiceFrom;   // what she is saying, for the speech bubble
+        void PlayVoice(AudioClip clip, float delay, string key = null)
         {
             if (!clip) return;
+            voiceKey = key; voiceFrom = Time.time + delay;
             if (voice.isPlaying)
             {   // hand the playing line to a fading source (150 ms) so the new one never overlaps it
                 if (!voiceOld) { voiceOld = gameObject.AddComponent<AudioSource>(); voiceOld.playOnAwake = false; }
@@ -462,190 +472,6 @@ namespace DoodLive
             if (p) { if (voice.isPlaying) voice.Pause(); } else { voice.UnPause(); idleSince = Time.time; }
         }
 
-        // ---------------- UI: IMGUI with transitions (UX-PLAN §4) ----------------
-        readonly List<Rect> uiRects = new List<Rect>();
-        GUIStyle button, buttonPrimary, buttonGhost, label, small, segOn, segOff, card, cardText, h1;
-        Texture2D pillGold, pillGhost, pillDark, white;
-        readonly Dictionary<string, float> fade = new Dictionary<string, float>();   // element -> 0..1 visibility
-        string shownStatus = "", prevStatus = ""; float statusT = 1; float flashT = -9, titleBounce = -9;
-
-        float Fade(string key, bool visible, float speed = 4f)
-        {
-            fade.TryGetValue(key, out var v);
-            v = Mathf.MoveTowards(v, visible ? 1 : 0, Time.unscaledDeltaTime * speed);
-            fade[key] = v; return v;
-        }
-        static float EaseOut(float x) => 1 - (1 - x) * (1 - x);
-
-        bool TappedOutsideUI()
-        {
-            Vector2? p = null;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) p = Input.GetTouch(0).position;
-            else if (Input.GetMouseButtonDown(0)) p = Input.mousePosition;
-            if (p == null) return false;
-            var gp = new Vector2(p.Value.x, Screen.height - p.Value.y);
-            foreach (var r in uiRects) if (r.Contains(gp)) return false;
-            return true;
-        }
-
-        static Texture2D Pill(Color c)
-        {
-            const int S = 48; var t = new Texture2D(S, S, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
-            for (int y = 0; y < S; y++) for (int x = 0; x < S; x++)
-            {
-                float dx = Mathf.Max(0, Mathf.Abs(x - S / 2f + 0.5f) - (S / 2f - 20)), dy = Mathf.Max(0, Mathf.Abs(y - S / 2f + 0.5f) - (S / 2f - 20));
-                float d = Mathf.Sqrt(dx * dx + dy * dy); t.SetPixel(x, y, new Color(c.r, c.g, c.b, c.a * Mathf.Clamp01(19.5f - d)));
-            }
-            t.Apply(); return t;
-        }
-
-        void InitStyles()
-        {
-            var font = Font.CreateDynamicFontFromOSFont(new[] { "Noto Sans CJK SC", "Noto Sans SC", "SamsungOneUI", "Droid Sans Fallback", "PingFang SC", "sans-serif" }, 32);
-            int fs = Mathf.RoundToInt(Mathf.Min(Screen.width, Screen.height) / 26f);
-            pillGold = Pill(new Color(1f, 0.81f, 0.29f)); pillGhost = Pill(new Color(1, 1, 1, 0.16f)); pillDark = Pill(new Color(0.08f, 0.1f, 0.14f, 0.82f));
-            white = Texture2D.whiteTexture;
-            buttonPrimary = new GUIStyle(GUI.skin.label) { font = font, fontSize = fs, alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, border = new RectOffset(20, 20, 20, 20) };
-            buttonPrimary.normal.background = pillGold; buttonPrimary.normal.textColor = new Color(0.16f, 0.11f, 0f);
-            buttonGhost = new GUIStyle(buttonPrimary) { fontStyle = FontStyle.Normal }; buttonGhost.normal.background = pillGhost; buttonGhost.normal.textColor = Color.white;
-            button = buttonGhost;
-            label = new GUIStyle(GUI.skin.label) { font = font, fontSize = fs, alignment = TextAnchor.MiddleCenter, wordWrap = true }; label.normal.textColor = Color.white;
-            small = new GUIStyle(label) { fontSize = Mathf.RoundToInt(fs * 0.7f) }; small.normal.textColor = new Color(1, 1, 1, 0.75f);
-            h1 = new GUIStyle(label) { fontSize = Mathf.RoundToInt(fs * 2.2f), fontStyle = FontStyle.Bold }; h1.normal.textColor = new Color(1f, 0.85f, 0.45f);
-            segOn = new GUIStyle(buttonPrimary) { fontSize = Mathf.RoundToInt(fs * 0.8f) };
-            segOff = new GUIStyle(buttonGhost) { fontSize = Mathf.RoundToInt(fs * 0.8f) }; segOff.normal.textColor = new Color(0.85f, 0.88f, 0.92f);
-            card = new GUIStyle(GUI.skin.box) { border = new RectOffset(20, 20, 20, 20) }; card.normal.background = pillDark;
-            cardText = new GUIStyle(label) { alignment = TextAnchor.MiddleLeft, fontSize = Mathf.RoundToInt(fs * 0.85f) };
-        }
-
-        void OnGUI()
-        {
-            if (button == null) InitStyles();
-            uiRects.Clear();
-            float u = Mathf.Min(Screen.width, Screen.height) / 12.5f, w = Screen.width, h = Screen.height;
-            float top = h - Screen.safeArea.yMax, bottom = Screen.safeArea.yMin;
-            bool live = state >= State.LiveIdle, scanning = state == State.ScanSearch || state == State.ScanLocked || state == State.ScanHelp;
-
-            // -- reveal flash (60 ms white) + lost dimming (30 %)
-            float flash = Mathf.Clamp01(1 - (Time.time - flashT) / 0.25f);
-            if (flash > 0) { GUI.color = new Color(1, 1, 1, flash * 0.9f); GUI.DrawTexture(new Rect(0, 0, w, h), white); }
-            float dim = Fade("dim", state == State.LiveLost, 2.5f);
-            if (dim > 0) { GUI.color = new Color(0, 0, 0, 0.3f * dim); GUI.DrawTexture(new Rect(0, 0, w, h), white); }
-            GUI.color = Color.white;
-
-            // -- status bar: text crossfades + slides 8 px (200 ms)
-            string want = statusKey == "" ? "" : (statusKey == "camFail" || statusKey == "xrFail" ? L10n.T(statusKey, statusArg) : L10n.T(statusKey));
-            if (want != shownStatus) { prevStatus = shownStatus; shownStatus = want; statusT = 0; }
-            statusT = Mathf.Min(1, statusT + Time.unscaledDeltaTime / 0.2f);
-            float barA = Fade("bar", shownStatus != "" && state != State.Home, 5f);
-            if (barA > 0)
-            {
-                GUI.color = new Color(1, 1, 1, barA); GUI.Box(new Rect(0, top, w, u * 1.6f), GUIContent.none);
-                float e = EaseOut(statusT);
-                GUI.color = new Color(1, 1, 1, barA * (1 - e)); GUI.Label(new Rect(u * 0.3f, top - 8 * e, w - u * 0.6f, u * 1.6f), prevStatus, label);
-                GUI.color = new Color(1, 1, 1, barA * e); GUI.Label(new Rect(u * 0.3f, top + 8 * (1 - e), w - u * 0.6f, u * 1.6f), shownStatus, label);
-                GUI.color = Color.white;
-                if (state == State.ScanLocked)   // lock progress (1.5 s) under the status text
-                {
-                    GUI.color = new Color(0.37f, 0.96f, 0.6f, 0.9f); GUI.DrawTexture(new Rect(0, top + u * 1.6f - 4, w * Mathf.Clamp01(lockedFor / LockSeconds), 4), white); GUI.color = Color.white;
-                }
-            }
-
-            // -- top-right: 中/EN, mute (always), 拼音/ABC (live)
-            float sw = u * 1.5f, sh = u * 0.95f, sy = top + (barA > 0.5f ? u * 1.9f : u * 0.4f), sx = w - u * 0.3f - sw;
-            var rLang = new Rect(sx, sy, sw, sh); uiRects.Add(rLang);
-            if (GUI.Button(rLang, L10n.IsZh ? "EN" : "中", segOff)) { Cue(cueClick); L10n.Toggle(); }
-            var rMute = new Rect(sx - sw - 6, sy, sw, sh); uiRects.Add(rMute);
-            if (GUI.Button(rMute, L10n.T(muted ? "unmute" : "mute"), segOff)) { muted = !muted; PlayerPrefs.SetInt("muted", muted ? 1 : 0); AudioListener.volume = muted ? 0 : 1; }
-            float segA = Fade("seg", live && Titles, 4f);
-            if (segA > 0)
-            {
-                GUI.color = new Color(1, 1, 1, segA);
-                float ty = sy + sh + 8; var r1 = new Rect(w - u * 0.3f - sw * 2 - 6, ty, sw, sh); var r2 = new Rect(w - u * 0.3f - sw, ty, sw, sh);
-                if (GUI.Button(r1, L10n.T("pinyin"), pinyinMode ? segOn : segOff)) { Cue(cueClick); pinyinMode = true; ShowTitle(null); }
-                if (GUI.Button(r2, L10n.T("abc"), pinyinMode ? segOff : segOn)) { Cue(cueClick); pinyinMode = false; ShowTitle(null); }
-                uiRects.Add(r1); uiRects.Add(r2); GUI.color = Color.white;
-            }
-
-            // -- Home panel
-            float homeA = Fade("home", state == State.Home, 4f);
-            if (homeA > 0)
-            {
-                GUI.color = new Color(0.06f, 0.08f, 0.13f, 0.92f * homeA); GUI.DrawTexture(new Rect(0, 0, w, h), white); GUI.color = new Color(1, 1, 1, homeA);
-                float cy = h * 0.34f + 12 * (1 - EaseOut(homeA));
-                GUI.Label(new Rect(0, cy - u * 2.4f, w, u * 2.2f), "DoodLive", h1);
-                GUI.Label(new Rect(u, cy - u * 0.2f, w - 2 * u, u * 1.6f), L10n.T("tagline"), label);
-                if (statusKey == "noPerm" || statusKey == "noAR") GUI.Label(new Rect(u, cy + u * 1.4f, w - 2 * u, u * 1.6f), L10n.T(statusKey), small);
-                float bw = Mathf.Min(w - 2 * u, u * 6.5f), bx = (w - bw) / 2, by = h * 0.62f;
-                var rScan = new Rect(bx, by, bw, u * 1.35f); var rDemo = new Rect(bx, by + u * 1.7f, bw, u * 1.2f);
-                uiRects.Add(rScan); uiRects.Add(rDemo);
-                if (GUI.Button(rScan, L10n.T(arUnsupported ? "scanLong" : "scanLong"), buttonPrimary)) { Cue(cueClick); Go(State.Permission); }
-                if (GUI.Button(rDemo, L10n.T("demo"), buttonGhost)) ShowDemo();
-                GUI.color = Color.white;
-            }
-
-            // -- Help card (30 s without a sheet)
-            float helpA = Fade("help", state == State.ScanHelp, 4f);
-            if (helpA > 0)
-            {
-                GUI.color = new Color(1, 1, 1, helpA);
-                float cw = Mathf.Min(w - u, u * 9), ch = u * 6.2f, cx = (w - cw) / 2, cy = h * 0.5f - ch / 2 + 12 * (1 - EaseOut(helpA));
-                GUI.Box(new Rect(cx, cy, cw, ch), GUIContent.none, card);
-                GUI.Label(new Rect(cx + u * 0.5f, cy + u * 0.3f, cw - u, u), L10n.T("helpTitle"), label);
-                for (int i = 1; i <= 3; i++) GUI.Label(new Rect(cx + u * 0.6f, cy + u * (0.5f + i * 1.0f), cw - u * 1.2f, u), $"{i}.  {L10n.T("help" + i)}", cardText);
-                var rD = new Rect(cx + u * 0.6f, cy + ch - u * 1.55f, cw - u * 1.2f, u * 1.15f); uiRects.Add(rD);
-                if (GUI.Button(rD, L10n.T("helpDemo"), buttonGhost)) ShowDemo();
-                GUI.color = Color.white;
-            }
-
-            // -- bottom buttons: 3 primaries in Live, "更多" drawer for the rest; scan shows 看演示 only
-            var main = new List<(string, System.Action, bool)>();
-            if (scanning) main.Add((L10n.T("demo"), ShowDemo, false));
-            if (live)
-            {
-                bool busy = state == State.LiveBlow || state == State.LiveRead || state == State.Reveal;
-                main.Add((L10n.T("blow"), Blow, !busy && state == State.LiveIdle));
-                main.Add((L10n.T("read"), () => { if (state == State.LiveIdle) { Cue(cueClick); StartCoroutine(ReadSequence()); } }, state == State.LiveIdle));
-                main.Add((L10n.T("rescan"), () => { Cue(cueClick); Rescan(); }, !busy));
-            }
-            float groupA = Fade("buttons", main.Count > 0 && state != State.Reveal, 4.5f);
-            if (groupA > 0 && main.Count > 0)
-            {
-                float bw = (w - u * 0.5f) / main.Count, y = h - bottom - u * 1.6f;
-                for (int i = 0; i < main.Count; i++)
-                {
-                    float a = Mathf.Clamp01(groupA * 1.3f - i * 0.15f), e = EaseOut(a);
-                    var r = new Rect(u * 0.25f + i * bw + 4, y + 12 * (1 - e), bw - 8, u * 1.3f); uiRects.Add(r);
-                    bool enabled = main[i].Item3; GUI.color = new Color(1, 1, 1, a * (enabled ? 1 : 0.4f));
-                    if (GUI.Button(r, main[i].Item1, i == 0 && live ? buttonPrimary : buttonGhost) && enabled) main[i].Item2();
-                }
-                GUI.color = Color.white;
-            }
-            bool hasExtras = rawPx != null || (arReady && !showMode);
-            if (live && hasExtras)
-            {
-                var rMore = new Rect(w - u * 0.3f - sw, h - bottom - u * 3.1f, sw, sh); uiRects.Add(rMore);
-                if (GUI.Button(rMore, L10n.T(moreOpen ? "close" : "more"), segOff)) { Cue(cueClick); moreOpen = !moreOpen; }
-                float moreA = Fade("more", moreOpen && live, 5f);
-                if (moreA > 0)
-                {
-                    var extras = new List<(string, System.Action)>();
-                    if (rawPx != null) extras.Add((L10n.T(showLines ? "linesOn" : "linesOff"), () => { showLines = !showLines; ApplyPage(); }));
-                    if (arReady && !showMode) extras.Add((L10n.T("modeShow"), () => { showMode = true; PlaceInFront(); }));
-                    GUI.color = new Color(1, 1, 1, moreA);
-                    for (int i = 0; i < extras.Count; i++)
-                    {
-                        var r = new Rect(w - u * 0.3f - sw * 2.4f, h - bottom - u * (4.4f + i * 1.25f) + 10 * (1 - EaseOut(moreA)), sw * 2.4f, sh); uiRects.Add(r);
-                        if (GUI.Button(r, extras[i].Item1, buttonGhost)) { Cue(cueClick); extras[i].Item2(); }
-                    }
-                    GUI.color = Color.white;
-                }
-            }
-            uiRects.Add(new Rect(0, 0, w, top + u * 1.8f));
-
-            // -- build fingerprint (bottom-right, 45 % white)
-            var fpStyle = new GUIStyle(GUI.skin.label) { fontSize = Mathf.RoundToInt(u * 0.28f), alignment = TextAnchor.LowerRight }; fpStyle.normal.textColor = new Color(1, 1, 1, 0.45f);
-            GUI.Label(new Rect(0, h - bottom - u * 0.4f, w - u * 0.2f, u * 0.4f), Fingerprint, fpStyle);
-        }
+        // UI lives in ARColoringController.UI.cs (Paper & Crayon, docs/DESIGN-DIRECTION.md)
     }
 }

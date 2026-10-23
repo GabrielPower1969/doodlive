@@ -73,6 +73,14 @@ namespace DoodLive
             { "language", "界面语言" },
             { "tapHer", "点点我！" },
             { "newSheet", "换一张纸" },
+            { "helpLift", "抬高一点" },
+            { "helpLight", "对着亮处" },
+            { "helpSquares", "四个方块" },
+            { "sound", "声音" },
+            { "haptics", "震动" },
+            { "music", "音乐音量" },
+            { "wordCard", "学习卡" },
+            { "done", "好了" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -139,6 +147,14 @@ namespace DoodLive
             { "language", "Language" },
             { "tapHer", "Tap me!" },
             { "newSheet", "New sheet" },
+            { "helpLift", "Lift up" },
+            { "helpLight", "Find light" },
+            { "helpSquares", "4 squares" },
+            { "sound", "Sound" },
+            { "haptics", "Haptics" },
+            { "music", "Music" },
+            { "wordCard", "Word card" },
+            { "done", "Done" },
         };
         static string lang;
         public static string Lang
