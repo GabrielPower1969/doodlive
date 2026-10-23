@@ -417,7 +417,7 @@ namespace DoodLive
             {   // no AR session: stop the pose driver (it would snap the camera back to the origin), sky backdrop, fixed camera
                 var tpd = arCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>(); if (tpd) tpd.enabled = false;
                 if (cameraBackground) cameraBackground.enabled = false;
-                arCamera.clearFlags = CameraClearFlags.SolidColor; arCamera.backgroundColor = new Color(0.55f, 0.72f, 0.92f);
+                arCamera.clearFlags = CameraClearFlags.SolidColor; arCamera.backgroundColor = new Color32(0x9C, 0x6B, 0x45, 0xFF);   // warm table (Paper & Crayon mocks)
                 arCamera.transform.SetPositionAndRotation(new Vector3(0, 1.2f, 0), Quaternion.identity);
             }
             UseDemoTexture(); PlaceInFront(); ShowTitle("angel");

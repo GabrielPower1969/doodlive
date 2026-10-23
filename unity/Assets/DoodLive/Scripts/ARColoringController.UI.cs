@@ -17,7 +17,7 @@ namespace DoodLive
         Texture2D white, dot, disc, ring;
         readonly Dictionary<string, Texture2D> icons = new Dictionary<string, Texture2D>();
         Font fUi, fZh, fDisplay;
-        float u, lip, gateHeld;
+        float u, lip, gateHeld; bool gateJustOpened;   // the finger that opened the gate must not also close it on release
 
         float Fade(string key, bool visible, float speed = 4f)
         {
@@ -368,7 +368,7 @@ namespace DoodLive
             if (bubbleKey != null) lastBubble = bubbleKey;
             if (bubA > 0 && lastBubble != null)
             {
-                var area = land ? new Rect(w * 0.58f, h * 0.18f, w * 0.3f, h * 0.5f) : new Rect(edge, top, w - edge * 2, h - bottom - chip - u * 0.9f);
+                var area = land ? new Rect(w * 0.58f, h * 0.18f, w * 0.3f, h * 0.5f) : new Rect(edge, top, w - edge * 2, h - bottom - edge - chip - lip - u * 0.35f - top);
                 Bubble(L10n.T(lastBubble), L10n.Other(lastBubble), area, bubA);
             }
 
@@ -387,12 +387,12 @@ namespace DoodLive
                 var rLock = new Rect(w - edge - chip, top + edge, chip, chip);
                 bool holding = !moreOpen && Pressed(rLock);
                 gateHeld = holding ? gateHeld + Time.unscaledDeltaTime : 0;
-                if (Chip(rLock, Icon("lock"), DesignTokens.Paper, 0.48f) && moreOpen) { Cue(cueClick); moreOpen = false; }
+                if (Chip(rLock, Icon("lock"), DesignTokens.Paper, 0.48f) && moreOpen) { if (gateJustOpened) gateJustOpened = false; else { Cue(cueClick); moreOpen = false; } }
                 if (gateHeld > 0)
                 {
                     int n = 30; float p = Mathf.Clamp01(gateHeld / GateHold);
                     for (int i = 0; i < n * p; i++) { float ang = -Mathf.PI / 2 + i / (float)n * Mathf.PI * 2; var c = rLock.center + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * chip * 0.66f; Tinted(dot, new Rect(c.x - u * 0.1f, c.y - u * 0.1f, u * 0.2f, u * 0.2f), DesignTokens.Red); }
-                    if (gateHeld >= GateHold) { moreOpen = true; gateHeld = 0; Cue(cueLock); }
+                    if (gateHeld >= GateHold) { moreOpen = true; gateJustOpened = true; gateHeld = 0; Cue(cueLock); }
                 }
                 if (live && state != State.Reveal)
                 {

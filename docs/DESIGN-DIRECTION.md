@@ -2,7 +2,7 @@
 
 **Figma:** [DoodLive · Paper & Crayon redesign](https://www.figma.com/design/M0UmTttcXkqXKgz6vQvJGD). The page
 `00 Foundations` holds the tokens and components; `01 Screens` holds the 10 screens.
-**Status:** proposal. Nothing in `web/` or `unity/` changes until Gabriel approves.
+**Status:** approved 2026-10-24 and built in both apps (web: `web/style.css`, `web/app.js`; Unity: `ARColoringController.UI.cs`). Not yet tested with children or with a printed sheet on the new build.
 
 ![10 screens](design/paper-crayon-screens-2rows.png)
 
@@ -61,10 +61,18 @@ Doodle Dee Doo, Torn Paper Texture Collection, Ocean Friends Coloring Book, Braw
 3. **Mock vs. real AR:** the sheet under the angel is flattened in the mocks. On a phone it will look like a sheet
    lying in perspective on the table.
 
-## If approved: build order
+## Build order (done 2026-10-24)
 
 1. Tokens and fonts in `web/style.css` and Unity (a TMP font asset and colour constants). One shared table, like the strings.
 2. Live screen first (06), with the angel as the button and the word card. This is where the biggest UX gain is.
 3. Scan coaching, lock, help and lost (02–04, 08).
 4. Reveal juice (05), the grown-up gate (09), then landscape (10).
 5. Home (01) and the app icon last.
+
+## Where the build differs from the mocks
+
+- **Word card:** the live screen keeps the 3D extruded title above the angel (an earlier requirement), so tapping
+  the title reads it. The flat 2D word card from the mocks is not built.
+- **Unity tap hint:** the dotted ring and hand are drawn in IMGUI; the ring follows the angel's on-screen bounds.
+- **Unity scan shutter:** capture is automatic (ARCore image tracking), so the shutter is a progress dial, not a button.
+- **Web scan shutter:** still a real button (manual capture fallback), with the same green progress ring.

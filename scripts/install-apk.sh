@@ -17,6 +17,7 @@ echo "== installing build $FP on $S"
 GOT=$("$ADB" -s "$S" shell dumpsys package $PKG | grep -m1 versionName | sed 's/.*versionName=//' | tr -d '\r')
 [ "$GOT" = "$FP" ] || { echo "FINGERPRINT MISMATCH: installed '$GOT' but built '$FP'"; exit 2; }
 "$ADB" -s "$S" shell am force-stop $PKG; "$ADB" -s "$S" logcat -c
+"$ADB" -s "$S" shell input keyevent KEYCODE_WAKEUP; "$ADB" -s "$S" shell wm dismiss-keyguard 2>/dev/null   # an asleep phone never starts Unity (no log line); a PIN lock still needs a human
 "$ADB" -s "$S" shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 for i in $(seq 1 20); do
   if "$ADB" -s "$S" logcat -d | grep -q "DoodLive build $FP"; then echo "== running build $FP confirmed on $S ($("$ADB" -s "$S" shell getprop ro.product.model | tr -d '\r'))"; exit 0; fi

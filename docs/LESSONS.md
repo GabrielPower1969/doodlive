@@ -207,6 +207,18 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **Fix:** recorded English clips in `web/assets/voice/en/` from Microsoft neural voices (`tools/make_voice.sh`, edge-tts, no key), Goliath pitched down and widened with ffmpeg. `web/battle/voice.js` plays them queued with the same onstart/onend contract and falls back to Web Speech (English voice preferred) when a clip is missing or autoplay is blocked.
 - **Prevention:** a spoken line is content, not a runtime effect: record it. Keep Goliath ≤ 6 s so David's cue at 9.0 s is not pushed into the fight (12.85 s). Re-run the script after editing `LINES`.
 
+### L31 · Demo never started in a background tab: `img.decode()` never resolved · 2026-10-24 · confirmed
+- **Symptom:** in the browser pane (hidden), pressing the demo hid the home screen and then nothing happened; no error.
+- **Cause:** `HTMLImageElement.decode()` can stay pending while the page is not visible, so `await img.decode()` hung.
+- **Fix:** load with an `onload`/`onerror` promise (`loadDemoTexture` in `web/app.js`).
+- **Prevention:** don't gate the flow on `decode()`; when a flow "silently stops", log which `await` it is stuck on.
+
+### L32 · Chinese idle greetings 404'd · 2026-10-24 · confirmed
+- **Symptom:** `greet1.mp3` / `greet2.mp3` 404 in zh; the greeting fell back to robotic TTS.
+- **Cause:** the zh recordings are named `fly / wow / laugh`, the en ones `greet0-2`; one name table served both.
+- **Fix:** `ZH_GREET` map in `speak()`; Unity was already right (clips are wired by name in DoodLiveSetup).
+- **Prevention:** check the network panel for 404s after any voice/asset change, in both languages.
+
 ## 中文速览
 
 - **手机一直显示 unauthorized：** 这次的真正原因是电脑上的 adb 密钥坏了，两台手机都一样连不上，这就是判断依据。解决办法：先把 `~/.android/adbkey*` 改名备份，让 adb 重新生成一对密钥，再在手机上点一次“始终允许”。不要反复执行 `adb kill-server`，每重启一次，屏幕上的弹窗就会被取消。

@@ -9,6 +9,10 @@ Colour-in AR angel prototype. Static web app (three.js 0.170 vendored in `web/ve
 | Run on USB Android phone | `scripts/run-on-phone.sh` (`ADB_SERIAL=` when several devices) |
 | Device state | `~/Library/Android/sdk/platform-tools/adb devices -l` |
 | Rebuild sheet / line art / template.json | `python3 tools/make_template.py` |
+| UI strings (both apps) | edit `tools/i18n/strings.json` → `python3 tools/gen_i18n.py` → `python3 tools/make_fonts.py` (font subsets follow the strings) |
+| Design tokens (both apps) | edit `tools/design/tokens.json` → `python3 tools/gen_tokens.py` (→ `web/tokens.css`, `DesignTokens.cs`) |
+| UI icons for Unity | edit `tools/design/icons/*.svg` → `python3 tools/make_ui_icons.py` (headless Chrome → `Resources/UI/*.png`) |
+| Unity APK, install, QA | `scripts/build-apk.sh` → `scripts/install-apk.sh <serial>` → `scripts/qa-shots.sh <serial> [--quick]` |
 
 ## Map
 ```
@@ -19,6 +23,11 @@ web/vision.js          markers, homography, warp, white balance, line erase, pos
 web/angel.js           procedural rigged angel + animate()                          (GLB replacement point)
 web/audio.js           WebAudio fanfare/chime, Web Speech voice                    (recorded audio replacement point)
 web/fx.js              light pillar, magic circle, falling feathers, burst ring
+web/style.css          Paper & Crayon UI (docs/DESIGN-DIRECTION.md); colours/sizes only via tokens.css vars
+web/fonts/             OFL font subsets + each font's licence (generated)
+unity/Assets/DoodLive/Scripts/ARColoringController.cs     state machine, tracking, capture, audio
+unity/Assets/DoodLive/Scripts/ARColoringController.UI.cs  Paper & Crayon IMGUI (same screens as web)
+docs/DESIGN-DIRECTION.md  approved design (Figma link, 10 screens, sources); docs/UX-PLAN.md the state machine
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
 docs/LESSONS.md        pitfalls log: symptom → cause → fix → prevention
@@ -40,6 +49,9 @@ unity/, tools/make_audio.py   Unity port, owned by a separate session while in p
    running app's log match `Builds/DoodLive.apk.fingerprint`. Never `adb install` by hand; never pipe the build script
    into `tail` (it hides the exit code). Web: `scripts/stamp-web.sh` → `web/build.json`, shown bottom-right (LESSONS L28).
 8. When you hit a new pitfall, add it to `docs/LESSONS.md` in the same commit as the fix.
+9. **The angel is the button** (DESIGN-DIRECTION): in Live there is no button bar. Tap the 3D title = read it, tap
+   anywhere else = trumpet. Only two chips stay on screen (new sheet, grown-up lock); settings live behind the 2 s hold.
+10. No hard-coded colours or fonts in UI code: web uses `var(--c-*)`, Unity uses `DesignTokens.*` and `Resources/Fonts`.
 
 ## Verify
 Desktop: open the demo (看演示), confirm the angel renders and `window.__doodlive.action()` animates.
