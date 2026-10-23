@@ -48,6 +48,11 @@ namespace DoodLive
         public AudioClip fanfare, chime, hello, swell;
         public AudioClip[] lines;           // Blow lines, rotate
         public AudioClip[] greets;          // idle greetings (fly / wow / laugh)
+        [Header("English voice (Gabriel, web/assets/voice/gabriel-en)")]
+        public AudioClip helloEn; public AudioClip[] linesEn, greetsEn;
+        AudioClip Hello => !L10n.IsZh && helloEn ? helloEn : hello;
+        AudioClip[] Lines => !L10n.IsZh && linesEn != null && linesEn.Length > 0 ? linesEn : lines;
+        AudioClip[] Greets => !L10n.IsZh && greetsEn != null && greetsEn.Length > 0 ? greetsEn : greets;
 
         // ---------------- timings (seconds) — UX-PLAN §3/§4 ----------------
         const float LockSeconds = 1.5f, HelpAfter = 30f, LostAfter = 1.5f, GreetAfter = 20f, GreetEvery = 25f, GreetMax = 2;
@@ -299,9 +304,9 @@ namespace DoodLive
             var cam = arCamera.transform;
             var fwd = Vector3.ProjectOnPlane(cam.forward, Vector3.up); if (fwd.sqrMagnitude < 1e-4f) fwd = Vector3.forward; fwd.Normalize();
             holder.SetParent(null, false);
-            holder.position = cam.position + cam.forward * 0.8f;
+            holder.position = cam.position + cam.forward * 1.0f - Vector3.up * 0.1f;
             holder.rotation = Quaternion.LookRotation(-fwd, Vector3.up);
-            holder.localScale = Vector3.one * 0.35f;
+            holder.localScale = Vector3.one * 0.3f;
             AnchorHere();
         }
 
@@ -340,7 +345,7 @@ namespace DoodLive
             sfx.PlayOneShot(chime);
             if (swell) sfx.PlayOneShot(swell, 0.8f);
             if (music && !music.isPlaying) { music.volume = musicBed; music.Play(); }
-            PlayVoice(hello, 0.9f);
+            PlayVoice(Hello, 0.9f);
             greetCount = 0; moreOpen = false; flashT = Time.time;
             statusKey = "tap";
         }
@@ -352,16 +357,16 @@ namespace DoodLive
             Go(State.LiveBlow);
             angel.SetTrigger(BlowId);
             sfx.PlayOneShot(fanfare);
-            if (lines != null && lines.Length > 0) PlayVoice(lines[lineIdx++ % lines.Length], fanfare.length * 0.95f);
+            var L = Lines; if (L != null && L.Length > 0) PlayVoice(L[lineIdx++ % L.Length], fanfare.length * 0.95f);
             idleSince = Time.time;
         }
 
         void Greet()
         {
-            if (greets == null || greets.Length == 0) { idleSince = Time.time; return; }
+            var G = Greets; if (G == null || G.Length == 0) { idleSince = Time.time; return; }
             Go(State.LiveGreet);
             greetCount++; lastGreet = Time.time; idleSince = Time.time;
-            PlayVoice(greets[greetIdx++ % greets.Length], 0);
+            PlayVoice(G[greetIdx++ % G.Length], 0);
             titleBounce = Time.time;
         }
 
@@ -616,7 +621,8 @@ namespace DoodLive
                 }
                 GUI.color = Color.white;
             }
-            if (live)
+            bool hasExtras = rawPx != null || (arReady && !showMode);
+            if (live && hasExtras)
             {
                 var rMore = new Rect(w - u * 0.3f - sw, h - bottom - u * 3.1f, sw, sh); uiRects.Add(rMore);
                 if (GUI.Button(rMore, L10n.T(moreOpen ? "close" : "more"), segOff)) { Cue(cueClick); moreOpen = !moreOpen; }
