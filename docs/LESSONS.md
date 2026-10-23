@@ -113,6 +113,17 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   batch import also hung because Unity 2022.3's Package Manager is x86-only: install Rosetta 2 first
   (`softwareupdate --install-rosetta --agree-to-license`).
 
+### L23 · Coloured / themed sheets never detected in the Unity app · 2026-10-23 · confirmed
+- **Symptom:** on the phone, the plain angel sheet was found, but the fiery / wrath / holy sheets (and their coloured
+  example pages) never triggered a scan.
+- **Cause:** ARCore image tracking only recognises images in its reference library, and the library held only
+  `doodlive-angel-A4`. The themed sheets add large decorations and backgrounds, so to ARCore they are different images.
+  The web app was not affected: it looks for the 4 black squares, and `test.html?img=…` passes on all six themed pages
+  (0.74 px).
+- **Fix:** `DoodLiveSetup.Sheets` lists every printable sheet (plain + `*-p1` + `*-p2`) and all go into
+  `ReferenceImages.asset` at A4 size. They share markers and the art rectangle, so the capture code is unchanged.
+- **Prevention:** a new printable sheet must be added to `Sheets` in the same commit, then run `scripts/build-apk.sh`.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

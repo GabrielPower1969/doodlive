@@ -6,7 +6,7 @@
 import * as V from './vision.js';
 const out = document.getElementById('out');
 const tpl = await (await fetch('assets/template.json')).json();
-const img = new Image(); img.src = 'assets/demo-sheet.png'; await img.decode();
+const img = new Image(); img.src = new URLSearchParams(location.search).get('img') || 'assets/demo-sheet.png'; await img.decode();   // ?img= any sheet image (same page size)
 const [PW, PH] = tpl.page, W = 1080, H = 1920;
 const sc = Object.assign(document.createElement('canvas'), { width: PW, height: PH });
 sc.getContext('2d').drawImage(img, 0, 0);

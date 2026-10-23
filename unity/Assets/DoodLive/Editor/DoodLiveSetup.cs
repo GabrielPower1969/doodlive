@@ -37,9 +37,9 @@ namespace DoodLive.EditorTools
             foreach (var d in new[] { "Resources", "Tracking", "Textures", "Materials", "Angel", "Settings", "Scenes" })
                 Directory.CreateDirectory(Path.Combine(Root, d));
             CopyInputs();
-            var sheet = ImportTexture($"{Root}/Tracking/doodlive-angel-A4.png", readable: true, maxSize: 2048);
+            var sheets = Sheets.Select(n => ImportTexture($"{Root}/Tracking/{n}.png", readable: true, maxSize: 2048)).ToArray();
             var demo = ImportTexture($"{Root}/Textures/demo-colored.png", readable: false, maxSize: 1024);
-            var library = MakeReferenceLibrary(sheet);
+            var library = MakeReferenceLibrary(sheets);
             SetupRenderPipeline();
             var mats = MakeMaterials(demo);
             var prefab = MakeAngelPrefab(mats);
@@ -75,6 +75,7 @@ namespace DoodLive.EditorTools
         {
             Copy(Path.Combine(RepoRoot, "web/assets/template.json"), $"{Root}/Resources/template.json");
             Copy(Path.Combine(RepoRoot, "print/doodlive-angel-A4.png"), $"{Root}/Tracking/doodlive-angel-A4.png");
+            foreach (var n in Sheets.Skip(1)) Copy(Path.Combine(RepoRoot, $"print/previews/{n}.png"), $"{Root}/Tracking/{n}.png");
             Copy(Path.Combine(RepoRoot, "web/assets/demo-colored.png"), $"{Root}/Textures/demo-colored.png");
             AssetDatabase.Refresh();
         }
@@ -100,17 +101,26 @@ namespace DoodLive.EditorTools
             return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
 
-        static XRReferenceImageLibrary MakeReferenceLibrary(Texture2D sheet)
+        // Every printable sheet must be in the tracking library: ARCore only finds images it was given. The themed
+        // sheets share the plain sheet's markers and art rectangle, so capture/warp is identical (docs/LESSONS.md L23).
+        // p1 = blank colouring page, p2 = coloured example (people also scan it straight off a screen).
+        static readonly string[] Sheets = { "doodlive-angel-A4",
+            "fiery-p1", "fiery-p2", "wrath-p1", "wrath-p2", "holy-p1", "holy-p2" };
+
+        static XRReferenceImageLibrary MakeReferenceLibrary(Texture2D[] sheets)
         {
             string path = $"{Root}/Tracking/ReferenceImages.asset";
             var lib = AssetDatabase.LoadAssetAtPath<XRReferenceImageLibrary>(path);
             if (!lib) { lib = ScriptableObject.CreateInstance<XRReferenceImageLibrary>(); AssetDatabase.CreateAsset(lib, path); }
             while (lib.count > 0) lib.RemoveAt(0);
-            lib.Add();
-            lib.SetTexture(0, sheet, false);
-            lib.SetName(0, "doodlive-angel-A4");
-            lib.SetSpecifySize(0, true);
-            lib.SetSize(0, new Vector2(0.210f, 0.297f)); // A4 portrait, metres
+            for (int i = 0; i < sheets.Length; i++)
+            {
+                lib.Add();
+                lib.SetTexture(i, sheets[i], false);
+                lib.SetName(i, sheets[i].name);
+                lib.SetSpecifySize(i, true);
+                lib.SetSize(i, new Vector2(0.210f, 0.297f)); // A4 portrait, metres
+            }
             EditorUtility.SetDirty(lib);
             return lib;
         }
