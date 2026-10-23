@@ -175,6 +175,13 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - bash reads a script incrementally; I rewrote `build-apk.sh` while a build was running and it died with
   `line 23: ked: command not found` after the build step. Never edit a script that is executing; edit, then start.
 
+### L30 · Mirrored 3D title: stop reasoning about axes, photograph all four options · 2026-10-24 · confirmed
+- Three "sign fixes" by reasoning (flip scale, flip facing, marker nodes) all produced mirrored text on the Pixel.
+- Decisive test: `DOODLIVE_TITLE_TEST=1 scripts/build-apk.sh` lays out the title in all four (mirror × facing)
+  combinations at once; one device screenshot showed **no mirror + Billboard facing +Z** is the readable one.
+  That is now the default (`DOODLIVE_TITLE_MIRROR`/`_FRONT` unset). Rule: when an orientation bug survives one
+  reasoned fix, render every combination side by side and look, instead of a second guess (each guess costs a 5-min build).
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed
