@@ -157,6 +157,10 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   turn about Y, so GLB clips conjugate every bone quaternion: (x, y, z, w) → (−x, y, −z, w) (`ForRig` in DoodLiveSetup).
 - **Web:** three.js keeps glTF axes, but glTF UV v points down while our CanvasTexture flips Y: flip v once on load.
 
+### L27 · Random `ERR_CONNECTION_RESET` on one JS module · 2026-10-24 · confirmed
+- The page loads ~10 ES modules in parallel; `ThreadingHTTPServer` keeps Python's default listen backlog of 5, so a
+  burst of connections gets reset (always a different file). Fix: `request_queue_size = 128` in `scripts/serve.py`.
+
 ## Tooling (this Mac)
 
 ### L9 · `java` on PATH is a stub · 2026-10-18 · confirmed

@@ -16,4 +16,8 @@ class NoCache(http.server.SimpleHTTPRequestHandler):
 
 port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 web = Path(__file__).resolve().parent.parent / "web"
-http.server.ThreadingHTTPServer(("127.0.0.1", port), functools.partial(NoCache, directory=str(web))).serve_forever()
+class Server(http.server.ThreadingHTTPServer):
+    request_queue_size = 128   # ES modules open ~10 connections at once; the default backlog of 5 resets some (LESSONS L27)
+    daemon_threads = True
+
+Server(("127.0.0.1", port), functools.partial(NoCache, directory=str(web))).serve_forever()
