@@ -77,7 +77,7 @@ bbox; `set.pieces[].frontUV` holds each piece's mapping.
 | tile | each tile samples one cell of a 2 × 2 tile swatch (checker A / B) | floor |
 | const | one texel: the middle of the curtain's gold valance | curtainRod |
 
-`m = −1` for a mirrored copy. Shared drawings: `columnR` = `columnL`'s drawing (shifted), `curtainR` = `curtainL`'s
+Faces looking up (world normal h > 0.6) on front-projected pieces collapse onto one printed row (an ink line or the drawing above), so they take one texel from deep inside their own region's printed area instead: table top → cloth front, cushion top → cushion front, rims, wall and merlon tops, dais treads (not the rug band). Every floor tile face takes the clean centre of its swatch cell. `m = −1` for a mirrored copy. Shared drawings: `columnR` = `columnL`'s drawing (shifted), `curtainR` = `curtainL`'s
 (mirrored), `brazierR` = `brazierL`'s, so the child colours one of each pair. The table and its four children share
 one mapping (one still-life drawing). Outlines are drawn outside each drawing's silhouette, so UVs need no inset;
 inner region lines and grey detail lines (flutes, folds, bricks, feathers, depth steps) are inside and must be

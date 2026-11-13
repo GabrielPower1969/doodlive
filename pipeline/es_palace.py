@@ -1195,6 +1195,74 @@ def compose_sheets(idb, regname, crease):
     return tex, demo
 
 
+def safe_texels(idb, regname, crease):
+    """(drawing, region) -> uv of the pixel deepest inside that region's printed area (furthest from every line)"""
+    out = {}
+    for rid, key in regname.items():
+        if not key:
+            continue
+        m = (idb == rid) & ~crease
+        ys, xs = np.nonzero(m)
+        if not len(ys):
+            continue
+        y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
+        cur = m[y0:y1, x0:x1].copy()
+        while True:                                  # erode until one more step would empty it
+            nxt = cur.copy()
+            for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                nxt &= shift(cur, dy, dx)
+            if not nxt.any():
+                break
+            cur = nxt
+        cy, cx = np.nonzero(cur)
+        k = int(np.argmin((cy - cy.mean()) ** 2 + (cx - cx.mean()) ** 2))
+        px, py = x0 + cx[k] + 0.5, y0 + cy[k] + 0.5
+        out[key] = ((px - ART[0]) / ART[2], 1.0 - (py - ART[1]) / ART[3])
+    return out
+
+
+def fix_up_faces(objs, specs, idb, regname, crease):
+    """Upward-facing faces of front-projected pieces collapse onto one printed row (often the ink line or the
+    drawing above it); seen from above they would be dark slabs. They take one texel from deep inside their own
+    region's printed area instead (table top -> cloth front, seat -> cushion front, rims, wall tops ...)."""
+    tex = safe_texels(idb, regname, crease)
+    count = {}
+    for name, ob in objs.items():
+        sp = specs[name]
+        if ob.type == 'MESH' and sp["kind"] == "tile":        # floor: each tile one clean texel of its swatch cell
+            me = ob.data; lay = me.uv_layers["UVMap"].data; regs = FACE_REGIONS[name]
+            for p in me.polygons:
+                uv = tex.get(("floor", regs[p.index]))
+                if uv is not None:
+                    for li in p.loop_indices:
+                        lay[li].uv = uv
+            count[name] = len(me.polygons)
+            continue
+        if ob.type != 'MESH' or sp["kind"] != "front":
+            continue
+        oblique = sp.get("k", 0.0) != 0.0                # dais: thin tread bands only; the rug band is wide
+        g = SHARED[name][0] if name in SHARED else next(k for k, v in DRAWINGS.items() if name in v["members"])
+        me = ob.data; lay = me.uv_layers["UVMap"].data
+        nm = ob.matrix_world.to_3x3()
+        regs = FACE_REGIONS[name]
+        n = 0
+        for p in me.polygons:
+            wn = (nm @ p.normal).normalized()
+            if wn.z < 0.6:                               # Blender Z = design h (up)
+                continue
+            if oblique and regs[p.index] == "daisRug":
+                continue
+            uv = tex.get((g, regs[p.index]))
+            if uv is None:
+                continue
+            for li in p.loop_indices:
+                lay[li].uv = uv
+            n += 1
+        if n:
+            count[name] = n
+    return count
+
+
 def write_set_id(idb2, regname, crease2, specs):
     """Set drawings for the sheet tool (tools/story/make_sheet.py): page frame at 2x (2480 x 3508). R = region id
     (1..N, 0 = none), G = 255 on detail lines (folds, flutes, bricks, feathers, depth steps), alpha = 255."""
@@ -1326,6 +1394,8 @@ def mode_build():
     write_set_id(idb2, regname, crease2, specs)
     idb = idb2[1::2, 1::2]
     crease = crease2.reshape(PAGE[1], 2, PAGE[0], 2).any(axis=(1, 3))
+    STATE["upFaces"] = fix_up_faces(objs, specs, idb, regname, crease)
+    print("UP_FACES", json.dumps(STATE["upFaces"]))
     tex, demo = compose_sheets(idb, regname, crease)
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=BLEND)

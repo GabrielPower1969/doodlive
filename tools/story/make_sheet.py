@@ -304,7 +304,8 @@ def render():
     from mathutils import Vector
     bpy.ops.wm.read_factory_settings(use_empty=True)
     sc = bpy.context.scene
-    fill = bpy.data.images.load(str(WORK / f"{SID}_demo_page_fill.png"))
+    ink = os.environ.get("STORY_RENDER_INK") == "1"         # worst case: the printed lines are NOT erased
+    fill = bpy.data.images.load(str(OUT / "demo-sheet.png" if ink else WORK / f"{SID}_demo_page_fill.png"))
     sheet = bpy.data.images.load(str(OUT / "demo-sheet.png"))
 
     def mat(name, img, art_uv=True, rough=0.85):
@@ -390,14 +391,21 @@ def render():
     shots = [("textured_phone", marks, (-0.08, 0.95, 1.15), (-0.08, 0.05, -0.50), 55, (720, 1280)),
              ("textured_phone_play", opening, (-0.08, 0.95, 1.15), (-0.08, 0.05, -0.50), 55, (720, 1280)),
              ("textured_front", marks, (0.0, 0.26, 2.3), (0.0, 0.20, -0.25), 21, (1600, 1000)),
-             ("textured_cast", marks, (0.0, 0.22, 1.25), (0.0, 0.19, 0.0), 22, (1600, 900))]
+             ("textured_cast", marks, (0.0, 0.22, 1.25), (0.0, 0.19, 0.0), 22, (1600, 900)),
+             ("textured_banquet", {"esther": (0.06, 0.10, 0.0, 30), "king": (0.0, -0.05, 0.0, 0),
+                                   "haman": (0.36, 0.10, 0.0, -60)},
+              (-0.04, 0.40, 1.05), (0.20, 0.08, -0.05), 40, (1280, 720)),
+             ("textured_top", marks, (0.30, 0.75, 0.55), (0.10, 0.05, -0.15), 45, (1280, 900))]
     for name, stg, eye, tgt, vfov, res in shots:
         stage(stg)
         e = Vector((eye[0], -eye[2], eye[1])); t = Vector((tgt[0], -tgt[2], tgt[1]))
         cam.location = e; cam.rotation_euler = (t - e).to_track_quat('-Z', 'Y').to_euler()
         cam.data.angle_y = math.radians(vfov)
         sc.render.resolution_x, sc.render.resolution_y = res
-        sc.render.filepath = str(OUT / f"{name}.png"); bpy.ops.render.render(write_still=True)
+        if ink and name not in ("textured_banquet", "textured_top"):
+            continue
+        sc.render.filepath = str((WORK / f"{SID}_{name}_ink.png") if ink else (OUT / f"{name}.png"))
+        bpy.ops.render.render(write_still=True)
     print("PAGE_UV_LAYER", json.dumps({k: v for k, v in PAGE_LAYER.items() if v[0] != 0}))
     print("RENDER_OK")
 
