@@ -171,10 +171,10 @@ Duration **89.0 s**, 11 shots, 18 lines. Contact sheet: [`storyboard/board.png`]
 - **Camera:** fixed on david, dist 0.8, height 0.4, yaw -40°
 - **Action:** David faces the viewer: victory jump, confetti, then he bows his head and prays while golden rays fall and the narrator gives the moral.
 - **Direction:** Ends on David praying; the app shows the replay chip after 89.0. Camera front-left of David so the fallen Goliath (lying toward +Z on the right) stays behind him, not in front of him.
-- **Acting:** 80.00 david `victory` face viewer; 81.40 david `talk` face viewer; 84.20 david `pray` face viewer
-- **Line `dg_17`** 81.4 s (2.6 s max) · David: 「这场仗，是属于上帝的！」 / “The battle belongs to the LORD!” — 1 Samuel 17:47
-- **Line `dg_18`** 84.3 s (4.3 s max) · Narrator: 「个子小不要紧，勇气和信靠上帝更重要！」 / “Courage and trust in God matter more than size!” — 1 Samuel 17:45-47 (moral)
-- **FX:** 80.20 `confetti` @ david.head 3.0 s; 84.30 `golden_rays` @ david.root 4.0 s
+- **Acting:** 80.00 david `victory` face viewer; 81.40 david `talk` face viewer; 84.50 david `pray` face viewer
+- **Line `dg_17`** 81.4 s (2.9 s max) · David: 「这场仗，是属于上帝的！」 / “The battle belongs to the LORD!” — 1 Samuel 17:47
+- **Line `dg_18`** 84.6 s (4.0 s max) · Narrator: 「个子小不要紧，勇气和信靠上帝更重要！」 / “Courage and trust in God matter more than size!” — 1 Samuel 17:45-47 (moral)
+- **FX:** 80.20 `confetti` @ david.head 3.0 s; 84.60 `golden_rays` @ david.root 4.0 s
 - **SFX:** 80.00 `victory_chime`
 - **Music:** (continues)
 

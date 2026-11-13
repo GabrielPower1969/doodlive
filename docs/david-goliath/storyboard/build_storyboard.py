@@ -161,7 +161,7 @@ ACTING = [
     # S11
     dict(t=80.0, who="david", clip="victory", face="viewer", blend=0.25),
     dict(t=81.4, who="david", clip="talk", face="viewer", blend=0.2),
-    dict(t=84.2, who="david", clip="pray", face="viewer", blend=0.4),
+    dict(t=84.5, who="david", clip="pray", face="viewer", blend=0.4),
 ]
 
 # ---------------------------------------------------------------- lines
@@ -214,10 +214,10 @@ LINES = [
     dict(id="dg_16", t=76.6, who="narrator", maxSec=3.9, ref="1 Samuel 17:49-50",
          zh="石头打中额头，巨人咚地倒下了！",
          en="The stone hit his forehead. Down fell the giant!"),
-    dict(id="dg_17", t=81.4, who="david", maxSec=2.6, ref="1 Samuel 17:47",
+    dict(id="dg_17", t=81.4, who="david", maxSec=2.9, ref="1 Samuel 17:47",
          zh="这场仗，是属于上帝的！",
          en="The battle belongs to the LORD!"),
-    dict(id="dg_18", t=84.3, who="narrator", maxSec=4.3, ref="1 Samuel 17:45-47 (moral)",
+    dict(id="dg_18", t=84.6, who="narrator", maxSec=4.0, ref="1 Samuel 17:45-47 (moral)",
          zh="个子小不要紧，勇气和信靠上帝更重要！",
          en="Courage and trust in God matter more than size!"),
 ]
@@ -236,7 +236,7 @@ FX = [
     dict(t=73.3, id="dizzy_stars", at="goliath.head", dur=1.0),
     dict(t=75.2, id="dust_burst", at="goliath.hips", dur=1.6),
     dict(t=80.2, id="confetti", at="david.head", dur=3.0),
-    dict(t=84.3, id="golden_rays", at="david.root", dur=4.0),
+    dict(t=84.6, id="golden_rays", at="david.root", dur=4.0),
 ]
 SFX = [
     dict(t=0.0, id="crowd_murmur"),
