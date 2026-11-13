@@ -37,7 +37,11 @@ namespace DoodLive.EditorTools
             foreach (var d in new[] { "Resources", "Tracking", "Textures", "Materials", "Angel", "Settings", "Scenes" })
                 Directory.CreateDirectory(Path.Combine(Root, d));
             CopyInputs();
-            var sheets = Sheets.Select(n => ImportTexture($"{Root}/Tracking/{n}.png", readable: true, maxSize: 2048)).ToArray();
+            bool dgOk = DGSetup.CopyInputs();                                   // David & Goliath (docs/david-goliath/INTEGRATION.md)
+            if (dgOk) DGSetup.CheckTemplate($"{Root}/Resources/template.json");
+            var sheetPaths = Sheets.Select(n => $"{Root}/Tracking/{n}.png").ToList();
+            if (dgOk) sheetPaths.Add(DGSetup.SheetPath);                          // reference image "david-goliath-A4"
+            var sheets = sheetPaths.Select(p => ImportTexture(p, readable: true, maxSize: 2048)).ToArray();
             var demo = ImportTexture($"{Root}/Textures/demo-colored.png", readable: false, maxSize: 1024);
             foreach (var ui in Directory.GetFiles($"{Root}/Resources/UI", "*.png"))   // Paper & Crayon icons (tools/make_ui_icons.py): crisp, uncompressed
                 ImportTexture(ui.Replace('\\', '/'), readable: false, maxSize: 1024);
@@ -45,9 +49,17 @@ namespace DoodLive.EditorTools
             SetupRenderPipeline();
             var mats = MakeMaterials(demo);
             var prefab = MakeAngelPrefabFromGlb(mats) ?? MakeAngelPrefab(mats);   // Blender model (assets/angel) first, code-built fallback
+            GameObject dgPrefab = null; Material[] dgMats = null; Texture2D dgDemo = null;
+            if (dgOk)
+            {
+                DGSetup.ImportAll(ImportTexture);
+                dgDemo = AssetDatabase.LoadAssetAtPath<Texture2D>($"{DGSetup.Dir}/Textures/dg-demo-colored.png");
+                dgMats = DGSetup.MakeMaterials(dgDemo);
+                dgPrefab = DGSetup.MakeStagePrefab(dgMats);
+            }
             SetupXR();
             SetupPlayer();
-            MakeScene(library, prefab, mats, demo);
+            MakeScene(library, prefab, mats, demo, dgPrefab, dgMats, dgDemo);
             AssetDatabase.SaveAssets();
             Debug.Log("DoodLive setup done");
         }
@@ -174,7 +186,7 @@ namespace DoodLive.EditorTools
             }
             asset.supportsHDR = false;          // AR camera feed is LDR; saves bandwidth on phones
             asset.msaaSampleCount = 2;
-            asset.shadowDistance = 3;
+            asset.shadowDistance = 1.5f;        // the page is < 1.5 m from the phone; halves the shadow texel size (D&G casts since §11)
             EditorUtility.SetDirty(asset);
             GraphicsSettings.defaultRenderPipeline = asset;
             for (int i = 0; i < QualitySettings.names.Length; i++)
@@ -455,12 +467,12 @@ namespace DoodLive.EditorTools
         {
             PlayerSettings.companyName = "One More Thing";
             PlayerSettings.productName = "DoodLive";
-            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "today.onemorething.doodlive");
+            PlayerSettings.SetApplicationIdentifier(UnityEditor.Build.NamedBuildTarget.Android, "today.onemorething.doodlive");
             PlayerSettings.bundleVersion = "0.1.0";
             PlayerSettings.Android.bundleVersionCode = 1;
-            PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+            PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
             PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
-            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
+            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel25;
             PlayerSettings.Android.targetSdkVersion = (AndroidSdkVersions)34;
             PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.Android, false);
             PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, new[] { GraphicsDeviceType.OpenGLES3 });
@@ -471,6 +483,9 @@ namespace DoodLive.EditorTools
             PlayerSettings.allowedAutorotateToLandscapeLeft = true;
             PlayerSettings.allowedAutorotateToLandscapeRight = true;
             PlayerSettings.Android.startInFullscreen = true;
+            PlayerSettings.Android.applicationEntry = AndroidApplicationEntry.Activity;   // ARCore XR plugin path we tested; Unity 6 defaults to GameActivity
+            PlayerSettings.SplashScreen.show = false;                                    // Unity 6 Personal may drop the splash (2022.3 Personal could not)
+            PlayerSettings.SplashScreen.showUnityLogo = false;
 
             // Input: legacy (touches / IMGUI) and the Input System (TrackedPoseDriver) together
             var ps = AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/ProjectSettings.asset").FirstOrDefault();
@@ -483,7 +498,8 @@ namespace DoodLive.EditorTools
         }
 
         // ---------------- scene ----------------
-        static void MakeScene(XRReferenceImageLibrary library, GameObject angelPrefab, Dictionary<string, Material> mats, Texture2D demo)
+        static void MakeScene(XRReferenceImageLibrary library, GameObject angelPrefab, Dictionary<string, Material> mats, Texture2D demo,
+                              GameObject dgPrefab, Material[] dgMats, Texture2D dgDemo)
         {
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
@@ -538,6 +554,12 @@ namespace DoodLive.EditorTools
             ctl.angel = angel.GetComponent<Animator>();
             ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"] };   // cloud stays white (not page-coloured)
             ctl.demoTexture = demo;
+            if (dgPrefab)
+            {   // David & Goliath stage (DGDirector + DGActors); the controller parents it under its own holder at Start
+                var stage = (GameObject)PrefabUtility.InstantiatePrefab(dgPrefab);
+                ctl.story = stage.GetComponent<DoodLive.DavidGoliath.DGDirector>();
+                ctl.dgMaterials = dgMats; ctl.dgDemoTexture = dgDemo;
+            }
             ctl.sfx = app.AddComponent<AudioSource>();
             ctl.voice = app.AddComponent<AudioSource>();
             ctl.music = app.AddComponent<AudioSource>();

@@ -8,7 +8,7 @@
 
 ![Paper & Crayon 版在 Pixel 8 上：首页 · 大人专区 · 扫描 · 登场 · 互动 · 点我提示 · 吹号角 · 读一读 · 换一张](docs/images/qa-grid-paper.png)
 
-> **进度（2026-10-24）：** 在 M1（状态机、停/走规则、中英双语、Gabriel 本人的中英文配音）之上，**“纸与蜡笔”新设计**（[设计方案](docs/DESIGN-DIRECTION.md)，有 Figma 稿）已经在网页版和 Unity 版都做完：天使本身就是按钮——点她吹号角，点 3D 标题就读一读；5 秒没碰屏幕会出现金色虚线圈和小手提示；设置都收进“按住小锁 2 秒”的大人专区。已用 Pixel 8 逐状态截图（上图）和桌面浏览器验证。**还没验：** 用这个包扫一张真打印的纸、Akita（TSC710，横屏）、给孩子实际玩。后面的里程碑：M2 场景/脸部打磨，M3 笔顺，M4 把“大卫 vs 歌利亚”并进状态机，M5 上架。
+> **进度（2026-10-24）：** 在 M1（状态机、停/走规则、中英双语、真人录制的中英文配音）之上，**“纸与蜡笔”新设计**（[设计方案](docs/DESIGN-DIRECTION.md)，有 Figma 稿）已经在网页版和 Unity 版都做完：天使本身就是按钮——点她吹号角，点 3D 标题就读一读；5 秒没碰屏幕会出现金色虚线圈和小手提示；设置都收进“按住小锁 2 秒”的大人专区。已用 Pixel 8 逐状态截图（上图）和桌面浏览器验证。**还没验：** 用这个包扫一张真打印的纸、Akita（TSC710，横屏）、给孩子实际玩。后面的里程碑：M2 场景/脸部打磨，M3 笔顺，M4 把“大卫 vs 歌利亚”并进状态机，M5 上架。
 
 ---
 
@@ -50,7 +50,7 @@ flowchart LR
 | 感受 | 实际发生的事 |
 |---|---|
 | “她站在我的纸上” | ARCore 持续追踪这张纸；天使钉在纸上，每一帧重新贴合。纸离开镜头 1.5 秒她就变暗，请你把纸拿回来。 |
-| “她在跟*我*说话” | 每句话都是 Gabriel 自己录的（中、英两套）。台词绝不重叠；说话时音乐降到 40%；安静 20 秒她会主动说一两句，然后就等着。 |
+| “她在跟*我*说话” | 每句话都是真人录的（中、英两套）。台词绝不重叠；说话时音乐降到 40%；安静 20 秒她会主动说一两句，然后就等着。 |
 | “我学会了一个词” | 标题是真正的 3D 立体字：上面汉字，下面拼音或英文（一个有设计感的切换钮）。**读一读**会把三部分依次弹出来，各配一声叮。 |
 
 ---
@@ -99,7 +99,7 @@ flowchart TB
         BL[pipeline/angel_build.py<br/>pipeline/angel_head.py<br/>Blender 5.2 无界面] --> GLB[assets/angel/angel.glb<br/>骨骼 + 正面投影 UV]
         TT[pipeline/make_title.py] --> TG[assets/titles/*.glb<br/>3D 汉字 / 拼音 / 英文]
         MU[tools/make_music.py<br/>MIDI → FluidSynth] --> MP3[主题曲 · 号角 · 叮 · 升起]
-        VR[voice-record 录音台 +<br/>tools/process_voice.py] --> VO[voice/gabriel/*.mp3<br/>voice/gabriel-en/*.mp3]
+        VR[voice-record 录音台 +<br/>tools/process_voice.py] --> VO[voice/recorded-zh/*.mp3<br/>voice/recorded-en/*.mp3]
         ST[tools/i18n/strings.json] --> GEN[tools/gen_i18n.py]
         GEN --> I18N[web/i18n.js]
         GEN --> L10N[unity/…/L10n.cs]
@@ -172,7 +172,7 @@ sequenceDiagram
     UI->>Angel: 显示 3D 标题（汉字 / 拼音或 ABC）
     UI->>Audio: 升起音 + 闪白
     Audio->>Audio: 音乐底 22%，说话时降到 40%
-    UI->>Audio: 播放 “hello”（中或英，Gabriel 的声音）
+    UI->>Audio: 播放 “hello”（中或英，真人录音）
     Audio-->>K: 哇！我活过来啦！ / Wow! I'm alive!
     UI->>UI: Reveal → LiveIdle（出现三个按钮）
     opt 孩子点“吹号角”
@@ -247,7 +247,7 @@ flowchart LR
     SJ --> JS[web/i18n.js]
     SJ --> CS[unity/…/L10n.cs]
     ZIP --> PV[process_voice.py<br/>选遍 · 剪静音 · 高通 90 Hz<br/>降噪 · EQ · −14 LUFS]
-    PV --> MP3[web/assets/voice/gabriel*/·mp3]
+    PV --> MP3[web/assets/voice/recorded-*/·mp3]
     PV --> WAV[unity/…/Audio/*.wav]
     BPY --> GLB[angel.glb · titles/*.glb]
     MID --> FS[FluidSynth + GS 音色库] --> MUS[music/*.mp3 · *.wav]
@@ -278,7 +278,7 @@ web/                      网页原型 —— 通过 scripts/serve.py 打开 ind
   fx.js audio.js          特效；提示音、音乐、Web Speech 兜底
   i18n.js                 由 tools/i18n/strings.json 生成
   battle/ battle.html     大卫 vs 歌利亚剧场（M4 会并进状态机）
-  assets/                 模型、标题、音乐、配音（中：gabriel，英：gabriel-en）、template.json
+  assets/                 模型、标题、音乐、配音（中：recorded-zh，英：recorded-en）、template.json
 unity/                    原生应用
   Assets/DoodLive/Scripts/ARColoringController.cs   状态机、追踪、矫正、声音、IMGUI
   Assets/DoodLive/Scripts/L10n.cs                    生成的文案
@@ -334,4 +334,4 @@ CLAUDE.md                 给任何人（人或智能体）改仓库前看的短
 
 ---
 
-*Gabriel Chen 与 Claude 一起做的。天使的声音是 Gabriel 本人。*
+*与 Claude 一起做的。天使的声音是真人录音。*

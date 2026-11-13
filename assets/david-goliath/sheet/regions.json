@@ -1,0 +1,807 @@
+{
+ "note": "regions.png pixel value = id (0 = paper), same pixels as lineart.png. Characters: rest pose, front orthographic (UV0 front projection). char 'desert': side-view front pieces (UV0 front projection, scale/sheetY per design.json desert.pieces[].frontUV, CONTRACT \u00a712.1); 'part' = desert.glb node id (stone1..5 = fiveStones). pageOnly = brook and stones, printed in plan view below the art rect, so not in regions.png. Region 'tentDoor' = the doorway recess in each tent gable.",
+ "ids": [
+  {
+   "id": 1,
+   "char": "david",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 2,
+   "char": "david",
+   "part": "earR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 3,
+   "char": "david",
+   "part": "earL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 4,
+   "char": "david",
+   "part": "armL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 5,
+   "char": "david",
+   "part": "armL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 6,
+   "char": "david",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 7,
+   "char": "david",
+   "part": "armR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 8,
+   "char": "david",
+   "part": "armR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 9,
+   "char": "david",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#EDB98E"
+  },
+  {
+   "id": 10,
+   "char": "david",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#B9562A"
+  },
+  {
+   "id": 11,
+   "char": "david",
+   "part": "tunic",
+   "piece": 0,
+   "region": "tunic",
+   "hex": "#4BA3E3"
+  },
+  {
+   "id": 12,
+   "char": "david",
+   "part": "tunic",
+   "piece": 1,
+   "region": "tunic",
+   "hex": "#4BA3E3"
+  },
+  {
+   "id": 13,
+   "char": "david",
+   "part": "sash",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#E8553D"
+  },
+  {
+   "id": 14,
+   "char": "david",
+   "part": "sashKnot",
+   "piece": 1,
+   "region": "belt",
+   "hex": "#E8553D"
+  },
+  {
+   "id": 15,
+   "char": "david",
+   "part": "strap",
+   "piece": 0,
+   "region": "bag",
+   "hex": "#C68B4E"
+  },
+  {
+   "id": 16,
+   "char": "david",
+   "part": "bag",
+   "piece": 0,
+   "region": "bag",
+   "hex": "#C68B4E"
+  },
+  {
+   "id": 17,
+   "char": "david",
+   "part": "bagFlap",
+   "piece": 1,
+   "region": "bag",
+   "hex": "#C68B4E"
+  },
+  {
+   "id": 18,
+   "char": "david",
+   "part": "bagToggle",
+   "piece": 1,
+   "region": "bag",
+   "hex": "#C68B4E"
+  },
+  {
+   "id": 19,
+   "char": "david",
+   "part": "sandalL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 20,
+   "char": "david",
+   "part": "sandalStrapsL",
+   "piece": 1,
+   "region": "sandals",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 21,
+   "char": "david",
+   "part": "sandalR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 22,
+   "char": "david",
+   "part": "sandalStrapsR",
+   "piece": 1,
+   "region": "sandals",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 23,
+   "char": "david",
+   "part": "slingCords",
+   "piece": 0,
+   "region": "sling",
+   "hex": "#D9A066"
+  },
+  {
+   "id": 24,
+   "char": "david",
+   "part": "slingPouch",
+   "piece": 1,
+   "region": "sling",
+   "hex": "#D9A066"
+  },
+  {
+   "id": 25,
+   "char": "david",
+   "part": "stone",
+   "piece": 0,
+   "region": "stone",
+   "hex": "#B9B4AA"
+  },
+  {
+   "id": 26,
+   "char": "goliath",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 27,
+   "char": "goliath",
+   "part": "earR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 28,
+   "char": "goliath",
+   "part": "earL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 29,
+   "char": "goliath",
+   "part": "armL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 30,
+   "char": "goliath",
+   "part": "armL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 31,
+   "char": "goliath",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 32,
+   "char": "goliath",
+   "part": "legL",
+   "piece": 0,
+   "region": "feet",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 33,
+   "char": "goliath",
+   "part": "armR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 34,
+   "char": "goliath",
+   "part": "armR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 35,
+   "char": "goliath",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D99A6C"
+  },
+  {
+   "id": 36,
+   "char": "goliath",
+   "part": "legR",
+   "piece": 0,
+   "region": "feet",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 37,
+   "char": "goliath",
+   "part": "beard",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#6E4326"
+  },
+  {
+   "id": 38,
+   "char": "goliath",
+   "part": "moustache",
+   "piece": 1,
+   "region": "beard",
+   "hex": "#6E4326"
+  },
+  {
+   "id": 39,
+   "char": "goliath",
+   "part": "armour",
+   "piece": 0,
+   "region": "armour",
+   "hex": "#C8873A"
+  },
+  {
+   "id": 40,
+   "char": "goliath",
+   "part": "armour",
+   "piece": 1,
+   "region": "armour",
+   "hex": "#C8873A"
+  },
+  {
+   "id": 41,
+   "char": "goliath",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#9C5B2E"
+  },
+  {
+   "id": 42,
+   "char": "goliath",
+   "part": "belt",
+   "piece": 1,
+   "region": "belt",
+   "hex": "#9C5B2E"
+  },
+  {
+   "id": 43,
+   "char": "goliath",
+   "part": "kilt",
+   "piece": 0,
+   "region": "kilt",
+   "hex": "#8A6FD1"
+  },
+  {
+   "id": 44,
+   "char": "goliath",
+   "part": "bracerL",
+   "piece": 0,
+   "region": "bracers",
+   "hex": "#B5733C"
+  },
+  {
+   "id": 45,
+   "char": "goliath",
+   "part": "bracerR",
+   "piece": 0,
+   "region": "bracers",
+   "hex": "#B5733C"
+  },
+  {
+   "id": 46,
+   "char": "goliath",
+   "part": "greaveL",
+   "piece": 0,
+   "region": "greaves",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 47,
+   "char": "goliath",
+   "part": "greaveR",
+   "piece": 0,
+   "region": "greaves",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 48,
+   "char": "goliath",
+   "part": "bootTrimL",
+   "piece": 1,
+   "region": "feet",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 49,
+   "char": "goliath",
+   "part": "bootTrimR",
+   "piece": 1,
+   "region": "feet",
+   "hex": "#A8693A"
+  },
+  {
+   "id": 50,
+   "char": "goliath",
+   "part": "helmetDome",
+   "piece": 0,
+   "region": "helmet",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 51,
+   "char": "goliath",
+   "part": "helmetGuard",
+   "piece": 0,
+   "region": "helmet",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 52,
+   "char": "goliath",
+   "part": "crest",
+   "piece": 0,
+   "region": "crest",
+   "hex": "#E8553D"
+  },
+  {
+   "id": 53,
+   "char": "goliath",
+   "part": "crestHolder",
+   "piece": 1,
+   "region": "helmet",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 54,
+   "char": "goliath",
+   "part": "spear",
+   "piece": 1,
+   "region": "spearHead",
+   "hex": "#BFC7CF"
+  },
+  {
+   "id": 55,
+   "char": "goliath",
+   "part": "spear",
+   "piece": 0,
+   "region": "spearShaft",
+   "hex": "#B07A45"
+  },
+  {
+   "id": 56,
+   "char": "goliath",
+   "part": "spear",
+   "piece": 2,
+   "region": "spearHead",
+   "hex": "#BFC7CF"
+  },
+  {
+   "id": 57,
+   "char": "goliath",
+   "part": "shield",
+   "piece": 0,
+   "region": "shield",
+   "hex": "#E3B04B"
+  },
+  {
+   "id": 58,
+   "char": "goliath",
+   "part": "shield",
+   "piece": 0,
+   "region": "shieldRim",
+   "hex": "#C8873A"
+  },
+  {
+   "id": 59,
+   "char": "goliath",
+   "part": "shield",
+   "piece": 0,
+   "region": "shieldBoss",
+   "hex": "#FFC93C"
+  },
+  {
+   "id": 60,
+   "char": "desert",
+   "part": "duneFar",
+   "piece": 0,
+   "region": "sand",
+   "hex": "#F3D58E",
+   "kind": "dune"
+  },
+  {
+   "id": 61,
+   "char": "desert",
+   "part": "hillIsrael",
+   "piece": 0,
+   "region": "hillIsrael",
+   "hex": "#D9B77A",
+   "kind": "hill"
+  },
+  {
+   "id": 62,
+   "char": "desert",
+   "part": "hillPhil",
+   "piece": 0,
+   "region": "hillPhil",
+   "hex": "#CFA36B",
+   "kind": "hill"
+  },
+  {
+   "id": 63,
+   "char": "desert",
+   "part": "tentIsrael1",
+   "piece": 0,
+   "region": "tentIsrael",
+   "hex": "#F4EEDC",
+   "kind": "tent"
+  },
+  {
+   "id": 64,
+   "char": "desert",
+   "part": "tentIsrael1",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 65,
+   "char": "desert",
+   "part": "tentIsrael2",
+   "piece": 0,
+   "region": "tentIsrael",
+   "hex": "#F4EEDC",
+   "kind": "tent"
+  },
+  {
+   "id": 66,
+   "char": "desert",
+   "part": "tentIsrael2",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 67,
+   "char": "desert",
+   "part": "tentIsrael3",
+   "piece": 0,
+   "region": "tentIsrael",
+   "hex": "#F4EEDC",
+   "kind": "tent"
+  },
+  {
+   "id": 68,
+   "char": "desert",
+   "part": "tentIsrael3",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 69,
+   "char": "desert",
+   "part": "tentPhil1",
+   "piece": 0,
+   "region": "tentPhil",
+   "hex": "#E07B5A",
+   "kind": "tent"
+  },
+  {
+   "id": 70,
+   "char": "desert",
+   "part": "tentPhil1",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 71,
+   "char": "desert",
+   "part": "tentPhil2",
+   "piece": 0,
+   "region": "tentPhil",
+   "hex": "#E07B5A",
+   "kind": "tent"
+  },
+  {
+   "id": 72,
+   "char": "desert",
+   "part": "tentPhil2",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 73,
+   "char": "desert",
+   "part": "tentPhil3",
+   "piece": 0,
+   "region": "tentPhil",
+   "hex": "#E07B5A",
+   "kind": "tent"
+  },
+  {
+   "id": 74,
+   "char": "desert",
+   "part": "tentPhil3",
+   "piece": 0,
+   "region": "tentDoor",
+   "hex": "#7A4E2D",
+   "kind": "tent"
+  },
+  {
+   "id": 75,
+   "char": "desert",
+   "part": "bannerIsrael",
+   "piece": 0,
+   "region": "flagIsrael",
+   "hex": "#4B7BE5",
+   "kind": "banner"
+  },
+  {
+   "id": 76,
+   "char": "desert",
+   "part": "bannerPhil",
+   "piece": 0,
+   "region": "flagPhil",
+   "hex": "#C0392B",
+   "kind": "banner"
+  },
+  {
+   "id": 77,
+   "char": "desert",
+   "part": "dune1",
+   "piece": 0,
+   "region": "sand",
+   "hex": "#F3D58E",
+   "kind": "dune"
+  },
+  {
+   "id": 78,
+   "char": "desert",
+   "part": "dune1",
+   "piece": 0,
+   "region": "duneShade",
+   "hex": "#E3A857",
+   "kind": "dune"
+  },
+  {
+   "id": 79,
+   "char": "desert",
+   "part": "dune2",
+   "piece": 0,
+   "region": "sand",
+   "hex": "#F3D58E",
+   "kind": "dune"
+  },
+  {
+   "id": 80,
+   "char": "desert",
+   "part": "dune2",
+   "piece": 0,
+   "region": "duneShade",
+   "hex": "#E3A857",
+   "kind": "dune"
+  },
+  {
+   "id": 81,
+   "char": "desert",
+   "part": "dune3",
+   "piece": 0,
+   "region": "sand",
+   "hex": "#F3D58E",
+   "kind": "dune"
+  },
+  {
+   "id": 82,
+   "char": "desert",
+   "part": "dune3",
+   "piece": 0,
+   "region": "duneShade",
+   "hex": "#E3A857",
+   "kind": "dune"
+  },
+  {
+   "id": 83,
+   "char": "desert",
+   "part": "rockL1",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 84,
+   "char": "desert",
+   "part": "rockL2",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 85,
+   "char": "desert",
+   "part": "rockM1",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 86,
+   "char": "desert",
+   "part": "rockM2",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 87,
+   "char": "desert",
+   "part": "rockFR1",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 88,
+   "char": "desert",
+   "part": "rockFR2",
+   "piece": 0,
+   "region": "rock",
+   "hex": "#B99B7A",
+   "kind": "rock"
+  },
+  {
+   "id": 89,
+   "char": "desert",
+   "part": "shrubL",
+   "piece": 0,
+   "region": "bush",
+   "hex": "#9BBF5A",
+   "kind": "shrub"
+  },
+  {
+   "id": 90,
+   "char": "desert",
+   "part": "brook",
+   "piece": 0,
+   "region": "water",
+   "hex": "#6EC1E4",
+   "kind": "water",
+   "pageOnly": true
+  },
+  {
+   "id": 91,
+   "char": "desert",
+   "part": "stone1",
+   "piece": 0,
+   "region": "pebbles",
+   "hex": "#C9C3B6",
+   "kind": "stones",
+   "pageOnly": true
+  },
+  {
+   "id": 92,
+   "char": "desert",
+   "part": "stone2",
+   "piece": 0,
+   "region": "pebbles",
+   "hex": "#C9C3B6",
+   "kind": "stones",
+   "pageOnly": true
+  },
+  {
+   "id": 93,
+   "char": "desert",
+   "part": "stone3",
+   "piece": 0,
+   "region": "pebbles",
+   "hex": "#C9C3B6",
+   "kind": "stones",
+   "pageOnly": true
+  },
+  {
+   "id": 94,
+   "char": "desert",
+   "part": "stone4",
+   "piece": 0,
+   "region": "pebbles",
+   "hex": "#C9C3B6",
+   "kind": "stones",
+   "pageOnly": true
+  },
+  {
+   "id": 95,
+   "char": "desert",
+   "part": "stone5",
+   "piece": 0,
+   "region": "pebbles",
+   "hex": "#C9C3B6",
+   "kind": "stones",
+   "pageOnly": true
+  }
+ ]
+}

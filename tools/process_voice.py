@@ -5,7 +5,7 @@ Per line: pick a take (default = loudest non-clipped take, override with --pick 
 gentle de-noise, compress, normalise to -16 LUFS, add a touch of room ("halo") and export:
   web/assets/voice/<set>/<name>.mp3   unity/Assets/DoodLive/Audio/<name>.wav
 Also writes every processed take to <out>/review/ so the choice can be auditioned.
-Usage: python3 tools/process_voice.py RAW_DIR [--set gabriel] [--pick 01=2 --pick 06=3] [--dry]
+Usage: python3 tools/process_voice.py RAW_DIR [--set recorded-zh] [--pick 01=2 --pick 06=3] [--dry]
 """
 import argparse, glob, json, os, re, subprocess
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +20,7 @@ def stats(f):
 
 def chain(dry):
     # Voice must sit IN FRONT of the music: dry (no room), presence lift, tighter compression, -14 LUFS.
-    # (First version had a room echo and -16 LUFS; Gabriel: "人声太靠后，听不清楚".)
+    # (First version had a room echo and -16 LUFS; owner: "人声太靠后，听不清楚".)
     f = ["silenceremove=start_periods=1:start_threshold=-38dB:start_silence=0.15",
          "areverse", "silenceremove=start_periods=1:start_threshold=-42dB:start_silence=0.35", "areverse",
          "highpass=f=90", "afftdn=nf=-32:nr=10",
@@ -33,7 +33,7 @@ def chain(dry):
     return ",".join(f)
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("raw"); ap.add_argument("--set", default="gabriel"); ap.add_argument("--pick", action="append", default=[]); ap.add_argument("--room", action="store_true", help="add a tiny early reflection (default: dry)")
+    ap = argparse.ArgumentParser(); ap.add_argument("raw"); ap.add_argument("--set", default="recorded-zh"); ap.add_argument("--pick", action="append", default=[]); ap.add_argument("--room", action="store_true", help="add a tiny early reflection (default: dry)")
     a = ap.parse_args()
     picks = dict(p.split("=") for p in a.pick)
     web, unity, review = f"{ROOT}/web/assets/voice/{a.set}", f"{ROOT}/unity/Assets/DoodLive/Audio", f"{a.raw}/review"

@@ -13,7 +13,7 @@ the 3D model, music, voice and the bilingual strings.
 ![Paper & Crayon build on a Pixel 8: home · grown-ups · scan · reveal · live · tap hint · trumpet · read · new sheet](docs/images/qa-grid-paper.png)
 
 > **Status (2026-10-24):** the **Paper & Crayon redesign** ([design direction](docs/DESIGN-DIRECTION.md), Figma mocks) is
-> built in both apps on top of M1 (state machine, stop/go rules, bilingual UI, Gabriel's own voice in zh and en).
+> built in both apps on top of M1 (state machine, stop/go rules, bilingual UI, a real recorded voice in zh and en).
 > The angel is now the button: tap her for the trumpet, tap the 3D title to read it. A dotted ring and hand appear after
 > 5 s without a touch, and settings sit behind a 2-second hold on the lock. Verified by per-state screenshots on a Pixel 8
 > (grid above) and in a desktop browser. **Not yet checked:** a real printed sheet scanned with this build, the Akita
@@ -63,7 +63,7 @@ Three things make it feel alive rather than a static model:
 | Feeling | What actually happens |
 |---|---|
 | "She stands on my paper" | ARCore keeps tracking the sheet; the angel is pinned to it and re-fitted every frame. If the paper leaves the camera for 1.5 s she dims and asks for it back. |
-| "She talks to *me*" | Gabriel recorded every line (zh and en). Lines never overlap; music ducks to 40 % while she speaks; after 20 s of silence she says something once or twice, then waits. |
+| "She talks to *me*" | A real person recorded every line (zh and en). Lines never overlap; music ducks to 40 % while she speaks; after 20 s of silence she says something once or twice, then waits. |
 | "I learned a word" | The title is real 3D extruded text: 汉字 on top, pinyin or English below (a designed toggle). **Read it** pops each part in turn with a chime. |
 
 ---
@@ -116,7 +116,7 @@ flowchart TB
         BL[pipeline/angel_build.py<br/>pipeline/angel_head.py<br/>Blender 5.2 headless] --> GLB[assets/angel/angel.glb<br/>rig + front-projection UV]
         TT[pipeline/make_title.py] --> TG[assets/titles/*.glb<br/>3D 汉字 / pinyin / English]
         MU[tools/make_music.py<br/>MIDI → FluidSynth] --> MP3[theme · fanfare · chime · swell]
-        VR[voice-record desk +<br/>tools/process_voice.py] --> VO[voice/gabriel/*.mp3<br/>voice/gabriel-en/*.mp3]
+        VR[voice-record desk +<br/>tools/process_voice.py] --> VO[voice/recorded-zh/*.mp3<br/>voice/recorded-en/*.mp3]
         ST[tools/i18n/strings.json] --> GEN[tools/gen_i18n.py]
         GEN --> I18N[web/i18n.js]
         GEN --> L10N[unity/…/L10n.cs]
@@ -192,7 +192,7 @@ sequenceDiagram
     UI->>Angel: show 3D title (汉字 / pinyin or ABC)
     UI->>Audio: swell + flash
     Audio->>Audio: music bed 22 %, duck to 40 % under voice
-    UI->>Audio: play "hello" (zh or en, Gabriel's voice)
+    UI->>Audio: play "hello" (zh or en, the recorded voice)
     Audio-->>Child: 哇！我活过来啦！ / Wow! I'm alive!
     UI->>UI: Reveal → LiveIdle (3 buttons appear)
     opt Child taps Trumpet
@@ -269,7 +269,7 @@ flowchart LR
     SJ --> JS[web/i18n.js]
     SJ --> CS[unity/…/L10n.cs]
     ZIP --> PV[process_voice.py<br/>pick take · trim · HPF 90 Hz<br/>denoise · EQ · −14 LUFS]
-    PV --> MP3[web/assets/voice/gabriel*/·mp3]
+    PV --> MP3[web/assets/voice/recorded-*/·mp3]
     PV --> WAV[unity/…/Audio/*.wav]
     BPY --> GLB[angel.glb · titles/*.glb]
     MID --> FS[FluidSynth + GS soundfont] --> MUS[music/*.mp3 · *.wav]
@@ -304,7 +304,7 @@ web/                      the web prototype — open index.html through scripts/
   fx.js audio.js          effects; cues, music, Web Speech fallback
   i18n.js                 GENERATED from tools/i18n/strings.json
   battle/ battle.html     David vs Goliath theatre (M4 will fold it into the state machine)
-  assets/                 model, titles, music, voice (zh: gabriel, en: gabriel-en), template.json
+  assets/                 model, titles, music, voice (zh: recorded-zh, en: recorded-en), template.json
 unity/                    the native app
   Assets/DoodLive/Scripts/ARColoringController.cs   state machine, tracking, warp, audio, IMGUI
   Assets/DoodLive/Scripts/L10n.cs                    GENERATED strings
@@ -368,4 +368,4 @@ Start there if a phone shows `unauthorized`, Chrome keeps running old code, or t
 
 ---
 
-*Made by Gabriel Chen with Claude. The angel's voice is Gabriel's own.*
+*Made with Claude. The angel's voice is a real person's recording.*

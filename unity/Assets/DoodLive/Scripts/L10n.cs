@@ -81,6 +81,14 @@ namespace DoodLive
             { "music", "音乐音量" },
             { "wordCard", "学习卡" },
             { "done", "好了" },
+            { "dgDemo", "大卫和歌利亚 · 看演示" },
+            { "dgPaused", "暂停了，点一下继续" },
+            { "dgReplay", "再看一遍" },
+            { "dgTheEnd", "完" },
+            { "dg_david", "大卫" },
+            { "dg_goliath", "歌利亚" },
+            { "dg_saul", "扫罗王" },
+            { "dg_soldiers", "以色列士兵" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -155,6 +163,14 @@ namespace DoodLive
             { "music", "Music" },
             { "wordCard", "Word card" },
             { "done", "Done" },
+            { "dgDemo", "David & Goliath · demo" },
+            { "dgPaused", "Paused — tap to go on" },
+            { "dgReplay", "Watch again" },
+            { "dgTheEnd", "The End" },
+            { "dg_david", "David" },
+            { "dg_goliath", "Goliath" },
+            { "dg_saul", "King Saul" },
+            { "dg_soldiers", "Soldiers" },
         };
         static string lang;
         public static string Lang

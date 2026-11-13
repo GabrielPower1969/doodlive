@@ -1,0 +1,13050 @@
+{
+ "version": 3,
+ "generatedBy": "docs/david-goliath/design/make_design.py",
+ "style": "realistic-proportion cartoon (Pixar-like); CONTRACT §11",
+ "units": "art-width units (1.0 = art rectangle width); Y up; ground y=0; +X viewer's right; +Z toward viewer",
+ "uv": "characters: u = x + sheetX + 0.5, v = (y + sheetY) / artHeightUnits (front projection, rest pose); desert: see desert.uvRule",
+ "artHeightUnits": 1.227,
+ "restPose": {
+  "armDegBelowHorizontal": 45.0,
+  "facing": "+Z",
+  "hands": {
+   "david": {
+    "R": "fist round the sling cords",
+    "L": "open, fingers together, thumb forward"
+   },
+   "goliath": {
+    "R": "fist round the spear shaft (knuckles toward +Z)",
+    "L": "fist on the shield grip, behind the shield"
+   }
+  },
+  "contractNote": "§11 supersedes D2 (40 deg): 45 deg so both realistic-length arms fit"
+ },
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "facePx": 2.2,
+  "note": "all printed lines <= 8 px are removed by the app's line-erase; faces come from decals"
+ },
+ "modelling": {
+  "method": "one continuous box-modelled cage per body (skin), clothing as separate shells with thickness (Solidify) and hems, Subdivision Surface level 1 APPLIED before export; props are separate rigid meshes (one bone each)",
+  "trisMax": {
+   "david": 20000,
+   "goliath": 20000,
+   "desert": 15000
+  },
+  "cageQuadsTarget": {
+   "david": 2200,
+   "goliath": 2600
+  },
+  "fingerBones": [
+   "fingersL",
+   "fingerTipsL",
+   "thumbL",
+   "fingersR",
+   "fingerTipsR",
+   "thumbR"
+  ],
+  "face": "modelled: brow ridge, nose, nostrils, cheekbones, lips volume, chin, ears, shallow eye sockets; decals (UV1): eyes, brows, mouth"
+ },
+ "characters": {
+  "david": {
+   "height": 0.3,
+   "sheetX": -0.35,
+   "sheetY": 0.015,
+   "headsTall": 5.55,
+   "proportions": {
+    "height": 0.3,
+    "skullTop": 0.294,
+    "chin": 0.241,
+    "headHalfW": 0.0198,
+    "eyeY": 0.2672,
+    "browY": 0.2722,
+    "noseY": 0.2556,
+    "mouthY": 0.2497,
+    "earY": [
+     0.2575,
+     0.2705
+    ],
+    "neckBase": 0.228,
+    "shoulder": [
+     0.031,
+     0.22
+    ],
+    "upperArm": 0.053,
+    "forearm": 0.043,
+    "hand": 0.031,
+    "chestY": 0.205,
+    "waistY": 0.178,
+    "hip": [
+     0.016,
+     0.153
+    ],
+    "crotch": 0.138,
+    "knee": [
+     0.0185,
+     0.083
+    ],
+    "ankle": [
+     0.018,
+     0.016
+    ],
+    "footLen": 0.044,
+    "shoulderX": 0.031,
+    "shoulderY": 0.22,
+    "hipX": 0.016,
+    "hipY": 0.153,
+    "kneeY": 0.083,
+    "ankleY": 0.016,
+    "headH": 0.053,
+    "faceC": [
+     0,
+     0.2675
+    ],
+    "faceR": [
+     0.0198,
+     0.0265
+    ],
+    "headTop": 0.3,
+    "tunicHemY": 0.096,
+    "beltY": [
+     0.171,
+     0.182
+    ]
+   },
+   "depth": {
+    "head": 0.046,
+    "noseTipZ": 0.0235,
+    "chinZ": 0.019,
+    "chest": [
+     -0.013,
+     0.014
+    ],
+    "waist": [
+     -0.01,
+     0.012
+    ],
+    "tunicHem": [
+     -0.022,
+     0.0235
+    ],
+    "upperArm": 0.014,
+    "forearm": 0.012,
+    "thigh": 0.022,
+    "calf": [
+     -0.0095,
+     0.006
+    ],
+    "foot": [
+     -0.01,
+     0.034
+    ],
+    "hairBackZ": -0.0275,
+    "bag": [
+     0.0,
+     0.016
+    ]
+   },
+   "bonesLocal": {
+    "root": {
+     "head": [
+      0,
+      0,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.03,
+      0.0
+     ],
+     "parent": null
+    },
+    "hips": {
+     "head": [
+      0,
+      0.153,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.178,
+      0.0
+     ],
+     "parent": "root"
+    },
+    "spine": {
+     "head": [
+      0,
+      0.178,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.205,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "chest": {
+     "head": [
+      0,
+      0.205,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.228,
+      0.0
+     ],
+     "parent": "spine"
+    },
+    "neck": {
+     "head": [
+      0,
+      0.228,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.2542,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "head": {
+     "head": [
+      0,
+      0.2542,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.294,
+      0.0
+     ],
+     "parent": "neck"
+    },
+    "jaw": {
+     "head": [
+      0,
+      0.2564,
+      -0.0023
+     ],
+     "tail": [
+      0,
+      0.2426,
+      0.0184
+     ],
+     "parent": "head"
+    },
+    "shoulderL": {
+     "head": [
+      0.0068,
+      0.2253,
+      0.0
+     ],
+     "tail": [
+      0.031,
+      0.22,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmL": {
+     "head": [
+      0.031,
+      0.22,
+      0.0
+     ],
+     "tail": [
+      0.0685,
+      0.1825,
+      0.0
+     ],
+     "parent": "shoulderL"
+    },
+    "forearmL": {
+     "head": [
+      0.0685,
+      0.1825,
+      0.0
+     ],
+     "tail": [
+      0.0989,
+      0.1521,
+      0.0
+     ],
+     "parent": "upperArmL"
+    },
+    "handL": {
+     "head": [
+      0.0989,
+      0.1521,
+      0.0
+     ],
+     "tail": [
+      0.1087,
+      0.1423,
+      0.0
+     ],
+     "parent": "forearmL"
+    },
+    "fingersL": {
+     "head": [
+      0.1087,
+      0.1423,
+      0.0
+     ],
+     "tail": [
+      0.1153,
+      0.1357,
+      0.0
+     ],
+     "parent": "handL"
+    },
+    "fingerTipsL": {
+     "head": [
+      0.1153,
+      0.1357,
+      0.0
+     ],
+     "tail": [
+      0.1208,
+      0.1302,
+      0.0
+     ],
+     "parent": "fingersL"
+    },
+    "thumbL": {
+     "head": [
+      0.1015,
+      0.1495,
+      0.0037
+     ],
+     "tail": [
+      0.1109,
+      0.1401,
+      0.0093
+     ],
+     "parent": "handL"
+    },
+    "thighL": {
+     "head": [
+      0.016,
+      0.153,
+      0.0
+     ],
+     "tail": [
+      0.0185,
+      0.083,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinL": {
+     "head": [
+      0.0185,
+      0.083,
+      0.0
+     ],
+     "tail": [
+      0.018,
+      0.016,
+      0.0
+     ],
+     "parent": "thighL"
+    },
+    "footL": {
+     "head": [
+      0.018,
+      0.016,
+      0.0
+     ],
+     "tail": [
+      0.018,
+      0.004,
+      0.0273
+     ],
+     "parent": "shinL"
+    },
+    "toeL": {
+     "head": [
+      0.018,
+      0.004,
+      0.0273
+     ],
+     "tail": [
+      0.018,
+      0.0032,
+      0.0405
+     ],
+     "parent": "footL"
+    },
+    "shoulderR": {
+     "head": [
+      -0.0068,
+      0.2253,
+      0.0
+     ],
+     "tail": [
+      -0.031,
+      0.22,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmR": {
+     "head": [
+      -0.031,
+      0.22,
+      0.0
+     ],
+     "tail": [
+      -0.0685,
+      0.1825,
+      0.0
+     ],
+     "parent": "shoulderR"
+    },
+    "forearmR": {
+     "head": [
+      -0.0685,
+      0.1825,
+      0.0
+     ],
+     "tail": [
+      -0.0989,
+      0.1521,
+      0.0
+     ],
+     "parent": "upperArmR"
+    },
+    "handR": {
+     "head": [
+      -0.0989,
+      0.1521,
+      0.0
+     ],
+     "tail": [
+      -0.1087,
+      0.1423,
+      0.0
+     ],
+     "parent": "forearmR"
+    },
+    "fingersR": {
+     "head": [
+      -0.1087,
+      0.1423,
+      0.0
+     ],
+     "tail": [
+      -0.1136,
+      0.1374,
+      -0.0019
+     ],
+     "parent": "handR"
+    },
+    "fingerTipsR": {
+     "head": [
+      -0.1136,
+      0.1374,
+      -0.0019
+     ],
+     "tail": [
+      -0.1127,
+      0.1383,
+      -0.0068
+     ],
+     "parent": "fingersR"
+    },
+    "thumbR": {
+     "head": [
+      -0.1015,
+      0.1495,
+      0.0037
+     ],
+     "tail": [
+      -0.1109,
+      0.1401,
+      0.0056
+     ],
+     "parent": "handR"
+    },
+    "thighR": {
+     "head": [
+      -0.016,
+      0.153,
+      0.0
+     ],
+     "tail": [
+      -0.0185,
+      0.083,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinR": {
+     "head": [
+      -0.0185,
+      0.083,
+      0.0
+     ],
+     "tail": [
+      -0.018,
+      0.016,
+      0.0
+     ],
+     "parent": "thighR"
+    },
+    "footR": {
+     "head": [
+      -0.018,
+      0.016,
+      0.0
+     ],
+     "tail": [
+      -0.018,
+      0.004,
+      0.0273
+     ],
+     "parent": "shinR"
+    },
+    "toeR": {
+     "head": [
+      -0.018,
+      0.004,
+      0.0273
+     ],
+     "tail": [
+      -0.018,
+      0.0032,
+      0.0405
+     ],
+     "parent": "footR"
+    },
+    "slingCord1": {
+     "head": [
+      -0.107,
+      0.136,
+      0
+     ],
+     "tail": [
+      -0.107,
+      0.11,
+      0
+     ],
+     "parent": "handR"
+    },
+    "slingCord2": {
+     "head": [
+      -0.107,
+      0.11,
+      0
+     ],
+     "tail": [
+      -0.107,
+      0.0855,
+      0
+     ],
+     "parent": "slingCord1"
+    },
+    "slingPouch": {
+     "head": [
+      -0.107,
+      0.0855,
+      0
+     ],
+     "tail": [
+      -0.107,
+      0.0685,
+      0
+     ],
+     "parent": "slingCord2"
+    },
+    "stone": {
+     "head": [
+      -0.107,
+      0.078,
+      0.004
+     ],
+     "tail": [
+      -0.107,
+      0.098,
+      0.004
+     ],
+     "parent": "root"
+    }
+   },
+   "bonesSheet": {
+    "root": {
+     "head": [
+      -0.35,
+      0.015,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.045,
+      0.0
+     ],
+     "parent": null
+    },
+    "hips": {
+     "head": [
+      -0.35,
+      0.168,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.193,
+      0.0
+     ],
+     "parent": "root"
+    },
+    "spine": {
+     "head": [
+      -0.35,
+      0.193,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.22,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "chest": {
+     "head": [
+      -0.35,
+      0.22,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.243,
+      0.0
+     ],
+     "parent": "spine"
+    },
+    "neck": {
+     "head": [
+      -0.35,
+      0.243,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.2692,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "head": {
+     "head": [
+      -0.35,
+      0.2692,
+      0.0
+     ],
+     "tail": [
+      -0.35,
+      0.309,
+      0.0
+     ],
+     "parent": "neck"
+    },
+    "jaw": {
+     "head": [
+      -0.35,
+      0.2714,
+      -0.0023
+     ],
+     "tail": [
+      -0.35,
+      0.2576,
+      0.0184
+     ],
+     "parent": "head"
+    },
+    "shoulderL": {
+     "head": [
+      -0.3432,
+      0.2403,
+      0.0
+     ],
+     "tail": [
+      -0.319,
+      0.235,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmL": {
+     "head": [
+      -0.319,
+      0.235,
+      0.0
+     ],
+     "tail": [
+      -0.2815,
+      0.1975,
+      0.0
+     ],
+     "parent": "shoulderL"
+    },
+    "forearmL": {
+     "head": [
+      -0.2815,
+      0.1975,
+      0.0
+     ],
+     "tail": [
+      -0.2511,
+      0.1671,
+      0.0
+     ],
+     "parent": "upperArmL"
+    },
+    "handL": {
+     "head": [
+      -0.2511,
+      0.1671,
+      0.0
+     ],
+     "tail": [
+      -0.2413,
+      0.1573,
+      0.0
+     ],
+     "parent": "forearmL"
+    },
+    "fingersL": {
+     "head": [
+      -0.2413,
+      0.1573,
+      0.0
+     ],
+     "tail": [
+      -0.2347,
+      0.1507,
+      0.0
+     ],
+     "parent": "handL"
+    },
+    "fingerTipsL": {
+     "head": [
+      -0.2347,
+      0.1507,
+      0.0
+     ],
+     "tail": [
+      -0.2292,
+      0.1452,
+      0.0
+     ],
+     "parent": "fingersL"
+    },
+    "thumbL": {
+     "head": [
+      -0.2485,
+      0.1645,
+      0.0037
+     ],
+     "tail": [
+      -0.2391,
+      0.1551,
+      0.0093
+     ],
+     "parent": "handL"
+    },
+    "thighL": {
+     "head": [
+      -0.334,
+      0.168,
+      0.0
+     ],
+     "tail": [
+      -0.3315,
+      0.098,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinL": {
+     "head": [
+      -0.3315,
+      0.098,
+      0.0
+     ],
+     "tail": [
+      -0.332,
+      0.031,
+      0.0
+     ],
+     "parent": "thighL"
+    },
+    "footL": {
+     "head": [
+      -0.332,
+      0.031,
+      0.0
+     ],
+     "tail": [
+      -0.332,
+      0.019,
+      0.0273
+     ],
+     "parent": "shinL"
+    },
+    "toeL": {
+     "head": [
+      -0.332,
+      0.019,
+      0.0273
+     ],
+     "tail": [
+      -0.332,
+      0.0182,
+      0.0405
+     ],
+     "parent": "footL"
+    },
+    "shoulderR": {
+     "head": [
+      -0.3568,
+      0.2403,
+      0.0
+     ],
+     "tail": [
+      -0.381,
+      0.235,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmR": {
+     "head": [
+      -0.381,
+      0.235,
+      0.0
+     ],
+     "tail": [
+      -0.4185,
+      0.1975,
+      0.0
+     ],
+     "parent": "shoulderR"
+    },
+    "forearmR": {
+     "head": [
+      -0.4185,
+      0.1975,
+      0.0
+     ],
+     "tail": [
+      -0.4489,
+      0.1671,
+      0.0
+     ],
+     "parent": "upperArmR"
+    },
+    "handR": {
+     "head": [
+      -0.4489,
+      0.1671,
+      0.0
+     ],
+     "tail": [
+      -0.4587,
+      0.1573,
+      0.0
+     ],
+     "parent": "forearmR"
+    },
+    "fingersR": {
+     "head": [
+      -0.4587,
+      0.1573,
+      0.0
+     ],
+     "tail": [
+      -0.4636,
+      0.1524,
+      -0.0019
+     ],
+     "parent": "handR"
+    },
+    "fingerTipsR": {
+     "head": [
+      -0.4636,
+      0.1524,
+      -0.0019
+     ],
+     "tail": [
+      -0.4627,
+      0.1533,
+      -0.0068
+     ],
+     "parent": "fingersR"
+    },
+    "thumbR": {
+     "head": [
+      -0.4515,
+      0.1645,
+      0.0037
+     ],
+     "tail": [
+      -0.4609,
+      0.1551,
+      0.0056
+     ],
+     "parent": "handR"
+    },
+    "thighR": {
+     "head": [
+      -0.366,
+      0.168,
+      0.0
+     ],
+     "tail": [
+      -0.3685,
+      0.098,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinR": {
+     "head": [
+      -0.3685,
+      0.098,
+      0.0
+     ],
+     "tail": [
+      -0.368,
+      0.031,
+      0.0
+     ],
+     "parent": "thighR"
+    },
+    "footR": {
+     "head": [
+      -0.368,
+      0.031,
+      0.0
+     ],
+     "tail": [
+      -0.368,
+      0.019,
+      0.0273
+     ],
+     "parent": "shinR"
+    },
+    "toeR": {
+     "head": [
+      -0.368,
+      0.019,
+      0.0273
+     ],
+     "tail": [
+      -0.368,
+      0.0182,
+      0.0405
+     ],
+     "parent": "footR"
+    },
+    "slingCord1": {
+     "head": [
+      -0.457,
+      0.151,
+      0
+     ],
+     "tail": [
+      -0.457,
+      0.125,
+      0
+     ],
+     "parent": "handR"
+    },
+    "slingCord2": {
+     "head": [
+      -0.457,
+      0.125,
+      0
+     ],
+     "tail": [
+      -0.457,
+      0.1005,
+      0
+     ],
+     "parent": "slingCord1"
+    },
+    "slingPouch": {
+     "head": [
+      -0.457,
+      0.1005,
+      0
+     ],
+     "tail": [
+      -0.457,
+      0.0835,
+      0
+     ],
+     "parent": "slingCord2"
+    },
+    "stone": {
+     "head": [
+      -0.457,
+      0.093,
+      0.004
+     ],
+     "tail": [
+      -0.457,
+      0.113,
+      0.004
+     ],
+     "parent": "root"
+    }
+   },
+   "props": {
+    "sling": {
+     "cordLength": 0.0505,
+     "cordBandWidth": [
+      0.004,
+      0.0136
+     ],
+     "pouch": [
+      0.024,
+      0.018,
+      0.01
+     ],
+     "note": "two cords as one colourable band, from the bottom of the right fist; pouch below"
+    },
+    "stone": {
+     "diameter": 0.011,
+     "restCentre": [
+      -0.457,
+      0.093,
+      0.004
+     ],
+     "note": "smooth stone in the pouch (17:40)"
+    },
+    "bag": {
+     "size": [
+      0.026,
+      0.024,
+      0.016
+     ],
+     "centreLocal": [
+      0.03,
+      0.153,
+      0.016
+     ],
+     "strap": "right shoulder -> front of left hip, 0.0048 wide",
+     "follows": "hips"
+    }
+   },
+   "regions": {
+    "skin": {
+     "hex": "#EDB98E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "leg",
+      "foot",
+      "neck",
+      "arm",
+      "fist",
+      "hand",
+      "ear",
+      "face"
+     ],
+     "bboxSheet": [
+      -0.4697,
+      0.0145,
+      -0.227,
+      0.309
+     ]
+    },
+    "sandals": {
+     "hex": "#A8693A",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "sandal"
+     ],
+     "bboxSheet": [
+      -0.3781,
+      0.0145,
+      -0.3219,
+      0.0289
+     ]
+    },
+    "tunic": {
+     "hex": "#4BA3E3",
+     "zh": "外衣",
+     "en": "tunic",
+     "parts": [
+      "tunic",
+      "sleeve"
+     ],
+     "bboxSheet": [
+      -0.4036,
+      0.109,
+      -0.2964,
+      0.2463
+     ]
+    },
+    "belt": {
+     "hex": "#E8553D",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashKnot"
+     ],
+     "bboxSheet": [
+      -0.3795,
+      0.1612,
+      -0.3157,
+      0.197
+     ]
+    },
+    "bag": {
+     "hex": "#C68B4E",
+     "zh": "牧人袋",
+     "en": "shepherd bag",
+     "parts": [
+      "strap",
+      "bag"
+     ],
+     "bboxSheet": [
+      -0.3765,
+      0.1568,
+      -0.307,
+      0.2454
+     ]
+    },
+    "sling": {
+     "hex": "#D9A066",
+     "zh": "机弦",
+     "en": "sling",
+     "parts": [
+      "slingCords",
+      "slingPouch"
+     ],
+     "bboxSheet": [
+      -0.4691,
+      0.0835,
+      -0.445,
+      0.1518
+     ]
+    },
+    "stone": {
+     "hex": "#B9B4AA",
+     "zh": "石子",
+     "en": "stone",
+     "parts": [
+      "stone"
+     ],
+     "bboxSheet": [
+      -0.4628,
+      0.088,
+      -0.4512,
+      0.098
+     ]
+    },
+    "hair": {
+     "hex": "#B9562A",
+     "zh": "红棕头发",
+     "en": "auburn hair",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3722,
+      0.275,
+      -0.3278,
+      0.3191
+     ]
+    }
+   },
+   "defaultExpression": "brave"
+  },
+  "goliath": {
+   "height": 0.8,
+   "sheetX": 0.13,
+   "sheetY": 0.015,
+   "headsTall": 7.39,
+   "proportions": {
+    "height": 0.8,
+    "skullTop": 0.746,
+    "chin": 0.645,
+    "headHalfW": 0.04,
+    "eyeY": 0.699,
+    "browY": 0.707,
+    "noseY": 0.683,
+    "mouthY": 0.667,
+    "earY": [
+     0.68,
+     0.708
+    ],
+    "neckBase": 0.628,
+    "shoulder": [
+     0.092,
+     0.603
+    ],
+    "upperArm": 0.138,
+    "forearm": 0.112,
+    "hand": 0.082,
+    "chestY": 0.54,
+    "waistY": 0.452,
+    "hip": [
+     0.05,
+     0.38
+    ],
+    "crotch": 0.35,
+    "knee": [
+     0.054,
+     0.209
+    ],
+    "ankle": [
+     0.052,
+     0.04
+    ],
+    "footLen": 0.112,
+    "shoulderX": 0.092,
+    "shoulderY": 0.603,
+    "hipX": 0.05,
+    "hipY": 0.38,
+    "kneeY": 0.209,
+    "ankleY": 0.04,
+    "headH": 0.101,
+    "faceC": [
+     0,
+     0.6955
+    ],
+    "faceR": [
+     0.04,
+     0.0505
+    ],
+    "headTop": 0.8,
+    "kiltHemY": 0.262,
+    "armourHemY": 0.362,
+    "beltY": [
+     0.438,
+     0.463
+    ],
+    "helmetTop": 0.768,
+    "crestTop": 0.8
+   },
+   "depth": {
+    "head": 0.092,
+    "noseTipZ": 0.051,
+    "beardZ": [
+     0.02,
+     0.047
+    ],
+    "chest": [
+     -0.075,
+     0.08
+    ],
+    "waist": [
+     -0.068,
+     0.07
+    ],
+    "kiltHem": [
+     -0.088,
+     0.092
+    ],
+    "upperArm": 0.052,
+    "forearm": 0.044,
+    "thigh": 0.066,
+    "calf": [
+     -0.03,
+     0.03
+    ],
+    "foot": [
+     -0.027,
+     0.088
+    ],
+    "helmet": [
+     -0.06,
+     0.048
+    ]
+   },
+   "bonesLocal": {
+    "root": {
+     "head": [
+      0,
+      0,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.08,
+      0.0
+     ],
+     "parent": null
+    },
+    "hips": {
+     "head": [
+      0,
+      0.38,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.452,
+      0.0
+     ],
+     "parent": "root"
+    },
+    "spine": {
+     "head": [
+      0,
+      0.452,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.54,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "chest": {
+     "head": [
+      0,
+      0.54,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.628,
+      0.0
+     ],
+     "parent": "spine"
+    },
+    "neck": {
+     "head": [
+      0,
+      0.628,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.6703,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "head": {
+     "head": [
+      0,
+      0.6703,
+      0.0
+     ],
+     "tail": [
+      0,
+      0.746,
+      0.0
+     ],
+     "parent": "neck"
+    },
+    "jaw": {
+     "head": [
+      0,
+      0.678,
+      -0.0046
+     ],
+     "tail": [
+      0,
+      0.648,
+      0.0368
+     ],
+     "parent": "head"
+    },
+    "shoulderL": {
+     "head": [
+      0.0202,
+      0.623,
+      0.0
+     ],
+     "tail": [
+      0.092,
+      0.603,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmL": {
+     "head": [
+      0.092,
+      0.603,
+      0.0
+     ],
+     "tail": [
+      0.1896,
+      0.5054,
+      0.0
+     ],
+     "parent": "shoulderL"
+    },
+    "forearmL": {
+     "head": [
+      0.1896,
+      0.5054,
+      0.0
+     ],
+     "tail": [
+      0.2688,
+      0.4262,
+      0.0
+     ],
+     "parent": "upperArmL"
+    },
+    "handL": {
+     "head": [
+      0.2688,
+      0.4262,
+      0.0
+     ],
+     "tail": [
+      0.2949,
+      0.4001,
+      0.0
+     ],
+     "parent": "forearmL"
+    },
+    "fingersL": {
+     "head": [
+      0.2949,
+      0.4001,
+      0.0
+     ],
+     "tail": [
+      0.3076,
+      0.3874,
+      -0.0049
+     ],
+     "parent": "handL"
+    },
+    "fingerTipsL": {
+     "head": [
+      0.3076,
+      0.3874,
+      -0.0049
+     ],
+     "tail": [
+      0.3053,
+      0.3897,
+      -0.018
+     ],
+     "parent": "fingersL"
+    },
+    "thumbL": {
+     "head": [
+      0.2757,
+      0.4193,
+      0.0098
+     ],
+     "tail": [
+      0.3007,
+      0.3943,
+      0.0148
+     ],
+     "parent": "handL"
+    },
+    "thighL": {
+     "head": [
+      0.05,
+      0.38,
+      0.0
+     ],
+     "tail": [
+      0.054,
+      0.209,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinL": {
+     "head": [
+      0.054,
+      0.209,
+      0.0
+     ],
+     "tail": [
+      0.052,
+      0.04,
+      0.0
+     ],
+     "parent": "thighL"
+    },
+    "footL": {
+     "head": [
+      0.052,
+      0.04,
+      0.0
+     ],
+     "tail": [
+      0.052,
+      0.01,
+      0.0694
+     ],
+     "parent": "shinL"
+    },
+    "toeL": {
+     "head": [
+      0.052,
+      0.01,
+      0.0694
+     ],
+     "tail": [
+      0.052,
+      0.008,
+      0.103
+     ],
+     "parent": "footL"
+    },
+    "shoulderR": {
+     "head": [
+      -0.0202,
+      0.623,
+      0.0
+     ],
+     "tail": [
+      -0.092,
+      0.603,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmR": {
+     "head": [
+      -0.092,
+      0.603,
+      0.0
+     ],
+     "tail": [
+      -0.1896,
+      0.5054,
+      0.0
+     ],
+     "parent": "shoulderR"
+    },
+    "forearmR": {
+     "head": [
+      -0.1896,
+      0.5054,
+      0.0
+     ],
+     "tail": [
+      -0.2688,
+      0.4262,
+      0.0
+     ],
+     "parent": "upperArmR"
+    },
+    "handR": {
+     "head": [
+      -0.2688,
+      0.4262,
+      0.0
+     ],
+     "tail": [
+      -0.2949,
+      0.4001,
+      0.0
+     ],
+     "parent": "forearmR"
+    },
+    "fingersR": {
+     "head": [
+      -0.2949,
+      0.4001,
+      0.0
+     ],
+     "tail": [
+      -0.3076,
+      0.3874,
+      -0.0049
+     ],
+     "parent": "handR"
+    },
+    "fingerTipsR": {
+     "head": [
+      -0.3076,
+      0.3874,
+      -0.0049
+     ],
+     "tail": [
+      -0.3053,
+      0.3897,
+      -0.018
+     ],
+     "parent": "fingersR"
+    },
+    "thumbR": {
+     "head": [
+      -0.2757,
+      0.4193,
+      0.0098
+     ],
+     "tail": [
+      -0.3007,
+      0.3943,
+      0.0148
+     ],
+     "parent": "handR"
+    },
+    "thighR": {
+     "head": [
+      -0.05,
+      0.38,
+      0.0
+     ],
+     "tail": [
+      -0.054,
+      0.209,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinR": {
+     "head": [
+      -0.054,
+      0.209,
+      0.0
+     ],
+     "tail": [
+      -0.052,
+      0.04,
+      0.0
+     ],
+     "parent": "thighR"
+    },
+    "footR": {
+     "head": [
+      -0.052,
+      0.04,
+      0.0
+     ],
+     "tail": [
+      -0.052,
+      0.01,
+      0.0694
+     ],
+     "parent": "shinR"
+    },
+    "toeR": {
+     "head": [
+      -0.052,
+      0.01,
+      0.0694
+     ],
+     "tail": [
+      -0.052,
+      0.008,
+      0.103
+     ],
+     "parent": "footR"
+    },
+    "spear": {
+     "head": [
+      -0.29,
+      0.405,
+      0
+     ],
+     "tail": [
+      -0.29,
+      0.955,
+      0
+     ],
+     "parent": "handR"
+    },
+    "shield": {
+     "head": [
+      0.273,
+      0.422,
+      0.01
+     ],
+     "tail": [
+      0.273,
+      0.422,
+      0.06
+     ],
+     "parent": "handL"
+    },
+    "helmet": {
+     "head": [
+      0,
+      0.713,
+      0
+     ],
+     "tail": [
+      0,
+      0.8,
+      0
+     ],
+     "parent": "head"
+    }
+   },
+   "bonesSheet": {
+    "root": {
+     "head": [
+      0.13,
+      0.015,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.095,
+      0.0
+     ],
+     "parent": null
+    },
+    "hips": {
+     "head": [
+      0.13,
+      0.395,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.467,
+      0.0
+     ],
+     "parent": "root"
+    },
+    "spine": {
+     "head": [
+      0.13,
+      0.467,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.555,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "chest": {
+     "head": [
+      0.13,
+      0.555,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.643,
+      0.0
+     ],
+     "parent": "spine"
+    },
+    "neck": {
+     "head": [
+      0.13,
+      0.643,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.6853,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "head": {
+     "head": [
+      0.13,
+      0.6853,
+      0.0
+     ],
+     "tail": [
+      0.13,
+      0.761,
+      0.0
+     ],
+     "parent": "neck"
+    },
+    "jaw": {
+     "head": [
+      0.13,
+      0.693,
+      -0.0046
+     ],
+     "tail": [
+      0.13,
+      0.663,
+      0.0368
+     ],
+     "parent": "head"
+    },
+    "shoulderL": {
+     "head": [
+      0.1502,
+      0.638,
+      0.0
+     ],
+     "tail": [
+      0.222,
+      0.618,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmL": {
+     "head": [
+      0.222,
+      0.618,
+      0.0
+     ],
+     "tail": [
+      0.3196,
+      0.5204,
+      0.0
+     ],
+     "parent": "shoulderL"
+    },
+    "forearmL": {
+     "head": [
+      0.3196,
+      0.5204,
+      0.0
+     ],
+     "tail": [
+      0.3988,
+      0.4412,
+      0.0
+     ],
+     "parent": "upperArmL"
+    },
+    "handL": {
+     "head": [
+      0.3988,
+      0.4412,
+      0.0
+     ],
+     "tail": [
+      0.4249,
+      0.4151,
+      0.0
+     ],
+     "parent": "forearmL"
+    },
+    "fingersL": {
+     "head": [
+      0.4249,
+      0.4151,
+      0.0
+     ],
+     "tail": [
+      0.4376,
+      0.4024,
+      -0.0049
+     ],
+     "parent": "handL"
+    },
+    "fingerTipsL": {
+     "head": [
+      0.4376,
+      0.4024,
+      -0.0049
+     ],
+     "tail": [
+      0.4353,
+      0.4047,
+      -0.018
+     ],
+     "parent": "fingersL"
+    },
+    "thumbL": {
+     "head": [
+      0.4057,
+      0.4343,
+      0.0098
+     ],
+     "tail": [
+      0.4307,
+      0.4093,
+      0.0148
+     ],
+     "parent": "handL"
+    },
+    "thighL": {
+     "head": [
+      0.18,
+      0.395,
+      0.0
+     ],
+     "tail": [
+      0.184,
+      0.224,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinL": {
+     "head": [
+      0.184,
+      0.224,
+      0.0
+     ],
+     "tail": [
+      0.182,
+      0.055,
+      0.0
+     ],
+     "parent": "thighL"
+    },
+    "footL": {
+     "head": [
+      0.182,
+      0.055,
+      0.0
+     ],
+     "tail": [
+      0.182,
+      0.025,
+      0.0694
+     ],
+     "parent": "shinL"
+    },
+    "toeL": {
+     "head": [
+      0.182,
+      0.025,
+      0.0694
+     ],
+     "tail": [
+      0.182,
+      0.023,
+      0.103
+     ],
+     "parent": "footL"
+    },
+    "shoulderR": {
+     "head": [
+      0.1098,
+      0.638,
+      0.0
+     ],
+     "tail": [
+      0.038,
+      0.618,
+      0.0
+     ],
+     "parent": "chest"
+    },
+    "upperArmR": {
+     "head": [
+      0.038,
+      0.618,
+      0.0
+     ],
+     "tail": [
+      -0.0596,
+      0.5204,
+      0.0
+     ],
+     "parent": "shoulderR"
+    },
+    "forearmR": {
+     "head": [
+      -0.0596,
+      0.5204,
+      0.0
+     ],
+     "tail": [
+      -0.1388,
+      0.4412,
+      0.0
+     ],
+     "parent": "upperArmR"
+    },
+    "handR": {
+     "head": [
+      -0.1388,
+      0.4412,
+      0.0
+     ],
+     "tail": [
+      -0.1649,
+      0.4151,
+      0.0
+     ],
+     "parent": "forearmR"
+    },
+    "fingersR": {
+     "head": [
+      -0.1649,
+      0.4151,
+      0.0
+     ],
+     "tail": [
+      -0.1776,
+      0.4024,
+      -0.0049
+     ],
+     "parent": "handR"
+    },
+    "fingerTipsR": {
+     "head": [
+      -0.1776,
+      0.4024,
+      -0.0049
+     ],
+     "tail": [
+      -0.1753,
+      0.4047,
+      -0.018
+     ],
+     "parent": "fingersR"
+    },
+    "thumbR": {
+     "head": [
+      -0.1457,
+      0.4343,
+      0.0098
+     ],
+     "tail": [
+      -0.1707,
+      0.4093,
+      0.0148
+     ],
+     "parent": "handR"
+    },
+    "thighR": {
+     "head": [
+      0.08,
+      0.395,
+      0.0
+     ],
+     "tail": [
+      0.076,
+      0.224,
+      0.0
+     ],
+     "parent": "hips"
+    },
+    "shinR": {
+     "head": [
+      0.076,
+      0.224,
+      0.0
+     ],
+     "tail": [
+      0.078,
+      0.055,
+      0.0
+     ],
+     "parent": "thighR"
+    },
+    "footR": {
+     "head": [
+      0.078,
+      0.055,
+      0.0
+     ],
+     "tail": [
+      0.078,
+      0.025,
+      0.0694
+     ],
+     "parent": "shinR"
+    },
+    "toeR": {
+     "head": [
+      0.078,
+      0.025,
+      0.0694
+     ],
+     "tail": [
+      0.078,
+      0.023,
+      0.103
+     ],
+     "parent": "footR"
+    },
+    "spear": {
+     "head": [
+      -0.16,
+      0.42,
+      0
+     ],
+     "tail": [
+      -0.16,
+      0.97,
+      0
+     ],
+     "parent": "handR"
+    },
+    "shield": {
+     "head": [
+      0.403,
+      0.437,
+      0.01
+     ],
+     "tail": [
+      0.403,
+      0.437,
+      0.06
+     ],
+     "parent": "handL"
+    },
+    "helmet": {
+     "head": [
+      0.13,
+      0.728,
+      0
+     ],
+     "tail": [
+      0.13,
+      0.815,
+      0
+     ],
+     "parent": "head"
+    }
+   },
+   "props": {
+    "spear": {
+     "length": 0.952,
+     "shaftDiameter": 0.019,
+     "head": {
+      "length": 0.107,
+      "width": 0.04
+     },
+     "collar": [
+      0.026,
+      0.016
+     ],
+     "butt": "bronze spike 0.028",
+     "restX": -0.16,
+     "y": [
+      0.018,
+      0.97
+     ],
+     "note": "vertical in the right fist; grip = fist centre"
+    },
+    "shield": {
+     "diameter": 0.132,
+     "rim": 0.011,
+     "bossDiameter": 0.034,
+     "thickness": 0.01,
+     "dish": 0.008,
+     "centreSheet": [
+      0.403,
+      0.437,
+      0.035
+     ],
+     "note": "round bronze shield on the left fist/forearm, face toward +Z; fist hidden behind it"
+    },
+    "helmet": {
+     "dome": [
+      0.096,
+      0.055
+     ],
+     "rimBand": 0.0105,
+     "neckGuard": "flares to x ±0.053 down to y 0.680",
+     "crest": "transverse fan, 0.104 wide, 0.037 tall",
+     "noFaceGuard": true
+    }
+   },
+   "regions": {
+    "spearShaft": {
+     "hex": "#B07A45",
+     "zh": "枪杆",
+     "en": "spear shaft",
+     "parts": [
+      "spearShaft",
+      "spearCollar"
+     ],
+     "bboxSheet": [
+      -0.173,
+      0.045,
+      -0.147,
+      0.863
+     ]
+    },
+    "spearHead": {
+     "hex": "#BFC7CF",
+     "zh": "铁枪头",
+     "en": "iron spear head",
+     "parts": [
+      "spearHead",
+      "spearButt"
+     ],
+     "bboxSheet": [
+      -0.18,
+      0.018,
+      -0.14,
+      0.97
+     ]
+    },
+    "skin": {
+     "hex": "#D99A6C",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "leg",
+      "arm",
+      "neck",
+      "fist",
+      "ear",
+      "face"
+     ],
+     "bboxSheet": [
+      -0.1864,
+      0.0559,
+      0.4468,
+      0.761
+     ]
+    },
+    "feet": {
+     "hex": "#A8693A",
+     "zh": "靴",
+     "en": "boots",
+     "parts": [
+      "boot"
+     ],
+     "bboxSheet": [
+      0.0485,
+      0.0137,
+      0.2115,
+      0.0788
+     ]
+    },
+    "greaves": {
+     "hex": "#E3B04B",
+     "zh": "护胫",
+     "en": "bronze greaves",
+     "parts": [
+      "greave"
+     ],
+     "bboxSheet": [
+      0.0461,
+      0.0678,
+      0.2139,
+      0.2143
+     ]
+    },
+    "kilt": {
+     "hex": "#8A6FD1",
+     "zh": "短裙",
+     "en": "kilt",
+     "parts": [
+      "kilt"
+     ],
+     "bboxSheet": [
+      0.0169,
+      0.2749,
+      0.2431,
+      0.4187
+     ]
+    },
+    "bracers": {
+     "hex": "#B5733C",
+     "zh": "护腕",
+     "en": "leather bracers",
+     "parts": [
+      "bracer"
+     ],
+     "bboxSheet": [
+      -0.1516,
+      0.4289,
+      0.4116,
+      0.5039
+     ]
+    },
+    "armour": {
+     "hex": "#C8873A",
+     "zh": "鳞甲",
+     "en": "scale armour",
+     "parts": [
+      "armourCoat",
+      "scaleSleeve"
+     ],
+     "bboxSheet": [
+      -0.0193,
+      0.3749,
+      0.2793,
+      0.6555
+     ]
+    },
+    "belt": {
+     "hex": "#9C5B2E",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      0.044,
+      0.453,
+      0.216,
+      0.478
+     ]
+    },
+    "shieldRim": {
+     "hex": "#C8873A",
+     "zh": "盾边",
+     "en": "shield rim",
+     "parts": [
+      "shieldRim"
+     ],
+     "bboxSheet": [
+      0.337,
+      0.371,
+      0.469,
+      0.503
+     ]
+    },
+    "shield": {
+     "hex": "#E3B04B",
+     "zh": "盾牌",
+     "en": "shield",
+     "parts": [
+      "shield"
+     ],
+     "bboxSheet": [
+      0.348,
+      0.382,
+      0.458,
+      0.492
+     ]
+    },
+    "shieldBoss": {
+     "hex": "#FFC93C",
+     "zh": "盾心",
+     "en": "shield boss",
+     "parts": [
+      "shieldBoss"
+     ],
+     "bboxSheet": [
+      0.386,
+      0.42,
+      0.42,
+      0.454
+     ]
+    },
+    "crest": {
+     "hex": "#E8553D",
+     "zh": "盔缨",
+     "en": "helmet crest",
+     "parts": [
+      "crest"
+     ],
+     "bboxSheet": [
+      0.0765,
+      0.778,
+      0.1835,
+      0.815
+     ]
+    },
+    "helmet": {
+     "hex": "#E3B04B",
+     "zh": "铜盔",
+     "en": "bronze helmet",
+     "parts": [
+      "helmetDome"
+     ],
+     "bboxSheet": [
+      0.0751,
+      0.6944,
+      0.1849,
+      0.783
+     ]
+    },
+    "beard": {
+     "hex": "#6E4326",
+     "zh": "胡子",
+     "en": "beard",
+     "parts": [
+      "beard",
+      "moustache"
+     ],
+     "bboxSheet": [
+      0.0902,
+      0.6359,
+      0.1698,
+      0.6991
+     ]
+    }
+   },
+   "defaultExpression": "grumpy"
+  }
+ },
+ "palette": {
+  "david": {
+   "skin": "#EDB98E",
+   "hair": "#B9562A",
+   "tunic": "#4BA3E3",
+   "belt": "#E8553D",
+   "bag": "#C68B4E",
+   "sandals": "#A8693A",
+   "sling": "#D9A066",
+   "stone": "#B9B4AA"
+  },
+  "goliath": {
+   "skin": "#D99A6C",
+   "beard": "#6E4326",
+   "helmet": "#E3B04B",
+   "crest": "#E8553D",
+   "armour": "#C8873A",
+   "belt": "#9C5B2E",
+   "bracers": "#B5733C",
+   "kilt": "#8A6FD1",
+   "greaves": "#E3B04B",
+   "feet": "#A8693A",
+   "spearShaft": "#B07A45",
+   "spearHead": "#BFC7CF",
+   "shield": "#E3B04B",
+   "shieldRim": "#C8873A",
+   "shieldBoss": "#FFC93C"
+  },
+  "desert": {
+   "sand": "#F3D58E",
+   "duneShade": "#E3A857",
+   "rock": "#B99B7A",
+   "hillIsrael": "#D9B77A",
+   "hillPhil": "#CFA36B",
+   "tentIsrael": "#F4EEDC",
+   "tentPhil": "#E07B5A",
+   "flagIsrael": "#4B7BE5",
+   "flagPhil": "#C0392B",
+   "water": "#6EC1E4",
+   "pebbles": "#C9C3B6",
+   "bush": "#9BBF5A",
+   "tentDoor": "#7A4E2D"
+  }
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "titleBand": [
+   120,
+   10,
+   1000,
+   262
+  ],
+  "title": {
+   "hanzi": "大卫与歌利亚",
+   "pinyin": "dà wèi yǔ gē lì yà",
+   "english": "David & Goliath",
+   "box": 76,
+   "gap": 12,
+   "cy": 100,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫"
+  },
+  "footer": {
+   "rect": [
+    300,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "撒母耳记上 17 章 · 1 Samuel 17"
+   ],
+   "note": "right of the brook (centre x = page 710); line 1 centre y = rect y + 40, line 2 = y + 76 (make_dg_sheet.py); lowest glyph >= 6 mm from the page bottom"
+  },
+  "figureRectsPx": {
+   "david": [
+    150,
+    1191,
+    243,
+    305
+   ],
+   "goliath": [
+    434,
+    540,
+    655,
+    956
+   ]
+  },
+  "decorSuggestion": null,
+  "decorNote": "sun and clouds are gone: the desert (design.json desert) fills the sheet instead",
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy 100 puts the pinyin >= 6 mm from the top"
+ },
+ "desert": {
+  "contract": "CONTRACT §12 (desert boost 2026-10-27); supersedes §11.9 where they differ",
+  "uvRule": {
+   "front": "u = x / scale + sheetX + 0.5, v = (y / scale + sheetY) / artHeightUnits, for a 3D vertex (x, y, z) (x = page x, y = height); z is ignored. Characters are the case scale = 1 (character-local x).",
+   "pageTopDown": "u = x + 0.5, v = -z / artHeightUnits (ground pieces, §11.9)",
+   "constant": "one UV for the whole piece",
+   "none": "no texture (water film)"
+  },
+  "layers": {
+   "pano": "far panorama: duneFar, hillIsrael, hillPhil, tents, banners; one mapping scale 2.5, sheetX 0, sheetY 1.000; drawn at sheet x -0.236..0.236, ys 1.000..1.207; stands at z -0.98..-1.475 across x -0.59..0.59",
+   "midground": "dune1 dune2 dune3 rockL1 rockL2 rockM1 rockM2 shrubL rockFR1 rockFR2; scale 1, sheetX 0, sheetY = its front foot (-zFront): each stands on its own drawing",
+   "ground": "brook (hole in the ground, water film) and fiveStones (constant UV), top-down"
+  },
+  "depthProfile": "front pieces: h(x, z) = top(x) * p(z); p rises with smoothstep from depthZ.front to depthZ.crestFrom, stays 1 to crestTo, then falls as 1 - t^2 to back (back slope steeper than 35 deg: hidden from the viewer). rocks: p = sqrt(clamp(min(z - back, front - z) / 0.012, 0, 1)). tents: A-frame, ridge along z, gable at depthZ.front faces +Z. The front orthographic silhouette of the 3D equals silhouette3D.",
+  "heightCap": {
+   "hill": 0.4,
+   "tent": 0.5,
+   "banner": 0.53,
+   "dune": 0.3,
+   "duneFar": 0.2,
+   "rock": 0.1,
+   "shrub": 0.06,
+   "rockFR1": 0.06,
+   "rockFR2": 0.06,
+   "water": 0.004,
+   "stones": 0.008
+  },
+  "frontZone": {
+   "zBeyond": -0.3,
+   "cap": 0.06,
+   "rule": "a raised footprint reaching z > -0.30 stays <= 0.06 (actors stay visible)"
+  },
+  "stageBand": {
+   "polygonsSheet": [
+    [
+     [
+      0.284,
+      -0.073
+     ],
+     [
+      0.271,
+      -0.094
+     ],
+     [
+      0.256,
+      -0.114
+     ],
+     [
+      0.238,
+      -0.131
+     ],
+     [
+      0.217,
+      -0.146
+     ],
+     [
+      0.195,
+      -0.157
+     ],
+     [
+      0.179,
+      -0.163
+     ],
+     [
+      0.163,
+      -0.167
+     ],
+     [
+      0.138,
+      -0.17
+     ],
+     [
+      0.113,
+      -0.169
+     ],
+     [
+      0.088,
+      -0.165
+     ],
+     [
+      0.065,
+      -0.157
+     ],
+     [
+      0.05,
+      -0.15
+     ],
+     [
+      0.036,
+      -0.141
+     ],
+     [
+      0.016,
+      -0.126
+     ],
+     [
+      -0.001,
+      -0.108
+     ],
+     [
+      -0.011,
+      -0.094
+     ],
+     [
+      -0.02,
+      -0.08
+     ],
+     [
+      -0.03,
+      -0.057
+     ],
+     [
+      -0.037,
+      -0.033
+     ],
+     [
+      -0.039,
+      -0.017
+     ],
+     [
+      -0.04,
+      -0.0
+     ],
+     [
+      -0.039,
+      0.017
+     ],
+     [
+      -0.037,
+      0.033
+     ],
+     [
+      -0.03,
+      0.058
+     ],
+     [
+      0.004,
+      0.152
+     ],
+     [
+      -0.004,
+      0.175
+     ],
+     [
+      -0.008,
+      0.191
+     ],
+     [
+      -0.01,
+      0.208
+     ],
+     [
+      -0.01,
+      0.225
+     ],
+     [
+      -0.009,
+      0.241
+     ],
+     [
+      -0.006,
+      0.258
+     ],
+     [
+      -0.001,
+      0.274
+     ],
+     [
+      0.005,
+      0.289
+     ],
+     [
+      0.012,
+      0.304
+     ],
+     [
+      0.021,
+      0.318
+     ],
+     [
+      0.032,
+      0.331
+     ],
+     [
+      0.043,
+      0.343
+     ],
+     [
+      0.056,
+      0.354
+     ],
+     [
+      0.069,
+      0.364
+     ],
+     [
+      0.148,
+      0.404
+     ],
+     [
+      0.163,
+      0.41
+     ],
+     [
+      0.191,
+      0.418
+     ],
+     [
+      0.208,
+      0.42
+     ],
+     [
+      0.225,
+      0.42
+     ],
+     [
+      0.241,
+      0.419
+     ],
+     [
+      0.258,
+      0.416
+     ],
+     [
+      0.274,
+      0.411
+     ],
+     [
+      0.289,
+      0.405
+     ],
+     [
+      0.304,
+      0.398
+     ],
+     [
+      0.318,
+      0.389
+     ],
+     [
+      0.331,
+      0.378
+     ],
+     [
+      0.343,
+      0.367
+     ],
+     [
+      0.354,
+      0.354
+     ],
+     [
+      0.364,
+      0.341
+     ],
+     [
+      0.372,
+      0.326
+     ],
+     [
+      0.379,
+      0.311
+     ],
+     [
+      0.384,
+      0.295
+     ],
+     [
+      0.388,
+      0.279
+     ],
+     [
+      0.39,
+      0.258
+     ],
+     [
+      0.39,
+      0.241
+     ],
+     [
+      0.386,
+      0.212
+     ],
+     [
+      0.381,
+      0.196
+     ],
+     [
+      0.284,
+      -0.073
+     ]
+    ],
+    [
+     [
+      -0.268,
+      0.008
+     ],
+     [
+      -0.249,
+      0.019
+     ],
+     [
+      -0.227,
+      0.025
+     ],
+     [
+      -0.12,
+      0.025
+     ],
+     [
+      -0.105,
+      0.024
+     ],
+     [
+      -0.091,
+      0.019
+     ],
+     [
+      -0.072,
+      0.008
+     ],
+     [
+      -0.058,
+      -0.008
+     ],
+     [
+      -0.048,
+      -0.028
+     ],
+     [
+      -0.045,
+      -0.043
+     ],
+     [
+      -0.045,
+      -0.057
+     ],
+     [
+      -0.048,
+      -0.072
+     ],
+     [
+      -0.054,
+      -0.085
+     ],
+     [
+      -0.138,
+      -0.242
+     ],
+     [
+      -0.147,
+      -0.253
+     ],
+     [
+      -0.158,
+      -0.262
+     ],
+     [
+      -0.178,
+      -0.272
+     ],
+     [
+      -0.2,
+      -0.275
+     ],
+     [
+      -0.222,
+      -0.272
+     ],
+     [
+      -0.242,
+      -0.262
+     ],
+     [
+      -0.253,
+      -0.253
+     ],
+     [
+      -0.26,
+      -0.245
+     ],
+     [
+      -0.272,
+      -0.258
+     ],
+     [
+      -0.291,
+      -0.269
+     ],
+     [
+      -0.313,
+      -0.275
+     ],
+     [
+      -0.335,
+      -0.274
+     ],
+     [
+      -0.355,
+      -0.266
+     ],
+     [
+      -0.372,
+      -0.254
+     ],
+     [
+      -0.382,
+      -0.242
+     ],
+     [
+      -0.391,
+      -0.223
+     ],
+     [
+      -0.395,
+      -0.201
+     ],
+     [
+      -0.392,
+      -0.179
+     ],
+     [
+      -0.386,
+      -0.165
+     ],
+     [
+      -0.367,
+      -0.135
+     ],
+     [
+      -0.417,
+      -0.034
+     ],
+     [
+      -0.422,
+      -0.022
+     ],
+     [
+      -0.425,
+      -0.007
+     ],
+     [
+      -0.425,
+      0.007
+     ],
+     [
+      -0.422,
+      0.022
+     ],
+     [
+      -0.416,
+      0.035
+     ],
+     [
+      -0.411,
+      0.043
+     ],
+     [
+      -0.402,
+      0.054
+     ],
+     [
+      -0.384,
+      0.067
+     ],
+     [
+      -0.363,
+      0.074
+     ],
+     [
+      -0.348,
+      0.075
+     ],
+     [
+      -0.335,
+      0.074
+     ],
+     [
+      -0.315,
+      0.066
+     ],
+     [
+      -0.297,
+      0.053
+     ],
+     [
+      -0.287,
+      0.04
+     ],
+     [
+      -0.269,
+      0.006
+     ],
+     [
+      -0.268,
+      0.008
+     ]
+    ]
+   ],
+   "rule": "no desert geometry higher than 0.010 inside ANY part; every acting.to position and walk path from timeline.json buffered by David 0.075 / Goliath 0.170",
+   "note": "all parts (QA T12): David's and Goliath's; polygonSheet (largest part only) is removed"
+  },
+  "clearanceToCharacters": 0.03,
+  "groupGap": 0.012,
+  "brookStripPx": [
+   147,
+   1518,
+   100,
+   186
+  ],
+  "stoneUV": [
+   0.043,
+   0.0758
+  ],
+  "pieces": [
+   {
+    "id": "duneFar",
+    "kind": "dune",
+    "region": "sand",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.19,
+    "bboxSheet": [
+     -0.096,
+     1.0,
+     0.076,
+     1.076
+    ],
+    "footprintSheet": [
+     -0.24,
+     1.38,
+     0.19,
+     1.475
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.096,
+       1.0
+      ],
+      [
+       -0.0586,
+       1.0422
+      ],
+      [
+       -0.0391,
+       1.0616
+      ],
+      [
+       -0.0218,
+       1.0728
+      ],
+      [
+       -0.008,
+       1.076
+      ],
+      [
+       0.006,
+       1.0728
+      ],
+      [
+       0.0228,
+       1.0616
+      ],
+      [
+       0.076,
+       1.0
+      ],
+      [
+       -0.096,
+       1.0
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.24,
+      0.0
+     ],
+     [
+      -0.1858,
+      0.0627
+     ],
+     [
+      -0.1464,
+      0.1056
+     ],
+     [
+      -0.1218,
+      0.1316
+     ],
+     [
+      -0.0976,
+      0.154
+     ],
+     [
+      -0.0754,
+      0.1702
+     ],
+     [
+      -0.0613,
+      0.1785
+     ],
+     [
+      -0.0544,
+      0.1819
+     ],
+     [
+      -0.0407,
+      0.187
+     ],
+     [
+      -0.0338,
+      0.1886
+     ],
+     [
+      -0.02,
+      0.19
+     ],
+     [
+      -0.006,
+      0.1886
+     ],
+     [
+      0.001,
+      0.187
+     ],
+     [
+      0.015,
+      0.1819
+     ],
+     [
+      0.022,
+      0.1785
+     ],
+     [
+      0.036,
+      0.1702
+     ],
+     [
+      0.05,
+      0.16
+     ],
+     [
+      0.057,
+      0.154
+     ],
+     [
+      0.064,
+      0.1472
+     ],
+     [
+      0.078,
+      0.1316
+     ],
+     [
+      0.113,
+      0.0882
+     ],
+     [
+      0.19,
+      0.0
+     ],
+     [
+      -0.24,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.24,
+      0.0
+     ],
+     [
+      -0.2306,
+      0.0109
+     ],
+     [
+      -0.2175,
+      0.0262
+     ],
+     [
+      -0.2021,
+      0.0442
+     ],
+     [
+      -0.1858,
+      0.0627
+     ],
+     [
+      -0.17,
+      0.08
+     ],
+     [
+      -0.1545,
+      0.0968
+     ],
+     [
+      -0.1382,
+      0.1144
+     ],
+     [
+      -0.1218,
+      0.1316
+     ],
+     [
+      -0.1055,
+      0.1472
+     ],
+     [
+      -0.09,
+      0.16
+     ],
+     [
+      -0.0754,
+      0.1702
+     ],
+     [
+      -0.0613,
+      0.1785
+     ],
+     [
+      -0.0475,
+      0.1847
+     ],
+     [
+      -0.0338,
+      0.1886
+     ],
+     [
+      -0.02,
+      0.19
+     ],
+     [
+      -0.006,
+      0.1886
+     ],
+     [
+      0.008,
+      0.1847
+     ],
+     [
+      0.022,
+      0.1785
+     ],
+     [
+      0.036,
+      0.1702
+     ],
+     [
+      0.05,
+      0.16
+     ],
+     [
+      0.064,
+      0.1472
+     ],
+     [
+      0.078,
+      0.1316
+     ],
+     [
+      0.092,
+      0.1144
+     ],
+     [
+      0.106,
+      0.0968
+     ],
+     [
+      0.12,
+      0.08
+     ],
+     [
+      0.1351,
+      0.0627
+     ],
+     [
+      0.1514,
+      0.0442
+     ],
+     [
+      0.167,
+      0.0262
+     ],
+     [
+      0.1805,
+      0.0109
+     ],
+     [
+      0.19,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -1.38,
+     "crestFrom": -1.43,
+     "crestTo": -1.445,
+     "back": -1.475
+    },
+    "parts3D": {},
+    "note": "far dune closing the valley between the two camp hills; only its middle shows"
+   },
+   {
+    "id": "hillIsrael",
+    "kind": "hill",
+    "region": "hillIsrael",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.306,
+    "bboxSheet": [
+     -0.236,
+     1.0,
+     -0.0072,
+     1.1224
+    ],
+    "footprintSheet": [
+     -0.59,
+     0.98,
+     -0.018,
+     1.475
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.236,
+       1.0
+      ],
+      [
+       -0.235,
+       1.0308
+      ],
+      [
+       -0.2305,
+       1.0587
+      ],
+      [
+       -0.2232,
+       1.0797
+      ],
+      [
+       -0.2113,
+       1.0967
+      ],
+      [
+       -0.1966,
+       1.1095
+      ],
+      [
+       -0.1791,
+       1.1176
+      ],
+      [
+       -0.1565,
+       1.1211
+      ],
+      [
+       -0.1239,
+       1.1224
+      ],
+      [
+       -0.0971,
+       1.1213
+      ],
+      [
+       -0.0709,
+       1.1182
+      ],
+      [
+       -0.059,
+       1.1136
+      ],
+      [
+       -0.0517,
+       1.108
+      ],
+      [
+       -0.0432,
+       1.0964
+      ],
+      [
+       -0.0352,
+       1.08
+      ],
+      [
+       -0.0072,
+       1.0
+      ],
+      [
+       -0.236,
+       1.0
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.59,
+      0.0
+     ],
+     [
+      -0.5893,
+      0.0468
+     ],
+     [
+      -0.5874,
+      0.077
+     ],
+     [
+      -0.5852,
+      0.0982
+     ],
+     [
+      -0.5822,
+      0.1194
+     ],
+     [
+      -0.5763,
+      0.1468
+     ],
+     [
+      -0.5684,
+      0.1738
+     ],
+     [
+      -0.5636,
+      0.1868
+     ],
+     [
+      -0.558,
+      0.1991
+     ],
+     [
+      -0.5517,
+      0.2107
+     ],
+     [
+      -0.5446,
+      0.2216
+     ],
+     [
+      -0.5367,
+      0.232
+     ],
+     [
+      -0.5283,
+      0.2417
+     ],
+     [
+      -0.5105,
+      0.2591
+     ],
+     [
+      -0.4916,
+      0.2737
+     ],
+     [
+      -0.4814,
+      0.28
+     ],
+     [
+      -0.4707,
+      0.2855
+     ],
+     [
+      -0.4593,
+      0.2902
+     ],
+     [
+      -0.4477,
+      0.2939
+     ],
+     [
+      -0.4225,
+      0.2991
+     ],
+     [
+      -0.3914,
+      0.3029
+     ],
+     [
+      -0.3516,
+      0.3052
+     ],
+     [
+      -0.3098,
+      0.306
+     ],
+     [
+      -0.2807,
+      0.3055
+     ],
+     [
+      -0.2426,
+      0.3032
+     ],
+     [
+      -0.1972,
+      0.2985
+     ],
+     [
+      -0.1772,
+      0.2955
+     ],
+     [
+      -0.1643,
+      0.2917
+     ],
+     [
+      -0.1476,
+      0.284
+     ],
+     [
+      -0.1363,
+      0.2765
+     ],
+     [
+      -0.1292,
+      0.2701
+     ],
+     [
+      -0.1184,
+      0.2573
+     ],
+     [
+      -0.1079,
+      0.241
+     ],
+     [
+      -0.0978,
+      0.2217
+     ],
+     [
+      -0.088,
+      0.2
+     ],
+     [
+      -0.0785,
+      0.1744
+     ],
+     [
+      -0.0607,
+      0.1183
+     ],
+     [
+      -0.0382,
+      0.0518
+     ],
+     [
+      -0.03,
+      0.0294
+     ],
+     [
+      -0.018,
+      0.0
+     ],
+     [
+      -0.59,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.59,
+      0.0
+     ],
+     [
+      -0.5899,
+      0.0095
+     ],
+     [
+      -0.5897,
+      0.023
+     ],
+     [
+      -0.5895,
+      0.0386
+     ],
+     [
+      -0.5889,
+      0.0549
+     ],
+     [
+      -0.588,
+      0.07
+     ],
+     [
+      -0.5867,
+      0.0841
+     ],
+     [
+      -0.5852,
+      0.0982
+     ],
+     [
+      -0.5833,
+      0.1124
+     ],
+     [
+      -0.581,
+      0.1263
+     ],
+     [
+      -0.578,
+      0.14
+     ],
+     [
+      -0.5745,
+      0.1536
+     ],
+     [
+      -0.5706,
+      0.1671
+     ],
+     [
+      -0.566,
+      0.1803
+     ],
+     [
+      -0.5609,
+      0.193
+     ],
+     [
+      -0.555,
+      0.205
+     ],
+     [
+      -0.5482,
+      0.2162
+     ],
+     [
+      -0.5407,
+      0.2269
+     ],
+     [
+      -0.5325,
+      0.2369
+     ],
+     [
+      -0.5239,
+      0.2463
+     ],
+     [
+      -0.515,
+      0.255
+     ],
+     [
+      -0.5059,
+      0.263
+     ],
+     [
+      -0.4964,
+      0.2703
+     ],
+     [
+      -0.4866,
+      0.277
+     ],
+     [
+      -0.4761,
+      0.2829
+     ],
+     [
+      -0.465,
+      0.288
+     ],
+     [
+      -0.4535,
+      0.2922
+     ],
+     [
+      -0.4418,
+      0.2954
+     ],
+     [
+      -0.4292,
+      0.298
+     ],
+     [
+      -0.4155,
+      0.3001
+     ],
+     [
+      -0.4,
+      0.302
+     ],
+     [
+      -0.3821,
+      0.3036
+     ],
+     [
+      -0.362,
+      0.3048
+     ],
+     [
+      -0.341,
+      0.3056
+     ],
+     [
+      -0.3199,
+      0.306
+     ],
+     [
+      -0.3,
+      0.306
+     ],
+     [
+      -0.2807,
+      0.3055
+     ],
+     [
+      -0.2614,
+      0.3045
+     ],
+     [
+      -0.2426,
+      0.3032
+     ],
+     [
+      -0.2253,
+      0.3016
+     ],
+     [
+      -0.21,
+      0.3
+     ],
+     [
+      -0.1972,
+      0.2985
+     ],
+     [
+      -0.1865,
+      0.2972
+     ],
+     [
+      -0.1772,
+      0.2955
+     ],
+     [
+      -0.1686,
+      0.2932
+     ],
+     [
+      -0.16,
+      0.29
+     ],
+     [
+      -0.1516,
+      0.2861
+     ],
+     [
+      -0.1437,
+      0.2817
+     ],
+     [
+      -0.1363,
+      0.2765
+     ],
+     [
+      -0.1292,
+      0.2701
+     ],
+     [
+      -0.122,
+      0.262
+     ],
+     [
+      -0.1149,
+      0.2522
+     ],
+     [
+      -0.1079,
+      0.241
+     ],
+     [
+      -0.1011,
+      0.2284
+     ],
+     [
+      -0.0945,
+      0.2147
+     ],
+     [
+      -0.088,
+      0.2
+     ],
+     [
+      -0.0816,
+      0.1835
+     ],
+     [
+      -0.0754,
+      0.1651
+     ],
+     [
+      -0.0694,
+      0.1459
+     ],
+     [
+      -0.0636,
+      0.1272
+     ],
+     [
+      -0.058,
+      0.11
+     ],
+     [
+      -0.0527,
+      0.0942
+     ],
+     [
+      -0.0476,
+      0.0791
+     ],
+     [
+      -0.0427,
+      0.0649
+     ],
+     [
+      -0.0382,
+      0.0518
+     ],
+     [
+      -0.034,
+      0.04
+     ],
+     [
+      -0.03,
+      0.0294
+     ],
+     [
+      -0.0263,
+      0.0199
+     ],
+     [
+      -0.0229,
+      0.0117
+     ],
+     [
+      -0.02,
+      0.005
+     ],
+     [
+      -0.018,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -0.98,
+     "crestFrom": -1.28,
+     "crestTo": -1.42,
+     "back": -1.475
+    },
+    "parts3D": {},
+    "camp": "Israel (left, behind David)"
+   },
+   {
+    "id": "hillPhil",
+    "kind": "hill",
+    "region": "hillPhil",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.382,
+    "bboxSheet": [
+     -0.0072,
+     1.0,
+     0.236,
+     1.1528
+    ],
+    "footprintSheet": [
+     -0.018,
+     0.98,
+     0.59,
+     1.475
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.0072,
+       1.0
+      ],
+      [
+       0.0,
+       1.024
+      ],
+      [
+       0.0119,
+       1.0817
+      ],
+      [
+       0.02,
+       1.112
+      ],
+      [
+       0.0308,
+       1.1358
+      ],
+      [
+       0.0372,
+       1.1433
+      ],
+      [
+       0.042,
+       1.1468
+      ],
+      [
+       0.0575,
+       1.151
+      ],
+      [
+       0.0849,
+       1.1526
+      ],
+      [
+       0.138,
+       1.1521
+      ],
+      [
+       0.1704,
+       1.1489
+      ],
+      [
+       0.1872,
+       1.1427
+      ],
+      [
+       0.2001,
+       1.1338
+      ],
+      [
+       0.2107,
+       1.122
+      ],
+      [
+       0.2193,
+       1.1074
+      ],
+      [
+       0.2271,
+       1.0865
+      ],
+      [
+       0.2322,
+       1.0629
+      ],
+      [
+       0.2347,
+       1.0397
+      ],
+      [
+       0.236,
+       1.0
+      ],
+      [
+       -0.0072,
+       1.0
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.018,
+      0.0
+     ],
+     [
+      -0.0063,
+      0.0364
+     ],
+     [
+      0.0,
+      0.06
+     ],
+     [
+      0.0172,
+      0.1472
+     ],
+     [
+      0.0297,
+      0.2043
+     ],
+     [
+      0.0409,
+      0.2499
+     ],
+     [
+      0.05,
+      0.28
+     ],
+     [
+      0.0628,
+      0.313
+     ],
+     [
+      0.0696,
+      0.3271
+     ],
+     [
+      0.0769,
+      0.3395
+     ],
+     [
+      0.085,
+      0.35
+     ],
+     [
+      0.093,
+      0.3583
+     ],
+     [
+      0.1008,
+      0.3645
+     ],
+     [
+      0.105,
+      0.367
+     ],
+     [
+      0.1096,
+      0.3692
+     ],
+     [
+      0.1206,
+      0.3728
+     ],
+     [
+      0.1438,
+      0.3775
+     ],
+     [
+      0.1756,
+      0.3803
+     ],
+     [
+      0.2124,
+      0.3816
+     ],
+     [
+      0.276,
+      0.382
+     ],
+     [
+      0.3449,
+      0.3802
+     ],
+     [
+      0.3694,
+      0.3788
+     ],
+     [
+      0.3981,
+      0.3763
+     ],
+     [
+      0.426,
+      0.3722
+     ],
+     [
+      0.4379,
+      0.3692
+     ],
+     [
+      0.45,
+      0.365
+     ],
+     [
+      0.4681,
+      0.3567
+     ],
+     [
+      0.4848,
+      0.3465
+     ],
+     [
+      0.5002,
+      0.3344
+     ],
+     [
+      0.5142,
+      0.3206
+     ],
+     [
+      0.5268,
+      0.305
+     ],
+     [
+      0.5381,
+      0.2876
+     ],
+     [
+      0.5483,
+      0.2684
+     ],
+     [
+      0.5574,
+      0.2472
+     ],
+     [
+      0.5676,
+      0.2163
+     ],
+     [
+      0.574,
+      0.1917
+     ],
+     [
+      0.5804,
+      0.1572
+     ],
+     [
+      0.584,
+      0.1295
+     ],
+     [
+      0.5868,
+      0.0993
+     ],
+     [
+      0.5885,
+      0.0622
+     ],
+     [
+      0.59,
+      0.0
+     ],
+     [
+      -0.018,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.018,
+      0.0
+     ],
+     [
+      -0.0156,
+      0.0074
+     ],
+     [
+      -0.0123,
+      0.0173
+     ],
+     [
+      -0.0084,
+      0.0295
+     ],
+     [
+      -0.0041,
+      0.0438
+     ],
+     [
+      0.0,
+      0.06
+     ],
+     [
+      0.004,
+      0.0788
+     ],
+     [
+      0.0082,
+      0.1004
+     ],
+     [
+      0.0126,
+      0.1236
+     ],
+     [
+      0.0172,
+      0.1472
+     ],
+     [
+      0.022,
+      0.17
+     ],
+     [
+      0.0271,
+      0.1926
+     ],
+     [
+      0.0324,
+      0.2159
+     ],
+     [
+      0.038,
+      0.2389
+     ],
+     [
+      0.0439,
+      0.2606
+     ],
+     [
+      0.05,
+      0.28
+     ],
+     [
+      0.0563,
+      0.2973
+     ],
+     [
+      0.0628,
+      0.313
+     ],
+     [
+      0.0696,
+      0.3271
+     ],
+     [
+      0.0769,
+      0.3395
+     ],
+     [
+      0.085,
+      0.35
+     ],
+     [
+      0.093,
+      0.3583
+     ],
+     [
+      0.1008,
+      0.3645
+     ],
+     [
+      0.1096,
+      0.3692
+     ],
+     [
+      0.1206,
+      0.3728
+     ],
+     [
+      0.135,
+      0.376
+     ],
+     [
+      0.1536,
+      0.3786
+     ],
+     [
+      0.1756,
+      0.3803
+     ],
+     [
+      0.1998,
+      0.3813
+     ],
+     [
+      0.225,
+      0.3818
+     ],
+     [
+      0.25,
+      0.382
+     ],
+     [
+      0.276,
+      0.382
+     ],
+     [
+      0.3038,
+      0.3816
+     ],
+     [
+      0.3316,
+      0.3807
+     ],
+     [
+      0.3576,
+      0.3795
+     ],
+     [
+      0.38,
+      0.378
+     ],
+     [
+      0.3981,
+      0.3763
+     ],
+     [
+      0.413,
+      0.3745
+     ],
+     [
+      0.426,
+      0.3722
+     ],
+     [
+      0.4379,
+      0.3692
+     ],
+     [
+      0.45,
+      0.365
+     ],
+     [
+      0.4622,
+      0.3597
+     ],
+     [
+      0.4738,
+      0.3535
+     ],
+     [
+      0.4848,
+      0.3465
+     ],
+     [
+      0.4952,
+      0.3386
+     ],
+     [
+      0.505,
+      0.33
+     ],
+     [
+      0.5142,
+      0.3206
+     ],
+     [
+      0.5227,
+      0.3104
+     ],
+     [
+      0.5307,
+      0.2994
+     ],
+     [
+      0.5381,
+      0.2876
+     ],
+     [
+      0.545,
+      0.275
+     ],
+     [
+      0.5514,
+      0.2615
+     ],
+     [
+      0.5574,
+      0.2472
+     ],
+     [
+      0.5628,
+      0.232
+     ],
+     [
+      0.5676,
+      0.2163
+     ],
+     [
+      0.572,
+      0.2
+     ],
+     [
+      0.5758,
+      0.1833
+     ],
+     [
+      0.579,
+      0.166
+     ],
+     [
+      0.5817,
+      0.1482
+     ],
+     [
+      0.584,
+      0.1295
+     ],
+     [
+      0.586,
+      0.11
+     ],
+     [
+      0.5875,
+      0.0875
+     ],
+     [
+      0.5885,
+      0.0622
+     ],
+     [
+      0.5892,
+      0.037
+     ],
+     [
+      0.5896,
+      0.0153
+     ],
+     [
+      0.59,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -0.98,
+     "crestFrom": -1.28,
+     "crestTo": -1.42,
+     "back": -1.475
+    },
+    "parts3D": {},
+    "camp": "Philistines (right, behind Goliath)"
+   },
+   {
+    "id": "tentIsrael1",
+    "kind": "tent",
+    "region": "tentIsrael",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.3729,
+    "bboxSheet": [
+     -0.194,
+     1.1064,
+     -0.15,
+     1.1492
+    ],
+    "footprintSheet": [
+     -0.485,
+     1.3,
+     -0.375,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.194,
+       1.1064
+      ],
+      [
+       -0.194,
+       1.1112
+      ],
+      [
+       -0.172,
+       1.1492
+      ],
+      [
+       -0.15,
+       1.1112
+      ],
+      [
+       -0.15,
+       1.1064
+      ],
+      [
+       -0.194,
+       1.1064
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.485,
+      0.2659
+     ],
+     [
+      -0.485,
+      0.2779
+     ],
+     [
+      -0.4593,
+      0.3194
+     ],
+     [
+      -0.43,
+      0.3729
+     ],
+     [
+      -0.4007,
+      0.3194
+     ],
+     [
+      -0.375,
+      0.2779
+     ],
+     [
+      -0.375,
+      0.2659
+     ],
+     [
+      -0.485,
+      0.2659
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.485,
+      0.2779
+     ],
+     [
+      -0.43,
+      0.3729
+     ],
+     [
+      -0.375,
+      0.2779
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       -0.452,
+       0.2779
+      ],
+      [
+       -0.408,
+       0.2779
+      ],
+      [
+       -0.43,
+       0.3299
+      ],
+      [
+       -0.452,
+       0.2779
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": -0.43,
+     "baseY": 0.2779,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillIsrael"
+   },
+   {
+    "id": "tentIsrael2",
+    "kind": "tent",
+    "region": "tentIsrael",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.3994,
+    "bboxSheet": [
+     -0.148,
+     1.117,
+     -0.104,
+     1.1598
+    ],
+    "footprintSheet": [
+     -0.37,
+     1.3,
+     -0.26,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.148,
+       1.117
+      ],
+      [
+       -0.148,
+       1.1218
+      ],
+      [
+       -0.126,
+       1.1598
+      ],
+      [
+       -0.104,
+       1.1218
+      ],
+      [
+       -0.104,
+       1.117
+      ],
+      [
+       -0.148,
+       1.117
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.37,
+      0.2924
+     ],
+     [
+      -0.37,
+      0.3044
+     ],
+     [
+      -0.3443,
+      0.3459
+     ],
+     [
+      -0.315,
+      0.3994
+     ],
+     [
+      -0.2857,
+      0.3459
+     ],
+     [
+      -0.26,
+      0.3044
+     ],
+     [
+      -0.26,
+      0.2924
+     ],
+     [
+      -0.37,
+      0.2924
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.37,
+      0.3044
+     ],
+     [
+      -0.315,
+      0.3994
+     ],
+     [
+      -0.26,
+      0.3044
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       -0.337,
+       0.3044
+      ],
+      [
+       -0.293,
+       0.3044
+      ],
+      [
+       -0.315,
+       0.3564
+      ],
+      [
+       -0.337,
+       0.3044
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": -0.315,
+     "baseY": 0.3044,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillIsrael"
+   },
+   {
+    "id": "tentIsrael3",
+    "kind": "tent",
+    "region": "tentIsrael",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.3775,
+    "bboxSheet": [
+     -0.102,
+     1.1082,
+     -0.058,
+     1.151
+    ],
+    "footprintSheet": [
+     -0.255,
+     1.3,
+     -0.145,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.102,
+       1.1082
+      ],
+      [
+       -0.102,
+       1.113
+      ],
+      [
+       -0.08,
+       1.151
+      ],
+      [
+       -0.058,
+       1.113
+      ],
+      [
+       -0.058,
+       1.1082
+      ],
+      [
+       -0.102,
+       1.1082
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.255,
+      0.2705
+     ],
+     [
+      -0.255,
+      0.2825
+     ],
+     [
+      -0.2293,
+      0.324
+     ],
+     [
+      -0.2,
+      0.3775
+     ],
+     [
+      -0.1707,
+      0.324
+     ],
+     [
+      -0.145,
+      0.2825
+     ],
+     [
+      -0.145,
+      0.2705
+     ],
+     [
+      -0.255,
+      0.2705
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.255,
+      0.2825
+     ],
+     [
+      -0.2,
+      0.3775
+     ],
+     [
+      -0.145,
+      0.2825
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       -0.222,
+       0.2825
+      ],
+      [
+       -0.178,
+       0.2825
+      ],
+      [
+       -0.2,
+       0.3345
+      ],
+      [
+       -0.222,
+       0.2825
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": -0.2,
+     "baseY": 0.2825,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillIsrael"
+   },
+   {
+    "id": "tentPhil1",
+    "kind": "tent",
+    "region": "tentPhil",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.4388,
+    "bboxSheet": [
+     0.032,
+     1.1327,
+     0.076,
+     1.1755
+    ],
+    "footprintSheet": [
+     0.08,
+     1.3,
+     0.19,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       0.032,
+       1.1327
+      ],
+      [
+       0.032,
+       1.1375
+      ],
+      [
+       0.054,
+       1.1755
+      ],
+      [
+       0.076,
+       1.1375
+      ],
+      [
+       0.076,
+       1.1327
+      ],
+      [
+       0.032,
+       1.1327
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      0.08,
+      0.3318
+     ],
+     [
+      0.08,
+      0.3438
+     ],
+     [
+      0.1057,
+      0.3853
+     ],
+     [
+      0.135,
+      0.4388
+     ],
+     [
+      0.1643,
+      0.3853
+     ],
+     [
+      0.19,
+      0.3438
+     ],
+     [
+      0.19,
+      0.3318
+     ],
+     [
+      0.08,
+      0.3318
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.08,
+      0.3438
+     ],
+     [
+      0.135,
+      0.4388
+     ],
+     [
+      0.19,
+      0.3438
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       0.113,
+       0.3438
+      ],
+      [
+       0.157,
+       0.3438
+      ],
+      [
+       0.135,
+       0.3958
+      ],
+      [
+       0.113,
+       0.3438
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": 0.135,
+     "baseY": 0.3438,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillPhil"
+   },
+   {
+    "id": "tentPhil2",
+    "kind": "tent",
+    "region": "tentPhil",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.4763,
+    "bboxSheet": [
+     0.08,
+     1.1477,
+     0.124,
+     1.1905
+    ],
+    "footprintSheet": [
+     0.2,
+     1.3,
+     0.31,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       0.08,
+       1.1477
+      ],
+      [
+       0.08,
+       1.1525
+      ],
+      [
+       0.102,
+       1.1905
+      ],
+      [
+       0.124,
+       1.1525
+      ],
+      [
+       0.124,
+       1.1477
+      ],
+      [
+       0.08,
+       1.1477
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      0.2,
+      0.3693
+     ],
+     [
+      0.2,
+      0.3813
+     ],
+     [
+      0.2257,
+      0.4228
+     ],
+     [
+      0.255,
+      0.4763
+     ],
+     [
+      0.2843,
+      0.4228
+     ],
+     [
+      0.31,
+      0.3813
+     ],
+     [
+      0.31,
+      0.3693
+     ],
+     [
+      0.2,
+      0.3693
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.2,
+      0.3813
+     ],
+     [
+      0.255,
+      0.4763
+     ],
+     [
+      0.31,
+      0.3813
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       0.233,
+       0.3813
+      ],
+      [
+       0.277,
+       0.3813
+      ],
+      [
+       0.255,
+       0.4333
+      ],
+      [
+       0.233,
+       0.3813
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": 0.255,
+     "baseY": 0.3813,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillPhil"
+   },
+   {
+    "id": "tentPhil3",
+    "kind": "tent",
+    "region": "tentPhil",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.46,
+    "bboxSheet": [
+     0.136,
+     1.1412,
+     0.18,
+     1.184
+    ],
+    "footprintSheet": [
+     0.34,
+     1.3,
+     0.45,
+     1.41
+    ],
+    "geomSheet": [
+     [
+      [
+       0.136,
+       1.1412
+      ],
+      [
+       0.136,
+       1.146
+      ],
+      [
+       0.158,
+       1.184
+      ],
+      [
+       0.18,
+       1.146
+      ],
+      [
+       0.18,
+       1.1412
+      ],
+      [
+       0.136,
+       1.1412
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      0.34,
+      0.353
+     ],
+     [
+      0.34,
+      0.365
+     ],
+     [
+      0.3657,
+      0.4065
+     ],
+     [
+      0.395,
+      0.46
+     ],
+     [
+      0.4243,
+      0.4065
+     ],
+     [
+      0.45,
+      0.365
+     ],
+     [
+      0.45,
+      0.353
+     ],
+     [
+      0.34,
+      0.353
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.34,
+      0.365
+     ],
+     [
+      0.395,
+      0.46
+     ],
+     [
+      0.45,
+      0.365
+     ]
+    ],
+    "depthZ": {
+     "front": -1.3,
+     "crestFrom": -1.3,
+     "crestTo": -1.41,
+     "back": -1.41
+    },
+    "parts3D": {
+     "tentDoor": [
+      [
+       0.373,
+       0.365
+      ],
+      [
+       0.417,
+       0.365
+      ],
+      [
+       0.395,
+       0.417
+      ],
+      [
+       0.373,
+       0.365
+      ]
+     ]
+    },
+    "tent": {
+     "centreX": 0.395,
+     "baseY": 0.365,
+     "width": 0.11,
+     "height": 0.095,
+     "skirt": 0.012,
+     "zGable": -1.3,
+     "zBack": -1.41,
+     "ridge": "along z (gable faces +Z)",
+     "door": {
+      "width": 0.044,
+      "height": 0.052,
+      "recess": 0.012
+     }
+    },
+    "onHill": "hillPhil"
+   },
+   {
+    "id": "bannerIsrael",
+    "kind": "banner",
+    "region": "flagIsrael",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.4302,
+    "bboxSheet": [
+     -0.0619,
+     1.1441,
+     -0.0224,
+     1.1702
+    ],
+    "footprintSheet": [
+     -0.154,
+     1.354,
+     -0.142,
+     1.366
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.0576,
+       1.1689
+      ],
+      [
+       -0.0471,
+       1.1702
+      ],
+      [
+       -0.0232,
+       1.1665
+      ],
+      [
+       -0.0224,
+       1.1654
+      ],
+      [
+       -0.0238,
+       1.1641
+      ],
+      [
+       -0.0326,
+       1.1577
+      ],
+      [
+       -0.0224,
+       1.1485
+      ],
+      [
+       -0.0268,
+       1.1462
+      ],
+      [
+       -0.0398,
+       1.1444
+      ],
+      [
+       -0.0534,
+       1.1444
+      ],
+      [
+       -0.0576,
+       1.1457
+      ],
+      [
+       -0.06,
+       1.1484
+      ],
+      [
+       -0.0619,
+       1.1573
+      ],
+      [
+       -0.06,
+       1.1662
+      ],
+      [
+       -0.0576,
+       1.1689
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      -0.144,
+      0.4222
+     ],
+     [
+      -0.1334,
+      0.4251
+     ],
+     [
+      -0.1177,
+      0.4255
+     ],
+     [
+      -0.0995,
+      0.4242
+     ],
+     [
+      -0.0817,
+      0.4218
+     ],
+     [
+      -0.067,
+      0.4189
+     ],
+     [
+      -0.058,
+      0.4162
+     ],
+     [
+      -0.0561,
+      0.4135
+     ],
+     [
+      -0.0594,
+      0.4102
+     ],
+     [
+      -0.073,
+      0.4024
+     ],
+     [
+      -0.0789,
+      0.3983
+     ],
+     [
+      -0.0814,
+      0.3942
+     ],
+     [
+      -0.0789,
+      0.3898
+     ],
+     [
+      -0.0594,
+      0.3754
+     ],
+     [
+      -0.0561,
+      0.3713
+     ],
+     [
+      -0.058,
+      0.3682
+     ],
+     [
+      -0.067,
+      0.3655
+     ],
+     [
+      -0.0817,
+      0.3629
+     ],
+     [
+      -0.0995,
+      0.3609
+     ],
+     [
+      -0.1177,
+      0.3601
+     ],
+     [
+      -0.1334,
+      0.361
+     ],
+     [
+      -0.144,
+      0.3642
+     ],
+     [
+      -0.15,
+      0.371
+     ],
+     [
+      -0.1536,
+      0.3813
+     ],
+     [
+      -0.1547,
+      0.3933
+     ],
+     [
+      -0.1536,
+      0.4053
+     ],
+     [
+      -0.15,
+      0.4155
+     ],
+     [
+      -0.144,
+      0.4222
+     ]
+    ],
+    "depthZ": {
+     "front": -1.36,
+     "crestFrom": -1.36,
+     "crestTo": -1.36,
+     "back": -1.36
+    },
+    "parts3D": {},
+    "banner": {
+     "poleBase3D": [
+      -0.148,
+      0.2842,
+      -1.36
+     ],
+     "poleHeight": 0.14,
+     "poleDiameter": 0.006,
+     "cloth": "0.09 x 0.06, swallow tail, flies toward +X (the Philistines)",
+     "poleUV": "constant: Goliath's printed spear shaft (wood), as §11.9"
+    },
+    "onHill": "hillIsrael"
+   },
+   {
+    "id": "bannerPhil",
+    "kind": "banner",
+    "region": "flagPhil",
+    "mapping": "front",
+    "group": "pano",
+    "heightMax": 0.4898,
+    "bboxSheet": [
+     -0.0048,
+     1.1679,
+     0.0347,
+     1.1941
+    ],
+    "footprintSheet": [
+     0.074,
+     1.354,
+     0.086,
+     1.366
+    ],
+    "geomSheet": [
+     [
+      [
+       0.0304,
+       1.1927
+      ],
+      [
+       0.0328,
+       1.19
+      ],
+      [
+       0.0347,
+       1.1812
+      ],
+      [
+       0.0328,
+       1.1722
+      ],
+      [
+       0.0304,
+       1.1695
+      ],
+      [
+       0.0262,
+       1.1682
+      ],
+      [
+       0.0126,
+       1.1682
+      ],
+      [
+       -0.0004,
+       1.1701
+      ],
+      [
+       -0.0048,
+       1.1724
+      ],
+      [
+       0.0054,
+       1.1815
+      ],
+      [
+       -0.0034,
+       1.1879
+      ],
+      [
+       -0.0048,
+       1.1892
+      ],
+      [
+       -0.004,
+       1.1903
+      ],
+      [
+       0.0199,
+       1.1941
+      ],
+      [
+       0.0304,
+       1.1927
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 2.5,
+     "sheetX": 0.0,
+     "sheetY": 1.0
+    },
+    "silhouette3D": [
+     [
+      0.076,
+      0.4818
+     ],
+     [
+      0.082,
+      0.4751
+     ],
+     [
+      0.0856,
+      0.4649
+     ],
+     [
+      0.0867,
+      0.4529
+     ],
+     [
+      0.0856,
+      0.4409
+     ],
+     [
+      0.082,
+      0.4306
+     ],
+     [
+      0.076,
+      0.4238
+     ],
+     [
+      0.0654,
+      0.4206
+     ],
+     [
+      0.0497,
+      0.4197
+     ],
+     [
+      0.0315,
+      0.4205
+     ],
+     [
+      0.0137,
+      0.4225
+     ],
+     [
+      -0.001,
+      0.4251
+     ],
+     [
+      -0.01,
+      0.4278
+     ],
+     [
+      -0.0119,
+      0.4309
+     ],
+     [
+      -0.0086,
+      0.435
+     ],
+     [
+      0.0109,
+      0.4494
+     ],
+     [
+      0.0134,
+      0.4538
+     ],
+     [
+      0.0109,
+      0.4579
+     ],
+     [
+      0.005,
+      0.462
+     ],
+     [
+      -0.0086,
+      0.4698
+     ],
+     [
+      -0.0119,
+      0.4731
+     ],
+     [
+      -0.01,
+      0.4758
+     ],
+     [
+      -0.001,
+      0.4785
+     ],
+     [
+      0.0137,
+      0.4814
+     ],
+     [
+      0.0315,
+      0.4838
+     ],
+     [
+      0.0497,
+      0.4851
+     ],
+     [
+      0.0654,
+      0.4847
+     ],
+     [
+      0.076,
+      0.4818
+     ]
+    ],
+    "depthZ": {
+     "front": -1.36,
+     "crestFrom": -1.36,
+     "crestTo": -1.36,
+     "back": -1.36
+    },
+    "parts3D": {},
+    "banner": {
+     "poleBase3D": [
+      0.08,
+      0.3438,
+      -1.36
+     ],
+     "poleHeight": 0.14,
+     "poleDiameter": 0.006,
+     "cloth": "0.09 x 0.06, swallow tail, flies toward -X (Israel)",
+     "poleUV": "constant: Goliath's printed spear shaft (wood), as §11.9"
+    },
+    "onHill": "hillPhil"
+   },
+   {
+    "id": "dune1",
+    "kind": "dune",
+    "region": "sand",
+    "mapping": "front",
+    "group": "dune1",
+    "heightMax": 0.1723,
+    "bboxSheet": [
+     -0.47,
+     0.37,
+     -0.228,
+     0.5423
+    ],
+    "footprintSheet": [
+     -0.47,
+     0.37,
+     -0.228,
+     0.6
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.47,
+       0.37
+      ],
+      [
+       -0.4502,
+       0.4646
+      ],
+      [
+       -0.4445,
+       0.4847
+      ],
+      [
+       -0.4367,
+       0.5063
+      ],
+      [
+       -0.43,
+       0.52
+      ],
+      [
+       -0.4212,
+       0.5312
+      ],
+      [
+       -0.4082,
+       0.5399
+      ],
+      [
+       -0.3965,
+       0.5423
+      ],
+      [
+       -0.3791,
+       0.5392
+      ],
+      [
+       -0.3621,
+       0.5313
+      ],
+      [
+       -0.3414,
+       0.5156
+      ],
+      [
+       -0.314,
+       0.4902
+      ],
+      [
+       -0.2966,
+       0.471
+      ],
+      [
+       -0.28,
+       0.4489
+      ],
+      [
+       -0.2512,
+       0.4075
+      ],
+      [
+       -0.228,
+       0.37
+      ],
+      [
+       -0.47,
+       0.37
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.37
+    },
+    "silhouette3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.4602,
+      0.0493
+     ],
+     [
+      -0.4502,
+      0.0946
+     ],
+     [
+      -0.4445,
+      0.1147
+     ],
+     [
+      -0.4367,
+      0.1363
+     ],
+     [
+      -0.43,
+      0.15
+     ],
+     [
+      -0.4266,
+      0.1552
+     ],
+     [
+      -0.4212,
+      0.1613
+     ],
+     [
+      -0.4158,
+      0.1656
+     ],
+     [
+      -0.4082,
+      0.1699
+     ],
+     [
+      -0.4026,
+      0.1717
+     ],
+     [
+      -0.3965,
+      0.1723
+     ],
+     [
+      -0.3871,
+      0.1713
+     ],
+     [
+      -0.3791,
+      0.1692
+     ],
+     [
+      -0.3707,
+      0.1659
+     ],
+     [
+      -0.3621,
+      0.1613
+     ],
+     [
+      -0.3535,
+      0.1554
+     ],
+     [
+      -0.3414,
+      0.1456
+     ],
+     [
+      -0.314,
+      0.1202
+     ],
+     [
+      -0.2966,
+      0.101
+     ],
+     [
+      -0.28,
+      0.0789
+     ],
+     [
+      -0.2512,
+      0.0375
+     ],
+     [
+      -0.228,
+      0.0
+     ],
+     [
+      -0.47,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.4685,
+      0.0075
+     ],
+     [
+      -0.4665,
+      0.018
+     ],
+     [
+      -0.4641,
+      0.0304
+     ],
+     [
+      -0.4615,
+      0.0431
+     ],
+     [
+      -0.459,
+      0.055
+     ],
+     [
+      -0.4566,
+      0.0662
+     ],
+     [
+      -0.4541,
+      0.0777
+     ],
+     [
+      -0.4515,
+      0.0891
+     ],
+     [
+      -0.4488,
+      0.1
+     ],
+     [
+      -0.446,
+      0.11
+     ],
+     [
+      -0.443,
+      0.1193
+     ],
+     [
+      -0.4399,
+      0.1281
+     ],
+     [
+      -0.4367,
+      0.1363
+     ],
+     [
+      -0.4334,
+      0.1436
+     ],
+     [
+      -0.43,
+      0.15
+     ],
+     [
+      -0.4266,
+      0.1552
+     ],
+     [
+      -0.423,
+      0.1595
+     ],
+     [
+      -0.4194,
+      0.1629
+     ],
+     [
+      -0.4158,
+      0.1656
+     ],
+     [
+      -0.412,
+      0.168
+     ],
+     [
+      -0.4082,
+      0.1699
+     ],
+     [
+      -0.4045,
+      0.1712
+     ],
+     [
+      -0.4006,
+      0.172
+     ],
+     [
+      -0.3965,
+      0.1723
+     ],
+     [
+      -0.392,
+      0.172
+     ],
+     [
+      -0.3871,
+      0.1713
+     ],
+     [
+      -0.3818,
+      0.17
+     ],
+     [
+      -0.3764,
+      0.1682
+     ],
+     [
+      -0.3707,
+      0.1659
+     ],
+     [
+      -0.365,
+      0.163
+     ],
+     [
+      -0.3593,
+      0.1595
+     ],
+     [
+      -0.3535,
+      0.1554
+     ],
+     [
+      -0.3475,
+      0.1507
+     ],
+     [
+      -0.3414,
+      0.1456
+     ],
+     [
+      -0.335,
+      0.14
+     ],
+     [
+      -0.3283,
+      0.1339
+     ],
+     [
+      -0.3212,
+      0.1272
+     ],
+     [
+      -0.314,
+      0.1202
+     ],
+     [
+      -0.3069,
+      0.1127
+     ],
+     [
+      -0.3,
+      0.105
+     ],
+     [
+      -0.2933,
+      0.0968
+     ],
+     [
+      -0.2866,
+      0.0879
+     ],
+     [
+      -0.28,
+      0.0789
+     ],
+     [
+      -0.2738,
+      0.0702
+     ],
+     [
+      -0.268,
+      0.062
+     ],
+     [
+      -0.2627,
+      0.0545
+     ],
+     [
+      -0.2579,
+      0.0475
+     ],
+     [
+      -0.2533,
+      0.0407
+     ],
+     [
+      -0.2491,
+      0.0343
+     ],
+     [
+      -0.245,
+      0.028
+     ],
+     [
+      -0.2409,
+      0.0216
+     ],
+     [
+      -0.237,
+      0.015
+     ],
+     [
+      -0.2333,
+      0.0089
+     ],
+     [
+      -0.2302,
+      0.0037
+     ],
+     [
+      -0.228,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -0.37,
+     "crestFrom": -0.5,
+     "crestTo": -0.53,
+     "back": -0.6
+    },
+    "parts3D": {
+     "duneShade": [
+      [
+       -0.421,
+       0.0774
+      ],
+      [
+       -0.4423,
+       0.0
+      ],
+      [
+       -0.47,
+       0.0
+      ],
+      [
+       -0.4615,
+       0.0431
+      ],
+      [
+       -0.4515,
+       0.0891
+      ],
+      [
+       -0.446,
+       0.11
+      ],
+      [
+       -0.4399,
+       0.1281
+      ],
+      [
+       -0.4317,
+       0.147
+      ],
+      [
+       -0.4248,
+       0.1575
+      ],
+      [
+       -0.4212,
+       0.1613
+      ],
+      [
+       -0.4158,
+       0.1656
+      ],
+      [
+       -0.4101,
+       0.169
+      ],
+      [
+       -0.4052,
+       0.171
+      ],
+      [
+       -0.421,
+       0.0774
+      ]
+     ]
+    },
+    "note": "dune behind David, wind from +X: rounded windward back toward the valley, steep slip face (duneShade) facing -X"
+   },
+   {
+    "id": "dune2",
+    "kind": "dune",
+    "region": "sand",
+    "mapping": "front",
+    "group": "dune2",
+    "heightMax": 0.2461,
+    "bboxSheet": [
+     -0.47,
+     0.6,
+     -0.226,
+     0.8461
+    ],
+    "footprintSheet": [
+     -0.47,
+     0.6,
+     -0.226,
+     0.92
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.47,
+       0.6
+      ],
+      [
+       -0.4524,
+       0.7363
+      ],
+      [
+       -0.4448,
+       0.7746
+      ],
+      [
+       -0.436,
+       0.805
+      ],
+      [
+       -0.431,
+       0.8167
+      ],
+      [
+       -0.4237,
+       0.829
+      ],
+      [
+       -0.4161,
+       0.8379
+      ],
+      [
+       -0.4104,
+       0.8423
+      ],
+      [
+       -0.4045,
+       0.8448
+      ],
+      [
+       -0.3957,
+       0.8461
+      ],
+      [
+       -0.3857,
+       0.845
+      ],
+      [
+       -0.3777,
+       0.8425
+      ],
+      [
+       -0.3566,
+       0.8311
+      ],
+      [
+       -0.3366,
+       0.8148
+      ],
+      [
+       -0.3154,
+       0.7919
+      ],
+      [
+       -0.2981,
+       0.7676
+      ],
+      [
+       -0.2812,
+       0.738
+      ],
+      [
+       -0.2641,
+       0.7027
+      ],
+      [
+       -0.2456,
+       0.6557
+      ],
+      [
+       -0.226,
+       0.6
+      ],
+      [
+       -0.47,
+       0.6
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.6
+    },
+    "silhouette3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.462,
+      0.0672
+     ],
+     [
+      -0.4524,
+      0.1363
+     ],
+     [
+      -0.4448,
+      0.1746
+     ],
+     [
+      -0.4406,
+      0.1909
+     ],
+     [
+      -0.436,
+      0.205
+     ],
+     [
+      -0.431,
+      0.2167
+     ],
+     [
+      -0.4237,
+      0.229
+     ],
+     [
+      -0.4161,
+      0.2379
+     ],
+     [
+      -0.4104,
+      0.2423
+     ],
+     [
+      -0.4045,
+      0.2448
+     ],
+     [
+      -0.3957,
+      0.2461
+     ],
+     [
+      -0.3857,
+      0.245
+     ],
+     [
+      -0.3777,
+      0.2425
+     ],
+     [
+      -0.366,
+      0.2369
+     ],
+     [
+      -0.3566,
+      0.2311
+     ],
+     [
+      -0.3467,
+      0.2238
+     ],
+     [
+      -0.3366,
+      0.2148
+     ],
+     [
+      -0.3261,
+      0.2042
+     ],
+     [
+      -0.3154,
+      0.1919
+     ],
+     [
+      -0.305,
+      0.178
+     ],
+     [
+      -0.2981,
+      0.1676
+     ],
+     [
+      -0.2812,
+      0.138
+     ],
+     [
+      -0.272,
+      0.12
+     ],
+     [
+      -0.2641,
+      0.1027
+     ],
+     [
+      -0.2456,
+      0.0557
+     ],
+     [
+      -0.226,
+      0.0
+     ],
+     [
+      -0.47,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.4688,
+      0.0102
+     ],
+     [
+      -0.4671,
+      0.0246
+     ],
+     [
+      -0.4652,
+      0.0414
+     ],
+     [
+      -0.4631,
+      0.0588
+     ],
+     [
+      -0.461,
+      0.075
+     ],
+     [
+      -0.459,
+      0.0903
+     ],
+     [
+      -0.4569,
+      0.106
+     ],
+     [
+      -0.4547,
+      0.1214
+     ],
+     [
+      -0.4524,
+      0.1363
+     ],
+     [
+      -0.45,
+      0.15
+     ],
+     [
+      -0.4475,
+      0.1627
+     ],
+     [
+      -0.4448,
+      0.1746
+     ],
+     [
+      -0.442,
+      0.1857
+     ],
+     [
+      -0.4391,
+      0.1959
+     ],
+     [
+      -0.436,
+      0.205
+     ],
+     [
+      -0.4327,
+      0.2131
+     ],
+     [
+      -0.4292,
+      0.2201
+     ],
+     [
+      -0.4255,
+      0.2263
+     ],
+     [
+      -0.4218,
+      0.2315
+     ],
+     [
+      -0.418,
+      0.236
+     ],
+     [
+      -0.4142,
+      0.2396
+     ],
+     [
+      -0.4104,
+      0.2423
+     ],
+     [
+      -0.4065,
+      0.2442
+     ],
+     [
+      -0.4024,
+      0.2454
+     ],
+     [
+      -0.398,
+      0.246
+     ],
+     [
+      -0.3933,
+      0.2461
+     ],
+     [
+      -0.3883,
+      0.2455
+     ],
+     [
+      -0.3831,
+      0.2443
+     ],
+     [
+      -0.3777,
+      0.2425
+     ],
+     [
+      -0.372,
+      0.24
+     ],
+     [
+      -0.366,
+      0.2369
+     ],
+     [
+      -0.3598,
+      0.2332
+     ],
+     [
+      -0.3533,
+      0.2289
+     ],
+     [
+      -0.3467,
+      0.2238
+     ],
+     [
+      -0.34,
+      0.218
+     ],
+     [
+      -0.3332,
+      0.2114
+     ],
+     [
+      -0.3261,
+      0.2042
+     ],
+     [
+      -0.319,
+      0.1962
+     ],
+     [
+      -0.3119,
+      0.1874
+     ],
+     [
+      -0.305,
+      0.178
+     ],
+     [
+      -0.2981,
+      0.1676
+     ],
+     [
+      -0.2912,
+      0.1561
+     ],
+     [
+      -0.2845,
+      0.1441
+     ],
+     [
+      -0.278,
+      0.1319
+     ],
+     [
+      -0.272,
+      0.12
+     ],
+     [
+      -0.2666,
+      0.1085
+     ],
+     [
+      -0.2617,
+      0.097
+     ],
+     [
+      -0.257,
+      0.0855
+     ],
+     [
+      -0.2525,
+      0.0739
+     ],
+     [
+      -0.248,
+      0.062
+     ],
+     [
+      -0.2431,
+      0.0489
+     ],
+     [
+      -0.238,
+      0.0345
+     ],
+     [
+      -0.2331,
+      0.0205
+     ],
+     [
+      -0.229,
+      0.0085
+     ],
+     [
+      -0.226,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -0.6,
+     "crestFrom": -0.78,
+     "crestTo": -0.83,
+     "back": -0.92
+    },
+    "parts3D": {
+     "duneShade": [
+      [
+       -0.42,
+       0.1107
+      ],
+      [
+       -0.4448,
+       0.0
+      ],
+      [
+       -0.47,
+       0.0
+      ],
+      [
+       -0.462,
+       0.0672
+      ],
+      [
+       -0.4536,
+       0.129
+      ],
+      [
+       -0.4487,
+       0.1564
+      ],
+      [
+       -0.442,
+       0.1857
+      ],
+      [
+       -0.4344,
+       0.2092
+      ],
+      [
+       -0.431,
+       0.2167
+      ],
+      [
+       -0.4255,
+       0.2263
+      ],
+      [
+       -0.4199,
+       0.2339
+      ],
+      [
+       -0.4142,
+       0.2396
+      ],
+      [
+       -0.4085,
+       0.2433
+      ],
+      [
+       -0.4021,
+       0.2454
+      ],
+      [
+       -0.42,
+       0.1107
+      ]
+     ]
+    },
+    "note": "taller dune behind dune1"
+   },
+   {
+    "id": "dune3",
+    "kind": "dune",
+    "region": "sand",
+    "mapping": "front",
+    "group": "dune3",
+    "heightMax": 0.24,
+    "bboxSheet": [
+     0.225,
+     0.72,
+     0.47,
+     0.96
+    ],
+    "footprintSheet": [
+     0.225,
+     0.72,
+     0.47,
+     0.98
+    ],
+    "geomSheet": [
+     [
+      [
+       0.225,
+       0.72
+      ],
+      [
+       0.2347,
+       0.7872
+      ],
+      [
+       0.2469,
+       0.8563
+      ],
+      [
+       0.2567,
+       0.8948
+      ],
+      [
+       0.268,
+       0.925
+      ],
+      [
+       0.2742,
+       0.9358
+      ],
+      [
+       0.2808,
+       0.9439
+      ],
+      [
+       0.29,
+       0.952
+      ],
+      [
+       0.2995,
+       0.9573
+      ],
+      [
+       0.3096,
+       0.9597
+      ],
+      [
+       0.3206,
+       0.9597
+      ],
+      [
+       0.3324,
+       0.9573
+      ],
+      [
+       0.3418,
+       0.9536
+      ],
+      [
+       0.3622,
+       0.9408
+      ],
+      [
+       0.3835,
+       0.9213
+      ],
+      [
+       0.4051,
+       0.8948
+      ],
+      [
+       0.4211,
+       0.8696
+      ],
+      [
+       0.4373,
+       0.8362
+      ],
+      [
+       0.4521,
+       0.7972
+      ],
+      [
+       0.4614,
+       0.7646
+      ],
+      [
+       0.47,
+       0.72
+      ],
+      [
+       0.225,
+       0.72
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.72
+    },
+    "silhouette3D": [
+     [
+      0.225,
+      0.0
+     ],
+     [
+      0.2347,
+      0.0672
+     ],
+     [
+      0.2469,
+      0.1363
+     ],
+     [
+      0.2516,
+      0.1564
+     ],
+     [
+      0.2567,
+      0.1748
+     ],
+     [
+      0.2622,
+      0.1912
+     ],
+     [
+      0.268,
+      0.205
+     ],
+     [
+      0.2742,
+      0.2158
+     ],
+     [
+      0.2808,
+      0.2239
+     ],
+     [
+      0.29,
+      0.232
+     ],
+     [
+      0.2995,
+      0.2373
+     ],
+     [
+      0.3096,
+      0.2397
+     ],
+     [
+      0.3206,
+      0.2397
+     ],
+     [
+      0.3324,
+      0.2373
+     ],
+     [
+      0.3418,
+      0.2336
+     ],
+     [
+      0.3517,
+      0.2281
+     ],
+     [
+      0.3622,
+      0.2208
+     ],
+     [
+      0.3729,
+      0.2119
+     ],
+     [
+      0.3835,
+      0.2013
+     ],
+     [
+      0.3944,
+      0.1888
+     ],
+     [
+      0.4051,
+      0.1748
+     ],
+     [
+      0.415,
+      0.16
+     ],
+     [
+      0.4211,
+      0.1496
+     ],
+     [
+      0.4296,
+      0.1331
+     ],
+     [
+      0.4373,
+      0.1162
+     ],
+     [
+      0.4442,
+      0.0995
+     ],
+     [
+      0.4521,
+      0.0772
+     ],
+     [
+      0.4614,
+      0.0446
+     ],
+     [
+      0.47,
+      0.0
+     ],
+     [
+      0.225,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.225,
+      0.0
+     ],
+     [
+      0.2264,
+      0.0102
+     ],
+     [
+      0.2285,
+      0.0246
+     ],
+     [
+      0.2309,
+      0.0414
+     ],
+     [
+      0.2334,
+      0.0588
+     ],
+     [
+      0.236,
+      0.075
+     ],
+     [
+      0.2385,
+      0.0903
+     ],
+     [
+      0.2412,
+      0.106
+     ],
+     [
+      0.244,
+      0.1214
+     ],
+     [
+      0.2469,
+      0.1363
+     ],
+     [
+      0.25,
+      0.15
+     ],
+     [
+      0.2533,
+      0.1627
+     ],
+     [
+      0.2567,
+      0.1748
+     ],
+     [
+      0.2603,
+      0.186
+     ],
+     [
+      0.2641,
+      0.1961
+     ],
+     [
+      0.268,
+      0.205
+     ],
+     [
+      0.2721,
+      0.2125
+     ],
+     [
+      0.2764,
+      0.2187
+     ],
+     [
+      0.2808,
+      0.2239
+     ],
+     [
+      0.2853,
+      0.2283
+     ],
+     [
+      0.29,
+      0.232
+     ],
+     [
+      0.2947,
+      0.2351
+     ],
+     [
+      0.2995,
+      0.2373
+     ],
+     [
+      0.3045,
+      0.2389
+     ],
+     [
+      0.3096,
+      0.2397
+     ],
+     [
+      0.315,
+      0.24
+     ],
+     [
+      0.3206,
+      0.2397
+     ],
+     [
+      0.3264,
+      0.2389
+     ],
+     [
+      0.3324,
+      0.2373
+     ],
+     [
+      0.3386,
+      0.2351
+     ],
+     [
+      0.345,
+      0.232
+     ],
+     [
+      0.3517,
+      0.2281
+     ],
+     [
+      0.3586,
+      0.2234
+     ],
+     [
+      0.3658,
+      0.218
+     ],
+     [
+      0.3729,
+      0.2119
+     ],
+     [
+      0.38,
+      0.205
+     ],
+     [
+      0.3871,
+      0.1973
+     ],
+     [
+      0.3944,
+      0.1888
+     ],
+     [
+      0.4016,
+      0.1796
+     ],
+     [
+      0.4085,
+      0.1699
+     ],
+     [
+      0.415,
+      0.16
+     ],
+     [
+      0.4211,
+      0.1496
+     ],
+     [
+      0.4268,
+      0.1387
+     ],
+     [
+      0.4322,
+      0.1275
+     ],
+     [
+      0.4373,
+      0.1162
+     ],
+     [
+      0.442,
+      0.105
+     ],
+     [
+      0.4463,
+      0.0939
+     ],
+     [
+      0.4502,
+      0.0828
+     ],
+     [
+      0.4538,
+      0.0716
+     ],
+     [
+      0.4571,
+      0.0607
+     ],
+     [
+      0.46,
+      0.05
+     ],
+     [
+      0.4627,
+      0.0389
+     ],
+     [
+      0.4651,
+      0.0272
+     ],
+     [
+      0.4671,
+      0.0162
+     ],
+     [
+      0.4688,
+      0.0067
+     ],
+     [
+      0.47,
+      0.0
+     ]
+    ],
+    "depthZ": {
+     "front": -0.72,
+     "crestFrom": -0.86,
+     "crestTo": -0.9,
+     "back": -0.98
+    },
+    "parts3D": {
+     "duneShade": [
+      [
+       0.284,
+       0.108
+      ],
+      [
+       0.262,
+       0.0
+      ],
+      [
+       0.225,
+       0.0
+      ],
+      [
+       0.2347,
+       0.0672
+      ],
+      [
+       0.244,
+       0.1214
+      ],
+      [
+       0.25,
+       0.15
+      ],
+      [
+       0.2585,
+       0.1805
+      ],
+      [
+       0.266,
+       0.2007
+      ],
+      [
+       0.27,
+       0.2089
+      ],
+      [
+       0.2742,
+       0.2158
+      ],
+      [
+       0.2786,
+       0.2214
+      ],
+      [
+       0.2853,
+       0.2283
+      ],
+      [
+       0.2924,
+       0.2336
+      ],
+      [
+       0.2997,
+       0.2374
+      ],
+      [
+       0.284,
+       0.108
+      ]
+     ]
+    },
+    "note": "dune on the Philistine side behind Goliath; its slip face (duneShade) faces the valley (-X)"
+   },
+   {
+    "id": "rockL1",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockL1",
+    "heightMax": 0.098,
+    "bboxSheet": [
+     -0.47,
+     0.935,
+     -0.366,
+     1.033
+    ],
+    "footprintSheet": [
+     -0.47,
+     0.935,
+     -0.366,
+     1.0
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.47,
+       0.935
+      ],
+      [
+       -0.4669,
+       0.984
+      ],
+      [
+       -0.4565,
+       1.0212
+      ],
+      [
+       -0.4128,
+       1.033
+      ],
+      [
+       -0.3993,
+       1.0271
+      ],
+      [
+       -0.393,
+       1.0036
+      ],
+      [
+       -0.3764,
+       0.9938
+      ],
+      [
+       -0.3691,
+       0.9664
+      ],
+      [
+       -0.366,
+       0.935
+      ],
+      [
+       -0.47,
+       0.935
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.935
+    },
+    "silhouette3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.4669,
+      0.049
+     ],
+     [
+      -0.4565,
+      0.0862
+     ],
+     [
+      -0.4128,
+      0.098
+     ],
+     [
+      -0.3993,
+      0.0921
+     ],
+     [
+      -0.393,
+      0.0686
+     ],
+     [
+      -0.3764,
+      0.0588
+     ],
+     [
+      -0.3691,
+      0.0314
+     ],
+     [
+      -0.366,
+      0.0
+     ],
+     [
+      -0.47,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.47,
+      0.0
+     ],
+     [
+      -0.4565,
+      0.0862
+     ],
+     [
+      -0.4128,
+      0.098
+     ],
+     [
+      -0.393,
+      0.0686
+     ],
+     [
+      -0.3691,
+      0.0314
+     ]
+    ],
+    "depthZ": {
+     "front": -0.935,
+     "crestFrom": -0.947,
+     "crestTo": -0.988,
+     "back": -1.0
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "rockL2",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockL2",
+    "heightMax": 0.036,
+    "bboxSheet": [
+     -0.276,
+     0.95,
+     -0.234,
+     0.986
+    ],
+    "footprintSheet": [
+     -0.276,
+     0.95,
+     -0.234,
+     0.985
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.276,
+       0.95
+      ],
+      [
+       -0.2747,
+       0.968
+      ],
+      [
+       -0.2705,
+       0.9799
+      ],
+      [
+       -0.2634,
+       0.9835
+      ],
+      [
+       -0.2529,
+       0.986
+      ],
+      [
+       -0.2474,
+       0.9838
+      ],
+      [
+       -0.2449,
+       0.9752
+      ],
+      [
+       -0.2382,
+       0.9734
+      ],
+      [
+       -0.234,
+       0.95
+      ],
+      [
+       -0.276,
+       0.95
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.95
+    },
+    "silhouette3D": [
+     [
+      -0.276,
+      0.0
+     ],
+     [
+      -0.2747,
+      0.018
+     ],
+     [
+      -0.2705,
+      0.0299
+     ],
+     [
+      -0.2634,
+      0.0335
+     ],
+     [
+      -0.2529,
+      0.036
+     ],
+     [
+      -0.2474,
+      0.0338
+     ],
+     [
+      -0.2449,
+      0.0252
+     ],
+     [
+      -0.2382,
+      0.0234
+     ],
+     [
+      -0.2353,
+      0.0115
+     ],
+     [
+      -0.234,
+      0.0
+     ],
+     [
+      -0.276,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.276,
+      0.0
+     ],
+     [
+      -0.2705,
+      0.0299
+     ],
+     [
+      -0.2529,
+      0.036
+     ],
+     [
+      -0.2449,
+      0.0252
+     ],
+     [
+      -0.2353,
+      0.0115
+     ]
+    ],
+    "depthZ": {
+     "front": -0.95,
+     "crestFrom": -0.962,
+     "crestTo": -0.973,
+     "back": -0.985
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "rockM1",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockM1",
+    "heightMax": 0.072,
+    "bboxSheet": [
+     -0.105,
+     0.74,
+     -0.006,
+     0.812
+    ],
+    "footprintSheet": [
+     -0.105,
+     0.74,
+     -0.006,
+     0.8
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.105,
+       0.74
+      ],
+      [
+       -0.102,
+       0.776
+      ],
+      [
+       -0.0921,
+       0.7978
+      ],
+      [
+       -0.0753,
+       0.807
+      ],
+      [
+       -0.0505,
+       0.812
+      ],
+      [
+       -0.0377,
+       0.8077
+      ],
+      [
+       -0.0317,
+       0.7904
+      ],
+      [
+       -0.0159,
+       0.7887
+      ],
+      [
+       -0.009,
+       0.763
+      ],
+      [
+       -0.006,
+       0.74
+      ],
+      [
+       -0.105,
+       0.74
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.74
+    },
+    "silhouette3D": [
+     [
+      -0.105,
+      0.0
+     ],
+     [
+      -0.102,
+      0.036
+     ],
+     [
+      -0.0921,
+      0.0578
+     ],
+     [
+      -0.0753,
+      0.067
+     ],
+     [
+      -0.0505,
+      0.072
+     ],
+     [
+      -0.0377,
+      0.0677
+     ],
+     [
+      -0.0317,
+      0.0504
+     ],
+     [
+      -0.0159,
+      0.0487
+     ],
+     [
+      -0.009,
+      0.023
+     ],
+     [
+      -0.006,
+      0.0
+     ],
+     [
+      -0.105,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.105,
+      0.0
+     ],
+     [
+      -0.0921,
+      0.0578
+     ],
+     [
+      -0.0505,
+      0.072
+     ],
+     [
+      -0.0317,
+      0.0504
+     ],
+     [
+      -0.009,
+      0.023
+     ]
+    ],
+    "depthZ": {
+     "front": -0.74,
+     "crestFrom": -0.752,
+     "crestTo": -0.788,
+     "back": -0.8
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "rockM2",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockM2",
+    "heightMax": 0.038,
+    "bboxSheet": [
+     0.008,
+     0.76,
+     0.045,
+     0.798
+    ],
+    "footprintSheet": [
+     0.008,
+     0.76,
+     0.045,
+     0.795
+    ],
+    "geomSheet": [
+     [
+      [
+       0.008,
+       0.76
+      ],
+      [
+       0.0091,
+       0.779
+      ],
+      [
+       0.0128,
+       0.7927
+      ],
+      [
+       0.0284,
+       0.798
+      ],
+      [
+       0.0332,
+       0.7957
+      ],
+      [
+       0.0354,
+       0.7866
+      ],
+      [
+       0.0413,
+       0.7836
+      ],
+      [
+       0.045,
+       0.76
+      ],
+      [
+       0.008,
+       0.76
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.76
+    },
+    "silhouette3D": [
+     [
+      0.008,
+      0.0
+     ],
+     [
+      0.0091,
+      0.019
+     ],
+     [
+      0.0128,
+      0.0327
+     ],
+     [
+      0.0191,
+      0.0353
+     ],
+     [
+      0.0284,
+      0.038
+     ],
+     [
+      0.0332,
+      0.0357
+     ],
+     [
+      0.0354,
+      0.0266
+     ],
+     [
+      0.0413,
+      0.0236
+     ],
+     [
+      0.0439,
+      0.0122
+     ],
+     [
+      0.045,
+      0.0
+     ],
+     [
+      0.008,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.008,
+      0.0
+     ],
+     [
+      0.0128,
+      0.0327
+     ],
+     [
+      0.0284,
+      0.038
+     ],
+     [
+      0.0354,
+      0.0266
+     ],
+     [
+      0.0439,
+      0.0122
+     ]
+    ],
+    "depthZ": {
+     "front": -0.76,
+     "crestFrom": -0.772,
+     "crestTo": -0.783,
+     "back": -0.795
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "rockFR1",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockFR1",
+    "heightMax": 0.05,
+    "bboxSheet": [
+     0.405,
+     0.06,
+     0.47,
+     0.11
+    ],
+    "footprintSheet": [
+     0.405,
+     0.06,
+     0.47,
+     0.13
+    ],
+    "geomSheet": [
+     [
+      [
+       0.405,
+       0.06
+      ],
+      [
+       0.407,
+       0.085
+      ],
+      [
+       0.4135,
+       0.1036
+      ],
+      [
+       0.4407,
+       0.11
+      ],
+      [
+       0.4492,
+       0.107
+      ],
+      [
+       0.4531,
+       0.095
+      ],
+      [
+       0.4635,
+       0.0904
+      ],
+      [
+       0.468,
+       0.076
+      ],
+      [
+       0.47,
+       0.06
+      ],
+      [
+       0.405,
+       0.06
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.06
+    },
+    "silhouette3D": [
+     [
+      0.405,
+      0.0
+     ],
+     [
+      0.407,
+      0.025
+     ],
+     [
+      0.4135,
+      0.0436
+     ],
+     [
+      0.4407,
+      0.05
+     ],
+     [
+      0.4492,
+      0.047
+     ],
+     [
+      0.4531,
+      0.035
+     ],
+     [
+      0.4635,
+      0.0304
+     ],
+     [
+      0.468,
+      0.016
+     ],
+     [
+      0.47,
+      0.0
+     ],
+     [
+      0.405,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.405,
+      0.0
+     ],
+     [
+      0.4135,
+      0.0436
+     ],
+     [
+      0.4407,
+      0.05
+     ],
+     [
+      0.4531,
+      0.035
+     ],
+     [
+      0.468,
+      0.016
+     ]
+    ],
+    "depthZ": {
+     "front": -0.06,
+     "crestFrom": -0.072,
+     "crestTo": -0.118,
+     "back": -0.13
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "rockFR2",
+    "kind": "rock",
+    "region": "rock",
+    "mapping": "front",
+    "group": "rockFR2",
+    "heightMax": 0.033,
+    "bboxSheet": [
+     0.42,
+     0.16,
+     0.468,
+     0.193
+    ],
+    "footprintSheet": [
+     0.42,
+     0.16,
+     0.468,
+     0.21
+    ],
+    "geomSheet": [
+     [
+      [
+       0.42,
+       0.16
+      ],
+      [
+       0.4214,
+       0.1765
+      ],
+      [
+       0.4262,
+       0.1868
+      ],
+      [
+       0.4344,
+       0.1907
+      ],
+      [
+       0.4464,
+       0.193
+      ],
+      [
+       0.4526,
+       0.191
+      ],
+      [
+       0.4555,
+       0.1831
+      ],
+      [
+       0.4632,
+       0.182
+      ],
+      [
+       0.4666,
+       0.1706
+      ],
+      [
+       0.468,
+       0.16
+      ],
+      [
+       0.42,
+       0.16
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.16
+    },
+    "silhouette3D": [
+     [
+      0.42,
+      0.0
+     ],
+     [
+      0.4214,
+      0.0165
+     ],
+     [
+      0.4262,
+      0.0268
+     ],
+     [
+      0.4344,
+      0.0307
+     ],
+     [
+      0.4464,
+      0.033
+     ],
+     [
+      0.4526,
+      0.031
+     ],
+     [
+      0.4555,
+      0.0231
+     ],
+     [
+      0.4632,
+      0.022
+     ],
+     [
+      0.4666,
+      0.0106
+     ],
+     [
+      0.468,
+      0.0
+     ],
+     [
+      0.42,
+      0.0
+     ]
+    ],
+    "topProfile3D": [
+     [
+      0.42,
+      0.0
+     ],
+     [
+      0.4262,
+      0.0268
+     ],
+     [
+      0.4464,
+      0.033
+     ],
+     [
+      0.4555,
+      0.0231
+     ],
+     [
+      0.4666,
+      0.0106
+     ]
+    ],
+    "depthZ": {
+     "front": -0.16,
+     "crestFrom": -0.172,
+     "crestTo": -0.198,
+     "back": -0.21
+    },
+    "parts3D": {},
+    "note": "sandstone block: steep walls, flat tilted top (front view = this outline)"
+   },
+   {
+    "id": "shrubL",
+    "kind": "shrub",
+    "region": "bush",
+    "mapping": "front",
+    "group": "shrubL",
+    "heightMax": 0.047,
+    "bboxSheet": [
+     -0.349,
+     0.944,
+     -0.295,
+     0.987
+    ],
+    "footprintSheet": [
+     -0.349,
+     0.94,
+     -0.295,
+     0.975
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.3285,
+       0.9475
+      ],
+      [
+       -0.3358,
+       0.9441
+      ],
+      [
+       -0.3437,
+       0.946
+      ],
+      [
+       -0.3485,
+       0.9525
+      ],
+      [
+       -0.3481,
+       0.9606
+      ],
+      [
+       -0.3437,
+       0.966
+      ],
+      [
+       -0.3375,
+       0.968
+      ],
+      [
+       -0.3344,
+       0.9742
+      ],
+      [
+       -0.3287,
+       0.9785
+      ],
+      [
+       -0.325,
+       0.9845
+      ],
+      [
+       -0.3201,
+       0.9868
+      ],
+      [
+       -0.3138,
+       0.9862
+      ],
+      [
+       -0.3102,
+       0.9838
+      ],
+      [
+       -0.3078,
+       0.9802
+      ],
+      [
+       -0.307,
+       0.976
+      ],
+      [
+       -0.3079,
+       0.9716
+      ],
+      [
+       -0.3065,
+       0.968
+      ],
+      [
+       -0.3003,
+       0.966
+      ],
+      [
+       -0.2964,
+       0.9617
+      ],
+      [
+       -0.295,
+       0.956
+      ],
+      [
+       -0.2959,
+       0.9514
+      ],
+      [
+       -0.3003,
+       0.946
+      ],
+      [
+       -0.3058,
+       0.9441
+      ],
+      [
+       -0.3116,
+       0.9449
+      ],
+      [
+       -0.3167,
+       0.9489
+      ],
+      [
+       -0.322,
+       0.948
+      ],
+      [
+       -0.3273,
+       0.9489
+      ],
+      [
+       -0.3285,
+       0.9475
+      ]
+     ]
+    ],
+    "frontUV": {
+     "scale": 1.0,
+     "sheetX": 0.0,
+     "sheetY": 0.94
+    },
+    "silhouette3D": [
+     [
+      -0.3285,
+      0.0075
+     ],
+     [
+      -0.3313,
+      0.0054
+     ],
+     [
+      -0.3358,
+      0.0041
+     ],
+     [
+      -0.3405,
+      0.0045
+     ],
+     [
+      -0.3437,
+      0.006
+     ],
+     [
+      -0.3463,
+      0.0084
+     ],
+     [
+      -0.3485,
+      0.0125
+     ],
+     [
+      -0.349,
+      0.016
+     ],
+     [
+      -0.3481,
+      0.0206
+     ],
+     [
+      -0.3463,
+      0.0236
+     ],
+     [
+      -0.3437,
+      0.026
+     ],
+     [
+      -0.3405,
+      0.0275
+     ],
+     [
+      -0.3375,
+      0.028
+     ],
+     [
+      -0.3344,
+      0.0342
+     ],
+     [
+      -0.3322,
+      0.0364
+     ],
+     [
+      -0.3287,
+      0.0385
+     ],
+     [
+      -0.3271,
+      0.0421
+     ],
+     [
+      -0.325,
+      0.0445
+     ],
+     [
+      -0.3201,
+      0.0468
+     ],
+     [
+      -0.3169,
+      0.0469
+     ],
+     [
+      -0.3138,
+      0.0462
+     ],
+     [
+      -0.3102,
+      0.0438
+     ],
+     [
+      -0.3078,
+      0.0402
+     ],
+     [
+      -0.307,
+      0.036
+     ],
+     [
+      -0.3079,
+      0.0316
+     ],
+     [
+      -0.3065,
+      0.028
+     ],
+     [
+      -0.3035,
+      0.0275
+     ],
+     [
+      -0.3003,
+      0.026
+     ],
+     [
+      -0.2964,
+      0.0217
+     ],
+     [
+      -0.295,
+      0.016
+     ],
+     [
+      -0.2959,
+      0.0114
+     ],
+     [
+      -0.2977,
+      0.0084
+     ],
+     [
+      -0.3003,
+      0.006
+     ],
+     [
+      -0.3058,
+      0.0041
+     ],
+     [
+      -0.3116,
+      0.0049
+     ],
+     [
+      -0.3146,
+      0.0067
+     ],
+     [
+      -0.3167,
+      0.0089
+     ],
+     [
+      -0.322,
+      0.008
+     ],
+     [
+      -0.3273,
+      0.0089
+     ],
+     [
+      -0.3285,
+      0.0075
+     ]
+    ],
+    "topProfile3D": [
+     [
+      -0.349,
+      0.0236
+     ],
+     [
+      -0.3488,
+      0.0236
+     ],
+     [
+      -0.3481,
+      0.0245
+     ],
+     [
+      -0.347,
+      0.0253
+     ],
+     [
+      -0.3455,
+      0.0266
+     ],
+     [
+      -0.3437,
+      0.0271
+     ],
+     [
+      -0.3416,
+      0.0278
+     ],
+     [
+      -0.3393,
+      0.0301
+     ],
+     [
+      -0.3375,
+      0.0329
+     ],
+     [
+      -0.337,
+      0.0342
+     ],
+     [
+      -0.3361,
+      0.0353
+     ],
+     [
+      -0.3353,
+      0.0353
+     ],
+     [
+      -0.3344,
+      0.0364
+     ],
+     [
+      -0.3333,
+      0.0373
+     ],
+     [
+      -0.3322,
+      0.0381
+     ],
+     [
+      -0.3309,
+      0.0402
+     ],
+     [
+      -0.3295,
+      0.043
+     ],
+     [
+      -0.3287,
+      0.0438
+     ],
+     [
+      -0.3282,
+      0.0438
+     ],
+     [
+      -0.3273,
+      0.0445
+     ],
+     [
+      -0.3266,
+      0.0451
+     ],
+     [
+      -0.3258,
+      0.0457
+     ],
+     [
+      -0.325,
+      0.0462
+     ],
+     [
+      -0.3236,
+      0.0465
+     ],
+     [
+      -0.3222,
+      0.0468
+     ],
+     [
+      -0.3212,
+      0.0469
+     ],
+     [
+      -0.3201,
+      0.047
+     ],
+     [
+      -0.3189,
+      0.047
+     ],
+     [
+      -0.3174,
+      0.047
+     ],
+     [
+      -0.3167,
+      0.047
+     ],
+     [
+      -0.3159,
+      0.047
+     ],
+     [
+      -0.3148,
+      0.0469
+     ],
+     [
+      -0.3138,
+      0.0468
+     ],
+     [
+      -0.3128,
+      0.0465
+     ],
+     [
+      -0.3119,
+      0.0465
+     ],
+     [
+      -0.311,
+      0.0462
+     ],
+     [
+      -0.3102,
+      0.0457
+     ],
+     [
+      -0.3093,
+      0.0451
+     ],
+     [
+      -0.3083,
+      0.0445
+     ],
+     [
+      -0.3079,
+      0.0438
+     ],
+     [
+      -0.3075,
+      0.0438
+     ],
+     [
+      -0.3071,
+      0.043
+     ],
+     [
+      -0.3067,
+      0.043
+     ],
+     [
+      -0.3058,
+      0.0412
+     ],
+     [
+      -0.3035,
+      0.0279
+     ],
+     [
+      -0.3013,
+      0.0275
+     ],
+     [
+      -0.2994,
+      0.0266
+     ],
+     [
+      -0.2977,
+      0.026
+     ],
+     [
+      -0.2964,
+      0.0253
+     ],
+     [
+      -0.2955,
+      0.0236
+     ],
+     [
+      -0.2951,
+      0.0236
+     ]
+    ],
+    "depthZ": {
+     "front": -0.94,
+     "crestFrom": -0.95,
+     "crestTo": -0.965,
+     "back": -0.975
+    },
+    "parts3D": {},
+    "note": "dry desert shrub"
+   },
+   {
+    "id": "brook",
+    "kind": "water",
+    "region": "water",
+    "mapping": "none",
+    "group": "brook",
+    "heightMax": 0.004,
+    "bboxSheet": [
+     -0.469,
+     -0.19,
+     -0.377,
+     -0.012
+    ],
+    "footprintSheet": [
+     -0.469,
+     -0.19,
+     -0.377,
+     -0.012
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.4307,
+       -0.0144
+      ],
+      [
+       -0.4211,
+       -0.032
+      ],
+      [
+       -0.4162,
+       -0.0476
+      ],
+      [
+       -0.4167,
+       -0.0623
+      ],
+      [
+       -0.4227,
+       -0.0835
+      ],
+      [
+       -0.4226,
+       -0.0903
+      ],
+      [
+       -0.4178,
+       -0.101
+      ],
+      [
+       -0.3885,
+       -0.1535
+      ],
+      [
+       -0.3824,
+       -0.1694
+      ],
+      [
+       -0.377,
+       -0.19
+      ],
+      [
+       -0.412,
+       -0.19
+      ],
+      [
+       -0.4194,
+       -0.1678
+      ],
+      [
+       -0.4478,
+       -0.1171
+      ],
+      [
+       -0.455,
+       -0.1004
+      ],
+      [
+       -0.4569,
+       -0.092
+      ],
+      [
+       -0.457,
+       -0.0826
+      ],
+      [
+       -0.4499,
+       -0.0524
+      ],
+      [
+       -0.4541,
+       -0.0418
+      ],
+      [
+       -0.4676,
+       -0.0189
+      ],
+      [
+       -0.469,
+       -0.012
+      ],
+      [
+       -0.4322,
+       -0.012
+      ],
+      [
+       -0.4307,
+       -0.0144
+      ]
+     ]
+    ],
+    "note": "water film over the printed brook; the ground has a HOLE here (ground.mask 255) so the real paper (the child's colour) shows through, as §11.9; outside the scanned art rectangle"
+   },
+   {
+    "id": "fiveStones",
+    "kind": "stones",
+    "region": "pebbles",
+    "mapping": "constant",
+    "group": "brook",
+    "heightMax": 0.008,
+    "bboxSheet": [
+     -0.436,
+     -0.1696,
+     -0.3887,
+     -0.0944
+    ],
+    "footprintSheet": [
+     -0.436,
+     -0.1696,
+     -0.3887,
+     -0.0944
+    ],
+    "geomSheet": [
+     [
+      [
+       -0.4057,
+       -0.1524
+      ],
+      [
+       -0.408,
+       -0.1562
+      ],
+      [
+       -0.4127,
+       -0.1576
+      ],
+      [
+       -0.4175,
+       -0.1558
+      ],
+      [
+       -0.4193,
+       -0.1518
+      ],
+      [
+       -0.4166,
+       -0.1476
+      ],
+      [
+       -0.4108,
+       -0.1466
+      ],
+      [
+       -0.4124,
+       -0.143
+      ],
+      [
+       -0.4109,
+       -0.1394
+      ],
+      [
+       -0.4054,
+       -0.1374
+      ],
+      [
+       -0.4006,
+       -0.1392
+      ],
+      [
+       -0.3988,
+       -0.1432
+      ],
+      [
+       -0.4015,
+       -0.1474
+      ],
+      [
+       -0.4073,
+       -0.1484
+      ],
+      [
+       -0.4057,
+       -0.1524
+      ]
+     ],
+     [
+      [
+       -0.4105,
+       -0.1225
+      ],
+      [
+       -0.413,
+       -0.1263
+      ],
+      [
+       -0.418,
+       -0.1276
+      ],
+      [
+       -0.4224,
+       -0.1257
+      ],
+      [
+       -0.4241,
+       -0.1216
+      ],
+      [
+       -0.4218,
+       -0.1178
+      ],
+      [
+       -0.4169,
+       -0.1164
+      ],
+      [
+       -0.4122,
+       -0.1183
+      ],
+      [
+       -0.4105,
+       -0.1225
+      ]
+     ],
+     [
+      [
+       -0.4224,
+       -0.1005
+      ],
+      [
+       -0.4247,
+       -0.1042
+      ],
+      [
+       -0.4296,
+       -0.1056
+      ],
+      [
+       -0.4343,
+       -0.1037
+      ],
+      [
+       -0.436,
+       -0.0996
+      ],
+      [
+       -0.4337,
+       -0.0958
+      ],
+      [
+       -0.4288,
+       -0.0944
+      ],
+      [
+       -0.4241,
+       -0.0963
+      ],
+      [
+       -0.4224,
+       -0.1005
+      ]
+     ],
+     [
+      [
+       -0.3887,
+       -0.1644
+      ],
+      [
+       -0.391,
+       -0.1682
+      ],
+      [
+       -0.3957,
+       -0.1696
+      ],
+      [
+       -0.4005,
+       -0.1678
+      ],
+      [
+       -0.4023,
+       -0.1638
+      ],
+      [
+       -0.4001,
+       -0.1599
+      ],
+      [
+       -0.3953,
+       -0.1584
+      ],
+      [
+       -0.3905,
+       -0.1602
+      ],
+      [
+       -0.3887,
+       -0.1644
+      ]
+     ]
+    ],
+    "note": "five smooth stones (1 Sam 17:40) in the water by the right bank; constant UV = desert.stoneUV",
+    "stonesSheet": [
+     [
+      -0.4292,
+      -0.1
+     ],
+     [
+      -0.4173,
+      -0.122
+     ],
+     [
+      -0.4056,
+      -0.143
+     ],
+     [
+      -0.3955,
+      -0.164
+     ],
+     [
+      -0.4125,
+      -0.152
+     ]
+    ]
+   }
+  ],
+  "print": {
+   "note": "what the Sheet role prints, in draw order (later covers earlier); sheet coords (x, ys); outline 4.5 px around every shape, decor lines at their width",
+   "shapes": [
+    {
+     "region": "sand",
+     "piece": "duneFar",
+     "rings": [
+      [
+       [
+        -0.096,
+        1.0
+       ],
+       [
+        -0.0586,
+        1.0422
+       ],
+       [
+        -0.0391,
+        1.0616
+       ],
+       [
+        -0.0301,
+        1.0681
+       ],
+       [
+        -0.0218,
+        1.0728
+       ],
+       [
+        -0.0135,
+        1.0755
+       ],
+       [
+        -0.008,
+        1.076
+       ],
+       [
+        -0.0024,
+        1.0755
+       ],
+       [
+        0.006,
+        1.0728
+       ],
+       [
+        0.0144,
+        1.0681
+       ],
+       [
+        0.0228,
+        1.0616
+       ],
+       [
+        0.076,
+        1.0
+       ],
+       [
+        -0.096,
+        1.0
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "hillIsrael",
+     "piece": "hillIsrael",
+     "rings": [
+      [
+       [
+        -0.236,
+        1.0
+       ],
+       [
+        -0.235,
+        1.0308
+       ],
+       [
+        -0.2329,
+        1.0477
+       ],
+       [
+        -0.2305,
+        1.0587
+       ],
+       [
+        -0.2274,
+        1.0695
+       ],
+       [
+        -0.2232,
+        1.0797
+       ],
+       [
+        -0.2178,
+        1.0887
+       ],
+       [
+        -0.2113,
+        1.0967
+       ],
+       [
+        -0.2042,
+        1.1036
+       ],
+       [
+        -0.1966,
+        1.1095
+       ],
+       [
+        -0.1883,
+        1.1142
+       ],
+       [
+        -0.1791,
+        1.1176
+       ],
+       [
+        -0.1565,
+        1.1211
+       ],
+       [
+        -0.1239,
+        1.1224
+       ],
+       [
+        -0.0971,
+        1.1213
+       ],
+       [
+        -0.0709,
+        1.1182
+       ],
+       [
+        -0.059,
+        1.1136
+       ],
+       [
+        -0.0517,
+        1.108
+       ],
+       [
+        -0.0432,
+        1.0964
+       ],
+       [
+        -0.0352,
+        1.08
+       ],
+       [
+        -0.0153,
+        1.0207
+       ],
+       [
+        -0.0072,
+        1.0
+       ],
+       [
+        -0.236,
+        1.0
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "hillPhil",
+     "piece": "hillPhil",
+     "rings": [
+      [
+       [
+        -0.0072,
+        1.0
+       ],
+       [
+        0.0,
+        1.024
+       ],
+       [
+        0.0119,
+        1.0817
+       ],
+       [
+        0.02,
+        1.112
+       ],
+       [
+        0.0251,
+        1.1252
+       ],
+       [
+        0.0308,
+        1.1358
+       ],
+       [
+        0.0372,
+        1.1433
+       ],
+       [
+        0.042,
+        1.1468
+       ],
+       [
+        0.0482,
+        1.1491
+       ],
+       [
+        0.0575,
+        1.151
+       ],
+       [
+        0.0849,
+        1.1526
+       ],
+       [
+        0.138,
+        1.1521
+       ],
+       [
+        0.1592,
+        1.1505
+       ],
+       [
+        0.1704,
+        1.1489
+       ],
+       [
+        0.18,
+        1.146
+       ],
+       [
+        0.1872,
+        1.1427
+       ],
+       [
+        0.2001,
+        1.1338
+       ],
+       [
+        0.2107,
+        1.122
+       ],
+       [
+        0.2193,
+        1.1074
+       ],
+       [
+        0.2271,
+        1.0865
+       ],
+       [
+        0.2322,
+        1.0629
+       ],
+       [
+        0.2347,
+        1.0397
+       ],
+       [
+        0.236,
+        1.0
+       ],
+       [
+        -0.0072,
+        1.0
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentIsrael",
+     "piece": "tentIsrael1",
+     "rings": [
+      [
+       [
+        -0.194,
+        1.1064
+       ],
+       [
+        -0.194,
+        1.1112
+       ],
+       [
+        -0.1837,
+        1.1278
+       ],
+       [
+        -0.172,
+        1.1492
+       ],
+       [
+        -0.1603,
+        1.1278
+       ],
+       [
+        -0.15,
+        1.1112
+       ],
+       [
+        -0.15,
+        1.1064
+       ],
+       [
+        -0.194,
+        1.1064
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentIsrael1",
+     "rings": [
+      [
+       [
+        -0.1808,
+        1.1112
+       ],
+       [
+        -0.1632,
+        1.1112
+       ],
+       [
+        -0.172,
+        1.132
+       ],
+       [
+        -0.1808,
+        1.1112
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentIsrael",
+     "piece": "tentIsrael2",
+     "rings": [
+      [
+       [
+        -0.148,
+        1.117
+       ],
+       [
+        -0.148,
+        1.1218
+       ],
+       [
+        -0.1377,
+        1.1384
+       ],
+       [
+        -0.126,
+        1.1598
+       ],
+       [
+        -0.1143,
+        1.1384
+       ],
+       [
+        -0.104,
+        1.1218
+       ],
+       [
+        -0.104,
+        1.117
+       ],
+       [
+        -0.148,
+        1.117
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentIsrael2",
+     "rings": [
+      [
+       [
+        -0.1348,
+        1.1218
+       ],
+       [
+        -0.1172,
+        1.1218
+       ],
+       [
+        -0.126,
+        1.1426
+       ],
+       [
+        -0.1348,
+        1.1218
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentIsrael",
+     "piece": "tentIsrael3",
+     "rings": [
+      [
+       [
+        -0.102,
+        1.1082
+       ],
+       [
+        -0.102,
+        1.113
+       ],
+       [
+        -0.0917,
+        1.1296
+       ],
+       [
+        -0.08,
+        1.151
+       ],
+       [
+        -0.0683,
+        1.1296
+       ],
+       [
+        -0.058,
+        1.113
+       ],
+       [
+        -0.058,
+        1.1082
+       ],
+       [
+        -0.102,
+        1.1082
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentIsrael3",
+     "rings": [
+      [
+       [
+        -0.0888,
+        1.113
+       ],
+       [
+        -0.0712,
+        1.113
+       ],
+       [
+        -0.08,
+        1.1338
+       ],
+       [
+        -0.0888,
+        1.113
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentPhil",
+     "piece": "tentPhil1",
+     "rings": [
+      [
+       [
+        0.032,
+        1.1327
+       ],
+       [
+        0.032,
+        1.1375
+       ],
+       [
+        0.0423,
+        1.1541
+       ],
+       [
+        0.054,
+        1.1755
+       ],
+       [
+        0.0657,
+        1.1541
+       ],
+       [
+        0.076,
+        1.1375
+       ],
+       [
+        0.076,
+        1.1327
+       ],
+       [
+        0.032,
+        1.1327
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentPhil1",
+     "rings": [
+      [
+       [
+        0.0452,
+        1.1375
+       ],
+       [
+        0.0628,
+        1.1375
+       ],
+       [
+        0.054,
+        1.1583
+       ],
+       [
+        0.0452,
+        1.1375
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentPhil",
+     "piece": "tentPhil2",
+     "rings": [
+      [
+       [
+        0.08,
+        1.1477
+       ],
+       [
+        0.08,
+        1.1525
+       ],
+       [
+        0.0903,
+        1.1691
+       ],
+       [
+        0.102,
+        1.1905
+       ],
+       [
+        0.1137,
+        1.1691
+       ],
+       [
+        0.124,
+        1.1525
+       ],
+       [
+        0.124,
+        1.1477
+       ],
+       [
+        0.08,
+        1.1477
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentPhil2",
+     "rings": [
+      [
+       [
+        0.0932,
+        1.1525
+       ],
+       [
+        0.1108,
+        1.1525
+       ],
+       [
+        0.102,
+        1.1733
+       ],
+       [
+        0.0932,
+        1.1525
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentPhil",
+     "piece": "tentPhil3",
+     "rings": [
+      [
+       [
+        0.136,
+        1.1412
+       ],
+       [
+        0.136,
+        1.146
+       ],
+       [
+        0.1463,
+        1.1626
+       ],
+       [
+        0.158,
+        1.184
+       ],
+       [
+        0.1697,
+        1.1626
+       ],
+       [
+        0.18,
+        1.146
+       ],
+       [
+        0.18,
+        1.1412
+       ],
+       [
+        0.136,
+        1.1412
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "tentDoor",
+     "piece": "tentPhil3",
+     "rings": [
+      [
+       [
+        0.1492,
+        1.146
+       ],
+       [
+        0.1668,
+        1.146
+       ],
+       [
+        0.158,
+        1.1668
+       ],
+       [
+        0.1492,
+        1.146
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "flagIsrael",
+     "piece": "bannerIsrael",
+     "rings": [
+      [
+       [
+        -0.0576,
+        1.1689
+       ],
+       [
+        -0.0534,
+        1.17
+       ],
+       [
+        -0.0471,
+        1.1702
+       ],
+       [
+        -0.0327,
+        1.1687
+       ],
+       [
+        -0.0232,
+        1.1665
+       ],
+       [
+        -0.0224,
+        1.1654
+       ],
+       [
+        -0.0238,
+        1.1641
+       ],
+       [
+        -0.0316,
+        1.1593
+       ],
+       [
+        -0.0326,
+        1.1577
+       ],
+       [
+        -0.0316,
+        1.1559
+       ],
+       [
+        -0.0224,
+        1.1485
+       ],
+       [
+        -0.0232,
+        1.1473
+       ],
+       [
+        -0.0268,
+        1.1462
+       ],
+       [
+        -0.0398,
+        1.1444
+       ],
+       [
+        -0.0534,
+        1.1444
+       ],
+       [
+        -0.0576,
+        1.1457
+       ],
+       [
+        -0.06,
+        1.1484
+       ],
+       [
+        -0.0614,
+        1.1525
+       ],
+       [
+        -0.0619,
+        1.1573
+       ],
+       [
+        -0.0614,
+        1.1621
+       ],
+       [
+        -0.06,
+        1.1662
+       ],
+       [
+        -0.0576,
+        1.1689
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "flagPhil",
+     "piece": "bannerPhil",
+     "rings": [
+      [
+       [
+        0.0304,
+        1.1927
+       ],
+       [
+        0.0328,
+        1.19
+       ],
+       [
+        0.0342,
+        1.186
+       ],
+       [
+        0.0347,
+        1.1812
+       ],
+       [
+        0.0342,
+        1.1764
+       ],
+       [
+        0.0328,
+        1.1722
+       ],
+       [
+        0.0304,
+        1.1695
+       ],
+       [
+        0.0262,
+        1.1682
+       ],
+       [
+        0.0126,
+        1.1682
+       ],
+       [
+        -0.0004,
+        1.1701
+       ],
+       [
+        -0.004,
+        1.1711
+       ],
+       [
+        -0.0048,
+        1.1724
+       ],
+       [
+        0.0044,
+        1.1798
+       ],
+       [
+        0.0054,
+        1.1815
+       ],
+       [
+        0.0044,
+        1.1832
+       ],
+       [
+        -0.0034,
+        1.1879
+       ],
+       [
+        -0.0048,
+        1.1892
+       ],
+       [
+        -0.004,
+        1.1903
+       ],
+       [
+        0.0055,
+        1.1925
+       ],
+       [
+        0.0199,
+        1.1941
+       ],
+       [
+        0.0262,
+        1.1939
+       ],
+       [
+        0.0304,
+        1.1927
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "sand",
+     "piece": "dune1",
+     "rings": [
+      [
+       [
+        -0.47,
+        0.37
+       ],
+       [
+        -0.4602,
+        0.4193
+       ],
+       [
+        -0.4502,
+        0.4646
+       ],
+       [
+        -0.4445,
+        0.4847
+       ],
+       [
+        -0.4367,
+        0.5063
+       ],
+       [
+        -0.43,
+        0.52
+       ],
+       [
+        -0.4212,
+        0.5312
+       ],
+       [
+        -0.4158,
+        0.5356
+       ],
+       [
+        -0.4082,
+        0.5399
+       ],
+       [
+        -0.4026,
+        0.5417
+       ],
+       [
+        -0.3965,
+        0.5423
+       ],
+       [
+        -0.3871,
+        0.5413
+       ],
+       [
+        -0.3791,
+        0.5392
+       ],
+       [
+        -0.3707,
+        0.5359
+       ],
+       [
+        -0.3621,
+        0.5313
+       ],
+       [
+        -0.3535,
+        0.5254
+       ],
+       [
+        -0.3414,
+        0.5156
+       ],
+       [
+        -0.314,
+        0.4902
+       ],
+       [
+        -0.2966,
+        0.471
+       ],
+       [
+        -0.28,
+        0.4489
+       ],
+       [
+        -0.2512,
+        0.4075
+       ],
+       [
+        -0.228,
+        0.37
+       ],
+       [
+        -0.47,
+        0.37
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "duneShade",
+     "piece": "dune1",
+     "rings": [
+      [
+       [
+        -0.421,
+        0.4474
+       ],
+       [
+        -0.4423,
+        0.37
+       ],
+       [
+        -0.47,
+        0.37
+       ],
+       [
+        -0.4515,
+        0.4591
+       ],
+       [
+        -0.446,
+        0.48
+       ],
+       [
+        -0.4399,
+        0.4981
+       ],
+       [
+        -0.4317,
+        0.517
+       ],
+       [
+        -0.4248,
+        0.5275
+       ],
+       [
+        -0.4158,
+        0.5356
+       ],
+       [
+        -0.4052,
+        0.541
+       ],
+       [
+        -0.421,
+        0.4474
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "sand",
+     "piece": "dune2",
+     "rings": [
+      [
+       [
+        -0.47,
+        0.6
+       ],
+       [
+        -0.462,
+        0.6672
+       ],
+       [
+        -0.4524,
+        0.7363
+       ],
+       [
+        -0.4448,
+        0.7746
+       ],
+       [
+        -0.436,
+        0.805
+       ],
+       [
+        -0.431,
+        0.8167
+       ],
+       [
+        -0.4237,
+        0.829
+       ],
+       [
+        -0.4161,
+        0.8379
+       ],
+       [
+        -0.4104,
+        0.8423
+       ],
+       [
+        -0.4045,
+        0.8448
+       ],
+       [
+        -0.3957,
+        0.8461
+       ],
+       [
+        -0.3857,
+        0.845
+       ],
+       [
+        -0.3777,
+        0.8425
+       ],
+       [
+        -0.366,
+        0.8369
+       ],
+       [
+        -0.3566,
+        0.8311
+       ],
+       [
+        -0.3467,
+        0.8238
+       ],
+       [
+        -0.3366,
+        0.8148
+       ],
+       [
+        -0.3154,
+        0.7919
+       ],
+       [
+        -0.2981,
+        0.7676
+       ],
+       [
+        -0.2812,
+        0.738
+       ],
+       [
+        -0.2641,
+        0.7027
+       ],
+       [
+        -0.2456,
+        0.6557
+       ],
+       [
+        -0.226,
+        0.6
+       ],
+       [
+        -0.47,
+        0.6
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "duneShade",
+     "piece": "dune2",
+     "rings": [
+      [
+       [
+        -0.42,
+        0.7107
+       ],
+       [
+        -0.4448,
+        0.6
+       ],
+       [
+        -0.47,
+        0.6
+       ],
+       [
+        -0.462,
+        0.6672
+       ],
+       [
+        -0.4536,
+        0.729
+       ],
+       [
+        -0.4487,
+        0.7564
+       ],
+       [
+        -0.442,
+        0.7857
+       ],
+       [
+        -0.4344,
+        0.8092
+       ],
+       [
+        -0.4255,
+        0.8263
+       ],
+       [
+        -0.4199,
+        0.8339
+       ],
+       [
+        -0.4142,
+        0.8396
+       ],
+       [
+        -0.4085,
+        0.8433
+       ],
+       [
+        -0.4021,
+        0.8454
+       ],
+       [
+        -0.42,
+        0.7107
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "sand",
+     "piece": "dune3",
+     "rings": [
+      [
+       [
+        0.225,
+        0.72
+       ],
+       [
+        0.2347,
+        0.7872
+       ],
+       [
+        0.2469,
+        0.8563
+       ],
+       [
+        0.2567,
+        0.8948
+       ],
+       [
+        0.2622,
+        0.9112
+       ],
+       [
+        0.268,
+        0.925
+       ],
+       [
+        0.2742,
+        0.9358
+       ],
+       [
+        0.2808,
+        0.9439
+       ],
+       [
+        0.29,
+        0.952
+       ],
+       [
+        0.2995,
+        0.9573
+       ],
+       [
+        0.3096,
+        0.9597
+       ],
+       [
+        0.3206,
+        0.9597
+       ],
+       [
+        0.3324,
+        0.9573
+       ],
+       [
+        0.3418,
+        0.9536
+       ],
+       [
+        0.3517,
+        0.9481
+       ],
+       [
+        0.3622,
+        0.9408
+       ],
+       [
+        0.3729,
+        0.9319
+       ],
+       [
+        0.3835,
+        0.9213
+       ],
+       [
+        0.3944,
+        0.9088
+       ],
+       [
+        0.4051,
+        0.8948
+       ],
+       [
+        0.4211,
+        0.8696
+       ],
+       [
+        0.4373,
+        0.8362
+       ],
+       [
+        0.4442,
+        0.8195
+       ],
+       [
+        0.4521,
+        0.7972
+       ],
+       [
+        0.4614,
+        0.7646
+       ],
+       [
+        0.47,
+        0.72
+       ],
+       [
+        0.225,
+        0.72
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "duneShade",
+     "piece": "dune3",
+     "rings": [
+      [
+       [
+        0.284,
+        0.828
+       ],
+       [
+        0.262,
+        0.72
+       ],
+       [
+        0.225,
+        0.72
+       ],
+       [
+        0.2347,
+        0.7872
+       ],
+       [
+        0.244,
+        0.8414
+       ],
+       [
+        0.25,
+        0.87
+       ],
+       [
+        0.2585,
+        0.9005
+       ],
+       [
+        0.266,
+        0.9207
+       ],
+       [
+        0.2742,
+        0.9358
+       ],
+       [
+        0.2786,
+        0.9414
+       ],
+       [
+        0.2853,
+        0.9483
+       ],
+       [
+        0.2924,
+        0.9536
+       ],
+       [
+        0.2997,
+        0.9574
+       ],
+       [
+        0.284,
+        0.828
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockL1",
+     "rings": [
+      [
+       [
+        -0.47,
+        0.935
+       ],
+       [
+        -0.4669,
+        0.984
+       ],
+       [
+        -0.4565,
+        1.0212
+       ],
+       [
+        -0.4128,
+        1.033
+       ],
+       [
+        -0.3993,
+        1.0271
+       ],
+       [
+        -0.393,
+        1.0036
+       ],
+       [
+        -0.3764,
+        0.9938
+       ],
+       [
+        -0.3691,
+        0.9664
+       ],
+       [
+        -0.366,
+        0.935
+       ],
+       [
+        -0.47,
+        0.935
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockL2",
+     "rings": [
+      [
+       [
+        -0.276,
+        0.95
+       ],
+       [
+        -0.2747,
+        0.968
+       ],
+       [
+        -0.2705,
+        0.9799
+       ],
+       [
+        -0.2634,
+        0.9835
+       ],
+       [
+        -0.2529,
+        0.986
+       ],
+       [
+        -0.2474,
+        0.9838
+       ],
+       [
+        -0.2449,
+        0.9752
+       ],
+       [
+        -0.2382,
+        0.9734
+       ],
+       [
+        -0.2353,
+        0.9615
+       ],
+       [
+        -0.234,
+        0.95
+       ],
+       [
+        -0.276,
+        0.95
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockM1",
+     "rings": [
+      [
+       [
+        -0.105,
+        0.74
+       ],
+       [
+        -0.102,
+        0.776
+       ],
+       [
+        -0.0921,
+        0.7978
+       ],
+       [
+        -0.0753,
+        0.807
+       ],
+       [
+        -0.0505,
+        0.812
+       ],
+       [
+        -0.0377,
+        0.8077
+       ],
+       [
+        -0.0317,
+        0.7904
+       ],
+       [
+        -0.0159,
+        0.7887
+       ],
+       [
+        -0.009,
+        0.763
+       ],
+       [
+        -0.006,
+        0.74
+       ],
+       [
+        -0.105,
+        0.74
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockM2",
+     "rings": [
+      [
+       [
+        0.008,
+        0.76
+       ],
+       [
+        0.0091,
+        0.779
+       ],
+       [
+        0.0128,
+        0.7927
+       ],
+       [
+        0.0284,
+        0.798
+       ],
+       [
+        0.0332,
+        0.7957
+       ],
+       [
+        0.0354,
+        0.7866
+       ],
+       [
+        0.0413,
+        0.7836
+       ],
+       [
+        0.0439,
+        0.7722
+       ],
+       [
+        0.045,
+        0.76
+       ],
+       [
+        0.008,
+        0.76
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockFR1",
+     "rings": [
+      [
+       [
+        0.405,
+        0.06
+       ],
+       [
+        0.407,
+        0.085
+       ],
+       [
+        0.4135,
+        0.1036
+       ],
+       [
+        0.4407,
+        0.11
+       ],
+       [
+        0.4492,
+        0.107
+       ],
+       [
+        0.4531,
+        0.095
+       ],
+       [
+        0.4635,
+        0.0904
+       ],
+       [
+        0.468,
+        0.076
+       ],
+       [
+        0.47,
+        0.06
+       ],
+       [
+        0.405,
+        0.06
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "rock",
+     "piece": "rockFR2",
+     "rings": [
+      [
+       [
+        0.42,
+        0.16
+       ],
+       [
+        0.4214,
+        0.1765
+       ],
+       [
+        0.4262,
+        0.1868
+       ],
+       [
+        0.4344,
+        0.1907
+       ],
+       [
+        0.4464,
+        0.193
+       ],
+       [
+        0.4526,
+        0.191
+       ],
+       [
+        0.4555,
+        0.1831
+       ],
+       [
+        0.4632,
+        0.182
+       ],
+       [
+        0.4666,
+        0.1706
+       ],
+       [
+        0.468,
+        0.16
+       ],
+       [
+        0.42,
+        0.16
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "bush",
+     "piece": "shrubL",
+     "rings": [
+      [
+       [
+        -0.3285,
+        0.9475
+       ],
+       [
+        -0.3324,
+        0.9449
+       ],
+       [
+        -0.3358,
+        0.9441
+       ],
+       [
+        -0.3405,
+        0.9445
+       ],
+       [
+        -0.3437,
+        0.946
+       ],
+       [
+        -0.3463,
+        0.9484
+       ],
+       [
+        -0.3485,
+        0.9525
+       ],
+       [
+        -0.349,
+        0.956
+       ],
+       [
+        -0.3481,
+        0.9606
+       ],
+       [
+        -0.3463,
+        0.9636
+       ],
+       [
+        -0.3437,
+        0.966
+       ],
+       [
+        -0.3375,
+        0.968
+       ],
+       [
+        -0.3344,
+        0.9742
+       ],
+       [
+        -0.3287,
+        0.9785
+       ],
+       [
+        -0.3271,
+        0.9821
+       ],
+       [
+        -0.325,
+        0.9845
+       ],
+       [
+        -0.3201,
+        0.9868
+       ],
+       [
+        -0.3138,
+        0.9862
+       ],
+       [
+        -0.3102,
+        0.9838
+       ],
+       [
+        -0.3078,
+        0.9802
+       ],
+       [
+        -0.307,
+        0.976
+       ],
+       [
+        -0.3079,
+        0.9716
+       ],
+       [
+        -0.3065,
+        0.968
+       ],
+       [
+        -0.3003,
+        0.966
+       ],
+       [
+        -0.2964,
+        0.9617
+       ],
+       [
+        -0.295,
+        0.956
+       ],
+       [
+        -0.2959,
+        0.9514
+       ],
+       [
+        -0.2977,
+        0.9484
+       ],
+       [
+        -0.3003,
+        0.946
+       ],
+       [
+        -0.3058,
+        0.9441
+       ],
+       [
+        -0.3116,
+        0.9449
+       ],
+       [
+        -0.3167,
+        0.9489
+       ],
+       [
+        -0.322,
+        0.948
+       ],
+       [
+        -0.3273,
+        0.9489
+       ],
+       [
+        -0.3285,
+        0.9475
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "water",
+     "piece": "brook",
+     "rings": [
+      [
+       [
+        -0.4307,
+        -0.0144
+       ],
+       [
+        -0.4211,
+        -0.032
+       ],
+       [
+        -0.4178,
+        -0.0408
+       ],
+       [
+        -0.4162,
+        -0.0476
+       ],
+       [
+        -0.4158,
+        -0.0558
+       ],
+       [
+        -0.4167,
+        -0.0623
+       ],
+       [
+        -0.4227,
+        -0.0835
+       ],
+       [
+        -0.4226,
+        -0.0903
+       ],
+       [
+        -0.4178,
+        -0.101
+       ],
+       [
+        -0.3885,
+        -0.1535
+       ],
+       [
+        -0.3824,
+        -0.1694
+       ],
+       [
+        -0.377,
+        -0.19
+       ],
+       [
+        -0.412,
+        -0.19
+       ],
+       [
+        -0.4162,
+        -0.1754
+       ],
+       [
+        -0.4194,
+        -0.1678
+       ],
+       [
+        -0.4478,
+        -0.1171
+       ],
+       [
+        -0.455,
+        -0.1004
+       ],
+       [
+        -0.4569,
+        -0.092
+       ],
+       [
+        -0.457,
+        -0.0826
+       ],
+       [
+        -0.4558,
+        -0.0757
+       ],
+       [
+        -0.4502,
+        -0.0566
+       ],
+       [
+        -0.4499,
+        -0.0524
+       ],
+       [
+        -0.4541,
+        -0.0418
+       ],
+       [
+        -0.4676,
+        -0.0189
+       ],
+       [
+        -0.469,
+        -0.012
+       ],
+       [
+        -0.4322,
+        -0.012
+       ],
+       [
+        -0.4307,
+        -0.0144
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "pebbles",
+     "piece": "fiveStones",
+     "rings": [
+      [
+       [
+        -0.4224,
+        -0.1
+       ],
+       [
+        -0.4229,
+        -0.1021
+       ],
+       [
+        -0.4244,
+        -0.104
+       ],
+       [
+        -0.4292,
+        -0.1056
+       ],
+       [
+        -0.434,
+        -0.104
+       ],
+       [
+        -0.4355,
+        -0.1021
+       ],
+       [
+        -0.436,
+        -0.1
+       ],
+       [
+        -0.4355,
+        -0.0979
+       ],
+       [
+        -0.434,
+        -0.096
+       ],
+       [
+        -0.4292,
+        -0.0944
+       ],
+       [
+        -0.4244,
+        -0.096
+       ],
+       [
+        -0.4229,
+        -0.0979
+       ],
+       [
+        -0.4224,
+        -0.1
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "pebbles",
+     "piece": "fiveStones",
+     "rings": [
+      [
+       [
+        -0.4107,
+        -0.1202
+       ],
+       [
+        -0.4107,
+        -0.1224
+       ],
+       [
+        -0.4116,
+        -0.1246
+       ],
+       [
+        -0.4159,
+        -0.1274
+       ],
+       [
+        -0.4209,
+        -0.1271
+       ],
+       [
+        -0.4228,
+        -0.1257
+       ],
+       [
+        -0.4239,
+        -0.1238
+       ],
+       [
+        -0.4239,
+        -0.1216
+       ],
+       [
+        -0.423,
+        -0.1194
+       ],
+       [
+        -0.4187,
+        -0.1166
+       ],
+       [
+        -0.4137,
+        -0.1169
+       ],
+       [
+        -0.4118,
+        -0.1183
+       ],
+       [
+        -0.4107,
+        -0.1202
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "pebbles",
+     "piece": "fiveStones",
+     "rings": [
+      [
+       [
+        -0.3997,
+        -0.1396
+       ],
+       [
+        -0.3991,
+        -0.1417
+       ],
+       [
+        -0.3995,
+        -0.144
+       ],
+       [
+        -0.4028,
+        -0.1478
+       ],
+       [
+        -0.4078,
+        -0.1488
+       ],
+       [
+        -0.41,
+        -0.148
+       ],
+       [
+        -0.4115,
+        -0.1464
+       ],
+       [
+        -0.4121,
+        -0.1443
+       ],
+       [
+        -0.4117,
+        -0.142
+       ],
+       [
+        -0.4084,
+        -0.1382
+       ],
+       [
+        -0.4034,
+        -0.1372
+       ],
+       [
+        -0.4012,
+        -0.138
+       ],
+       [
+        -0.3997,
+        -0.1396
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "pebbles",
+     "piece": "fiveStones",
+     "rings": [
+      [
+       [
+        -0.3907,
+        -0.1592
+       ],
+       [
+        -0.3895,
+        -0.1611
+       ],
+       [
+        -0.3893,
+        -0.1634
+       ],
+       [
+        -0.3915,
+        -0.168
+       ],
+       [
+        -0.3961,
+        -0.1702
+       ],
+       [
+        -0.3984,
+        -0.17
+       ],
+       [
+        -0.4003,
+        -0.1688
+       ],
+       [
+        -0.4015,
+        -0.1669
+       ],
+       [
+        -0.4017,
+        -0.1646
+       ],
+       [
+        -0.3995,
+        -0.16
+       ],
+       [
+        -0.3949,
+        -0.1578
+       ],
+       [
+        -0.3926,
+        -0.158
+       ],
+       [
+        -0.3907,
+        -0.1592
+       ]
+      ]
+     ]
+    },
+    {
+     "region": "pebbles",
+     "piece": "fiveStones",
+     "rings": [
+      [
+       [
+        -0.4091,
+        -0.1461
+       ],
+       [
+        -0.4075,
+        -0.1476
+       ],
+       [
+        -0.4067,
+        -0.1498
+       ],
+       [
+        -0.4077,
+        -0.1548
+       ],
+       [
+        -0.4115,
+        -0.1581
+       ],
+       [
+        -0.4138,
+        -0.1585
+       ],
+       [
+        -0.4159,
+        -0.1579
+       ],
+       [
+        -0.4175,
+        -0.1564
+       ],
+       [
+        -0.4183,
+        -0.1542
+       ],
+       [
+        -0.4173,
+        -0.1492
+       ],
+       [
+        -0.4135,
+        -0.1459
+       ],
+       [
+        -0.4112,
+        -0.1455
+       ],
+       [
+        -0.4091,
+        -0.1461
+       ]
+      ]
+     ]
+    }
+   ],
+   "decor": [
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.04,
+       1.048
+      ],
+      [
+       -0.037,
+       1.0496
+      ],
+      [
+       -0.0329,
+       1.052
+      ],
+      [
+       -0.028,
+       1.0548
+      ],
+      [
+       -0.0227,
+       1.0573
+      ],
+      [
+       -0.0172,
+       1.0592
+      ],
+      [
+       -0.012,
+       1.06
+      ],
+      [
+       -0.0065,
+       1.0593
+      ],
+      [
+       -0.0004,
+       1.0573
+      ],
+      [
+       0.0057,
+       1.0548
+      ],
+      [
+       0.0116,
+       1.052
+      ],
+      [
+       0.0165,
+       1.0496
+      ],
+      [
+       0.02,
+       1.048
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.2175,
+       1.0807
+      ],
+      [
+       -0.2143,
+       1.0817
+      ],
+      [
+       -0.2064,
+       1.0841
+      ],
+      [
+       -0.197,
+       1.0869
+      ],
+      [
+       -0.187,
+       1.0897
+      ],
+      [
+       -0.177,
+       1.0922
+      ],
+      [
+       -0.168,
+       1.094
+      ],
+      [
+       -0.1597,
+       1.0951
+      ],
+      [
+       -0.1514,
+       1.0959
+      ],
+      [
+       -0.1432,
+       1.0963
+      ],
+      [
+       -0.1353,
+       1.0964
+      ],
+      [
+       -0.1275,
+       1.0963
+      ],
+      [
+       -0.12,
+       1.096
+      ],
+      [
+       -0.1124,
+       1.0954
+      ],
+      [
+       -0.1046,
+       1.0944
+      ],
+      [
+       -0.097,
+       1.0931
+      ],
+      [
+       -0.0901,
+       1.0919
+      ],
+      [
+       -0.0843,
+       1.0907
+      ],
+      [
+       -0.08,
+       1.09
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.2,
+       1.04
+      ],
+      [
+       -0.1948,
+       1.0415
+      ],
+      [
+       -0.1876,
+       1.0437
+      ],
+      [
+       -0.179,
+       1.0463
+      ],
+      [
+       -0.1698,
+       1.0487
+      ],
+      [
+       -0.1606,
+       1.0508
+      ],
+      [
+       -0.152,
+       1.052
+      ],
+      [
+       -0.1434,
+       1.0522
+      ],
+      [
+       -0.1342,
+       1.0517
+      ],
+      [
+       -0.125,
+       1.0508
+      ],
+      [
+       -0.1164,
+       1.0496
+      ],
+      [
+       -0.1092,
+       1.0486
+      ],
+      [
+       -0.104,
+       1.048
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.04,
+       1.1
+      ],
+      [
+       0.0451,
+       1.1024
+      ],
+      [
+       0.0521,
+       1.1059
+      ],
+      [
+       0.0605,
+       1.1099
+      ],
+      [
+       0.0696,
+       1.1139
+      ],
+      [
+       0.079,
+       1.1175
+      ],
+      [
+       0.088,
+       1.12
+      ],
+      [
+       0.0969,
+       1.1215
+      ],
+      [
+       0.1061,
+       1.1223
+      ],
+      [
+       0.1155,
+       1.1226
+      ],
+      [
+       0.125,
+       1.1226
+      ],
+      [
+       0.1346,
+       1.1223
+      ],
+      [
+       0.144,
+       1.122
+      ],
+      [
+       0.154,
+       1.1214
+      ],
+      [
+       0.1647,
+       1.1204
+      ],
+      [
+       0.1755,
+       1.1191
+      ],
+      [
+       0.1855,
+       1.1179
+      ],
+      [
+       0.1939,
+       1.1167
+      ],
+      [
+       0.2,
+       1.116
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.08,
+       1.056
+      ],
+      [
+       0.0857,
+       1.0575
+      ],
+      [
+       0.0935,
+       1.0597
+      ],
+      [
+       0.1028,
+       1.0623
+      ],
+      [
+       0.1127,
+       1.0647
+      ],
+      [
+       0.1227,
+       1.0668
+      ],
+      [
+       0.132,
+       1.068
+      ],
+      [
+       0.1413,
+       1.0682
+      ],
+      [
+       0.1513,
+       1.0677
+      ],
+      [
+       0.1613,
+       1.0668
+      ],
+      [
+       0.1705,
+       1.0656
+      ],
+      [
+       0.1783,
+       1.0646
+      ],
+      [
+       0.184,
+       1.064
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.172,
+       1.1336
+      ],
+      [
+       -0.172,
+       1.1398
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.126,
+       1.1442
+      ],
+      [
+       -0.126,
+       1.1504
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.08,
+       1.1354
+      ],
+      [
+       -0.08,
+       1.1416
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.054,
+       1.1599
+      ],
+      [
+       0.054,
+       1.1662
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.102,
+       1.1749
+      ],
+      [
+       0.102,
+       1.1812
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.158,
+       1.1684
+      ],
+      [
+       0.158,
+       1.1746
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.0592,
+       1.1137
+      ],
+      [
+       -0.0592,
+       1.1721
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.032,
+       1.1375
+      ],
+      [
+       0.032,
+       1.1959
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.37,
+       0.49
+      ],
+      [
+       -0.3656,
+       0.4879
+      ],
+      [
+       -0.3594,
+       0.4852
+      ],
+      [
+       -0.3522,
+       0.4819
+      ],
+      [
+       -0.3444,
+       0.4781
+      ],
+      [
+       -0.3368,
+       0.4741
+      ],
+      [
+       -0.33,
+       0.47
+      ],
+      [
+       -0.3235,
+       0.4652
+      ],
+      [
+       -0.3167,
+       0.4596
+      ],
+      [
+       -0.31,
+       0.4537
+      ],
+      [
+       -0.3039,
+       0.4481
+      ],
+      [
+       -0.2987,
+       0.4434
+      ],
+      [
+       -0.295,
+       0.44
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.36,
+       0.43
+      ],
+      [
+       -0.3556,
+       0.4285
+      ],
+      [
+       -0.3494,
+       0.4264
+      ],
+      [
+       -0.3422,
+       0.4239
+      ],
+      [
+       -0.3344,
+       0.4211
+      ],
+      [
+       -0.3268,
+       0.4181
+      ],
+      [
+       -0.32,
+       0.415
+      ],
+      [
+       -0.3135,
+       0.4114
+      ],
+      [
+       -0.3067,
+       0.4071
+      ],
+      [
+       -0.3,
+       0.4026
+      ],
+      [
+       -0.2939,
+       0.3983
+      ],
+      [
+       -0.2887,
+       0.3946
+      ],
+      [
+       -0.285,
+       0.392
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.36,
+       0.795
+      ],
+      [
+       -0.3556,
+       0.7919
+      ],
+      [
+       -0.3494,
+       0.7878
+      ],
+      [
+       -0.3422,
+       0.7828
+      ],
+      [
+       -0.3344,
+       0.7772
+      ],
+      [
+       -0.3268,
+       0.7712
+      ],
+      [
+       -0.32,
+       0.765
+      ],
+      [
+       -0.3135,
+       0.7578
+      ],
+      [
+       -0.3067,
+       0.7494
+      ],
+      [
+       -0.3,
+       0.7406
+      ],
+      [
+       -0.2939,
+       0.7322
+      ],
+      [
+       -0.2887,
+       0.7251
+      ],
+      [
+       -0.285,
+       0.72
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.35,
+       0.71
+      ],
+      [
+       -0.3456,
+       0.7074
+      ],
+      [
+       -0.3394,
+       0.7039
+      ],
+      [
+       -0.3322,
+       0.6997
+      ],
+      [
+       -0.3244,
+       0.695
+      ],
+      [
+       -0.3168,
+       0.69
+      ],
+      [
+       -0.31,
+       0.685
+      ],
+      [
+       -0.3035,
+       0.6793
+      ],
+      [
+       -0.2967,
+       0.6728
+      ],
+      [
+       -0.29,
+       0.6659
+      ],
+      [
+       -0.2839,
+       0.6594
+      ],
+      [
+       -0.2787,
+       0.6539
+      ],
+      [
+       -0.275,
+       0.65
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.36,
+       0.915
+      ],
+      [
+       0.3645,
+       0.9114
+      ],
+      [
+       0.3707,
+       0.9065
+      ],
+      [
+       0.3781,
+       0.9006
+      ],
+      [
+       0.3859,
+       0.8941
+      ],
+      [
+       0.3934,
+       0.8871
+      ],
+      [
+       0.4,
+       0.88
+      ],
+      [
+       0.4059,
+       0.872
+      ],
+      [
+       0.4119,
+       0.8626
+      ],
+      [
+       0.4175,
+       0.8528
+      ],
+      [
+       0.4226,
+       0.8435
+      ],
+      [
+       0.4269,
+       0.8356
+      ],
+      [
+       0.43,
+       0.83
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.37,
+       0.83
+      ],
+      [
+       0.3745,
+       0.8269
+      ],
+      [
+       0.3807,
+       0.8226
+      ],
+      [
+       0.3881,
+       0.8175
+      ],
+      [
+       0.3959,
+       0.8119
+      ],
+      [
+       0.4034,
+       0.8059
+      ],
+      [
+       0.41,
+       0.8
+      ],
+      [
+       0.4159,
+       0.7934
+      ],
+      [
+       0.4219,
+       0.7859
+      ],
+      [
+       0.4275,
+       0.7781
+      ],
+      [
+       0.4326,
+       0.7707
+      ],
+      [
+       0.4369,
+       0.7645
+      ],
+      [
+       0.44,
+       0.76
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.4263,
+       1.0212
+      ],
+      [
+       -0.4253,
+       1.0177
+      ],
+      [
+       -0.4237,
+       1.0129
+      ],
+      [
+       -0.4219,
+       1.0071
+      ],
+      [
+       -0.4202,
+       1.0009
+      ],
+      [
+       -0.4188,
+       0.9947
+      ],
+      [
+       -0.418,
+       0.9889
+      ],
+      [
+       -0.418,
+       0.9831
+      ],
+      [
+       -0.4186,
+       0.9769
+      ],
+      [
+       -0.4196,
+       0.9707
+      ],
+      [
+       -0.4206,
+       0.9649
+      ],
+      [
+       -0.4216,
+       0.9601
+      ],
+      [
+       -0.4222,
+       0.9566
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.2579,
+       0.9802
+      ],
+      [
+       -0.2573,
+       0.9786
+      ],
+      [
+       -0.2566,
+       0.9765
+      ],
+      [
+       -0.2559,
+       0.9742
+      ],
+      [
+       -0.2553,
+       0.9719
+      ],
+      [
+       -0.255,
+       0.9698
+      ],
+      [
+       -0.255,
+       0.9677
+      ],
+      [
+       -0.2552,
+       0.9654
+      ],
+      [
+       -0.2556,
+       0.9631
+      ],
+      [
+       -0.2561,
+       0.961
+      ],
+      [
+       -0.2564,
+       0.9592
+      ],
+      [
+       -0.2567,
+       0.9579
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.0634,
+       0.8034
+      ],
+      [
+       -0.0624,
+       0.8008
+      ],
+      [
+       -0.0609,
+       0.7972
+      ],
+      [
+       -0.0592,
+       0.793
+      ],
+      [
+       -0.0576,
+       0.7884
+      ],
+      [
+       -0.0562,
+       0.7838
+      ],
+      [
+       -0.0555,
+       0.7796
+      ],
+      [
+       -0.0555,
+       0.7754
+      ],
+      [
+       -0.0561,
+       0.7708
+      ],
+      [
+       -0.057,
+       0.7662
+      ],
+      [
+       -0.058,
+       0.762
+      ],
+      [
+       -0.0589,
+       0.7584
+      ],
+      [
+       -0.0595,
+       0.7558
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.0239,
+       0.792
+      ],
+      [
+       0.0245,
+       0.7902
+      ],
+      [
+       0.0251,
+       0.788
+      ],
+      [
+       0.0257,
+       0.7855
+      ],
+      [
+       0.0262,
+       0.7831
+      ],
+      [
+       0.0265,
+       0.7809
+      ],
+      [
+       0.0265,
+       0.7787
+      ],
+      [
+       0.0263,
+       0.7763
+      ],
+      [
+       0.0259,
+       0.7738
+      ],
+      [
+       0.0256,
+       0.7716
+      ],
+      [
+       0.0252,
+       0.7697
+      ],
+      [
+       0.025,
+       0.7684
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.4324,
+       0.1036
+      ],
+      [
+       0.433,
+       0.1022
+      ],
+      [
+       0.4339,
+       0.0997
+      ],
+      [
+       0.4351,
+       0.0968
+      ],
+      [
+       0.4362,
+       0.0936
+      ],
+      [
+       0.437,
+       0.0904
+      ],
+      [
+       0.4375,
+       0.0875
+      ],
+      [
+       0.4375,
+       0.0846
+      ],
+      [
+       0.4371,
+       0.0814
+      ],
+      [
+       0.4365,
+       0.0782
+      ],
+      [
+       0.4359,
+       0.0753
+      ],
+      [
+       0.4353,
+       0.0728
+      ],
+      [
+       0.4349,
+       0.071
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       0.4409,
+       0.1874
+      ],
+      [
+       0.4414,
+       0.1862
+      ],
+      [
+       0.4422,
+       0.1843
+      ],
+      [
+       0.443,
+       0.1822
+      ],
+      [
+       0.4436,
+       0.1801
+      ],
+      [
+       0.444,
+       0.1782
+      ],
+      [
+       0.444,
+       0.1762
+      ],
+      [
+       0.4437,
+       0.1741
+      ],
+      [
+       0.4433,
+       0.172
+      ],
+      [
+       0.4428,
+       0.1701
+      ],
+      [
+       0.4424,
+       0.1684
+      ],
+      [
+       0.4421,
+       0.1673
+      ]
+     ]
+    },
+    {
+     "widthPx": 3.0,
+     "points": [
+      [
+       -0.3236,
+       0.9526
+      ],
+      [
+       -0.3242,
+       0.9559
+      ],
+      [
+       -0.3251,
+       0.9593
+      ],
+      [
+       -0.326,
+       0.962
+      ],
+      [
+       -0.3272,
+       0.9642
+      ],
+      [
+       -0.3287,
+       0.9663
+      ],
+      [
+       -0.3302,
+       0.9681
+      ],
+      [
+       -0.3318,
+       0.9697
+      ],
+      [
+       -0.3319,
+       0.9698
+      ]
+     ]
+    },
+    {
+     "widthPx": 2.7,
+     "points": [
+      [
+       -0.443,
+       -0.035
+      ],
+      [
+       -0.4424,
+       -0.0354
+      ],
+      [
+       -0.4415,
+       -0.036
+      ],
+      [
+       -0.4404,
+       -0.0367
+      ],
+      [
+       -0.4393,
+       -0.0373
+      ],
+      [
+       -0.4381,
+       -0.0378
+      ],
+      [
+       -0.437,
+       -0.038
+      ],
+      [
+       -0.4358,
+       -0.0378
+      ],
+      [
+       -0.4345,
+       -0.0373
+      ],
+      [
+       -0.4331,
+       -0.0367
+      ],
+      [
+       -0.4319,
+       -0.036
+      ],
+      [
+       -0.4308,
+       -0.0354
+      ],
+      [
+       -0.43,
+       -0.035
+      ]
+     ]
+    },
+    {
+     "widthPx": 2.7,
+     "points": [
+      [
+       -0.4346,
+       -0.077
+      ],
+      [
+       -0.4339,
+       -0.0774
+      ],
+      [
+       -0.4331,
+       -0.078
+      ],
+      [
+       -0.432,
+       -0.0787
+      ],
+      [
+       -0.4309,
+       -0.0793
+      ],
+      [
+       -0.4297,
+       -0.0798
+      ],
+      [
+       -0.4286,
+       -0.08
+      ],
+      [
+       -0.4274,
+       -0.0798
+      ],
+      [
+       -0.4263,
+       -0.0794
+      ]
+     ]
+    },
+    {
+     "widthPx": 2.7,
+     "points": [
+      [
+       -0.4339,
+       -0.119
+      ],
+      [
+       -0.4333,
+       -0.1194
+      ],
+      [
+       -0.4324,
+       -0.12
+      ],
+      [
+       -0.4313,
+       -0.1207
+      ],
+      [
+       -0.4302,
+       -0.1213
+      ],
+      [
+       -0.429,
+       -0.1218
+      ],
+      [
+       -0.4279,
+       -0.122
+      ],
+      [
+       -0.4267,
+       -0.1218
+      ],
+      [
+       -0.4254,
+       -0.1213
+      ],
+      [
+       -0.424,
+       -0.1207
+      ],
+      [
+       -0.4228,
+       -0.12
+      ],
+      [
+       -0.4217,
+       -0.1194
+      ],
+      [
+       -0.4209,
+       -0.119
+      ]
+     ]
+    }
+   ]
+  },
+  "ground": {
+   "rule": "§12.4",
+   "maskPng": "docs/david-goliath/design/ground-mask.png",
+   "maskValues": {
+    "0": "sand",
+    "128": "scan colour where painted, else sand",
+    "255": "hole: render nothing (real paper shows: the brook)"
+   },
+   "maskFrame": "page pixels 1240 x 1754 (= design.json sheet.page), whole sheet; outside the art rect only 0 or 255",
+   "params": {
+    "sand": "#E3C38C",
+    "rippleWavelength": 0.02,
+    "rippleWarpAmp": 0.45,
+    "rippleWarpPeriod": 0.23,
+    "rippleNoiseAmp": 0.25,
+    "noisePeriod": 0.12,
+    "rippleContrast": 0.04,
+    "patchPeriod": 0.3,
+    "patchContrast": 0.05,
+    "paperLo": 0.6,
+    "paperHi": 0.86,
+    "maskDilate": 0.008
+   },
+   "demo": "docs/david-goliath/design/ground-sand-demo.png (half size)"
+  },
+  "budget": {
+   "maxTris": 20000,
+   "note": "raised from 15,000: the set is 3-4x larger; hills ~3,000 each, midground dunes ~1,500, rocks ~150, tents ~120"
+  },
+  "camera": "phone eye about (-0.08, 0.95, +1.15) looking at (-0.08, 0.05, -0.50), 55 deg vertical FOV (DGPreview phone view)"
+ },
+ "checks": {
+  "david.bounds": [
+   -0.4697,
+   0.0145,
+   -0.227,
+   0.3191
+  ],
+  "david.marginToArtEdge": 0.0303,
+  "goliath.bounds": [
+   -0.1864,
+   0.0137,
+   0.469,
+   0.97
+  ],
+  "goliath.marginToArtEdge": 0.031,
+  "gapDavidGoliath": 0.0575,
+  "david": {
+   "pieces": 38,
+   "slivers(<6px)": [],
+   "small(6-12px)": [
+    [
+     6.3,
+     "sling",
+     "slingPouch",
+     268
+    ],
+    [
+     6.6,
+     "bag",
+     "strap",
+     529
+    ],
+    [
+     7.7,
+     "sandals",
+     "sandal",
+     134
+    ],
+    [
+     7.9,
+     "sandals",
+     "sandal",
+     134
+    ],
+    [
+     10.0,
+     "stone",
+     "stone",
+     91
+    ],
+    [
+     11.0,
+     "belt",
+     "sash",
+     487
+    ]
+   ],
+   "decorCuttingRegion": 0
+  },
+  "goliath": {
+   "pieces": 47,
+   "slivers(<6px)": [],
+   "small(6-12px)": [
+    [
+     7.9,
+     "beard",
+     "moustache",
+     355
+    ],
+    [
+     7.9,
+     "skin",
+     "ear",
+     154
+    ],
+    [
+     7.9,
+     "skin",
+     "ear",
+     154
+    ],
+    [
+     8.9,
+     "helmet",
+     "_neckGuard",
+     239
+    ],
+    [
+     8.9,
+     "helmet",
+     "_neckGuard",
+     239
+    ],
+    [
+     9.0,
+     "skin",
+     "face",
+     171
+    ],
+    [
+     9.0,
+     "skin",
+     "neck",
+     271
+    ],
+    [
+     11.0,
+     "shieldRim",
+     "shieldRim",
+     4181
+    ],
+    [
+     11.9,
+     "bracers",
+     "bracer",
+     459
+    ]
+   ],
+   "decorCuttingRegion": 0
+  },
+  "paletteInkSafe": true,
+  "desertInkToPageEdgePx": {
+   "leftPx": 147.8,
+   "rightPx": 147.8,
+   "topPx": 313.7,
+   "bottomPx": 51.8
+  },
+  "desert": {
+   "duneFar": {
+    "clearToCharacters": 0.069,
+    "footprintSheet": [
+     -0.24,
+     1.38,
+     0.19,
+     1.475
+    ]
+   },
+   "hillIsrael": {
+    "clearToCharacters": 0.03,
+    "footprintSheet": [
+     -0.59,
+     0.98,
+     -0.018,
+     1.475
+    ]
+   },
+   "hillPhil": {
+    "clearToCharacters": 0.151,
+    "footprintSheet": [
+     -0.018,
+     0.98,
+     0.59,
+     1.475
+    ]
+   },
+   "tentIsrael1": {
+    "clearToCharacters": 0.1364,
+    "footprintSheet": [
+     -0.485,
+     1.3,
+     -0.375,
+     1.41
+    ]
+   },
+   "tentIsrael2": {
+    "clearToCharacters": 0.1474,
+    "footprintSheet": [
+     -0.37,
+     1.3,
+     -0.26,
+     1.41
+    ]
+   },
+   "tentIsrael3": {
+    "clearToCharacters": 0.1499,
+    "footprintSheet": [
+     -0.255,
+     1.3,
+     -0.145,
+     1.41
+    ]
+   },
+   "tentPhil1": {
+    "clearToCharacters": 0.2509,
+    "footprintSheet": [
+     0.08,
+     1.3,
+     0.19,
+     1.41
+    ]
+   },
+   "tentPhil2": {
+    "clearToCharacters": 0.2977,
+    "footprintSheet": [
+     0.2,
+     1.3,
+     0.31,
+     1.41
+    ]
+   },
+   "tentPhil3": {
+    "clearToCharacters": 0.3262,
+    "footprintSheet": [
+     0.34,
+     1.3,
+     0.45,
+     1.41
+    ]
+   },
+   "bannerIsrael": {
+    "clearToCharacters": 0.2032,
+    "footprintSheet": [
+     -0.154,
+     1.354,
+     -0.142,
+     1.366
+    ]
+   },
+   "bannerPhil": {
+    "clearToCharacters": 0.2541,
+    "footprintSheet": [
+     0.074,
+     1.354,
+     0.086,
+     1.366
+    ]
+   },
+   "dune1": {
+    "clearToCharacters": 0.0509,
+    "footprintSheet": [
+     -0.47,
+     0.37,
+     -0.228,
+     0.6
+    ]
+   },
+   "dune2": {
+    "clearToCharacters": 0.0565,
+    "footprintSheet": [
+     -0.47,
+     0.6,
+     -0.226,
+     0.92
+    ]
+   },
+   "dune3": {
+    "clearToCharacters": 0.0439,
+    "footprintSheet": [
+     0.225,
+     0.72,
+     0.47,
+     0.98
+    ]
+   },
+   "rockL1": {
+    "clearToCharacters": 0.1875,
+    "footprintSheet": [
+     -0.47,
+     0.935,
+     -0.366,
+     1.0
+    ]
+   },
+   "rockL2": {
+    "clearToCharacters": 0.0607,
+    "footprintSheet": [
+     -0.276,
+     0.95,
+     -0.234,
+     0.985
+    ]
+   },
+   "rockM1": {
+    "clearToCharacters": 0.0455,
+    "footprintSheet": [
+     -0.105,
+     0.74,
+     -0.006,
+     0.8
+    ]
+   },
+   "rockM2": {
+    "clearToCharacters": 0.0352,
+    "footprintSheet": [
+     0.008,
+     0.76,
+     0.045,
+     0.795
+    ]
+   },
+   "rockFR1": {
+    "clearToCharacters": 0.1977,
+    "footprintSheet": [
+     0.405,
+     0.06,
+     0.47,
+     0.13
+    ]
+   },
+   "rockFR2": {
+    "clearToCharacters": 0.1818,
+    "footprintSheet": [
+     0.42,
+     0.16,
+     0.468,
+     0.21
+    ]
+   },
+   "shrubL": {
+    "clearToCharacters": 0.1209,
+    "footprintSheet": [
+     -0.349,
+     0.94,
+     -0.295,
+     0.975
+    ]
+   },
+   "brook": {
+    "clearToCharacters": 0.0606,
+    "footprintSheet": [
+     -0.469,
+     -0.19,
+     -0.377,
+     -0.012
+    ]
+   },
+   "fiveStones": {
+    "clearToCharacters": 0.1204,
+    "footprintSheet": [
+     -0.436,
+     -0.1696,
+     -0.3887,
+     -0.0944
+    ]
+   }
+  },
+  "desertPrint": {
+   "pieces": 36,
+   "slivers(<6px)": [],
+   "small(6-12px)": [
+    [
+     10.9,
+     "pebbles",
+     "fiveStones",
+     111
+    ],
+    [
+     11.2,
+     "pebbles",
+     "fiveStones",
+     120
+    ],
+    [
+     11.2,
+     "pebbles",
+     "fiveStones",
+     120
+    ],
+    [
+     11.2,
+     "pebbles",
+     "fiveStones",
+     120
+    ],
+    [
+     11.2,
+     "pebbles",
+     "fiveStones",
+     120
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentIsrael1",
+     183
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentIsrael2",
+     183
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentIsrael3",
+     183
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentPhil1",
+     183
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentPhil2",
+     183
+    ],
+    [
+     11.3,
+     "tentDoor",
+     "tentPhil3",
+     183
+    ],
+    [
+     11.7,
+     "tentIsrael",
+     "tentIsrael1",
+     839
+    ],
+    [
+     11.7,
+     "tentIsrael",
+     "tentIsrael2",
+     839
+    ],
+    [
+     11.7,
+     "tentIsrael",
+     "tentIsrael3",
+     839
+    ],
+    [
+     11.7,
+     "tentPhil",
+     "tentPhil1",
+     839
+    ],
+    [
+     11.7,
+     "tentPhil",
+     "tentPhil2",
+     839
+    ],
+    [
+     11.7,
+     "tentPhil",
+     "tentPhil3",
+     839
+    ]
+   ],
+   "decorCuttingRegion": 0
+  },
+  "arMock": true,
+  "scanSim": {
+   "inkPixelsBefore": 77108,
+   "inkPixelsKept": 61,
+   "keptFraction": 0.001
+  }
+ },
+ "faceDecals": {
+  "david": {
+   "rectLocal": [
+    -0.0175,
+    0.2425,
+    0.0175,
+    0.2775
+   ],
+   "px": 512,
+   "files": {
+    "brave": "docs/david-goliath/design/faces/david_brave.png",
+    "kind": "docs/david-goliath/design/faces/david_kind.png",
+    "talk": "docs/david-goliath/design/faces/david_talk.png",
+    "pray": "docs/david-goliath/design/faces/david_pray.png",
+    "victory": "docs/david-goliath/design/faces/david_victory.png",
+    "wow": "docs/david-goliath/design/faces/david_wow.png"
+   },
+   "clipExpression": {
+    "idle": "brave",
+    "walk": "brave",
+    "talk": "talk",
+    "kneel_pick": "brave",
+    "sling_windup": "brave",
+    "sling_release": "wow",
+    "run": "brave",
+    "victory": "victory",
+    "pray": "pray"
+   },
+   "default": "brave",
+   "layers": "eye whites, irises, pupils, highlights, lids, brows, mouth (closed line or open with interior); NOT nose/ears/cheeks/lips volume (modelled)"
+  },
+  "goliath": {
+   "rectLocal": [
+    -0.034,
+    0.655,
+    0.034,
+    0.723
+   ],
+   "px": 512,
+   "files": {
+    "grumpy": "docs/david-goliath/design/faces/goliath_grumpy.png",
+    "taunt": "docs/david-goliath/design/faces/goliath_taunt.png",
+    "laugh": "docs/david-goliath/design/faces/goliath_laugh.png",
+    "roar": "docs/david-goliath/design/faces/goliath_roar.png",
+    "dizzy": "docs/david-goliath/design/faces/goliath_dizzy.png",
+    "down": "docs/david-goliath/design/faces/goliath_down.png"
+   },
+   "clipExpression": {
+    "idle": "grumpy",
+    "walk": "grumpy",
+    "talk": "grumpy",
+    "taunt": "taunt",
+    "laugh": "laugh",
+    "roar": "roar",
+    "charge": "roar",
+    "hit_react": "dizzy",
+    "fall": "dizzy",
+    "down": "down"
+   },
+   "default": "grumpy",
+   "layers": "eye whites, irises, pupils, highlights, lids, brows, mouth (closed line or open with interior); NOT nose/ears/cheeks/lips volume (modelled)"
+  }
+ }
+}

@@ -347,7 +347,7 @@ namespace DoodLive
             }
 
             // -- 06 Live: tap hint (dotted gold ring + hand) after 5 s without a touch
-            bool hintWanted = state == State.LiveIdle && !voice.isPlaying && Time.time - Mathf.Max(lastTouch, idleSince) > HintAfter && !moreOpen;
+            bool hintWanted = !dgMode && state == State.LiveIdle && !voice.isPlaying && Time.time - Mathf.Max(lastTouch, idleSince) > HintAfter && !moreOpen;
             float hintA = Fade("hint", hintWanted, 3f);
             if (hintA > 0 && ScreenRect(r => !IsTitle(r)) is Rect ar)
             {
@@ -363,7 +363,7 @@ namespace DoodLive
             }
 
             // -- 06 speech bubble: what she says, other language underneath; 07 read step names; 08 lost line
-            string bubbleKey = state == State.LiveRead ? readKey : state == State.LiveLost ? "lost" : (voiceKey != null && voice.isPlaying && Time.time >= voiceFrom ? voiceKey : null);
+            string bubbleKey = state == State.LiveRead ? readKey : state == State.LiveLost ? "lost" : (!dgMode && voiceKey != null && voice.isPlaying && Time.time >= voiceFrom ? voiceKey : null);
             float bubA = Fade("bubble", bubbleKey != null, 4f);
             if (bubbleKey != null) lastBubble = bubbleKey;
             if (bubA > 0 && lastBubble != null)
@@ -371,6 +371,9 @@ namespace DoodLive
                 var area = land ? new Rect(w * 0.58f, h * 0.18f, w * 0.3f, h * 0.5f) : new Rect(edge, top, w - edge * 2, h - bottom - edge - chip - lip - u * 0.35f - top);
                 Bubble(L10n.T(lastBubble), L10n.Other(lastBubble), area, bubA);
             }
+
+            // -- David & Goliath: chapter title, subtitles, pause card, replay button
+            if (dgMode && story && story.Running && (live || state == State.Reveal)) StoryGUI(w, h, top, bottom, edge, chip, land);
 
             // -- 08 Lost: a drawn sheet + arrow shows where the paper goes
             if (dim > 0)
@@ -438,6 +441,89 @@ namespace DoodLive
             GUI.Label(new Rect(cx - u * 4, y + s + u * 1.05f, u * 8, u * 0.6f), L10n.T("scanLong"), T(false));
             float bw = u * 5.4f;
             if (PaperButton(new Rect(cx - bw / 2, y + s + u * 1.85f, bw, u * 1.05f), L10n.T("demo"), boxPaper, txtTag)) ShowDemo();
+            // the David & Goliath play (web: the "battle" entry); demo run with the sample colouring
+            if (story && PaperButton(new Rect(cx - bw / 2, y + s + u * 3.2f, bw, u * 1.05f), L10n.T("dgDemo"), boxSun, txtTag)) ShowDemoDG();
+        }
+
+        // ---------------- David & Goliath overlay (Paper & Crayon, same cards as the angel's bubble) ----------------
+        string lastLineId; float lineFade;
+        void StoryGUI(float w, float h, float top, float bottom, float edge, float chip, bool land)
+        {
+            var line = story.Line;
+            // chapter title: the shot's name for 2.6 s at the top, where the status pill sits while scanning
+            var shot = story.Shot;
+            float shotA = shot != null ? Mathf.Clamp01(Mathf.Min(story.ShotAge / 0.25f, (2.6f - story.ShotAge) / 0.4f)) : 0;
+            if (shotA > 0 && !story.Finished)
+            {
+                string title = L10n.IsZh ? shot.title_zh : shot.title_en;
+                var st = new GUIStyle(T()) { wordWrap = false };
+                float pw = Mathf.Min(w - chip * 2 - edge * 4, st.CalcSize(new GUIContent(title)).x + u * 1.0f), ph = u * 0.95f;
+                var r = new Rect(w / 2 - pw / 2, top + edge + u * 0.2f * (1 - EaseOut(shotA)), pw, ph);
+                GUI.color = new Color(1, 1, 1, shotA); Card(r, boxSun, lip * 0.7f); GUI.Label(r, title, st); GUI.color = Color.white;
+            }
+
+            // subtitle: current language big, the other one small underneath; the speaker's name on a tab
+            if (line != null) { lastLineId = line.id; }
+            lineFade = Mathf.MoveTowards(lineFade, line != null ? 1 : 0, Time.unscaledDeltaTime * 5f);
+            var shown = line ?? FindLine(lastLineId);
+            if (lineFade > 0 && shown != null)
+            {
+                string main = L10n.IsZh ? shown.zh : shown.en, other = L10n.IsZh ? shown.en : shown.zh;
+                var area = land ? new Rect(w * 0.12f, top, w * 0.76f - chip, h - bottom - edge - u * 0.2f - top)
+                                : new Rect(edge, top, w - edge * 3 - chip, h - bottom - edge - chip - lip - u * 0.35f - top);
+                var c = GUI.color; GUI.color = new Color(1, 1, 1, lineFade);
+                var sMain = T(); var sOther = TOther();
+                float bw = Mathf.Min(area.width, Mathf.Max(sMain.CalcSize(new GUIContent(main)).x, sOther.CalcSize(new GUIContent(other)).x) + u * 0.9f);
+                float h1 = sMain.CalcHeight(new GUIContent(main), bw - u * 0.7f), h2 = sOther.CalcHeight(new GUIContent(other), bw - u * 0.7f);
+                float bh = h1 + h2 + u * 0.45f, by = area.yMax - bh + u * 0.15f * (1 - EaseOut(lineFade));
+                var r = new Rect(area.center.x - bw / 2, by, bw, bh);
+                string who = shown.who == "narrator" ? null : L10n.T("dg_" + shown.who);
+                if (!string.IsNullOrEmpty(who))
+                {
+                    var ts = new GUIStyle(txtTag) { wordWrap = false };
+                    float tw = ts.CalcSize(new GUIContent(who)).x + u * 0.6f, th = u * 0.7f;
+                    var tr = new Rect(r.x + u * 0.3f, r.y - th + lip, tw, th);
+                    Card(tr, shown.who == "goliath" ? boxShade : boxSun, lip * 0.5f); GUI.Label(tr, who, ts);
+                }
+                Card(r, boxPaper, lip * 0.8f);
+                GUI.Label(new Rect(r.x + u * 0.35f, r.y + u * 0.2f, bw - u * 0.7f, h1), main, sMain);
+                GUI.Label(new Rect(r.x + u * 0.35f, r.y + u * 0.2f + h1, bw - u * 0.7f, h2), other, sOther);
+                GUI.color = c;
+            }
+
+            // paused: a paper card in the middle; tap anywhere goes on
+            float pauseA = Fade("dgPause", story.Paused, 6f);
+            if (pauseA > 0)
+            {
+                Tinted(white, new Rect(0, 0, w, h), DesignTokens.Ink, 0.25f * pauseA);
+                float cw = u * 4.6f, ch = u * 2.3f; var r = new Rect(w / 2 - cw / 2, h * 0.42f - ch / 2 - u * 0.2f * (1 - EaseOut(pauseA)), cw, ch);
+                GUI.color = new Color(1, 1, 1, pauseA); Card(r, boxPaper, lip);
+                float bar = u * 0.32f, bh2 = u * 0.95f, bx = r.center.x - bar * 1.6f, byy = r.y + u * 0.3f;
+                Tinted(white, new Rect(bx, byy, bar, bh2), DesignTokens.Ink); Tinted(white, new Rect(bx + bar * 2.2f, byy, bar, bh2), DesignTokens.Ink);
+                GUI.Label(new Rect(r.x, r.y + u * 1.35f, cw, u * 0.8f), L10n.T("dgPaused"), T(false));
+                GUI.color = Color.white;
+            }
+
+            // the end: replay button (the stage keeps the last frame: David praying, Goliath lying still)
+            float endA = Fade("dgEnd", story.Finished, 3f);
+            if (endA > 0)
+            {
+                GUI.color = new Color(1, 1, 1, endA);
+                float bw = Mathf.Min(w - edge * 4 - chip * 2, u * 5.4f), bh = u * 1.15f;
+                var r = new Rect(w / 2 - bw / 2, h - bottom - edge - bh - lip - u * 0.3f * (1 - EaseOut(endA)), bw, bh);
+                var tr = new Rect(w / 2 - u * 2, r.y - u * 1.25f, u * 4, u * 1.0f);
+                var ts = new GUIStyle(txtTitle) { alignment = TextAnchor.MiddleCenter }; if (L10n.IsZh) ts = new GUIStyle(txtZh) { fontSize = Mathf.RoundToInt(u * 0.8f) };
+                GUI.Label(tr, L10n.T("dgTheEnd"), ts);
+                if (PaperButton(r, L10n.T("dgReplay"), boxSun, txtTag) && endA > 0.5f) { Cue(cueClick); story.Replay(); }
+                GUI.color = Color.white;
+            }
+        }
+        DavidGoliath.DGLine FindLine(string id)
+        {
+            if (id == null || story == null) return null;
+            var tl = story.Timeline; if (tl == null) return null;
+            foreach (var l in tl.lines) if (l.id == id) return l;
+            return null;
         }
 
         void GrownUps(float a, float w, float y, float edge)

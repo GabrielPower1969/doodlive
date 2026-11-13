@@ -1,0 +1,246 @@
+[
+ {
+  "check": "T1 timeline.json schema and consistency (CONTRACT §6)",
+  "status": "PASS",
+  "evidence": [
+   "version=1 duration=89.0 fps=30 shots=11 acting=46 lines=18 fx=13 sfx=30 music=6 requestedClips=[]",
+   "face values used: ['david', 'goliath', 'viewer'] (CONTRACT §6 example only shows 'david'; 'viewer' is a Story extension)",
+   "contract clips never used by timeline: none"
+  ]
+ },
+ {
+  "check": "T2 every fx / sfx / music id in timeline has a handler or file (source + Unity Resources)",
+  "status": "PASS",
+  "evidence": [
+   "fx ids used 11, implemented (Id => \"...\") 11; missing=none extra=none",
+   "sfx: 19 ids, missing files: none",
+   "music: 6 ids, missing files: none"
+  ]
+ },
+ {
+  "check": "T3 every voice line exists in zh AND en (wav+mp3+Unity copy) and fits maxSec and the 0.2 s gap",
+  "status": "PASS",
+  "evidence": [
+   "tightest (lang id dur maxSec slack gapToNext): en dg_11 3.29/3.3 +0.01 0.91; zh dg_04 2.53/2.6 +0.07 0.27; en dg_04 2.52/2.6 +0.08 0.28; en dg_07 2.72/2.8 +0.08 0.48; en dg_10 3.78/3.9 +0.12 0.52",
+   "checked 36 clips with ffprobe (not durations.json)",
+   "zh.srt cues: 18",
+   "en.srt cues: 18"
+  ]
+ },
+ {
+  "check": "T4 audio loudness vs CONTRACT §7 (voice -16 LUFS, music -20 LUFS)",
+  "status": "PASS",
+  "evidence": [
+   "voice integrated LUFS min -16.5 max -15.9; true peak max -1.8 dBTP (target -16)",
+   "music LUFS: sting_hit -20.0, theme_battle -20.0, theme_faith -20.0, theme_shepherd -20.0, theme_tension -20.0, theme_victory -20.0 (target -20)"
+  ]
+ },
+ {
+  "check": "T5 bone names + hierarchy in model and anim GLBs equal CONTRACT §3 + §11.6 finger bones (David 33, Goliath 32)",
+  "status": "PASS",
+  "evidence": [
+   "assets/david-goliath/model/david.glb: 1 skin(s), 33 joints; missing=none; extra joints=none; parent mismatches=none",
+   "assets/david-goliath/model/goliath.glb: 1 skin(s), 32 joints; missing=none; extra joints=none; parent mismatches=none",
+   "assets/david-goliath/anim/david.glb: 1 skin(s), 33 joints; missing=none; extra joints=none; parent mismatches=none",
+   "assets/david-goliath/anim/goliath.glb: 1 skin(s), 32 joints; missing=none; extra joints=none; parent mismatches=none"
+  ]
+ },
+ {
+  "check": "T6 every CONTRACT §5 clip exists as an animation in the anim GLBs (and the Unity copies)",
+  "status": "PASS",
+  "evidence": [
+   "assets/david-goliath/anim/david.glb: 9 animations; missing=none extra=none",
+   "unity/Assets/DoodLive/DavidGoliath/Models/david.glb: 9 animations; missing=none extra=none",
+   "david.glb Unity copy identical to assets/anim: True",
+   "assets/david-goliath/anim/goliath.glb: 10 animations; missing=none extra=none",
+   "unity/Assets/DoodLive/DavidGoliath/Models/goliath.glb: 10 animations; missing=none extra=none",
+   "goliath.glb Unity copy identical to assets/anim: True",
+   "desert.glb Unity copy identical to assets/model: True"
+  ]
+ },
+ {
+  "check": "T7 sheet template.json consistent with the sheet PNGs (markers where they say)",
+  "status": "PASS",
+  "evidence": [
+   "print/david-goliath-A4.png 1240x1754: marker (dx,dy,size) in template px = [(-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0)]",
+   "  art rect [120, 283, 1000, 1227] aspect 1.2270; ink fraction inside art 0.055",
+   "assets/david-goliath/sheet/reference.png 1240x1754: marker (dx,dy,size) in template px = [(-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0)]",
+   "  art rect [120, 283, 1000, 1227] aspect 1.2270; ink fraction inside art 0.055",
+   "assets/david-goliath/sheet/demo-sheet.png 1240x1754: marker (dx,dy,size) in template px = [(-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0)]",
+   "  art rect [120, 283, 1000, 1227] aspect 1.2270; ink fraction inside art 0.077",
+   "unity/Assets/DoodLive/DavidGoliath/Tracking/david-goliath-A4.png 1240x1754: marker (dx,dy,size) in template px = [(-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0), (-0.5, -0.5, 64.0)]",
+   "  art rect [120, 283, 1000, 1227] aspect 1.2270; ink fraction inside art 0.055",
+   "same page/art/markers as web/assets/template.json (angel): True",
+   "Unity Data/template.json identical: True"
+  ]
+ },
+ {
+  "check": "T8 files referenced by DGDirector / DGSetup exist and the Unity copies match their sources",
+  "status": "PASS",
+  "evidence": [
+   "unity/Assets/DoodLive/DavidGoliath/Resources/DG/timeline.json == assets/david-goliath/timeline.json: True",
+   "unity/Assets/DoodLive/DavidGoliath/Resources/DG/sfx_mix.json == assets/david-goliath/audio/sfx/mix.json: True",
+   "unity/Assets/DoodLive/DavidGoliath/Resources/DG/music_cues.json == assets/david-goliath/audio/music/cues.json: True",
+   "unity/Assets/DoodLive/DavidGoliath/Data/clips.json == assets/david-goliath/anim/clips.json: True",
+   "unity/Assets/DoodLive/DavidGoliath/Data/design.json == assets/david-goliath/design.json: True",
+   "unity/Assets/DoodLive/DavidGoliath/Tracking/david-goliath-A4.png == print/david-goliath-A4.png: True",
+   "print/david-goliath-A4.png == assets/david-goliath/sheet/reference.png: True",
+   "unity/Assets/DoodLive/DavidGoliath/Textures/dg-demo-colored.png == assets/david-goliath/sheet/demo-colored.png: True",
+   "unity/Assets/DoodLive/DavidGoliath/Textures/dg-demo-sheet.png == assets/david-goliath/sheet/demo-sheet.png: True",
+   "unity/Assets/DoodLive/DavidGoliath/Textures/dg-ground-mask.png == assets/david-goliath/sheet/ground-mask.png: True",
+   "unity/Assets/DoodLive/DavidGoliath/Shaders/DGGround.shader exists",
+   "unity/Assets/DoodLive/DavidGoliath/Fx/Resources/DGFx/DGFxUnlit.shader exists",
+   "face decals referenced by design.json clipExpression: 11; missing in Unity Faces/: none",
+   "ReferenceImages.asset mentions david-goliath: True; entries (m_Name lines): 8"
+  ]
+ },
+ {
+  "check": "T9 UV0 = front orthographic page projection (independent recomputation from GLB vertices)",
+  "status": "PASS",
+  "evidence": [
+   "assets/david-goliath/model/david.glb: 2 primitives; u offset (= sheet x) per mesh [-0.35, -0.35]; residual max |du| = 0.0040, max |dv| = 0.0033 (1 unit = 1000 px, so 4.0 / 3.3 px); mesh nodes with own TRS: ['david_stone']",
+   "  design.json sheet x, y for david: -0.35, 0.015",
+   "assets/david-goliath/model/goliath.glb: 7 primitives; u offset (= sheet x) per mesh [0.13, 0.13, 0.13, 0.13, 0.13, 0.13, 0.13]; residual max |du| = 0.0040, max |dv| = 0.0033 (1 unit = 1000 px, so 4.0 / 3.3 px); mesh nodes with own TRS: ['goliath_crest', 'goliath_crestHolder', 'goliath_helmetDome', 'goliath_helmetGuard', 'goliath_shield', 'goliath_spear']",
+   "  design.json sheet x, y for goliath: 0.13, 0.015"
+  ]
+ },
+ {
+  "check": "T10 printed sheet: line art keeps >= 6 px from the art-rect edge (every region closed)",
+  "status": "PASS",
+  "evidence": [
+   "print/david-goliath-A4.png: paper between the line art and the art-rect edge (px): {'bottom': 13, 'top': 30, 'left': 28, 'right': 28}",
+   "assets/david-goliath/sheet/reference.png: paper between the line art and the art-rect edge (px): {'bottom': 13, 'top': 30, 'left': 28, 'right': 28}",
+   "sheet/checks.json inkWithin6pxOfArtEdge = {'bottom': 0, 'top': 0, 'left': 0, 'right': 0}, closed pieces = 87"
+  ]
+ },
+ {
+  "check": "T11 triangle budgets: characters <= 20,000 each, desert <= 20,000 (CONTRACT §11.5, §12.2)",
+  "status": "PASS",
+  "evidence": [
+   "assets/david-goliath/model/david.glb: 19,908 triangles (limit 20,000); largest nodes [('david_body', 19628), ('david_stone', 280)]",
+   "  materials ['dg_page']",
+   "assets/david-goliath/model/goliath.glb: 19,662 triangles (limit 20,000); largest nodes [('goliath_body', 16134), ('goliath_helmetDome', 1120), ('goliath_shield', 960), ('goliath_helmetGuard', 596)]",
+   "  materials ['dg_page']",
+   "assets/david-goliath/anim/david.glb: 19,908 triangles (limit 20,000); largest nodes [('david_body', 19628), ('david_stone', 280)]",
+   "  materials ['dg_page']",
+   "assets/david-goliath/anim/goliath.glb: 19,662 triangles (limit 20,000); largest nodes [('goliath_body', 16134), ('goliath_helmetDome', 1120), ('goliath_shield', 960), ('goliath_helmetGuard', 596)]",
+   "  materials ['dg_page']",
+   "assets/david-goliath/model/desert.glb: 19,541 triangles (limit 20,000); largest nodes [('hillPhil', 4760), ('hillIsrael', 4368), ('dune2', 2698), ('dune3', 1890)]",
+   "  materials ['dg_page', 'dg_water']"
+  ]
+ },
+ {
+  "check": "T12 stage band: design.json polygonsSheet has every part (§12.6), matches the recomputed band, every mark / path inside it",
+  "status": "PASS",
+  "evidence": [
+   "design.json polygonsSheet: 2 part(s) ([64, 51] points), union area 0.2837; recomputed band (§11.9 rule): 2 part(s), area 0.2843; recomputed area not covered by design: 0.0000",
+   "248 start marks / targets / path samples tested against the union of polygonsSheet; final marks: {'david': (-0.2, 0.2), 'goliath': (0.16, -0.22)}"
+  ]
+ },
+ {
+  "check": "T13 every actor vertex stays on the paper and out of the dunes / rocks / hills in every frame of the 89 s play",
+  "status": "WARN",
+  "evidence": [
+   "simulated DGDirector placement at 30 fps over 0-89.0 s (2671 frames; pos lerp, yaw LerpAngle tau 0.12 s, rate = travel/natural clamped 0.5-1.5, cross-fade = both clips); per frame the convex hull (x, z) of ALL evaluated vertices, and <= 600 evaluated vertices tested against the desert top surface (ray-cast height field, 0.004 grid) from /tmp/dg_work/qa/blender_eval.npz",
+   "david extremes (value, t, clip): {'xmin': (-0.4492, 55.83, 'kneel_pick'), 'xmax': (0.1181, 73.07, 'sling_release'), 'zmin': (-0.18, 73.07, 'sling_release'), 'zmax': (0.2996, 80.97, 'victory'), 'ymin': (-0.0045, 54.2, 'kneel_pick')}",
+   "goliath extremes (value, t, clip): {'xmin': (-0.5543, 72.37, 'charge'), 'xmax': (0.5228, 8.33, 'taunt'), 'zmin': (-0.7543, 75.13, 'fall'), 'zmax': (0.2312, 72.6, 'charge'), 'ymin': (-0.0126, 74.33, 'fall')}",
+   "deepest actor vertex under the desert surface (depth, (t, clip, x, z, y)): {'david': (0.0, None), 'goliath': (0.0, None)}",
+   "limits: D8 paper margin x -0.596..0.596, z -1.486..0.22; physical sheet x -0.620..0.620, z -1.510..0.244",
+   "1 frame(s) clip the sheet edge by <= 0.010 (t, who, clip, zmax): [(53.1, 'david', 'walk', 0.251)]",
+   "223 actor-frames rest inside the 0.024 D8 margin but on the sheet (t, who, clip, zmax): [(53.0, 'david', 'kneel_pick', 0.239), (56.2, 'david', 'walk', 0.234), (79.4, 'david', 'idle', 0.24), (80.0, 'david', 'victory', 0.234), (81.4, 'david', 'talk', 0.234), (84.2, 'david', 'pray', 0.234)]",
+   "4 cross-fade frames where the fading-out clip alone would touch the table past the edge (t, who, clip, zmax): [(53.13, 'david', 'walk', 0.254)]",
+   "295 actor-frames have a raised part overhanging the sheet edge in the air; first per clip (t, who, clip, xmin, xmax, zmin, zmax): [(52.8, 'david', 'walk', -0.393, -0.267, 0.146, 0.249), (53.0, 'david', 'kneel_pick', -0.38, -0.276, 0.165, 0.247), (79.4, 'david', 'idle', -0.256, -0.15, 0.169, 0.248), (80.3, 'david', 'victory', -0.314, -0.086, 0.178, 0.245), (81.4, 'david', 'talk', -0.252, -0.151, 0.168, 0.291), (84.77, 'david', 'pray', -0.255, -0.152, 0.125, 0.244)]"
+  ]
+ },
+ {
+  "check": "T14 desert.glb geometry: every §12 piece present, in its footprint, at its design height, under the caps, front zone <= 0.06, flat stage band",
+  "status": "PASS",
+  "evidence": [
+   "23 pieces in design.json v3; glb nodes missing: none; root 'desert' has TRS: False",
+   "animations: ['bannerIsraelWave', 'bannerPhilWave']",
+   "all desert vertices (incl. banner wave frames): x -0.590..0.590, y -0.0020..0.490, z -1.475..0.191; page x ±0.596, z -1.486..0.244",
+   "pieces (glb vs design, rest pose): duneFar: x -0.240..0.190 z -1.475..-1.383 top 0.190 (design 0.19, cap 0.2); hillIsrael: x -0.590..-0.018 z -1.475..-1.010 top 0.306 (design 0.306, cap 0.4); hillPhil: x -0.018..0.590 z -1.475..-1.015 top 0.382 (design 0.382, cap 0.4); tentIsrael1: x -0.485..-0.375 z -1.410..-1.300 top 0.373 (design 0.3729, cap 0.5); tentIsrael2: x -0.370..-0.260 z -1.410..-1.300 top 0.399 (design 0.3994, cap 0.5); tentIsrael3: x -0.255..-0.145 z -1.410..-1.300 top 0.378 (design 0.3775, cap 0.5); tentPhil1: x 0.080..0.190 z -1.410..-1.300 top 0.439 (design 0.4388, cap 0.5); tentPhil2: x 0.200..0.310 z -1.410..-1.300 top 0.476 (design 0.4763, cap 0.5); tentPhil3: x 0.340..0.450 z -1.410..-1.300 top 0.460 (design 0.46, cap 0.5); bannerIsrael: x -0.155..-0.059 z -1.363..-1.346 top 0.430 (design 0.4302, cap 0.53); bannerPhil: x -0.011..0.087 z -1.363..-1.357 top 0.490 (design 0.4898, cap 0.53); dune1: x -0.470..-0.228 z -0.600..-0.384 top 0.172 (design 0.1723, cap 0.3); dune2: x -0.470..-0.226 z -0.920..-0.620 top 0.246 (design 0.2461, cap 0.3); dune3: x 0.225..0.470 z -0.980..-0.739 top 0.240 (design 0.24, cap 0.3); rockL1: x -0.470..-0.366 z -1.000..-0.935 top 0.098 (design 0.098, cap 0.1); rockL2: x -0.276..-0.234 z -0.985..-0.950 top 0.036 (design 0.036, cap 0.1); rockM1: x -0.105..-0.006 z -0.800..-0.740 top 0.072 (design 0.072, cap 0.1); rockM2: x 0.008..0.045 z -0.795..-0.761 top 0.038 (design 0.038, cap 0.1); rockFR1: x 0.405..0.470 z -0.130..-0.060 top 0.050 (design 0.05, cap 0.06); rockFR2: x 0.420..0.468 z -0.210..-0.161 top 0.033 (design 0.033, cap 0.06); shrubL: x -0.349..-0.295 z -0.975..-0.930 top 0.047 (design 0.047, cap 0.06); brook: x -0.468..-0.378 z 0.012..0.190 top 0.004 (design 0.004, cap 0.004)",
+   "banners over every frame of both wave clips (all banner meshes together): top 0.490 (cap 0.53)",
+   "raised desert nearer the viewer than z -0.3 (max y): {'rockFR1': 0.05, 'rockFR2': 0.033} (cap 0.06)",
+   "desert vertices above 0.010 inside the stage band (design polygonsSheet ∪ recomputed): none",
+   "tallest desert behind David (x < -0.15, z -1.0..-0.30): 0.246; tallest panorama: 0.485"
+  ]
+ },
+ {
+  "check": "T15 desert UV0 per piece type: front pieces = §12.1 front projection onto their OWN printed drawing (incl. tentDoor / duneShade), stones / poles / bank constant, brook none",
+  "status": "WARN",
+  "evidence": [
+   "bannerIsrael_cloth (front, scale 2.5, sheetY 1.0): 900 loops; |UV - formula| p50 1.3 px, p95 4.0 px, max 11.0 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'flagIsrael': 900}",
+   "bannerIsrael_pole: constant=True, UV (0.3400, 0.4075) -> printed goliath.spear:spearShaft (0.0 px from it)",
+   "bannerPhil_cloth (front, scale 2.5, sheetY 1.0): 888 loops; |UV - formula| p50 1.3 px, p95 4.2 px, max 12.2 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'flagPhil': 888}",
+   "bannerPhil_pole: constant=True, UV (0.3400, 0.4075) -> printed goliath.spear:spearShaft (0.0 px from it)",
+   "brookBank: constant=True, UV (0.1072, 0.3346) -> printed desert.dune1:sand (0.0 px from it)",
+   "dune1 (front, scale 1.0, sheetY 0.37): 4452 loops; |UV - formula| p50 0.0 px, p95 4.9 px, max 18.5 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'duneShade': 1434, 'sand': 3018}",
+   "dune2 (front, scale 1.0, sheetY 0.6): 8094 loops; |UV - formula| p50 0.0 px, p95 4.9 px, max 19.0 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'duneShade': 2685, 'sand': 5409}",
+   "dune3 (front, scale 1.0, sheetY 0.72): 5670 loops; |UV - formula| p50 0.0 px, p95 4.9 px, max 18.3 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'duneShade': 2018, 'sand': 3652}",
+   "duneFar (front, scale 2.5, sheetY 1.0): 3132 loops; |UV - formula| p50 0.6 px, p95 4.0 px, max 19.9 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 81.8 %); > 6 px off any region 0; regions {'hillIsrael': 1131, 'sand': 570, 'hillPhil': 1431}",
+   "hillIsrael (front, scale 2.5, sheetY 1.0): 13104 loops; |UV - formula| p50 0.0 px, p95 12.0 px, max 17.3 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'hillIsrael': 13104}",
+   "hillPhil (front, scale 2.5, sheetY 1.0): 14280 loops; |UV - formula| p50 0.0 px, p95 11.7 px, max 21.0 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'hillPhil': 14280}",
+   "rockFR1 (front, scale 1.0, sheetY 0.06): 432 loops; |UV - formula| p50 3.4 px, p95 7.5 px, max 9.5 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 432}",
+   "rockFR2 (front, scale 1.0, sheetY 0.16): 324 loops; |UV - formula| p50 3.6 px, p95 8.9 px, max 8.9 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 324}",
+   "rockL1 (front, scale 1.0, sheetY 0.935): 648 loops; |UV - formula| p50 3.4 px, p95 9.0 px, max 10.6 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 648}",
+   "rockL2 (front, scale 1.0, sheetY 0.95): 324 loops; |UV - formula| p50 3.9 px, p95 11.5 px, max 11.5 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 324}",
+   "rockM1 (front, scale 1.0, sheetY 0.74): 540 loops; |UV - formula| p50 3.3 px, p95 8.5 px, max 9.4 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 540}",
+   "rockM2 (front, scale 1.0, sheetY 0.76): 324 loops; |UV - formula| p50 3.6 px, p95 8.1 px, max 8.1 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'rock': 324}",
+   "shrubL (front, scale 1.0, sheetY 0.94): 828 loops; |UV - formula| p50 3.5 px, p95 11.7 px, max 12.0 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'bush': 828}",
+   "stone1: constant UV (0.0430, 0.0758) vs stoneUV [0.043, 0.0758]: ok",
+   "stone2: constant UV (0.0430, 0.0758) vs stoneUV [0.043, 0.0758]: ok",
+   "stone3: constant UV (0.0430, 0.0758) vs stoneUV [0.043, 0.0758]: ok",
+   "stone4: constant UV (0.0430, 0.0758) vs stoneUV [0.043, 0.0758]: ok",
+   "stone5: constant UV (0.0430, 0.0758) vs stoneUV [0.043, 0.0758]: ok",
+   "tentIsrael1 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 4.0 px, p95 8.6 px, max 8.6 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentIsrael': 117, 'tentDoor': 21}",
+   "tentIsrael2 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 4.0 px, p95 8.8 px, max 9.8 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentIsrael': 117, 'tentDoor': 21}",
+   "tentIsrael3 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 4.0 px, p95 8.8 px, max 9.8 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentIsrael': 117, 'tentDoor': 21}",
+   "tentPhil1 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 3.9 px, p95 8.9 px, max 9.8 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentPhil': 117, 'tentDoor': 21}",
+   "tentPhil2 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 3.8 px, p95 8.7 px, max 8.7 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentPhil': 117, 'tentDoor': 21}",
+   "tentPhil3 (front, scale 2.5, sheetY 1.0): 138 loops; |UV - formula| p50 3.9 px, p95 8.8 px, max 9.8 px; samples its own printed piece 100.0 % (of which behind a nearer pano piece 0.0 %); > 6 px off any region 0; regions {'tentPhil': 117, 'tentDoor': 21}",
+   "brook: material ['dg_water'], UV0 none",
+   "hillIsrael: 5 % of UVs > 12 px from the front formula (inset / tent-strip remap)"
+  ]
+ },
+ {
+  "check": "T16 printed sheet: every region closed, desert regions printed, no overlap with the characters, all ink >= 6 mm from the page edges",
+  "status": "WARN",
+  "evidence": [
+   "print page: 146 paper components, 1 touch the page border; regions.json 95 ids",
+   "regions open to the page border (or empty desert regions): none",
+   "character parts with no front-view pixels (hidden behind another part in the rest-pose front drawing; unchanged since v2): 18",
+   "demo-sheet coloured pixels (>= 3 px from ink) in the border-connected paper: 0",
+   "palette.desert regions printed: ['bush', 'duneShade', 'flagIsrael', 'flagPhil', 'hillIsrael', 'hillPhil', 'pebbles', 'rock', 'sand', 'tentDoor', 'tentIsrael', 'tentPhil', 'water']; missing: none",
+   "closest desert region pixel to a character region pixel: 31.0 px (§12.3 wants >= 30 px between the drawings' outlines)",
+   "ink (markers excluded) to the page edge, mm: top 6.60, bottom 8.81, left 25.06, right 25.06 (§12.3: >= 6 mm)",
+   "markers (template, untouched): outer edge 5.1 mm from the side edges",
+   "checks.json: slivers [], thin strips [[4.5, 131, 'david.bagFlap:bag']], regions without colourable cell ['david.sandalStrapsL:sandals', 'david.sandalStrapsR:sandals']",
+   "uncolourable regions: ['david.sandalStrapsL:sandals', 'david.sandalStrapsR:sandals']"
+  ]
+ },
+ {
+  "check": "T17 APK exists, fingerprint consistent, newer than every model / sheet / Unity input, contains the v3 desert + DGGround",
+  "status": "PASS",
+  "evidence": [
+   "unity/Builds/DoodLive.apk: 48,850,936 B, mtime 2026-10-29 13:55:34; sha256 a7fe6329edf90193…",
+   "fingerprint file a6752d5-dirty.20261029-0053; Resources/build_fingerprint.txt a6752d5-dirty.20261029-0053; aapt2 versionName a6752d5-dirty.20261029-0053; git HEAD a6752d5",
+   "build time 2026-10-29 13:53:59 local; newest input unity/Assets/DoodLive/DavidGoliath/Scripts/DGDirector.cs 2026-10-29 13:53:44; inputs newer than the build: none",
+   "strings found in APK assets/bin/Data: {'DGPaperLit': 'global-metadata.dat', 'DGGround': 'global-metadata.dat', 'bannerIsraelWave': 'global-metadata.dat', 'DGWater': 'globalgamemanagers', 'tentPhil3': 'level0', 'duneFar': 'level0', 'stone5': 'level0', 'fingerTipsR': 'level0'}; not found: none"
+  ]
+ },
+ {
+  "check": "T18 DGPreview phone view reads as sand: paper-white < 3 % of the scene (§12.8; the eye check is in QA.md)",
+  "status": "PASS",
+  "evidence": [
+   "phone_00.5.png: scene pixels 52 %, paper-white 0.17 % of the scene, sand-coloured 57 %; rendered 12:03",
+   "phone_30.0.png: scene pixels 53 %, paper-white 0.18 % of the scene, sand-coloured 60 %; rendered 12:03",
+   "phone_55.9.png: scene pixels 53 %, paper-white 0.17 % of the scene, sand-coloured 61 %; rendered 12:03",
+   "phone_60.0.png: scene pixels 53 %, paper-white 0.19 % of the scene, sand-coloured 61 %; rendered 12:03",
+   "phone_75.0.png: scene pixels 49 %, paper-white 0.32 % of the scene, sand-coloured 57 %; rendered 12:03",
+   "phone_77.0.png: scene pixels 49 %, paper-white 0.42 % of the scene, sand-coloured 60 %; rendered 12:03",
+   "phone_86.0.png: scene pixels 49 %, paper-white 0.41 % of the scene, sand-coloured 60 %; rendered 12:03",
+   "right_00.5.png: scene pixels 52 %, paper-white 0.09 % of the scene, sand-coloured 58 %; rendered 12:03"
+  ]
+ }
+]

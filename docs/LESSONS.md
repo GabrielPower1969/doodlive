@@ -166,7 +166,7 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **Cause:** a CS0819 compile error made `Setup` fail; `scripts/build-apk.sh … | tail -1` swallowed the non-zero exit,
   `Build` then packaged the stale prefab, and `adb install` happily installed it. Nothing checked that the APK on the
   phone was the code just written.
-- **Fix (Gabriel's rule: 每次修改都要留指纹，install 要对指纹):** build fingerprint `<sha>[-dirty].<UTC>` in versionName,
+- **Fix (rule: 每次修改都要留指纹，install 要对指纹):** build fingerprint `<sha>[-dirty].<UTC>` in versionName,
   in `Resources/build_fingerprint.txt` and in the app's first log line; `scripts/install-apk.sh` compares the installed
   versionName and the running log against `Builds/DoodLive.apk.fingerprint` and exits non-zero on any mismatch.
   Shell chains use `set -o pipefail`. Web pages carry `build.json` the same way.
@@ -181,6 +181,37 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   combinations at once; one device screenshot showed **no mirror + Billboard facing +Z** is the readable one.
   That is now the default (`DOODLIVE_TITLE_MIRROR`/`_FRONT` unset). Rule: when an orientation bug survives one
   reasoned fix, render every combination side by side and look, instead of a second guess (each guess costs a 5-min build).
+
+### L33 · Printed faces vanish after the scan · 2026-10-27 · confirmed (simulation), on-device check pending
+- **Symptom (Design role's numpy port of `eraseLines`):** on the David & Goliath demo sheet the line-erase keeps 18 of
+  1,920 face-ink texels on David; a model textured only from the scan gets a blank face.
+- **Cause:** the erase treats every dark, low-chroma pixel as line art, and a face is almost all line art.
+- **Fix:** faces are decals: `docs/david-goliath/design/faces/<char>_<expr>.png` on UV1 (RIG.md §4), drawn by
+  `DoodLive/DGPaperLit` inside 0..1 only; `DGActor.SetFace` swaps the expression per clip (design.json `clipExpression`).
+- **Prevention:** any new character with a printed face needs a decal; check a scan simulation before trusting UV0.
+
+### L34 · Two story sheets, one capture template · 2026-10-27 · confirmed
+- `ARColoringController.Capture` warps with one `Resources/template.json`. A new sheet works only if its page, markers
+  and art rectangle equal the angel's (artPixels may differ if the aspect is the same: 1000×1227 vs 1128×1384).
+  `DGSetup.CheckTemplate` compares them on every Setup and logs an error otherwise. The mode is chosen by the reference
+  image name prefix (`david-goliath`), so the image name in `ReferenceImages.asset` is part of the contract.
+
+### L35 · `Resources.Load` by name with .wav + .mp3 twins · 2026-10-27 · confirmed (design rule)
+- The production roles deliver every clip as WAV and MP3 with the same name. In a `Resources/` folder both would be
+  built into the APK and `Resources.Load<AudioClip>("…/dg_01")` would pick one at random. `DGSetup.CopyInputs` copies
+  WAV only and deletes stale WAVs in the target folder.
+
+### L36 · Skinned characters stuck in their first pose in an editor preview · 2026-10-27 · confirmed
+- **Symptom:** `DGPreview.Render` (batch mode, edit mode, manual `PlayableGraph.Evaluate` + `Camera.Render`): the bones
+  were kneeling (logged hip / shin heights matched clips.json) but the rendered David stood straight.
+- **Cause:** without a player loop, skinning is not recomputed between renders.
+- **Fix:** `SkinnedMeshRenderer.forceMatrixRecalculationPerRender = true` in the preview only. On device the player
+  loop skins every frame. **Prevention:** in an editor render, log a bone position and compare it with the picture.
+
+### L37 · Subtitles need their glyphs in the font subsets · 2026-10-27 · confirmed
+- The Unity fonts are subsets (`tools/make_fonts.py`) built from `strings.json`. Story lines are not UI strings, so
+  their Chinese characters were missing. `make_fonts.py` now also reads `assets/david-goliath/timeline.json` (lines and
+  shot titles). Re-run it whenever a timeline's text changes; check with fontTools that no character is missing.
 
 ## Tooling (this Mac)
 
@@ -219,6 +250,77 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **Fix:** `ZH_GREET` map in `speak()`; Unity was already right (clips are wired by name in DoodLiveSetup).
 - **Prevention:** check the network panel for 404s after any voice/asset change, in both languages.
 
+### L38 · Offline C# compile check before a 5-minute Unity run · 2026-10-27 · confirmed
+- Unity's own Roslyn compiles the project's scripts in seconds:
+  `dotnet <Unity.app>/Contents/DotNetSdkRoslyn/csc.dll @refs.rsp` with `-r:` for `Managed/UnityEngine/*.dll`,
+  `Library/ScriptAssemblies/*.dll`, `NetStandard/ref/2.1.0/netstandard.dll` (editor scripts also need
+  `NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll`). Use a response file: the Bash tool's zsh does not word-split
+  an unquoted `$refs`, so csc gets one giant path (CS0006).
+
+### L39 · `.venv-tts/bin/edge-tts`: bad interpreter after the repo moved · 2026-10-27 · confirmed (Voice role)
+- The venv's launcher shebang points at the old path `…/workspace/doodlive`. `tools/make_dg_voice.sh` calls
+  `python3 -m edge_tts` instead; `tools/make_voice.sh` / `make_voice_angel.sh` stay broken until `.venv-tts` is
+  recreated (`python3 -m venv --clear .venv-tts && .venv-tts/bin/pip install edge-tts`).
+
+### L40 · Printed figures standing on the art-rect edge leave open regions · 2026-10-27 · confirmed
+- David's sandals sat on y = 0 = the art rectangle's bottom edge, so the 6 px outline under them fell outside the art
+  and was never printed; crayon runs out of an open sandal. Fix: `design.json characters.<id>.sheetY` (0.015) lifts the
+  *drawing* (and UV0: `v = (y + sheetY) / artH`) while the models keep their feet on y = 0.
+- Prevention: `make_design.py` fails when a silhouette is < 0.012 from the art bottom; `make_dg_sheet.py` exits when
+  any ink lies within 6 px of an art-rect edge; `qa_check.py` T10 measures the printed PNG.
+
+### L41 · "On the page" checked against the wrong rectangle · 2026-10-27 · confirmed
+- The storyboard validator allowed `acting.to` z up to ±0.6, but the paper only reaches 0.244 toward the viewer from
+  the art bottom (page px 1510 → 1754). Two David marks ended on the tabletop in AR.
+- Fix/prevention: derive bounds from `sheet/template.json` (page and art), minus a 0.024 margin: x ±0.596,
+  z ∈ [−1.486, +0.22]. Never hard-code page bounds in a validator.
+
+### L42 · Ink-only expressions vanish on a dark beard · 2026-10-27 · confirmed
+- Goliath's mouths were ink on the (usually brown) beard, so grumpy / taunt / roar / down read the same at phone size.
+- Fix: change all three cues per expression (eyes, brows, mouth) and give decal mouths a light rim + red interior
+  (`Fig.paint`, decals only, never printed). Check expressions downscaled to a ~64 px head before shipping.
+
+### L43 · Shot-list camera hints are absolute, not relative to the actor · 2026-10-27 · confirmed
+- `DGDirector.DriveCamera` puts the camera at target + (sin yaw, cos yaw)·dist at an absolute height. A `follow stone`
+  shot at dist 0.5 ended inside Goliath; a yaw-0 ending shot looked across the giant, who falls toward +Z (the
+  viewer), so he covered David. Fix: S09 fixed two-shot square to the David–Goliath line (yaw 44, dist 1.6), S11 from
+  the front-left (yaw −40). Prevention: render `DGPreview` and look at the frames after any camera or mark change.
+
+### L44 · A graphics-enabled editor run flips the URP light flags back on · 2026-10-27 · confirmed
+- `GraphicsSettings.asset` `m_LightsUseLinearIntensity` / `m_LightsUseColorTemperature` went 0 → 1 again right after
+  `DGPreview.Render` (batch mode *with* graphics: URP initialises and the editor saves project settings on quit).
+  `scripts/build-apk.sh` (`-nographics`) left them at 0.
+- Prevention: after any DGPreview / interactive editor session, `git diff unity/ProjectSettings/GraphicsSettings.asset`
+  and `git checkout` it before the release build, or decide once to keep the URP values.
+
+### L45 · Characters cast no shadows: DGPaperLit had no ShadowCaster pass · 2026-10-27 · confirmed
+- Renderers were set to `ShadowCastingMode.On`, but a URP shader without a `LightMode = ShadowCaster` pass is simply
+  skipped in the shadow map (no error, no warning). The actors floated over the page and, after §11, over the dunes.
+- Fix: a ShadowCaster pass in `DGPaperLit` (same CBUFFER for the SRP batcher). Include `ShaderLibrary/Lighting.hlsl`,
+  not `Core.hlsl` + `Shadows.hlsl`: the latter fails with `undeclared identifier 'LerpWhiteTo'`, and that error only
+  shows when the shader is compiled for a renderer (the Setup log stays clean, the DGPreview log has it).
+- Prevention: grep the DGPreview log for `Shader error` after any shader edit.
+
+### L46 · APK build failed in Burst: "No space left on device" · 2026-10-27 · confirmed
+- `scripts/build-apk.sh` exited 1 with `BuildFailedException: Burst compiler (1.8.24) failed running`; the real cause
+  is further up the Build log (`Disk full ... Temp/Burst/...o`). The data volume had 2.7 GB free. A second run with
+  1.9 GB free succeeded (Burst reused part of `Library/Bee`), so this is marginal, not fixed.
+- A build that fails half-way leaves `preloadedAssets` filled in `ProjectSettings.asset` (the XR build step's
+  temporary list); `git checkout` that file before the next build.
+- Prevention: `df -h /System/Volumes/Data` before a build; keep ≥ 5 GB free. Free space with a disk-cleanup tool,
+  never by deleting `unity/Library` mid-session.
+
+### L47 · Editor preview at 1 unit = 1 m hides how coarse shadows are on the phone · 2026-10-27 · confirmed
+- On the phone the stage is 0.3 m (demo) or about 0.17 m (A4 art width) per art width, so a shadow texel is 3 to 6
+  times larger relative to the actors than in a 1:1 preview. `DGPreview` now renders the stage at 0.3 scale, and the
+  URP shadow distance went from 3 m to 1.5 m (the page is always closer than that).
+
+### L48 · A multiplier set with Material.SetColor is gamma-converted · 2026-10-27 · avoided before it shipped (computed, not observed)
+- The D&G ambient tint (`_AmbTint`, meant as linear factors 1.06 / 0.97 / 0.84) would reach the shader as about
+  1.13 / 0.94 / 0.67: in a Linear-colour-space project `SetColor` treats the value as sRGB and converts it.
+- Use `SetVector` for numbers that are factors, `SetColor` only for real colours (palette hex values such as the sand).
+- Related: a scene-wide ambient change for one story would also recolour the angel; tint per material instead.
+
 ## 中文速览
 
 - **手机一直显示 unauthorized：** 这次的真正原因是电脑上的 adb 密钥坏了，两台手机都一样连不上，这就是判断依据。解决办法：先把 `~/.android/adbkey*` 改名备份，让 adb 重新生成一对密钥，再在手机上点一次“始终允许”。不要反复执行 `adb kill-server`，每重启一次，屏幕上的弹窗就会被取消。
@@ -232,3 +334,9 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **竖屏看战斗：** 竖屏时镜头要自动拉远。
 - **机器人声音：** 对白改为预录的英文配音（微软神经网络语音，`tools/make_voice.sh`），不再靠手机自带 TTS；缺文件时才退回 TTS。歌利亚一句控制在 6 秒内。
 - **其他：** 演示涂色不能用洪水填充，因为线稿不封闭；UV 必须在静止姿态下计算；深色蜡笔会被当成线条擦掉；Java 用 Android Studio 自带的 JBR；装 Unity 前先查磁盘空间。
+- **大卫与歌利亚：** 扫描会把画在纸上的脸当成线条擦掉，所以脸用贴花（UV1）；新纸必须和天使纸的标记、画框完全一致；`Resources` 里只放 WAV；字幕用到的汉字要进字体子集（`make_fonts.py` 会读 timeline.json）。
+- **大卫与歌利亚（修复轮）：** 人物不能站在画框边上（线会被裁掉，区域不封闭）；“在纸上”要按整张纸算；脸部表情要在 64 像素下也能分清；镜头参数是绝对位置，改完要看预览图；带图形的 Unity 运行会把灯光设置改回 1。
+- **大卫与歌利亚（重画轮）：** 着色器没有 ShadowCaster 通道就不会投影（也不报错）；阴影通道要 include Lighting.hlsl；打包前先查磁盘空间（Burst 在空间不足时报“编译器失败”）；预览要按手机上的实际尺寸渲染，阴影才看得准。
+- **沙漠加强轮：** 当作系数用的材质参数要用 `SetVector`，`SetColor` 在线性色彩空间会再做一次伽马换算；只给一个故事换环境光时按材质调，不要改全局设置。
+- **升级 Unity 6（6000.3.27f1，2026-10-29）：** 2022.3 个人版关不掉开屏，Unity 6 个人版可以（`PlayerSettings.SplashScreen.show/showUnityLogo = false`）；URP 17 在 6.3 里不再支持兼容模式，要把 `UniversalRenderPipelineGlobalSettings.asset` 的 `m_EnableRenderCompatibilityMode` 改成 0（打开 Render Graph），否则打包直接报错；最低 Android API 变成 25；AR Foundation 6 用 `trackablesChanged`，旧的 `trackedImagesChanged` 已过时；Unity 6 默认用 GameActivity，我们固定成 Activity；包版本照编辑器自带的 `PackageManager/Editor/manifest.json` 填（AR Foundation / ARCore 6.3.5）。
+- **旗子不飘（模拟器发现，2026-10-29）：** `AnimationClip.SampleAnimation` 对非 Legacy 动画只在编辑器里有效，打包后每帧报错、旗子不动；要像人物一样用 Animator + PlayableGraph 播放（每个旗子一层 `AnimationLayerMixerPlayable`）。编辑器预览（DGPreview）看不出这个 bug，只有真机或模拟器的日志能看出来。

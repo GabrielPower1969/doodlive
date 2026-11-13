@@ -1,0 +1,242 @@
+{
+ "_doc": "David & Goliath voice cast and per-line direction. Read by tools/dg_voice_build.py. Voices are Microsoft neural voices (edge-tts). rate/pitch are edge-tts prosody values; fx names a post chain in dg_voice_build.py (plain, bright, giant, offscreen, crowd). 'lines' holds per-line direction for the voice-record session (m = mood, d = the picture to hold in mind) and optional per-line prosody overrides per language.",
+ "cast": {
+  "zh": {
+   "narrator": {
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "why": "warm storyteller"
+   },
+   "david": {
+    "voice": "zh-CN-YunxiaNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz",
+    "fx": "bright",
+    "why": "boy voice, clear and light"
+   },
+   "goliath": {
+    "voice": "zh-CN-YunjianNeural",
+    "rate": "-4%",
+    "pitch": "-4Hz",
+    "fx": "giant",
+    "why": "big male voice, pitched down to 0.84 and given a hall; cartoon-scary"
+   },
+   "saul": {
+    "voice": "zh-CN-YunyangNeural",
+    "rate": "-6%",
+    "pitch": "-6Hz",
+    "fx": "offscreen",
+    "why": "older, kind but worried, off-screen"
+   },
+   "soldiers": {
+    "fx": "crowd",
+    "why": "three voices overlapping, off-screen",
+    "voices": [
+     {
+      "voice": "zh-CN-YunxiNeural",
+      "rate": "+16%",
+      "pitch": "+0Hz",
+      "delay": 0.0,
+      "gain": 1.0
+     },
+     {
+      "voice": "zh-TW-YunJheNeural",
+      "rate": "+14%",
+      "pitch": "-4Hz",
+      "delay": 0.05,
+      "gain": 0.7
+     },
+     {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "+18%",
+      "pitch": "+10Hz",
+      "delay": 0.09,
+      "gain": 0.55
+     }
+    ]
+   }
+  },
+  "en": {
+   "narrator": {
+    "voice": "en-GB-SoniaNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "why": "warm storyteller (same voice as the web battle narrator)"
+   },
+   "david": {
+    "voice": "en-US-AnaNeural",
+    "rate": "+0%",
+    "pitch": "-6Hz",
+    "fx": "bright",
+    "why": "child voice, nudged down to read as a boy"
+   },
+   "goliath": {
+    "voice": "en-US-ChristopherNeural",
+    "rate": "-2%",
+    "pitch": "-6Hz",
+    "fx": "giant",
+    "why": "deep male, pitched down to 0.84 and given a hall; cartoon-scary"
+   },
+   "saul": {
+    "voice": "en-GB-ThomasNeural",
+    "rate": "-6%",
+    "pitch": "-6Hz",
+    "fx": "offscreen",
+    "why": "older, kind but worried, off-screen"
+   },
+   "soldiers": {
+    "fx": "crowd",
+    "why": "three voices overlapping, off-screen",
+    "voices": [
+     {
+      "voice": "en-US-GuyNeural",
+      "rate": "+20%",
+      "pitch": "+0Hz",
+      "delay": 0.0,
+      "gain": 1.0
+     },
+     {
+      "voice": "en-GB-RyanNeural",
+      "rate": "+18%",
+      "pitch": "-4Hz",
+      "delay": 0.05,
+      "gain": 0.7
+     },
+     {
+      "voice": "en-US-BrianNeural",
+      "rate": "+22%",
+      "pitch": "+8Hz",
+      "delay": 0.08,
+      "gain": 0.55
+     }
+    ]
+   }
+  }
+ },
+ "lines": {
+  "dg_01": {
+   "m": "温暖、讲故事的开头，慢一点",
+   "d": "画面：睡前，你翻开一本大图画书，孩子靠在你身边。",
+   "m_en": "warm, once-upon-a-time, unhurried",
+   "d_en": "Picture: bedtime, you open a big picture book and a child leans on you."
+  },
+  "dg_02": {
+   "m": "大声、霸道、拖长音，但像卡通巨人",
+   "d": "画面：你站在山谷中间，对着对面整支军队喊话，胸口拍得咚咚响。",
+   "m_en": "booming, bossy, a cartoon giant",
+   "d_en": "Picture: you stand in the valley and shout at a whole army, thumping your chest."
+  },
+  "dg_03": {
+   "m": "讲故事，带一点惊讶，“三米”加重",
+   "d": "画面：你张开双手比划他有多高，孩子眼睛睁得圆圆的。",
+   "m_en": "storyteller, a little amazed, lean on 'three metres'",
+   "d_en": "Picture: you stretch your arms up to show how tall he was; the child's eyes go wide."
+  },
+  "dg_04": {
+   "m": "害怕、小声又急、几个人抢着说",
+   "d": "画面：你们几个士兵躲在盾牌后面，偷偷往外看。",
+   "m_en": "scared, quick, several people at once",
+   "d_en": "Picture: a few soldiers peeking out from behind their shields."
+  },
+  "dg_05": {
+   "m": "得意地大笑，嘲笑",
+   "d": "画面：没人敢出来，你仰头哈哈大笑，枪杆在地上一顿。",
+   "m_en": "smug laugh, mocking",
+   "d_en": "Picture: nobody comes out; you throw your head back and laugh, banging your spear."
+  },
+  "dg_06": {
+   "m": "转折、轻快，后半句坚定",
+   "d": "画面：远处走来一个提着饭篮的少年，你笑着指给孩子看。",
+   "m_en": "a turn in the story, light, firm at the end",
+   "d_en": "Picture: a boy with a lunch basket walks in from far away; you point him out with a smile."
+  },
+  "dg_07": {
+   "m": "勇敢、清楚、不喊叫",
+   "d": "画面：你站在大家面前，挺起胸，认真地说。",
+   "m_en": "brave, clear, not shouting",
+   "d_en": "Picture: you step in front of everyone, stand tall, and say it plainly.",
+   "prosody": {
+    "en": {
+     "rate": "+8%"
+    }
+   }
+  },
+  "dg_08": {
+   "m": "慈祥又担心，像爷爷",
+   "d": "画面：国王弯下腰，手放在你肩膀上，眉头皱着。",
+   "m_en": "kind but worried, like a grandpa",
+   "d_en": "Picture: the king bends down, a hand on the boy's shoulder, frowning."
+  },
+  "dg_09": {
+   "m": "自信地讲自己的经历",
+   "d": "画面：你一边说一边比划狮子和熊扑过来的样子。",
+   "m_en": "confident, telling his own story",
+   "d_en": "Picture: you act out the lion and the bear as you speak."
+  },
+  "dg_10": {
+   "m": "安静的信心，真诚",
+   "d": "画面：你抬头看天，轻轻地但很肯定地说。",
+   "m_en": "quiet faith, sincere",
+   "d_en": "Picture: you look up at the sky and say it softly but surely."
+  },
+  "dg_11": {
+   "m": "有点好笑，盔甲太重走不动",
+   "d": "画面：你穿着大一号的盔甲，哐当哐当走两步，差点摔倒。",
+   "m_en": "a bit funny, the armour is far too big",
+   "d_en": "Picture: you clank two steps in armour three sizes too big and nearly fall over."
+  },
+  "dg_12": {
+   "m": "轻柔、细致，像在数石头",
+   "d": "画面：小溪哗哗流，你一块一块地捡起石头。",
+   "m_en": "soft and careful, like counting stones",
+   "d_en": "Picture: a bubbling brook; you pick up the stones one by one."
+  },
+  "dg_13": {
+   "m": "瞧不起、逗弄，像大猫逗老鼠",
+   "d": "画面：你弯腰看着脚边的小孩，故意笑他。",
+   "m_en": "scornful, teasing",
+   "d_en": "Picture: you bend down to look at the little boy and laugh at him."
+  },
+  "dg_14": {
+   "m": "全场最重要的一句：坚定、响亮、不凶",
+   "d": "画面：巨人就在眼前，你一点不退，声音传遍山谷。",
+   "m_en": "the key line: firm, ringing, not angry",
+   "d_en": "Picture: the giant is right in front of you; you don't step back and your voice fills the valley."
+  },
+  "dg_15": {
+   "m": "紧张、加快，压低一点",
+   "d": "画面：你屏住呼吸，看着少年跑起来，机弦呼呼转。",
+   "m_en": "tense, faster, a little hushed",
+   "d_en": "Picture: holding your breath as the boy runs and the sling whirls."
+  },
+  "dg_16": {
+   "m": "前半句快，“咚”字放慢加重",
+   "d": "画面：石头飞出去——咚！你拍一下书，孩子吓一跳又笑了。",
+   "m_en": "quick, then slow and heavy on 'Down'",
+   "d_en": "Picture: the stone flies -- thump! you slap the book; the child jumps, then laughs."
+  },
+  "dg_17": {
+   "m": "欢喜、感恩，不炫耀",
+   "d": "画面：大家在欢呼，你举起双手，把荣耀归给上帝。",
+   "m_en": "joyful, thankful, not boasting",
+   "d_en": "Picture: everyone cheers; you raise your hands and give the glory to God."
+  },
+  "dg_18": {
+   "m": "明亮、温暖的结尾，对孩子说",
+   "d": "画面：故事讲完了，你合上书，摸摸孩子的头。",
+   "m_en": "bright, warm ending, to the child",
+   "d_en": "Picture: the story is over; you close the book and pat the child's head.",
+   "prosody": {
+    "zh": {
+     "pitch": "+4Hz"
+    },
+    "en": {
+     "pitch": "+4Hz"
+    }
+   }
+  }
+ }
+}

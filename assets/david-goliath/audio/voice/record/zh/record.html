@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>配音录制台</title>
+<style>
+  :root { --bg:#111418; --card:#1b2028; --fg:#f2f4f7; --mut:#9aa4b2; --acc:#ffcf4a; --ok:#5df59a; --bad:#ff6b6b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 80px; }
+  h1 { font-size: 22px; margin: 0 0 6px; } .sub { color: var(--mut); margin: 0 0 18px; }
+  .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+  select, button { font: inherit; font-size: 15px; border-radius: 10px; border: 1px solid #333a45; background:#232a35; color:var(--fg); padding: 10px 14px; }
+  button.primary { background: var(--acc); color:#2a1d00; border-color: var(--acc); font-weight:700; }
+  button.rec { background: var(--bad); color:#fff; border-color: var(--bad); font-weight:700; min-width: 180px; }
+  button:disabled { opacity:.45; }
+  .meter { height: 14px; background:#232a35; border-radius: 7px; overflow:hidden; flex:1; min-width: 200px; position:relative; }
+  .meter > i { display:block; height:100%; width:0; background: linear-gradient(90deg, #5df59a 0 70%, #ffcf4a 70% 88%, #ff6b6b 88%); }
+  .meter > b { position:absolute; left:75%; top:0; bottom:0; width:2px; background:#fff8; }
+  .card { background: var(--card); border-radius: 16px; padding: 22px 24px; margin: 14px 0; }
+  .num { color: var(--mut); font-size: 14px; letter-spacing: 1px; }
+  .line { font-size: 40px; line-height: 1.35; margin: 8px 0 14px; font-weight: 600; }
+  .mood { font-size: 18px; color: var(--acc); margin-bottom: 8px; }
+  .dir { color: var(--mut); font-size: 16px; line-height: 1.6; }
+  .takes { display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+  .take { background:#232a35; border-radius: 10px; padding: 8px 12px; font-size: 14px; display:flex; gap:10px; align-items:center; }
+  .take audio { height: 30px; }
+  .nav { display:flex; justify-content: space-between; gap:12px; margin-top: 10px; }
+  .tips { background:#15202b; border-left: 4px solid var(--acc); padding: 12px 16px; border-radius: 8px; color:#d9e2ec; font-size: 15px; line-height:1.7; }
+  .small { color: var(--mut); font-size: 13px; }
+  .status { font-size: 14px; color: var(--mut); }
+  .status.on { color: var(--bad); font-weight: 700; }
+  kbd { background:#2b3340; border-radius:6px; padding:2px 7px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>配音录制台</h1>
+  <p class="sub">把每一句读 3 遍就行。情绪不用"演"，照着括号里的"画面"在脑子里想着那个场景说话，情绪自己会出来。</p>
+
+  <div class="tips">
+    <b>开录前 1 分钟：</b>
+    1）麦克风离嘴一拳（15 cm），嘴角对着网罩、不要正对着吹；
+    2）说一句"哇！我活过来啦！"看下面的电平条——最响时到<b>白线附近</b>就对，别进红区；
+    3）每句话<b>先吸一口气，一口气说完</b>，说完停 1 秒再点停止；
+    4）读错了不用管，再录一遍就是，我只挑最好的那条。<br>
+    快捷键：<kbd>空格</kbd> 开始/停止录音　<kbd>→</kbd> 下一句　<kbd>←</kbd> 上一句
+  </div>
+
+  <div class="row" style="margin-top:16px">
+    <select id="mic"></select>
+    <div class="meter"><i id="lvl"></i><b></b></div>
+    <span id="peak" class="small">峰值 —</span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="num" id="num"></div>
+    <div class="mood" id="mood"></div>
+    <div class="line" id="text"></div>
+    <div class="dir" id="dir"></div>
+    <div class="row" style="margin-top:16px">
+      <button id="btnRec" class="rec">● 开始录（空格）</button>
+      <span id="st" class="status">就绪</span>
+    </div>
+    <div class="takes" id="takes"></div>
+    <div class="nav">
+      <button id="prev">← 上一句</button>
+      <button id="next" class="primary">下一句 →</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <button id="dl" class="primary">全部录完，下载所有录音（zip）</button>
+    <span class="small" id="count"></span>
+  </div>
+  <p class="small">文件是 48 kHz 单声道 WAV，文件名 = 句子id_遍数.wav，例如 voice_hello_2.wav。下载后把 zip 发给我即可。所有处理都在你电脑里完成，不上传。</p>
+</div>
+
+<script type="module">
+// ---- lines: text + mood + a concrete picture to think of while speaking (that is what carries emotion) ----
+const FALLBACK = [{ id: 'sample', t: '你好，这是一句测试。', m: '自然', d: '对着麦克风正常说话。' }];
+const LINES = await fetch('lines.json?' + Date.now()).then(r => r.ok ? r.json() : FALLBACK).catch(() => FALLBACK);
+const $ = id => document.getElementById(id);
+let idx = 0, ctx, src, analyser, stream, rec = null, chunks = [], takes = LINES.map(() => []), peak = 0;
+
+async function listMics() {
+  await navigator.mediaDevices.getUserMedia({ audio: true }).then(s => s.getTracks().forEach(t => t.stop())).catch(() => {});
+  const devs = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audioinput');
+  $('mic').innerHTML = devs.map(d => `<option value="${d.deviceId}">${d.label || '麦克风'}</option>`).join('');
+  const mv = devs.find(d => /MV7|Shure/i.test(d.label)); if (mv) $('mic').value = mv.deviceId;
+}
+async function openMic() {
+  if (stream) stream.getTracks().forEach(t => t.stop());
+  stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: { exact: $('mic').value }, echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1, sampleRate: 48000 } });
+  ctx ||= new AudioContext({ sampleRate: 48000 });
+  if (ctx.state === 'suspended') await ctx.resume();
+  src = ctx.createMediaStreamSource(stream); analyser = ctx.createAnalyser(); analyser.fftSize = 2048; src.connect(analyser);
+  await ctx.audioWorklet.addModule(URL.createObjectURL(new Blob([`
+    class Cap extends AudioWorkletProcessor { process(inputs) { const c = inputs[0][0]; if (c) this.port.postMessage(c.slice(0)); return true; } }
+    registerProcessor('cap', Cap);`], { type: 'application/javascript' })));
+  rec = new AudioWorkletNode(ctx, 'cap'); src.connect(rec);
+  rec.port.onmessage = e => { if (recording) chunks.push(e.data); };
+  meter();
+}
+let recording = false, recStart = 0;
+function meter() {
+  const buf = new Float32Array(analyser.fftSize); analyser.getFloatTimeDomainData(buf);
+  let p = 0; for (const v of buf) p = Math.max(p, Math.abs(v));
+  const db = 20 * Math.log10(p || 1e-6); const pct = Math.max(0, Math.min(100, (db + 60) / 60 * 100));
+  $('lvl').style.width = pct + '%';
+  if (recording) { peak = Math.max(peak, db); $('peak').textContent = `峰值 ${peak.toFixed(1)} dB ${peak > -3 ? '（太响，退一点）' : peak < -24 ? '（太轻，靠近点）' : '（正好）'}`; }
+  requestAnimationFrame(meter);
+}
+function wavBlob(chs, rate) {
+  const n = chs.reduce((a, c) => a + c.length, 0), out = new DataView(new ArrayBuffer(44 + n * 2));
+  const w = (o, s) => [...s].forEach((c, i) => out.setUint8(o + i, c.charCodeAt(0)));
+  w(0, 'RIFF'); out.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt '); out.setUint32(16, 16, true); out.setUint16(20, 1, true); out.setUint16(22, 1, true);
+  out.setUint32(24, rate, true); out.setUint32(28, rate * 2, true); out.setUint16(32, 2, true); out.setUint16(34, 16, true); w(36, 'data'); out.setUint32(40, n * 2, true);
+  let o = 44; for (const c of chs) for (const v of c) { out.setInt16(o, Math.max(-1, Math.min(1, v)) * 32767, true); o += 2; }
+  return new Blob([out], { type: 'audio/wav' });
+}
+function show() {
+  const L = LINES[idx];
+  $('num').textContent = `第 ${idx + 1} / ${LINES.length} 句 · 建议录 3 遍（已录 ${takes[idx].length} 遍）`;
+  $('mood').textContent = `情绪：${L.m}`; $('text').textContent = L.t; $('dir').textContent = L.d;
+  $('takes').innerHTML = ''; takes[idx].forEach((b, i) => {
+    const el = document.createElement('div'); el.className = 'take';
+    el.innerHTML = `<span>第 ${i + 1} 遍 · ${(b.size / 96000).toFixed(1)} s</span><audio controls src="${URL.createObjectURL(b)}"></audio><button data-i="${i}">删</button>`;
+    el.querySelector('button').onclick = () => { takes[idx].splice(i, 1); show(); }; $('takes').appendChild(el);
+  });
+  $('prev').disabled = idx === 0; $('next').textContent = idx === LINES.length - 1 ? '已是最后一句' : '下一句 →';
+  $('count').textContent = `共 ${takes.flat().length} 条录音`;
+}
+async function toggle() {
+  if (!stream) await openMic();
+  if (!recording) { chunks = []; peak = -99; recording = true; recStart = performance.now(); $('btnRec').textContent = '■ 停止（空格）'; $('st').textContent = '录音中…'; $('st').className = 'status on'; }
+  else {
+    recording = false; const blob = wavBlob(chunks, ctx.sampleRate);
+    if ((performance.now() - recStart) > 400) takes[idx].push(blob);
+    $('btnRec').textContent = '● 开始录（空格）'; $('st').textContent = '已保存这一遍'; $('st').className = 'status'; show();
+  }
+}
+$('btnRec').onclick = toggle; $('mic').onchange = openMic;
+$('prev').onclick = () => { if (idx > 0) { idx--; show(); } }; $('next').onclick = () => { if (idx < LINES.length - 1) { idx++; show(); } };
+addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); toggle(); } if (e.key === 'ArrowRight') $('next').click(); if (e.key === 'ArrowLeft') $('prev').click(); });
+$('dl').onclick = async () => {
+  // minimal zip (stored, no compression) so there is no dependency
+  const files = []; takes.forEach((arr, li) => arr.forEach((b, ti) => files.push([`${LINES[li].id || String(li + 1).padStart(2, '0')}_${ti + 1}.wav`, b])));
+  if (!files.length) return alert('还没有录音');
+  const enc = new TextEncoder(); const parts = []; const central = []; let off = 0;
+  const crcT = new Int32Array(256).map((_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; return c; });
+  const crc32 = u8 => { let c = -1; for (const b of u8) c = crcT[(c ^ b) & 255] ^ (c >>> 8); return (c ^ -1) >>> 0; };
+  for (const [name, blob] of files) {
+    const data = new Uint8Array(await blob.arrayBuffer()), n = enc.encode(name), crc = crc32(data);
+    const h = new DataView(new ArrayBuffer(30)); h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint32(14, crc, true); h.setUint32(18, data.length, true); h.setUint32(22, data.length, true); h.setUint16(26, n.length, true);
+    const c = new DataView(new ArrayBuffer(46)); c.setUint32(0, 0x02014b50, true); c.setUint16(4, 20, true); c.setUint16(6, 20, true); c.setUint32(16, crc, true); c.setUint32(20, data.length, true); c.setUint32(24, data.length, true); c.setUint16(28, n.length, true); c.setUint32(42, off, true);
+    parts.push(h, n, data); central.push(c, n); off += 30 + n.length + data.length;
+  }
+  const cdSize = central.reduce((a, p) => a + (p.byteLength ?? p.length), 0);
+  const e = new DataView(new ArrayBuffer(22)); e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, cdSize, true); e.setUint32(16, off, true);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([...parts, ...central, e], { type: 'application/zip' })); a.download = 'voice-raw.zip'; a.click();
+};
+await listMics(); show();
+</script>
+</body>
+</html>

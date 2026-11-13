@@ -9,7 +9,9 @@ Colour-in AR angel prototype. Static web app (three.js 0.170 vendored in `web/ve
 | Run on USB Android phone | `scripts/run-on-phone.sh` (`ADB_SERIAL=` when several devices) |
 | Device state | `~/Library/Android/sdk/platform-tools/adb devices -l` |
 | Rebuild sheet / line art / template.json | `python3 tools/make_template.py` |
-| UI strings (both apps) | edit `tools/i18n/strings.json` → `python3 tools/gen_i18n.py` → `python3 tools/make_fonts.py` (font subsets follow the strings) |
+| UI strings (both apps) | edit `tools/i18n/strings.json` → `python3 tools/gen_i18n.py` → `python3 tools/make_fonts.py` (font subsets follow the strings and `assets/david-goliath/timeline.json`) |
+| D&G editor preview (no phone) | `Unity -batchmode -quit -projectPath unity -executeMethod DoodLive.EditorTools.DGPreview.Render` → `unity/Builds/dg-preview/*.png`; then `git checkout unity/ProjectSettings/GraphicsSettings.asset` (L44) |
+| D&G assets (models, desert, sheet, checks) | `pipeline/dg_make_all.sh` (Blender headless; `$DG_WORK` defaults to `/tmp/dg_work`) |
 | Design tokens (both apps) | edit `tools/design/tokens.json` → `python3 tools/gen_tokens.py` (→ `web/tokens.css`, `DesignTokens.cs`) |
 | UI icons for Unity | edit `tools/design/icons/*.svg` → `python3 tools/make_ui_icons.py` (headless Chrome → `Resources/UI/*.png`) |
 | Unity APK, install, QA | `scripts/build-apk.sh` → `scripts/install-apk.sh <serial>` → `scripts/qa-shots.sh <serial> [--quick]` |
@@ -27,6 +29,13 @@ web/style.css          Paper & Crayon UI (docs/DESIGN-DIRECTION.md); colours/siz
 web/fonts/             OFL font subsets + each font's licence (generated)
 unity/Assets/DoodLive/Scripts/ARColoringController.cs     state machine, tracking, capture, audio
 unity/Assets/DoodLive/Scripts/ARColoringController.UI.cs  Paper & Crayon IMGUI (same screens as web)
+unity/Assets/DoodLive/DavidGoliath/   David & Goliath play (M4): Scripts/DGDirector.cs plays assets/david-goliath/timeline.json,
+                       DGActor.cs (glTF clips via PlayableGraph), Editor/DGSetup.cs (copies assets/david-goliath/** incl. the
+                       desert set model/desert.glb), Shaders/ (DGPaperLit: scan + face decal + shadows; DGWater: brook;
+                       DGGround: sand page, CONTRACT §12.4), Fx/ (DGFx)
+pipeline/dg_*.py       Blender: dg_build (characters), dg_desert (desert set), dg_animate (19 clips); tools/make_dg_sheet.py the sheet;
+                       binding brief docs/david-goliath/CONTRACT.md §11 (2026-10-27 redraw) + §12 (desert boost), how it runs: INTEGRATION.md
+docs/david-goliath/    production contract + one doc per role; INTEGRATION.md = how the play runs, how to add a story
 docs/DESIGN-DIRECTION.md  approved design (Figma link, 10 screens, sources); docs/UX-PLAN.md the state machine
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
@@ -59,6 +68,3 @@ Scan pipeline: open http://localhost:8080/test.html — renders `assets/demo-she
 camera frame, runs `detectMarkers` → `warpArt` → `whiteBalance`, prints PASS when every marker is within 3 px.
 Phone: `scripts/run-on-phone.sh`, then scan the printed sheet (or the sheet shown on a monitor).
 
-## Hours
-
-Why this project exists, its department and its decisions live in Gabriel's private Hours vault, note `项目-doodlive` (`~/Documents/workspace/hours/30-项目/`). Code facts stay here; reasons stay there.

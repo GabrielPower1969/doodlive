@@ -31,8 +31,8 @@ The prototype was cut along the same seams as the target architecture, so each p
 
 ## Android build (Unity)
 
-- Unity 2022.3 LTS, Android module, **IL2CPP, ARM64**, Min API 24 (ARCore), Target API 33+, Graphics: OpenGLES3 first (Vulkan optional).
-- Packages: `com.unity.xr.arfoundation` 5.x, `com.unity.xr.arcore` 5.x, URP 14, OpenCV for Unity (Asset Store) or a small native C++ `.so`.
+- Unity 6.3 LTS (6000.3.27f1; was 2022.3 until 2026-10-29), Android module, **IL2CPP, ARM64**, Min API 25 (Unity 6 minimum; ARCore needs 24), Target API 33+, Graphics: OpenGLES3 first (Vulkan optional). Splash screen and Unity logo off (allowed for Unity 6 Personal, not for 2022.3 Personal).
+- Packages: `com.unity.xr.arfoundation` 6.x, `com.unity.xr.arcore` 6.x, URP 17, OpenCV for Unity (Asset Store) or a small native C++ `.so`.
 - XR Plug-in Management → ARCore ✔. ARCore: **Required** (Play Store lists AR-only) or Optional (with a non-AR fallback = our 展示模式).
 - Manifest (Unity generates most of it):
   ```xml

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Build the native Unity APK: unity/Builds/DoodLive.apk (ARM64, IL2CPP, ARCore required).
-# Needs Unity 2022.3 LTS + Android module (SDK/NDK/OpenJDK) on THIS machine only; phones just `adb install` the APK.
+# Needs Unity 6.3 LTS (6000.3) + Android module (SDK/NDK/OpenJDK) on THIS machine only; phones just `adb install` the APK.
 # Two batch runs on purpose: Setup changes scripting defines, so Build must start in a fresh editor (LESSONS L22).
 #
-# Usage: scripts/build-apk.sh [--skip-setup]     Env: UNITY=/path/to/Unity (default: Hub 2022.3.62f3)
+# Usage: scripts/build-apk.sh [--skip-setup]     Env: UNITY=/path/to/Unity (default: Hub 6000.3.27f1)
 set -euo pipefail
 cd "$(dirname "$0")/../unity"
-UNITY="${UNITY:-/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents/MacOS/Unity}"
+UNITY="${UNITY:-/Applications/Unity/Hub/Editor/6000.3.27f1/Unity.app/Contents/MacOS/Unity}"
 [ -x "$UNITY" ] || { echo "Unity not found at $UNITY (set UNITY=...)"; exit 1; }
 if pgrep -f "projectPath $PWD" >/dev/null; then echo "Another Unity has this project open; close it first"; exit 1; fi
 rm -f Temp/UnityLockfile   # left behind by a crashed editor; safe when no editor is running (checked above)

@@ -2,7 +2,7 @@
 """Subset the five OFL fonts to the characters the app uses.
 Sources: google/fonts on GitHub, downloaded into assets/fonts/src/ (git-ignored).
 Outputs (committed): web/fonts/*.woff2 and unity/Assets/DoodLive/Resources/Fonts/*.ttf, plus each font's OFL licence.
-Re-run after adding strings to tools/i18n/strings.json."""
+Re-run after adding strings to tools/i18n/strings.json or changing a story timeline (assets/*/timeline.json)."""
 import io, json, os, shutil, urllib.request
 from fontTools.ttLib import TTFont
 from fontTools.varLib import instancer
@@ -21,6 +21,11 @@ FONTS = [  # out name, source file, google/fonts path, static axes, character se
 LATIN = "".join(chr(c) for c in range(0x20, 0x7F)) + "āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüĀÁǍÀĒÉĚÈĪÍǏÌŌÓǑÒŪÚǓÙ…—–‘’“”·•×✓"
 strings = json.load(open(f"{ROOT}/tools/i18n/strings.json", encoding="utf-8"))
 ALL = LATIN + "".join(v[l] for k, v in strings.items() if not k.startswith("_") for l in ("zh", "en")) + "，。！？：；、（）《》「」中拼音"
+# story text shown as subtitles / chapter titles (Unity DGDirector): every line and shot title of each timeline
+for tl_path in [f"{ROOT}/assets/david-goliath/timeline.json"]:
+    if os.path.exists(tl_path):
+        tl = json.load(open(tl_path, encoding="utf-8"))
+        ALL += "".join(x.get(k, "") for x in tl.get("lines", []) + tl.get("shots", []) for k in ("zh", "en", "title_zh", "title_en"))
 LEARN = "天使炙热愤怒神圣大卫歌利亚"   # characters taught on the sheets (3D titles + word card)
 CHARS = {"latin": LATIN, "all": ALL, "learn": LEARN}
 

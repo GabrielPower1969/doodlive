@@ -1,0 +1,776 @@
+{
+ "generatedBy": "pipeline/dg_desert.py",
+ "contract": "CONTRACT \u00a712",
+ "units": "art-width units. Front pieces: 3D (x, h, z); sheet = (x / scale + sheetX, h / scale + sheetY). Ground pieces: sheet (x, ys), 3D (x, h, -ys).",
+ "uv": {
+  "rule": {
+   "front": "u = x / scale + sheetX + 0.5, v = (y / scale + sheetY) / artHeightUnits, for a 3D vertex (x, y, z) (x = page x, y = height); z is ignored. Characters are the case scale = 1 (character-local x).",
+   "pageTopDown": "u = x + 0.5, v = -z / artHeightUnits (ground pieces, \u00a711.9)",
+   "constant": "one UV for the whole piece",
+   "none": "no texture (water film)"
+  },
+  "inset": 0.004,
+  "sandBankUV": [
+   0.10725000000000007,
+   0.3345558272208639
+  ],
+  "sandBankSheet": [
+   -0.3927,
+   0.4105
+  ],
+  "sandBankClearance": 0.0355,
+  "poleUV": [
+   0.33999999999999997,
+   0.40749796251018744
+  ],
+  "stoneUV": [
+   0.043,
+   0.0758
+  ]
+ },
+ "tris": {
+  "bannerIsrael_cloth": 300,
+  "bannerIsrael_pole": 18,
+  "bannerPhil_cloth": 296,
+  "bannerPhil_pole": 18,
+  "brook": 227,
+  "brookBank": 522,
+  "dune1": 1484,
+  "dune2": 2698,
+  "dune3": 1890,
+  "duneFar": 1044,
+  "hillIsrael": 4368,
+  "hillPhil": 4760,
+  "rockFR1": 144,
+  "rockFR2": 108,
+  "rockL1": 216,
+  "rockL2": 108,
+  "rockM1": 180,
+  "rockM2": 108,
+  "shrubL": 276,
+  "stone1": 100,
+  "stone2": 100,
+  "stone3": 100,
+  "stone4": 100,
+  "stone5": 100,
+  "tentIsrael1": 46,
+  "tentIsrael2": 46,
+  "tentIsrael3": 46,
+  "tentPhil1": 46,
+  "tentPhil2": 46,
+  "tentPhil3": 46
+ },
+ "trisTotal": 19541,
+ "pieces": {
+  "duneFar": {
+   "kind": "dune",
+   "brinkX": -0.0202,
+   "brinkH": 0.19,
+   "slipFace": "-x (wind from +X)",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "sand"
+  },
+  "hillIsrael": {
+   "kind": "hill",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "hillIsrael"
+  },
+  "hillPhil": {
+   "kind": "hill",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "hillPhil"
+  },
+  "tentIsrael1": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     -0.194,
+     1.1064
+    ],
+    [
+     -0.194,
+     1.1112
+    ],
+    [
+     -0.1837,
+     1.1278
+    ],
+    [
+     -0.172,
+     1.1492
+    ],
+    [
+     -0.1603,
+     1.1278
+    ],
+    [
+     -0.15,
+     1.1112
+    ],
+    [
+     -0.15,
+     1.1064
+    ]
+   ],
+   "doorSheet": [
+    [
+     -0.1808,
+     1.1112
+    ],
+    [
+     -0.1632,
+     1.1112
+    ],
+    [
+     -0.172,
+     1.132
+    ]
+   ],
+   "skirtBottom3D": 0.2659,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentIsrael"
+  },
+  "tentIsrael2": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     -0.148,
+     1.117
+    ],
+    [
+     -0.148,
+     1.1218
+    ],
+    [
+     -0.1377,
+     1.1384
+    ],
+    [
+     -0.126,
+     1.1598
+    ],
+    [
+     -0.1143,
+     1.1384
+    ],
+    [
+     -0.104,
+     1.1218
+    ],
+    [
+     -0.104,
+     1.117
+    ]
+   ],
+   "doorSheet": [
+    [
+     -0.1348,
+     1.1218
+    ],
+    [
+     -0.1172,
+     1.1218
+    ],
+    [
+     -0.126,
+     1.1426
+    ]
+   ],
+   "skirtBottom3D": 0.2924,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentIsrael"
+  },
+  "tentIsrael3": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     -0.102,
+     1.1082
+    ],
+    [
+     -0.102,
+     1.113
+    ],
+    [
+     -0.0917,
+     1.1296
+    ],
+    [
+     -0.08,
+     1.151
+    ],
+    [
+     -0.0683,
+     1.1296
+    ],
+    [
+     -0.058,
+     1.113
+    ],
+    [
+     -0.058,
+     1.1082
+    ]
+   ],
+   "doorSheet": [
+    [
+     -0.0888,
+     1.113
+    ],
+    [
+     -0.0712,
+     1.113
+    ],
+    [
+     -0.08,
+     1.1338
+    ]
+   ],
+   "skirtBottom3D": 0.2705,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentIsrael"
+  },
+  "tentPhil1": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     0.032,
+     1.1327
+    ],
+    [
+     0.032,
+     1.1375
+    ],
+    [
+     0.0423,
+     1.1541
+    ],
+    [
+     0.054,
+     1.1755
+    ],
+    [
+     0.0657,
+     1.1541
+    ],
+    [
+     0.076,
+     1.1375
+    ],
+    [
+     0.076,
+     1.1327
+    ]
+   ],
+   "doorSheet": [
+    [
+     0.0452,
+     1.1375
+    ],
+    [
+     0.0628,
+     1.1375
+    ],
+    [
+     0.054,
+     1.1583
+    ]
+   ],
+   "skirtBottom3D": 0.3318,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentPhil"
+  },
+  "tentPhil2": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     0.08,
+     1.1477
+    ],
+    [
+     0.08,
+     1.1525
+    ],
+    [
+     0.0903,
+     1.1691
+    ],
+    [
+     0.102,
+     1.1905
+    ],
+    [
+     0.1137,
+     1.1691
+    ],
+    [
+     0.124,
+     1.1525
+    ],
+    [
+     0.124,
+     1.1477
+    ]
+   ],
+   "doorSheet": [
+    [
+     0.0932,
+     1.1525
+    ],
+    [
+     0.1108,
+     1.1525
+    ],
+    [
+     0.102,
+     1.1733
+    ]
+   ],
+   "skirtBottom3D": 0.3693,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentPhil"
+  },
+  "tentPhil3": {
+   "kind": "tent",
+   "gableSheet": [
+    [
+     0.136,
+     1.1412
+    ],
+    [
+     0.136,
+     1.146
+    ],
+    [
+     0.1463,
+     1.1626
+    ],
+    [
+     0.158,
+     1.184
+    ],
+    [
+     0.1697,
+     1.1626
+    ],
+    [
+     0.18,
+     1.146
+    ],
+    [
+     0.18,
+     1.1412
+    ]
+   ],
+   "doorSheet": [
+    [
+     0.1492,
+     1.146
+    ],
+    [
+     0.1668,
+     1.146
+    ],
+    [
+     0.158,
+     1.1668
+    ]
+   ],
+   "skirtBottom3D": 0.353,
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "tentPhil"
+  },
+  "bannerIsrael": {
+   "kind": "banner",
+   "poleBase3D": [
+    -0.148,
+    0.2842,
+    -1.36
+   ],
+   "poleTop": 0.4302,
+   "clothSide": "+x",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "flagIsrael"
+  },
+  "bannerPhil": {
+   "kind": "banner",
+   "poleBase3D": [
+    0.08,
+    0.3438,
+    -1.36
+   ],
+   "poleTop": 0.4898,
+   "clothSide": "-x",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 2.5,
+    "sheetX": 0.0,
+    "sheetY": 1.0
+   },
+   "region": "flagPhil"
+  },
+  "dune1": {
+   "kind": "dune",
+   "brinkX": -0.3966,
+   "brinkH": 0.1723,
+   "slipFace": "-x (wind from +X)",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.37
+   },
+   "region": "sand"
+  },
+  "dune2": {
+   "kind": "dune",
+   "brinkX": -0.3958,
+   "brinkH": 0.2461,
+   "slipFace": "-x (wind from +X)",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.6
+   },
+   "region": "sand"
+  },
+  "dune3": {
+   "kind": "dune",
+   "brinkX": 0.3195,
+   "brinkH": 0.2397,
+   "slipFace": "-x (wind from +X)",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.72
+   },
+   "region": "sand"
+  },
+  "rockL1": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.935
+   },
+   "region": "rock"
+  },
+  "rockL2": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.95
+   },
+   "region": "rock"
+  },
+  "rockM1": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.74
+   },
+   "region": "rock"
+  },
+  "rockM2": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.76
+   },
+   "region": "rock"
+  },
+  "rockFR1": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.06
+   },
+   "region": "rock"
+  },
+  "rockFR2": {
+   "kind": "rock",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.16
+   },
+   "region": "rock"
+  },
+  "shrubL": {
+   "kind": "shrub",
+   "mapping": "front",
+   "frontUV": {
+    "scale": 1.0,
+    "sheetX": 0.0,
+    "sheetY": 0.94
+   },
+   "region": "bush"
+  },
+  "brook": {
+   "kind": "water",
+   "footprintSheet": [
+    [
+     -0.4322,
+     -0.012
+    ],
+    [
+     -0.469,
+     -0.012
+    ],
+    [
+     -0.4676,
+     -0.0189
+    ],
+    [
+     -0.4541,
+     -0.0418
+    ],
+    [
+     -0.4499,
+     -0.0524
+    ],
+    [
+     -0.457,
+     -0.0826
+    ],
+    [
+     -0.4569,
+     -0.092
+    ],
+    [
+     -0.455,
+     -0.1004
+    ],
+    [
+     -0.4478,
+     -0.1171
+    ],
+    [
+     -0.4194,
+     -0.1678
+    ],
+    [
+     -0.412,
+     -0.19
+    ],
+    [
+     -0.377,
+     -0.19
+    ],
+    [
+     -0.3824,
+     -0.1694
+    ],
+    [
+     -0.3885,
+     -0.1535
+    ],
+    [
+     -0.4178,
+     -0.101
+    ],
+    [
+     -0.4226,
+     -0.0903
+    ],
+    [
+     -0.4227,
+     -0.0835
+    ],
+    [
+     -0.4167,
+     -0.0623
+    ],
+    [
+     -0.4162,
+     -0.0476
+    ],
+    [
+     -0.4211,
+     -0.032
+    ],
+    [
+     -0.4307,
+     -0.0144
+    ]
+   ],
+   "banks": [
+    [
+     [
+      -0.469,
+      -0.012
+     ],
+     [
+      -0.4676,
+      -0.0189
+     ],
+     [
+      -0.4541,
+      -0.0418
+     ],
+     [
+      -0.4499,
+      -0.0524
+     ],
+     [
+      -0.457,
+      -0.0826
+     ],
+     [
+      -0.4569,
+      -0.092
+     ],
+     [
+      -0.455,
+      -0.1004
+     ],
+     [
+      -0.4478,
+      -0.1171
+     ],
+     [
+      -0.4194,
+      -0.1678
+     ],
+     [
+      -0.412,
+      -0.19
+     ]
+    ],
+    [
+     [
+      -0.377,
+      -0.19
+     ],
+     [
+      -0.3824,
+      -0.1694
+     ],
+     [
+      -0.3885,
+      -0.1535
+     ],
+     [
+      -0.4178,
+      -0.101
+     ],
+     [
+      -0.4226,
+      -0.0903
+     ],
+     [
+      -0.4227,
+      -0.0835
+     ],
+     [
+      -0.4167,
+      -0.0623
+     ],
+     [
+      -0.4162,
+      -0.0476
+     ],
+     [
+      -0.4211,
+      -0.032
+     ],
+     [
+      -0.4307,
+      -0.0144
+     ],
+     [
+      -0.4322,
+      -0.012
+     ]
+    ]
+   ]
+  },
+  "fiveStones": {
+   "kind": "stones",
+   "stonesSheet": [
+    [
+     -0.4292,
+     -0.1
+    ],
+    [
+     -0.4173,
+     -0.122
+    ],
+    [
+     -0.4056,
+     -0.143
+    ],
+    [
+     -0.3955,
+     -0.164
+    ],
+    [
+     -0.4125,
+     -0.152
+    ]
+   ]
+  }
+ }
+}

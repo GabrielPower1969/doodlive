@@ -1,0 +1,73 @@
+{
+ "rule": "Start each cue at its timeline t at full level; fade the previous cue out over 0.6 s from that t. Each non-final cue is its span + 0.6 s long so the fade has material. sting_hit is a one-shot followed by silence until theme_victory. Music sits at -20 LUFS; duck it ~6 dB under voice lines.",
+ "crossfadeSec": 0.6,
+ "lufs": -20.0,
+ "cues": [
+  {
+   "cue": "theme_tension",
+   "t": 0.0,
+   "span": 26.4,
+   "secs": 27.0,
+   "loop": false,
+   "oneShot": false,
+   "lufs": -20.0,
+   "truePeak": -2.2,
+   "samplePeak": -2.3
+  },
+  {
+   "cue": "theme_shepherd",
+   "t": 26.4,
+   "span": 31.6,
+   "secs": 32.2,
+   "loop": false,
+   "oneShot": false,
+   "lufs": -20.0,
+   "truePeak": -4.2,
+   "samplePeak": -4.2
+  },
+  {
+   "cue": "theme_faith",
+   "t": 58.0,
+   "span": 9.8,
+   "secs": 10.4,
+   "loop": false,
+   "oneShot": false,
+   "lufs": -20.0,
+   "truePeak": -3.5,
+   "samplePeak": -3.5
+  },
+  {
+   "cue": "theme_battle",
+   "t": 67.8,
+   "span": 5.25,
+   "secs": 5.85,
+   "loop": false,
+   "oneShot": false,
+   "lufs": -20.0,
+   "truePeak": -3.0,
+   "samplePeak": -3.0
+  },
+  {
+   "cue": "sting_hit",
+   "t": 73.05,
+   "span": 2.95,
+   "secs": 2.95,
+   "loop": false,
+   "oneShot": true,
+   "lufs": -20.0,
+   "truePeak": -1.0,
+   "samplePeak": -1.1
+  },
+  {
+   "cue": "theme_victory",
+   "t": 76.0,
+   "span": 13.0,
+   "secs": 13.0,
+   "loop": false,
+   "oneShot": false,
+   "lufs": -20.0,
+   "truePeak": -2.2,
+   "samplePeak": -2.2
+  }
+ ]
+}

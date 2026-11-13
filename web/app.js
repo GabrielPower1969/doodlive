@@ -220,7 +220,7 @@ function refreshButtons() {
   for (const sp of $('langHud').querySelectorAll('span')) sp.classList.toggle('on', sp.dataset.l === lang);
 }
 
-// Recorded lines (Gabriel's own voice, zh and en sets) with Web Speech as the fallback; voices never overlap.
+// Recorded lines (a real recorded voice, zh and en sets) with Web Speech as the fallback; voices never overlap.
 const VOICE_FILE = { hello: 'voice_hello', line0: 'voice_0', line1: 'voice_1', line2: 'voice_2', line3: 'voice_3', greet0: 'greet0', greet1: 'greet1', greet2: 'greet2' };
 let currentClip = null;
 const SET = (() => { try { return { sound: true, haptics: true, music: 0.22, ...JSON.parse(localStorage.getItem('settings') || '{}') }; } catch { return { sound: true, haptics: true, music: 0.22 }; } })();
@@ -240,7 +240,7 @@ function speak(key) {
   if (currentClip) { const old = currentClip; let v = old.volume; const fade = () => { v -= 0.12; if (v <= 0) old.pause(); else { old.volume = v; setTimeout(fade, 20); } }; fade(); }  // 150 ms fade, never overlap
   const ZH_GREET = { greet0: 'fly', greet1: 'wow', greet2: 'laugh' };   // the zh set was recorded with these names
   const file = lang === 'en' ? VOICE_FILE[key] : (ZH_GREET[key] || VOICE_FILE[key]);
-  const a = new Audio(`assets/voice/${lang === 'en' ? 'gabriel-en' : 'gabriel'}/${file}.mp3`);
+  const a = new Audio(`assets/voice/${lang === 'en' ? 'recorded-en' : 'recorded-zh'}/${file}.mp3`);
   currentClip = a; a.onplay = start; a.onended = end;
   a.onerror = () => say(t(key), { lang, onstart: start, onend: end });
   playEl(a).catch(() => SET.sound && say(t(key), { lang, onstart: start, onend: end }));
