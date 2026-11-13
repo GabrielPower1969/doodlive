@@ -21,6 +21,8 @@ namespace DoodLive.DavidGoliath
         [Tooltip("Story packs: natural speed per clip (art units / s) for in-place locomotion, 0 = not locomotion")]
         public float[] speeds;
         public float Speed(int i) => speeds != null && i >= 0 && i < speeds.Length ? speeds[i] : 0;
+        public bool[] backwards;                              // story packs: locomotion that travels away from where the actor faces (dragged)
+        public bool Backwards(int i) => backwards != null && i >= 0 && i < backwards.Length && backwards[i];
         [Tooltip("Page-coloured material of this character (DoodLive/DGPaperLit); the face decal is swapped per clip")]
         public Material material;
         [Tooltip("David's stone mesh: hidden until kneel_pick, hidden again once sling_release is over (ANIMATION.md §7.1)")]

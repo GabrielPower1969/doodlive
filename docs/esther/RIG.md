@@ -13,7 +13,10 @@ runs every step below in order and prints the verify summary. Steps one by one:
 python3 pipeline/es_characters.py faces                                          # face decal PNGs + overview (Pillow)
 blender -b --factory-startup --python pipeline/es_characters.py -- build         # ~12 s: meshes, rig, weights, UVs,
                                                                                   #   ID render, GLBs, characters.blend,
-                                                                                  #   regions_characters.json
+                                                                                  #   regions_characters.json; then runs
+                                                                                  #   `guards` (below) unless ES_NO_GUARDS=1
+blender -b --factory-startup --python pipeline/es_characters.py -- guards        # guard1/guard2: own ID render, paint,
+                                                                                  #   GLBs, appended to characters.blend
 python3 pipeline/es_characters.py proof                                          # $ES_WORK/uvproof.png (perfect sheet)
 blender -b --factory-startup --python pipeline/es_characters.py -- preview       # lit demo-palette renders (EEVEE)
 blender -b --factory-startup --python pipeline/es_characters.py -- uvcheck       # models wearing uvproof.png via UV0
@@ -22,20 +25,23 @@ blender -b --factory-startup --python pipeline/es_characters.py -- verify       
 python3 pipeline/es_characters.py compose                                        # model/preview_*.png contact sheets
 ```
 
-`ES_WORK` (default `/tmp/es_work`) holds intermediate renders. `ES_ONLY=esther` (comma list) builds a subset for
+`ES_WORK` (default `/tmp/es_work`) holds intermediate renders. `ES_MODEL=<dir>` writes every model output (blend,
+GLBs, JSON, previews) to a scratch folder instead of `assets/esther/model/` — use it while iterating, because the
+Animation role and `tools/story/make_sheet.py` read the real files. `ES_ONLY=esther` (comma list) builds a subset for
 iteration (the regions JSON then only lists that subset; run a full build before handing off). `ES_UV_TEXTURE=<png>`
 makes `uvcheck` use another texture (e.g. the Sheet role's demo colouring once it exists). Checked 2026-11-14 with
 Blender 5.2.3.
 
 ## 1. What is in the GLBs (`assets/esther/model/`)
 
-| | esther | king | haman |
-|---|---|---|---|
-| Triangles (target < 25k) | **23,948** | **24,692** | **19,184** |
-| Skinned body (one mesh, ≤ 4 influences) | `esther_body` 22,084 | `king_body` 21,560 | `haman_body` 18,156 |
-| Rigid props (child of one bone) | `esther_necklace` → `chest` (1,220), `esther_diadem` → `diadem` (560), `esther_eyelids` → `eyelids` (84) | `king_crown` → `crown` (2,104), `king_sceptre` → `sceptre` (768), `king_ring` → `ring` (176), `king_eyelids` → `eyelids` | `haman_cap` → `cap` (768), `haman_ring` → `ring` (176), `haman_eyelids` → `eyelids` |
-| Top of silhouette (local) | 0.3395 (diadem point) | 0.4001 (crown) | 0.3708 (cap) |
-| Bones | 32 | 30 | 28 |
+| | esther | king | haman | guard1 / guard2 |
+|---|---|---|---|---|
+| Triangles (target < 25k) | **23,948** | **24,692** | **23,996** | **19,796** / **18,792** |
+| Skinned body (one mesh, ≤ 4 influences) | `esther_body` 22,084 | `king_body` 21,560 | `haman_body` 22,496 (incl. the plume) | `guard1_body` 18,388 / `guard2_body` 17,384 |
+| Rigid props (child of one bone) | `esther_necklace` → `chest` (1,220), `esther_diadem` → `diadem` (560), `esther_eyelids` → `eyelids` (84) | `king_crown` → `crown` (2,104), `king_sceptre` → `sceptre` (768), `king_ring` → `ring` (176), `king_eyelids` → `eyelids` | `haman_cap` → `cap` (1,240, cap + rims + brooch), `haman_ring` → `ring` (176), `haman_eyelids` → `eyelids` | `guardN_cap` → `head` (1,104), `guardN_spear` → `spear` (220), `guardN_eyelids` → `eyelids` |
+| Top of silhouette (local) | 0.3395 (diadem point) | 0.4001 (crown) | 0.4284 (plume; cap top 0.393) | 0.380 cap, 0.398 spear tip |
+| Bones | 32 | 30 | 30 | 27 |
+| Material | `es_page` | `es_page` | `es_page` | `es_guard_paint` (guard_paint.png embedded) |
 
 - One material per GLB (`es_page`, white; the app puts the scanned page on it). Attributes: POSITION NORMAL
   TEXCOORD_0 (page, Blender layer `UVMap` = layer 0) TEXCOORD_1 (face decal, layer `decal` = layer 1; the build asserts
@@ -77,7 +83,9 @@ footL/R toeL/R fingersL fingersR eyelids`. Local Z of every bone points to the v
 | `crown` (king) | `head` | rigid crown |
 | `sceptre` → `sceptreTip` (king) | `handR` | `sceptre` runs from the grip to the knob centre; `sceptreTip` is a leaf at the knob (FX `sceptre_beam`) |
 | `ring` (king) | `handR` | signet ring on the ring finger; hide after S04 |
-| `cap` (haman) | `head` | rigid cap; slips in `shock` |
+| `cap` (haman) | `head` | rigid cap; slips in `shock`, pops in `stunned`. Head and rotation unchanged by the rework; the bone is longer (tail at the new cap top 0.393) |
+| `plume1 plume2` (haman) | `cap` → chain | the feather plume: plume1 from just above the brooch (his left front of the cap) up past the cap top, plume2 from there over the arch to the drooping tip (toward his left, +x). Bend about local Z (in the front plane) for bob and whip. The plume is skinned in `haman_body` (cap → plume1 → plume2 blend), so hiding the `cap` node does **not** hide it; move the bone instead |
+| `spear` (guards) | `handR` (guard1) / `handL` (guard2) | from the grip in the fist to the spear-head tip; the outer hand is a fist at rest (like the king's right hand) |
 | `ring` (haman) | `handL` | signet ring on the ring finger; shown from S04 |
 
 ## 4. How the meshes are made
@@ -103,8 +111,12 @@ All procedural (`pipeline/es_characters.py` + `pipeline/story_mesh.py`).
   hangs plumb from the shoulder blades and flares with folds (solidified), two-strand bead necklace with a star
   pendant, diadem with a pointed front plate and jewel, slippers. King — scalloped gold collar with two grooves draped
   over the shoulders, gold belt with a round medallion, tall flat-topped crown (flares upward) with three raised
-  bands and seven rosettes, sceptre (staff, collars, knob, two small wings), signet ring, shoes. Haman — round teal
-  cap tipped back with a gold rim, mustard sash, signet ring, pointed upturned shoes.
+  bands and seven rosettes, sceptre (staff, collars, knob, two small wings), signet ring, shoes. Haman (rework
+  2026-11-14, HAMAN-REWORK.md) — a pompous cartoon peacock: round pot belly and puffed chest (robe rows; the skirt
+  tucks in under the belly), long hooked nose (own part `nose`, skin), thin moustache rolled into a curl on each side,
+  pointed goatee, wide gold collar with pointed scallops, mustard belt across the widest part of the belly, slippers
+  whose toes curl up and back, a tall teal cap (0.393) tipped back with a gold rim, a gold band and a gold brooch, and a
+  tall feather plume (region `plume`) springing from the brooch and arching over to his left into a curl.
 - Garments are kept off the sleeves by `push_out_of_sleeves` (story-agnostic helper in es_characters.py).
 
 ## 5. Regions (`model/regions_characters.json`)
@@ -114,7 +126,10 @@ name, the mesh parts that carry it and its bbox on the sheet; also `faceDecal`, 
 
 | esther | king | haman |
 |---|---|---|
-| skin, hair (incl. braid), robe, cape, sash (incl. braid tie), underSash, sandals; **anchored**: diadem → sash, necklace → sash, pendant → underSash | skin, beard (= beard, moustache and hair), robe, collar, belt, crown, shoes, sceptre (one colour, from the widest printed spot of the sceptre: knob/wings); **anchored**: crownBands → collar, ring → collar | skin, beard (= goatee, moustache, hair), robe, panels (panel, hem band, cuffs, sash), cap, shoes; **anchored**: capRim → panels, ring → panels |
+| skin, hair (incl. braid), robe, cape, sash (incl. braid tie), underSash, sandals; **anchored**: diadem → sash, necklace → sash, pendant → underSash | skin, beard (= beard, moustache and hair), robe, collar, belt, crown, shoes, sceptre (one colour, from the widest printed spot of the sceptre: knob/wings); **anchored**: crownBands → collar, ring → collar | skin (incl. the nose), beard (= goatee, moustache, hair), robe, panels (panel, hem band, cuffs, belly belt), **collar** (gold, new), cap, **plume** (demo `#2FA38A`, new), shoes; **anchored**: capRim (rims, band, brooch) → panels, ring → panels |
+
+On A4 Haman's new parts are colourable but narrower than 6 mm: plume best cell 16 px (~2.7 mm), collar 30 px (~5 mm)
+(`assets/esther/sheet/checks.json`); his cap (20 px) and panels (18 px) were already below 6 mm before the rework.
 
 **Part anchors (2026-11-14, after the first on-device run):** hands are slivers on the sheet that stay unpainted, so
 they rendered paper-white. All hand faces (esther both hands, king left hand + right fist, haman both hands) now take
@@ -154,7 +169,19 @@ lips for Esther, or open with teeth and tongue); Esther has a soft blush. `overv
 
 | esther | king | haman |
 |---|---|---|
-| calm (default), worried, pray (closed), brave, talk, joy (happy closed eyes, open smile) | stern (default), listen, smile, surprised, angry | smug (default), sly (side glance, one brow up), shocked, scared (sweat drop) |
+| calm (default), worried, pray (closed), brave, talk, joy (happy closed eyes, open smile) | stern (default), listen, smile, surprised, angry | proud (default), smug, sly, shocked, scared, laugh, furious, scheming, stunned, sulky, terrified, begging |
+
+**Haman and the guards** use bold cartoon faces (`bold_face` in es_characters.py): 0.027 ink, eyes drawn 1.15–1.35x
+the lid layout, every emotion pushed (proud: half-shut eyes looking down, brows high, long curled smirk; laugh: eyes
+squeezed to arcs, huge open D mouth, crow's feet, rosy cheeks; furious: V brows, bulging eyes with small pupils,
+clenched teeth, red hatched cheeks, anger mark; scheming: eyes slid to the side, wicked teeth grin; stunned: dot
+eyes in big whites, jaw hanging; sulky: heavy lids, pout; terrified: huge eyes, screaming O, tear streams, sweat;
+begging: big wet puppy eyes, wobbly mouth, welling tears and tear streams). Haman's decal rect is 1.25x larger and
+reaches 0.32 H below the mouth (`faceDecal.rectLocal` [-0.02565, 0.28805, 0.02565, 0.33935], was
+[-0.0205, 0.2983, 0.0205, 0.3393]); his mouths are drawn 1.35x so they read past the nose, moustache and goatee. UV1
+in haman.glb follows the new rect; the eye positions and the blink lids are unchanged. Guards: `guard1_stern.png`,
+`guard2_stern.png` (file name = cast id, as the Unity loader expects). `model/preview_haman_phone.png` shows three of
+Haman's faces at phone size.
 
 `regions_characters.json` carries a suggested clip → expression map; Integration's `assets/esther/faces.json` is the
 one the app uses (same names).
@@ -166,6 +193,16 @@ one the app uses (same names).
   half blink, braid and cape bend — no tearing seen at preview size.
 - `uvcheck` as above; front ortho of the models equals the ID render.
 
+**Haman rework + guards (2026-11-14):** `verify` bones equal CONTRACT §3 + HAMAN-REWORK §3 for all five (haman
++ `plume1 plume2`, guards + `spear`), ≤ 4 influences, all < 25k; Haman's existing bones keep their rest transforms
+(compared node by node with the previous haman.glb; only the `cap` bone is longer). esther.glb and king.glb are
+byte-identical after the rebuild. Sheet: `make_sheet.py esther` PASS (no set drawing over a figure, anchors 10/10).
+Vision (`tests/vision`, 3 x 300 frames, seeds 7 / 11 / 23, the Esther print and demo sheet now in the synthetic set,
+story check per story pack): 93.9 / 96.5 / 96.0 % corners right, 0 false positives, one cross-story title misread per
+run (David→wrath, Angel→Esther, Esther→holy). Seeds 7 and 11 give exactly the same misreads with the pre-rework
+Esther sheets, so they are title-band identification limits, not the new art (the title band and the signatures are
+unchanged).
+
 ## 9. Not done / rough edges
 
 1. Not tested in Unity or on a phone (glTFast import, the app's lighting, the real scanned texture, blink by joint
@@ -176,3 +213,29 @@ one the app uses (same names).
 4. Sheet layout with the default positions leaves only 0.018 between Esther and the king's sceptre wings; the Sheet
    role should space the figures (widths in §2).
 5. The braid is parented to `head` per the contract; head turns swing it across the chest unless counter-animated.
+6. Haman's plume (2.7 mm) and collar (5 mm) are colourable but under the 6 mm rule on A4; the plume is skinned in
+   `haman_body`, so hiding `haman/cap` leaves the plume visible (move the cap bone instead).
+7. Guards: not tested in Unity; the stern face is the only guard decal; the cap flutes are shallow.
+
+## 10. Palace guards `guard1`, `guard2` (HAMAN-REWORK.md §3)
+
+- Same humanoid skeleton as the cast (contract bones + `fingersL/R` + `eyelids`) plus `spear`; height 0.38 (cap top),
+  A-pose 55°, facing +Z, feet on y = 0. guard1 holds the spear in his **right** hand (`handR`; screen left when he
+  faces the viewer), guard2 in his **left** (`handL`); that hand is a fist at rest, the other hand open. Inner hand =
+  the open one. Look: Persian-inspired, tall fluted cap with a gold band, lapis tunic to below the knee with gold hem
+  and cuffs and a terracotta belt, sand trousers, brown boots, short bronze spear with a gold leaf head. guard1 has a
+  short square curly beard and a terracotta cap; guard2 a thick drooping moustache, no beard, and a glazed-teal cap.
+- **Not on the colouring sheet.** UV0 samples `assets/esther/model/guard_paint.png` (fixed demo-palette paint, made
+  from the guards' own front ID render on a virtual page, `GUARD_PAGE`). Every face of a region samples one texel deep
+  inside that region, so the paint never bleeds across thin bands. The GLBs carry the material `es_guard_paint` with
+  this PNG embedded; bind the same PNG to UV0 if the app replaces materials. UV1 = face decal as for the cast.
+- `regions_characters.json` lists them under `offSheet` (decal rect, files, blink, colours, spear hand), not under
+  `characters` (that list is what the sheet prints).
+- **For `pipeline/es_animate.py`:** `characters.blend` holds `guard1_rig` and `guard2_rig` (armature objects) with
+  their meshes as children (`guardN_body` skinned, `guardN_cap` on `head`, `guardN_spear` on `spear`,
+  `guardN_eyelids` on `eyelids`), exactly the `<id>_rig` / `<id>_*` naming the script already uses for
+  esther / king / haman, so adding `"guard1", "guard2"` to its `CHARS` (and `H_OF` 0.38) is enough to open them with
+  `bpy.data.objects[f"{ch}_rig"]`. The rigs stand **off the page** at x 1.10 and 1.25 (z 0) in the blend; the export
+  step moves each rig to the origin anyway. Their region table is the scene property `es_regions_guards` (not
+  `es_regions`). Meshes use `es_guard_paint`, not `es_page`.
+

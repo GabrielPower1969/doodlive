@@ -1,5 +1,5 @@
 {
- "rule": "Start each cue at its timeline t at full level and fade the previous cue out over 0.6 s from that t. Every non-final cue is its span + 0.6 s long so the fade has music under it; the final cue fades out by itself over its last 2.5 s. Music sits at -20 LUFS; duck it ~7 dB under voice lines.",
+ "rule": "Start each cue at its timeline t at full level and fade the previous cue out over 0.6 s from that t. Every non-final cue is at least its span + 0.6 s long so the fade has music under it; the final cue fades out by itself over its last 2.5 s. A cue that plays more than once uses the same file from its start each time (composedFor = the occurrence it was timed to). Music sits at -20 LUFS; duck it ~7 dB under voice lines.",
  "crossfadeSec": 0.6,
  "lufs": -20.0,
  "cues": [
@@ -13,35 +13,38 @@
    "bars": 11,
    "bpm": 100.4,
    "lufs": -20.0,
-   "truePeak": -3.8
+   "truePeak": -3.8,
+   "composedFor": 0.0
   },
   {
-   "cue": "haman_theme",
+   "cue": "haman_fanfare",
    "t": 19.72,
-   "span": 15.41,
-   "secs": 16.01,
+   "span": 35.38,
+   "secs": 35.98,
    "lastCue": false,
    "loop": false,
-   "bars": 7,
-   "bpm": 109.0,
+   "bars": 15,
+   "bpm": 101.8,
    "lufs": -20.0,
-   "truePeak": -3.3
+   "truePeak": -1.9,
+   "composedFor": 19.72
   },
   {
    "cue": "tension",
-   "t": 35.13,
-   "span": 15.53,
-   "secs": 16.13,
+   "t": 55.1,
+   "span": 24.18,
+   "secs": 30.16,
    "lastCue": false,
    "loop": false,
-   "bars": 6,
-   "bpm": 92.7,
+   "bars": 11,
+   "bpm": 89.3,
    "lufs": -20.0,
-   "truePeak": -4.0
+   "truePeak": -2.4,
+   "composedFor": 141.1
   },
   {
    "cue": "mordecai",
-   "t": 50.66,
+   "t": 79.28,
    "span": 27.06,
    "secs": 27.66,
    "lastCue": false,
@@ -49,11 +52,12 @@
    "bars": 8,
    "bpm": 71.0,
    "lufs": -20.0,
-   "truePeak": -4.8
+   "truePeak": -4.8,
+   "composedFor": 79.28
   },
   {
    "cue": "approach",
-   "t": 77.72,
+   "t": 106.34,
    "span": 11.87,
    "secs": 12.47,
    "lastCue": false,
@@ -61,11 +65,12 @@
    "bars": 5,
    "bpm": 101.1,
    "lufs": -20.0,
-   "truePeak": -2.5
+   "truePeak": -2.5,
+   "composedFor": 106.34
   },
   {
    "cue": "sceptre",
-   "t": 89.59,
+   "t": 118.21,
    "span": 14.2,
    "secs": 14.8,
    "lastCue": false,
@@ -73,11 +78,51 @@
    "bars": 4,
    "bpm": 67.6,
    "lufs": -20.0,
-   "truePeak": -2.0
+   "truePeak": -2.0,
+   "composedFor": 118.21
+  },
+  {
+   "cue": "haman_fanfare",
+   "t": 132.41,
+   "span": 8.69,
+   "secs": 35.98,
+   "lastCue": false,
+   "loop": false,
+   "bars": 15,
+   "bpm": 101.8,
+   "lufs": -20.0,
+   "truePeak": -1.9,
+   "composedFor": 19.72
+  },
+  {
+   "cue": "tension",
+   "t": 141.1,
+   "span": 29.56,
+   "secs": 30.16,
+   "lastCue": false,
+   "loop": false,
+   "bars": 11,
+   "bpm": 89.3,
+   "lufs": -20.0,
+   "truePeak": -2.4,
+   "composedFor": 141.1
+  },
+  {
+   "cue": "sulk_march",
+   "t": 170.66,
+   "span": 13.28,
+   "secs": 13.88,
+   "lastCue": false,
+   "loop": false,
+   "bars": 4,
+   "bpm": 72.3,
+   "lufs": -20.0,
+   "truePeak": -1.3,
+   "composedFor": 170.66
   },
   {
    "cue": "banquet",
-   "t": 103.79,
+   "t": 183.94,
    "span": 7.53,
    "secs": 8.13,
    "lastCue": false,
@@ -85,23 +130,25 @@
    "bars": 4,
    "bpm": 95.6,
    "lufs": -20.0,
-   "truePeak": -3.3
+   "truePeak": -3.3,
+   "composedFor": 183.94
   },
   {
    "cue": "truth",
-   "t": 111.32,
-   "span": 13.29,
-   "secs": 13.89,
+   "t": 191.47,
+   "span": 29.5,
+   "secs": 30.1,
    "lastCue": false,
    "loop": false,
-   "bars": 6,
-   "bpm": 108.4,
+   "bars": 12,
+   "bpm": 97.6,
    "lufs": -20.0,
-   "truePeak": -3.0
+   "truePeak": -2.4,
+   "composedFor": 191.47
   },
   {
    "cue": "celebration",
-   "t": 124.61,
+   "t": 220.97,
    "span": 19.77,
    "secs": 19.77,
    "lastCue": true,
@@ -109,7 +156,8 @@
    "bars": 11,
    "bpm": 133.5,
    "lufs": -20.0,
-   "truePeak": -3.7
+   "truePeak": -3.7,
+   "composedFor": 220.97
   }
  ]
 }

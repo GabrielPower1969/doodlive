@@ -24,6 +24,7 @@ Outputs (44.1 kHz mono 16-bit WAV + 96 kbps mono MP3 copies):
   docs/esther/MUSIC.md                       the tables between the <!-- ...:start/end --> markers are rewritten
 
 Usage: python3 tools/story/music_esther.py [--skip-music] [--skip-sfx] [--skip-preview] [--only a,b] [--stems]
+       [--timeline path] [--preview-out path]   (a cue that plays twice is one file: see cue_files)
 Needs: pip install mido numpy scipy; brew install fluid-synth ffmpeg
 """
 import argparse, json, math, os, re, subprocess, tempfile, warnings, zlib
@@ -71,10 +72,12 @@ HARP, KOTO, NYLON, CELESTA, GLOCK, XYLO, TUBULAR = 46, 107, 24, 8, 9, 13, 14
 STRINGS, SLOW_STR, TREM_STR, PIZZ, CELLO, CBASS = 48, 49, 44, 45, 42, 43
 CHOIR, OOHS, FLUTE, RECORDER, SHAKU, OBOE, BASSOON, CLARINET, SHANAI = 52, 53, 73, 74, 77, 68, 70, 71, 111
 TIMPANI, TAIKO, ORCH_HIT = 47, 116, 55
+TRUMPET, TROMBONE, TUBA, MUTED_TPT, HORN = 56, 57, 58, 59, 60
 DRUMS = None
 # GM drum keys
 BDRUM, CLAP, TAMB, CRASH, HI_BONGO, LO_BONGO, MUTE_CONGA, OPEN_CONGA, LO_CONGA = 35, 39, 54, 49, 60, 61, 62, 63, 64
 HI_WOOD, LO_WOOD, SHAKER, TRIANGLE = 76, 77, 70, 81
+PEDAL_HAT, CRASH_HAND, SNARE = 44, 57, 38
 
 CH = {  # chord -> voicing (root position, low) ; [root, fifth, octave, third/top]
     "Dm": ["D3", "A3", "D4", "F4"], "D": ["D3", "A3", "D4", "F#4"], "G": ["G2", "D3", "G3", "B3"],
@@ -351,6 +354,160 @@ def cue_haman(c):
         if bt is not None: timp.add(bt, "D2", .6, 96); pz.add(bt, "D2", .3, 100)
     return s.render()
 
+
+# ----------------------------------------------------------------------------------------------- haman_fanfare
+# Haman's motif (haman_theme: D - A, the Bb-A-G#-A turn, back to D) puffed up into a strutting oom-pah march.
+FAN_MEL = [
+    [("D3", .75), ("A2", .25), ("D3", .75), ("F3", .25), ("A3", 1.5), (None, .5)],
+    [("Bb3", .25), ("A3", .25), ("G#3", .25), ("A3", .25), ("D4", 1), ("A3.", .5), (None, .5), ("F3", .5), ("E3", .5)],
+    [("D3", .75), ("A2", .25), ("D3", .75), ("F3", .25), ("G3", .75), ("F3", .25), ("E3", .75), ("D3", .25)],
+    [("C#3", .75), ("E3", .25), ("A3", 1), ("D3.", .5), ("D3.", .5), ("D3", 1)],
+    [("A3", .75), ("A3", .25), ("Bb3", .25), ("A3", .25), ("G#3", .25), ("A3", .25), ("F4", 1.5), (None, .5)],
+    [("E4", .75), ("C#4", .25), ("A3", .75), ("G3", .25), ("E3", 1), (None, 1)],
+    [("Bb3", .75), ("G3", .25), ("D3", .75), ("Bb2", .25), ("G3", .75), ("Bb3", .25), ("D4", 1)],
+    [("C#4", .75), ("A3", .25), ("E3", .5), ("C#3", .5), ("D3", 1), (None, 1)],
+]
+FAN_HARM = [["Dm"], ["Dm"], ["Dm"], ["A7", "Dm"], ["Dm"], ["A7"], ["Gm"], ["A7", "Dm"]]
+
+
+def oompah(tuba, pah, b, harm, vel=1.0, bdrum=None, hat=None):
+    """One 4/4 bar of oom-pah: tuba root / fifth on 1 and 3, a short low brass chord on 2 and 4."""
+    for half in range(2):
+        ps = chord(harm[min(half, len(harm) - 1)]); hb_ = b + half * 2
+        tuba.add(hb_, ps[0] - 12 if half == 0 or len(harm) > 1 else ps[1] - 12, .7, 92 * vel)
+        pah.chord(hb_ + 1, [ps[1], ps[2], ps[3]], .38, 62 * vel, strum=.008)
+        if bdrum is not None: bdrum.add(hb_, BDRUM, .5, (78 if half == 0 else 64) * vel)
+        if hat is not None: hat.add(hb_ + 1, PEDAL_HAT, .3, 50 * vel)
+
+
+def cue_haman_fanfare(c):
+    """Haman's parade (S03, again under S08b). A timpani roll under the herald's fanfare, then the motif struts on
+    trombone + bassoon over tuba oom-pah, horn swells, bass drum and pedal hi-hat; brass stab on each cadence.
+    From the narrator's line (Mordecai won't bow) it thins to a tiptoeing bassoon; from the steam it boils over
+    (tremolo strings, climbing tuba, timpani roll) and every stomp is caught by timpani + tuba + bass drum.
+    Low and mid brass only under the dialogue; the whole cue is dipped around 2.2 kHz."""
+    s = Score(c, 104, 4, min_bars=3)
+    n = s.bars
+    tb = s.part("trombone lead", TROMBONE, 0, .24, lp=4500, human=.007)
+    bsn = s.part("bassoon double", BASSOON, -6, .22, human=.007)
+    tuba = s.part("tuba", TUBA, 1, .18, lp=2000, human=.005)
+    pah = s.part("trombone pahs", TROMBONE, -7, .26, lp=2600, human=.006)
+    hn = s.part("horns", HORN, -5, .4, lp=3000)
+    tpt = s.part("trumpet stabs", TRUMPET, -11, .35, lp=3500)
+    timp = s.part("timpani", TIMPANI, -2, .3)
+    trem = s.part("tremolo strings", TREM_STR, -6, .4, lp=3500)
+    bd = s.part("bass drum", DRUMS, -6, .2, lp=900, human=.004)
+    hat = s.part("pedal hat", DRUMS, -14, .15, hp=5000, human=.004)
+    wb = s.part("wood blocks", DRUMS, -10, .15, human=.004)
+    # sections from the timeline: parade -> thin (narrator: Mordecai won't bow) -> boil (steam) -> stomps
+    narr = [t for t in c.all("lines", who="narrator") if t > c.t + 2]
+    thin_b = s.at(min(narr)) if narr else None
+    boil_b = s.at(c.first("sfx", id="steam") or c.first("acting", who="haman", clip="fume"))
+    boil_q = round(boil_b * 2) / 2 if boil_b is not None else n * 4      # boils over on the half beat of the steam
+    boil_bar = int(boil_q // 4)
+    thin_bar = int(round(thin_b / 4)) if thin_b is not None else boil_bar
+    thin_bar = max(2, min(thin_bar, boil_bar + 1))
+    stomps = sorted(b for b in (s.at(t) for t in c.all("sfx", id="stomp")) if b is not None)
+    # bar 0: timpani roll on A swelling under the herald trumpets, brass pickup into the strut
+    for i in range(int(3 / .125)):
+        timp.add(i * .125, "A2" if i % 2 == 0 else "A2", .2, 34 + 40 * i / 24)
+    tuba.add(3, "A1", .45, 96); pah.chord(3, chord("A7")[1:], .4, 78); bd.add(3, BDRUM, .4, 70)
+    tpt.chord(3.5, ["A4", "C#5"], .3, 62)
+    for bar in range(1, min(n, boil_bar + 1)):
+        b = bar * 4
+        if bar < thin_bar:                                                         # the parade
+            k = (bar - 1) % 8; harm = FAN_HARM[k]
+            oompah(tuba, pah, b, harm, 1.0, bd, hat)
+            mel(tb, b, FAN_MEL[k], 92); mel(bsn, b, FAN_MEL[k], 74)
+            if k in (0, 4): hn.chord(b, [note("D3"), note("F3"), note("A3")], 1.6, 60); hn.ramp(b, b + 1.6, 11, 70, 115)
+            if k in (0, 4): timp.add(b, "D2", 1, 92)
+            if k in (3, 7):                                                        # cadence: ta-daa
+                tpt.chord(b + 3, ["F4", "A4", "D5"], .6, 70); timp.add(b + 2, "A2", .4, 80); timp.add(b + 3, "D2", .8, 96)
+                bd.add(b + 3, CRASH_HAND, .8, 54)
+        else:                                                                      # Mordecai won't bow: tiptoe
+            k = 4 + (bar - thin_bar) % 4; harm = FAN_HARM[k]
+            ps = chord(harm[0])
+            tuba.add(b, ps[0] - 12, .45, 84); tuba.add(b + 2, ps[1] - 12, .45, 76)
+            pah.chord(b + 1, [ps[1], ps[3]], .25, 52); pah.chord(b + 3, [ps[1], ps[3]], .25, 50)
+            mel(bsn, b, [(p if p is None or p.endswith(".") else p + ".", d) for p, d in FAN_MEL[k]], 96, shift=-12)
+            groove(wb, b, ".t.t.t.t", .5, {"t": (HI_WOOD, 46)})
+    t_boil = s.sec(boil_q) - .02                                                   # nothing of the strut after it
+    for p_ in (tb, bsn, tuba, pah, hn, tpt, bd, hat, wb, timp):
+        p_.notes = [nt for nt in p_.notes if nt[0] < t_boil]
+    total = n * 4
+    if boil_q < total:                                                             # boiling over, to the end
+        climb = ["D2", "Eb2", "E2", "F2", "F#2", "G2", "G#2", "A2", "Bb2", "B2"]
+        for i, q in enumerate(np.arange(boil_q, total, 1.0)):
+            tuba.add(q, climb[min(len(climb) - 1, i // 2)], .55, 78 + 2 * i)
+        d = total - boil_q + 1
+        trem.chord(boil_q, ["D3", "Eb3", "A3"], d, 56); trem.ramp(boil_q, boil_q + d, 11, 50, 110, .6)
+        for i, q in enumerate(np.arange(boil_q, total, .125)):
+            timp.add(q, "A2", .2, 34 + 40 * (q - boil_q) / max(1, total - boil_q))
+        for q in np.arange(boil_q, total, 4.0):
+            pah.chord(q, ["D3", "Eb3"], 1.5, 50); pah.ramp(q, q + 1.5, 11, 55, 110)
+    for bt in stomps:                                                              # each stomp: BOOM
+        timp.add(bt, "D2", .8, 112); tuba.add(bt, "D1", .5, 110); bd.add(bt, BDRUM, .5, 110)
+        pah.chord(bt, ["D2", "A2", "D3"], .3, 96)
+    if stomps:  # hush the roll between the stomps so each one lands
+        timp.notes = [nt for nt in timp.notes if not any(s.sec(bt) - .15 < nt[0] < s.sec(bt) + .3 and nt[3] < 100
+                                                          for bt in stomps)]
+    x = s.render()
+    return dip(x, 2200, -5.0, .6)
+
+
+# ----------------------------------------------------------------------------------------------- sulk_march
+# The same motif deflated: the strut's rising D - F - A becomes a sag, the turn drags, and it ends with a plop on D.
+SULK_TUNE = [
+    [("D3", 1.5), ("A2", .5), ("Bb2", .5), ("A2", .5), ("G#2", .5), ("A2", .5)],
+    [("D3", 1), ("C#3", 1), ("C3", 1), ("B2", 1)],
+    [("Bb2", 1.5), ("A2", .5), ("G2", 1), ("E2", 1)],
+    [("A2", 1), ("G#2", .5), ("A2", .5), ("D2", 2)],
+]
+SULK_BASS = [["D2", "A1"], ["Bb1", "A1", "Ab1", "G1"], ["G1", "A1"], ["A1", "D2"]]
+# The town's answer: light, high, staccato, chord tones that sit over the sulk (F major colours over D minor).
+TOWN = [
+    [("F5.", .5), ("A5.", .5), ("C6.", .5), ("A5.", .5)], [("D6.", .5), ("C6.", .5), ("A5.", .5), ("F5.", .5)],
+    [("G5.", .5), ("Bb5.", .5), ("A5.", .5), ("C#6.", .5)], [("E5.", .5), ("A5.", .5), ("D6.", 1)],
+]
+
+
+def cue_sulk_march(c):
+    """Haman leads Mordecai's horse through the cheering town (S08d). Slow plodding march: tuba + bassoon play the
+    motif deflated (sagging chromatic line, a dragging turn, a plop on D), contrabass pizz and soft bass drum on 1
+    and 3 trudging; under it the town celebrates: tambourine, glockenspiel + piccolo-ish flute answers, kept
+    distant. At the crowd's cheer the town gets a little flourish and everything lands on an open D for the banquet."""
+    s = Score(c, 74, 4, min_bars=2)
+    n = s.bars
+    tuba = s.part("tuba", TUBA, 0, .2, lp=1800, human=.012)
+    bsn = s.part("bassoon", BASSOON, -4, .24, human=.012)
+    pz = s.part("contrabass pizz", PIZZ, -6, .22)
+    bd = s.part("bass drum", DRUMS, -9, .25, lp=700, human=.006)
+    tamb = s.part("tambourine", DRUMS, -15, .45, hp=4000, human=.008)
+    glk = s.part("glockenspiel", GLOCK, -15, .55, human=.006)
+    fl = s.part("flute", FLUTE, -14, .55, lp=4000, human=.008)
+    cheer_b = s.at(c.first("sfx", id="cheer") or c.first("sfx", id="crowd_cheer"))
+    seq = fill_phrase(n, 4, 1)
+    for bar, k in enumerate(seq):
+        b = bar * 4; final = bar == n - 1
+        tune = SULK_TUNE[k]
+        mel(tuba, b, tune, 92, legato=.9)
+        mel(bsn, b, tune, 72, legato=.85, shift=12)
+        if k in (1, 3):  # the sag droops: a little falling grace into the last note
+            bsn.add(b + 3.75 if k == 1 else b + 1.9, "C#4" if k == 1 else "A3", .1, 50)
+        bass = SULK_BASS[k]; step = 4 / len(bass)
+        for i, p in enumerate(bass): pz.add(b + i * step, p, .5, 80)
+        bd.add(b, BDRUM, .6, 66); bd.add(b + 2, BDRUM, .6, 52)
+        # the town, in the gaps of the tuba line: beats 3-4 of bars 0 and 2, beats 1-2 of bar 1
+        if k in (0, 2): mel(glk, b + 2, TOWN[k], 66); mel(fl, b + 2, TOWN[k], 58, legato=.5)
+        if k == 1: mel(glk, b, TOWN[1], 60)
+        if not final or cheer_b is None:
+            groove(tamb, b, "s.S.s.S.", .5, {"S": (TAMB, 56), "s": (TAMB, 32)}, swing=.18)
+    if cheer_b is not None:  # the crowd cheers: tambourine shake + a rising glockenspiel flourish to D
+        for i in range(int(min(2.5, n * 4 - cheer_b) / .125)): tamb.add(cheer_b + i * .125, TAMB, .1, 40 + (i % 2) * 14)
+        for i, p in enumerate(["D5", "F#5", "A5", "D6"]): glk.add(cheer_b + .1 + i * .18, p, 1.2, 62 + i * 3)
+        fl.add(cheer_b + .1 + 4 * .18, "D6", 1.2, 52)
+    x = s.render()
+    return dip(x, 2000, -4.0, .6)
 
 # ----------------------------------------------------------------------------------------------- tension (Hijaz)
 HIJAZ_UP = {"D": ["D4", "F#4", "A4"], "Eb": ["Eb4", "G4", "Bb4"], "Gm": ["D4", "G4", "Bb4"], "Cm": ["C4", "Eb4", "G4"]}
@@ -708,12 +865,15 @@ def cue_celebration(c):
     return s.render()
 
 
-MUSIC = {"palace_theme": cue_palace, "haman_theme": cue_haman, "tension": cue_tension, "mordecai": cue_mordecai,
+MUSIC = {"palace_theme": cue_palace, "haman_theme": cue_haman, "haman_fanfare": cue_haman_fanfare,
+         "sulk_march": cue_sulk_march, "tension": cue_tension, "mordecai": cue_mordecai,
          "approach": cue_approach, "sceptre": cue_sceptre, "banquet": cue_banquet, "truth": cue_truth,
          "celebration": cue_celebration}
 CUE_NOTES = {
     "palace_theme": "D Dorian 3/4. Qanun (koto + harp in octaves, tremolo on long notes) over harp arpeggios, frame drum, low strings; flute counter-line from Esther's crowning (sparkle); cadence on D.",
     "haman_theme": "Comic villain, D minor, staccato. Bassoon struts the motif with a cheeky turn, clarinet answers; pizz oom-pah, tiptoe wood blocks; timpani + pizz catch each stomp.",
+    "haman_fanfare": "Haman's motif as a pompous oom-pah strut, D minor: timpani roll under the herald, trombone + bassoon tune over tuba oom-pah, horn swells, bass drum, pedal hat, brass ta-daa on cadences; thins to a tiptoeing bassoon at the narrator's line; boils over from the steam (tremolo, climbing tuba, timpani roll); timpani + tuba + bass drum on each stomp. Wide -5 dB dip at 2.2 kHz for the voices.",
+    "sulk_march": "Slow droopy march: tuba + bassoon play Haman's motif deflated (sagging chromatic line, dragging turn, plop on D) over pizz bass and soft bass drum; a distant cheerful town (tambourine, glockenspiel + flute answers in the gaps); glockenspiel flourish to an open D at the crowd's cheer. -4 dB dip at 2 kHz.",
     "tension": "D Hijaz. Maqsum on darbuka, cello/bass drone on D, tremolo strings swelling D / Eb / Gm / Cm over the drone, ney-like lead (shakuhachi + oboe) with grace notes.",
     "mordecai": "Tender. Cello tune in D minor with flute answers over low strings and harp; from the prayer (soft bell) the flute leads F - C - Bb/C up to a hopeful D major.",
     "approach": "Esther's climb: strings walk up the Hijaz scale one step every 2 beats with a timpani heartbeat, darbuka denser each bar, reed + tremolo + choir swell to Eb/D; at her bow all drop to a held D/Eb breath.",
@@ -747,6 +907,11 @@ def noise(n): return RNG.standard_normal(n)
 def bp(x, lo, hi, order=2): return signal.sosfilt(signal.butter(order, [lo, hi], "bandpass", fs=SR, output="sos"), x)
 def lp(x, f, order=2): return signal.sosfilt(signal.butter(order, f, "lowpass", fs=SR, output="sos"), x)
 def hp(x, f, order=2): return signal.sosfilt(signal.butter(order, f, "highpass", fs=SR, output="sos"), x)
+def dip(x, f0, gain_db, q):
+    """RBJ peaking EQ (here: a wide cut, to leave room for the voices around 1-4 kHz)."""
+    A = 10 ** (gain_db / 40); w = 2 * np.pi * f0 / SR; al = np.sin(w) / (2 * q)
+    b = [1 + al * A, -2 * np.cos(w), 1 - al * A]; a = [1 + al / A, -2 * np.cos(w), 1 - al / A]
+    return signal.lfilter(np.array(b) / a[0], np.array(a) / a[0], x).astype(np.float32)
 def env_exp(n, tau, delay=0.0):
     t = np.arange(n) / SR - delay; return np.where(t >= 0, np.exp(-np.maximum(t, 0) / tau), 0.0)
 def place(dst, src, at):
@@ -1069,12 +1234,167 @@ def sfx_cheer():
     return fit(room(y, "hall", .3), secs, fade_out=1.4)
 
 
+def gm_notes(events, secs):
+    """Render a few GM notes (real instrument samples from the DLS bank) for an effect.
+    events: (t_sec, dur_sec, pitch, vel, program, bends) with bends = [(t_sec, semitones), ...] relative to t."""
+    mid = MidiFile(ticks_per_beat=TPB); meta = MidiTrack(); mid.tracks.append(meta)
+    meta.append(MetaMessage("set_tempo", tempo=bpm2tempo(60), time=0))       # 1 beat = 1 s
+    meta.append(MetaMessage("end_of_track", time=int((secs + 2) * TPB)))
+    ev, chans = [], {}
+    for k, (t, d, p, v, prog, bends) in enumerate(events):
+        ch = chans.setdefault((prog, tuple(bends or ())), len(chans) % 9)  # same program + same bends share a channel
+        ev.append((int(t * TPB), 0, Message("program_change", channel=ch, program=prog)))
+        for cc, val in ((7, 110), (11, 127), (91, 0), (93, 0), (101, 0), (100, 0), (6, 2)):
+            ev.append((int(t * TPB), 1, Message("control_change", channel=ch, control=cc, value=val)))
+        ev.append((int(t * TPB), 2, Message("pitchwheel", channel=ch, pitch=0)))
+        for bt, semi in bends or []:
+            ev.append((int((t + bt) * TPB), 3, Message("pitchwheel", channel=ch, pitch=int(np.clip(semi / 2 * 8191, -8192, 8191)))))
+        ev.append((int(t * TPB), 4, Message("note_on", channel=ch, note=note(p), velocity=int(v))))
+        ev.append((int((t + d) * TPB), 0, Message("note_off", channel=ch, note=note(p), velocity=0)))
+    tr = MidiTrack(); mid.tracks.append(tr); last = 0
+    for tick, _, m in sorted(ev, key=lambda e: (e[0], e[1])):
+        tr.append(m.copy(time=tick - last)); last = tick
+    x = render_midi(mid)
+    return fit(x, secs, fade_out=0)
+
+
+def wah_filter(x, cut, q_lo=.55, q_hi=1.7, hop=128):
+    """Block-wise moving band-pass ('wah' / plunger mute) following a cutoff curve in Hz (one value per sample)."""
+    y = np.zeros(len(x)); zi = None
+    for i in range(0, len(x), hop):
+        f = float(cut[i]); sos = signal.butter(2, [max(80, f * q_lo), min(16000, f * q_hi)], "bandpass", fs=SR, output="sos")
+        if zi is None: zi = np.zeros((sos.shape[0], 2))
+        y[i:i + hop], zi = signal.sosfilt(sos, x[i:i + hop], zi=zi)
+    return y
+
+
+def sfx_fanfare():
+    """Herald fanfare for Haman: three GM trumpets (two on the tune a few ms apart and a few cents apart, one on a
+    low D) 'ta-ta-ta TAA, ta-TAAA' on D and A (open fifths, so it sits under the D-minor strut), a timpani hit on
+    the last note, in the hall."""
+    secs = 1.6; ev = []
+    tune = [(0.0, .075, "A4", 108), (.13, .075, "A4", 90), (.26, .075, "A4", 98), (.40, .17, "D5", 116),
+            (.66, .08, "A4", 96), (.80, .62, "D5", 120)]
+    for who, (dt, cents, vscale) in enumerate(((0, 0, 1.0), (.011, 9, .9))):
+        for t, d, p, v in tune:
+            ev.append((t + dt + RNG.normal(0, .003), d, p, v * vscale, TRUMPET, [(0, cents / 100)]))
+    ev.append((.80 + .006, .62, "A4", 100, TRUMPET, [(0, -.06)]))
+    ev.append((.40, .22, "D4", 84, TRUMPET, None)); ev.append((.80, .62, "D4", 90, TRUMPET, None))
+    ev.append((.80, .7, "D2", 110, TIMPANI, None)); ev.append((0, .5, "A2", 70, TIMPANI, None))
+    x = gm_notes(ev, secs)
+    return fit(room(lp(x, 9000), "hall", .18), secs, fade_out=.35)
+
+
+def sfx_steam():
+    """Haman fumes: steam from his ears. A kettle-like hiss swelling under five comic 'pssht!' puffs that come faster
+    and faster (a fast noise burst whose band sweeps up, with a soft low 'pff' of air), and a faint breathy kettle
+    whistle that climbs into the last puffs."""
+    secs = 3.0; n = int(secs * SR); t = np.arange(n) / SR; y = np.zeros(n)
+    bed = bp(noise(n), 2500, 9500, 3) * (1 + .35 * smooth_rand(n, 14, -1, 1))
+    bed *= np.minimum(1, t / .25) * (.35 + .25 * t / secs) * np.where(t > 2.5, np.maximum(0, (3.0 - t) / .5), 1)
+    y += bed * .5
+    for i, at in enumerate([0.02, 0.62, 1.12, 1.52, 1.86, 2.16]):
+        m = int(.45 * SR); tt = np.arange(m) / SR; amp = .75 + .05 * i
+        env = np.minimum(1, tt / .008) * np.exp(-tt / RNG.uniform(.11, .16))
+        nz = noise(m); lo = np.interp(tt, [0, .12, .45], [900, 2200, 3200])
+        burst = wah_filter(nz, lo * 1.6, .6, 3.2) * env                          # band sweeps up: 'pssht'
+        pff = lp(noise(m), 500) * np.minimum(1, tt / .004) * np.exp(-tt / .035) * 2.5   # the air pop
+        place(y, (burst + pff) * amp, at + RNG.normal(0, .01))
+    wm = int(1.5 * SR); wt = np.arange(wm) / SR
+    f = np.interp(wt, [0, 1.2, 1.5], [2100, 2650, 2700]) * (1 + .004 * smooth_rand(wm, 9))
+    whistle = (np.sin(2 * np.pi * np.cumsum(f) / SR) + .25 * np.sin(4 * np.pi * np.cumsum(f) / SR))
+    whistle *= (np.minimum(1, wt / .6) ** 2) * (1 + .5 * smooth_rand(wm, 30, -1, 1)) * np.where(wt > 1.2, (1.5 - wt) / .3, 1)
+    whistle += bp(noise(wm), 2000, 3200) * .6 * np.minimum(1, wt / .6)          # breathy edge
+    place(y, whistle * .045, 1.2)
+    return fit(room(y, "room", .2), secs, fade_out=.3)
+
+
+def sfx_wah_wah():
+    """The comic 'fail' sting: a GM trombone + muted trumpet sliding down A - G# - G and a long wobbling F# that
+    sags at the end, each note shaped by a moving plunger-mute filter that opens 'wa-' and closes '-ah'."""
+    secs = 2.1; notes = [(0.0, .34, "A3"), (.36, .34, "G#3"), (.72, .34, "G3"), (1.08, .95, "F#3")]
+    ev = []
+    for i, (t, d, p) in enumerate(notes):
+        bends = None
+        if i == 3:  # growing 6 Hz wobble, then a sag of a semitone
+            bends = [(k * .02, (.22 * min(1, k * .02 / .5)) * math.sin(2 * math.pi * 6 * k * .02)
+                      - (max(0, k * .02 - .6) / .35) * 1.0) for k in range(int(d / .02))]
+        ev.append((t, d, p, 104, TROMBONE, bends)); ev.append((t + .008, d, p, 70, MUTED_TPT, bends))
+    x = gm_notes(ev, secs)
+    tt = np.arange(len(x)) / SR; cut = np.full(len(x), 350.0)
+    for i, (t, d, p) in enumerate(notes):                                          # plunger: closed -> open -> closed
+        u = tt - t; on = (u >= 0) & (u < d + .05)
+        shape = np.minimum(1, u / .07) * np.where(u > d - .12, np.maximum(0, (d + .05 - u) / .17), 1)
+        if i == 3: shape *= .75 + .25 * np.sin(2 * np.pi * 6 * np.maximum(u, 0) - 1.2)
+        cut = np.where(on, 280 + 1700 * np.clip(shape, 0, 1) ** 1.5, cut)
+    y = wah_filter(x, cut, .45, 1.8) * 1.8 + lp(x, 400) * .12
+    return fit(room(y, "room", .2), secs, fade_out=.3)
+
+
+def boot_step(level=1.0, bright=1.0):
+    """One brisk boot on a stone floor: heel thump with a falling pitch, leather sole slap, a short floor click."""
+    m = int(.25 * SR); tt = np.arange(m) / SR
+    thump = np.sin(2 * np.pi * np.cumsum(140 * np.exp(-tt / .02) + 62) / SR) * env_exp(m, .045)
+    slap = bp(noise(m), 600, 3500) * env_exp(m, .012, .004) * .55
+    x = noise(m) * env_exp(m, .002)
+    click = (resonator(x, 1150, 120) + resonator(x, 2300, 200) * .5) * .5
+    return lp(thump + slap + click, 2500 + 5000 * bright) * level
+
+
+def chain_jingle(secs, count, level):
+    """Mail and buckles settling after a step: many tiny metal ticks over ~80 ms."""
+    y = np.zeros(int(secs * SR))
+    for _ in range(count):
+        tick = partials(.12, RNG.uniform(3500, 8000), [1, 1.53, 2.31], [1, .5, .3], [RNG.uniform(.012, .035), .01, .008])
+        place(y, tick * RNG.uniform(.2, 1.0), RNG.uniform(0, .09) ** 1.4 * 3)
+    return y * level
+
+
+def sfx_armor_march():
+    """Two guards march in: brisk boots in step (a few ms apart, so it is two people), chain mail and buckle jingle
+    after each step, a plate 'clink' every other step, coming closer (louder, brighter); a double stamp to halt."""
+    secs = 2.0; n = int(secs * SR); y = np.zeros(n)
+    steps = [.02 + i * .29 for i in range(6)]
+    for i, at in enumerate(steps):
+        near = .55 + .45 * i / (len(steps) - 1)
+        for g, off in enumerate((0, RNG.uniform(.012, .028))):
+            place(y, boot_step(near * (1 if g == 0 else .75), near), at + off + RNG.normal(0, .004))
+            place(y, chain_jingle(.3, 10, .18 * near), at + off + .008)
+        if i % 2 == 1:
+            clink = partials(.4, RNG.uniform(1700, 2100), [1, 1.47, 2.09, 2.76], [1, .6, .4, .25], [.09, .07, .05, .04], strike=.2)
+            place(y, clink * .22 * near, at + .03)
+    halt = steps[-1] + .26
+    for off in (0, .018):  # halt: both stamp
+        place(y, boot_step(1.15, 1.0), halt + off)
+        place(y, chain_jingle(.4, 16, .22), halt + off + .01)
+    place(y, partials(.6, 1880, [1, 1.47, 2.09, 2.76], [1, .6, .4, .25], [.16, .1, .07, .05], strike=.2) * .25, halt + .04)
+    return fit(room(y, "room", .22), secs, fade_out=.2)
+
+
+def sfx_grab():
+    """The guards take Haman by the arms: a quick cloth rustle (crackly fold grains under a short whoosh) as hands
+    close on his robe, then a soft muffled thump; no voice."""
+    secs = .5; n = int(secs * SR); t = np.arange(n) / SR; y = np.zeros(n)
+    wh = bp(noise(n), 500, 4500) * np.exp(-((t - .05) / .035) ** 2) * .5
+    y += wh
+    for _ in range(14):
+        m = int(.03 * SR); g = bp(noise(m), RNG.uniform(900, 2500), RNG.uniform(3000, 7000)) * env_exp(m, RNG.uniform(.003, .008))
+        place(y, g * RNG.uniform(.2, .6), RNG.uniform(.01, .11))
+    m = int(.3 * SR); tt = np.arange(m) / SR
+    thump = np.sin(2 * np.pi * np.cumsum(120 * np.exp(-tt / .025) + 68) / SR) * env_exp(m, .06)
+    thump += lp(noise(m), 700) * env_exp(m, .02) * .6                              # cloth-muffled body
+    place(y, thump * .9, .085)
+    return fit(room(y, "room", .15), secs, fade_out=.12)
+
+
 SFX = {"sparkle": sfx_sparkle, "stomp": sfx_stomp, "ring_glint": sfx_ring_glint, "soft_bell": sfx_soft_bell,
        "sceptre_chime": sfx_sceptre_chime, "table_set": sfx_table_set, "gasp": sfx_gasp, "boing": sfx_boing,
-       "scurry": sfx_scurry, "cheer": sfx_cheer}
+       "scurry": sfx_scurry, "cheer": sfx_cheer, "fanfare": sfx_fanfare, "steam": sfx_steam, "wah_wah": sfx_wah_wah,
+       "armor_march": sfx_armor_march, "grab": sfx_grab}
 # Recommended playback gain (dB) on top of the -3 dBFS-peak files, so effects sit under the voices.
 SFX_GAIN = {"sparkle": -9, "stomp": -4, "ring_glint": -10, "soft_bell": -10, "sceptre_chime": -7, "table_set": -9,
-            "gasp": -5, "boing": -7, "scurry": -9, "cheer": -6}
+            "gasp": -5, "boing": -7, "scurry": -9, "cheer": -6, "fanfare": -8, "steam": -8, "wah_wah": -6,
+            "armor_march": -7, "grab": -6}
 SFX_NOTES = {"sparkle": "rising shower of tiny bells (D major pentatonic) + air shimmer",
              "stomp": "cartoon boot stomp: heel slap, 170->52 Hz thump, floor knock",
              "ring_glint": "bright metallic 'ting' (E7) + shimmer",
@@ -1084,7 +1404,12 @@ SFX_NOTES = {"sparkle": "rising shower of tiny bells (D major pentatonic) + air 
              "gasp": "4 inhaled 'hah!' voices (2 men, woman, child) 0-65 ms apart + soft 'oh', small hall",
              "boing": "jaw-harp spring, 11 Hz pitch wobble, moving wah resonance",
              "scurry": "14 light running steps receding + cloth flutter",
-             "cheer": "22 voices 'yay / wooo / ah' (men, women, kids) + 12 clappers, fades from 2.6 s"}
+             "cheer": "22 voices 'yay / wooo / ah' (men, women, kids) + 12 clappers, fades from 2.6 s",
+             "fanfare": "herald 'ta-ta-ta TAA, ta-TAAA' on D/A: 3 GM trumpets (2 on the tune, ms + cents apart), timpani, hall",
+             "steam": "kettle hiss bed + 6 accelerating 'pssht' puffs (up-sweeping noise + low air pop), faint breathy whistle rising 2.1->2.7 kHz",
+             "wah_wah": "GM trombone + muted trumpet A-G#-G-F#, plunger-mute filter per note, 6 Hz wobble and a semitone sag on the last",
+             "armor_march": "two guards in step: 6 boot steps (thump, sole slap, floor click) + mail jingle, plate clinks, closer each step; double-stamp halt",
+             "grab": "cloth rustle (fold grains + short whoosh) then a soft muffled 120->68 Hz thump; no voice"}
 
 
 # =============================================================================================== build
@@ -1098,35 +1423,60 @@ def cue_spans(tl):
     return out
 
 
+def cue_files(spans):
+    """One file per cue name. A cue that plays more than once (haman_fanfare, tension) is composed for its longest
+    occurrence (whose timeline events drive the in-cue hits) and is as long as the longest occurrence needs; each
+    other occurrence plays the file from its start and is faded at the next cue like any other."""
+    files = {}
+    for c in spans:
+        f = files.setdefault(c["cue"], dict(cue=c["cue"], occ=[]))
+        f["occ"].append(c)
+    for f in files.values():
+        f["primary"] = max(f["occ"], key=lambda c: c["span"])
+        f["secs"] = max(c["secs"] for c in f["occ"])
+    return files
+
+
 def build_music(tl, only=None):
     spans = cue_spans(tl)
     missing = sorted({c["cue"] for c in spans} - set(MUSIC))
     assert not missing, f"no composer for cue(s) {missing}"
     path_json = f"{MUSIC_DIR}/cues.json"
     old = {c["cue"]: c for c in json.load(open(path_json))["cues"]} if only and os.path.exists(path_json) else {}
-    manifest = []
-    for c in spans:
-        if only and c["cue"] not in only and c["cue"] in old:
-            manifest.append(old[c["cue"]]); continue
-        seed(c["cue"]); ctx = Ctx(tl, c["cue"], c["t"], c["span"], c["secs"], c["last"])
-        x = MUSIC[c["cue"]](ctx)
-        x = fit(x, c["secs"], fade_out=2.5 if c["last"] else 0.25)
+    rendered = {}
+    for name, f in cue_files(spans).items():
+        if only and name not in only and name in old:
+            o = old[name]; rendered[name] = dict(secs=o["secs"], bars=o["bars"], bpm=o["bpm"], lufs=o["lufs"],
+                                                 truePeak=o["truePeak"], composedFor=o.get("composedFor", o["t"]))
+            continue
+        c = f["primary"]
+        seed(name); ctx = Ctx(tl, name, c["t"], c["span"], f["secs"], c["last"])
+        x = MUSIC[name](ctx)
+        x = fit(x, f["secs"], fade_out=2.5 if c["last"] else 0.25)
         x = hp(x, 28)
         x = normalize_lufs(x, MUSIC_LUFS)
-        path = f"{MUSIC_DIR}/{c['cue']}.wav"; write_wav(path, x); m = measure(path)
-        secs = round(len(x) / SR, 3)
-        need = c["span"] + (0 if c["last"] else XFADE)
-        assert secs + 1e-3 >= need, f"{c['cue']} is {secs}s, needs {need}s"
+        path = f"{MUSIC_DIR}/{name}.wav"; write_wav(path, x); m = measure(path)
         sc = Score.last
-        manifest.append(dict(cue=c["cue"], t=c["t"], span=c["span"], secs=secs, lastCue=c["last"], loop=False,
-                             bars=sc.bars, bpm=round(sc.bpm * (0.5 if c["cue"] == "banquet" else 1), 1),
-                             lufs=round(m["lufs"], 1), truePeak=round(m["truePeak"], 1)))
-        print(f"music {c['cue']:13s} t={c['t']:7.2f} span={c['span']:6.2f} file={secs:6.2f}s "
-              f"bars={sc.bars:2d} bpm={manifest[-1]['bpm']:5.1f} I={m['lufs']:6.1f} LUFS TP={m['truePeak']:5.1f} dBTP")
+        rendered[name] = dict(secs=round(len(x) / SR, 3), bars=sc.bars,
+                              bpm=round(sc.bpm * (0.5 if name == "banquet" else 1), 1),
+                              lufs=round(m["lufs"], 1), truePeak=round(m["truePeak"], 1), composedFor=c["t"])
+        r = rendered[name]
+        print(f"music {name:13s} t={c['t']:7.2f} span={c['span']:6.2f} file={r['secs']:6.2f}s "
+              f"bars={r['bars']:2d} bpm={r['bpm']:5.1f} I={r['lufs']:6.1f} LUFS TP={r['truePeak']:5.1f} dBTP"
+              + (f" (plays {len(f['occ'])}x)" if len(f["occ"]) > 1 else ""))
+    manifest = []
+    for c in spans:
+        r = rendered[c["cue"]]; need = c["span"] + (0 if c["last"] else XFADE)
+        assert r["secs"] + 1e-3 >= need, f"{c['cue']} at t={c['t']} is {r['secs']}s, needs {need}s"
+        manifest.append(dict(cue=c["cue"], t=c["t"], span=c["span"], secs=r["secs"], lastCue=c["last"], loop=False,
+                             bars=r["bars"], bpm=r["bpm"], lufs=r["lufs"], truePeak=r["truePeak"],
+                             composedFor=r["composedFor"]))
     json.dump(dict(rule="Start each cue at its timeline t at full level and fade the previous cue out over 0.6 s from "
-                        "that t. Every non-final cue is its span + 0.6 s long so the fade has music under it; the "
-                        "final cue fades out by itself over its last 2.5 s. Music sits at -20 LUFS; duck it ~7 dB "
-                        "under voice lines.", crossfadeSec=XFADE, lufs=MUSIC_LUFS, cues=manifest),
+                        "that t. Every non-final cue is at least its span + 0.6 s long so the fade has music under it; "
+                        "the final cue fades out by itself over its last 2.5 s. A cue that plays more than once uses "
+                        "the same file from its start each time (composedFor = the occurrence it was timed to). "
+                        "Music sits at -20 LUFS; duck it ~7 dB under voice lines.", crossfadeSec=XFADE,
+                   lufs=MUSIC_LUFS, cues=manifest),
               open(path_json, "w"), indent=1, ensure_ascii=False)
     return manifest
 
@@ -1202,8 +1552,11 @@ def update_doc(tl, cues, sfx, prev):
                 "|---|---|---|---|---|---|---|---|"]
         for c in cues:
             meter = "6/8, ♩. =" if c["cue"] == "banquet" else ("3/4" if c["cue"] == "palace_theme" else "4/4")
+            timed = c.get("composedFor", c["t"])
+            note_ = CUE_NOTES[c["cue"]] if abs(timed - c["t"]) < 1e-3 else \
+                f"Same file again (timed to t={timed:.2f}); plays its first {c['span']:.1f} s."
             rows.append(f"| `{c['cue']}` | {c['t']:.2f} | {c['span']:.2f} | {c['secs']:.2f} | {c['bars']} × {c['bpm']} ({meter}) "
-                        f"| {c['lufs']:.1f} | {c['truePeak']:.1f} | {CUE_NOTES[c['cue']]} |")
+                        f"| {c['lufs']:.1f} | {c['truePeak']:.1f} | {note_} |")
         swap("cues", "\n".join(rows) + "\n")
     if sfx:
         rows = ["| Id | Length (s) | Sample peak (dBFS) | True peak (dBTP) | LUFS | gainDb | Notes |", "|---|---|---|---|---|---|---|"]
@@ -1222,9 +1575,11 @@ if __name__ == "__main__":
     ap.add_argument("--skip-music", action="store_true"); ap.add_argument("--skip-sfx", action="store_true")
     ap.add_argument("--skip-preview", action="store_true"); ap.add_argument("--only", default="")
     ap.add_argument("--stems", action="store_true", help="print per-stem levels while rendering")
-    a = ap.parse_args(); STEM_REPORT = a.stems
+    ap.add_argument("--timeline", default=TIMELINE, help="timeline to read (default: assets/esther/timeline.json)")
+    ap.add_argument("--preview-out", default=PREVIEW, help="where to write the preview mix")
+    a = ap.parse_args(); STEM_REPORT = a.stems; PREVIEW = a.preview_out
     assert os.path.exists(DLS), "GM bank not found at " + DLS
-    tl = json.load(open(TIMELINE))
+    tl = json.load(open(a.timeline))
     only = set(filter(None, a.only.split(",")))
     cues = build_music(tl, only) if not a.skip_music else None
     sfx = build_sfx(tl) if not a.skip_sfx else None

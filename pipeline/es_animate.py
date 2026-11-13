@@ -44,7 +44,7 @@ FACES_JSON = os.path.join(ES, "faces.json")
 WORK = os.environ.get("ES_ANIM_WORK") or os.path.join(os.environ.get("ES_WORK", "/tmp/es_work"), "anim")
 BLENDER = os.environ.get("BLENDER", "/Applications/Blender.app/Contents/MacOS/Blender")
 FPS = 30
-CHARS = ("esther", "king", "haman")
+CHARS = ("esther", "king", "haman", "guard1", "guard2")   # guards: built only when characters.blend has them
 G = 2.0                     # gravity, art-width units / s^2 (Esther 0.34 ~ 1.6 m)
 
 # stage (docs/esther/SET.md, CONTRACT §6)
@@ -295,7 +295,7 @@ def beat_curve(beats, f, N, width=7.0, loop=True):
 
 # =============================================================================================== rig model (pure python FK)
 class Rig:
-    H_OF = {"esther": 0.34, "king": 0.40, "haman": 0.37}
+    H_OF = {"esther": 0.34, "king": 0.40, "haman": 0.37, "guard1": 0.38, "guard2": 0.38}
 
     def __init__(self, ch, obj):
         self.ch, self.obj = ch, obj
@@ -417,9 +417,12 @@ def ik2(rig, basis, M, upper, lower, target_d, pole_d, legs):
 
 # =============================================================================================== clip library
 class Clip:
-    def __init__(self, ch, name, N, loop, fn, markers=None, notes="", extra=False, speed=None):
+    def __init__(self, ch, name, N, loop, fn, markers=None, notes="", extra=False, speed=None, natural=None,
+                 backwards=False):
         self.ch, self.name, self.N, self.loop, self.fn = ch, name, N, loop, fn
-        self.markers = markers or {}
+        self.markers = markers or {}     # {name: frame} or {name: [frames]} for a repeated event (fume stomps)
+        self.natural = natural           # explicit natural speed (art u/s) when it is a sync number, not stride-based
+        self.backwards = backwards       # travels backwards relative to facing (clips.json "backwards": true)
         self.notes = notes
         self.extra = extra
         self.speed = speed           # (stride L, duty) for in-place locomotion -> natural speed
@@ -428,8 +431,17 @@ class Clip:
     def action(self):
         return f"{self.ch}_{self.name}"
 
+    def marker_frames(self):
+        out = []
+        for k, v in self.markers.items():
+            for fr in (v if isinstance(v, (list, tuple)) else [v]):
+                out.append((k, int(fr)))
+        return out
+
     @property
     def natural_speed(self):
+        if self.natural is not None:
+            return float(self.natural)
         if not self.speed:
             return None
         L, duty = self.speed
@@ -1337,19 +1349,21 @@ H_STRUT = (0.070, 0.56)
 
 @clip("haman", "strut", 30, True, markers={"contactL": 0, "contactR": 15}, speed=H_STRUT,
       notes="proud bouncy walk: chest out, leans back, knees lifted, big hip bounce, arms swing wide and stiff with "
-            "the hands flopping late, chin up, head bobs on each step")
+            "the hands flopping late, belly first and nose in the air, a snappy stretch-and-squash bounce on each step")
 def haman_strut(rig, f, N):
     c = h_base(rig, f, N, cycles=1, amp=0.4)
     g = gait(rig, f, N, L=H_STRUT[0], lift=0.026, duty=H_STRUT[1], heel=18, toeoff=26, lift_shape=0.7)
     legs_ik_channels(c, g)
     ph = 2 * math.pi * f / N
-    c["hips.ty"] = -0.005 + 0.007 * math.cos(2 * ph - 0.5)
-    c["hips.ry"] = 7 * math.sin(ph); c["chest.ry"] = -9 * math.sin(ph - 0.3); c["head.ry"] = 4 * math.sin(ph - 0.7)
-    c["hips.rz"] = 4 * math.cos(ph); c["chest.rz"] = -3 * math.cos(ph - 0.5)
-    c["spine.rx"] = -5; c["chest.rx"] += -3
-    c["head.rx"] = -8 + 3 * math.cos(2 * ph - 1.1)
-    c["upperArmL.raise"] = -16; c["upperArmR.raise"] = -16
-    c["upperArmL.bend"] = 10 - 30 * math.sin(ph - 0.2); c["upperArmR.bend"] = 10 + 30 * math.sin(ph - 0.2)
+    bb = (0.5 + 0.5 * math.cos(2 * ph - 0.5)) ** 1.8          # snappy bounce: quick up, longer float
+    c["hips.ty"] = -0.006 + 0.010 * bb
+    proud(c, 0.8)                                               # 2026-11-14 rework: belly first, nose up
+    sq(c, 0.96 + 0.07 * bb)
+    c["hips.ry"] = 9 * math.sin(ph); c["chest.ry"] = -12 * math.sin(ph - 0.3); c["head.ry"] = 5 * math.sin(ph - 0.7)
+    c["hips.rz"] = 5 * math.cos(ph); c["chest.rz"] = -4 * math.cos(ph - 0.5); c["head.rz"] = 3 * math.cos(ph - 1.0)
+    c["head.rx"] += 3 * math.cos(2 * ph - 1.1)
+    c["upperArmL.raise"] = -10; c["upperArmR.raise"] = -10
+    c["upperArmL.bend"] = 10 - 40 * math.sin(ph - 0.2); c["upperArmR.bend"] = 10 + 40 * math.sin(ph - 0.2)
     c["forearmL.bend"] = 22 - 14 * math.sin(ph - 1.0); c["forearmR.bend"] = 22 + 14 * math.sin(ph - 1.0)
     c["handL.bend"] = 10 - 22 * math.sin(ph - 1.8); c["handR.bend"] = 10 + 22 * math.sin(ph - 1.8)
     fingers(c, "L", 12); fingers(c, "R", 12)
@@ -1409,17 +1423,20 @@ def haman_demand(rig, f, N):
     ant = math.sin(math.pi * smooth(f / 10))
     w = ease_io((f - 7) / 9)
     up = math.sin(math.pi * smooth((f - 8) / 16))
-    c["hips.ty"] = -0.016 * ant + 0.010 * up
-    stand_feet(rig, c, spread=0.010 * w, pitchL=26 * up, pitchR=26 * up, liftL=0.008 * up, liftR=0.008 * up)
+    settle = math.sin(math.pi * smooth((f - 24) / 10)) if 24 <= f <= 34 else 0.0      # overshoot bounce into the hold
+    c["hips.ty"] = -0.024 * ant + 0.016 * up - 0.005 * settle
+    sq(c, 1.0 - 0.08 * ant + 0.09 * up - 0.03 * settle)
+    proud(c, w)
+    stand_feet(rig, c, spread=0.010 * w, pitchL=30 * up, pitchR=30 * up, liftL=0.012 * up, liftR=0.012 * up)
     for side, sx in (("L", 1), ("R", -1)):
-        c[f"upperArm{side}.raise"] = -26 - 8 * ant + 100 * w + 8 * up
+        c[f"upperArm{side}.raise"] = -26 - 12 * ant + 108 * w + 10 * up - 6 * settle
         c[f"upperArm{side}.bend"] = 10 + 14 * ant + 8 * w
         c[f"forearm{side}.bend"] = 30 + 40 * ant - 18 * w
         c[f"forearm{side}.twist"] = -sx * 50 * w
         c[f"hand{side}.bend"] = -24 * w + 10 * up
         fingers(c, side, 50 * ant + 4)
-    c["chest.rx"] += 6 * ant - 8 * w - 3 * up; c["spine.rx"] += 4 * ant - 3 * w
-    c["head.rx"] = -5 + 6 * ant - 10 * w; c["jaw.rx"] = 10 * up
+    c["chest.rx"] += 10 * ant - 4 * w - 4 * up; c["spine.rx"] += 8 * ant - 2 * w
+    c["head.rx"] += 10 * ant - 4 * w + 3 * settle; c["jaw.rx"] = 10 * up
     blink(c, f, N, [30], loop=False)
     return c
 
@@ -1486,15 +1503,17 @@ def arms_crossed(c):
 def haman_smug(rig, f, N):
     c = h_base(rig, f, N, cycles=2, amp=0.8)
     arms_crossed(c)
-    c["chest.rx"] += -3; c["head.rx"] = -9
+    proud(c, 0.9)                                               # 2026-11-14 rework: leaning back, belly out
+    c["head.rx"] -= 2
     tap = 0.0
     for t0 in (10, 22, 34, 46, 70, 82, 94):
         if t0 <= f <= t0 + 8:
             tap = max(tap, math.sin(math.pi * (f - t0) / 8))
-    stand_feet(rig, c, spread=0.006, fwdR=0.010, pitchR=-18 * tap)
-    c["head.rx"] += 2 * tap; c["head.rz"] = 3 * wave(f, N, 1, 0.2)
-    nod = K([(0, 0), (56, 0), (62, 6), (70, -2), (76, 0), (120, 0)], f, N, True)
+    stand_feet(rig, c, spread=0.006, fwdR=0.012, pitchR=-26 * tap)
+    c["head.rx"] += 3 * tap; c["head.rz"] = 3 * wave(f, N, 1, 0.2)
+    nod = K([(0, 0), (56, 0), (60, -4), (64, 9), (72, -3), (78, 0), (120, 0)], f, N, True)   # "mm-HM." nod
     c["head.rx"] += nod
+    sq(c, 1.0 + 0.03 * K([(0, 0), (54, 0), (60, 1), (64, -0.6), (74, 0), (120, 0)], f, N, True))
     c["head.ry"] = 6 * wave(f, N, 1, 0.6)
     sh = wave(f, N, 1, 0.4)
     c["hips.tx"] = 0.004 * sh; c["hips.rz"] = -2 * sh
@@ -1517,13 +1536,16 @@ def haman_shock(rig, f, N):
     c = h_base(rig, f, N, cycles=1, amp=0.0)
     jump = math.sin(math.pi * (f - 3) / 12) if 3 <= f <= 15 else 0.0
     land = ease_io((f - 14) / 10)
-    c["hips.ty"] = 0.040 * jump - 0.040 * land - 0.010 * math.sin(math.pi * smooth((f - 14) / 8))
+    c["hips.ty"] = 0.058 * jump - 0.040 * land - 0.014 * math.sin(math.pi * smooth((f - 14) / 8))
+    pre = math.sin(math.pi * f / 4) if f <= 4 else 0.0           # tiny anticipation dip before the jump
+    c["hips.ty"] -= 0.008 * pre
+    sq(c, 1.0 - 0.05 * pre + 0.13 * jump - 0.10 * math.sin(math.pi * smooth((f - 14) / 8)) * (f >= 14))
     c["hips.tz"] = -0.010 * land
-    stand_feet(rig, c, spread=0.006 * land, pitchL=20 * jump, pitchR=20 * jump, liftL=0.030 * jump, liftR=0.030 * jump, xL=-0.004 * land, xR=0.004 * land)
+    stand_feet(rig, c, spread=0.006 * land, pitchL=30 * jump, pitchR=30 * jump, liftL=0.050 * jump, liftR=0.040 * jump, xL=-0.004 * land, xR=0.004 * land)
     c["pole.legL"] = V(-0.2, 0, 1); c["pole.legR"] = V(0.2, 0, 1)
     fling = math.sin(math.pi * smooth((f - 2) / 16))
     for side, sx in (("L", 1), ("R", -1)):
-        c[f"upperArm{side}.raise"] = -22 + 118 * fling
+        c[f"upperArm{side}.raise"] = -22 + 135 * fling
         c[f"forearm{side}.bend"] = 30 + 30 * fling
         fingers(c, side, 0)
     cw = cower_pose_weights(land)
@@ -1532,8 +1554,8 @@ def haman_shock(rig, f, N):
     c["spine.rx"] = -6 * jump + 14 * land; c["head.rx"] = -8 * jump + 6 * land
     pop = math.sin(math.pi * smooth((f - 4) / 8)) if f < 12 else 0.0
     cap_slipped(c, ease_io((f - 4) / 6))
-    c["cap.ty"] = c.get("cap.ty", 0) + 0.012 * pop
-    c["jaw.rx"] = 14 * fling
+    c["cap.ty"] = c.get("cap.ty", 0) + 0.030 * pop
+    c["jaw.rx"] = 20 * fling
     c["eyelids.sy"] = 1.0
     return c
 
@@ -1556,9 +1578,10 @@ H_COWER_TY = -0.040
             "back; cap askew")
 def haman_cower(rig, f, N):
     c = h_base(rig, f, N, cycles=4, amp=0.6)
-    tr = math.sin(2 * math.pi * 6 * f / N) * 0.6 + math.sin(2 * math.pi * 10 * f / N) * 0.4
-    c["hips.ty"] = H_COWER_TY + 0.002 * tr; c["hips.tz"] = -0.010
-    c["hips.tx"] = 0.0015 * tr
+    tr = math.sin(2 * math.pi * 8 * f / N) * 0.6 + math.sin(2 * math.pi * 14 * f / N) * 0.4
+    c["hips.ty"] = H_COWER_TY + 0.003 * tr; c["hips.tz"] = -0.010
+    c["hips.tx"] = 0.0025 * tr
+    sq(c, 0.93 + 0.012 * tr)                                   # 2026-11-14 rework: shrunk small, shivering
     stand_feet(rig, c, spread=0.006, xL=-0.004, xR=0.004)
     c["pole.legL"] = V(-0.2, 0, 1); c["pole.legR"] = V(0.2, 0, 1)
     c["spine.rx"] = 14; c["chest.rx"] = 6; c["neck.rx"] = 4
@@ -1567,7 +1590,7 @@ def haman_cower(rig, f, N):
         c[k] = v
     c["ik.armL"] = c["ik.armL"] + V(0.012 * peek, -0.008 * peek, 0) + V(0, 0.0015 * tr, 0)
     c["ik.armR"] = c["ik.armR"] + V(-0.012 * peek, -0.008 * peek, 0) + V(0, -0.0015 * tr, 0)
-    c["head.rx"] = 6 - 6 * peek; c["head.ry"] = 6 * peek; c["head.rz"] = 2 * tr
+    c["head.rx"] = 8 - 9 * peek; c["head.ry"] = 12 * peek; c["head.rz"] = 3 * tr
     fingers(c, "L", 10 + 6 * tr); fingers(c, "R", 10 - 6 * tr)
     c["jaw.rx"] = 4 + 2 * tr
     cap_slipped(c, 1.0)
@@ -1578,7 +1601,7 @@ def haman_cower(rig, f, N):
 H_BACK = (0.050, 0.62)
 
 
-@clip("haman", "led_away", 36, True, markers={"contactL": 0, "contactR": 18}, speed=H_BACK,
+@clip("haman", "led_away", 36, True, markers={"contactL": 0, "contactR": 18}, speed=H_BACK, backwards=True,
       notes="backward shuffle: crouched, little quick steps backward, hands up, glances back over his shoulder and "
             "back to the king; cap askew")
 def haman_led_away(rig, f, N):
@@ -1586,21 +1609,757 @@ def haman_led_away(rig, f, N):
     g = gait(rig, f, N, L=H_BACK[0], lift=0.012, duty=H_BACK[1], heel=6, toeoff=16, back=True)
     legs_ik_channels(c, g)
     ph = 2 * math.pi * f / N
-    c["hips.ty"] = H_COWER_TY * 0.6 + 0.003 * math.cos(2 * ph)
+    c["hips.ty"] = H_COWER_TY * 0.6 + 0.004 * math.cos(2 * ph)
     c["hips.tz"] = -0.006
-    c["spine.rx"] = 12; c["chest.rx"] = 4
+    c["spine.rx"] = 14; c["chest.rx"] = 5
+    sq(c, 0.94 + 0.03 * math.cos(2 * ph - 0.4) + 0.01 * math.sin(2 * math.pi * 9 * f / N))
     c["hips.ry"] = 4 * math.sin(ph); c["hips.rz"] = 2 * math.cos(ph)
     for k, v in cower_pose_weights(1.0).items():
         c[k] = v
     c["ik.armL"] = c["ik.armL"] + V(0, 0.002 * math.sin(2 * ph), 0)
     c["ik.armR"] = c["ik.armR"] + V(0, 0.002 * math.sin(2 * ph + 1), 0)
     fingers(c, "L", 10); fingers(c, "R", 10)
-    gl = [(0, 0), (8, 0), (12, 28), (20, 28), (24, 0), (36, 0)]
+    gl = [(0, 0), (6, 0), (9, 36), (18, 36), (21, -6), (26, 0), (36, 0)]
     c["head.ry"] = K(gl, f, N, True); c["neck.ry"] = 0.4 * KL(gl, f, N, True, lag=-2)
     c["head.rx"] = 4
     c["jaw.rx"] = 3 + 2 * math.sin(4 * ph)
     cap_slipped(c, 1.0)
     blink(c, f, N, [26])
+    return c
+
+
+# ----------------------------------------------------------------------------------------------- Haman rework
+# docs/esther/HAMAN-REWORK.md (2026-11-14): a pompous, vain, cowardly peacock played BIG like a cartoon comic actor.
+def sq(c, k):
+    """Squash (k < 1) / stretch (k > 1) through the spine: volume-preserving scale of the spine bone. Chest, arms and
+    head inherit it; the legs (children of hips) do not, so the feet stay planted."""
+    c["spine.sy"] = k; c["spine.s"] = 1.0 / math.sqrt(k)
+
+
+def pulses(f, N, hits, rise=2.0, fall=6.0, loop=True):
+    """Sum of sharp bumps (attack `rise` frames, decay `fall` frames) at [(frame, amp)]: uneven rhythms (laughs,
+    giggles, sobs). Wrapped for loops so the seam is exact."""
+    v = 0.0
+    for t0, a in hits:
+        d = f - t0
+        if loop:
+            d = d % N
+            if d > N - rise:
+                d -= N
+        if -rise <= d < 0:
+            v += a * smooth((d + rise) / rise)
+        elif 0 <= d < fall:
+            v += a * (1 - d / fall) ** 2
+    return v
+
+
+def seg(f, a, b, c_=None, d=None):
+    """Phase weight: eases in a->b, holds, eases out c_->d (no way out when c_ is None)."""
+    w = ease_io((f - a) / max(1e-6, b - a))
+    if c_ is not None:
+        w *= 1 - ease_io((f - c_) / max(1e-6, d - c_))
+    return w
+
+
+def proud(c, w=1.0):
+    """Belly first, chest up, nose in the air (whole upper body leans back, the head tips back on top)."""
+    c["hips.tz"] = c.get("hips.tz", 0.0) + 0.008 * w
+    c["hips.rx"] = c.get("hips.rx", 0.0) - 3 * w
+    c["spine.rx"] = lerp(c.get("spine.rx", 0.0), -9.0, w)
+    c["chest.rx"] = lerp(c.get("chest.rx", 0.0), -7.0, w)
+    c["neck.rx"] = lerp(c.get("neck.rx", 0.0), 6.0, w)
+    c["head.rx"] = lerp(c.get("head.rx", 0.0), -11.0, w)
+
+
+HIP_HAND_X = 0.054
+
+
+def hands_on_hips(c, w=1.0, sides="LR"):
+    """Fists on the hips, elbows out. Root-space targets that follow hips.ty / hips.tz (call after setting them)."""
+    hy, hz = c.get("hips.ty", 0.0), c.get("hips.tz", 0.0)
+    for side, sx in (("L", 1), ("R", -1)):
+        if side not in sides:
+            continue
+        arm_ik(c, side, V(sx * HIP_HAND_X, 0.199 + hy, 0.006 + hz), V(sx * 1.0, 0.05, -0.55), "root", w)
+        c[f"hand{side}.bend"] = lerp(c.get(f"hand{side}.bend", 0.0), 14.0, w)
+        fingers(c, side, lerp(c.get(f"fingers{side}.curl", 24.0), 70.0, w))
+
+
+def arms_wide(c, w, up=1.0):
+    """'Look at me!': both arms flung wide and up, palms open (w blends it on top of the current arm channels)."""
+    for side, sx in (("L", 1), ("R", -1)):
+        c[f"upperArm{side}.raise"] = lerp(c.get(f"upperArm{side}.raise", -22.0), -22 + 125 * up, w)
+        c[f"upperArm{side}.bend"] = lerp(c.get(f"upperArm{side}.bend", 10.0), 4.0, w)
+        c[f"forearm{side}.bend"] = lerp(c.get(f"forearm{side}.bend", 30.0), 10.0, w)
+        c[f"forearm{side}.twist"] = lerp(c.get(f"forearm{side}.twist", 0.0), -sx * 40.0, w)
+        c[f"hand{side}.bend"] = lerp(c.get(f"hand{side}.bend", 0.0), -22.0, w)
+        fingers(c, side, lerp(c.get(f"fingers{side}.curl", 24.0), 0.0, w))
+
+
+def blend_ik(c, side, items, pole):
+    """Several root-space hand targets with phase weights [(w, V)] -> one IK target (weighted mean), weight = sum."""
+    ws = sum(w for w, _ in items)
+    if ws <= 1e-4:
+        return
+    t = V()
+    for w, p in items:
+        t = t + p * (w / ws)
+    arm_ik(c, side, t, pole, "root", min(1.0, ws))
+
+
+H_PARADE = (0.056, 0.56)
+
+
+@clip("haman", "parade", 44, True, markers={"contactL": 0, "contactR": 22}, speed=H_PARADE,
+      notes="exaggerated proud march: belly and chest out, nose in the air, high knees, a snappy bounce on every step "
+            "(stretch at the top, squash on contact), arms swinging wide and stiff with the hands flopping late, "
+            "hips and shoulders rolling; the plume whips")
+def haman_parade(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.3)
+    g = gait(rig, f, N, L=H_PARADE[0], lift=0.044, duty=H_PARADE[1], heel=24, toeoff=32, lift_shape=0.55)
+    legs_ik_channels(c, g)
+    ph = 2 * math.pi * f / N
+    bb = (0.5 + 0.5 * math.cos(2 * ph - 2.3)) ** 2.4            # snaps up after push-off, floats, drops
+    c["hips.ty"] = -0.007 + 0.013 * bb
+    proud(c, 1.0)
+    c["spine.rx"] += -3 * bb; c["head.rx"] += 4 * math.cos(2 * ph - 3.1)
+    sq(c, 0.95 + 0.10 * bb)
+    c["hips.ry"] = 10 * math.cos(ph); c["chest.ry"] = -14 * math.cos(ph - 0.35); c["head.ry"] = 6 * math.cos(ph - 0.9)
+    c["hips.rz"] = 6 * math.sin(ph); c["chest.rz"] = -4 * math.sin(ph - 0.5); c["head.rz"] = 4 * math.sin(ph - 1.1)
+    for side, s in (("L", -1), ("R", 1)):                      # L foot forward at f0 -> R arm forward
+        sw = s * math.cos(ph - 0.3)
+        c[f"upperArm{side}.raise"] = 4 + 10 * abs(sw)
+        c[f"upperArm{side}.bend"] = 14 + 50 * sw
+        c[f"forearm{side}.bend"] = 26 + 22 * s * math.cos(ph - 1.2)
+        c[f"hand{side}.bend"] = 8 + 30 * s * math.cos(ph - 2.0)
+        fingers(c, side, 8)
+    blink(c, f, N, [30], base=2.2)
+    return c
+
+
+@clip("haman", "preen", 84, False, markers={"admire": 18, "huff": 42, "cap": 64},
+      notes="admires himself: lifts the ring hand high and gazes at it half-lidded, huffs on the ring, polishes it on "
+            "his chest in quick circles, tweaks his cap with the other hand, then plants both fists on his hips, "
+            "belly out (ends in the laugh_proud / smug stance)")
+def haman_preen(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.4)
+    ant = math.sin(math.pi * smooth(f / 10))
+    c["hips.ty"] = -0.006 * ant + 0.004 * seg(f, 70, 78) - 0.003 * math.sin(math.pi * smooth((f - 76) / 8))
+    proud(c, 0.6 + 0.4 * seg(f, 8, 18))
+    hy, hz = c["hips.ty"], c["hips.tz"]
+    # left (ring) hand: up to admire, to the mouth to huff, polish circles on the chest, onto the hip
+    pol = seg(f, 48, 52, 64, 68)
+    circ = 2 * math.pi * (f - 48) / 7.0
+    keysL = [(0, V(0.100, 0.190, 0.030)), (9, V(0.090, 0.215, 0.070)), (16, V(0.070, 0.338, 0.135)),
+             (20, V(0.066, 0.318, 0.122)), (34, V(0.060, 0.312, 0.118)), (40, V(0.034, 0.300, 0.086)),
+             (46, V(0.034, 0.300, 0.084)), (52, V(0.018, 0.250, 0.078)), (64, V(0.018, 0.250, 0.078)),
+             (70, V(0.050, 0.215, 0.040)), (78, V(HIP_HAND_X, 0.199, 0.006)), (84, V(HIP_HAND_X, 0.199, 0.006))]
+    tL = Kv(keysL, f) + V(0.012 * math.cos(circ) * pol, 0.008 * math.sin(circ) * pol, 0) + V(0, hy, hz)
+    arm_ik(c, "L", tL, V(0.9, -0.4, -0.3), "root", seg(f, 0, 8))
+    c["forearmL.twist"] = 50 * seg(f, 12, 18, 36, 42)
+    c["handL.bend"] = -18 * seg(f, 12, 18, 36, 42) + 14 * seg(f, 72, 80)
+    fingers(c, "L", 30 + 30 * pol + 40 * seg(f, 72, 80))
+    # right hand: tweaks the cap, then onto the hip
+    capw = seg(f, 54, 60, 68, 72)
+    if f < 70:
+        arm_ik(c, "R", V(-0.036, 0.046, 0.004), V(-0.9, 0.2, -0.4), "head", capw)
+        fingers(c, "R", 30 + 30 * capw)
+    else:
+        arm_ik(c, "R", V(-HIP_HAND_X, 0.199 + hy, 0.006 + hz), V(-1.0, 0.05, -0.55), "root", seg(f, 70, 80))
+        c["handR.bend"] = 14 * seg(f, 72, 80); fingers(c, "R", 30 + 40 * seg(f, 72, 80))
+    tw = K([(56, 0), (60, 9), (63, -7), (66, 4), (69, 0)], f)
+    c["cap.rz"] = tw; c["cap.ty"] = 0.004 * seg(f, 58, 61, 63, 67)
+    # head and chest act with the hands
+    look = seg(f, 10, 18, 36, 42)
+    c["head.ry"] = 16 * look - 6 * capw + 4 * seg(f, 74, 80); c["head.rz"] = -9 * look + 6 * capw
+    c["head.rx"] += 4 * look + 14 * pol - 6 * seg(f, 72, 80)
+    huff_in = seg(f, 32, 38, 40, 42); huff = seg(f, 40, 42, 44, 50)
+    c["chest.rx"] += -6 * huff_in + 5 * huff - 3 * pol; c["spine.rx"] += 6 * huff
+    c["shoulderL.raise"] += 6 * huff_in; c["shoulderR.raise"] += 6 * huff_in
+    c["jaw.rx"] = 12 * huff
+    sq(c, 1.0 + 0.05 * huff_in - 0.04 * huff + 0.04 * seg(f, 72, 78, 80, 84))
+    c["chest.ry"] = 6 * pol * math.sin(circ)
+    c["hips.rz"] = 3 * look - 2 * capw
+    stand_feet(rig, c, spread=0.006)
+    lids = 1.0 + 2.6 * seg(f, 16, 22, 34, 38)
+    blink(c, f, N, [4, 50, 80], loop=False, base=lids)
+    return c
+
+
+LAUGH_HITS = [(2, 1.0), (8, 0.9), (13, 0.85), (18, 0.7), (23, 0.45),
+              (40, 1.0), (45, 0.8), (49, 0.7), (53, 0.6), (57, 0.45), (61, 0.3)]
+
+
+@clip("haman", "laugh_proud", 72, True,
+      notes="fists on hips, head thrown back, belly and shoulders shaking in an uneven 'HA-ha-ha-ha' (bursts that "
+            "slow and fade, a gasping breath in with the head coming forward, then another burst); the jaw opens "
+            "with the laugh; squash on every 'ha'")
+def haman_laugh_proud(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.0)
+    p = pulses(f, N, LAUGH_HITS, rise=1.5, fall=5.0)
+    inh = K([(0, 0.2), (3, 0.0), (24, 0.0), (30, 1.0), (36, 1.0), (39, 0.0), (62, 0.0), (67, 0.7), (70, 0.7), (72, 0.2)], f, N, True)
+    throw = 1 - 0.85 * inh
+    c["hips.ty"] = -0.006 - 0.005 * p + 0.004 * inh
+    proud(c, 1.0)
+    c["hips.tz"] += 0.004 * p
+    c["spine.rx"] += -6 * throw - 3 * p + 4 * inh; c["chest.rx"] += -5 * throw - 4 * p
+    c["head.rx"] += -12 * throw - 6 * p + 10 * inh
+    c["shoulderL.raise"] += 8 * p + 4 * inh; c["shoulderR.raise"] += 8 * p + 4 * inh
+    sq(c, 1.0 - 0.06 * min(1.0, p) + 0.05 * inh)
+    sway = math.sin(2 * math.pi * f / N + 0.4)
+    c["hips.rz"] = 4 * sway; c["chest.rz"] = -3 * sway; c["head.rz"] = 5 * math.sin(2 * math.pi * 2 * f / N) - 2 * sway
+    c["head.ry"] = 6 * math.sin(2 * math.pi * f / N + 1.0)
+    c["jaw.rx"] = 3 + 16 * min(1.0, p) + 4 * inh
+    hands_on_hips(c, 1.0)
+    stand_feet(rig, c, spread=0.006)
+    c["eyelids.sy"] = 1.0
+    return c
+
+
+STOMPS = [(6, "L"), (20, "R"), (33, "L"), (47, "R")]
+
+
+@clip("haman", "fume", 60, True, markers={"stomp": [fr for fr, _ in STOMPS]},
+      notes="red-faced tantrum: fists shaking by his head, hunched and glaring, four alternating stamps (knee high, "
+            "slam, whole-body squash, fists pump down; marker stomp = each slam, see markers.stomp.frames), the whole "
+            "body trembling between them")
+def haman_fume(rig, f, N):
+    c = h_base(rig, f, N, cycles=3, amp=1.4)
+    lift = {"L": 0.0, "R": 0.0}; imp = 0.0
+    for t0, side in STOMPS:
+        d = (f - t0) % N
+        if d > N - 8:
+            d -= N
+        if -8 <= d < -2:
+            lift[side] = max(lift[side], smooth((d + 8) / 5))
+        elif -2 <= d < 0:
+            lift[side] = max(lift[side], 1 - smooth((d + 2) / 2))
+        if 0 <= d < 9:
+            imp = max(imp, (1 - d / 9) ** 2)
+    up = max(lift.values())
+    tr = math.sin(2 * math.pi * 13 * f / N); tr2 = math.sin(2 * math.pi * 11 * f / N + 1.0)
+    c["hips.ty"] = -0.010 - 0.014 * imp + 0.006 * up
+    c["hips.tx"] = 0.009 * (lift["R"] - lift["L"]) + 0.0012 * tr
+    c["hips.rz"] = 5 * (lift["L"] - lift["R"])
+    c["spine.rx"] = 6 + 5 * imp; c["chest.rx"] = 6 + 4 * imp; c["neck.rx"] = -4
+    c["head.rx"] = 6 + 9 * imp - 4 * up; c["head.rz"] = 3 * tr2; c["chest.rz"] = 1.5 * tr
+    sq(c, 1.0 - 0.08 * imp + 0.04 * up)
+    for side, sx in (("L", 1), ("R", -1)):
+        ph = 0.0 if side == "L" else 0.5
+        sh = math.sin(2 * math.pi * (7 * f / N + ph))
+        # fists shaking beside the head (head space), pumped down on every slam
+        arm_ik(c, side, V(sx * (0.058 + 0.004 * sh), 0.020 - 0.045 * imp + 0.008 * sh, 0.028 + 0.010 * imp),
+               V(sx * 1.0, -0.6, -0.2), "head")
+        c[f"hand{side}.bend"] = 14 * math.sin(2 * math.pi * (7 * f / N + ph + 0.3))
+        fingers(c, side, 92)
+    c["shoulderL.raise"] += 8 - 6 * imp; c["shoulderR.raise"] += 8 - 6 * imp
+    stand_feet(rig, c, spread=0.010, liftL=0.050 * lift["L"], liftR=0.050 * lift["R"],
+               fwdL=0.016 * lift["L"], fwdR=0.016 * lift["R"], pitchL=-12 * lift["L"], pitchR=-12 * lift["R"])
+    blink(c, f, N, [26], base=0.8)
+    return c
+
+
+@clip("haman", "scheme", 60, True,
+      notes="gloats to the audience: hunched toward the viewer, rubbing his hands fast, head cocked and turned so the "
+            "eyes slide sideways, shoulders bouncing in uneven giggles (heh-heh-heh ... heh-heh-heh-heh), knees bent")
+def haman_scheme(rig, f, N):
+    c = h_base(rig, f, N, cycles=2, amp=0.6)
+    p = pulses(f, N, [(3, 1.0), (8, 0.8), (12, 0.7), (16, 0.45), (33, 0.9), (37, 0.8), (41, 0.6), (45, 0.45), (49, 0.3)],
+               rise=1.5, fall=4.5)
+    c["hips.ty"] = -0.014 + 0.004 * min(1.0, p); c["hips.tz"] = 0.002
+    c["spine.rx"] = 15 + 2 * p; c["chest.rx"] = 7 + 3 * p; c["neck.rx"] = -9; c["head.rx"] = -9 - 2 * p
+    side = K([(0, -1), (22, -1), (26, 1), (40, 1), (44, -1), (60, -1)], f, N, True)
+    c["head.ry"] = 9 * side; c["neck.ry"] = 3 * KL([(0, -1), (22, -1), (26, 1), (40, 1), (44, -1), (60, -1)], f, N, True, lag=2)
+    c["head.rz"] = 8 * side + 2 * p
+    c["shoulderL.raise"] += 9 * p; c["shoulderR.raise"] += 9 * p
+    sq(c, 1.0 - 0.04 * min(1.0, p))
+    c["hips.tx"] = -0.004 * side; c["hips.rz"] = 3 * side
+    rub_hands(c, f, N, 6, amp=1.8, lift=0.008)
+    fingers(c, "L", 40 + 20 * math.sin(2 * math.pi * 6 * f / N)); fingers(c, "R", 40 - 20 * math.sin(2 * math.pi * 6 * f / N))
+    stand_feet(rig, c, spread=0.008)
+    blink(c, f, N, [28], base=2.0, slow=1.6)
+    return c
+
+
+@clip("haman", "boast", 60, True, markers={"hopL": 6, "hopR": 18, "jab": 31, "open": 48},
+      notes="giddy: two skip-hops (on the left foot, then the right, the free knee up, arms pumping), lands with a "
+            "squash, jabs his thumb into his chest twice, then throws his arms open 'look at me!' up on his toes, "
+            "chin high; crouches back into the next hop")
+def haman_boast(rig, f, N):
+    c = h_base(rig, f, N, cycles=2, amp=0.5)
+    h1 = math.sin(math.pi * (f - 1) / 10) if 1 <= f <= 11 else 0.0
+    h2 = math.sin(math.pi * (f - 13) / 10) if 13 <= f <= 23 else 0.0
+    c["hips.ty"] = K([(0, -0.012), (6, 0.020), (11, -0.010), (18, 0.020), (23, -0.010), (27, -0.016), (31, -0.004),
+                      (42, -0.004), (48, 0.008), (54, 0.008), (60, -0.012)], f, N, True)
+    wJ = seg(f, 26, 30, 40, 44); wO = seg(f, 42, 48, 54, 60)
+    jab = pulses(f, N, [(31, 1.0), (36, 1.0)], rise=2, fall=4, loop=False)
+    hop = max(h1, h2)
+    land = pulses(f, N, [(12, 0.5), (24, 1.0)], rise=1, fall=5, loop=False)
+    sq(c, 1.0 + 0.07 * hop - 0.07 * land + 0.05 * wO)
+    proud(c, 0.4 + 0.6 * wO)
+    c["chest.rx"] += -6 * jab * wJ - 4 * hop
+    c["head.rx"] += -4 * hop + 5 * land
+    c["head.rz"] = 8 * (h1 - h2); c["hips.rz"] = 5 * (h2 - h1)
+    for side, sx in (("L", 1), ("R", -1)):
+        c[f"upperArm{side}.raise"] = -18 + 40 * hop
+        c[f"upperArm{side}.bend"] = 20 + 30 * hop
+        c[f"forearm{side}.bend"] = 60 + 40 * hop
+        fingers(c, side, 70)
+    hands_on_hips(c, wJ, sides="L")
+    arm_ik(c, "R", V(-0.010, 0.004, 0.064 - 0.024 * jab), V(-0.9, -0.4, -0.2), "chest", wJ)
+    fingers(c, "R", lerp(70, 92, wJ))
+    arms_wide(c, wO, up=0.82)
+    toes = 24 * seg(f, 44, 48, 54, 58)
+    stand_feet(rig, c, spread=0.008,
+               liftL=0.010 * h1 + 0.038 * h2, liftR=0.038 * h1 + 0.010 * h2,
+               fwdL=0.020 * h2, fwdR=0.020 * h1,
+               pitchL=26 * h1 - 10 * h2 + toes, pitchR=26 * h2 - 10 * h1 + toes)
+    blink(c, f, N, [57])
+    return c
+
+
+@clip("haman", "daydream", 180, False, markers={"robe": 32, "ride": 60, "shout": 114, "wide": 154},
+      notes="acts out his own imagined parade: dreamy breath in with clasped hands, sweeps a royal robe up and over "
+            "his shoulders and fastens it with a shimmy, mimes riding the king's horse (bow-legged gallop, reins "
+            "jiggling, uneven da-DUM), cups his mouth to shout like a herald, then flings both arms wide and up and "
+            "holds 'This is the man!' (stunned starts from this pose)")
+def haman_daydream(rig, f, N):
+    c = h_base(rig, f, N, cycles=3, amp=0.6)
+    wA = seg(f, 0, 6, 12, 18); wB = seg(f, 12, 20, 42, 50); wC = seg(f, 44, 52, 92, 100)
+    wD = seg(f, 94, 102, 132, 140); wE = seg(f, 144, 154)
+    shout = seg(f, 108, 113, 124, 132)
+    gallop = pulses(f, N, [(52, 0.5), (56, 1.0), (64, 0.5), (68, 1.0), (76, 0.5), (80, 1.0), (88, 0.5), (92, 1.0)],
+                    rise=2, fall=5, loop=False) * wC
+    dip = seg(f, 138, 144, 145, 150)
+    c["hips.ty"] = 0.004 * wA - 0.024 * wC + 0.010 * gallop - 0.014 * dip + 0.006 * wE
+    hy, hz = c["hips.ty"], c.get("hips.tz", 0.0)
+    off = V(0, hy, hz)
+    proud(c, 0.5 + 0.5 * max(wA, wE, wB))
+    # hands (root space, blended by phase)
+    bL = Kv([(12, V(0.010, 0.255, 0.066)), (20, V(-0.040, 0.320, 0.100)), (26, V(-0.060, 0.350, 0.090)),
+             (32, V(0.000, 0.365, 0.070)), (38, V(0.060, 0.300, 0.030)), (44, V(0.020, 0.268, 0.062)), (50, V(0.020, 0.268, 0.062))], f)
+    bR = Kv([(12, V(-0.008, 0.250, 0.068)), (20, V(-0.085, 0.315, 0.075)), (26, V(-0.100, 0.335, 0.055)),
+             (32, V(-0.050, 0.360, 0.060)), (38, V(-0.065, 0.300, 0.025)), (44, V(-0.020, 0.268, 0.062)), (50, V(-0.020, 0.268, 0.062))], f)
+    rein = V(0, 0.006 * gallop, 0.004 * math.sin(2 * math.pi * f / 6))
+    blend_ik(c, "L", [(wA, V(0.010, 0.255, 0.066) + off), (wB, bL + off), (wC, V(0.026, 0.212, 0.100) + off + rein)], V(0.9, -0.5, -0.3))
+    blend_ik(c, "R", [(wA, V(-0.008, 0.250, 0.068) + off), (wB, bR + off), (wC, V(-0.026, 0.212, 0.100) + off + rein),
+                      (wD, V(-0.022, 0.300, 0.068 + 0.012 * shout) + off)], V(-0.9, -0.5, -0.3))
+    fingers(c, "L", 40 + 30 * wC); fingers(c, "R", 40 + 30 * wC - 20 * wD)
+    c["handR.bend"] = -20 * wD
+    # left arm flung out to the side for the shout
+    c["upperArmL.raise"] = lerp(c["upperArmL.raise"], 62, wD); c["upperArmL.bend"] = lerp(c["upperArmL.bend"], 22, wD)
+    c["forearmL.bend"] = lerp(c["forearmL.bend"], 12, wD)
+    if wD > 0:
+        fingers(c, "L", lerp(c["fingersL.curl"], 0, wD))
+    arms_wide(c, wE * (1.0 - dip), up=1.0)
+    for side in "LR":                                   # anticipation: arms pull in before the fling
+        c[f"upperArm{side}.raise"] -= 20 * dip; c[f"forearm{side}.bend"] += 40 * dip
+    over = math.sin(math.pi * smooth((f - 150) / 12)) if 150 <= f <= 162 else 0.0
+    for side in "LR":
+        c[f"upperArm{side}.raise"] += 10 * over
+    # body
+    sweep = K([(12, 0), (22, -1), (30, 0.2), (36, 1), (44, 0)], f)
+    shim = math.sin(2 * math.pi * (f - 40) / 5) * seg(f, 38, 41, 46, 50)
+    c["chest.ry"] = 12 * sweep * wB + 8 * shim; c["head.ry"] = -14 * sweep * wB
+    c["head.rx"] += -6 * wA - 8 * wB * (sweep < 0)
+    c["spine.rx"] += 10 * wC + 3 * gallop + 12 * shout + 6 * dip
+    c["hips.rx"] = c.get("hips.rx", 0) + 5 * gallop * wC
+    c["head.rx"] += 5 * gallop - 8 * shout
+    c["head.rz"] = 5 * math.sin(2 * math.pi * f / 24) * wC
+    c["hips.tz"] = c.get("hips.tz", 0.0) - 0.006 * wC
+    sq(c, 1.0 + 0.04 * wA - 0.05 * gallop + 0.05 * shout + 0.07 * over - 0.04 * dip)
+    toes = 20 * shout + 22 * seg(f, 148, 152, 160, 168)
+    stand_feet(rig, c, spread=0.010, pitchL=toes, pitchR=toes)
+    lids = 1.0 + 2.2 * wA
+    blink(c, f, N, [56, 104, 170], loop=False, base=lids)
+    return c
+
+
+@clip("haman", "stunned", 60, False, markers={"pop": 8},
+      notes="'...Mordecai?!': freezes mid-gesture (arms wide), the jaw drops, the cap pops straight up (marker pop) "
+            "and drops back with a bounce, the arms go limp and dangle, he totters back on his heels and forward, and "
+            "ends slumped, jaw hanging, two slow disbelieving blinks; holds")
+def haman_stunned(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.0)
+    drop = seg(f, 8, 18)
+    tremble = 0.8 * math.sin(2 * math.pi * f / 3) * (1 - seg(f, 2, 6))
+    c["hips.ty"] = 0.006 * (1 - drop) - 0.012 * seg(f, 16, 24) + 0.004 * seg(f, 28, 36)
+    proud(c, 1.0 - drop)
+    arms_wide(c, 1.0 - drop, up=1.0)
+    dang = KL([(0, 0), (8, 0), (18, -1.0), (24, 0.6), (30, -0.3), (36, 0.1), (42, 0)], f, lag=0)
+    for side, sx in (("L", 1), ("R", -1)):
+        c[f"upperArm{side}.raise"] = lerp(c[f"upperArm{side}.raise"], -30, drop) + 2 * tremble + 6 * dang * drop
+        c[f"upperArm{side}.bend"] += 6 * drop
+        c[f"forearm{side}.bend"] = lerp(c[f"forearm{side}.bend"], 8, drop) + 18 * KL([(0, 0), (12, 0), (20, -0.4), (26, 1.0), (32, -0.4), (40, 0.2), (46, 0)], f) * drop
+        c[f"hand{side}.bend"] = lerp(c[f"hand{side}.bend"], 18, drop) + 16 * KL([(0, 0), (14, 0), (22, -0.4), (28, 1.0), (34, -0.4), (44, 0)], f)
+        fingers(c, side, lerp(c[f"fingers{side}.curl"], 12, drop))
+    topple = K([(0, 0), (18, 0), (24, -1.0), (32, 0.9), (38, -0.4), (44, 0.15), (50, 0)], f)
+    c["spine.rx"] += -8 * topple + 10 * seg(f, 18, 34); c["chest.rx"] += -3 * topple + 4 * seg(f, 18, 34)
+    c["hips.tz"] = c.get("hips.tz", 0.0) - 0.004 * topple
+    c["hips.rz"] = K([(0, 0), (20, 0), (28, 4), (36, -3), (44, 1), (52, 0)], f)
+    c["neck.rx"] = 5 * seg(f, 20, 34); c["head.rx"] += 6 * seg(f, 22, 36) + 3 * topple
+    c["head.rz"] = K([(0, 0), (24, 0), (30, 6), (38, -3), (46, 2), (60, 2)], f)
+    c["jaw.rx"] = 22 * seg(f, 2, 7) - 3 * seg(f, 7, 10) + 1.5 * math.sin(math.pi * smooth((f - 9) / 6))
+    c["cap.ty"] = K([(5, 0.0), (8, 0.036), (12, 0.030), (16, 0.0), (19, 0.007), (22, 0.0)], f)
+    c["cap.rx"] = K([(5, 0.0), (9, 10.0), (14, -6.0), (18, 2.0), (22, 0.0)], f)
+    sq(c, 1.0 + 0.07 * math.sin(math.pi * smooth((f - 3) / 10)) - 0.05 * drop + 0.02 * seg(f, 40, 50))
+    heel = 14 * math.sin(math.pi * smooth((f - 20) / 14)) if 20 <= f <= 34 else 0.0
+    stand_feet(rig, c, spread=0.008, pitchL=-heel, pitchR=-heel)
+    blink(c, f, N, [44, 53], loop=False, slow=2.0)
+    return c
+
+
+def slouch(c, w=1.0):
+    c["spine.rx"] = lerp(c.get("spine.rx", 0.0), 17.0, w); c["chest.rx"] = lerp(c.get("chest.rx", 0.0), 8.0, w)
+    c["neck.rx"] = lerp(c.get("neck.rx", 0.0), 6.0, w); c["head.rx"] = lerp(c.get("head.rx", 0.0), 12.0, w)
+    c["shoulderL.raise"] = c.get("shoulderL.raise", 0.0) - 7 * w
+    c["shoulderR.raise"] = c.get("shoulderR.raise", 0.0) - 7 * w
+
+
+H_SULK = (0.064, 0.66)
+
+
+@clip("haman", "sulk", 48, True, markers={"contactL": 0, "contactR": 24}, speed=H_SULK,
+      notes="trudging sulk: slouched, head hanging and lolling, feet scuffing low, a heavy drop onto every step; the "
+            "right arm forward leading the (unseen) horse with a jerk on each step, the left arm dangling; one big "
+            "shoulder-heaving sigh per loop")
+def haman_sulk(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.3)
+    g = gait(rig, f, N, L=H_SULK[0], lift=0.008, duty=H_SULK[1], heel=5, toeoff=12, lift_shape=1.6)
+    legs_ik_channels(c, g)
+    ph = 2 * math.pi * f / N
+    sink = (0.5 + 0.5 * math.cos(2 * ph - 0.5)) ** 3
+    c["hips.ty"] = -0.012 - 0.007 * sink
+    slouch(c, 1.0)
+    sigh = K([(0, 0), (28, 0), (34, 1), (38, 1), (44, -0.3), (48, 0)], f, N, True)
+    c["shoulderL.raise"] += 9 * sigh; c["shoulderR.raise"] += 9 * sigh; c["chest.rx"] += -4 * sigh
+    c["head.rx"] += 6 * sink - 3 * sigh; c["head.rz"] = 5 * math.cos(ph - 1.1); c["head.ry"] = 3 * math.sin(ph - 0.8)
+    c["hips.ry"] = 4 * math.sin(ph); c["hips.rz"] = 4 * math.cos(ph); c["chest.rz"] = -2 * math.cos(ph - 0.6)
+    sq(c, 0.95 - 0.02 * sink + 0.04 * sigh)
+    tug = pulses(f, N, [(4, 1.0), (28, 0.8)], rise=2, fall=7)
+    arm_ik(c, "R", V(-0.032, 0.208 + c["hips.ty"] + 0.004 * tug, 0.084 + 0.012 * tug), V(-0.9, -0.5, -0.2), "root")
+    fingers(c, "R", 85); c["handR.bend"] = -10
+    c["upperArmL.raise"] = -27; c["upperArmL.bend"] = 6 + 12 * math.cos(ph - 0.7)
+    c["forearmL.bend"] = 12 + 8 * math.cos(ph - 1.4); c["handL.bend"] = 8 * math.cos(ph - 2.0); fingers(c, "L", 15)
+    blink(c, f, N, [20], base=3.2, slow=1.8)
+    return c
+
+
+@clip("haman", "sulk_shout", 72, True, markers={"shout": 31},
+      notes="standing slouched, the reins in his right hand: breathes in, cups his left hand to his mouth and pushes "
+            "out a grudging shout (lean in, chest pump, chin up), then deflates in a big sulky slump with a little head "
+            "shake; about every 2.4 s")
+def haman_sulk_shout(rig, f, N):
+    c = h_base(rig, f, N, cycles=1, amp=0.3)
+    inh = seg(f, 18, 26, 28, 31); sh = seg(f, 28, 32, 38, 46); slump = seg(f, 40, 48, 56, 70)
+    c["hips.ty"] = -0.012 + 0.003 * inh - 0.007 * slump
+    slouch(c, 1.0 - 0.6 * inh - 0.4 * sh)
+    c["spine.rx"] += 6 * sh + 5 * slump; c["chest.rx"] += -6 * inh - 3 * sh + 3 * slump
+    c["head.rx"] += -10 * inh - 12 * sh + 8 * slump
+    c["shoulderL.raise"] += 8 * inh - 6 * slump; c["shoulderR.raise"] += 8 * inh - 6 * slump
+    c["head.ry"] = 7 * math.sin(2 * math.pi * (f - 44) / 9) * seg(f, 42, 45, 52, 56)
+    c["hips.rz"] = 2 * math.sin(2 * math.pi * f / N)
+    sq(c, 0.96 + 0.06 * inh + 0.03 * sh - 0.04 * slump)
+    cup = seg(f, 16, 24, 46, 58)
+    arm_ik(c, "L", V(0.024, -0.014, 0.034), V(0.9, -0.4, -0.1), "head", cup)
+    c["handL.bend"] = -28 * cup; fingers(c, "L", 15 + 25 * cup)
+    arm_ik(c, "R", V(-0.034, 0.192 + c["hips.ty"], 0.072), V(-0.9, -0.5, -0.2), "root")
+    fingers(c, "R", 85)
+    stand_feet(rig, c, spread=0.005)
+    blink(c, f, N, [10, 62], base=3.0 - 2.0 * sh, slow=1.6)
+    return c
+
+
+# --- kneeling (beg): knees on the floor computed exactly from the thigh / shin lengths
+H_KNEE_Y = 0.032           # knee joint height on the floor (the robe over the knee stays above the page)
+H_KNEE_FWD = 0.030         # knee ahead of the hip joint (thighs lean forward: pleading toward the viewer)
+H_BEG_ANKLE_Y = 0.066      # ankles behind, raised (toes tucked) so the robe behind the knees stays above the page (meshMinY ~0)
+H_BEG_HZ = -0.012
+H_BEG = (0.024, 0.60)
+
+
+def beg_legs(rig, c, f, N, L, duty, lift=0.010):
+    """Per side a knee on the floor sliding back while it carries weight (stance) and lifting forward (swing); the
+    hip height follows so both thighs keep their length (the hips bob on the shuffle)."""
+    Lt, Ls = rig.length["thighL"], rig.length["shinL"]
+    plan = {}
+    for side, off in (("L", 0.0), ("R", 0.5)):
+        p = (f / N + off) % 1.0
+        if p < duty:
+            s = p / duty; dz = H_KNEE_FWD + L / 2 - L * s; ly = 0.0
+        else:
+            s = (p - duty) / (1 - duty); dz = H_KNEE_FWD - L / 2 + L * smooth(s); ly = lift * math.sin(math.pi * s)
+        plan[side] = (dz, H_KNEE_Y + ly, ly)
+    hy = min(ky + math.sqrt(max(0.0, Lt * Lt - dz * dz)) for dz, ky, _ in plan.values())
+    hz = H_BEG_HZ
+    c["hips.ty"] = hy - rig.head["thighL"].y; c["hips.tz"] = hz
+    for side, (dz, ky, ly) in plan.items():
+        sx = 1 if side == "L" else -1
+        vy = hy - ky
+        dz2 = math.sqrt(max(0.0, Lt * Lt - vy * vy))
+        knee = V(rig.head["thigh" + side].x, ky, hz + dz2)
+        ay = H_BEG_ANKLE_Y + 0.6 * ly
+        sa = max(-0.99, min(0.99, (ay - ky) / Ls))
+        ankle = knee + V(0, ay - ky, -Ls * math.sqrt(1 - sa * sa))
+        c[f"ik.leg{side}"] = ankle
+        c[f"foot{side}.pitch"] = KNEEL_PITCH
+        c[f"pole.leg{side}"] = V(0.1 * sx, 0, 1)
+    return plan
+
+
+@clip("haman", "beg", 48, True, markers={"please": 22}, speed=H_BEG,
+      notes="on his knees, hands clasped and raised, blubbering: pleading bobs in an uneven please-please-PLEASE "
+            "(the big one a deep bow with the hands shaken up), head tilted like a wet puppy, sobbing shoulders; "
+            "shuffles forward on alternating knees (slow locomotion); cap still askew from shock")
+def haman_beg(rig, f, N):
+    c = h_base(rig, f, N, cycles=2, amp=0.5)
+    plan = beg_legs(rig, c, f, N, H_BEG[0], H_BEG[1])
+    p = pulses(f, N, [(4, 0.5), (12, 0.6), (22, 1.0), (36, 0.5)], rise=3, fall=8)
+    sob = math.sin(2 * math.pi * 9 * f / N)
+    roll = plan["R"][2] - plan["L"][2]
+    c["hips.rz"] = 160 * roll; c["hips.tx"] = 0.25 * roll
+    c["spine.rx"] = 4 + 14 * p; c["chest.rx"] = 2 + 5 * p; c["neck.rx"] = -6
+    c["head.rx"] = -14 + 6 * p; c["head.rz"] = 9 + 3 * math.sin(2 * math.pi * f / N) - 120 * roll
+    c["shoulderL.raise"] += 5 + 2 * sob; c["shoulderR.raise"] += 5 + 2 * sob
+    sq(c, 0.98 - 0.04 * min(1.0, p) + 0.006 * sob)
+    shake = 0.006 * math.sin(2 * math.pi * 4 * f / N) * p
+    arm_ik(c, "L", V(0.007, 0.018 + 0.010 * p + shake, 0.066), V(0.8, -0.6, -0.2), "chest")
+    arm_ik(c, "R", V(-0.007, 0.018 + 0.010 * p + shake, 0.066), V(-0.8, -0.6, -0.2), "chest")
+    c["handL.bend"] = -30; c["handR.bend"] = -30
+    fingers(c, "L", 55); fingers(c, "R", 55)
+    cap_slipped(c, 1.0)
+    blink(c, f, N, [16, 41], slow=1.3)
+    return c
+
+
+H_DRAG_SPEED = 0.16        # shared with guard1_drag / guard2_drag (Integration, 2026-11-14)
+H_DRAG = (H_DRAG_SPEED * 0.6 * 36 / FPS, 0.6)
+
+
+@clip("haman", "dragged", 36, True, speed=H_DRAG, natural=H_DRAG_SPEED, backwards=True,
+      notes="dragged off backwards by two guards (the director turns him to face away from the travel): upper arms "
+            "held out and up at the sides at guard-hand height, forearms and hands flailing, legs kicking wildly "
+            "(L, R, L, then a double thrash) with the heels scraping in front, body leaning back, head thrashing, "
+            "wailing (terrified face, jaw by the voice); cap askew. naturalSpeed 0.16 = the guards' drag")
+def haman_dragged(rig, f, N):
+    c = h_base(rig, f, N, cycles=3, amp=1.0)
+    ph = 2 * math.pi * f / N
+    c["hips.ty"] = -0.028 + 0.004 * math.sin(2 * ph + 0.3); c["hips.tz"] = 0.010
+    c["hips.rx"] = -5; c["spine.rx"] = -9 + 3 * math.sin(3 * ph); c["chest.rx"] = -4; c["neck.rx"] = 6
+    c["hips.rz"] = 6 * math.sin(2 * ph + 0.5) + 3 * math.sin(3 * ph); c["chest.ry"] = 8 * math.sin(2 * ph + 1.4)
+    c["chest.rz"] = -4 * math.sin(2 * ph + 0.9)
+    gl = [(0, 0), (4, -24), (9, 16), (13, -8), (18, 26), (24, -18), (29, 12), (33, -4), (36, 0)]
+    c["head.ry"] = K(gl, f, N, True); c["neck.ry"] = 0.3 * KL(gl, f, N, True, lag=-2)
+    c["head.rz"] = 0.4 * KL(gl, f, N, True, lag=2); c["head.rx"] = -6 + 5 * math.sin(4 * ph + 0.7)
+    sq(c, 1.0 + 0.04 * math.sin(3 * ph))
+    for side, sx in (("L", 1), ("R", -1)):
+        o = 0.0 if side == "L" else 0.37
+        c[f"shoulder{side}.raise"] = 12
+        c[f"upperArm{side}.raise"] = 40 + 4 * math.sin(2 * math.pi * (2 * f / N + o))
+        c[f"upperArm{side}.bend"] = -16
+        c[f"forearm{side}.bend"] = 55 + 40 * math.sin(2 * math.pi * (3 * f / N + o)) + 15 * math.sin(2 * math.pi * (5 * f / N + o + 0.2))
+        c[f"forearm{side}.twist"] = -sx * 30 * math.sin(2 * math.pi * (2 * f / N + o + 0.1))
+        c[f"hand{side}.bend"] = 35 * math.sin(2 * math.pi * (7 * f / N + o))
+        fingers(c, side, 10 + 15 * math.sin(2 * math.pi * (6 * f / N + o)))
+    kicks = {"L": [(2, 1.0), (19, 0.9)], "R": [(10, 1.0), (27, 0.7)]}
+    for side in "LR":
+        k = 0.0
+        for t0, a in kicks[side]:
+            d = (f - t0) % N
+            if d < 8:
+                k = max(k, a * math.sin(math.pi * d / 8))
+        b = rig.head["foot" + side]
+        sx = 1 if side == "L" else -1
+        pitch = lerp(-28.0, 24.0, k)
+        y = planted_ankle_y(rig, side, pitch) + 0.040 * k
+        scrape = 0.0015 * math.sin(2 * math.pi * 9 * f / N + (0 if side == "L" else 1.7)) * (1 - k)
+        c[f"ik.leg{side}"] = V(b.x + sx * 0.010 + scrape, y, b.z + 0.034 + 0.040 * k)
+        c[f"foot{side}.pitch"] = pitch
+    cap_slipped(c, 1.0)
+    c["eyelids.sy"] = 1.0
+    return c
+
+
+# =============================================================================================== GUARDS (guard1, guard2)
+# Palace guards (HAMAN-REWORK.md §3): same humanoid skeleton + `spear` (child of the OUTER hand). The inner hand (the one
+# without the spear, toward Haman) grabs and drags. Both guards share these clips (actions guard1_<clip>, guard2_<clip>).
+GUARDS = ("guard1", "guard2")
+# S10 marks the grips are fitted to (story.py, 2026-11-14): Haman kneels facing the king; guard1 0.11 to his RIGHT and
+# guard2 0.11 to his LEFT, both 0.02 ahead, both facing him for `grab`; then all three translate by S10_TRAVEL, the guards
+# facing the travel and Haman turned 180 deg from it by the director (`backwards: true`).
+S10_HAMAN = (0.20, 0.12)
+S10_KING = (0.0, -0.30)
+S10_GUARD = {"guard1": (0.29, 0.055), "guard2": (0.092, 0.149)}
+S10_TRAVEL = (0.75, 0.28)
+H_ARM_GRIP = {"L": (0.076, 0.241, -0.016), "R": (-0.076, 0.241, -0.016)}   # haman_dragged upper arm (60 % to the elbow), mean
+GUARD_HOLDS = {"guard1": "R", "guard2": "L"}                                # which of Haman's arms each guard holds
+
+
+def _unit(v):
+    l = math.hypot(v[0], v[1]); return (v[0] / l, v[1] / l)
+
+
+def _local(P, fwd, Q):
+    """(x, z) of page point Q in the frame of a character at P facing fwd (x = its left)."""
+    d = (Q[0] - P[0], Q[1] - P[1]); lf = (fwd[1], -fwd[0])
+    return d[0] * lf[0] + d[1] * lf[1], d[0] * fwd[0] + d[1] * fwd[1]
+
+
+def _world(P, fwd, lx, lz):
+    lf = (fwd[1], -fwd[0]); return (P[0] + lx * lf[0] + lz * fwd[0], P[1] + lx * lf[1] + lz * fwd[1])
+
+
+def yaw_of(fwd):
+    """place_rig yaw (deg) that makes a character face the page direction fwd (x, z)."""
+    return math.degrees(math.atan2(fwd[0], fwd[1]))
+
+
+def s10_grips():
+    """Per guard the inner-hand target (guard-local root space) for `grab` (guard faces Haman, Haman faces the king)
+    and `drag` (guard faces the travel, Haman faces away from it), from the marks above."""
+    H = S10_HAMAN; fk = _unit((S10_KING[0] - H[0], S10_KING[1] - H[1])); t = _unit(S10_TRAVEL); bt = (-t[0], -t[1])
+    out = {}
+    for g, P in S10_GUARD.items():
+        hx, hy, hz = H_ARM_GRIP[GUARD_HOLDS[g]]
+        fg = _unit((H[0] - P[0], H[1] - P[1]))
+        gx, gz = _local(P, fg, _world(H, fk, hx, hz))
+        dx, dz = _local(P, t, _world(H, bt, hx, hz))
+        out[g] = {"grab": V(gx, hy, gz), "drag": V(dx, hy, dz), "inner": "L" if dx > 0 else "R",
+                  "grabFace": fg, "dragFace": t}
+    return out
+
+
+S10_GRIPS = s10_grips()
+
+
+def guard_clip(name, N, loop, **kw):
+    def deco(fn):
+        for g in GUARDS:
+            CLIPS.append(Clip(g, name, N, loop, fn, **kw))
+        return fn
+    return deco
+
+
+def g_sides(rig):
+    """(inner, outer, inner_sx): the inner (grabbing) hand is the one without the spear (guard1 holds it in R, guard2 in
+    L). Without a spear bone: the side of the fitted drag grip."""
+    par = rig.parent.get("spear")
+    if par in ("handL", "handR"):
+        outer = par[-1]; inner = "L" if outer == "R" else "R"
+    else:
+        inner = S10_GRIPS[rig.ch]["inner"]; outer = "L" if inner == "R" else "R"
+    return inner, outer, (1 if inner == "L" else -1)
+
+
+def g_base(rig, f, N, cycles=1, amp=1.0, spear_tilt=0.04):
+    """At attention: upright, chest up, chin level; inner arm straight at the side, outer fist holding the spear
+    upright beside him (forearm forward, the spear bone aimed straight up)."""
+    inner, outer, isx = g_sides(rig)
+    c = {}
+    b = wave(f, N, cycles)
+    c["spine.rx"] = -2; c["chest.rx"] = -3 - 1.2 * b * amp; c["head.rx"] = -2
+    c["shoulderL.raise"] = 0.8 * b * amp; c["shoulderR.raise"] = 0.8 * b * amp
+    c[f"upperArm{inner}.raise"] = -20; c[f"upperArm{inner}.bend"] = 4; c[f"forearm{inner}.bend"] = 10
+    fingers(c, inner, 45)
+    osx = -isx
+    arm_ik(c, outer, V(osx * 0.078, 0.190, 0.040), V(osx * 0.9, -0.3, -0.4), "root")
+    fingers(c, outer, 88)
+    c["spear.dir"] = V(0, 1, spear_tilt)
+    return c
+
+
+@guard_clip("idle", 120, True,
+            notes="at attention, spear upright: slow breathing, a stern look round, regrips the spear once, blinks")
+def guard_idle(rig, f, N):
+    inner, outer, isx = g_sides(rig)
+    c = g_base(rig, f, N, cycles=2)
+    look = [(0, 0), (40, 0), (46, -10), (64, -10), (70, 8), (86, 8), (92, 0), (120, 0)]
+    c["head.ry"] = K(look, f, N, True); c["neck.ry"] = 0.3 * KL(look, f, N, True, lag=-2)
+    fingers(c, outer, 88 - 30 * seg(f, 96, 99, 101, 105))
+    sh = wave(f, N, 1, 0.3)
+    c["hips.tx"] = 0.002 * sh; c["hips.rz"] = -1.0 * sh
+    stand_feet(rig, c, spread=0.004)
+    blink(c, f, N, [30, 95])
+    return c
+
+
+G_MARCH = (0.100, 0.55)
+
+
+@guard_clip("march", 20, True, markers={"contactL": 0, "contactR": 10}, speed=G_MARCH,
+            notes="brisk march: upright, chin up, knees up, crisp heel strikes, inner arm swinging stiff, the spear "
+                  "carried upright and bobbing with the step")
+def guard_march(rig, f, N):
+    inner, outer, isx = g_sides(rig)
+    c = g_base(rig, f, N, cycles=1, amp=0.3)
+    g = gait(rig, f, N, L=G_MARCH[0], lift=0.030, duty=G_MARCH[1], heel=18, toeoff=14, lift_shape=0.7)
+    legs_ik_channels(c, g)
+    ph = 2 * math.pi * f / N
+    c["hips.ty"] = -0.006 + 0.006 * math.cos(2 * ph - 0.6)
+    c["hips.ry"] = 6 * math.cos(ph); c["chest.ry"] = -5 * math.cos(ph - 0.3); c["hips.rz"] = 3 * math.sin(ph)
+    c["spine.rx"] = 1; c["head.rx"] = -4 + 1.5 * math.cos(2 * ph - 1.2)
+    s = -1 if inner == "L" else 1                      # L foot forward at f0 -> R arm forward
+    c[f"upperArm{inner}.bend"] = 6 + 34 * s * math.cos(ph - 0.25)
+    c[f"forearm{inner}.bend"] = 14 + 10 * s * math.cos(ph - 0.9)
+    fingers(c, inner, 70)
+    c["ik.arm" + outer] = c["ik.arm" + outer] + V(0, 0.004 * math.cos(2 * ph - 0.9), 0.004 * s * math.cos(ph))
+    blink(c, f, N, [14])
+    return c
+
+
+@guard_clip("grab", 36, False, markers={"grab": 20},
+            notes="stamps the inner foot, leans in and clamps the inner hand on Haman's upper arm (marker grab; target "
+                  "fitted to the S10 marks, Haman's arm 0.04 in front), tugs back once and holds the grip")
+def guard_grab(rig, f, N):
+    inner, outer, isx = g_sides(rig)
+    c = g_base(rig, f, N, cycles=1, amp=0.4)
+    ant = math.sin(math.pi * smooth(f / 8))
+    step = seg(f, 6, 16)
+    reach = seg(f, 9, 18)
+    tug = seg(f, 24, 30, 31, 36)
+    c["spine.rx"] = -2 - 4 * ant + 12 * reach - 5 * tug; c["chest.rx"] += 3 * reach
+    c["head.rx"] = -2 + 3 * reach
+    c["hips.tz"] = 0.006 * step - 0.004 * tug; c["hips.ty"] = -0.006 * step
+    gp = S10_GRIPS[rig.ch]["grab"]
+    tgt = Kv([(0, V(isx * 0.080, 0.180, 0.020)), (9, V(isx * 0.075, 0.205, 0.000)), (15, gp + V(0.6 * isx * 0.02, 0.012, 0.030)),
+              (18, gp + V(0, 0.004, 0.006)), (20, gp), (36, gp)], f)
+    tgt = tgt + V(0, 0, -0.010 * tug)
+    arm_ik(c, inner, tgt, V(isx * 0.9, -0.5, -0.3), "root", seg(f, 0, 6))
+    fingers(c, inner, 30 if f < 18 else 30 + 62 * seg(f, 18, 21))
+    c[f"hand{inner}.bend"] = -10 * reach
+    sx_in = 1 if inner == "L" else -1
+    lift = math.sin(math.pi * (f - 6) / 10) if 6 <= f <= 16 else 0.0
+    fw = 0.012 * step
+    if inner == "L":
+        stand_feet(rig, c, spread=0.004, fwdL=fw, liftL=0.016 * lift, pitchL=-8 * lift)
+    else:
+        stand_feet(rig, c, spread=0.004, fwdR=fw, liftR=0.016 * lift, pitchR=-8 * lift)
+    blink(c, f, N, [26], loop=False)
+    return c
+
+
+G_DRAG = (H_DRAG_SPEED * 0.6 * 28 / FPS, 0.6)
+
+
+@guard_clip("drag", 28, True, markers={"contactL": 0, "contactR": 14}, speed=G_DRAG, natural=H_DRAG_SPEED,
+            notes="walks forward leaning into the pull, inner hand on Haman's upper arm at the S10 drag marks (guard1: "
+                  "0.016 right, 0.046 behind; guard2: 0.011 right, 0.107 in front), a tug on every step; the spear "
+                  "upright in the outer hand. naturalSpeed 0.16 = haman_dragged")
+def guard_drag(rig, f, N):
+    inner, outer, isx = g_sides(rig)
+    c = g_base(rig, f, N, cycles=1, amp=0.3, spear_tilt=0.15)
+    g = gait(rig, f, N, L=G_DRAG[0], lift=0.016, duty=G_DRAG[1], heel=12, toeoff=14)
+    legs_ik_channels(c, g)
+    ph = 2 * math.pi * f / N
+    c["hips.ty"] = -0.005 + 0.004 * math.cos(2 * ph - 0.5)
+    c["hips.rx"] = 4; c["spine.rx"] = 11; c["chest.rx"] = 4; c["neck.rx"] = -6; c["head.rx"] = -9
+    c["hips.ry"] = 4 * math.cos(ph); c["hips.rz"] = 2.5 * math.sin(ph)
+    tug = 0.5 + 0.5 * math.cos(2 * ph - 0.8)
+    gp = S10_GRIPS[rig.ch]["drag"]                     # fitted to the S10 marks (guard1 behind him, guard2 in front)
+    arm_ik(c, inner, gp + V(0, 0.004 * tug, -0.008 * tug), V(isx * 0.8, -0.6, 0.2 if gp.z < 0 else -0.4), "root")
+    fingers(c, inner, 92)
+    c["ik.arm" + outer] = c["ik.arm" + outer] + V(0, 0.003 * math.cos(2 * ph - 0.9), 0.010)
+    blink(c, f, N, [9])
     return c
 
 
@@ -1655,6 +2414,16 @@ def aim_sceptre(rig, basis, M, want_d):
     rig.set_world_rot(basis, M, "handR", Rd @ Rh)
 
 
+def aim_held(rig, basis, M, bone, want_d):
+    """Turn the hand that holds `bone` (minimal rotation) so the bone points along want_d (design, root space)."""
+    hand = rig.parent[bone]
+    Mroot = M["root"] @ rig.rest["root"].inverted()
+    want = (Mroot.to_3x3() @ (C @ Vector(want_d))).normalized()
+    cur = M[bone].to_3x3().normalized().col[1].normalized()
+    Rd = cur.rotation_difference(want).to_matrix()
+    rig.set_world_rot(basis, M, hand, Rd @ M[hand].to_3x3().normalized())
+
+
 def king_sceptre(rig, basis, M, chs):
     if "sceptre.dir" not in chs and "sceptre.tip" not in chs:
         return
@@ -1680,6 +2449,8 @@ def evaluate_primary(rig, clip_, f):
     apply_ik(rig, basis, M, chs)
     if rig.ch == "king":
         king_sceptre(rig, basis, M, chs)
+    if "spear.dir" in chs and "spear" in rig.names:
+        aim_held(rig, basis, M, "spear", chs["spear.dir"])
     return chs, basis, M
 
 
@@ -1688,7 +2459,11 @@ CHAINS = {
     "esther": [(("braid1", "braid2", "braid3"), 70.0, 8.0, 0.35, 28.0, "braid.bias"),
                (("cape1", "cape2"), 90.0, 9.0, 0.25, 22.0, None)],
     "king": [(("sceptre",), 220.0, 18.0, 0.0, 3.0, None)],
-    "haman": [],
+    # Haman's cap feather (Characters role adds plume1-2 under `cap`; skipped while the bones do not exist): soft and
+    # springy so it bobs and whips behind every move
+    "haman": [(("plume1", "plume2"), 55.0, 4.5, 0.12, 50.0, None)],
+    "guard1": [(("spear",), 200.0, 16.0, 0.0, 4.0, None)],
+    "guard2": [(("spear",), 200.0, 16.0, 0.0, 4.0, None)],
 }
 
 
@@ -1696,7 +2471,7 @@ def sim_chains(rig, prim, loop):
     """Damped spring chains (braid, cape, sceptre wobble). Mutates prim[f] basis/M. Loops: 3 cycles, keep the last,
     spread the residual over the cycle so frame N == frame 0."""
     N = len(prim) - 1
-    for names, k, cdamp, gw, lim, bias_key in CHAINS[rig.ch]:
+    for names, k, cdamp, gw, lim, bias_key in CHAINS.get(rig.ch, []):
         if any(n not in rig.names for n in names):
             continue
         seq = (list(range(N)) * 3 + [N]) if loop else list(range(N + 1))
@@ -1763,7 +2538,14 @@ def bake_clip(rig, clip_):
         bN = {n: [b0[n][0].copy(), b0[n][1].copy(), b0[n][2].copy()] for n in b0}
         prim[N] = (prim[N][0], bN, rig.fk(bN))
     sim_chains(rig, prim, clip_.loop)
-    return [(p[1], p[2]) for p in prim]
+    if clip_.loop:
+        # the spread correction closes the chains by direction only; under the spine squash (non-uniform parent scale)
+        # a different twist moves the plume tip by up to 1 mm, so frame N takes frame 0's basis exactly
+        b0 = prim[0][1]
+        prim[N] = (prim[N][0], {n: [b0[n][0].copy(), b0[n][1].copy(), b0[n][2].copy()] for n in b0}, prim[N][2])
+    # world matrices from the final basis (what the GLB carries): with the spine squash / stretch (non-uniform scale)
+    # the incremental IK matrices can differ from a fresh FK by ~1e-4; checks and seams must see the exported pose
+    return [(p[1], rig.fk(p[1])) for p in prim]
 
 
 def write_action(rig, clip_, frames):
@@ -1804,7 +2586,7 @@ def write_action(rig, clip_, frames):
     act.use_cyclic = clip_.loop
     for m in list(act.pose_markers):
         act.pose_markers.remove(m)
-    for mname, mf in clip_.markers.items():
+    for mname, mf in clip_.marker_frames():
         pm = act.pose_markers.new(mname); pm.frame = int(mf)
     return act
 
@@ -1814,7 +2596,7 @@ def open_scene():
     bpy.ops.wm.open_mainfile(filepath=BLEND)
     sc = bpy.context.scene
     sc.render.fps = FPS
-    rigs = {ch: Rig(ch, bpy.data.objects[f"{ch}_rig"]) for ch in CHARS}
+    rigs = {ch: Rig(ch, bpy.data.objects[f"{ch}_rig"]) for ch in CHARS if f"{ch}_rig" in bpy.data.objects}
     return sc, rigs
 
 
@@ -1823,7 +2605,12 @@ def contract_clips():
                        "point", "joy", "wave"],
             "king": ["sit_idle", "sit_talk", "sit_listen", "give_ring", "extend_sceptre", "sit_smile", "stand_angry",
                      "angry_idle", "point_away", "celebrate"],
-            "haman": ["idle", "strut", "talk", "demand", "whisper", "take_ring", "smug", "shock", "cower", "led_away"]}
+            "haman": ["idle", "strut", "talk", "demand", "whisper", "take_ring", "smug", "shock", "cower", "led_away",
+                      # HAMAN-REWORK.md §3 (2026-11-14)
+                      "parade", "preen", "laugh_proud", "fume", "scheme", "boast", "daydream", "stunned", "sulk",
+                      "sulk_shout", "beg", "dragged"],
+            "guard1": ["idle", "march", "grab", "drag"],
+            "guard2": ["idle", "march", "grab", "drag"]}
 
 
 def timeline_clips():
@@ -1892,7 +2679,7 @@ def clip_checks(rig, cl, frames):
         out["meshMinAt"] = low_at
     if seat:
         out["seatGap"] = [round(min(seat), 4), round(max(seat), 4)]
-    if cl.speed is None:
+    if cl.natural_speed is None:
         drift = 0.0
         for side in "LR":
             ref = None
@@ -1914,20 +2701,46 @@ def clip_checks(rig, cl, frames):
     return out
 
 
+def markers_json(cl):
+    """D&G schema {name: {frame, sec}}; a repeated event (fume stomps) also lists every hit in frames / secs."""
+    out = {}
+    for k, v in cl.markers.items():
+        frs = list(v) if isinstance(v, (list, tuple)) else [v]
+        out[k] = {"frame": frs[0], "sec": round(frs[0] / FPS, 3)}
+        if len(frs) > 1:
+            out[k]["frames"] = frs; out[k]["secs"] = [round(x / FPS, 3) for x in frs]
+    return out
+
+
 def mode_build():
     sc, rigs = open_scene()
     want = contract_clips()
     have = {ch: [c.name for c in CLIPS if c.ch == ch] for ch in CHARS}
     for ch in CHARS:
-        assert set(want[ch]) <= set(have[ch]), (ch, set(want[ch]) - set(have[ch]))
+        assert set(want.get(ch, [])) <= set(have[ch]), (ch, set(want[ch]) - set(have[ch]))
     missing_tl = [f"{w}_{c}" for w, c in timeline_clips() if c not in have[w]]
     req = TL.get("requestedClips") or []
     meta = {"fps": FPS, "units": "art-width", "clips": [], "timelineMissing": missing_tl, "requestedClips": req,
             "stage": {"daisTop": DAIS_TOP, "throne": THRONE, "stepFoot": STEP_FOOT, "seatAboveRoot": SEAT_H,
                       "kingStandZ": STAND_Z, "sceptreTipKingLocal": [round(v, 4) for v in EXTEND_TIP]}}
     only = os.environ.get("ES_ONLY")
+    pending = [ch for ch in CHARS if ch not in rigs]
+    if pending:
+        print("ES_PENDING_CHARS (not in characters.blend yet; their clips are not built)", pending)
+    meta["pendingChars"] = pending
+    meta["stage"]["s10"] = {"haman": S10_HAMAN, "guards": S10_GUARD, "travel": S10_TRAVEL,
+                            "grips": {g: {"inner": v["inner"], "grab": [round(x, 4) for x in v["grab"]],
+                                          "drag": [round(x, 4) for x in v["drag"]]} for g, v in S10_GRIPS.items()}}
+    for g in GUARDS:
+        if g in rigs:
+            inner = g_sides(rigs[g])[0]; gx = S10_GRIPS[g]["drag"].x
+            if (gx > 0.03 and inner == "R") or (gx < -0.03 and inner == "L"):
+                print(f"ES_WARN {g}: drag grip {gx:+.3f} is on the spear side; the inner hand reaches across")
+            meta["stage"]["s10"]["grips"][g]["inner"] = inner
     for cl in CLIPS:
         if only and not any(cl.action.startswith(o) for o in only.split(",")):
+            continue
+        if cl.ch not in rigs:
             continue
         rig = rigs[cl.ch]
         frames = bake_clip(rig, cl)
@@ -1939,19 +2752,22 @@ def mode_build():
         rootmax = max(rig.pos(M, "root").length for _, M in frames)
         info = {"action": cl.action, "char": cl.ch, "clip": cl.name, "frames": cl.N, "seconds": round(cl.N / FPS, 3),
                 "loop": cl.loop, "rootMotion": False,
-                "markers": {k: {"frame": v, "sec": round(v / FPS, 3)} for k, v in cl.markers.items()},
+                "markers": markers_json(cl),
                 "loopSeamMaxErr": None if seam is None else round(seam, 6), "rootMaxOffset": round(rootmax, 5),
                 "notes": cl.notes}
         if cl.extra:
             info["extra"] = True
-        if cl.speed:
+        if cl.natural_speed is not None:
             info["naturalSpeed"] = round(cl.natural_speed, 4)
-            info["stride"] = cl.speed[0]
+            if cl.speed:
+                info["stride"] = round(cl.speed[0], 5)
+        if cl.backwards:
+            info["backwards"] = True
         samp = {}
         for fr in sorted(set([0, cl.N // 2, cl.N])):
             M = frames[fr][1]
             samp[str(fr)] = {n: [round(v, 5) for v in rig.pos(M, n)] for n in
-                             ("head", "jaw", "handR", "handL", "footL", "toeR", "hips", "braid3", "sceptreTip", "cap") if n in rig.names}
+                             ("head", "jaw", "handR", "handL", "footL", "toeR", "hips", "braid3", "sceptreTip", "cap", "plume2", "spear") if n in rig.names}
         info["samples"] = samp
         info["checks"] = clip_checks(rig, cl, frames)
         if cl.action == "king_extend_sceptre":
@@ -1965,7 +2781,7 @@ def mode_build():
     bpy.context.preferences.filepaths.save_version = 0
     tmp_blend = os.path.join(WORK, "es_anim.blend")
     bpy.ops.wm.save_as_mainfile(filepath=tmp_blend, compress=True)
-    for ch in CHARS:
+    for ch in [c for c in CHARS if c in rigs]:
         bpy.ops.wm.open_mainfile(filepath=tmp_blend)
         rig = bpy.data.objects[f"{ch}_rig"]
         for o in list(bpy.data.objects):
@@ -2059,7 +2875,8 @@ def mode_verify():
     meta = json.load(open(os.path.join(ANIM, "clips.json")))
     want = {c["action"]: c for c in meta["clips"]}
     out = {"glb": {}, "sampleErr": {}}
-    for ch in CHARS:
+    built = [ch for ch in CHARS if ch not in meta.get("pendingChars", []) and os.path.exists(os.path.join(ANIM, f"{ch}.glb"))]
+    for ch in built:
         path = os.path.join(ANIM, f"{ch}.glb")
         j = glb_json(path)
         anims = {}
@@ -2104,9 +2921,10 @@ def mode_verify():
             errs[name] = round(worst, 6)
         out["sampleErr"][ch] = errs
     want_c = contract_clips()
-    out["contractMissing"] = {ch: [c for c in want_c[ch] if f"{ch}_{c}" not in out["glb"][ch]["animations"]] for ch in CHARS}
+    out["contractMissing"] = {ch: [c for c in want_c[ch] if f"{ch}_{c}" not in out["glb"][ch]["animations"]] for ch in built}
+    out["pendingChars"] = meta.get("pendingChars", [])
     json.dump(out, open(os.path.join(WORK, "verify.json"), "w"), indent=1)
-    for ch in CHARS:
+    for ch in built:
         for nm, a in sorted(out["glb"][ch]["animations"].items()):
             print(f"ES_VERIFY {ch} {nm} {a['frames']}f {a['seconds']}s ch={a['channels']} sampleErr={out['sampleErr'][ch].get(nm)}")
         print(f"ES_VERIFY_GLB {ch} bytes={out['glb'][ch]['bytes']} skins={out['glb'][ch]['skins']} meshes={out['glb'][ch]['meshes']} "
@@ -2129,8 +2947,61 @@ def hex_rgb(h):
     h = h.lstrip("#"); return [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
 
 
+GUARD_PAINT = os.path.join(MODEL, "guard_paint.png")
+FACE_DIR = os.path.join(ROOT, "docs/esther/design/faces")
+# HAMAN-REWORK.md §3 faces per clip; used when faces.json (Integration) does not list the clip yet. A face PNG that the
+# Characters role has not drawn yet falls back to the nearest existing one.
+REWORK_FACES = {"haman": {"parade": "proud", "preen": "proud", "smug": "proud", "laugh_proud": "laugh", "boast": "laugh",
+                          "fume": "furious", "scheme": "scheming", "whisper": "scheming", "daydream": "proud",
+                          "stunned": "stunned", "sulk": "sulky", "sulk_shout": "sulky", "shock": "shocked",
+                          "beg": "begging", "dragged": "terrified"}}
+FACE_FALLBACK = {"proud": "smug", "laugh": "smug", "furious": "shocked", "scheming": "sly", "stunned": "shocked",
+                 "sulky": "sly", "terrified": "scared", "begging": "scared"}
+
+
+def face_png(ch, expr):
+    for e in (expr, FACE_FALLBACK.get(expr)):
+        if e and os.path.exists(os.path.join(FACE_DIR, f"{ch}_{e}.png")):
+            return os.path.join(FACE_DIR, f"{ch}_{e}.png")
+    fd = FACES.get(ch)
+    if fd and os.path.exists(os.path.join(FACE_DIR, f"{ch}_{fd['default']}.png")):
+        return os.path.join(FACE_DIR, f"{ch}_{fd['default']}.png")
+    if ch in GUARDS and os.path.exists(os.path.join(FACE_DIR, "guard_stern.png")):
+        return os.path.join(FACE_DIR, "guard_stern.png")
+    return None
+
+
+def guard_material(ch):
+    """Guards are not on the sheet: fixed painted texture (guard_paint.png, page UV) or a flat demo colour."""
+    m = bpy.data.materials.new(f"anim_{ch}"); m.use_nodes = True; nt = m.node_tree
+    bsdf = nt.nodes.get("Principled BSDF"); bsdf.inputs["Roughness"].default_value = 0.75
+    bsdf.inputs["Base Color"].default_value = (0.25, 0.35, 0.55, 1) if ch == "guard1" else (0.55, 0.30, 0.22, 1)
+    col = None
+    if os.path.exists(GUARD_PAINT):
+        tex = nt.nodes.new("ShaderNodeTexImage"); tex.image = bpy.data.images.load(GUARD_PAINT, check_existing=True)
+        uvn = nt.nodes.new("ShaderNodeUVMap"); uvn.uv_map = "UVMap"
+        nt.links.new(uvn.outputs["UV"], tex.inputs["Vector"]); col = tex.outputs["Color"]
+    fp = face_png(ch, "stern")
+    if fp:
+        dt = nt.nodes.new("ShaderNodeTexImage"); dt.image = bpy.data.images.load(fp, check_existing=True); dt.extension = 'CLIP'
+        du = nt.nodes.new("ShaderNodeUVMap"); du.uv_map = "decal"
+        nt.links.new(du.outputs["UV"], dt.inputs["Vector"])
+        mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = 'RGBA'
+        nt.links.new(dt.outputs["Alpha"], mix.inputs["Factor"])
+        if col is not None:
+            nt.links.new(col, mix.inputs[6])
+        else:
+            mix.inputs[6].default_value = bsdf.inputs["Base Color"].default_value[:]
+        nt.links.new(dt.outputs["Color"], mix.inputs[7]); col = mix.outputs[2]
+    if col is not None:
+        nt.links.new(col, bsdf.inputs["Base Color"])
+    return m
+
+
 def char_material(ch):
     """Demo colours by face region (attribute st_region -> constant colour ramp) + face decal on UV 'decal'."""
+    if ch not in REGIONS["characters"]:
+        return guard_material(ch)
     regs = REGIONS["characters"][ch]["regions"]
     m = bpy.data.materials.new(f"anim_{ch}"); m.use_nodes = True; nt = m.node_tree
     bsdf = nt.nodes.get("Principled BSDF"); bsdf.inputs["Roughness"].default_value = 0.75
@@ -2149,7 +3020,7 @@ def char_material(ch):
     col = ramp.outputs["Color"]
     fd = FACES[ch]
     dt = nt.nodes.new("ShaderNodeTexImage")
-    dt.image = bpy.data.images.load(os.path.join(ROOT, f"docs/esther/design/faces/{ch}_{fd['default']}.png"), check_existing=True)
+    dt.image = bpy.data.images.load(face_png(ch, fd["default"]), check_existing=True)
     dt.extension = 'CLIP'
     du = nt.nodes.new("ShaderNodeUVMap"); du.uv_map = "decal"
     nt.links.new(du.outputs["UV"], dt.inputs["Vector"])
@@ -2162,12 +3033,14 @@ def char_material(ch):
 
 
 def set_expression(ch, clip_name):
-    expr = FACES[ch]["clips"].get(clip_name, FACES[ch]["default"])
+    if ch not in DECAL_NODES:
+        return
+    expr = FACES[ch]["clips"].get(clip_name) or REWORK_FACES.get(ch, {}).get(clip_name) or FACES[ch]["default"]
     if clip_name == "kneel":
         expr = "pray" if ch == "esther" else expr
     if ch == "haman" and clip_name == "walk":
         expr = "sly"
-    DECAL_NODES[ch].image = bpy.data.images.load(os.path.join(ROOT, f"docs/esther/design/faces/{ch}_{expr}.png"), check_existing=True)
+    DECAL_NODES[ch].image = bpy.data.images.load(face_png(ch, expr), check_existing=True)
 
 
 def setup_look(sc, res, samples=12, palace=True):
@@ -2188,7 +3061,7 @@ def setup_look(sc, res, samples=12, palace=True):
     for o in list(bpy.data.objects):
         if o.type == 'CAMERA':
             bpy.data.objects.remove(o, do_unlink=True)
-    for ch in CHARS:
+    for ch in [c for c in CHARS if f"{c}_rig" in bpy.data.objects]:
         m = char_material(ch)
         for o in bpy.data.objects:
             if o.type == 'MESH' and o.name.startswith(ch + "_"):
@@ -2263,6 +3136,8 @@ def stage_of(cl):
         return (-0.12, 0.12, 180.0, 0.0)
     if cl.ch == "esther":
         return (-0.12, 0.12, 0.0, 0.0)
+    if cl.ch in GUARDS:
+        return (0.24, 0.10, 0.0, 0.0)
     return (0.24, 0.06, 0.0, 0.0)
 
 
@@ -2287,14 +3162,17 @@ def mode_contact():
     cam = camera(sc)
     d = os.path.join(WORK, "contact"); os.makedirs(d, exist_ok=True)
     rows = []
+    only = os.environ.get("ES_ONLY")
     for cl in CLIPS:
+        if cl.ch not in rigs or (only and not any(cl.action.startswith(o) for o in only.split(","))):
+            continue
         rig = rigs[cl.ch]
         show_only(rigs, [cl.ch])
         set_expression(cl.ch, cl.name)
         frames = bake_clip(rig, cl)
-        mk = sorted(set(cl.markers.values()))
+        mk = sorted(set(fr for _, fr in cl.marker_frames()))
         picks = sorted(set([0, cl.N] + [int(round(cl.N * k / 5)) for k in range(1, 5)] + mk))
-        while len(picks) > 7:
+        while len(picks) > (8 if cl.N >= 150 else 7):
             cand = [p for p in picks if p not in mk and p not in (0, cl.N)]
             if not cand:
                 break
@@ -2308,7 +3186,7 @@ def mode_contact():
             view_cam(cam, rig, mark, "lside" if mark[2] == 180.0 else "q3", dist_k=1.75)
             fn = f"{cl.action}_{fr:03d}.png"
             sc.render.filepath = os.path.join(d, fn); bpy.ops.render.render(write_still=True)
-            row["frames"].append({"f": fr, "file": fn, "marker": ",".join(k for k, v in cl.markers.items() if v == fr)})
+            row["frames"].append({"f": fr, "file": fn, "marker": ",".join(sorted(set(k for k, v in cl.marker_frames() if v == fr)))})
         reset_pose(rig)
         rows.append(row)
         print("ES_CONTACT_ROW", cl.action, picks, flush=True)
@@ -2335,6 +3213,33 @@ def mode_probe():
         if not item.strip():
             continue
         parts = item.strip().split(":")
+        if parts[0] == "scene" and parts[1] == "drag":
+            # S10 exit: Haman (facing +Z, travelling -Z = backwards) between the guards (facing -Z, the travel), each
+            # guard's inner hand toward him. GUARD_GAP is the side offset the grips are built for.
+            # parts[3] == "grab": the grab moment (guards at `grab`, facing Haman; Haman facing the king)
+            h = rigs["haman"]; fh = int(parts[2]) if len(parts) > 2 else 0
+            grab = len(parts) > 3 and parts[3] == "grab"
+            show_only(rigs, [r for r in ("haman",) + GUARDS if r in rigs])
+            set_expression("haman", "dragged")
+            Hm = S10_HAMAN; t = _unit(S10_TRAVEL)
+            hf = _unit((S10_KING[0] - Hm[0], S10_KING[1] - Hm[1])) if grab else (-t[0], -t[1])
+            apply_basis(h, bk("haman_dragged")[fh][0]); place_rig(h, Hm[0], Hm[1], yaw_of(hf))
+            for gname in GUARDS:
+                if gname not in rigs:
+                    continue
+                gr = rigs[gname]; gp = S10_GRIPS[gname]
+                gcl = clips[f"{gname}_{'grab' if grab else 'drag'}"]
+                apply_basis(gr, bk(gcl.action)[gcl.markers["grab"] if grab else fh % gcl.N][0])
+                P = S10_GUARD[gname]
+                place_rig(gr, P[0], P[1], yaw_of(gp["grabFace"] if grab else gp["dragFace"]))
+            bpy.context.view_layer.update()
+            for nm, cpos in (("front", V(0.0, 0.22, 0.95)), ("q3", V(0.65, 0.40, 0.65)), ("side", V(0.9, 0.22, -0.02))):
+                look(cam, V(Hm[0], 0.19, Hm[1]), V(Hm[0], 0, Hm[1]) + cpos, lens=40)
+                fn = f"scene_{'grab' if grab else 'drag'}_{fh:03d}_{nm}.png"
+                sc.render.filepath = os.path.join(d, fn); bpy.ops.render.render(write_still=True); out.append(fn)
+            for r in rigs.values():
+                reset_pose(r)
+            continue
         if parts[0] == "scene":
             k = rigs["king"]; e = rigs["esther"]
             show_only(rigs, ["king", "esther"])

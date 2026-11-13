@@ -8,6 +8,7 @@ python3 tools/story/music_esther.py                          # music + sfx + pre
 python3 tools/story/music_esther.py --skip-music --skip-sfx  # preview only (e.g. after new voice clips)
 python3 tools/story/music_esther.py --only approach,sceptre  # re-render some cues, keep the others' manifest rows
 python3 tools/story/music_esther.py --stems                  # also print per-stem levels (for balancing)
+python3 tools/story/music_esther.py --timeline X.json --preview-out Y.mp3   # test against another timeline
 ```
 
 Needs `mido numpy scipy`, `fluid-synth`, `ffmpeg`, and macOS's General MIDI bank
@@ -48,21 +49,35 @@ effect, so a rerun with the same timeline gives the same files, and changing one
 ## Music cues
 
 Start each cue at its timeline `t` at full level and fade the previous cue out over 0.6 s from that `t`. Every cue
-except the last is its span + 0.6 s long, so the fade has music under it; `celebration` fades out by itself over its
+except the last is at least its span + 0.6 s long, so the fade has music under it; `celebration` fades out by itself over its
 last 2.5 s. Duck music about 7 dB under voice lines (the preview does this).
+
+**A cue that plays more than once** (`haman_fanfare` under S03 and S08b, `tension` under S04 and S08c) is one file.
+It is composed and timed for its longest occurrence (`composedFor` in `cues.json`; its timeline events drive the
+in-cue hits) and is as long as the longest occurrence needs; every occurrence plays the file from its start and is
+faded at the next cue as usual. `cues.json` has one row per occurrence. So the opening bars of a repeated cue must
+work on their own: `haman_fanfare` opens with a timpani roll and a brass pickup into the strut, which is all S08b hears.
+
+Haman's two new cues sit under almost continuous dialogue, so they keep to low and mid brass (tuba, trombones,
+bassoon, horns; trumpets only on cadence stabs) and get a wide EQ cut around 2 kHz (-5 dB / -4 dB): only ~6-8 % of
+their energy is in 1-4 kHz, against ~30-37 % for `haman_theme` / `palace_theme`. `haman_theme` (the old S03 cue) is
+no longer in the timeline; its composer stays in the script (motif source) but it is not rendered or listed.
 
 <!-- cues:start -->
 | Cue | t (s) | Span (s) | File (s) | Bars × bpm | LUFS | True peak (dBTP) | Content |
 |---|---|---|---|---|---|---|---|
 | `palace_theme` | 0.00 | 19.72 | 20.32 | 11 × 100.4 (3/4) | -20.0 | -3.8 | D Dorian 3/4. Qanun (koto + harp in octaves, tremolo on long notes) over harp arpeggios, frame drum, low strings; flute counter-line from Esther's crowning (sparkle); cadence on D. |
-| `haman_theme` | 19.72 | 15.41 | 16.01 | 7 × 109.0 (4/4) | -20.0 | -3.3 | Comic villain, D minor, staccato. Bassoon struts the motif with a cheeky turn, clarinet answers; pizz oom-pah, tiptoe wood blocks; timpani + pizz catch each stomp. |
-| `tension` | 35.13 | 15.53 | 16.13 | 6 × 92.7 (4/4) | -20.0 | -4.0 | D Hijaz. Maqsum on darbuka, cello/bass drone on D, tremolo strings swelling D / Eb / Gm / Cm over the drone, ney-like lead (shakuhachi + oboe) with grace notes. |
-| `mordecai` | 50.66 | 27.06 | 27.66 | 8 × 71.0 (4/4) | -20.0 | -4.8 | Tender. Cello tune in D minor with flute answers over low strings and harp; from the prayer (soft bell) the flute leads F - C - Bb/C up to a hopeful D major. |
-| `approach` | 77.72 | 11.87 | 12.47 | 5 × 101.1 (4/4) | -20.0 | -2.5 | Esther's climb: strings walk up the Hijaz scale one step every 2 beats with a timpani heartbeat, darbuka denser each bar, reed + tremolo + choir swell to Eb/D; at her bow all drop to a held D/Eb breath. |
-| `sceptre` | 89.59 | 14.20 | 14.80 | 4 × 67.6 (4/4) | -20.0 | -2.0 | Dsus2/4 swelling (strings, choir, harp glissando) resolving to D major at the sceptre touch with tubular bell + celesta/glockenspiel sparkle; then warm harp/flute D major. |
-| `banquet` | 103.79 | 7.53 | 8.13 | 4 × 95.6 (6/8, ♩. =) | -20.0 | -3.3 | Warm and light, D Mixolydian 6/8: lute (nylon guitar) tune and arpeggios, tambourine, frame drum; tune and tambourine drop out under Esther's accusation line. |
-| `truth` | 111.32 | 13.29 | 13.89 | 6 × 108.4 (4/4) | -20.0 | -3.0 | Hijaz, angry: 8th-note low-string ostinato, full darbuka, reed cry; orchestra stab + timpani + cymbal on the truth flash; drooping bassoon plea (Haman's turn figure) after the boing; xylophone/pizz scurry away. |
-| `celebration` | 124.61 | 19.77 | 19.77 | 11 × 133.5 (4/4) | -20.0 | -3.7 | D major party: congas/bongos, claps on 2 and 4, tambourine, flute tune doubled by qanun, lute off-beats, pizz bass; settles to harp/strings/slow flute at the closing narration; ends on D major. |
+| `haman_fanfare` | 19.72 | 35.38 | 35.98 | 15 × 101.8 (4/4) | -20.0 | -1.9 | Haman's motif as a pompous oom-pah strut, D minor: timpani roll under the herald, trombone + bassoon tune over tuba oom-pah, horn swells, bass drum, pedal hat, brass ta-daa on cadences; thins to a tiptoeing bassoon at the narrator's line; boils over from the steam (tremolo, climbing tuba, timpani roll); timpani + tuba + bass drum on each stomp. Wide -5 dB dip at 2.2 kHz for the voices. |
+| `tension` | 55.10 | 24.18 | 30.16 | 11 × 89.3 (4/4) | -20.0 | -2.4 | Same file again (timed to t=141.10); plays its first 24.2 s. |
+| `mordecai` | 79.28 | 27.06 | 27.66 | 8 × 71.0 (4/4) | -20.0 | -4.8 | Tender. Cello tune in D minor with flute answers over low strings and harp; from the prayer (soft bell) the flute leads F - C - Bb/C up to a hopeful D major. |
+| `approach` | 106.34 | 11.87 | 12.47 | 5 × 101.1 (4/4) | -20.0 | -2.5 | Esther's climb: strings walk up the Hijaz scale one step every 2 beats with a timpani heartbeat, darbuka denser each bar, reed + tremolo + choir swell to Eb/D; at her bow all drop to a held D/Eb breath. |
+| `sceptre` | 118.21 | 14.20 | 14.80 | 4 × 67.6 (4/4) | -20.0 | -2.0 | Dsus2/4 swelling (strings, choir, harp glissando) resolving to D major at the sceptre touch with tubular bell + celesta/glockenspiel sparkle; then warm harp/flute D major. |
+| `haman_fanfare` | 132.41 | 8.69 | 35.98 | 15 × 101.8 (4/4) | -20.0 | -1.9 | Same file again (timed to t=19.72); plays its first 8.7 s. |
+| `tension` | 141.10 | 29.56 | 30.16 | 11 × 89.3 (4/4) | -20.0 | -2.4 | D Hijaz. Maqsum on darbuka, cello/bass drone on D, tremolo strings swelling D / Eb / Gm / Cm over the drone, ney-like lead (shakuhachi + oboe) with grace notes. |
+| `sulk_march` | 170.66 | 13.28 | 13.88 | 4 × 72.3 (4/4) | -20.0 | -1.3 | Slow droopy march: tuba + bassoon play Haman's motif deflated (sagging chromatic line, dragging turn, plop on D) over pizz bass and soft bass drum; a distant cheerful town (tambourine, glockenspiel + flute answers in the gaps); glockenspiel flourish to an open D at the crowd's cheer. -4 dB dip at 2 kHz. |
+| `banquet` | 183.94 | 7.53 | 8.13 | 4 × 95.6 (6/8, ♩. =) | -20.0 | -3.3 | Warm and light, D Mixolydian 6/8: lute (nylon guitar) tune and arpeggios, tambourine, frame drum; tune and tambourine drop out under Esther's accusation line. |
+| `truth` | 191.47 | 29.50 | 30.10 | 12 × 97.6 (4/4) | -20.0 | -2.4 | Hijaz, angry: 8th-note low-string ostinato, full darbuka, reed cry; orchestra stab + timpani + cymbal on the truth flash; drooping bassoon plea (Haman's turn figure) after the boing; xylophone/pizz scurry away. |
+| `celebration` | 220.97 | 19.77 | 19.77 | 11 × 133.5 (4/4) | -20.0 | -3.7 | D major party: congas/bongos, claps on 2 and 4, tambourine, flute tune doubled by qanun, lute off-beats, pizz bass; settles to harp/strings/slow flute at the closing narration; ends on D major. |
 <!-- cues:end -->
 
 ### Timeline hooks (re-read every run)
@@ -70,7 +85,9 @@ last 2.5 s. Duck music about 7 dB under voice lines (the preview does this).
 | Cue | Follows | Fallback when the event is missing |
 |---|---|---|
 | `palace_theme` | flute counter-line + celesta from `sfx sparkle` (Esther crowned) | 55 % of the span |
-| `haman_theme` | timpani + pizz hit on every `sfx stomp` | none |
+| `haman_theme` | (not in the timeline any more) timpani + pizz hit on every `sfx stomp` | none |
+| `haman_fanfare` | parade until the first narrator line (rounded to a bar) -> tiptoe bassoon; boils over on the half beat of `sfx steam` (else `acting haman fume`); timpani + tuba + bass drum on every `sfx stomp` | parade throughout |
+| `sulk_march` | tambourine shake + glockenspiel flourish to D at `sfx cheer` | none |
 | `mordecai` | turn to hope at the bar of `sfx soft_bell` (else `fx prayer_glow`) | 60 % of the bars |
 | `approach` | one Hijaz step every 2 beats until `acting esther bow`; then a held D/Eb breath | climbs to the end |
 | `sceptre` | resolution to D major at `acting esther touch_sceptre` (else `sfx sceptre_chime` + 0.7 s) | beat 2 |
@@ -80,7 +97,10 @@ last 2.5 s. Duck music about 7 dB under voice lines (the preview does this).
 
 ## Sound effects
 
-All synthesised (numpy/scipy), no samples. Bells/glints/glass are decaying inharmonic partials with beating; the
+All synthesised (numpy/scipy), no recorded samples; where a real instrument exists the effect uses the same GM bank
+as the music through FluidSynth (`gm_notes`): `fanfare` (trumpets, timpani) and `wah_wah` (trombone + muted trumpet,
+with pitch-bend wobble and a numpy plunger-mute filter). `steam`, `armor_march` and `grab` are layered noise /
+resonators / decaying partials with per-event envelopes. Bells/glints/glass are decaying inharmonic partials with beating; the
 `gasp` and `cheer` voices are a jittered glottal source plus breath noise through **time-varying formant filters**
 (STFT), several people layered a few milliseconds apart and placed in a synthetic room so they read as people in a
 hall rather than a synth tone.
@@ -88,16 +108,21 @@ hall rather than a synth tone.
 <!-- sfx:start -->
 | Id | Length (s) | Sample peak (dBFS) | True peak (dBTP) | LUFS | gainDb | Notes |
 |---|---|---|---|---|---|---|
+| `armor_march` | 2.00 | -3.0 | -2.9 | -20.3 | -7 | two guards in step: 6 boot steps (thump, sole slap, floor click) + mail jingle, plate clinks, closer each step; double-stamp halt |
 | `boing` | 0.90 | -3.0 | -3.0 | -22.2 | -7 | jaw-harp spring, 11 Hz pitch wobble, moving wah resonance |
 | `cheer` | 4.00 | -3.0 | -3.0 | -18.1 | -6 | 22 voices 'yay / wooo / ah' (men, women, kids) + 12 clappers, fades from 2.6 s |
+| `fanfare` | 1.60 | -3.0 | -3.0 | -17.4 | -8 | herald 'ta-ta-ta TAA, ta-TAAA' on D/A: 3 GM trumpets (2 on the tune, ms + cents apart), timpani, hall |
 | `gasp` | 1.30 | -3.0 | -3.0 | -18.6 | -5 | 4 inhaled 'hah!' voices (2 men, woman, child) 0-65 ms apart + soft 'oh', small hall |
+| `grab` | 0.50 | -3.0 | -3.0 | -20.9 | -6 | cloth rustle (fold grains + short whoosh) then a soft muffled 120->68 Hz thump; no voice |
 | `ring_glint` | 1.20 | -3.0 | -2.9 | -12.2 | -10 | bright metallic 'ting' (E7) + shimmer |
 | `sceptre_chime` | 2.80 | -3.0 | -2.9 | -16.4 | -7 | bell arpeggio up D major over a low D bell, sparkle dust |
 | `scurry` | 1.30 | -3.0 | -2.9 | -21.3 | -9 | 14 light running steps receding + cloth flutter |
 | `soft_bell` | 3.20 | -3.0 | -3.0 | -13.7 | -10 | warm handbell on D5 (hum, tierce, quint, nominal), felt strike, long ring |
 | `sparkle` | 1.80 | -3.0 | -3.0 | -14.1 | -9 | rising shower of tiny bells (D major pentatonic) + air shimmer |
+| `steam` | 3.00 | -3.0 | -3.0 | -17.9 | -8 | kettle hiss bed + 6 accelerating 'pssht' puffs (up-sweeping noise + low air pop), faint breathy whistle rising 2.1->2.7 kHz |
 | `stomp` | 0.60 | -3.0 | -2.9 | -20.2 | -4 | cartoon boot stomp: heel slap, 170->52 Hz thump, floor knock |
 | `table_set` | 1.60 | -3.0 | -3.0 | -14.2 | -9 | cloth whoosh, three goblets + two plates set down, wooden settle |
+| `wah_wah` | 2.10 | -3.0 | -3.0 | -17.1 | -6 | GM trombone + muted trumpet A-G#-G-F#, plunger-mute filter per note, 6 Hz wobble and a semitone sag on the last |
 <!-- sfx:end -->
 
 ## Preview mix
@@ -107,7 +132,7 @@ and the zh voice clips from `assets/esther/audio/voice/zh/<line id>.wav|.mp3` wh
 7 dB under them (80 ms look-ahead, 400 ms release), then a −1 dB limiter. It is a timing/balance check, not an app asset.
 
 <!-- preview:start -->
-Last run: 145.38 s, -17.1 LUFS, -1.4 dBTP; zh voice clips present: 18/18; timeline `timedFrom`: voices.
+Last run: 241.74 s, -17.1 LUFS, -1.2 dBTP; zh voice clips present: 32/32; timeline `timedFrom`: voices.
 <!-- preview:end -->
 
 ## Known limits
@@ -115,6 +140,15 @@ Last run: 145.38 s, -17.1 LUFS, -1.4 dBTP; zh voice clips present: 18/18; timeli
 - Checked by measurement (ffmpeg ebur128), spectrograms and the event map, **not by ear** (the script was written
   unattended). Listen first to: `gasp`, `cheer` (synthetic voices are the weakest link), the shakuhachi/shanai reed
   colour in `tension` / `truth`, and whether the timpani heartbeat in `approach` is too much.
+- New Haman sounds, weakest first: `steam` (filtered noise can still read as "white noise"; the faint kettle whistle
+  may be too much or too little under Haman's shout), `grab` (cloth is the hardest thing to fake; the thump carries it),
+  `armor_march` (boots are good, the mail jingle is thin). `fanfare` and `wah_wah` use real GM brass and are the safest.
+  `haman_fanfare`'s quiet middle (narrator line) is ~10 dB under the parade by design; check it is not lost under the duck.
+- `haman_theme.wav|.mp3` were removed from `assets/esther/audio/music/` (retired cue; the Unity setup copies every WAV
+  in the folder). Its composer stays in the script; put `music("haman_theme")` back in the story to regenerate it.
+- `tension` now plays twice and is composed for its longer S08c span (30.2 s), so it was re-rendered (12 bars at
+  95.4 bpm instead of 6 at 92.7): in S04 (20.1 s) it is faded at the next cue before its cadence. `truth` changed only
+  because its timeline span grew (13.3 -> 23.7 s).
 - The General MIDI bank has no qanun, oud, ney or darbuka; they are approximated (koto + harp, nylon guitar,
   shakuhachi + oboe, congas/bongos). Replace any cue or effect with a recording later: same id, same format.
 - Cue lengths are tied to the timeline spans. If Story moves a `music` entry, rerun the script.

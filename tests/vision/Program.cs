@@ -71,7 +71,9 @@ class Program
                 double gx = gt[i][0].GetDouble(), gy = gt[i][1].GetDouble();
                 err = Math.Max(err, Math.Sqrt(Math.Pow(m.Points[i].X - gx, 2) + Math.Pow(m.Points[i].Y - gy, 2)));
             }
-            bool sameStory = (m.Sheet.Name.StartsWith("david") == name.StartsWith("david"));
+            // story of the true sheet = story of its signature (angel themes share "angel"); exact for every story pack
+            string trueStory = sigs.Find(g => g.Name == name)?.Story ?? (name.StartsWith("david") ? "david-goliath" : "angel");
+            bool sameStory = m.Sheet.Story == trueStory;
             if (err <= tol) accurate++; else fails.Add($"{e.GetProperty("file")} {name}: corner error {err:0.0}px (tol {tol:0.0}) as {m.Sheet.Name} ncc {m.Ncc:0.00}");
             if (sameStory) story++; else wrongStory++;
             if (!sameStory) fails.Add($"{e.GetProperty("file")} {name}: WRONG STORY {m.Sheet.Name} ncc {m.Ncc:0.00}");

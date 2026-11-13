@@ -13,11 +13,11 @@ references (0.30 and 0.80), not Esther figures. `tension_dim` draws no sprites (
 
 | File | What |
 |---|---|
-| `unity/Assets/DoodLive/DavidGoliath/Fx/StoryFxEsther.cs` | The 8 new effect definitions (pure: no engine calls), `EstherFx` (registry, palette, `BeamTarget`), `StoryLight` (dim / flash requests) |
+| `unity/Assets/DoodLive/DavidGoliath/Fx/StoryFxEsther.cs` | The 11 new effect definitions (8 + the 3 Haman-rework ids) (pure: no engine calls), `EstherFx` (registry, palette, `BeamTarget`), `StoryLight` (dim / flash requests) |
 | `unity/Assets/DoodLive/DavidGoliath/Fx/StoryFxEstherRuntime.cs` | `StoryFxStage`: hidden singleton that draws the dim overlay, sets the global shader values, draws the cold flash, feeds the beam target |
 | `DGFxEffects.cs` (3 lines) | `FxLibrary` also registers `EstherFx.Defs`; a D&G id is never replaced |
 | `DGFx.cs` (1 line) | `DGFx.StopAll()` also calls `StoryLight.Reset()` |
-| `Fx/Preview~/run.sh`, `Harness.cs` | `run.sh esther` previews the Esther ids; also finds the Unity 6 `CoreModule.dll` path |
+| `Fx/Preview~/run.sh`, `Harness.cs` | `run.sh esther` previews the Esther ids (with moving test anchors for the Haman ids); also finds the Unity 6 `CoreModule.dll` path, and falls back to the newest editor in Unity Hub when the default one is not installed |
 
 The files sit in `DavidGoliath/Fx/` (not `Story/Fx/`) so they compile into the same assembly and namespace
 (`DoodLive.DavidGoliath`) as `DGFx`; there are no asmdefs. When Integration moves the engine to `Story/`, move these
@@ -50,6 +50,9 @@ Sizes in art-width units (Esther 0.34 tall, king 0.40, dais top ≈ 0.07). "Foll
 | `confetti` | `esther/head` (best), or `stage` | 3 | **Shared with D&G** (same id, same code): 64 crayon confetti bits burst ~0.2 up, flutter down, lie on the page. For a bigger celebration play it twice (e.g. `esther/head` and `king/head`, a few tenths apart) | 7 crayon colours | no |
 | `golden_rays` | `esther/root` (or `stage` for the centre) | 4 | **Shared with D&G**: 7 soft gold beams from 1.0 above onto the anchor, gold pool on the page, 16 drifting motes | gold, sun, orange | yes |
 | `petals` | `palace/table` | 5 | 36 rose petals appear 0.32–0.48 above the anchor within radius 0.26, spawning over the first 55 % of `dur`, fall slowly (0.07–0.11 / s) with sway and flutter, then lie flat on the page (hidden by the table where they land on it) and fade over the last 0.8 s. Petal = soft ellipse 0.03 × 0.019 with a darker crayon edge | pink `#F49AC1`, rose `#E8607A`, blush `#FBD3DF`, crimson `#C8323F` | no |
+| `anger_steam` | `haman/head` | 3.6 | Haman's tantrum (S03). A kettle on the boil: every 0.55 s a "pfff" from **both** sides of the head (the right side 0.07 s later, so it is lively, not mirrored). Each burst = a short white jet streak (0.18 s) and 4 crayon dust-cloud puffs that shoot out sideways-up along one line (so they read as one cloud), grow 0.022 → 0.075, slow down and drift 0.06 up, solid until 55 % of their 0.85–1.1 s life, then thin out. Puffs start salmon-red and turn white as they age; later bursts start less red (the tantrum cools). Head-relative: the bursts follow the head as he stamps. Fade out 0.45 s | salmon `#F28C7E` → white, grey crayon rim (Dust cell) | yes |
+| `sweat_drops` | `haman/head` | 2 | Haman is exposed (S10). 3–6 cartoon teardrops (count from the seed) flick off left and right of the head over the first ~1.1 s, pop in (0.12 s), fly a lazy arc (gravity 2.2) with the round end leading and the point trailing, a white shine on the bulb. Each drop starts where the head **was** at its spawn time (anchor track), so a moving head does not drag drops along. On the page: a tiny splash (flat ring 0.012 → 0.047, wet spot, 3 droplets that hop out) that fades in 0.4 s. Drop ≈ 0.034 long | fill `#9FD4F5`, edge `#4B93D0`, white shine | spawn only |
+| `dust_drag` | `haman/footL` | 4 | Guards drag Haman off (S10). Reads the anchor **track**: every 0.09 s of the effect, at the foot's position at that moment, a pair of beige dust puffs (one each side of the path) grows 0.018 → 0.06, is pushed slightly backwards, hops up ≤ 0.028 and settles back on the page, fading over ~1.1 s; plus a flat beige scuff smudge lying on the page (y = 0.004) that lingers 1.5 s. Strength scales with foot speed (none below ~0.015 / s, full above 0.09 / s), so nothing appears while he stands still. Trail length ≈ speed × 1.1 s (≈ 0.2 at the storyboard's drag speed). Last puffs spawn 0.4 s before the end, fade out 0.6 s | `#E6D2A8` mixed with PaperDeep `#E4D3AE`, grey crayon rim | path (track) |
 
 Ids not redefined: `confetti` and `golden_rays` already exist in `DGFxEffects.cs`; the dictionary keeps the D&G
 version, so both stories get identical effects. If Esther needs a different look later, it must be a new id
@@ -93,14 +96,23 @@ leaving the story if another pack uses the beam.
 - Start both braziers at the start of S01 with `dur` 999 (or the timeline's length); `DGFx.StopAll()` on replay.
 - `DGFx.Prewarm()` when the Esther sheet is detected (same atlas as D&G; no new textures except the 64 × 64 dim mask).
 
-## How it was checked (2026-11-13)
+## How it was checked (2026-11-13; Haman ids 2026-11-14)
 
 1. **Compile:** all `Fx/*.cs` + `Scripts/DesignTokens.cs`, C# 9, against Unity 6000.3.27f1's
    `UnityEngine.CoreModule.dll` and `UnityEngine.IMGUIModule.dll` (netstandard 2.1, dotnet SDK): build succeeded, no
    errors or warnings. Unity itself was **not** run.
 2. **Preview:** `Fx/Preview~/run.sh esther` runs the real effect code at 60 fps and rasterises the exact triangles
-   (contact sheet above). Max sprites per effect: 64 (confetti), 36 (petals), 26 (sceptre_beam), fire 10 + 5 ribbons.
+   (contact sheet above). Max sprites per effect: 64 (confetti), 41 (dust_drag), 36 (petals), 26 (sceptre_beam), fire 10 + 5 ribbons.
+   The Haman ids were also rendered at 2-4x zoom with a head stand-in and judged by eye (steam clouds, teardrop shape, trail).
 3. Not previewed: `StoryFxStage` (overlay, globals, cold flash) — it needs a real camera and stage.
+
+### Haman rework ids (2026-11-14)
+
+`anger_steam`, `sweat_drops` and `dust_drag` are ordinary DGFx effects: `DGFx.Play("anger_steam", haman.Find("head"), 3.6f)`
+etc., no extra wiring. `sweat_drops` and `dust_drag` read `FxCtx.track`, which `DGFxInstance` records from the anchor
+every frame regardless of `Follow`; they need the anchor to be the **moving bone** (`haman/head`, `haman/footL`), not a
+static marker. The track holds 256 samples (≈ 4.3 s at 60 fps, ≈ 2.1 s at 120 fps); `dust_drag` only looks back
+≈ 1.6 s, so 120 Hz devices are fine. Sprites at once: steam ≤ 16 + 2 ribbons, sweat ≤ 13 + 2 ribbons per drop, dust ≤ 41.
 
 ## Weakest points (not verified)
 
@@ -110,4 +122,7 @@ leaving the story if another pack uses the beam.
 | Render queue 3005 is after the stage and characters (opaque, ≤ 2500) and the AR background | D | Same; if the characters use a transparent queue > 3005 they will draw over the dim — lower the quad's queue in `StoryFxStage.Build` |
 | Sizes read well next to the real models (flame 0.09 tall on the brazier, petals 0.03, sparkles ≤ 0.085) | D (preview uses grid scale only; no palace / character models yet) | QA screenshot of S01, S08 and S11 on device with the SystemUI clock |
 | The beam reaches Esther, not past her | D (default target is a guess from the contract marks) | Set `StoryFxStage.BeamTarget` to her chest bone; watch S08 |
+| Steam reads against the palace and Haman's coloured head (white puffs on cream paper are only outlined by the Dust cell's grey rim) | D (preview has only paper and a head stand-in) | QA screenshot of S03 on device; if weak, raise `SteamRed` share or alpha in `AngerSteam` |
+| Sweat drops land on the page at a sensible spot (they fall from head height, ≈ 0.75 s) and do not fly through the king | D | Watch S10 in the Editor; reduce sideways speed (0.12–0.22) in `SweatDrops` if they wander |
+| `dust_drag` puffs sit under Haman's foot and not under the guards' (footL bone name / position) | D (harness uses a synthetic path) | Integration: check the bone the timeline resolves for `haman.footL` |
 | Crown sparkle is faint on uncoloured (white) paper | C-ish (seen faint in the preview) | Check on device; raise alpha / size in `CrownSparkle` if needed |

@@ -1,4 +1,5 @@
-"""Esther (story pack #2): characters esther, king, haman — meshes, rig, weights, UVs, face decals, previews, GLBs.
+"""Esther (story pack #2): characters esther, king, haman (+ palace guards guard1, guard2, not on the sheet) — meshes,
+rig, weights, UVs, face decals, previews, GLBs. Haman rework 2026-11-14: docs/esther/HAMAN-REWORK.md, RIG.md §4, §10.
 
 Contract: docs/esther/CONTRACT.md §2-§3 (ids, heights, bone names), look: docs/esther/DESIGN.md. Same family and
 method as David & Goliath (pipeline/dg_build.py, shared helpers in pipeline/story_mesh.py), finer:
@@ -17,6 +18,7 @@ method as David & Goliath (pipeline/dg_build.py, shared helpers in pipeline/stor
 Run (repo root):
   python3 pipeline/es_characters.py faces                                         # face decal PNGs (needs Pillow)
   blender -b --factory-startup --python pipeline/es_characters.py -- build        # models, rig, GLBs, blend, ID render
+  blender -b --factory-startup --python pipeline/es_characters.py -- guards       # guards (run by build): paint, GLBs
   blender -b --factory-startup --python pipeline/es_characters.py -- preview      # lit demo-palette renders
   blender -b --factory-startup --python pipeline/es_characters.py -- verify       # re-import GLBs, check bones/budget
   python3 pipeline/es_characters.py compose                                       # preview_*.png contact sheets
@@ -26,7 +28,7 @@ import sys, os, json, math
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-MODEL = os.path.join(ROOT, "assets/esther/model")
+MODEL = os.environ.get("ES_MODEL") or os.path.join(ROOT, "assets/esther/model")   # ES_MODEL: scratch output dir
 FACES = os.path.join(ROOT, "docs/esther/design/faces")
 WORK = os.environ.get("ES_WORK", "/tmp/es_work")
 BLEND = os.path.join(MODEL, "characters.blend")
@@ -47,7 +49,14 @@ CONTRACT_BONES = ["root", "hips", "spine", "chest", "neck", "head", "jaw",
                   "fingersL", "fingersR", "eyelids"]
 EXTRA_BONES = {"esther": ["braid1", "braid2", "braid3", "cape1", "cape2", "diadem"],
                "king": ["crown", "sceptre", "sceptreTip", "ring"],
-               "haman": ["cap", "ring"]}
+               "haman": ["cap", "ring", "plume1", "plume2"],
+               "guard1": ["spear"], "guard2": ["spear"]}
+# palace guards (HAMAN-REWORK.md §3): not on the colouring sheet; they wear a fixed painted texture
+# (model/guard_paint.png, UV0) made from their own front ID render on a virtual "guard page" (GUARD_PAGE positions).
+GUARDS = ("guard1", "guard2")
+GUARD_PAGE = {"guard1": (-0.20, 0.015), "guard2": (0.20, 0.015)}
+GUARD_BLEND = {"guard1": (1.10, 0.0), "guard2": (1.25, 0.0)}   # rig places in characters.blend (off the page)
+GUARD_PAINT = os.path.join(MODEL, "guard_paint.png")
 DEFAULT_SHEET = {"esther": (-0.33, 0.015), "king": (0.02, 0.015), "haman": (0.34, 0.015)}
 ART_H_DEFAULT = 1.227
 INSET = 0.004
@@ -61,7 +70,12 @@ PALETTE = {
     "king": {"skin": "#D9A27A", "beard": "#3A2418", "robe": "#6A3FB5", "collar": "#F2C14E", "belt": "#F2C14E",
              "crown": "#6A3FB5", "crownBands": "#F2C14E", "sceptre": "#F2C14E", "shoes": "#8A5A34", "ring": "#F2C14E"},
     "haman": {"skin": "#E2B48C", "beard": "#2A1C16", "robe": "#8E2B3A", "panels": "#D9A63A", "cap": "#1F5C66",
-              "capRim": "#F2C14E", "ring": "#F2C14E", "shoes": "#5A3A28"},
+              "capRim": "#F2C14E", "ring": "#F2C14E", "shoes": "#5A3A28", "collar": "#F2C14E", "plume": "#2FA38A"},
+    # guards: fixed paint in the demo palette (DESIGN.md / SET.md demo colours)
+    "guard1": {"skin": "#D9A27A", "hair": "#3A2418", "tunic": "#2F5FD0", "trim": "#F2C14E", "belt": "#C8643C",
+               "trousers": "#E8D3A8", "boots": "#8A5A34", "cap": "#C8643C", "spear": "#A8682E", "spearHead": "#E8B53C"},
+    "guard2": {"skin": "#C99470", "hair": "#2A1C16", "tunic": "#2F5FD0", "trim": "#F2C14E", "belt": "#C8643C",
+               "trousers": "#E8D3A8", "boots": "#8A5A34", "cap": "#7CC0CC", "spear": "#A8682E", "spearHead": "#E8B53C"},
 }
 REGION_NAMES = {   # zh / en for the sheet role
     "skin": ("皮肤", "skin"), "hair": ("头发", "hair"), "robe": ("长袍", "robe"), "cape": ("披肩", "cape"),
@@ -70,7 +84,9 @@ REGION_NAMES = {   # zh / en for the sheet role
     "beard": ("胡子和头发", "beard and hair"), "collar": ("金领", "gold collar"), "belt": ("腰带", "belt"),
     "crown": ("王冠", "crown"), "crownBands": ("王冠金边", "crown bands"), "sceptre": ("金杖", "sceptre"),
     "shoes": ("鞋", "shoes"), "panels": ("镶边", "panels and cuffs"), "cap": ("帽子", "cap"),
-    "capRim": ("帽边", "cap rim"), "ring": ("戒指", "signet ring"),
+    "capRim": ("帽边", "cap rim"), "ring": ("戒指", "signet ring"), "plume": ("羽毛", "feather plume"),
+    "tunic": ("短袍", "tunic"), "trim": ("金边", "gold trim"), "trousers": ("裤子", "trousers"), "boots": ("靴子", "boots"),
+    "spear": ("矛杆", "spear shaft"), "spearHead": ("矛头", "spear head"),
 }
 # regions too small to colour on A4 (< ~2 mm across): constant UV deep inside a larger region of the same character
 ANCHORS = {
@@ -85,6 +101,8 @@ PART_ANCHORS = {
     "esther": {("handL", "skin"): "FACE", ("handR", "skin"): "FACE", ("braid", "sash"): "sash"},
     "king": {("handL", "skin"): "FACE", ("handR", "skin"): "FACE"},
     "haman": {("handL", "skin"): "FACE", ("handR", "skin"): "FACE"},
+    "guard1": {("handL", "skin"): "FACE", ("handR", "skin"): "FACE"},
+    "guard2": {("handL", "skin"): "FACE", ("handR", "skin"): "FACE"},
 }
 
 # ---------------------------------------------------------------------------------------------- proportions
@@ -109,14 +127,26 @@ SPEC = {
                  handDims=dict(palmW=0.0154, palmH=0.0064, wristW=0.0112, wristH=0.0078, fingerW=0.0039,
                                fingerT=0.0036, thumbW=0.0040, thumbT=0.0036, armR=0.0072)),
     "haman": dict(height=0.37, top=0.354, chin=0.297, hw=0.0188, zc=-0.001, depth=1.06, jaw=-0.02, cheek=-0.06,
-                  chin_narrow=0.22, crown=0.0, noseH=0.0034, nose_w=0.92, nose_long=0.05, brow=1.3, lips=0.7,
+                  chin_narrow=0.22, crown=0.0, noseH=0.0016, nose_w=0.80, nose_long=0.05, brow=1.3, lips=0.7,
                   chinAmt=1.2, sockets=1.1, cheekbones=1.25,
                   neckBase=0.276, neck=(0.0086, 0.0080, -0.0088), shoulder=(0.039, 0.270), chestY=0.250,
                   waistY=0.224, hipY=0.197, hipX=0.0175, kneeY=0.105, ankleY=0.019, footLen=0.042, footScale=1.1,
                   upperArm=0.065, forearm=0.055, hand=0.035, palmFrac=0.52,
                   handDims=dict(palmW=0.0140, palmH=0.0056, wristW=0.0100, wristH=0.0068, fingerW=0.0034,
-                                fingerT=0.0032, thumbW=0.0035, thumbT=0.0032, armR=0.0062)),
+                                fingerT=0.0032, thumbW=0.0035, thumbT=0.0032, armR=0.0062),
+                  capTop=0.393, plumeTop=0.418),
 }
+SPEC["king"]["fist"] = ("R",)
+_GUARD = dict(height=0.38, top=0.338, chin=0.282, hw=0.0196, zc=-0.001, depth=1.06, jaw=0.16, cheek=0.02,
+              chin_narrow=0.0, crown=0.0, noseH=0.0030, nose_w=1.05, nose_long=0.02, brow=1.35, lips=0.8,
+              chinAmt=0.9, sockets=1.0, cheekbones=1.0,
+              neckBase=0.262, neck=(0.0098, 0.0090, -0.0098), shoulder=(0.045, 0.256), chestY=0.238,
+              waistY=0.212, hipY=0.188, hipX=0.0185, kneeY=0.100, ankleY=0.019, footLen=0.043, footScale=1.12,
+              upperArm=0.062, forearm=0.052, hand=0.034, palmFrac=0.52, fistDeg=8.0,
+              handDims=dict(palmW=0.0142, palmH=0.0060, wristW=0.0104, wristH=0.0072, fingerW=0.0037,
+                            fingerT=0.0034, thumbW=0.0037, thumbT=0.0034, armR=0.0068))
+SPEC["guard1"] = dict(_GUARD, fist=("R",), beard=True)      # spear in the right (outer) hand, short square beard
+SPEC["guard2"] = dict(_GUARD, fist=("L",), beard=False)     # mirrored: spear in the left hand, moustache only
 
 
 def landmarks(ch):
@@ -127,18 +157,23 @@ def landmarks(ch):
     return L
 
 
-def face_layout(ch):
+def face_layout(ch, ref=False):
     """Decal rectangle (character-local x0 y0 x1 y1) and eye / brow / mouth placement in normalised decal space
-    (0..1, y up). Like D&G (square rect from just under the mouth), side max(1.76 hw, 0.72 H) so brows fit."""
+    (0..1, y up). Like D&G (square rect from just under the mouth), side max(1.76 hw, 0.72 H) so brows fit.
+    Haman (rework): the rect is 1.25x larger and reaches 0.32 H below the mouth so his big cartoon mouths fit
+    (ref=True gives the standard rect, which the face drawing uses as its reference frame)."""
     s = SPEC[ch]; L = landmarks(ch); H = L["top"] - L["chin"]; hw = s["hw"]
     w = max(1.76 * hw, 0.72 * H); x0 = -w / 2; y0 = L["mouth"] - 0.14 * H
+    if ch == "haman" and not ref:
+        w *= 1.25; x0 = -w / 2; y0 = L["mouth"] - 0.32 * H
     rect = [x0, y0, x0 + w, y0 + w]
 
     def nx(x): return (x - x0) / w
 
     def ny(y): return (y - y0) / w
-    eyeX = {"esther": 0.415, "king": 0.40, "haman": 0.40}[ch] * hw
-    ew, eh = {"esther": (0.300, 0.228), "king": (0.240, 0.155), "haman": (0.232, 0.142)}[ch]
+    eyeX = {"esther": 0.415, "king": 0.40, "haman": 0.40, "guard1": 0.40, "guard2": 0.40}[ch] * hw
+    ew, eh = {"esther": (0.300, 0.228), "king": (0.240, 0.155), "haman": (0.232, 0.142),
+              "guard1": (0.235, 0.150), "guard2": (0.235, 0.150)}[ch]
     return dict(rect=rect, eyeL=(nx(eyeX), ny(L["eye"])), eyeR=(nx(-eyeX), ny(L["eye"])),
                 eyeHalf=(ew * hw / w, eh * hw / w), brow=ny(L["brow"]), mouth=ny(L["mouth"]), nose=ny(L["nose"]),
                 eyeLocal=(eyeX, L["eye"], ew * hw, eh * hw))
@@ -146,8 +181,10 @@ def face_layout(ch):
 
 EXPRESSIONS = {"esther": ["calm", "worried", "pray", "brave", "talk", "joy"],
                "king": ["stern", "listen", "smile", "surprised", "angry"],
-               "haman": ["smug", "sly", "shocked", "scared"]}
-DEFAULT_EXPR = {"esther": "calm", "king": "stern", "haman": "smug"}
+               "haman": ["smug", "sly", "shocked", "scared", "proud", "laugh", "furious", "scheming", "stunned", "sulky",
+                         "terrified", "begging"],
+               "guard1": ["stern"], "guard2": ["stern"]}
+DEFAULT_EXPR = {"esther": "calm", "king": "stern", "haman": "proud", "guard1": "stern", "guard2": "stern"}
 CLIP_EXPRESSION = {   # suggestion for the Animation / Integration roles (clip -> decal), CONTRACT §4 clip names
     "esther": {"idle": "calm", "walk": "calm", "talk": "talk", "worried": "worried", "pray": "pray",
                "rise_brave": "brave", "climb": "brave", "bow": "calm", "touch_sceptre": "brave", "invite": "calm",
@@ -155,8 +192,14 @@ CLIP_EXPRESSION = {   # suggestion for the Animation / Integration roles (clip -
     "king": {"sit_idle": "stern", "sit_talk": "stern", "sit_listen": "listen", "give_ring": "stern",
              "extend_sceptre": "smile", "sit_smile": "smile", "stand_angry": "angry", "angry_idle": "angry",
              "point_away": "angry", "celebrate": "smile"},
-    "haman": {"idle": "smug", "strut": "smug", "talk": "sly", "demand": "smug", "whisper": "sly", "take_ring": "sly",
-              "smug": "smug", "shock": "shocked", "cower": "scared", "led_away": "scared"},
+    "haman": {"idle": "smug", "strut": "proud", "talk": "sly", "demand": "proud", "whisper": "scheming",
+              "take_ring": "sly", "smug": "proud", "shock": "shocked", "cower": "scared", "led_away": "terrified",
+              # HAMAN-REWORK.md faces per clip
+              "parade": "proud", "preen": "proud", "laugh_proud": "laugh", "boast": "laugh", "fume": "furious",
+              "scheme": "scheming", "daydream": "proud", "stunned": "stunned", "sulk": "sulky", "sulk_shout": "sulky",
+              "beg": "begging", "dragged": "terrified"},
+    "guard1": {"idle": "stern", "march": "stern", "grab": "stern", "drag": "stern"},
+    "guard2": {"idle": "stern", "march": "stern", "grab": "stern", "drag": "stern"},
 }
 
 
@@ -214,7 +257,7 @@ def draw_faces():
         dr.polygon([P(*p) for p in pts], fill=col)
 
     def eye(img, c, half, look=(0.0, 0.0), top=1.0, bot=1.0, tilt=0.0, lash=0, iris=(92, 58, 36), lid=0.10,
-            side=1, mode="open", inner_up=0.0, pupil=0.55, line=0.020, lower=True, wet=False):
+            side=1, mode="open", inner_up=0.0, pupil=0.55, line=0.020, lower=True, wet=False, irisk=1.0, dot=False):
         """Almond eye. c centre, half (ew, eh) normalised; top/bot scale the upper/lower arcs (openness);
         tilt raises the outer corner; side +1 = character's left eye (viewer's right). mode: open | happy | closed."""
         dr = ImageDraw.Draw(img)
@@ -246,28 +289,26 @@ def draw_faces():
         layer = Image.new("RGBA", (N, N), (0, 0, 0, 0)); dl = ImageDraw.Draw(layer)
         dl.rectangle((0, 0, N, N), fill=(255, 253, 248, 255))
         ix, iy = cx + look[0] * ew * 0.45, cy + look[1] * eh * 0.40 - 0.08 * eh
-        ir = eh * 1.02
-        dl.ellipse((P(ix - ir, iy + ir)[0], P(ix - ir, iy + ir)[1], P(ix + ir, iy - ir)[0], P(ix + ir, iy - ir)[1]),
-                   fill=iris + (255,))
-        ir2 = ir * 0.80          # darker rim / lighter lower half for depth
-        dk = tuple(int(v * 0.55) for v in iris)
-        dl.ellipse((P(ix - ir, iy + ir)[0], P(ix - ir, iy + ir)[1], P(ix + ir, iy - ir)[0], P(ix + ir, iy - ir)[1]),
-                   outline=dk + (255,), width=int(ir * 0.16 * N))
-        lt = tuple(min(255, int(v * 1.35 + 20)) for v in iris)
-        dl.chord((P(ix - ir2, iy + ir2)[0], P(ix - ir2, iy + ir2)[1], P(ix + ir2, iy - ir2)[0], P(ix + ir2, iy - ir2)[1]),
-                 20, 160, fill=lt + (255,))
-        pr = ir * pupil
-        dl.ellipse((P(ix - pr, iy + pr)[0], P(ix - pr, iy + pr)[1], P(ix + pr, iy - pr)[0], P(ix + pr, iy - pr)[1]),
-                   fill=(24, 16, 12, 255))
-        h1 = ir * 0.36; hx, hy = ix + ir * 0.38, iy + ir * 0.42
-        dl.ellipse((P(hx - h1, hy + h1)[0], P(hx - h1, hy + h1)[1], P(hx + h1, hy - h1)[0], P(hx + h1, hy - h1)[1]),
-                   fill=(255, 255, 255, 255))
-        h2 = ir * 0.15; hx, hy = ix - ir * 0.40, iy - ir * 0.42
-        dl.ellipse((P(hx - h2, hy + h2)[0], P(hx - h2, hy + h2)[1], P(hx + h2, hy - h2)[0], P(hx + h2, hy - h2)[1]),
-                   fill=(255, 255, 255, 230))
-        if wet:
-            dl.ellipse((P(ix - ir * 0.9, iy - ir * 0.55)[0], P(ix - ir * 0.9, iy - ir * 0.55)[1],
-                        P(ix + ir * 0.9, iy - ir * 0.95)[0], P(ix + ir * 0.9, iy - ir * 0.95)[1]), fill=(200, 230, 255, 160))
+        ir = eh * 1.02 * irisk
+
+        def circ(x, y, r, **kw):
+            dl.ellipse((P(x - r, y + r)[0], P(x - r, y + r)[1], P(x + r, y - r)[0], P(x + r, y - r)[1]), **kw)
+        if dot:                  # stunned: tiny black dot pupils in big whites
+            circ(ix, iy, ir * 0.40, fill=(24, 16, 12, 255))
+        else:
+            circ(ix, iy, ir, fill=iris + (255,))
+            ir2 = ir * 0.80          # darker rim / lighter lower half for depth
+            dk = tuple(int(v * 0.55) for v in iris)
+            circ(ix, iy, ir, outline=dk + (255,), width=max(1, int(ir * 0.16 * N)))
+            lt = tuple(min(255, int(v * 1.35 + 20)) for v in iris)
+            dl.chord((P(ix - ir2, iy + ir2)[0], P(ix - ir2, iy + ir2)[1], P(ix + ir2, iy - ir2)[0], P(ix + ir2, iy - ir2)[1]),
+                     20, 160, fill=lt + (255,))
+            circ(ix, iy, ir * pupil, fill=(24, 16, 12, 255))
+            circ(ix + ir * 0.38, iy + ir * 0.42, ir * 0.36, fill=(255, 255, 255, 255))
+            circ(ix - ir * 0.40, iy - ir * 0.42, ir * 0.15, fill=(255, 255, 255, 230))
+            if wet:
+                dl.ellipse((P(ix - ir * 0.9, iy - ir * 0.55)[0], P(ix - ir * 0.9, iy - ir * 0.55)[1],
+                            P(ix + ir * 0.9, iy - ir * 0.95)[0], P(ix + ir * 0.9, iy - ir * 0.95)[1]), fill=(200, 230, 255, 160))
         # upper-lid shadow inside the white
         sh = Image.new("RGBA", (N, N), (0, 0, 0, 0)); ds = ImageDraw.Draw(sh)
         stroke(ds, up, line * 2.2, line * 2.2, col=(120, 90, 80, 70))
@@ -396,16 +437,269 @@ def draw_faces():
         stroke(dr, [(x, y + s * 1.3), (x + s * 0.55, y), (x + s * 0.4, y - s * 0.45), (x, y - s * 0.6),
                     (x - s * 0.4, y - s * 0.45), (x - s * 0.55, y), (x, y + s * 1.3)], 0.006, 0.006, col=(60, 110, 160, 255))
 
+    # ------------------------------------------------------------------ Haman + guards: bold cartoon faces
+    # (HAMAN-REWORK.md: every emotion pushed far enough to read on a phone; thick ink, big shapes)
+    def cavity(img, up, lo, teeth_top=0.0, teeth_bot=0.0, tongue=0.0, line=0.022, inside=(96, 26, 36, 255),
+               grit=0):
+        """Open mouth: polygon up (left -> right) + lo (right -> left). teeth_* = fraction of the height covered by
+        teeth bands; tongue = size of the tongue at the bottom; grit = number of tooth gaps (clenched teeth)."""
+        shape = [P(*p) for p in up + lo]
+        m = Image.new("L", img.size, 0); ImageDraw.Draw(m).polygon(shape, fill=255)
+        lay = Image.new("RGBA", img.size, (0, 0, 0, 0)); dl = ImageDraw.Draw(lay)
+        dl.rectangle((0, 0, N, N), fill=inside)
+        ys = [p[1] for p in up + lo]; xs = [p[0] for p in up + lo]
+        top, botm, x0, x1 = max(ys), min(ys), min(xs), max(xs)
+        hgt = top - botm
+        WT = (255, 255, 250, 255)
+        if tongue:
+            cx = (x0 + x1) / 2; tr = (x1 - x0) * 0.30 * tongue
+            dl.ellipse((P(cx - tr, botm + hgt * 0.45 * tongue)[0], P(0, botm + hgt * 0.45 * tongue)[1],
+                        P(cx + tr, botm - hgt * 0.2)[0], P(0, botm - hgt * 0.2)[1]), fill=(226, 102, 112, 255))
+        if teeth_top:
+            dl.rectangle((P(x0 - 0.1, top + 0.05)[0], P(0, top + 0.05)[1], P(x1 + 0.1, top - hgt * teeth_top)[0],
+                          P(0, top - hgt * teeth_top)[1]), fill=WT)
+        if teeth_bot:
+            dl.rectangle((P(x0 - 0.1, botm + hgt * teeth_bot)[0], P(0, botm + hgt * teeth_bot)[1],
+                          P(x1 + 0.1, botm - 0.05)[0], P(0, botm - 0.05)[1]), fill=WT)
+        dd = ImageDraw.Draw(lay)
+        if grit:
+            for k in range(1, grit + 1):
+                x = x0 + (x1 - x0) * k / (grit + 1)
+                stroke(dd, [(x, top + 0.02), (x, botm - 0.02)], line * 0.45, line * 0.45, col=(70, 40, 36, 255))
+            stroke(dd, [(x0 - 0.02, (top + botm) / 2), (x1 + 0.02, (top + botm) / 2)], line * 0.5, line * 0.5,
+                   col=(70, 40, 36, 255))
+        img.paste(lay, (0, 0), m)
+        dr = ImageDraw.Draw(img)
+        stroke(dr, up + lo + [up[0]], line, line, col=(52, 24, 22, 255))
+
+    def red_cheeks(img, cx, cy, rx, ry, a=210, col=(226, 52, 48)):
+        lay = Image.new("RGBA", img.size, (0, 0, 0, 0)); dl = ImageDraw.Draw(lay)
+        for sx in (-1, 1):
+            x = 0.5 + sx * cx
+            dl.ellipse((P(x - rx, cy + ry)[0], P(x - rx, cy + ry)[1], P(x + rx, cy - ry)[0], P(x + rx, cy - ry)[1]),
+                       fill=col + (a,))
+        lay = lay.filter(ImageFilter.GaussianBlur(N * 0.012)); img.alpha_composite(lay)
+
+    def tear_stream(img, x, y0, y1, w, wav=0.010):
+        dr = ImageDraw.Draw(img)
+        pts = [(x + wav * math.sin(t * 7.0), y0 - (y0 - y1) * t) for t in [i / 24 for i in range(25)]]
+        stroke(dr, pts, w * 0.7, w * 1.25, col=(120, 190, 245, 235))
+        stroke(dr, [(px + w * 0.15, py) for px, py in pts[2:-3]], w * 0.18, w * 0.25, col=(235, 248, 255, 230))
+        drop(img, pts[-1][0], pts[-1][1] - w * 0.6, w * 0.95)
+
+    def anger_mark(img, x, y, r, line):
+        dr = ImageDraw.Draw(img)
+        for a in (0, 90, 180, 270):
+            t = math.radians(a + 45)
+            c = (x + math.cos(t) * r * 0.62, y + math.sin(t) * r * 0.62)
+            p0 = (c[0] + math.cos(t + 1.9) * r * 0.5, c[1] + math.sin(t + 1.9) * r * 0.5)
+            p1 = (c[0] + math.cos(t - 1.9) * r * 0.5, c[1] + math.sin(t - 1.9) * r * 0.5)
+            stroke(dr, bez(p0, (c[0] - math.cos(t) * r * 0.35, c[1] - math.sin(t) * r * 0.35),
+                           (c[0] - math.cos(t) * r * 0.35, c[1] - math.sin(t) * r * 0.35), p1, 12),
+                   line, line, col=(214, 40, 40, 255))
+
+    def bold_face(img, ch, ex, F, imgm=None):
+        eL, eR, (hx, hy), by, my = F["eyeL"], F["eyeR"], F["eyeHalf"], F["brow"], F["mouth"]
+        LN = 0.027                                                  # ink width (old Haman: 0.020)
+        BCOL = (24, 16, 13, 255)
+        iris = (122, 96, 40) if ch == "haman" else (78, 50, 30)
+        E = dict(look=(0, 0), top=0.85, bot=1.0, tilt=0.20, mode="open", lid=0.45, inner_up=0.0, pupil=0.55, wet=False,
+                 irisk=1.0, dot=False, lower=True)
+        ek = (1.15, 1.12)                                           # draw the eyes bigger than the lid layout
+        Bp = dict(raise_=0.070, inner=0.0, arch=0.55, thick=1.0, outer=0.0); Bl, Br = {}, {}
+        bw = 0.058
+        extra = []
+        cx = 0.5
+        if ch in GUARDS:
+            E.update(top=0.62, tilt=0.05, lid=0.6, look=(0, -0.1)); Bp.update(raise_=0.050, inner=-0.030, arch=0.10, thick=1.15)
+            if ch == "guard2":
+                Bl = dict(inner=-0.020, raise_=0.056)
+            extra.append(("flat", 0.090 if ch == "guard1" else 0.080, -0.015 if ch == "guard2" else 0.0))
+        elif ex == "smug":
+            E.update(top=0.48, look=(0, -0.35)); Bl = dict(raise_=0.110, arch=0.9); Br = dict(raise_=0.068, arch=0.45)
+            extra.append(("smirk", 0.15, 1))
+        elif ex == "sly":
+            E.update(top=0.50, bot=0.70, look=(-1.0, 0.0)); Bl = dict(raise_=0.120, arch=1.0); Br = dict(raise_=0.052, inner=-0.035, arch=0.15)
+            extra.append(("smirk", 0.15, -1))
+        elif ex == "proud":
+            E.update(top=0.36, bot=0.75, look=(0, -0.55), lid=0.8, tilt=0.30); Bp.update(raise_=0.125, arch=1.05)
+            Bl = dict(raise_=0.135)
+            extra += [("smirk", 0.17, 1), ("cheekline", 1)]
+        elif ex == "laugh":
+            E.update(mode="happy"); Bp.update(raise_=0.120, arch=0.9)
+            extra += [("laugh",), ("laughlines",), ("rosy",)]
+        elif ex == "furious":
+            E.update(top=1.30, bot=1.25, pupil=0.80, irisk=0.55, tilt=-0.15, lid=0.2)
+            Bp.update(raise_=0.075, inner=-0.085, arch=-0.05, thick=1.45, outer=0.045)
+            extra += [("grit",), ("red",), ("anger",)]
+        elif ex == "scheming":
+            E.update(top=0.52, bot=0.80, look=(-1.0, -0.1), lid=0.7, tilt=0.30); Bl = dict(raise_=0.110, arch=0.9, outer=0.02)
+            Br = dict(raise_=0.055, inner=-0.050, arch=0.10)
+            extra += [("wicked",)]
+        elif ex == "stunned":
+            E.update(top=1.40, bot=1.35, dot=True, tilt=0.0, lid=0.1, lower=False); Bp.update(raise_=0.150, arch=0.55)
+            extra += [("hang",)]
+        elif ex == "sulky":
+            E.update(top=0.40, bot=0.85, look=(0.5, -0.6), lid=1.0, tilt=-0.05)
+            Bp.update(raise_=0.050, inner=0.020, arch=0.05, thick=1.15, outer=-0.020)
+            extra += [("pout",)]
+        elif ex == "shocked":
+            E.update(top=1.45, bot=1.35, pupil=0.75, irisk=0.42, lid=0.1, tilt=0.0); Bp.update(raise_=0.150, arch=0.80)
+            extra += [("o", 0.070, 0.13)]
+        elif ex == "scared":
+            E.update(top=1.30, bot=1.20, pupil=0.75, irisk=0.55, look=(0.25, 0.35), tilt=-0.10, wet=True)
+            Bp.update(raise_=0.120, inner=0.060, arch=0.15, outer=-0.040)
+            extra += [("wobbly", 0.13, 0.10), ("sweat",)]
+        elif ex == "terrified":
+            ek = (1.32, 1.35)
+            E.update(top=1.45, bot=1.35, pupil=0.80, irisk=0.45, tilt=-0.15, lid=0.1, wet=True)
+            Bp.update(raise_=0.160, inner=0.075, arch=0.10, outer=-0.050)
+            extra += [("o", 0.105, 0.20), ("tears", 0.040), ("sweat",)]
+        elif ex == "begging":
+            ek = (1.25, 1.25)
+            E.update(top=1.30, bot=1.15, pupil=0.62, irisk=1.30, look=(0, 0.45), tilt=-0.35, wet=True)
+            Bp.update(raise_=0.120, inner=0.085, arch=0.0, outer=-0.050)
+            extra += [("wobbly", 0.11, 0.06), ("welling",), ("tears", 0.026)]
+        half = (hx * ek[0], hy * ek[1])
+        for side, c in ((1, eL), (-1, eR)):
+            eye(img, c, half, side=side, iris=iris, line=LN, **E)
+        if E.get("mode") == "happy":                                # squeezed shut: thicker arcs + crow's feet
+            dr = ImageDraw.Draw(img)
+            for side, c in ((1, eL), (-1, eR)):
+                pts = bez((c[0] - side * half[0], c[1] - half[1] * 0.4), (c[0] - side * half[0] * 0.5, c[1] + half[1] * 1.3),
+                          (c[0] + side * half[0] * 0.5, c[1] + half[1] * 1.3), (c[0] + side * half[0], c[1] - half[1] * 0.4))
+                stroke(dr, pts, LN * 1.6, LN * 1.6, wmid=LN * 2.0)
+        dr = ImageDraw.Draw(img)
+        for side, c in ((1, eL), (-1, eR)):
+            b = dict(Bp); b.update(Bl if side == 1 else Br)
+            brow(dr, side, (c[0], by - 0.010), half, w=bw, col=BCOL, **b)
+        MOUTH = {"flat", "smirk", "cheekline", "laugh", "grit", "wicked", "hang", "o", "wobbly", "pout"}
+        for it in extra:
+            k = it[0]
+            im_ = imgm if (imgm is not None and k in MOUTH) else img
+            dr = ImageDraw.Draw(im_)
+            if k == "flat":
+                wd, tilt = it[1], it[2]
+                stroke(dr, [(cx - wd, my + 0.004 - tilt), (cx, my - 0.006), (cx + wd, my + 0.004 + tilt)], LN * 0.85, LN * 0.85)
+            elif k == "smirk":                                      # long curled smirk, curl on the `side`
+                wd, sd = it[1], it[2]
+                pts = bez((cx - wd * 0.85, my + 0.010), (cx - wd * 0.2, my - 0.040), (cx + wd * 0.45, my - 0.030),
+                          (cx + wd * 0.92, my + 0.050))
+                curl = bez((cx + wd * 0.92, my + 0.050), (cx + wd * 1.02, my + 0.072), (cx + wd * 1.12, my + 0.060),
+                           (cx + wd * 1.10, my + 0.030), 14)
+                if sd < 0:
+                    pts = [(2 * cx - x, y) for x, y in pts]; curl = [(2 * cx - x, y) for x, y in curl]
+                stroke(dr, pts, LN * 0.8, LN * 1.0, wmid=LN * 1.15)
+                stroke(dr, curl, LN * 0.9, LN * 0.45)
+            elif k == "cheekline":
+                stroke(dr, bez((cx + 0.23, my + 0.10), (cx + 0.26, my + 0.07), (cx + 0.26, my + 0.04), (cx + 0.24, my + 0.01), 10),
+                       LN * 0.55, LN * 0.25, col=(130, 70, 55, 220))
+            elif k == "laugh":                                      # huge open D mouth, teeth on top, big tongue
+                wd = 0.195
+                up = bez((cx - wd, my + 0.055), (cx - wd * 0.4, my + 0.015), (cx + wd * 0.4, my + 0.015), (cx + wd, my + 0.055))
+                lo = bez((cx + wd, my + 0.055), (cx + wd * 0.90, my - 0.180), (cx - wd * 0.90, my - 0.180), (cx - wd, my + 0.055))
+                cavity(im_, up, lo, teeth_top=0.22, tongue=0.85, line=LN)
+            elif k == "laughlines":
+                for side, c in ((1, eL), (-1, eR)):
+                    ox = c[0] + side * half[0] * 1.15
+                    for dy, ln in ((0.02, 0.05), (-0.015, 0.045)):
+                        stroke(dr, [(ox, c[1] + dy), (ox + side * ln, c[1] + dy * 2.2)], LN * 0.6, LN * 0.3)
+            elif k == "rosy":
+                red_cheeks(im_, 0.30, F["nose"] - 0.06, 0.075, 0.045, a=120, col=(236, 110, 100))
+            elif k == "red":
+                red_cheeks(im_, 0.30, F["nose"] - 0.05, 0.090, 0.060, a=235)
+                dr = ImageDraw.Draw(im_)
+                for sx in (-1, 1):                                  # hatch lines on the red cheeks
+                    for j in range(3):
+                        x = cx + sx * (0.25 + j * 0.035)
+                        stroke(dr, [(x + 0.012, F["nose"] - 0.020), (x - 0.012, F["nose"] - 0.075)], LN * 0.4, LN * 0.4,
+                               col=(170, 30, 30, 230))
+            elif k == "anger":
+                anger_mark(im_, 0.83, min(0.95, by + 0.15), 0.045, LN * 0.55)
+            elif k == "grit":                                       # clenched teeth, corners pulled down
+                wd = 0.175; t0 = my + 0.050; b0 = my - 0.060
+                up = bez((cx - wd, t0 - 0.030), (cx - wd * 0.5, t0 + 0.012), (cx + wd * 0.5, t0 + 0.012), (cx + wd, t0 - 0.030))
+                lo = bez((cx + wd, t0 - 0.030), (cx + wd * 0.95, b0 - 0.020), (cx - wd * 0.95, b0 - 0.020), (cx - wd, t0 - 0.030))
+                cavity(im_, up, lo, teeth_top=1.0, grit=5, line=LN)
+            elif k == "wicked":                                     # wide crescent grin, curled-up corners, teeth
+                wd = 0.165
+                up = bez((cx - wd, my + 0.060), (cx - wd * 0.4, my - 0.010), (cx + wd * 0.4, my - 0.010), (cx + wd, my + 0.075))
+                lo = bez((cx + wd, my + 0.075), (cx + wd * 0.6, my - 0.115), (cx - wd * 0.6, my - 0.105), (cx - wd, my + 0.060))
+                cavity(im_, up, lo, teeth_top=0.55, grit=6, line=LN)
+                dr = ImageDraw.Draw(im_)
+                for sx, y in ((-1, my + 0.060), (1, my + 0.075)):
+                    stroke(dr, [(cx + sx * wd, y), (cx + sx * (wd + 0.030), y + 0.030)], LN * 0.8, LN * 0.4)
+            elif k == "hang":                                       # jaw hanging: long open oval
+                wd = 0.075
+                up = bez((cx - wd, my + 0.005), (cx - wd * 0.6, my + 0.050), (cx + wd * 0.6, my + 0.050), (cx + wd, my + 0.005))
+                lo = bez((cx + wd, my + 0.005), (cx + wd * 1.15, my - 0.200), (cx - wd * 1.15, my - 0.200), (cx - wd, my + 0.005))
+                cavity(im_, up, lo, teeth_top=0.10, tongue=0.7, line=LN)
+            elif k == "o":
+                wd, hh = it[1], it[2]
+                up = bez((cx - wd, my - 0.01), (cx - wd, my + hh * 0.55), (cx + wd, my + hh * 0.55), (cx + wd, my - 0.01))
+                lo = bez((cx + wd, my - 0.01), (cx + wd * 1.05, my - hh * 1.1), (cx - wd * 1.05, my - hh * 1.1), (cx - wd, my - 0.01))
+                cavity(im_, up, lo, teeth_top=0.12, tongue=0.6, line=LN)
+            elif k == "wobbly":
+                wd, hh = it[1], it[2]
+                up = [(cx - wd + 2 * wd * i / 30, my + 0.012 * math.sin(i / 30 * 3 * math.pi)) for i in range(31)]
+                lo = [(cx + wd - 2 * wd * i / 30, my - hh * math.sin(math.pi * i / 30) ** 0.7
+                       + 0.010 * math.sin(i / 30 * 4 * math.pi)) for i in range(31)]
+                cavity(im_, up, lo, teeth_top=0.35, teeth_bot=0.30, line=LN)
+            elif k == "pout":                                       # pushed-out lower lip, downturned
+                wd = 0.110
+                lip = bez((cx - wd, my - 0.010), (cx - wd * 0.6, my - 0.080), (cx + wd * 0.6, my - 0.080), (cx + wd, my - 0.010))
+                top = bez((cx + wd, my - 0.010), (cx + wd * 0.5, my + 0.030), (cx - wd * 0.5, my + 0.030), (cx - wd, my - 0.010))
+                ImageDraw.Draw(im_).polygon([P(*p) for p in lip + top], fill=(176, 92, 92, 255))
+                dr = ImageDraw.Draw(im_)
+                stroke(dr, lip + top + [lip[0]], LN * 0.85, LN * 0.85)
+                stroke(dr, bez((cx - wd * 1.15, my - 0.040), (cx - wd * 0.6, my + 0.040), (cx + wd * 0.6, my + 0.040),
+                               (cx + wd * 1.15, my - 0.040)), LN, LN)
+            elif k == "sweat":
+                drop(im_, 0.90, eL[1] + 0.10, 0.050)
+                drop(im_, 0.10, eL[1] + 0.02, 0.035)
+            elif k == "tears":
+                for side, c in ((1, eL), (-1, eR)):
+                    tear_stream(im_, c[0] + side * half[0] * 0.55, c[1] - half[1] * 1.1, 0.03, it[1])
+            elif k == "welling":
+                dr = ImageDraw.Draw(im_)
+                for side, c in ((1, eL), (-1, eR)):
+                    pts = bez((c[0] - half[0] * 0.9, c[1] - half[1] * 0.9), (c[0] - half[0] * 0.4, c[1] - half[1] * 1.45),
+                              (c[0] + half[0] * 0.4, c[1] - half[1] * 1.45), (c[0] + half[0] * 0.9, c[1] - half[1] * 0.9))
+                    stroke(dr, pts, LN * 0.9, LN * 0.9, col=(140, 205, 250, 230))
+                    drop(im_, c[0] - side * half[0] * 0.8, c[1] - half[1] * 1.6, 0.028)
+
+
     made = {}
-    for ch in CHARS:
+    for ch in CHARS + GUARDS:
         F = face_layout(ch)
         eL, eR, half, by, my = F["eyeL"], F["eyeR"], F["eyeHalf"], F["brow"], F["mouth"]
-        bcol = {"esther": (58, 36, 26, 255), "king": (40, 26, 18, 255), "haman": (26, 18, 15, 255)}[ch]
-        iris = {"esther": (104, 64, 38), "king": (82, 52, 34), "haman": (122, 96, 40)}[ch]
-        bw = {"esther": 0.024, "king": 0.040, "haman": 0.044}[ch]
+        bcol = {"esther": (58, 36, 26, 255), "king": (40, 26, 18, 255)}.get(ch, (26, 18, 15, 255))
+        iris = {"esther": (104, 64, 38), "king": (82, 52, 34)}.get(ch, (122, 96, 40))
+        bw = {"esther": 0.024, "king": 0.040}.get(ch, 0.044)
         for ex in EXPRESSIONS[ch]:
             img = Image.new("RGBA", (N, N), (0, 0, 0, 0))
             dr = ImageDraw.Draw(img)
+            if ch == "haman" or ch in GUARDS:
+                if ch == "haman":                 # draw in the reference frame, map into the larger rect
+                    Fo = face_layout(ch, ref=True)
+                    ime = Image.new("RGBA", (N, N), (0, 0, 0, 0)); imm = Image.new("RGBA", (N, N), (0, 0, 0, 0))
+                    bold_face(ime, ch, ex, Fo, imgm=imm)
+                    ro, rn = Fo["rect"], F["rect"]; wo, wn = ro[2] - ro[0], rn[2] - rn[0]
+                    for lay, k2, piv in ((ime, wo / wn, None), (imm, wo / wn * 1.35, (0.5, Fo["mouth"]))):
+                        n2 = int(round(N * k2)); lr = lay.resize((n2, n2), Image.LANCZOS)
+                        if piv is None:
+                            ox = (ro[0] - rn[0]) / wn * N; oy = (1 - (ro[3] - rn[1]) / wn) * N
+                        else:
+                            lx = ro[0] + piv[0] * wo; ly = ro[1] + piv[1] * wo
+                            tx = (lx - rn[0]) / wn * N; ty = (1 - (ly - rn[1]) / wn) * N
+                            ox = tx - piv[0] * n2; oy = ty - (1 - piv[1]) * n2
+                        canvas = Image.new("RGBA", (N, N), (0, 0, 0, 0)); canvas.paste(lr, (int(round(ox)), int(round(oy))), lr)
+                        img.alpha_composite(canvas)
+                else:
+                    bold_face(img, ch, ex, F)
+                path = os.path.join(FACES, f"{ch}_{ex}.png")
+                img.resize((PX, PX), Image.LANCZOS).save(path); made[f"{ch}_{ex}"] = os.path.relpath(path, ROOT)
+                continue
             E = dict(look=(0, 0), top=1.0, bot=1.0, tilt=0.15, lash=0, mode="open", lid=0.10, inner_up=0.0, pupil=0.55,
                      wet=False)
             Bp = dict(raise_=0.0, inner=0.0, arch=0.35, thick=1.0, outer=0.0)
@@ -479,7 +773,7 @@ def draw_faces():
             path = os.path.join(FACES, f"{ch}_{ex}.png")
             out.save(path); made[f"{ch}_{ex}"] = os.path.relpath(path, ROOT)
     # overview sheet: every expression over a skin swatch
-    cells = [(ch, ex) for ch in CHARS for ex in EXPRESSIONS[ch]]
+    cells = [(ch, ex) for ch in CHARS + GUARDS for ex in EXPRESSIONS[ch]]
     cols = 6; cw = 256
     sheet = Image.new("RGB", (cols * cw, ((len(cells) + cols - 1) // cols) * (cw + 24)), (250, 246, 238))
     dr = ImageDraw.Draw(sheet)
@@ -512,6 +806,8 @@ def compose():
             im.paste(t, (x, y)); d.text((x + 8, y + cell[1] + 6), lb, fill=(60, 50, 40))
         return im
     for ch in CHARS:
+        if not os.path.exists(os.path.join(WORK, f"pv_{ch}_front.png")):
+            continue
         views = [("front", "front"), ("q34", "3/4"), ("side", "side"), ("back", "back")]
         files = [os.path.join(WORK, f"pv_{ch}_{v}.png") for v, _ in views]
         top = grid(files, [lb for _, lb in views], 4, (480, 720), f"{ch}: rest pose, demo palette + default face decal")
@@ -524,6 +820,24 @@ def compose():
         im = Image.new("RGB", (W, top.height + bot.height + ex.height), bg)
         im.paste(top, (0, 0)); im.paste(bot, (0, top.height)); im.paste(ex, (0, top.height + bot.height))
         im.save(os.path.join(MODEL, f"preview_{ch}.png"))
+    gv = [os.path.join(WORK, f"pv_{g}_{v}.png") for g in GUARDS for v in ("front", "q34", "side", "back")]
+    if all(os.path.exists(f) for f in gv):
+        top = grid(gv, [f"{g} {v}" for g in GUARDS for v in ("front", "3/4", "side", "back")], 4, (480, 720),
+                   "palace guards (not on the sheet): fixed paint model/guard_paint.png on UV0 + face decal guard*_stern")
+        det = [os.path.join(WORK, f) for f in ("pv_guard1_head.png", "pv_guard2_head.png", "pv_guard1_handR.png",
+                                                "pv_guard2_handL.png")]
+        bot = grid(det, ["guard1 face", "guard2 face", "guard1 spear hand (R)", "guard2 spear hand (L)"], 4, (480, 480),
+                   "close-ups")
+        grp = [os.path.join(WORK, f) for f in ("pv_group_front.png", "pv_group_q34.png")]
+        g3 = grid(grp, ["S10 line-up, front", "3/4"], 2, (960, 600), "with Haman (guard1 at his right = screen left)")
+        W = max(top.width, bot.width, g3.width)
+        im = Image.new("RGB", (W, top.height + bot.height + g3.height), bg)
+        im.paste(top, (0, 0)); im.paste(bot, (0, top.height)); im.paste(g3, (0, top.height + bot.height))
+        im.save(os.path.join(MODEL, "preview_guards.png"))
+    ph = [os.path.join(WORK, f"pv_haman_phone_{e}.png") for e in ("proud", "furious", "terrified")]
+    if all(os.path.exists(f) for f in ph):
+        grid(ph, ["proud", "furious", "terrified"], 3, (360, 480),
+             "haman at phone size (S03 camera distance, 360 x 480 px)").save(os.path.join(MODEL, "preview_haman_phone.png"))
     a = os.path.join(WORK, "pv_all.png")
     if os.path.exists(a):
         Image.open(a).convert("RGB").save(os.path.join(MODEL, "preview_all.png"))
@@ -543,9 +857,10 @@ def compose():
         im.paste(r2[0], (0, 34 + h1 + 26)); im.paste(r2[1], (1000, 34 + h1 + 26))
         d.text((8, 34 + h1 + 26 + 568), "3/4", fill=(60, 50, 40)); d.text((1008, 34 + h1 + 26 + 568), "back", fill=(60, 50, 40))
         im.save(os.path.join(MODEL, "preview_uvcheck.png"))
-    pf = [os.path.join(WORK, f"pose_{ch}_{v}.png") for ch in CHARS for v in "ab"]
-    if all(os.path.exists(f) for f in pf):
-        g = grid(pf, [f"{ch} {v}" for ch in CHARS for v in ("front-ish", "side-ish")], 6, (320, 480),
+    pc = [ch for ch in CHARS + GUARDS if os.path.exists(os.path.join(WORK, f"pose_{ch}_a.png"))]
+    pf = [os.path.join(WORK, f"pose_{ch}_{v}.png") for ch in pc for v in "ab"]
+    if pf:
+        g = grid(pf, [f"{ch} {v}" for ch in pc for v in ("front-ish", "side-ish")], 6, (320, 480),
                  "pose test: elbows, finger curl, thigh + knee, spine, head turn, jaw open, half blink (eyelids Y x6), "
                  "braid2 / cape2 (esther)")
         g.save(os.path.join(MODEL, "preview_pose.png"))
@@ -631,9 +946,9 @@ def arm_frames(C, side):
     S0 = V(sd * s["shoulder"][0], s["shoulder"][1], 0)
     d = V(sd * math.cos(a), -math.sin(a), 0)
     E = S0 + d * s["upperArm"]; W = E + d * s["forearm"]
-    fist = (C.ch == "king" and side == "R")
-    if fist:                                    # wrist cocked: hand points out nearly level, holds the sceptre upright
-        b = math.radians(26.0)
+    fist = side in s.get("fist", ())
+    if fist:                                    # wrist cocked: hand points out nearly level, holds the staff upright
+        b = math.radians(s.get("fistDeg", 26.0))
         dh = V(sd * math.cos(b), -math.sin(b), 0)
         Np = V(0, 0, 1)                         # palm toward the viewer, thumb on top, knuckles back
     else:
@@ -916,6 +1231,8 @@ def build_forearm_hand(C, side, s_from):
 # =============================================================================================== legs / shoes
 # lower rows of the D&G leg (y, x centre, out, in, front, back, z centre), David scale; scaled by footScale * S.
 LEG_ROWS = [
+    (0.082, 0.0190, 0.0112, 0.0104, 0.0068, 0.0110, 0.0010),     # knee / lower thigh (only used with top_y > 0.062:
+    (0.072, 0.0190, 0.0104, 0.0096, 0.0062, 0.0102, 0.0008),     #   the guards' knee-length tunic)
     (0.062, 0.0189, 0.0094, 0.0086, 0.0056, 0.0094, 0.0006),
     (0.050, 0.0188, 0.0086, 0.0074, 0.0053, 0.0082, 0.0000),
     (0.038, 0.0184, 0.0068, 0.0058, 0.0050, 0.0062, -0.0004),
@@ -929,7 +1246,7 @@ LEG_ROWS = [
 FOOTPRINT = [(-0.012, 0.74), (-0.004, 0.80), (0.006, 0.92), (0.018, 1.05), (0.026, 1.08), (0.034, 0.95), (0.040, 0.72)]
 
 
-def build_leg(C, side, shoe_top, reg_shoe, pointy=0.0, top_y=0.050):
+def build_leg(C, side, shoe_top, reg_shoe, pointy=0.0, top_y=0.050, reg_leg="skin", curl=0.0):
     s = C.s; sd = 1 if side == "L" else -1
     k = s["footScale"]; Sy = C.S * 0.95
     xc = C.B["thigh" + side][1].x * sd
@@ -966,7 +1283,7 @@ def build_leg(C, side, shoe_top, reg_shoe, pointy=0.0, top_y=0.050):
 
     def regfn(q):
         yy = sum(cg.v[i].y for i in q) / 4
-        return reg_shoe if yy < shoe_top else "skin"
+        return reg_shoe if yy < shoe_top else reg_leg
     for a, b in zip(rings, rings[1:]):
         cg.bridge(a, b, None, 0, regfn=regfn)
     cg.grid_cap(rings[-1], wleg, reg_shoe, 0)
@@ -985,6 +1302,12 @@ def build_leg(C, side, shoe_top, reg_shoe, pointy=0.0, top_y=0.050):
                     q.y += pointy * t * t * 0.010 * C.S
                     q.z += pointy * t * t * 0.006 * C.S
                     q.x = ank.x + (q.x - ank.x) * (1 - 0.35 * t)
+                if curl and t > 0:              # curled toe: the tip rolls up and back (Haman's slippers)
+                    tt = smoothstep(0.80 * fl, 1.0 * fl, zl)
+                    ang = curl * tt * tt
+                    piv = V(q.x, 0.012 * C.S, ank.z + 0.80 * fl + 0.004 * C.S)
+                    d = q - piv
+                    q = piv + V(d.x, d.y * math.cos(ang) + d.z * math.sin(ang), -d.y * math.sin(ang) + d.z * math.cos(ang))
             out.append(q)
         return out
     C.add("leg" + side, cg, post=post, subdiv=0)
@@ -1833,6 +2156,34 @@ def build_king(C):
 
 
 # =============================================================================================== Haman
+# HAMAN-REWORK.md (2026-11-14): a pompous cartoon peacock children laugh at. Same skeleton and rest positions as before
+# (every contract bone unchanged); new: round pot belly + puffed chest (robe rows), long hooked nose (own part), thin
+# moustache rolled into curls, wide gold collar, belt on the belly, curled slippers, a taller cap with a gold brooch
+# and a tall feather plume (skinned to the new chain cap -> plume1 -> plume2, part of haman_body).
+def haman_moustache(C, y0, reach, r0):
+    """Thin moustache: from under the nose out along the lip, then rolled up into a curl (1.1 turns) on each side."""
+    L = C.L; S = C.S
+    cg = Cage(); wfn = C.w(["head"])
+    for sx in (-1, 1):
+        path, rad = [], []
+        for i in range(10):                                    # straight part along the upper lip
+            f = i / 9
+            x = sx * (0.03 + 0.97 * f) * reach
+            p, n = head_surface(C, x, y0 - 0.0012 * S * math.sin(math.pi * f), 0.0012 * S)
+            path.append(p); rad.append(r0 * (1.0 - 0.25 * f))
+        end = path[-1]; n_end = head_surface(C, sx * reach, y0, 0.0)[1]
+        X = V(sx, 0, 0); X = (X - n_end * X.dot(n_end)).normalized(); Y = V(0, 1, 0)
+        rc = 0.0030 * S; cen = end + Y * rc
+        for k in range(1, 23):                                 # curl: up the outside, over the top, back down inside
+            t = k / 22
+            ang = -math.pi / 2 + t * 2.2 * math.pi
+            r = rc * (1.0 - 0.55 * t)
+            p = cen + X * (math.cos(ang) * r) + Y * (math.sin(ang) * r) + n_end * (0.0006 * S * t)
+            path.append(p); rad.append(r0 * 0.75 * (1.0 - 0.6 * t))
+        tube(cg, path, [(r * 0.85, r) for r in rad], 8, wfn, "beard", 1, cap0=True, cap1=True)
+    C.add("moustache", cg, subdiv=0)
+
+
 def build_haman(C):
     s = C.s; L = C.L; H = C.H; S = C.S
     shY = s["shoulder"][1]; nb = s["neckBase"]
@@ -1856,11 +2207,29 @@ def build_haman(C):
     def thick(u, y):
         return 0.0022 * S
     hair_shell(C, rim, thick, "hair", "beard", plumb=None, tuck_front=0.17, grooves=48, groove_amp=0.00022, NU=36, NV=7)
-    # pointed goatee + thin moustache with upturned tips
-    zc = L["zc"]
-    p0, n0 = head_surface(C, 0.0, L["mouth"] - 0.075 * H, 0.0008 * S)
-    p1, n1 = head_surface(C, 0.0, L["chin"] + 0.10 * H, 0.0016 * S)
-    p2, n2 = head_surface(C, 0.0, L["chin"] + 0.01 * H, 0.0020 * S)
+    # long hooked nose: out from the bridge, a round tip well in front of the face, hooking down and back
+    q0, n0 = head_surface(C, 0.0, L["eye"] - 0.04 * H, -0.0006 * S)
+    q1, n1 = head_surface(C, 0.0, L["nose"] + 0.16 * H, 0.0022 * S)
+    q2, _ = head_surface(C, 0.0, L["nose"] + 0.04 * H, 0.0066 * S)
+    q3, _ = head_surface(C, 0.0, L["nose"] - 0.02 * H, 0.0068 * S)
+    q4, _ = head_surface(C, 0.0, L["nose"] - 0.045 * H, 0.0032 * S)
+    NN = 22
+    path = [cr_open([q0, q1, q2, q3, q4], t / NN) for t in range(NN + 1)]
+    nr0 = [(0.0015, 0.0013), (0.0016, 0.0014), (0.0018, 0.0016), (0.0020, 0.0018), (0.0022, 0.0021), (0.0025, 0.0024),
+           (0.0028, 0.0027), (0.0031, 0.0030), (0.0033, 0.0032), (0.0034, 0.0033), (0.0033, 0.0032), (0.0030, 0.0029),
+           (0.0026, 0.0025), (0.0021, 0.0020), (0.0015, 0.0014)]
+    nr = [table([(k / 14,) + nr0[k] for k in range(15)], t / NN) for t in range(NN + 1)]
+    cg = Cage()
+    tube(cg, path, [(a * S * 1.05, b * S) for a, b in nr], 14, C.w(["head"]), "skin", 2, ref=V(1, 0, 0),
+         cap0=True, cap1=True, cap_len=0.7)
+    for sx in (-1, 1):                                          # nostril wings
+        c = q3 + V(sx * 0.0024 * S, -0.0010 * S, -0.0016 * S)
+        blob(cg, c, 0.0016 * S, 0.0013 * S, 0.0016 * S, C.w(["head"]), "skin", 2, NU=10, NV=6)
+    C.add("nose", cg, subdiv=0)
+    # pointed goatee (as before) + thin curled moustache
+    p0, _ = head_surface(C, 0.0, L["mouth"] - 0.075 * H, 0.0008 * S)
+    p1, _ = head_surface(C, 0.0, L["chin"] + 0.10 * H, 0.0016 * S)
+    p2, _ = head_surface(C, 0.0, L["chin"] + 0.01 * H, 0.0020 * S)
     p3 = p2 + V(0, -0.0085 * S, 0.0030 * S); p4 = p2 + V(0, -0.0175 * S, 0.0062 * S)
     path = [cr_open([p0, p1, p2, p3, p4], t / 10) for t in range(11)]
     rad = [(lerp(0.0011, 0.0019, min(1, t / 3)) * S * (1 - 0.85 * smoothstep(0.55, 1.0, t / 10)),
@@ -1868,21 +2237,22 @@ def build_haman(C):
     cg = Cage()
     tube(cg, path, rad, 10, C.w(["head"]), "beard", 0, cap0=True, cap1=True, cap_len=0.8)
     C.add("goatee", cg, subdiv=0, decal=True, jaw=True, jawBelow=0.9, jawZ=-0.05)
-    moustache(C, "moustache", L["mouth"] + 0.075 * H, 0.66 * s["hw"], 0.05 * H, 0.16 * H, 0.0012 * S, off=0.0012)
-    # robe: wine red with mustard front panel, hem band and cuffs
-    R = [(0.2790, 0.0105, 0.0095, -0.0100), (0.2775, 0.0158, 0.0110, -0.0118), (0.2755, 0.0236, 0.0122, -0.0128),
-         (0.2738, 0.0306, 0.0128, -0.0132), (0.2724, 0.0350, 0.0131, -0.0134), (0.2712, 0.0372, 0.0133, -0.0135), (0.2650, 0.0400, 0.0140, -0.0138), (0.2560, 0.0385, 0.0150, -0.0136),
-         (0.2480, 0.0365, 0.0155, -0.0132), (0.2360, 0.0330, 0.0150, -0.0125), (0.2240, 0.0305, 0.0142, -0.0120),
-         (0.2100, 0.0320, 0.0150, -0.0135), (0.1960, 0.0345, 0.0165, -0.0155), (0.1600, 0.0375, 0.0185, -0.0172),
-         (0.1200, 0.0405, 0.0205, -0.0190), (0.0800, 0.0440, 0.0228, -0.0208), (0.0400, 0.0475, 0.0252, -0.0225),
-         (0.0110, 0.0500, 0.0270, -0.0238)]
+    haman_moustache(C, L["mouth"] + 0.115 * H, 0.70 * s["hw"], 0.0010 * S)
+    # robe: wine red; puffed chest and a round pot belly that the skirt tucks under; mustard panel, hem band, cuffs
+    R = [(0.2790, 0.0105, 0.0095, -0.0100), (0.2775, 0.0158, 0.0112, -0.0118), (0.2755, 0.0236, 0.0126, -0.0128),
+         (0.2738, 0.0306, 0.0134, -0.0132), (0.2724, 0.0350, 0.0140, -0.0134), (0.2712, 0.0374, 0.0146, -0.0135),
+         (0.2650, 0.0404, 0.0172, -0.0138), (0.2580, 0.0398, 0.0204, -0.0136), (0.2500, 0.0396, 0.0226, -0.0134),
+         (0.2420, 0.0412, 0.0262, -0.0134), (0.2330, 0.0452, 0.0322, -0.0138), (0.2240, 0.0506, 0.0390, -0.0146),
+         (0.2150, 0.0540, 0.0438, -0.0154), (0.2060, 0.0548, 0.0452, -0.0162), (0.1970, 0.0536, 0.0436, -0.0170),
+         (0.1880, 0.0500, 0.0386, -0.0176), (0.1790, 0.0458, 0.0318, -0.0180), (0.1660, 0.0440, 0.0272, -0.0186),
+         (0.1300, 0.0452, 0.0258, -0.0196), (0.0800, 0.0486, 0.0266, -0.0212), (0.0400, 0.0512, 0.0280, -0.0228),
+         (0.0110, 0.0534, 0.0294, -0.0240)]
     sleeve = [(0.004, 0.0113), (0.014, 0.0111), (0.030, 0.0101), (0.048, 0.0095), (0.064, 0.0098), (0.078, 0.0104),
               (0.092, 0.0111), (0.102, 0.0119), (0.108, 0.0123)]
-    cg = build_robe(C, R, sleeve, None, nf=10, fold_amp=0.0021, sleeve_fold=0.0008)
-    hem = R[-1][0]; LU, LF = s["upperArm"], s["forearm"]
+    cg = build_robe(C, R, sleeve, None, nf=10, fold_amp=0.0017, sleeve_fold=0.0008)
+    hem = R[-1][0]
     for fi, q in enumerate(cg.f):
         cen = sum((cg.v[i] for i in q), V()) / len(q)
-        reg = cg.reg[fi]
         sl = None
         for side in "LR":
             A = C.arm[side]; sv = (cen - A["S0"]).dot(A["d"])
@@ -1899,29 +2269,236 @@ def build_haman(C):
                 cg.reg[fi] = "panels"; cg.pc[fi] = 4
     for side in "LR":
         build_forearm_hand(C, side, 0.040)
-        build_leg(C, side, 0.0125 * S, "shoes", pointy=1.0)
+        build_leg(C, side, 0.0125 * S, "shoes", pointy=1.5, curl=2.6)
+    # belt straining round the belly (region panels)
     wy = s["waistY"]
-    waist_band(C, "sash", "panels", wy - 0.0048 * S, wy + 0.0048 * S, 0.0011 * S, pc=5, bulge=0.0009 * S)
-    # cap: dark teal round cap, gold rim (rigid, cap bone)
+    waist_band(C, "sash", "panels", wy - 0.0215 * S, wy - 0.0100 * S, 0.0011 * S, pc=5, bulge=0.0010 * S)
+    # wide gold collar: pointed scallops over the shoulders and the puffed chest
+    wcol = C.w(["chest", ("neck", 0.010 * S), ("shoulderL", 0.016 * S), ("shoulderR", 0.016 * S)])
+    yout = [(0.00, s["chestY"] - 0.004 * S), (0.12, s["chestY"] + 0.000 * S), (0.25, shY - 0.007 * S),
+            (0.38, s["chestY"] + 0.004 * S), (0.50, s["chestY"] + 0.002 * S)]
+    vs = [(0.0, 0.0014), (0.06, 0.0024), (0.45, 0.0024), (0.50, 0.0017), (0.55, 0.0024), (0.93, 0.0024), (1.0, 0.0016)]
+    NU = 60; cg = Cage(); rings = []
+    for v, off in vs:
+        ring = []
+        for i in range(NU):
+            u = i / NU; uu = mirror_u(u)
+            sc_ = abs(math.cos(math.pi * 12 * u))                 # pointed scallops (12)
+            yo = table(yout, uu)[0] - 0.0042 * S * (1.0 - sc_ ** 0.5)
+            y = lerp(nb + 0.0030 * S, yo, v)
+            ring.append(mantle_point(C, u, y, off * S, 0.0132 * S))
+        rings.append(cg.ring(ring, wcol))
+    for a, b in zip(rings, rings[1:]):
+        cg.bridge(a, b, "collar", 0)
+    C.add("collar", cg, subdiv=0, solidify=0.0010 * S, smooth=(lambda p: True, 2))
+    # tall cap: teal, flaring a little to a domed top, tipped back; gold rim + gold brooch (rigid, cap bone)
     cg = Cage()
-    Hc = s["height"] - capb
-    prof = [(-0.0015 * S, 0.97), (0.0, 1.0), (0.18 * Hc, 1.035), (0.45 * Hc, 1.05), (0.70 * Hc, 1.02), (0.86 * Hc, 0.92),
-            (0.95 * Hc, 0.72), (0.99 * Hc, 0.40), (Hc, 0)]
+    Hc = s["capTop"] - capb
+    prof = [(-0.0015 * S, 0.97), (0.0, 1.0), (0.12 * Hc, 1.03), (0.40 * Hc, 1.07), (0.70 * Hc, 1.11), (0.86 * Hc, 1.12),
+            (0.94 * Hc, 1.06), (0.985 * Hc, 0.84), (Hc, 0.50), (1.006 * Hc, 0)]
     cp = head_lathe(C, capb, prof, 32, None, "cap", 0, cg, extra_x=0.0030 * S, extra_f=0.0012 * S, extra_b=0.0035 * S,
                     e=2.1, tilt=math.radians(8))
-    rings = []
-    for yy, kk in ((-0.0010 * S, 1.005), (-0.0004 * S, 1.040), (0.0044 * S, 1.040), (0.0050 * S, 1.010)):
-        pts = [V(se(math.sin(2 * math.pi * j / 48), 2.1) * cp["rx"] * kk, capb + yy,
-                 cp["zc"] + se(math.cos(2 * math.pi * j / 48), 2.1) * cp["rz"] * kk) for j in range(48)]
-        rings.append(cg.ring([cp["pivot"] + cp["R"] @ (p - cp["pivot"]) for p in pts], None))
-    for a, b in zip(rings, rings[1:]):
-        cg.bridge(a, b, "capRim", 1)
+
+    def cap_pt(dy, a, k_add=0.0):
+        k = table([(p[0], p[1]) for p in prof if p[1] > 0], dy)[0] + k_add
+        p = V(se(math.sin(a), 2.1) * cp["rx"] * k, capb + dy, cp["zc"] + se(math.cos(a), 2.1) * cp["rz"] * k)
+        return cp["pivot"] + cp["R"] @ (p - cp["pivot"])
+    for y0_, y1_, pcn in ((-0.0010 * S, 0.0050 * S, 1), (0.50 * Hc, 0.50 * Hc + 0.0034 * S, 3)):
+        rings = []
+        for yy, ka in ((y0_, 0.005), (y0_ + 0.0006 * S, 0.040), (y1_ - 0.0006 * S, 0.040), (y1_, 0.010)):
+            rings.append(cg.ring([cap_pt(yy, 2 * math.pi * j / 48, ka) for j in range(48)], None))
+        for a, b in zip(rings, rings[1:]):
+            cg.bridge(a, b, "capRim", pcn)
+    a_b = math.radians(30)                                      # brooch on his left front, where the plume springs
+    bro = cap_pt(0.30 * Hc, a_b, 0.06)
+    nb_ = (bro - cap_pt(0.30 * Hc, a_b, 0.0)).normalized()
+    Xb = V(0, 1, 0).cross(nb_).normalized(); Yb = nb_.cross(Xb)
+    blob(cg, bro, 0.0040 * S, 0.0040 * S, 0.0016 * S, None, "capRim", 2, NU=12, NV=6, ax=Matrix((Xb, Yb, nb_)).transposed())
     C.add("cap", cg, subdiv=0, rigid="cap")
-    C.B["cap"] = (V(0, capb, cp["zc"]), V(0, s["height"], cp["zc"]), "head")
+    C.B["cap"] = (V(0, capb, cp["zc"]), V(0, s["capTop"], cp["zc"]), "head")
+    # feather plume: from the brooch up past the cap top, arching over to his left and drooping into a curl;
+    # wide in the front plane (a big colourable shape on the sheet), thin in depth, scalloped edge
+    top = s["plumeTop"]
+    ctrl = [bro + nb_ * 0.0010 * S, cap_pt(0.62 * Hc, a_b, 0.18), V(0.010, top - 0.006, cp["zc"] - 0.002),
+            V(0.026, top, cp["zc"] - 0.006), V(0.044, top - 0.010, cp["zc"] - 0.007), V(0.052, top - 0.024, cp["zc"] - 0.004),
+            V(0.046, top - 0.033, cp["zc"] - 0.001)]
+    NP = 44
+    path = [cr_open(ctrl, t / NP) for t in range(NP + 1)]
+    widths = []
+    for i in range(NP + 1):
+        t = i / NP
+        w = 0.0014 + 0.0080 * smoothstep(0.0, 0.45, t) - 0.0062 * smoothstep(0.60, 1.0, t)
+        w *= 1.0 + 0.05 * math.sin(t * 2 * math.pi * 5.0) * smoothstep(0.25, 0.45, t)
+        widths.append((0.0014 * S * (1 - 0.4 * t), w * S))
+    acc = [0.0]
+    for a, b in zip(path, path[1:]):
+        acc.append(acc[-1] + (b - a).length)
+    tl = [a / acc[-1] for a in acc]
+    kp1, kp2 = int(0.42 * NP), NP
+
+    def wplume(p):
+        i = min(range(len(path)), key=lambda j: (path[j] - p).length_squared)
+        t = tl[i]
+        if t < 0.10:
+            return {"cap": 1.0}
+        if t < 0.22:
+            f = smoothstep(0.10, 0.22, t); return {"cap": 1 - f, "plume1": f}
+        if t < 0.38:
+            return {"plume1": 1.0}
+        if t < 0.52:
+            f = smoothstep(0.38, 0.52, t); return {"plume1": 1 - f, "plume2": f}
+        return {"plume2": 1.0}
+    cg = Cage()
+    tube(cg, path, widths, 12, wplume, "plume", 0, ref=V(0, 0, 1), e=2.6, cap0=True, cap1=True, cap_len=0.5)
+    C.add("plume", cg, subdiv=0)
+    C.B["plume1"] = (path[int(0.16 * NP)].copy(), path[kp1].copy(), "cap")
+    C.B["plume2"] = (path[kp1].copy(), path[kp2].copy(), "plume1")
     finger_ring(C, "L", "ring")
 
 
-BUILDERS.update({"king": build_king, "haman": build_haman})
+# =============================================================================================== palace guards
+def build_guard(C):
+    """Palace guard (HAMAN-REWORK.md §3): Persian-inspired, tall fluted cap, knee-length tunic with a belt and gold
+    trim, trousers, boots, a short spear in the outer fist (`spear` bone). Not on the sheet: painted texture."""
+    s = C.s; L = C.L; H = C.H; S = C.S
+    nb = s["neckBase"]
+    capb = L["brow"] + 0.20 * H
+    ey0, ey1, ew, et = ears_spec(C)
+
+    def rim(u):
+        uu = mirror_u(u)
+        return table([(0.00, capb + 0.003 * S), (0.13, capb + 0.003 * S), (0.17, capb - 0.004 * S), (0.19, L["eye"] + 0.02 * H),
+                      (0.215, L["nose"]), (0.232, ey1 + 0.003 * S), (0.268, ey1 + 0.003 * S), (0.30, L["mouth"]),
+                      (0.36, L["chin"] - 0.10 * H), (0.50, L["chin"] - 0.20 * H)], uu)[0]
+
+    def cull(p):
+        u = head_u(C, p); uu = mirror_u(u)
+        if p.y < nb - 0.0060 * S or p.y > capb + 0.004 * S:
+            return True
+        return uu > 0.17 and p.y > rim(u) + 0.0045 * S and not (0.225 < uu < 0.275 and p.y < ey1)
+    skeleton(C)
+    build_head(C, cull, ears=(ey0, ey1, ew, et))
+
+    def thick(u, y):
+        return (0.0030 + 0.0016 * smoothstep(L["eye"], L["chin"] - 0.1 * H, y)) * S
+
+    def curls(u, y):
+        rh = 0.0052 * S; row = math.floor((y - L["chin"]) / rh)
+        ph = 0.5 * (row % 2)
+        return 0.0010 * S * (0.5 + 0.5 * math.cos(2 * math.pi * (y - L["chin"]) / rh)) \
+            * (0.5 + 0.5 * math.cos(2 * math.pi * (u * 30 + ph)))
+    hair_shell(C, rim, thick, "hair", "hair", plumb=lambda uu: smoothstep(0.26, 0.34, uu), tuck_front=0.17, grooves=0,
+               curls=curls, NU=40, NV=8)
+    if s.get("beard"):                                          # guard1: short square beard with curl rows
+        top = [(0.00, L["mouth"] - 0.080 * H), (0.035, L["mouth"] - 0.065 * H), (0.07, L["mouth"] + 0.01 * H),
+               (0.10, L["nose"] - 0.05 * H), (0.15, L["nose"] + 0.00 * H), (0.20, L["eye"] - 0.17 * H), (0.245, L["eye"] - 0.06 * H)]
+        bot = [(0.00, L["chin"] - 0.20 * H), (0.08, L["chin"] - 0.20 * H), (0.13, L["chin"] - 0.14 * H),
+               (0.17, L["chin"] - 0.02 * H), (0.21, L["mouth"] - 0.05 * H), (0.245, L["nose"] - 0.04 * H)]
+
+        def bthick(uu, y, v):
+            t = lerp(0.0055, 0.0030, smoothstep(0.05, 0.24, uu)) * S * smoothstep(0.0, 0.20, v)
+            if uu < 0.06 and y > L["mouth"] - 0.10 * H:
+                t *= 0.35
+            return t + 0.0005 * S
+
+        def bcurls(u, y):
+            rh = 0.0050 * S; row = math.floor((y - L["chin"]) / rh)
+            ph = 0.5 * (row % 2)
+            return 0.0011 * S * ((0.5 + 0.5 * math.cos(2 * math.pi * (y - L["chin"]) / rh))
+                                 * (0.5 + 0.5 * math.cos(2 * math.pi * (u * 34 + ph))) - 0.25)
+        build_beard(C, top, bot, bthick, bcurls, 0.245, L["chin"] - 0.20 * H, reg="hair")
+        moustache(C, "moustache", L["mouth"] + 0.085 * H, 0.62 * s["hw"], 0.06 * H, 0.06 * H, 0.0022 * S, reg="hair", off=0.0016)
+    else:                                                       # guard2: clean chin, thick drooping moustache
+        moustache(C, "moustache", L["mouth"] + 0.080 * H, 0.70 * s["hw"], 0.13 * H, 0.0, 0.0026 * S, reg="hair", off=0.0016)
+    # knee-length tunic, cuffed sleeves; gold hem band and cuffs (trim)
+    R = [(0.2650, 0.0121, 0.0106, -0.0112), (0.2635, 0.0182, 0.0123, -0.0132), (0.2615, 0.0272, 0.0137, -0.0143),
+         (0.2598, 0.0353, 0.0143, -0.0148), (0.2584, 0.0404, 0.0147, -0.0150), (0.2572, 0.0429, 0.0149, -0.0151),
+         (0.2510, 0.0462, 0.0162, -0.0155), (0.2420, 0.0446, 0.0174, -0.0152), (0.2340, 0.0422, 0.0176, -0.0148),
+         (0.2220, 0.0386, 0.0168, -0.0140), (0.2120, 0.0362, 0.0160, -0.0136), (0.1980, 0.0374, 0.0166, -0.0150),
+         (0.1840, 0.0396, 0.0180, -0.0166), (0.1500, 0.0428, 0.0200, -0.0186), (0.1100, 0.0462, 0.0222, -0.0206),
+         (0.0740, 0.0498, 0.0244, -0.0224)]
+    sleeve = [(0.004, 0.0118), (0.014, 0.0114), (0.030, 0.0104), (0.048, 0.0097), (0.064, 0.0094), (0.078, 0.0097),
+              (0.088, 0.0102), (0.094, 0.0105)]
+    cg = build_robe(C, R, sleeve, None, nf=12, fold_amp=0.0012, sleeve_fold=0.0006)
+    hem = R[-1][0]
+    for fi, q in enumerate(cg.f):
+        cg.reg[fi] = "tunic"
+        cen = sum((cg.v[i] for i in q), V()) / len(q)
+        sl = None
+        for side in "LR":
+            A = C.arm[side]; sv = (cen - A["S0"]).dot(A["d"])
+            if sv > 0.004 * S and (cen - (A["S0"] + A["d"] * sv)).length < 0.03 * S:
+                sl = sv
+        if sl is not None:
+            if sl > 0.083 * S:
+                cg.reg[fi] = "trim"; cg.pc[fi] = 2
+        elif cen.y < hem + 0.0080 * S:
+            cg.reg[fi] = "trim"; cg.pc[fi] = 3
+    for side in "LR":
+        build_forearm_hand(C, side, 0.040)
+        build_leg(C, side, 0.036 * S, "boots", pointy=0.3, top_y=0.072, reg_leg="trousers")
+    wy = s["waistY"]
+    waist_band(C, "belt", "belt", wy - 0.0055 * S, wy + 0.0055 * S, 0.0011 * S, bulge=0.0009 * S)
+    # tall fluted cap (rigid on `head`): flares a little upward, flat top, gold band at the base
+    cg = Cage()
+    Hc = s["height"] - capb
+    prof = [(-0.0015 * S, 0.97), (0.0, 1.0), (0.10 * Hc, 1.04), (0.50 * Hc, 1.10), (0.90 * Hc, 1.16), (0.975 * Hc, 1.17),
+            (Hc - 0.0006 * S, 1.15), (Hc, 1.05), (Hc + 0.0004 * S, 0.80), (Hc + 0.0006 * S, 0)]
+    cp = head_lathe(C, capb, prof, 48, None, "cap", 0, cg, extra_x=0.0030 * S, extra_f=0.0012 * S, extra_b=0.0030 * S,
+                    e=2.2, tilt=math.radians(3))
+    rings = []
+    for yy, kk in ((-0.0010 * S, 1.005), (-0.0004 * S, 1.040), (0.0060 * S, 1.050), (0.0066 * S, 1.015)):
+        k0 = table([(p[0], p[1]) for p in prof if p[1] > 0], max(0.0, yy))[0]
+        pts = [V(se(math.sin(2 * math.pi * j / 48), 2.2) * cp["rx"] * k0 * kk, capb + yy,
+                 cp["zc"] + se(math.cos(2 * math.pi * j / 48), 2.2) * cp["rz"] * k0 * kk) for j in range(48)]
+        rings.append(cg.ring([cp["pivot"] + cp["R"] @ (p - cp["pivot"]) for p in pts], None))
+    for a, b in zip(rings, rings[1:]):
+        cg.bridge(a, b, "trim", 1)
+
+    def flutes(pts, nrm):
+        out = []
+        for p, n in zip(pts, nrm):
+            a = math.atan2(p.x, p.z - cp["zc"])
+            f = smoothstep(capb + 0.0075 * S, capb + 0.010 * S, p.y) * smoothstep(capb + Hc - 0.002 * S, capb + Hc - 0.004 * S, p.y)
+            out.append(p - n * 0.00055 * S * f * (0.5 + 0.5 * math.cos(16 * a)))
+        return out
+    C.add("cap", cg, subdiv=0, rigid="head", post=flutes)
+    # short spear in the outer fist (rigid, `spear` bone): butt near the ground, leaf head above the cap
+    side = s["fist"][0]
+    A = C.arm[side]; hd = s["handDims"]
+    axis = A["Yh"] if A["Yh"].y > 0 else -A["Yh"]
+    grip = A["K"] - A["dh"] * (0.18 * s["hand"] * s["palmFrac"]) + A["Np"] * (hd["palmH"] * 0.5 + 0.0030 * S)
+    below = (grip.y - 0.006) / axis.y
+    above = 0.40 - grip.y
+    cg = Cage()
+    prof = [(-below, 0.0), (-below + 0.001, 0.0024), (-below + 0.004, 0.0030), (-below + 0.007, 0.0022),
+            (above - 0.060, 0.0018), (above - 0.058, 0.0026), (above - 0.052, 0.0026), (above - 0.050, 0.0019),
+            (above - 0.047, 0.0)]
+    pts = [grip + axis * t for t, r in prof]
+    rads = [max(r * S, 0.0004) for t, r in prof]
+    regs = ["spearHead" if t < -below + 0.008 or t > above - 0.061 else "spear" for t, r in prof]
+    tube(cg, pts[1:-1], rads[1:-1], 10, None, "spear", 0, ref=V(0, 0, 1), cap0=True, cap1=True, cap_len=0.3,
+         regfn=lambda q: "spear")
+    for fi, q in enumerate(cg.f):                               # butt cap + socket collar in the head colour
+        c = sum((cg.v[i] for i in q), V()) / len(q)
+        t = (c - grip).dot(axis)
+        if t < -below + 0.0075 or t > above - 0.0605:
+            cg.reg[fi] = "spearHead"; cg.pc[fi] = 1
+    sideX = axis.cross(V(0, 0, 1)).normalized()
+    leaf = [(0.0, 0.0), (0.0040, 0.0040), (0.0062, 0.0110), (0.0058, 0.0190), (0.0036, 0.0280), (0.0, 0.0400),
+            (-0.0036, 0.0280), (-0.0058, 0.0190), (-0.0062, 0.0110), (-0.0040, 0.0040)]
+    base = grip + axis * (above - 0.050)
+    Z = sideX.cross(axis).normalized()
+    if Z.z < 0:
+        Z = -Z
+    extrude_outline(cg, [(x * S, y * S) for x, y in leaf], 0.0018 * S, None, "spearHead", 2, z0=-0.0009 * S, bevel=0.35,
+                    origin=base, X=sideX, Y=axis, Z=Z)
+    C.add("spear", cg, subdiv=0, rigid="spear")
+    tip = grip + axis * (above - 0.050 + 0.040 * S)
+    C.B["spear"] = (grip.copy(), tip.copy(), "hand" + side)
+
+
+BUILDERS.update({"king": build_king, "haman": build_haman, "guard1": build_guard, "guard2": build_guard})
 
 
 # =============================================================================================== render helpers
@@ -2132,19 +2709,9 @@ def fix_uvs_by_id(id_png, ids, erode=5):
 
 
 # =============================================================================================== modes
-def mode_build():
-    bpy.ops.wm.read_factory_settings(use_empty=True)
-    report = {"chars": {}, "sheet": {ch: SHEET[ch] for ch in ONLY}, "sheetSource": SHEET_SRC, "artHeight": ART_H}
-    built = {}
-    for ch in ONLY:
-        C, rig, body, props, rep = build_character(ch)
-        built[ch] = (C, rig, body, props, rep)
-        tris = tri_count([body] + props)
-        report["chars"][ch] = {"tris": tris, "bodyTris": tri_count([body]),
-                               "props": {o.name: [o.parent_bone, tri_count([o])] for o in props},
-                               "bones": [b.name for b in rig.data.bones], "uvStats": rep["uvStats"]}
-        print(f"[{ch}] tris={tris} body={tri_count([body])} props={[(o.name, tri_count([o])) for o in props]}")
-    # ---- ID render (front ortho, 2x art rect, no AA): one colour per (piece, region); eyelids hidden
+def id_render(stem):
+    """Front ortho ID render of everything in the scene (2x art rect, no AA): one colour per (piece, region); eyelids
+    hidden. Writes $ES_WORK/<stem>.png/.json and returns the id table."""
     setup_workbench((2000, round(2000 * ART_H)))
     s = sc(); s.render.film_transparent = True; s.display.render_aa = 'OFF'
     s.display.shading.light = 'FLAT'; s.display.shading.color_type = 'MATERIAL'
@@ -2159,7 +2726,7 @@ def mode_build():
             n = idmap[k]
             return flat_mat(f"id_{n}", [c / 255 for c in id_colour(n)])
         set_face_materials(o, lambda p, r: (p, r), mat_fn)
-    render(os.path.join(WORK, "id_2x.png"))
+    render(os.path.join(WORK, stem + ".png"))
     ids = []
     for (p, r), n in sorted(idmap.items(), key=lambda kv: kv[1]):
         ch, pname, k = PIECES[p - 1]; rch, reg = REGIONS[r - 1].split(".")
@@ -2167,9 +2734,25 @@ def mode_build():
                     "hex": PALETTE[ch].get(reg, "#cccccc")})
     json.dump({"note": "front-ortho ID render of the rest pose at sheet positions (2000 px = art width); background = "
                        "alpha 0; eyelids hidden", "size": [s.render.resolution_x, s.render.resolution_y], "ids": ids},
-              open(os.path.join(WORK, "id_2x.json"), "w"), indent=1)
+              open(os.path.join(WORK, stem + ".json"), "w"), indent=1)
     for o in all_meshes():
         o.hide_render = False
+    return ids
+
+
+def mode_build():
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    report = {"chars": {}, "sheet": {ch: SHEET[ch] for ch in ONLY}, "sheetSource": SHEET_SRC, "artHeight": ART_H}
+    built = {}
+    for ch in ONLY:
+        C, rig, body, props, rep = build_character(ch)
+        built[ch] = (C, rig, body, props, rep)
+        tris = tri_count([body] + props)
+        report["chars"][ch] = {"tris": tris, "bodyTris": tri_count([body]),
+                               "props": {o.name: [o.parent_bone, tri_count([o])] for o in props},
+                               "bones": [b.name for b in rig.data.bones], "uvStats": rep["uvStats"]}
+        print(f"[{ch}] tris={tris} body={tri_count([body])} props={[(o.name, tri_count([o])) for o in props]}")
+    ids = id_render("id_2x")
     anchor_info = apply_pixel_anchors(os.path.join(WORK, "id_2x.png"), ids)
     fix_info = fix_uvs_by_id(os.path.join(WORK, "id_2x.png"), ids)
     report["uvFixByIdRender"] = fix_info
@@ -2242,6 +2825,183 @@ def mode_build():
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=BLEND, compress=True)
     print("BUILD_REPORT", json.dumps({ch: {k: v for k, v in r.items() if k != "bones"} for ch, r in report["chars"].items()}))
+    if os.environ.get("ES_NO_GUARDS") != "1":                 # guards: separate scene (own ID render), appended to the blend
+        import subprocess
+        subprocess.run([bpy.app.binary_path, "-b", "--factory-startup", "--python", os.path.abspath(__file__), "--", "guards"],
+                       check=True)
+
+
+def guard_paint_material():
+    """es_guard_paint: Principled BSDF with model/guard_paint.png on UV0 (embedded in the guard GLBs)."""
+    m = bpy.data.materials.get("es_guard_paint") or bpy.data.materials.new("es_guard_paint")
+    m.use_nodes = True
+    nt = m.node_tree; b = nt.nodes.get("Principled BSDF")
+    b.inputs["Roughness"].default_value = 0.8
+    img = bpy.data.images.load(GUARD_PAINT, check_existing=True)
+    t = nt.nodes.get("paint") or nt.nodes.new("ShaderNodeTexImage"); t.name = "paint"; t.image = img
+    uvn = nt.nodes.get("uv0") or nt.nodes.new("ShaderNodeUVMap"); uvn.name = "uv0"; uvn.uv_map = "UVMap"
+    nt.links.new(uvn.outputs["UV"], t.inputs["Vector"]); nt.links.new(t.outputs["Color"], b.inputs["Base Color"])
+    return m
+
+
+def make_guard_paint(id_png, ids, margin=12):
+    """model/guard_paint.png from the guards' front ID render: every (piece, region) flat in its demo colour with a
+    little crayon grain, colours grown 12 px into the paper (no bleed at silhouettes), cropped to the figures.
+    Returns the crop (x0, y0, w, h) in ID-render pixels (rows from the bottom) for the UV remap."""
+    import numpy as np
+    img = bpy.data.images.load(id_png, check_existing=False)
+    W, H = img.size
+    px = np.array(img.pixels[:], dtype=np.float32).reshape(H, W, 4)
+    bpy.data.images.remove(img)
+    key = np.round(px[..., :3] * 255).astype(np.int64)
+    key = key[..., 0] * 65536 + key[..., 1] * 256 + key[..., 2]
+    alpha = px[..., 3] > 0.5
+    col = np.zeros((H, W, 3), np.float32); have = np.zeros((H, W), bool)
+    for e in ids:
+        m = (key == e["rgb"][0] * 65536 + e["rgb"][1] * 256 + e["rgb"][2]) & alpha
+        col[m] = [int(e["hex"].lstrip("#")[i:i + 2], 16) / 255 for i in (0, 2, 4)]; have |= m
+    rng = np.random.default_rng(7)
+    g = rng.normal(0, 1, (H // 4 + 1, W // 4 + 1)).astype(np.float32)
+    g = np.repeat(np.repeat(g, 4, 0), 4, 1)[:H, :W]
+    col *= (1.0 + 0.025 * g)[..., None]
+    for _ in range(margin):
+        grow = ~have
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            src = np.roll(np.roll(have, dy, 0), dx, 1) & grow
+            c2 = np.roll(np.roll(col, dy, 0), dx, 1)
+            col[src] = c2[src]; have |= src; grow &= ~src
+    ys, xs = np.nonzero(alpha)
+    x0, x1 = max(0, xs.min() - margin), min(W, xs.max() + margin + 1)
+    y0, y1 = max(0, ys.min() - margin), min(H, ys.max() + margin + 1)
+    crop = np.clip(col[y0:y1, x0:x1], 0, 1)
+    out = np.ones((y1 - y0, x1 - x0, 4), np.float32); out[..., :3] = crop
+    im = bpy.data.images.new("guard_paint", x1 - x0, y1 - y0, alpha=True)
+    im.pixels.foreach_set(out.ravel())
+    im.filepath_raw = GUARD_PAINT; im.file_format = 'PNG'; im.save()
+    bpy.data.images.remove(im)
+    return (int(x0), int(y0), int(x1 - x0), int(y1 - y0), W, H)
+
+
+def region_texels(id_png, ids):
+    """Guards: every face of a (character, region) samples ONE texel, the deepest pixel of that region in the front ID
+    render (the paint is flat per region, so this never bleeds across thin bands such as cuffs and hem trim)."""
+    import numpy as np
+    img = bpy.data.images.load(id_png, check_existing=False)
+    W, H = img.size
+    px = np.array(img.pixels[:], dtype=np.float32).reshape(H, W, 4)
+    bpy.data.images.remove(img)
+    rgb = np.round(px[..., :3] * 255).astype(np.int64)
+    key = rgb[..., 0] * 65536 + rgb[..., 1] * 256 + rgb[..., 2]
+    alpha = px[..., 3] > 0.5
+    uvs = {}
+    for ch in ONLY:
+        for reg in sorted({e["region"] for e in ids if e["char"] == ch}):
+            keys = [e["rgb"][0] * 65536 + e["rgb"][1] * 256 + e["rgb"][2] for e in ids if e["char"] == ch and e["region"] == reg]
+            m = np.isin(key, keys) & alpha
+            last = m
+            while m.any():
+                last = m; e = m.copy()
+                e[1:, :] &= m[:-1, :]; e[:-1, :] &= m[1:, :]; e[:, 1:] &= m[:, :-1]; e[:, :-1] &= m[:, 1:]
+                m = e
+            ys, xs = np.nonzero(last)
+            k = int(np.argmin((ys - ys.mean()) ** 2 + (xs - xs.mean()) ** 2))
+            uvs[(ch, reg)] = ((xs[k] + 0.5) / W, (ys[k] + 0.5) / H)
+    n = 0
+    for o in all_meshes():
+        ch = o.name.split("_")[0]
+        me = o.data; rr = [0] * len(me.polygons); me.attributes["st_region"].data.foreach_get("value", rr)
+        uv0 = me.uv_layers["UVMap"]
+        for poly, r in zip(me.polygons, rr):
+            uv = uvs.get((ch, REGIONS[r - 1].split(".")[1]))
+            if uv is None:
+                print("GUARD TEXEL: region not printed", ch, REGIONS[r - 1]); continue
+            for li in poly.loop_indices:
+                uv0.data[li].uv = uv
+            n += 1
+    return {"facesMoved": {f"{c}.{r}": [round(u, 4), round(v, 4)] for (c, r), (u, v) in uvs.items()}, "faces": n}
+
+
+def mode_guards():
+    """Palace guards guard1, guard2 (HAMAN-REWORK.md §3): built on a virtual guard page (GUARD_PAGE), front ID render
+    -> painted texture model/guard_paint.png, UV0 remapped into that texture, GLBs model/guard1.glb + guard2.glb, then
+    appended to characters.blend (rigs at GUARD_BLEND, off the page) for the Animation role."""
+    global ONLY
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    ONLY = list(GUARDS)
+    SHEET.update({g: list(GUARD_PAGE[g]) for g in GUARDS})
+    built = {}
+    for ch in GUARDS:
+        C, rig, body, props, rep = build_character(ch)
+        built[ch] = (C, rig, body, props)
+        print(f"[{ch}] tris={tri_count([body] + props)} body={tri_count([body])} props={[(o.name, tri_count([o])) for o in props]}")
+    ids = id_render("guard_id_2x")
+    idp = os.path.join(WORK, "guard_id_2x.png")
+    fix = region_texels(idp, ids)
+    x0, y0, cw, chh, W, H = make_guard_paint(idp, ids)
+    for o in all_meshes():                                     # UV0: ID-render space -> the cropped paint texture
+        uv0 = o.data.uv_layers["UVMap"]
+        a = [0.0] * (2 * len(uv0.data)); uv0.data.foreach_get("uv", a)
+        for i in range(0, len(a), 2):
+            a[i] = (a[i] * W - x0) / cw; a[i + 1] = (a[i + 1] * H - y0) / chh
+        uv0.data.foreach_set("uv", a)
+    mat = guard_paint_material()
+    for o in all_meshes():
+        me = o.data; me.materials.clear(); me.materials.append(mat)
+        me.polygons.foreach_set("material_index", [0] * len(me.polygons))
+        assert [u.name for u in me.uv_layers][:2] == ["UVMap", "decal"], o.name
+        me.uv_layers.active_index = 0; me.uv_layers["UVMap"].active_render = True
+    info = {}
+    for ch in GUARDS:
+        C, rig, body, props = built[ch]
+        rig.location = (0, 0, 0); bpy.context.view_layer.update()
+        bpy.ops.object.select_all(action='DESELECT'); rig.select_set(True)
+        for o in rig.children: o.select_set(True)
+        bpy.context.view_layer.objects.active = rig
+        bpy.ops.export_scene.gltf(filepath=os.path.join(MODEL, f"{ch}.glb"), use_selection=True, export_yup=True,
+                                  export_apply=False, export_skins=True, export_animations=False, export_def_bones=False,
+                                  export_texcoords=True, export_materials='EXPORT', export_morph=False,
+                                  export_image_format='AUTO')
+        rig.location = (GUARD_BLEND[ch][0], 0, GUARD_BLEND[ch][1])
+        info[ch] = {"height": SPEC[ch]["height"], "paint": "assets/esther/model/guard_paint.png", "uv0": "paint texture",
+                    "spearHand": "hand" + SPEC[ch]["fist"][0], "beard": bool(SPEC[ch].get("beard")),
+                    "blendRigLocation": list(GUARD_BLEND[ch]),
+                    "faceDecal": {"rectLocal": [round(v, 5) for v in C.F["rect"]], "px": 512, "default": DEFAULT_EXPR[ch],
+                                  "files": {e: f"docs/esther/design/faces/{ch}_{e}.png" for e in EXPRESSIONS[ch]},
+                                  "clipExpression": CLIP_EXPRESSION[ch]},
+                    "blink": {"bone": "eyelids", "axis": "local Y (along the bone, pointing down)", "open": 1.0,
+                              "closed": C.lid["closedScale"]},
+                    "colours": PALETTE[ch], "tris": tri_count([body] + props)}
+    bpy.context.view_layer.update()
+    tmp = os.path.join(WORK, "guards.blend")
+    sc()["es_regions_guards"] = json.dumps(REGIONS)
+    bpy.context.preferences.filepaths.save_version = 0
+    bpy.ops.wm.save_as_mainfile(filepath=tmp, compress=True)
+    # regions_characters.json: guards under "offSheet" (they are not on the colouring sheet)
+    rp = os.path.join(MODEL, "regions_characters.json")
+    if os.path.exists(rp):
+        rj = json.load(open(rp)); rj["offSheet"] = info
+        rj["offSheetNote"] = ("palace guards: not printed; UV0 samples model/guard_paint.png (fixed demo-palette paint), "
+                              "face decal on UV1 like the cast")
+        json.dump(rj, open(rp, "w"), indent=1, ensure_ascii=False)
+    # append into characters.blend
+    if os.path.exists(BLEND):
+        bpy.ops.wm.open_mainfile(filepath=BLEND)
+        for o in [o for o in bpy.data.objects if o.name.startswith(tuple(g + "_" for g in GUARDS))]:
+            bpy.data.objects.remove(o, do_unlink=True)
+        with bpy.data.libraries.load(tmp, link=False) as (src, dst):
+            dst.objects = [n for n in src.objects if n.startswith(tuple(g + "_" for g in GUARDS))]
+        for o in dst.objects:
+            sc().collection.objects.link(o)
+        sc()["es_regions_guards"] = json.dumps(REGIONS)
+        for im in bpy.data.images:                               # no absolute paths in the shared blend
+            if os.path.basename(im.filepath) == "guard_paint.png":
+                im.filepath = "//guard_paint.png"
+                try:
+                    im.pack()
+                except Exception:
+                    pass
+        bpy.ops.wm.save_as_mainfile(filepath=BLEND, compress=True, relative_remap=True)
+    print("GUARDS_REPORT", json.dumps({ch: {"tris": v["tris"]} for ch, v in info.items()}), json.dumps(fix["facesMoved"]))
 
 
 GOLD = {"sash", "diadem", "necklace", "collar", "belt", "crownBands", "sceptre", "capRim", "ring"}
@@ -2365,19 +3125,42 @@ def turntable(cam, target, yaw, dist, height, lens=60):
     look_from(cam, target, yaw, dist, height, lens)
 
 
+def guard_preview_material(ch, decal_img):
+    """Preview: the guard paint texture on UV0 + the face decal on UV1 (node `decal`, swapped per expression)."""
+    m = bpy.data.materials.new(f"pv_{ch}_paint"); m.use_nodes = True
+    nt = m.node_tree; b = nt.nodes.get("Principled BSDF"); b.inputs["Roughness"].default_value = 0.7
+    try:
+        b.inputs["Sheen Weight"].default_value = 0.2
+    except Exception:
+        pass
+    t = nt.nodes.new("ShaderNodeTexImage"); t.image = bpy.data.images.load(GUARD_PAINT, check_existing=True)
+    u0 = nt.nodes.new("ShaderNodeUVMap"); u0.uv_map = "UVMap"; nt.links.new(u0.outputs["UV"], t.inputs["Vector"])
+    u1 = nt.nodes.new("ShaderNodeUVMap"); u1.uv_map = "decal"
+    d = nt.nodes.new("ShaderNodeTexImage"); d.name = "decal"; d.image = decal_img; d.extension = 'CLIP'; d.interpolation = 'Cubic'
+    nt.links.new(u1.outputs["UV"], d.inputs["Vector"])
+    mix = nt.nodes.new("ShaderNodeMix"); mix.data_type = 'RGBA'
+    nt.links.new(d.outputs["Alpha"], mix.inputs["Factor"]); nt.links.new(t.outputs["Color"], mix.inputs[6])
+    nt.links.new(d.outputs["Color"], mix.inputs[7]); nt.links.new(mix.outputs[2], b.inputs["Base Color"])
+    return m
+
+
 def mode_preview():
     bpy.ops.wm.open_mainfile(filepath=BLEND)
     setup_eevee((640, 960)); preview_lights()
     imgs = {}
-    for ch in CHARS:
+    for ch in CHARS + GUARDS:
         p = os.path.join(FACES, f"{ch}_{DEFAULT_EXPR[ch]}.png")
         if os.path.exists(p):
             imgs[ch] = bpy.data.images.load(p, check_existing=True)
-    present = [ch for ch in CHARS if bpy.data.objects.get(f"{ch}_rig")]
+    present = [ch for ch in CHARS + GUARDS if bpy.data.objects.get(f"{ch}_rig")]
+    gmat = {g: guard_preview_material(g, imgs.get(g)) for g in GUARDS if g in present}
     for o in all_meshes():
         if o.name in ("floor", "backdrop"):
             continue
         ch = o.name.split("_")[0]
+        if ch in GUARDS:
+            o.data.materials.clear(); o.data.materials.append(gmat[ch])
+            o.data.polygons.foreach_set("material_index", [0] * len(o.data.polygons)); continue
         set_face_materials(o, lambda p, r: r, lambda r: preview_material(ch, REGION_OF[r], imgs.get(ch)))
     cam = camera()
 
@@ -2385,7 +3168,7 @@ def mode_preview():
         for o in all_meshes():
             if o.name not in ("floor", "backdrop"):
                 o.hide_render = o.name.split("_")[0] not in chs
-    for ch in [c for c in ONLY if c in present]:
+    for ch in [c for c in ONLY + list(GUARDS) if c in present]:
         show([ch])
         rig = bpy.data.objects[f"{ch}_rig"]; x = rig.location.x; zb = rig.location.z
         Hh = SPEC[ch]["height"]; L = landmarks(ch)
@@ -2413,8 +3196,33 @@ def mode_preview():
         for m in bpy.data.materials:
             if m.name.startswith(f"pv_{ch}_") and m.node_tree.nodes.get("decal"):
                 m.node_tree.nodes["decal"].image = imgs[ch]
-    if len(present) > 1:
-        show(present)
+    if "haman" in present:                       # phone-size check: the S03 eye distance, small render
+        show(["haman"]); rig = bpy.data.objects["haman_rig"]; x = rig.location.x
+        sc().render.resolution_x, sc().render.resolution_y = 360, 480
+        for e in ("proud", "furious", "terrified"):
+            img = bpy.data.images.load(os.path.join(FACES, f"haman_{e}.png"), check_existing=True)
+            for m in bpy.data.materials:
+                if m.name.startswith("pv_haman_") and m.node_tree.nodes.get("decal"):
+                    m.node_tree.nodes["decal"].image = img
+            turntable(cam, Vector((x, 0, 0.22)), 20, 1.10, 0.45, 50); render(os.path.join(WORK, f"pv_haman_phone_{e}.png"))
+        for m in bpy.data.materials:
+            if m.name.startswith("pv_haman_") and m.node_tree.nodes.get("decal"):
+                m.node_tree.nodes["decal"].image = imgs["haman"]
+    if all(g in present for g in GUARDS) and "haman" in present:   # S10 group: the guards flank Haman
+        hx = bpy.data.objects["haman_rig"].location.x
+        keep = {g: bpy.data.objects[f"{g}_rig"].location.copy() for g in GUARDS}
+        bpy.data.objects["guard1_rig"].location = (hx - 0.15, 0.0, 0.015)
+        bpy.data.objects["guard2_rig"].location = (hx + 0.15, 0.0, 0.015)
+        bpy.context.view_layer.update()
+        show(["haman"] + list(GUARDS))
+        sc().render.resolution_x, sc().render.resolution_y = 1600, 1000
+        for nm, yaw in (("front", 0), ("q34", 30)):
+            turntable(cam, Vector((hx, 0, 0.20)), yaw, 1.05, 0.10, 50); render(os.path.join(WORK, f"pv_group_{nm}.png"))
+        for g in GUARDS:
+            bpy.data.objects[f"{g}_rig"].location = keep[g]
+    cast = [c for c in CHARS if c in present]
+    if len(cast) > 1:
+        show(cast)
         sc().render.resolution_x, sc().render.resolution_y = 1600, 1000
         turntable(cam, Vector((0.0, 0, 0.19)), 10, 1.45, 0.16, 50); render(os.path.join(WORK, "pv_all.png"))
     print("PREVIEW done")
@@ -2454,27 +3262,33 @@ def pose_test(rig, ch):
         bend(rig, "forearm" + side, d.cross(V(0, 0, 1)) * sg * -1, 65 if side == "L" else 35)
         h, t = B["hand" + side]; dh = (t - h).normalized()
         hz = dh.cross(V(0, 0, 1)).normalized()
-        bend(rig, "fingers" + side, hz * (1 if side == "L" else -1), 75 if not (ch == "king" and side == "R") else -55)
+        bend(rig, "fingers" + side, hz * (1 if side == "L" else -1), 75 if side not in SPEC[ch].get("fist", ()) else -55)
     bend(rig, "upperArmL", V(1, 0, 0), -45)
     bend(rig, "thighL", V(1, 0, 0), -30); bend(rig, "shinL", V(1, 0, 0), 50)
     bend(rig, "spine", V(1, 0, 0), 10); bend(rig, "head", V(0, 1, 0), 25); bend(rig, "jaw", V(1, 0, 0), 14)
     pb = rig.pose.bones["eyelids"]; pb.scale = (1, 6.0, 1)
     if ch == "esther":
         bend(rig, "braid2", V(0, 0, 1), 18); bend(rig, "cape2", V(1, 0, 0), -20)
+    if ch == "haman":                                  # plume whip
+        bend(rig, "plume1", V(0, 0, 1), -20); bend(rig, "plume2", V(0, 0, 1), -35)
     bpy.context.view_layer.update()
 
 
 def mode_posetest():
     bpy.ops.wm.open_mainfile(filepath=BLEND)
     setup_eevee((640, 960)); preview_lights()
-    imgs = {ch: bpy.data.images.load(os.path.join(FACES, f"{ch}_{DEFAULT_EXPR[ch]}.png"), check_existing=True) for ch in CHARS}
+    imgs = {ch: bpy.data.images.load(os.path.join(FACES, f"{ch}_{DEFAULT_EXPR[ch]}.png"), check_existing=True)
+            for ch in CHARS + GUARDS}
+    present = [ch for ch in CHARS + GUARDS if bpy.data.objects.get(f"{ch}_rig")]
+    gmat = {g: guard_preview_material(g, imgs.get(g)) for g in GUARDS if g in present}
     for o in all_meshes():
         if o.name in ("floor", "backdrop"):
             continue
         ch = o.name.split("_")[0]
+        if ch in GUARDS:
+            o.data.materials.clear(); o.data.materials.append(gmat[ch]); continue
         set_face_materials(o, lambda p, r: r, lambda r: preview_material(ch, REGION_OF[r], imgs.get(ch)))
     cam = camera()
-    present = [ch for ch in CHARS if bpy.data.objects.get(f"{ch}_rig")]
     for ch in present:
         pose_test(bpy.data.objects[f"{ch}_rig"], ch)
     for ch in present:
@@ -2524,7 +3338,7 @@ def mode_uvcheck():
 
 def mode_verify():
     out = {}
-    for ch in CHARS:
+    for ch in CHARS + GUARDS:
         bpy.ops.wm.read_factory_settings(use_empty=True)
         bpy.ops.import_scene.gltf(filepath=os.path.join(MODEL, f"{ch}.glb"))
         arms = [o for o in sc().objects if o.type == 'ARMATURE']
@@ -2558,7 +3372,7 @@ def mode_verify():
 
 
 if __name__ == "__main__":
-    {"build": mode_build, "preview": mode_preview, "posetest": mode_posetest, "verify": mode_verify,
+    {"build": mode_build, "guards": mode_guards, "preview": mode_preview, "posetest": mode_posetest, "verify": mode_verify,
      "uvcheck": mode_uvcheck,
      "all": lambda: __import__("subprocess").run([os.environ.get("PYTHON3", "python3"), os.path.abspath(__file__), "all"],
                                                  check=True)}[MODE]()

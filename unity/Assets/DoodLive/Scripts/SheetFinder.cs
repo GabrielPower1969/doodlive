@@ -100,13 +100,22 @@ namespace DoodLive
                 var m = SheetIdentifier.Identify(full, W, H, p, sigs, yDown: false);
                 if (m != null && (best == null || m.Ncc > best.Ncc)) best = m;
             }
-            if (best == null) return;
+            if (best == null) { pendingName = null; return; }
+            // a new sheet must be read the same way on two identifications in a row: one frame in ~300 misreads the
+            // title band (tests/vision), and a wrong story is worse than ~0.15 s more latency
+            if (Current == null || Current.Name != best.Sheet.Name)
+            {
+                if (pendingName != best.Sheet.Name) { pendingName = best.Sheet.Name; return; }
+            }
+            pendingName = null;
             var sp = new Vector2[4];
             for (int i = 0; i < 4; i++) sp[i] = new Vector2((float)best.Points[i].X, (float)best.Points[i].Y);
             Debug.Log($"DoodLive markers: '{best.Sheet.Name}' ncc {best.Ncc:0.00} (story margin {best.Margin:0.00}, way-up margin {best.OrientMargin:0.00})");
             if (Current == null || Current.Name != best.Sheet.Name) { Forget(); }
             Track(sp, best.Sheet.Name);
         }
+
+        string pendingName;   // first read of a new sheet, waiting for a second matching read
 
         // Match a candidate (small-frame points) to the last known screen corners; null if it is not the same sheet.
         static Vector2[] Order(P2[] pts, float k, Vector2[] last)

@@ -13,6 +13,13 @@ SET="${1:-dg}"
 UNITY="${UNITY_CONTENTS:-/Applications/Unity/Hub/Editor/2022.3.62f3/Unity.app/Contents}"
 CORE="$UNITY/Managed/UnityEngine/UnityEngine.CoreModule.dll"
 [ -f "$CORE" ] || CORE="$UNITY/Resources/Scripting/Managed/UnityEngine/UnityEngine.CoreModule.dll"   # Unity 6 layout
+if [ ! -f "$CORE" ] && [ -z "$UNITY_CONTENTS" ]; then   # default editor not installed: use the newest one in Unity Hub
+  for E in $(ls -d /Applications/Unity/Hub/Editor/*/Unity.app/Contents 2>/dev/null | sort -r); do
+    for C in "$E/Managed/UnityEngine/UnityEngine.CoreModule.dll" "$E/Resources/Scripting/Managed/UnityEngine/UnityEngine.CoreModule.dll"; do
+      [ -f "$CORE" ] || { [ -f "$C" ] && CORE="$C"; }
+    done
+  done
+fi
 WORK="${TMPDIR:-/tmp}/dgfx-preview"
 mkdir -p "$WORK"
 cat > "$WORK/fxpreview.csproj" <<XML
@@ -26,6 +33,8 @@ cat > "$WORK/fxpreview.csproj" <<XML
     <Compile Include="$FX/DGFxCore.cs" />
     <Compile Include="$FX/DGFxEffects.cs" />
     <Compile Include="$FX/StoryFxEsther.cs" />
+    <Compile Include="$FX/StoryFxRuth.cs" />
+    <Compile Include="$HERE/RuthPreview.cs" />
     <Reference Include="UnityEngine.CoreModule"><HintPath>$CORE</HintPath></Reference>
   </ItemGroup>
 </Project>
@@ -33,8 +42,6 @@ XML
 dotnet build "$WORK/fxpreview.csproj" -nologo -v q -o "$WORK/bin"
 dotnet "$WORK/bin/fxpreview.dll" "$WORK/out" "$SET"
 python3 -I "$HERE/render.py" "$WORK/out"
-    <Compile Include="$FX/StoryFxRuth.cs" />
-    <Compile Include="$HERE/RuthPreview.cs" />
 if [ "$SET" = ruth ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_ruth.png"; echo "wrote $HERE/fx_contact_ruth.png"
 elif [ "$SET" = esther ]; then

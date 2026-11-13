@@ -1,6 +1,7 @@
 # Esther: voice (zh + en)
 
-All 18 lines of `assets/esther/timeline.json` in Mandarin and English, 36 clips. The brief (CONTRACT.md §7,
+All 32 lines of `assets/esther/timeline.json` in Mandarin and English, 64 clips (18 lines of the first build plus the
+14 of the Haman rework, `HAMAN-REWORK.md`; Haman re-cast 2026-11-14, see "Haman rework" below). The brief (CONTRACT.md §7,
 owner review 2026-11-13): David & Goliath's voices "sound like AI, no human touch"; these must sound like people telling a
 story to a 4-10-year-old. Voices were chosen without listening, by measurement (below), so **listen to the clips
 flagged under "Listen first" before shipping**.
@@ -28,8 +29,10 @@ assets/esther/audio/voice/
 | Narrator | **Qwen3-TTS `vivian`** (local), best of 4 takes, acting note per line | **en-US-AvaMultilingualNeural**, rate -8 %, phrased | plain | warm female storyteller |
 | Esther | **Qwen3-TTS `serena`** (local), best of 4 | **en-US-EmmaMultilingualNeural**, rate -4 %, phrased | plain | young woman, warm, brave |
 | King Xerxes | **Qwen3-TTS `uncle_fu`** (local), best of 4 | **en-US-ChristopherNeural**, rate -10 %, pitch -2 Hz, phrased | warm | deep, slow, kind when calm |
-| Haman | **zh-CN-YunxiNeural**, pitch +2 Hz, phrased | **en-GB-RyanNeural**, pitch +4 Hz, phrased | nasal | sly, comic, slightly nasal, never scary |
+| Haman | **Qwen3-TTS `dylan`** (local), comic-villain note, phrased (laugh / "hmph" / wail as their own phrases), best of 4-6 | **the same `dylan`**, English note, same phrasing | nasal | pompous, vain, cowardly cartoon villain: gloats, laughs, stamps, wails (was Yunxi / Ryan until 2026-11-14) |
 | Mordecai (off-stage) | **zh-CN-YunyangNeural**, rate -8 %, pitch -4 Hz, phrased | **en-GB-ThomasNeural**, rate -8 %, pitch -4 Hz, phrased | offstage | gentle older man from the next room |
+| Herald (off-stage) | **Qwen3-TTS VoiceDesign** (local), one description for both languages, best of 4 | the same design | offstage | court crier: deep, ringing, ceremonial, a held last vowel |
+| Crowd (off-stage) | **8 Qwen3-TTS speakers layered** (`crowd` engine) | the same 8 | offstage | many people bowing at once, a little reluctant |
 
 No voice plays two roles in one language. The narrator is no longer David & Goliath's (Xiaoxiao / Sonia): that pair is
 what was judged "AI" (STORY.md still says "same voice as David & Goliath"; this file supersedes it for Esther).
@@ -50,6 +53,22 @@ Engines:
   longer than `maxPause` (1.0 s, 1.2-1.4 s where the direction asks for a held beat), no dragging below `minPace`
   (3.3 characters/s over the clip), then the liveliest pitch and the most varied phrase pace wins. Takes and scores
   are printed during `gen`.
+- **qwen_design**: Qwen3-TTS 1.7B VoiceDesign (8-bit MLX, `mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-8bit`,
+  2.4 GB), local. No fixed speaker: the role's `design` (a description of the person) is prepended to every acting
+  note, so the same words design the same kind of voice in both languages. Used for the herald only: its timbre drifts
+  between lines (see the Haman audition), which a one-line role does not notice.
+- **crowd**: `members` = several voices (any engine) each speaking the whole line, offset 0-150 ms (`delay`), nudged
+  -1.5..+1.5 semitones by resampling (`semitones`; formants move too, so they are different people, not a copy) and in
+  level (`gainDb`), summed and put in a hall (synthetic decaying-noise impulse response, `rt60` 1.2 s, `wet` 0.45).
+  The one place pitch shifting is used: on a crowd it hides that the members are TTS speakers.
+
+Per-line options added for the Haman rework (cast file `lines.<id>.<lang>`): `phrases[].instruct` (each phrase its own
+acting note: the laugh, each "hmph", the wail are separate generations from the same fixed speaker), `phrases[].gainDb`
+(the three "hmph"s at -3 / 0 / +3 dB so each is louder), `asrIgnore` (regex of non-verbal tokens left out of the
+error rate: whisper writes a real laugh as anything or nothing), `acting` (laugh / tantrum / wail measure that joins the
+take score, below), `takes`, and `pick` + `pickWhy` (a take chosen by hand over the automatic winner). `lines.<id>.tail`
+carries a voice away at the end (es_16c: the last 1.6 s crossfade into a low-passed, reflected copy while the level falls
+~30 dB).
 
 Role processing (`fx`, before levelling): `plain` 70 Hz high-pass; `warm` (king) +2 dB at 140 Hz; `nasal` (Haman)
 +4 dB at 1.1 kHz, -2 dB at 250 Hz, 140 Hz high-pass (comic, not a filter effect); `offstage` (Mordecai) 160 Hz-5.2 kHz
@@ -128,6 +147,54 @@ What decided it:
   in 7 of 10, because the inserted gaps are similar in length. Next step if English still sounds even: vary the
   `gap` values more (0.15-0.7 s) rather than adding more phrases.
 
+## Haman rework (2026-11-14)
+
+Owner verdict on the first build: Haman had no presence, no gloating, no cowardly screaming. The edge voices
+(Yunxi / Ryan) read one flat phrase at a time and cannot laugh, rage or wail, so Haman was re-cast for comic acting.
+
+**New measures** (`voice.py` `acting()`, a line's `acting` spec; they join the take score at weight 1.5 and are in
+`report.json` under `measure.acting`). Heuristics that rank takes against each other, not proof:
+
+| Kind | Lines | What is measured | Calibration |
+|---|---|---|---|
+| laugh | es_03, es_12b | in the laugh region (whisper anchors: after 大官 / kingdom; between 和我 and 我真是): bursts beyond the written "ha"s, interval CV (irregular), length, breathiness vs speech (HNR), pitch rise | edge reading 哈哈哈哈 / "Ha ha ha ha": exactly 4 bursts, interval CV 0.09-0.11 = `read` (score 0.9-1.5) |
+| tantrum | es_04b | loudness rise across the last three pulses (the "hmph"s), rising steps, pitch top (st above median), loudness swing | edge: the hmphs fall 0.4-6 dB = `flat` (0.7-1.8) |
+| wail | es_16c | longest held voiced sound in the last 45 % and its pitch, the held "no" in the first 40 %, loudness slope of the last 1.2 s | edge: holds 0.4-0.6 s = `read` / `half` (1.6-2.1) |
+
+**Audition** (one call per whole line, seeds 0-1, 2026-11-14; F0 median spread = lowest-highest over the four lines,
+which shows whether it stays one voice):
+
+| Candidate | es_03 laugh zh / en | es_04b tantrum zh / en | es_16c wail zh / en | F0 median spread zh / en | Notes |
+|---|---|---|---|---|---|
+| edge Yunxi / Ryan (old) | 1.49 read / 0.85 read | 1.79 flat / 0.65 flat | 2.08 half / 1.58 read | 155-229 / 127-172 Hz | the baseline the owner rejected |
+| VoiceDesign A (pompous nasal tenor) | 4.48 laugh, 1.49 read / 1.86 | 1.83 / 2.27 | 3.61 (18.6 s runaway, CER 0.27) / 4.14 | **119-444 / 144-416 Hz** | not one voice: tantrum and wail came out as a different, much higher (female/child-like) voice |
+| VoiceDesign B (reedy, whiny) | 4.22 / - | - | - | 433-441 Hz on es_03 | designed a woman's voice; dropped |
+| CustomVoice `ryan` | 2.04 (CER 0.23) / 1.88 | 2.0 (CER 0.42) / 4.12 | 3.61 / 4.57 | 157-322 / 247-264 Hz | strong in English, accented and word-dropping in Chinese |
+| **CustomVoice `dylan`** | 1.66 / 1.81 | 1.26 / 4.10 | 3.03 / 2.68 | **167-260 / 154-279 Hz** | one fixed speaker in both languages, CER 0.00 on every Chinese line, F0 SD 5.6-8.5 st |
+
+What decided it: **`dylan` is the only candidate that is one recognisable person in both languages and gets every
+Chinese word right**; VoiceDesign acts big but changes who is speaking from line to line (up to 2 octaves in F0
+median), which the brief rules out ("one voice throughout"). Dylan read whole lines too politely, so its acting comes
+from **phrasing**: because the speaker is fixed, the laugh, each "hmph", the stammer and the wail can be generated as
+separate phrases with their own acting note ("burst into a real belly laugh... not reading the syllables") without the
+timbre changing at the joins, and the three "hmph"s are set at -3 / 0 / +3 dB. Then best of 4-6 takes with the gates and
+the acting score.
+
+**Final Haman clips** (acting score / verdict; F0 SD in semitones):
+
+| Line | zh | en |
+|---|---|---|
+| es_03 laugh | **4.84 laugh** (10 bursts, interval CV 0.84, +26 st), F0 SD 8.95 | 3.74 half (10 bursts but even, CV 0.10), F0 SD 5.93 |
+| es_04b tantrum | **4.50 tantrum** (hmphs rise 12.4 dB), F0 SD 8.93 | 2.26 half (hmphs +0.5 dB only), F0 SD 7.83 |
+| es_12b laugh | **4.20 laugh** (picked take 5), F0 SD 8.05 | 0.50 read: no laugh in the kept take (the laughing take drags to 12.8 s) |
+| es_16c wail | **4.12 wail** (2.9 s held end, tail -22 dB/s), F0 SD 5.24 | 3.60 wail but the held "waaah" is only 0.36 s |
+
+Herald: VoiceDesign (deep ringing crier description), phrased "哈曼大人 / 驾到——" and "Make way / for the great Lord
+Haman!". Crowd: vivian, serena, uncle_fu, dylan, eric, ryan, aiden, sohee, delays 0-150 ms, -1.5..+1.5 st, 0 to -4 dB,
+1.2 s hall, then `offstage`; whisper hears "Hail Lord Heyman! Hail Lord Heyman!" / 拜见阿们的大人 (a crowd smears words: the
+error rate is meaningless there). King and narrator new lines use their existing engines (zh Qwen uncle_fu / vivian, en
+Christopher / Ava phrased), so they match their old lines.
+
 ## Listen first
 
 Measured, not heard. These are the clips most likely to disappoint:
@@ -137,9 +204,15 @@ Measured, not heard. These are the clips most likely to disappoint:
    new takes) or `"takes": 6`, and run `gen --lang zh --only <id>`.
 2. **zh es_01, es_02, es_10 (narrator, 8.7-8.9 s)**: slower than the English (5.6-8.6 s). The direction asks for an
    unhurried, hushed read, and the takes kept are the fastest of four; if they drag, raise `minPace` (now 3.3).
-3. **Haman (both languages)**: "nasal" is an EQ lift on an ordinary voice; edge-tts cannot whisper (es_05) or
-   squeak (es_16), so those are pitch/rate approximations.
-4. **Esther zh vs en**: two different engines for one character; the timbres are not the same woman.
+3. **Haman, weakest clips** (owner may record Haman himself: the record session has all 12 Haman lines):
+   en es_12b (no laugh in the kept take), en es_04b (the "hmph"s do not get louder), en es_03 (laugh present but
+   even, "half"), en es_16c (the final wail is short), zh es_16 (blubbering is flat: F0 SD 3.8 st), zh/en es_12g
+   (whisper cannot score a stammer; the kept takes read "摸摸摸底改" / "More, more! Mordecai!"). "nasal" is still only an EQ lift.
+4. **Herald en** measured F0 median 336 Hz against 195 Hz in zh: either the off-stage reflections fooled the pitch tracker
+   (as with Mordecai) or VoiceDesign drifted to a higher voice. Listen; if it is not a deep man, `"seed": 4` under
+   `lines.es_03a.en`.
+5. **Crowd (es_03b)**: built blind from 8 TTS speakers; check it reads as many people, not as a chorus effect.
+6. **Esther zh vs en**: two different engines for one character; the timbres are not the same woman.
 
 Where zh and en differ in length, the line gets the longer one (es_08: zh 7.2 s, en 4.1 s), so English has a 3 s
 silence there; the music carries it.
@@ -148,7 +221,7 @@ silence there; the music carries it.
 
 ```bash
 python3 -m venv .venv-voice && .venv-voice/bin/pip install edge-tts praat-parselmouth mlx-whisper mlx-audio "misaki[zh,en]"
-python3 tools/story/voice.py esther gen                 # all 36 clips + check (~45 min the first time: 14 Qwen lines x 4 takes; raw takes are cached in ~/.cache/doodlive-voice, so a re-run takes ~3 min)
+python3 tools/story/voice.py esther gen                 # all 64 clips + check (~45 min the first time: 14 Qwen lines x 4 takes; raw takes are cached in ~/.cache/doodlive-voice, so a re-run takes ~3 min)
 python3 tools/story/voice.py esther gen --lang en --only es_05,es_07
 python3 tools/story/voice.py esther check --asr         # durations, report (with transcripts + measurements), srt
 python3 tools/story/build_timeline.py esther            # re-time the play from durations.json

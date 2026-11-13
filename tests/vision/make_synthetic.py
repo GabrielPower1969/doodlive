@@ -15,7 +15,8 @@ T = "unity/Assets/DoodLive/Tracking/"
 SHEETS = [("doodlive-angel-A4", T + "doodlive-angel-A4.png"), ("fiery-p1", T + "fiery-p1.png"), ("fiery-p2", T + "fiery-p2.png"),
           ("wrath-p1", T + "wrath-p1.png"), ("wrath-p2", T + "wrath-p2.png"), ("holy-p1", T + "holy-p1.png"),
           ("holy-p2", T + "holy-p2.png"), ("david-goliath-A4", "print/david-goliath-A4.png"),
-          ("david-goliath-A4", "assets/david-goliath/sheet/demo-sheet.png")]
+          ("david-goliath-A4", "assets/david-goliath/sheet/demo-sheet.png"),
+          ("esther-A4", "print/esther-A4.png"), ("esther-A4", "assets/esther/sheet/demo-sheet.png")]
 pages = {}
 def page(name, path):
     if path not in pages: pages[path] = Image.open(ROOT / path).convert("RGB")

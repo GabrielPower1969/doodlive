@@ -133,6 +133,7 @@ namespace DoodLive.Story
         void ResetActor(DGActor a, float x)
         {
             a.Init();
+            foreach (var r in a.GetComponentsInChildren<Renderer>(true)) r.enabled = true;   // undo last run's props (an actor led away)
             a.pos = new Vector2(x, 0); a.yaw = 0; a.face = "viewer"; a.cur = a.prev = -1; a.moving = false; a.curRate = 1;
             int idle = a.Clip("idle"); if (idle < 0) idle = a.Clip("sit_idle");
             a.cur = Mathf.Max(0, idle); a.curT0 = 0; a.SetFace(a.cur);
@@ -255,8 +256,8 @@ namespace DoodLive.Story
                 if (vNat > 0 && natural > avail) A.curRate = Mathf.Clamp(natural / avail, 1f, 1.6f);
                 A.moveT1 = a.t + Mathf.Max(0.05f, natural / A.curRate);
                 A.moving = dist > 1e-4f;
-            }
                 if (a.t <= 0.01f) { A.pos = A.moveTo; A.moving = false; Place(A); }   // a mark at t = 0 is the starting place, not a walk
+            }
         }
 
         void Move(DGActor A, float dt)
@@ -279,7 +280,7 @@ namespace DoodLive.Story
                     }
                 }
             }
-            if (travelling) { var d = A.moveTo - A.moveFrom; want = Mathf.Atan2(d.x, d.y) * Mathf.Rad2Deg; }
+            if (travelling) { var d = A.moveTo - A.moveFrom; want = Mathf.Atan2(d.x, d.y) * Mathf.Rad2Deg + (A.Backwards(A.cur) ? 180 : 0); }
             else
             {
                 var o = Actor(A.face);
@@ -385,8 +386,8 @@ namespace DoodLive.Story
             { sfxLoopFade = Mathf.Max(0.05f, st.fadeOutSec > 0 ? st.fadeOutSec : 1f); sfxLoopFrom = sfxLoop.volume; }
         }
 
-        float MusicVol() => 0.8f * MusicGain * voiceDuck;
         string musicCueId;
+        float MusicVol() => 0.8f * MusicGain * voiceDuck;
 
         void Mix(float dt)
         {

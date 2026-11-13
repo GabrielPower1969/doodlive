@@ -85,7 +85,7 @@ namespace DoodLive.DavidGoliath
     // assets/david-goliath/anim/clips.json (Animation role): clip lengths, loop flags, markers.
     [Serializable] public class DGClipInfo
     {
-        public string action, @char, clip; public int frames; public float seconds, naturalSpeed; public bool loop, rootMotion;   // naturalSpeed: story packs, in-place locomotion (art units / s)
+        public string action, @char, clip; public int frames; public float seconds, naturalSpeed; public bool loop, rootMotion, backwards;   // naturalSpeed: story packs, in-place locomotion (art units / s)
         public DGClipMarkers markers;
         public DGDesertEvent[] desertEvents;                  // david_kneel_pick: hide desert/fiveStones/stoneK at sec
     }

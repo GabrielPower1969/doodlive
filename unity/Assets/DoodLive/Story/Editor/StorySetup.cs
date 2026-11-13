@@ -19,7 +19,7 @@ namespace DoodLive.Story.EditorTools
         [Serializable] class Reg { public Entry[] stories; }
         [Serializable] public class Entry { public string id, engine, title_zh, title_en, set; public string[] sheets, cast; public int order; }
         [Serializable] class ClipFace { public string clip, face; }
-        [Serializable] class CastInfo { public string id, defaultFace; public float height, sheetX; public ClipFace[] clipFaces; }
+        [Serializable] class CastInfo { public string id, defaultFace, paint; public float height, sheetX; public ClipFace[] clipFaces; }   // paint: not on the sheet, own texture (model/<paint>)
         [Serializable] class Pack { public string id, set, titleZh, titleEn, setUnpainted; public string[] sheets; public CastInfo[] cast; }
 
         public class Result
@@ -70,6 +70,7 @@ namespace DoodLive.Story.EditorTools
             need.Add((Path.Combine(src, "timeline.json"), $"{res}/timeline.json"));
             need.Add((Path.Combine(src, "audio/sfx/mix.json"), $"{res}/sfx_mix.json"));
             need.Add((Path.Combine(src, "audio/music/cues.json"), $"{res}/music_cues.json"));
+            foreach (var c in pack.cast) if (!string.IsNullOrEmpty(c.paint)) need.Add((Path.Combine(src, "model", c.paint), $"{dir}/Textures/{c.paint}"));
             string faces = Path.Combine(RepoRoot, "docs", id, "design", "faces");
             if (Directory.Exists(faces)) foreach (var f in Directory.GetFiles(faces, "*.png")) need.Add((f, $"{dir}/Faces/{Path.GetFileName(f)}"));
             void Wavs(string sub, string dst)
@@ -135,6 +136,14 @@ namespace DoodLive.Story.EditorTools
                 return m;
             }
             var castMats = pack.cast.Select(c => Mat($"{id}_{c.id}", true)).ToArray();
+            // cast members that are not on the colouring sheet (guards) keep their own painted texture, never the scan
+            var paperMats = new List<Material>();
+            for (int i = 0; i < pack.cast.Length; i++)
+            {
+                if (string.IsNullOrEmpty(pack.cast[i].paint)) { paperMats.Add(castMats[i]); continue; }
+                var tex = importTexture($"{dir}/Textures/{pack.cast[i].paint}", false, 1024);
+                castMats[i].SetTexture("_BaseMap", tex); castMats[i].SetFloat("_BaseAmt", 0);
+            }
             Material setMat = null;
             if (!string.IsNullOrEmpty(pack.set))
             {
@@ -165,7 +174,7 @@ namespace DoodLive.Story.EditorTools
             }
             director.actors = actors.ToArray(); director.sheetX = sheetX.ToArray();
             if (setMat) MakeSet(director, $"{dir}/Models/{pack.set}.glb", shake, setMat);
-            director.pageMaterials = castMats.Concat(setMat ? new[] { setMat } : new Material[0]).ToArray();
+            director.pageMaterials = paperMats.Concat(setMat ? new[] { setMat } : new Material[0]).ToArray();
             string prefabPath = $"{dir}/{id}.prefab";
             var prefab = PrefabUtility.SaveAsPrefabAsset(stage, prefabPath);
             Object.DestroyImmediate(stage);
@@ -215,6 +224,7 @@ namespace DoodLive.Story.EditorTools
             actor.clips = all;
             actor.loops = all.Select(x => info.clips.FirstOrDefault(k => k.action == x.name)?.loop ?? false).ToArray();
             actor.speeds = all.Select(x => info.clips.FirstOrDefault(k => k.action == x.name)?.naturalSpeed ?? 0f).ToArray();
+            actor.backwards = all.Select(x => info.clips.FirstOrDefault(k => k.action == x.name)?.backwards ?? false).ToArray();
             Debug.Log($"Story setup {sid}: {c.id} clips [{all.Length}] {string.Join(" ", all.Select(x => x.name.Substring(c.id.Length + 1)))}");
             Texture2D Face(string expr) => string.IsNullOrEmpty(expr) ? null : AssetDatabase.LoadAssetAtPath<Texture2D>($"{Dir(sid)}/Faces/{c.id}_{expr}.png");
             actor.defaultFace = Face(c.defaultFace);

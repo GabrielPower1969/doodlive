@@ -349,7 +349,9 @@ def render():
             for h in ([o] + list(o.children_recursive)) if o else []:
                 h.hide_render = True
     roots = {}
-    for ch in STORY["cast"]:
+    # cast members without a sheet place (Esther's palace guards) are not printed: they wear their own paint
+    sheet_cast = [c for c in STORY["cast"] if "sheetX" in DESIGN.get("characters", {}).get(c, {})]
+    for ch in sheet_cast:
         new = imp(MODEL / f"{ch}.glb"); objs += new
         roots[ch] = [(o, o.location.copy(), o.rotation_euler.copy()) for o in new if o.parent is None]
     for o in objs:
@@ -400,11 +402,11 @@ def render():
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam")); sc.collection.objects.link(cam); sc.camera = cam
     cam.data.sensor_fit = 'VERTICAL'; cam.data.clip_start = 0.01; cam.data.clip_end = 20
     chars = DESIGN["characters"]
-    marks = {c: (chars[c]["sheetX"], 0.0, 0.0, 0) for c in STORY["cast"]}
+    marks = {c: (chars[c]["sheetX"], 0.0, 0.0, 0) for c in sheet_cast}
     tl = json.load(open(A / "timeline.json"))
     opening = {}
     for a in tl["acting"]:
-        if a["t"] == 0.0 and "to" in a and a["who"] not in opening:
+        if a["t"] == 0.0 and "to" in a and a["who"] not in opening and a["who"] in sheet_cast:
             opening[a["who"]] = (a["to"][0], a["to"][1], a.get("y", 0.0), 0)
     if "king" in opening:                                 # rest pose cannot sit: stand him in front of the steps
         opening["king"] = (0.0, -0.05, 0.0, 0)
@@ -414,6 +416,7 @@ def render():
              ("textured_cast", marks, (0.0, 0.22, 1.25), (0.0, 0.19, 0.0), 22, (1600, 900)),
              STORY_SCENE.get(SID, STORY_SCENE["esther"]),
              ("textured_top", marks, (0.30, 0.75, 0.55), (0.10, 0.05, -0.15), 45, (1280, 900))]
+    shots = [sh for sh in shots if all(c in roots for c in sh[1])]
     for name, stg, eye, tgt, vfov, res in shots:
         stage(stg)
         e = Vector((eye[0], -eye[2], eye[1])); t = Vector((tgt[0], -tgt[2], tgt[1]))

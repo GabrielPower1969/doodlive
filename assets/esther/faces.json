@@ -1,9 +1,71 @@
 {
  "_doc": "Face decal per clip (docs/esther/CONTRACT.md §3-4). Integration-owned; read by tools/story/pack.py.",
- "esther": {"default": "calm", "clips": {"idle": "calm", "walk": "calm", "talk": "talk", "worried": "worried", "pray": "pray",
-   "rise_brave": "brave", "climb": "brave", "bow": "calm", "touch_sceptre": "joy", "invite": "talk", "point": "brave", "joy": "joy", "wave": "joy"}},
- "king": {"default": "stern", "clips": {"sit_idle": "stern", "sit_talk": "stern", "sit_listen": "listen", "give_ring": "stern",
-   "extend_sceptre": "smile", "sit_smile": "smile", "stand_angry": "angry", "angry_idle": "angry", "point_away": "angry", "celebrate": "smile"}},
- "haman": {"default": "smug", "clips": {"idle": "sly", "strut": "smug", "talk": "sly", "demand": "smug", "whisper": "sly",
-   "take_ring": "smug", "smug": "smug", "shock": "shocked", "cower": "scared", "led_away": "scared"}}
+ "esther": {
+  "default": "calm",
+  "clips": {
+   "idle": "calm",
+   "walk": "calm",
+   "talk": "talk",
+   "worried": "worried",
+   "pray": "pray",
+   "rise_brave": "brave",
+   "climb": "brave",
+   "bow": "calm",
+   "touch_sceptre": "joy",
+   "invite": "talk",
+   "point": "brave",
+   "joy": "joy",
+   "wave": "joy"
+  }
+ },
+ "king": {
+  "default": "stern",
+  "clips": {
+   "sit_idle": "stern",
+   "sit_talk": "stern",
+   "sit_listen": "listen",
+   "give_ring": "stern",
+   "extend_sceptre": "smile",
+   "sit_smile": "smile",
+   "stand_angry": "angry",
+   "angry_idle": "angry",
+   "point_away": "angry",
+   "celebrate": "smile"
+  }
+ },
+ "haman": {
+  "default": "proud",
+  "clips": {
+   "idle": "sly",
+   "strut": "proud",
+   "talk": "sly",
+   "demand": "proud",
+   "whisper": "scheming",
+   "take_ring": "smug",
+   "smug": "smug",
+   "shock": "shocked",
+   "cower": "scared",
+   "led_away": "terrified",
+   "parade": "proud",
+   "preen": "proud",
+   "laugh_proud": "laugh",
+   "boast": "laugh",
+   "fume": "furious",
+   "scheme": "scheming",
+   "daydream": "proud",
+   "stunned": "stunned",
+   "sulk": "sulky",
+   "sulk_shout": "sulky",
+   "beg": "begging",
+   "dragged": "terrified"
+  }
+ },
+ "guard1": {
+  "default": "stern",
+  "clips": {}
+ },
+ "guard2": {
+  "default": "stern",
+  "clips": {}
+ }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Gather a story pack's integration facts into assets/<id>/pack.json for Unity's StorySetup (JsonUtility-friendly lists).
 
-Reads assets/stories.json (titles, cast, set), assets/<id>/design.json (characters.<id>.height / sheetX, set unpainted
+Reads assets/stories.json (titles, cast, set, `paint` for cast members not drawn on the sheet), assets/<id>/design.json (characters.<id>.height / sheetX, set unpainted
 colour), assets/<id>/model/sheet_layout.json (Characters role defaults, if design.json has no placement yet) and
 assets/<id>/faces.json (face decal per clip). Usage: python3 tools/story/pack.py <id>
 """
@@ -25,7 +25,9 @@ def main(sid):
     for cid in reg["cast"]:
         c = chars.get(cid, {}); l = layout.get(cid, {}) if isinstance(layout, dict) else {}
         f = faces.get(cid, {})
-        cast.append({"id": cid, "height": c.get("height", l.get("height", 0.35)), "sheetX": c.get("sheetX", l.get("sheetX", 0.0)),
+        paint = reg.get("paint", {}).get(cid, "")   # not on the colouring sheet: own texture, starts off the page
+        cast.append({"id": cid, "height": c.get("height", l.get("height", 0.35)),
+                     "sheetX": c.get("sheetX", l.get("sheetX", 1.1 if paint else 0.0)), "paint": paint,
                      "defaultFace": f.get("default", ""),
                      "clipFaces": [{"clip": k, "face": v} for k, v in f.get("clips", {}).items()]})
     out = {"id": sid, "set": reg.get("set", ""), "titleZh": reg["title_zh"], "titleEn": reg["title_en"],

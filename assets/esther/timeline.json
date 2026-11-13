@@ -4,10 +4,12 @@
  "cast": [
   "esther",
   "king",
-  "haman"
+  "haman",
+  "guard1",
+  "guard2"
  ],
  "set": "palace",
- "duration": 144.38,
+ "duration": 240.74,
  "fps": 30,
  "shots": [
   {
@@ -23,7 +25,12 @@
    },
    "desc": "Slow orbit over the throne room on the page: throne on its steps, columns, red curtains, braziers.",
    "t0": 0.0,
-   "t1": 10.86
+   "t1": 10.86,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "id": "S02",
@@ -38,7 +45,12 @@
    },
    "desc": "Esther walks forward into the light; her diadem sparkles.",
    "t0": 10.86,
-   "t1": 19.72
+   "t1": 19.72,
+   "anchor": {
+    "line": "es_01",
+    "edge": "end",
+    "dt": 0.5
+   }
   },
   {
    "id": "S03",
@@ -48,12 +60,17 @@
     "type": "follow",
     "target": "haman",
     "dist": 0.72,
-    "height": 0.1,
+    "height": 0.08,
     "yawDeg": -20
    },
-   "desc": "Low angle on Haman. He struts and throws his arms wide.",
+   "desc": "Low angle. A fanfare; a herald announces him; Haman parades in, belly first, nose in the air, plume bobbing.",
    "t0": 19.72,
-   "t1": 35.13
+   "t1": 55.1,
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.3
+   }
   },
   {
    "id": "S04",
@@ -66,9 +83,14 @@
     "height": 0.3,
     "yawDeg": 35
    },
-   "desc": "Haman sidles up to the throne and whispers; the king, bored, hands over his ring.",
-   "t0": 35.13,
-   "t1": 50.66
+   "desc": "Haman sidles up to the throne and whispers; the king, bored, hands over his ring. Haman gloats at us.",
+   "t0": 55.1,
+   "t1": 79.28,
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
    "id": "S05",
@@ -82,8 +104,13 @@
     "yawDeg": 10
    },
    "desc": "Close on Esther. A voice from off-stage: her cousin Mordecai.",
-   "t0": 50.66,
-   "t1": 66.97
+   "t0": 79.28,
+   "t1": 95.59,
+   "anchor": {
+    "line": "es_06b",
+    "edge": "end",
+    "dt": 0.5
+   }
   },
   {
    "id": "S06",
@@ -97,8 +124,13 @@
     "yawDeg": -30
    },
    "desc": "Esther kneels and prays; a soft light; then she stands up, chin high.",
-   "t0": 66.97,
-   "t1": 77.72
+   "t0": 95.59,
+   "t1": 106.34,
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 0.7
+   }
   },
   {
    "id": "S07",
@@ -112,8 +144,13 @@
     "yawDeg": -28
    },
    "desc": "From low in front: Esther climbs the steps toward the throne, drums beating; the king looms above.",
-   "t0": 77.72,
-   "t1": 89.59
+   "t0": 106.34,
+   "t1": 118.21,
+   "anchor": {
+    "line": "es_09",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
    "id": "S08",
@@ -127,8 +164,73 @@
     "yawDeg": 25
    },
    "desc": "The king holds out the golden sceptre; a gold beam; Esther touches its tip. She is safe!",
-   "t0": 89.59,
-   "t1": 103.79
+   "t0": 118.21,
+   "t1": 132.41,
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "id": "S08b",
+   "title_zh": "得意忘形",
+   "title_en": "Puffed up",
+   "camera": {
+    "type": "follow",
+    "target": "haman",
+    "dist": 0.62,
+    "height": 0.14,
+    "yawDeg": -25
+   },
+   "desc": "Haman skips and hops: invited to the queen's banquet! He thumps his chest and laughs.",
+   "t0": 132.41,
+   "t1": 141.1,
+   "anchor": {
+    "line": "es_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S08c",
+   "title_zh": "王要尊荣的人",
+   "title_en": "The man the king honours",
+   "camera": {
+    "type": "fixed",
+    "target": "haman",
+    "dist": 0.72,
+    "height": 0.24,
+    "yawDeg": -30
+   },
+   "desc": "The king asks a question; Haman, sure it is about him, acts out a grand parade; then the twist.",
+   "t0": 141.1,
+   "t1": 170.66,
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S08d",
+   "title_zh": "满城大喊",
+   "title_en": "Through the streets",
+   "camera": {
+    "type": "follow",
+    "target": "haman",
+    "dist": 0.7,
+    "height": 0.18,
+    "yawDeg": 25
+   },
+   "desc": "Haman trudges across the page, leading the (unseen) horse, shoulders drooping, shouting through his teeth.",
+   "t0": 170.66,
+   "t1": 183.94,
+   "anchor": {
+    "line": "es_12g",
+    "edge": "end",
+    "dt": 0.6
+   }
   },
   {
    "id": "S09",
@@ -142,8 +244,13 @@
     "yawDeg": -15
    },
    "desc": "The banquet table appears in a warm glow; goblets, fruit, bread. Haman grins at the food.",
-   "t0": 103.79,
-   "t1": 111.32
+   "t0": 183.94,
+   "t1": 191.47,
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
   },
   {
    "id": "S10",
@@ -156,9 +263,14 @@
     "height": 0.26,
     "yawDeg": 0
    },
-   "desc": "The king stands up angry; Esther points; Haman jumps, his cap slips; he cowers and is led away.",
-   "t0": 111.32,
-   "t1": 124.61
+   "desc": "The king stands up angry; Esther points; Haman jumps, his cap flies; he begs on his knees; guards drag him away kicking and wailing.",
+   "t0": 191.47,
+   "t1": 220.97,
+   "anchor": {
+    "line": "es_13",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
    "id": "S11",
@@ -172,8 +284,13 @@
     "yawDeg": 20
    },
    "desc": "Light floods back; confetti; Esther twirls; the king cheers.",
-   "t0": 124.61,
-   "t1": 133.63
+   "t0": 220.97,
+   "t1": 229.99,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   },
   {
    "id": "S12",
@@ -187,8 +304,13 @@
     "yawDeg": 0
    },
    "desc": "Esther faces the child and waves; golden rays.",
-   "t0": 133.63,
-   "t1": 144.38
+   "t0": 229.99,
+   "t1": 240.74,
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 0.6
+   }
   }
  ],
  "acting": [
@@ -202,7 +324,12 @@
     -0.3
    ],
    "y": 0.07,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 0.0,
@@ -213,7 +340,12 @@
     -0.32,
     0.18
    ],
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 0.0,
@@ -224,7 +356,44 @@
     0.36,
     0.02
    ],
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "guard1",
+   "clip": "idle",
+   "blend": 0.25,
+   "to": [
+    0.64,
+    0.04
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "guard2",
+   "clip": "idle",
+   "blend": 0.25,
+   "to": [
+    0.64,
+    0.26
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 10.66,
@@ -235,49 +404,119 @@
     -0.12,
     0.12
    ],
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_01",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
    "t": 18.72,
    "who": "esther",
    "clip": "wave",
    "blend": 0.25,
-   "face": "viewer"
-  },
-  {
-   "t": 19.42,
-   "who": "haman",
-   "clip": "strut",
-   "blend": 0.25,
-   "to": [
-    0.24,
-    0.06
-   ],
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
    "t": 19.72,
    "who": "esther",
    "clip": "idle",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.3
+   }
   },
   {
-   "t": 20.72,
-   "who": "haman",
-   "clip": "demand",
+   "t": 19.92,
+   "who": "esther",
+   "clip": "walk",
    "blend": 0.25,
-   "face": "viewer"
+   "to": [
+    -0.3,
+    0.2
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.5
+   }
   },
   {
-   "t": 26.27,
+   "t": 25.49,
+   "who": "haman",
+   "clip": "parade",
+   "blend": 0.25,
+   "to": [
+    0.2,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "es_03a",
+    "edge": "end",
+    "dt": -0.5
+   }
+  },
+  {
+   "t": 30.69,
+   "who": "haman",
+   "clip": "preen",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_03b",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 39.11,
+   "who": "haman",
+   "clip": "laugh_proud",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_03",
+    "edge": "end",
+    "dt": -2.0
+   }
+  },
+  {
+   "t": 41.51,
    "who": "haman",
    "clip": "smug",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_03",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 34.83,
+   "t": 48.64,
+   "who": "haman",
+   "clip": "fume",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_04",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 54.8,
    "who": "haman",
    "clip": "walk",
    "blend": 0.25,
@@ -285,80 +524,135 @@
     0.16,
     -0.24
    ],
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 0.0
+   }
   },
   {
-   "t": 36.53,
+   "t": 56.5,
    "who": "haman",
    "clip": "whisper",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 1.7
+   }
   },
   {
-   "t": 36.53,
+   "t": 56.5,
    "who": "king",
    "clip": "sit_listen",
    "blend": 0.25,
-   "face": "haman"
+   "face": "haman",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 1.7
+   }
   },
   {
-   "t": 43.37,
+   "t": 68.14,
    "who": "king",
    "clip": "give_ring",
    "blend": 0.25,
-   "face": "haman"
+   "face": "haman",
+   "anchor": {
+    "line": "es_05",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 49.46,
+   "t": 74.23,
    "who": "haman",
    "clip": "take_ring",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": -0.4
+   }
   },
   {
-   "t": 50.66,
+   "t": 75.43,
    "who": "king",
    "clip": "sit_idle",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": 0.8
+   }
   },
   {
-   "t": 50.66,
+   "t": 75.43,
    "who": "haman",
-   "clip": "smug",
+   "clip": "scheme",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": 0.8
+   }
   },
   {
-   "t": 50.66,
+   "t": 79.28,
    "who": "esther",
    "clip": "worried",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_06b",
+    "edge": "end",
+    "dt": 0.5
+   }
   },
   {
-   "t": 66.97,
+   "t": 95.59,
    "who": "esther",
    "clip": "kneel",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 0.7
+   }
   },
   {
-   "t": 68.17,
+   "t": 96.79,
    "who": "esther",
    "clip": "pray",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 1.9
+   }
   },
   {
-   "t": 70.17,
+   "t": 98.79,
    "who": "esther",
    "clip": "rise_brave",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 3.9
+   }
   },
   {
-   "t": 77.72,
+   "t": 106.34,
    "who": "esther",
    "clip": "climb",
    "blend": 0.25,
@@ -366,59 +660,255 @@
     0.0,
     -0.12
    ],
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_09",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 77.72,
+   "t": 106.34,
    "who": "haman",
    "clip": "smug",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_09",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 88.79,
+   "t": 117.41,
    "who": "esther",
    "clip": "bow",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 1.0
+   }
   },
   {
-   "t": 88.79,
+   "t": 117.41,
    "who": "king",
    "clip": "sit_listen",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 1.0
+   }
   },
   {
-   "t": 89.59,
+   "t": 118.21,
    "who": "king",
    "clip": "extend_sceptre",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 1.8
+   }
   },
   {
-   "t": 91.19,
+   "t": 119.81,
    "who": "esther",
    "clip": "touch_sceptre",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 3.4
+   }
   },
   {
-   "t": 99.2,
+   "t": 127.82,
    "who": "king",
    "clip": "sit_smile",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_11",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
-   "t": 99.2,
+   "t": 127.82,
    "who": "esther",
    "clip": "invite",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_11",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
-   "t": 103.79,
+   "t": 132.41,
+   "who": "esther",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.3,
+    0.16
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 132.41,
+   "who": "haman",
+   "clip": "boast",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 139.9,
+   "who": "haman",
+   "clip": "laugh_proud",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": -0.9
+   }
+  },
+  {
+   "t": 140.9,
+   "who": "haman",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.18,
+    -0.2
+   ],
+   "face": "king",
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 141.7,
+   "who": "king",
+   "clip": "sit_talk",
+   "blend": 0.25,
+   "face": "haman",
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 147.32,
+   "who": "king",
+   "clip": "sit_listen",
+   "blend": 0.25,
+   "face": "haman",
+   "anchor": {
+    "line": "es_12c",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 147.32,
+   "who": "haman",
+   "clip": "scheme",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12c",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 151.19,
+   "who": "haman",
+   "clip": "daydream",
+   "blend": 0.25,
+   "face": "king",
+   "anchor": {
+    "line": "es_12d",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 161.11,
+   "who": "king",
+   "clip": "sit_smile",
+   "blend": 0.25,
+   "face": "haman",
+   "anchor": {
+    "line": "es_12e",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 165.78,
+   "who": "haman",
+   "clip": "stunned",
+   "blend": 0.25,
+   "face": "king",
+   "anchor": {
+    "line": "es_12f",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 170.66,
+   "who": "haman",
+   "clip": "sulk",
+   "blend": 0.25,
+   "to": [
+    -0.24,
+    0.2
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12g",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 178.07,
+   "who": "haman",
+   "clip": "sulk_shout",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "es_12h",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 183.94,
    "who": "haman",
    "clip": "strut",
    "blend": 0.25,
@@ -426,10 +916,15 @@
     0.36,
     0.1
    ],
-   "face": "table"
+   "face": "table",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
   },
   {
-   "t": 104.09,
+   "t": 184.24,
    "who": "esther",
    "clip": "walk",
    "blend": 0.25,
@@ -437,91 +932,253 @@
     0.06,
     0.1
    ],
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.3
+   }
   },
   {
-   "t": 105.79,
+   "t": 185.94,
    "who": "haman",
    "clip": "idle",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 3.0
+   }
   },
   {
-   "t": 106.19,
+   "t": 186.34,
    "who": "esther",
    "clip": "worried",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 3.4
+   }
   },
   {
-   "t": 111.32,
+   "t": 191.47,
    "who": "king",
    "clip": "stand_angry",
    "blend": 0.25,
-   "face": "esther"
+   "face": "esther",
+   "anchor": {
+    "line": "es_13",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
-   "t": 114.92,
+   "t": 195.07,
    "who": "esther",
    "clip": "point",
    "blend": 0.25,
-   "face": "haman"
+   "face": "haman",
+   "anchor": {
+    "line": "es_14",
+    "edge": "end",
+    "dt": 0.2
+   }
   },
   {
-   "t": 117.98,
+   "t": 198.13,
    "who": "haman",
    "clip": "shock",
    "blend": 0.25,
-   "face": "king"
+   "face": "king",
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": -0.2
+   }
   },
   {
-   "t": 118.38,
+   "t": 198.53,
    "who": "king",
    "clip": "angry_idle",
    "blend": 0.25,
-   "face": "haman"
+   "face": "haman",
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": 0.2
+   }
   },
   {
-   "t": 119.08,
+   "t": 199.23,
    "who": "haman",
-   "clip": "cower",
+   "clip": "beg",
    "blend": 0.25,
-   "face": "king"
+   "to": [
+    0.2,
+    0.12
+   ],
+   "face": "esther",
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": 0.9
+   }
   },
   {
-   "t": 123.01,
+   "t": 206.67,
    "who": "king",
    "clip": "point_away",
    "blend": 0.25,
-   "face": "haman"
+   "face": "haman",
+   "anchor": {
+    "line": "es_16",
+    "edge": "end",
+    "dt": 0.2
+   }
   },
   {
-   "t": 123.61,
-   "who": "haman",
-   "clip": "led_away",
+   "t": 208.4,
+   "who": "guard1",
+   "clip": "march",
    "blend": 0.25,
    "to": [
-    0.75,
-    0.3
+    0.29,
+    0.055
    ],
-   "face": "king"
+   "face": "haman",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": -0.5
+   }
   },
   {
-   "t": 124.61,
+   "t": 208.4,
+   "who": "guard2",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.092,
+    0.149
+   ],
+   "face": "haman",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": -0.5
+   }
+  },
+  {
+   "t": 211.0,
+   "who": "guard1",
+   "clip": "grab",
+   "blend": 0.25,
+   "face": "haman",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 2.1
+   }
+  },
+  {
+   "t": 211.0,
+   "who": "guard2",
+   "clip": "grab",
+   "blend": 0.25,
+   "face": "haman",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 2.1
+   }
+  },
+  {
+   "t": 211.4,
+   "who": "haman",
+   "clip": "dragged",
+   "blend": 0.25,
+   "face": "king",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 2.5
+   }
+  },
+  {
+   "t": 213.77,
+   "who": "haman",
+   "clip": "dragged",
+   "blend": 0.25,
+   "to": [
+    0.95,
+    0.4
+   ],
+   "face": "king",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": -5.8
+   }
+  },
+  {
+   "t": 213.77,
+   "who": "guard1",
+   "clip": "drag",
+   "blend": 0.25,
+   "to": [
+    1.04,
+    0.335
+   ],
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": -5.8
+   }
+  },
+  {
+   "t": 213.77,
+   "who": "guard2",
+   "clip": "drag",
+   "blend": 0.25,
+   "to": [
+    0.842,
+    0.429
+   ],
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": -5.8
+   }
+  },
+  {
+   "t": 220.97,
    "who": "esther",
    "clip": "joy",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   },
   {
-   "t": 124.61,
+   "t": 220.97,
    "who": "king",
    "clip": "celebrate",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   },
   {
-   "t": 133.63,
+   "t": 229.99,
    "who": "esther",
    "clip": "walk",
    "blend": 0.25,
@@ -529,10 +1186,15 @@
     -0.04,
     0.14
    ],
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 0.6
+   }
   },
   {
-   "t": 133.93,
+   "t": 230.29,
    "who": "king",
    "clip": "sit_smile",
    "blend": 0.25,
@@ -541,14 +1203,24 @@
     -0.3
    ],
    "y": 0.07,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 0.9
+   }
   },
   {
-   "t": 134.83,
+   "t": 231.19,
    "who": "esther",
    "clip": "wave",
    "blend": 0.25,
-   "face": "viewer"
+   "face": "viewer",
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 1.8
+   }
   }
  ],
  "lines": [
@@ -561,7 +1233,15 @@
    "ref": "Esther 1:1-2",
    "zh": "很久很久以前，在波斯的书珊城里，住着一位很有权力的国王——亚哈随鲁王。",
    "en": "Long, long ago, in the city of Susa, there lived a very powerful king. His name was King Xerxes.",
-   "dir": "storyteller opening; warm, unhurried, a little mysterious; small pause before the name"
+   "dir": "storyteller opening; warm, unhurried, a little mysterious; small pause before the name",
+   "dur": 8.91,
+   "pre": 0.25,
+   "post": 0.5,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 1.45
+   }
   },
   {
    "id": "es_02",
@@ -572,183 +1252,585 @@
    "ref": "Esther 2:7, 2:17",
    "zh": "国王选了一位又美丽、又善良的女孩做王后。她的名字，叫以斯帖。",
    "en": "The king chose a beautiful, kind young woman to be his queen. Her name was Esther.",
-   "dir": "tender, smiling; slow down on her name"
+   "dir": "tender, smiling; slow down on her name",
+   "dur": 7.31,
+   "pre": 0.25,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_01",
+    "edge": "end",
+    "dt": 0.75
+   }
+  },
+  {
+   "id": "es_03a",
+   "t": 20.02,
+   "who": "herald",
+   "voice": "herald",
+   "maxSec": 6.02,
+   "ref": "Esther 3:1",
+   "zh": "哈曼大人驾到——！",
+   "en": "Make way for the great Lord Haman!",
+   "dir": "off-stage court herald, loud and long, ceremonial, a little pompous",
+   "dur": 5.97,
+   "pre": 0.3,
+   "post": 0.1,
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "id": "es_03b",
+   "t": 26.69,
+   "who": "crowd",
+   "voice": "crowd",
+   "maxSec": 3.85,
+   "ref": "Esther 3:2",
+   "zh": "拜见哈曼大人！",
+   "en": "Hail, Lord Haman!",
+   "dir": "many people at once, off-stage, bowing; a little reluctant",
+   "dur": 3.8,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_03a",
+    "edge": "end",
+    "dt": 0.7
+   }
   },
   {
    "id": "es_03",
-   "t": 20.62,
+   "t": 31.19,
    "who": "haman",
    "voice": "haman",
-   "maxSec": 5.4,
+   "maxSec": 9.97,
    "ref": "Esther 3:1-2",
-   "zh": "哼！我可是王最看重的大臣！谁见了我，都得弯腰下拜！",
-   "en": "Hmph! I am the king's most important man! Everyone must bow down to me!",
-   "dir": "puffed-up, nasal, pleased with himself; a sniff at the start; comic, not scary"
+   "zh": "哼哼！看见没有？人人见了我，都得弯腰！我可是全国第一大官——哈哈哈哈！",
+   "en": "Ho ho! Did you see that? Everyone bows when I walk by! I'm the greatest man in the whole kingdom! Ha ha ha ha!",
+   "dir": "hugely pleased with himself, nose in the air, savouring every word; a real belly laugh at the end that goes on a bit too long",
+   "dur": 9.92,
+   "pre": 0.5,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_03b",
+    "edge": "end",
+    "dt": 0.7
+   }
   },
   {
    "id": "es_04",
-   "t": 26.52,
+   "t": 41.61,
    "who": "narrator",
    "voice": "narrator",
-   "maxSec": 8.46,
-   "ref": "Esther 3:2-5",
-   "zh": "可是末底改只拜上帝，不肯向哈曼下拜。哈曼气得直跺脚！",
-   "en": "But Mordecai bowed only to God, not to Haman. Haman stomped his feet in anger!",
-   "dir": "matter-of-fact, then a little amused on the stomping"
+   "maxSec": 6.88,
+   "ref": "Esther 3:2-4",
+   "zh": "可是有一个人，偏偏不拜他。末底改说：我只拜上帝。",
+   "en": "But one man would not bow. Mordecai said, \"I bow only to God.\"",
+   "dir": "calm, a little amused; a small pause before Mordecai's words",
+   "dur": 6.83,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_03",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "es_04b",
+   "t": 48.84,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 6.01,
+   "ref": "Esther 3:5",
+   "zh": "什么？！他竟敢不拜我？！气死我了！哼！哼！哼！",
+   "en": "What?! He won't bow to ME?! Grrr! Hmph! Hmph! Hmph!",
+   "dir": "explodes: shrill, spluttering fury, a tantrum; three stamping 'hmph's, each louder; comic, not scary",
+   "dur": 5.96,
+   "pre": 0.2,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_04",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
    "id": "es_05",
-   "t": 36.73,
+   "t": 56.7,
    "who": "haman",
    "voice": "haman",
-   "maxSec": 6.29,
+   "maxSec": 11.09,
    "ref": "Esther 3:8-9",
    "zh": "王啊……有一群人，不守您的规矩。不如……让我把他们都除掉吧？",
    "en": "O king... there are some people who don't keep your laws. Why not... let me get rid of them?",
-   "dir": "sly half-whisper, slow, oily; two sneaky pauses"
+   "dir": "sly half-whisper, slow, oily, sugary-sweet to the king; two sneaky pauses",
+   "dur": 11.04,
+   "pre": 1.6,
+   "post": 0.4,
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 1.9
+   }
   },
   {
    "id": "es_06",
-   "t": 43.62,
+   "t": 68.39,
    "who": "king",
    "voice": "king",
    "maxSec": 6.29,
    "ref": "Esther 3:10-11",
    "zh": "嗯……好吧。这枚戒指给你，你看着办。",
    "en": "Hmm... very well. Take my ring. Do as you see fit.",
-   "dir": "deep, careless, a little bored; a thinking 'hmm' first"
+   "dir": "deep, careless, a little bored; a thinking 'hmm' first",
+   "dur": 6.24,
+   "pre": 0.25,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_05",
+    "edge": "end",
+    "dt": 0.65
+   }
+  },
+  {
+   "id": "es_06b",
+   "t": 75.83,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 3.0,
+   "ref": "Esther 3:10-11",
+   "zh": "嘿嘿嘿……这下，谁也拦不住我啦！",
+   "en": "Heh heh heh... Now nobody can stop me!",
+   "dir": "turns to the audience, rubbing his hands; a wicked little giggle, then gleeful",
+   "dur": 2.95,
+   "pre": 1.0,
+   "post": 0.5,
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": 1.2
+   }
   },
   {
    "id": "es_07",
-   "t": 51.26,
+   "t": 79.88,
    "who": "mordecai",
    "voice": "mordecai",
    "maxSec": 7.07,
    "ref": "Esther 4:8, 4:14",
    "zh": "以斯帖，你要去求王救我们！说不定，你当上王后，就是为了今天！",
    "en": "Esther, you must ask the king to save us! Maybe this is why you became queen, for a time just like this!",
-   "dir": "older man, urgent but loving, from a distance (slight room echo); slower on the last sentence"
+   "dir": "older man, urgent but loving, from a distance (slight room echo); slower on the last sentence",
+   "dur": 7.02,
+   "pre": 0.6,
+   "post": 0.5,
+   "anchor": {
+    "line": "es_06b",
+    "edge": "end",
+    "dt": 1.1
+   }
   },
   {
    "id": "es_08",
-   "t": 59.03,
+   "t": 87.65,
    "who": "esther",
    "voice": "esther",
    "maxSec": 7.29,
    "ref": "Esther 4:11",
    "zh": "可是……没有王的召见就进去，是会死的……",
    "en": "But... anyone who goes to the king without being called could die...",
-   "dir": "scared, quiet, hesitant; breath before 'but'"
+   "dir": "scared, quiet, hesitant; breath before 'but'",
+   "dur": 7.24,
+   "pre": 0.25,
+   "post": 0.7,
+   "anchor": {
+    "line": "es_07",
+    "edge": "end",
+    "dt": 0.75
+   }
   },
   {
    "id": "es_09",
-   "t": 71.07,
+   "t": 99.69,
    "who": "esther",
    "voice": "esther",
    "maxSec": 6.3,
    "ref": "Esther 4:16",
    "zh": "好！请大家为我祷告。我要去见王——就算有危险，我也要去！",
    "en": "All right. Please pray for me. I will go to the king, even if it's dangerous!",
-   "dir": "a deep breath, then steady and brave; rising resolve, strongest on the last words"
+   "dir": "a deep breath, then steady and brave; rising resolve, strongest on the last words",
+   "dur": 6.25,
+   "pre": 0.9,
+   "post": 0.4,
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 4.8
+   }
   },
   {
    "id": "es_10",
-   "t": 79.12,
+   "t": 107.74,
    "who": "narrator",
    "voice": "narrator",
    "maxSec": 8.72,
    "ref": "Esther 5:1",
    "zh": "以斯帖一步一步，走上王宫的台阶……王会怎么做呢？",
    "en": "Step by step, Esther climbed the palace stairs... What would the king do?",
-   "dir": "hushed, suspenseful, slow; let the question hang"
+   "dir": "hushed, suspenseful, slow; let the question hang",
+   "dur": 8.67,
+   "pre": 1.4,
+   "post": 1.0,
+   "anchor": {
+    "line": "es_09",
+    "edge": "end",
+    "dt": 1.8
+   }
   },
   {
    "id": "es_11",
-   "t": 91.99,
+   "t": 120.61,
    "who": "king",
    "voice": "king",
    "maxSec": 6.96,
    "ref": "Esther 5:2-3",
    "zh": "以斯帖王后！你来啦。你想要什么？就算是半个国家，我也给你！",
    "en": "Queen Esther! You've come. What is it you want? Even half my kingdom, it's yours!",
-   "dir": "surprised, then warm and generous; a smile in the voice"
+   "dir": "surprised, then warm and generous; a smile in the voice",
+   "dur": 6.91,
+   "pre": 2.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 4.2
+   }
   },
   {
    "id": "es_12",
-   "t": 99.5,
+   "t": 128.12,
    "who": "esther",
    "voice": "esther",
    "maxSec": 3.94,
    "ref": "Esther 5:4",
    "zh": "请王带着哈曼，来吃我准备的宴席，好吗？",
    "en": "My king, will you come to my banquet? And bring Haman too.",
-   "dir": "polite, sweet, a little clever; light"
+   "dir": "polite, sweet, a little clever; light",
+   "dur": 3.89,
+   "pre": 0.3,
+   "post": 0.4,
+   "anchor": {
+    "line": "es_11",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "es_12b",
+   "t": 133.01,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 7.84,
+   "ref": "Esther 5:9-12",
+   "zh": "王后的宴席，只请了王——和我！哈哈！我真是太了不起啦！",
+   "en": "The queen's banquet! Only the king... and ME! Ha! Aren't I wonderful!",
+   "dir": "giddy, bouncing with glee, almost singing; a pause before 'and me', then a delighted laugh",
+   "dur": 7.79,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_12",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "es_12c",
+   "t": 142.1,
+   "who": "king",
+   "voice": "king",
+   "maxSec": 4.97,
+   "ref": "Esther 6:6",
+   "zh": "哈曼，我想尊荣一个人。你说，该怎么做呢？",
+   "en": "Haman, there is a man I want to honour. What should I do for him?",
+   "dir": "thoughtful, kind, slow; a real question",
+   "dur": 4.92,
+   "pre": 1.0,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "id": "es_12d",
+   "t": 147.62,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 3.22,
+   "ref": "Esther 6:6",
+   "zh": "嘿嘿……除了我，还有谁呢？",
+   "en": "Heh heh... who could that be, but me?",
+   "dir": "a stage whisper to the audience behind his hand; smug, delighted",
+   "dur": 3.17,
+   "pre": 0.3,
+   "post": 0.4,
+   "anchor": {
+    "line": "es_12c",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "es_12e",
+   "t": 151.49,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 9.37,
+   "ref": "Esther 6:7-9",
+   "zh": "要给他穿上王袍，骑上王的马！还要有人在前面大声喊：看哪，这就是王要尊荣的人！",
+   "en": "Dress him in the royal robe! Sit him on the king's own horse! And have someone shout: \"This is the man the king honours!\"",
+   "dir": "grand, dreamy, carried away, bigger and bigger; the last phrase shouted proudly like a herald",
+   "dur": 9.32,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_12d",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "es_12f",
+   "t": 161.31,
+   "who": "king",
+   "voice": "king",
+   "maxSec": 4.32,
+   "ref": "Esther 6:10",
+   "zh": "好主意！你就照这样，去尊荣末底改吧！",
+   "en": "Good idea! Now go and do all of that for Mordecai!",
+   "dir": "pleased, warm, brisk; a smile; the name clear and simple",
+   "dur": 4.27,
+   "pre": 0.2,
+   "post": 0.1,
+   "anchor": {
+    "line": "es_12e",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "es_12g",
+   "t": 166.58,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 3.53,
+   "ref": "Esther 6:10-11",
+   "zh": "末……末……末底改？！",
+   "en": "Mor... Mor... MORDECAI?!",
+   "dir": "can't believe it: choking, stammering, then a strangled squeak on the name",
+   "dur": 3.48,
+   "pre": 0.9,
+   "post": 0.6,
+   "anchor": {
+    "line": "es_12f",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "es_12h",
+   "t": 171.06,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.96,
+   "ref": "Esther 6:11",
+   "zh": "于是，哈曼只好牵着王的马，带着末底改满城走，还得一边走，一边喊——",
+   "en": "So Haman had to lead Mordecai through the city on the king's horse, shouting all the way...",
+   "dir": "trying not to laugh; storyteller relishing the twist",
+   "dur": 6.91,
+   "pre": 0.4,
+   "post": 0.1,
+   "anchor": {
+    "line": "es_12g",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "es_12i",
+   "t": 178.27,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 4.72,
+   "ref": "Esther 6:11",
+   "zh": "这……就是王要尊荣的人……哼！",
+   "en": "This... is the man the king honours... hmph!",
+   "dir": "through gritted teeth, sulky, flat and grudging, a dying-off 'hmph'",
+   "dur": 4.67,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_12h",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
    "id": "es_13",
-   "t": 106.59,
+   "t": 186.74,
    "who": "esther",
    "voice": "esther",
    "maxSec": 4.48,
    "ref": "Esther 7:3-4",
    "zh": "王啊……有人要害我，还要害我的族人！",
    "en": "My king... someone wants to destroy me, and all my people!",
-   "dir": "trembling but brave; voice catches on 'my people'"
+   "dir": "trembling but brave; voice catches on 'my people'",
+   "dur": 4.43,
+   "pre": 0.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 3.8
+   }
   },
   {
    "id": "es_14",
-   "t": 111.82,
+   "t": 191.97,
    "who": "king",
    "voice": "king",
    "maxSec": 2.95,
    "ref": "Esther 7:5",
    "zh": "什么？！是谁？谁敢这样做？",
    "en": "What?! Who is he? Who would dare?",
-   "dir": "shocked and angry, loud but not shouting; short sharp phrases"
+   "dir": "shocked and angry, loud but not shouting; short sharp phrases",
+   "dur": 2.9,
+   "pre": 0.5,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_13",
+    "edge": "end",
+    "dt": 0.8
+   }
   },
   {
    "id": "es_15",
-   "t": 115.12,
+   "t": 195.27,
    "who": "esther",
    "voice": "esther",
    "maxSec": 3.11,
    "ref": "Esther 7:6",
    "zh": "就是他——这个坏人哈曼！",
    "en": "It's him! This wicked man, Haman!",
-   "dir": "clear and firm, a beat of courage before 'Haman'"
+   "dir": "clear and firm, a beat of courage before 'Haman'",
+   "dur": 3.06,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_14",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
    "id": "es_16",
-   "t": 119.18,
+   "t": 199.33,
    "who": "haman",
    "voice": "haman",
-   "maxSec": 3.68,
+   "maxSec": 7.19,
    "ref": "Esther 7:7-8",
-   "zh": "不、不、不……王啊，饶了我吧！",
-   "en": "No, no, no... please, my king, have mercy!",
-   "dir": "squeaky panic, fast, comic"
+   "zh": "不、不、不！王后，救救我吧！王啊，饶命啊！",
+   "en": "No, no, no! My queen, save me! Oh king, have mercy!",
+   "dir": "blubbering, squeaky panic, fast and breathless, close to tears; comic",
+   "dur": 7.14,
+   "pre": 0.8,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "es_16b",
+   "t": 206.87,
+   "who": "king",
+   "voice": "king",
+   "maxSec": 2.08,
+   "ref": "Esther 7:8-9",
+   "zh": "来人！把他带走！",
+   "en": "Guards! Take him away!",
+   "dir": "a royal command, loud, deep and final; not a scream",
+   "dur": 2.03,
+   "pre": 0.2,
+   "post": 0.1,
+   "anchor": {
+    "line": "es_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "es_16c",
+   "t": 211.2,
+   "who": "haman",
+   "voice": "haman",
+   "maxSec": 8.42,
+   "ref": "Esther 7:8",
+   "zh": "不——要——啊——！放开我！我是大官！我是……哇啊啊啊——！",
+   "en": "Nooo! Let me go! I'm a very important man! I'm... waaaah!",
+   "dir": "wailing and kicking as he is dragged off; long howling 'no', then outraged, then a big wail that fades away into the distance",
+   "dur": 8.37,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 2.3
+   }
   },
   {
    "id": "es_17",
-   "t": 125.41,
+   "t": 221.77,
    "who": "narrator",
    "voice": "narrator",
    "maxSec": 7.67,
    "ref": "Esther 7:10, 8:16-17",
    "zh": "王把哈曼带走了。上帝的百姓得救啦！大家又唱又跳，好开心！",
    "en": "The king had Haman taken away. God's people were saved! Everyone sang and danced for joy!",
-   "dir": "relief, then bright joy; speed up a little on the happy part"
+   "dir": "relief, then bright joy; speed up a little on the happy part",
+   "dur": 7.62,
+   "pre": 0.8,
+   "post": 0.6,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 2.2
+   }
   },
   {
    "id": "es_18",
-   "t": 134.23,
+   "t": 230.59,
    "who": "narrator",
    "voice": "narrator",
    "maxSec": 8.2,
    "ref": "Esther 4:14-16",
    "zh": "以斯帖害怕的时候，还是选择了勇敢，选择了信靠上帝。你也可以哦！",
    "en": "Esther was scared, but she chose to be brave and to trust God. You can too!",
-   "dir": "warm moral, speaking right to the child; smile on 'You can too'"
+   "dir": "warm moral, speaking right to the child; smile on 'You can too'",
+   "dur": 8.15,
+   "pre": 0.6,
+   "post": 2.0,
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 1.2
+   }
   }
  ],
  "fx": [
@@ -756,186 +1838,590 @@
    "t": 0.0,
    "id": "brazier_fire",
    "at": "palace.flameL",
-   "dur": 999
+   "dur": 999,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 0.0,
    "id": "brazier_fire",
    "at": "palace.flameR",
-   "dur": 999
+   "dur": 999,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 12.26,
    "id": "crown_sparkle",
    "at": "esther.diadem",
-   "dur": 1.6
+   "dur": 1.6,
+   "anchor": {
+    "line": "es_01",
+    "edge": "end",
+    "dt": 1.9
+   }
   },
   {
-   "t": 35.13,
-   "id": "tension_dim",
-   "at": "stage",
-   "dur": 12.0
-  },
-  {
-   "t": 49.86,
+   "t": 31.59,
    "id": "ring_glint",
    "at": "haman.handL",
-   "dur": 1.0
+   "dur": 0.8,
+   "anchor": {
+    "line": "es_03b",
+    "edge": "end",
+    "dt": 1.1
+   }
   },
   {
-   "t": 68.57,
+   "t": 48.94,
+   "id": "anger_steam",
+   "at": "haman.head",
+   "dur": 3.6,
+   "anchor": {
+    "line": "es_04",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 55.1,
+   "id": "tension_dim",
+   "at": "stage",
+   "dur": 16.0,
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 74.63,
+   "id": "ring_glint",
+   "at": "haman.handL",
+   "dur": 1.0,
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 97.19,
    "id": "prayer_glow",
    "at": "esther.chest",
-   "dur": 4.5
+   "dur": 4.5,
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 2.3
+   }
   },
   {
-   "t": 90.49,
+   "t": 119.11,
    "id": "sceptre_beam",
    "at": "king.sceptreTip",
    "dur": 2.5,
-   "to": "esther.chest"
+   "to": "esther.chest",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 2.7
+   }
   },
   {
-   "t": 103.79,
+   "t": 183.94,
    "id": "petals",
    "at": "palace.table",
-   "dur": 2.0
+   "dur": 2.0,
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
   },
   {
-   "t": 115.92,
+   "t": 196.07,
    "id": "truth_flash",
    "at": "stage",
-   "dur": 0.6
+   "dur": 0.6,
+   "anchor": {
+    "line": "es_14",
+    "edge": "end",
+    "dt": 1.2
+   }
   },
   {
-   "t": 124.61,
+   "t": 198.73,
+   "id": "sweat_drops",
+   "at": "haman.head",
+   "dur": 2.0,
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 213.87,
+   "id": "dust_drag",
+   "at": "haman.footL",
+   "dur": 5.0,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": -5.7
+   }
+  },
+  {
+   "t": 220.97,
    "id": "confetti",
    "at": "esther.head",
-   "dur": 4.0
+   "dur": 4.0,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   },
   {
-   "t": 134.03,
+   "t": 230.39,
    "id": "golden_rays",
    "at": "esther.root",
-   "dur": 5.0
+   "dur": 5.0,
+   "anchor": {
+    "line": "es_17",
+    "edge": "end",
+    "dt": 1.0
+   }
   }
  ],
  "sfx": [
   {
    "t": 12.26,
-   "id": "sparkle"
+   "id": "sparkle",
+   "anchor": {
+    "line": "es_01",
+    "edge": "end",
+    "dt": 1.9
+   }
   },
   {
-   "t": 34.23,
-   "id": "stomp"
+   "t": 19.72,
+   "id": "fanfare",
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.3
+   }
   },
   {
-   "t": 34.63,
-   "id": "stomp"
+   "t": 31.59,
+   "id": "ring_glint",
+   "anchor": {
+    "line": "es_03b",
+    "edge": "end",
+    "dt": 1.1
+   }
   },
   {
-   "t": 49.86,
-   "id": "ring_glint"
+   "t": 48.94,
+   "id": "steam",
+   "anchor": {
+    "line": "es_04",
+    "edge": "end",
+    "dt": 0.5
+   }
   },
   {
-   "t": 68.77,
-   "id": "soft_bell"
+   "t": 53.8,
+   "id": "stomp",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": -1.0
+   }
   },
   {
-   "t": 90.49,
-   "id": "sceptre_chime"
+   "t": 54.25,
+   "id": "stomp",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": -0.55
+   }
   },
   {
-   "t": 103.79,
-   "id": "table_set"
+   "t": 54.7,
+   "id": "stomp",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": -0.1
+   }
   },
   {
-   "t": 115.92,
-   "id": "gasp"
+   "t": 74.63,
+   "id": "ring_glint",
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": 0.0
+   }
   },
   {
-   "t": 118.18,
-   "id": "boing"
+   "t": 97.39,
+   "id": "soft_bell",
+   "anchor": {
+    "line": "es_08",
+    "edge": "end",
+    "dt": 2.5
+   }
   },
   {
-   "t": 123.81,
-   "id": "scurry"
+   "t": 119.11,
+   "id": "sceptre_chime",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 2.7
+   }
   },
   {
-   "t": 124.61,
-   "id": "cheer"
+   "t": 165.88,
+   "id": "wah_wah",
+   "anchor": {
+    "line": "es_12f",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 182.74,
+   "id": "cheer",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 183.94,
+   "id": "table_set",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 196.07,
+   "id": "gasp",
+   "anchor": {
+    "line": "es_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 198.33,
+   "id": "boing",
+   "anchor": {
+    "line": "es_15",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 209.0,
+   "id": "armor_march",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 211.35,
+   "id": "grab",
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": 2.45
+   }
+  },
+  {
+   "t": 214.17,
+   "id": "scurry",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": -5.4
+   }
+  },
+  {
+   "t": 220.97,
+   "id": "cheer",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   }
  ],
  "music": [
   {
    "t": 0.0,
-   "cue": "palace_theme"
+   "cue": "palace_theme",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 19.72,
-   "cue": "haman_theme"
+   "cue": "haman_fanfare",
+   "anchor": {
+    "line": "es_02",
+    "edge": "end",
+    "dt": 1.3
+   }
   },
   {
-   "t": 35.13,
-   "cue": "tension"
+   "t": 55.1,
+   "cue": "tension",
+   "anchor": {
+    "line": "es_04b",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
-   "t": 50.66,
-   "cue": "mordecai"
+   "t": 79.28,
+   "cue": "mordecai",
+   "anchor": {
+    "line": "es_06b",
+    "edge": "end",
+    "dt": 0.5
+   }
   },
   {
-   "t": 77.72,
-   "cue": "approach"
+   "t": 106.34,
+   "cue": "approach",
+   "anchor": {
+    "line": "es_09",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 89.59,
-   "cue": "sceptre"
+   "t": 118.21,
+   "cue": "sceptre",
+   "anchor": {
+    "line": "es_10",
+    "edge": "end",
+    "dt": 1.8
+   }
   },
   {
-   "t": 103.79,
-   "cue": "banquet"
+   "t": 132.41,
+   "cue": "haman_fanfare",
+   "anchor": {
+    "line": "es_12",
+    "edge": "end",
+    "dt": 0.4
+   }
   },
   {
-   "t": 111.32,
-   "cue": "truth"
+   "t": 141.1,
+   "cue": "tension",
+   "anchor": {
+    "line": "es_12b",
+    "edge": "end",
+    "dt": 0.3
+   }
   },
   {
-   "t": 124.61,
-   "cue": "celebration"
+   "t": 170.66,
+   "cue": "sulk_march",
+   "anchor": {
+    "line": "es_12g",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 183.94,
+   "cue": "banquet",
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 191.47,
+   "cue": "truth",
+   "anchor": {
+    "line": "es_13",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 220.97,
+   "cue": "celebration",
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   }
  ],
  "props": [
   {
    "t": 0.0,
    "node": "palace/table",
-   "show": false
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 0.0,
    "node": "king/ring",
-   "show": true
+   "show": true,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
    "t": 0.0,
    "node": "haman/ring",
-   "show": false
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
   },
   {
-   "t": 49.76,
+   "t": 0.0,
+   "node": "guard1",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "guard2",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 74.53,
    "node": "king/ring",
-   "show": false
+   "show": false,
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": -0.1
+   }
   },
   {
-   "t": 49.76,
+   "t": 74.53,
    "node": "haman/ring",
-   "show": true
+   "show": true,
+   "anchor": {
+    "line": "es_06",
+    "edge": "end",
+    "dt": -0.1
+   }
   },
   {
-   "t": 103.79,
+   "t": 183.94,
    "node": "palace/table",
-   "show": true
+   "show": true,
+   "anchor": {
+    "line": "es_12i",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 208.4,
+   "node": "guard1",
+   "show": true,
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": -0.5
+   }
+  },
+  {
+   "t": 208.4,
+   "node": "guard2",
+   "show": true,
+   "anchor": {
+    "line": "es_16b",
+    "edge": "end",
+    "dt": -0.5
+   }
+  },
+  {
+   "t": 220.97,
+   "node": "guard1",
+   "show": false,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 220.97,
+   "node": "guard2",
+   "show": false,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 220.97,
+   "node": "haman",
+   "show": false,
+   "anchor": {
+    "line": "es_16c",
+    "edge": "end",
+    "dt": 1.4
+   }
   }
  ],
  "requestedClips": [],
- "timedFrom": "voices"
+ "timedFrom": "voices",
+ "durationAnchor": {
+  "line": "es_18",
+  "edge": "end",
+  "dt": 2.0
+ },
+ "retime": 1
 }

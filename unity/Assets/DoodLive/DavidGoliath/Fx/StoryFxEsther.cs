@@ -19,6 +19,7 @@ namespace DoodLive.DavidGoliath
         {
             new BrazierFire(), new CrownSparkle(), new RingGlint(), new PrayerGlow(),
             new SceptreBeam(), new TensionDim(), new TruthFlash(), new Petals(),
+            new AngerSteam(), new SweatDrops(), new DustDrag(),
         };
 
         /// <summary>Stage-local point (art units) that sceptre_beam reaches toward. Default: Esther's chest standing at the
@@ -34,6 +35,10 @@ namespace DoodLive.DavidGoliath
         internal static readonly Color Rose = new Color32(0xE8, 0x60, 0x7A, 255);
         internal static readonly Color Crimson = new Color32(0xC8, 0x32, 0x3F, 255);   // Esther's cape
         internal static readonly Color Blush = new Color32(0xFB, 0xD3, 0xDF, 255);
+        internal static readonly Color SteamRed = new Color32(0xF2, 0x8C, 0x7E, 255);  // hot steam (DesignTokens.Red, softened)
+        internal static readonly Color SweatBlue = new Color32(0x9F, 0xD4, 0xF5, 255); // sweat drop fill (Sky, lightened)
+        internal static readonly Color SweatRim = new Color32(0x4B, 0x93, 0xD0, 255);  // sweat drop crayon edge
+        internal static readonly Color DragDust = new Color32(0xE6, 0xD2, 0xA8, 255);  // beige dust (PaperDeep, a bit warmer)
     }
 
     /// <summary>
@@ -412,6 +417,218 @@ namespace DoodLive.DavidGoliath
                 Color col = Palette[i % Palette.Length];
                 b.Sprite(p, 0.03f, 0.019f * flip, A(col, fade * Sat(t * 4f)), DGFxPaint.ConfettiDot,
                          ph + ts * 1.6f, false, landed ? FxFace.Ground : FxFace.Camera);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ S03: Haman's tantrum, steam from both ears
+    public sealed class AngerSteam : FxDef
+    {
+        public override string Id => "anger_steam";
+        public override float DefaultDur => 3.6f;
+
+        const float Period = 0.55f;        // one "pfff" per side every 0.55 s, like a kettle on the boil
+        const int PerBurst = 4;
+
+        public override void Emit(FxCtx c, FxBatch b)
+        {
+            float env = Env(c.t, c.dur, 0.05f, 0.45f);
+            if (env <= 0) return;
+            Vector3 head = c.anchor;
+            float lastStart = Mathf.Max(0.05f, c.dur - 0.5f);
+            int bursts = Mathf.FloorToInt(lastStart / Period) + 1;
+            // oldest first so the newest puffs draw on top
+            for (int k = 0; k < bursts; k++)
+            {
+                float tb = 0.05f + k * Period;
+                if (tb > c.t) break;
+                if (c.t - tb > 1.3f) continue;
+                for (int side = -1; side <= 1; side += 2)
+                {
+                    int sid = side < 0 ? 0 : 1;
+                    float tSide = tb + (sid == 1 ? 0.07f : 0f);             // right ear a hair later: lively, not mirrored
+                    Vector3 ear = head + c.camRight * (side * 0.042f) + Vector3.up * 0.012f;
+                    // hotter at the start of the tantrum, cooler (whiter) later
+                    float heat = Mathf.Lerp(1f, 0.45f, Sat(tb / Mathf.Max(0.5f, c.dur)));
+
+                    // the jet: a short white streak shooting out of the ear in the first 0.18 s of the burst
+                    float jk = (c.t - tSide) / 0.18f;
+                    if (jk > 0 && jk < 1)
+                    {
+                        Vector3 jd = (c.camRight * side * 0.85f + Vector3.up * 0.55f).normalized;
+                        var r = b.Ribbon(DGFxPaint.Streak, false);
+                        float len = 0.05f * OutCubic(jk);
+                        Color jc = Color.Lerp(EstherFx.SteamRed, White, 0.5f);
+                        r.Add(ear + jd * (0.004f + len * 0.25f * jk), 0.016f, A(jc, 0.8f * (1 - jk) * env));
+                        r.Add(ear + jd * (0.004f + len), 0.012f, A(White, 0.8f * (1 - jk) * env));
+                    }
+
+                    for (int j = 0; j < PerBurst; j++)
+                    {
+                        int id = (k * 2 + sid) * PerBurst + j;
+                        float t0 = tSide + 0.03f * j + 0.02f * FxRand.H(c.seed, id, 0);
+                        float life = Mathf.Lerp(0.85f, 1.1f, FxRand.H(c.seed, id, 1));
+                        float a = (c.t - t0) / life;
+                        if (a <= 0 || a >= 1) continue;
+                        // all puffs of one burst leave on nearly the same line so they read as one cloud
+                        float el = 0.45f + 0.35f * FxRand.Signed(c.seed, k * 2 + sid, 2) * 0.5f + 0.18f * (j - 1);
+                        Vector3 dir = c.camRight * (side * Mathf.Cos(el)) + Vector3.up * Mathf.Sin(el);
+                        float e = OutCubic(a * 1.25f);
+                        float dist = (0.05f + 0.018f * j) * e;
+                        Vector3 p = ear + dir * (0.006f + dist) + Vector3.up * (0.06f * a * a)         // shoots out, then drifts up
+                                  + c.camUp * (0.013f * FxRand.Signed(c.seed, id, 3));
+                        float size = Mathf.Lerp(0.022f, 0.075f - 0.006f * j, e) * Mathf.Lerp(0.9f, 1.1f, FxRand.H(c.seed, id, 5))
+                                     * (0.7f + 0.3f * OutBack(a * 5f));
+                        float hot = heat * (1 - Smooth(0.0f, 0.6f, a));
+                        Color col = Color.Lerp(White, EstherFx.SteamRed, 0.8f * hot);
+                        float alpha = Sat(a * 12f) * (1 - Smooth(0.55f, 1f, a)) * env;      // solid puff, thins out at the end
+                        b.Sprite(p, size, A(col, alpha), DGFxPaint.Dust, FxRand.H(c.seed, id, 6) * Tau + a * 0.8f);
+                    }
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ S10: Haman is exposed, cartoon sweat drops
+    public sealed class SweatDrops : FxDef
+    {
+        public override string Id => "sweat_drops";
+        public override float DefaultDur => 2f;
+
+        const float Grav = 2.2f;           // art units / s^2: a lazy cartoon arc, not a real fall
+
+        public override void Emit(FxCtx c, FxBatch b)
+        {
+            float env = Env(c.t, c.dur, 0f, 0.3f);
+            if (env <= 0) return;
+            int n = 3 + Mathf.Min(3, (int)(FxRand.H(c.seed, 99, 0) * 4f));   // 3..6 drops
+            float span = Mathf.Max(0.3f, Mathf.Min(1.1f, c.dur * 0.55f));
+            for (int i = 0; i < n; i++)
+            {
+                float t0 = 0.04f + span * (i + 0.6f * FxRand.H(c.seed, i, 0)) / n;
+                float ts = c.t - t0;
+                if (ts <= 0) continue;
+                float side = (i % 2 == 0 ? 1f : -1f) * (FxRand.H(c.seed, i, 9) < 0.2f ? -1f : 1f);
+                Vector3 head = c.track.Count > 0 ? c.track.Sample(t0) : c.anchor;   // flicked off where the head WAS
+                Vector3 p0 = head + c.camRight * (side * Mathf.Lerp(0.035f, 0.05f, FxRand.H(c.seed, i, 1)))
+                                  + Vector3.up * Mathf.Lerp(0.015f, 0.04f, FxRand.H(c.seed, i, 2));
+                Vector3 v0 = c.camRight * (side * Mathf.Lerp(0.12f, 0.22f, FxRand.H(c.seed, i, 3)))
+                           + Vector3.up * Mathf.Lerp(0.30f, 0.45f, FxRand.H(c.seed, i, 4))
+                           + c.ToCamFlat(head) * (0.08f * FxRand.Signed(c.seed, i, 5));
+                // time to reach the page (y = 0.004): y0 + vy t - g t^2 / 2 = 0.004
+                float y0 = p0.y - 0.004f, vy = v0.y;
+                float tLand = (vy + Mathf.Sqrt(Mathf.Max(0f, vy * vy + 2f * Grav * y0))) / Grav;
+                if (ts < tLand)
+                {
+                    Vector3 p = p0 + v0 * ts + Vector3.down * (0.5f * Grav * ts * ts);
+                    Vector3 vel = v0 + Vector3.down * (Grav * ts);
+                    float pop = OutBack(ts / 0.12f);
+                    Drop(b, c, p, vel, 0.034f * pop, env);
+                }
+                else
+                {   // tiny splash on the page: a flat ring, a wet spot that fades, three droplets that hop out
+                    float k = (ts - tLand) / 0.4f;
+                    if (k >= 1) continue;
+                    Vector3 g = p0 + v0 * tLand; g.y = 0.004f;
+                    b.Sprite(g, 0.022f * (1 - k) + 0.012f, A(EstherFx.SweatBlue, 0.55f * (1 - k) * env), DGFxPaint.SoftDot,
+                             0, false, FxFace.Ground);
+                    b.Sprite(g, 0.012f + 0.035f * OutCubic(k), A(EstherFx.SweatRim, 0.8f * (1 - k) * env), DGFxPaint.Ring,
+                             i, false, FxFace.Ground);
+                    for (int s = 0; s < 3; s++)
+                    {
+                        float ang = Tau * (s / 3f + FxRand.H(c.seed, i * 7 + s, 6));
+                        float hop = Mathf.Sin(Mathf.PI * Sat(k * 1.6f));
+                        Vector3 q = g + Flat(ang, 0.006f + 0.022f * OutCubic(k)) + Vector3.up * (0.012f * hop);
+                        b.Sprite(q, 0.008f * (1 - k), A(EstherFx.SweatBlue, (1 - k) * env), DGFxPaint.ConfettiDot, 0, false);
+                    }
+                }
+            }
+        }
+
+        /// <summary>A cartoon teardrop: round front, pointed tail trailing behind the motion, crayon edge, white shine.</summary>
+        static void Drop(FxBatch b, FxCtx c, Vector3 p, Vector3 vel, float size, float alpha)
+        {
+            if (size <= 1e-4f) return;
+            // the direction of travel projected on the screen, so the tail always points back along the arc
+            Vector3 vs = c.camRight * Vector3.Dot(vel, c.camRight) + c.camUp * Vector3.Dot(vel, c.camUp);
+            Vector3 fwd = vs.sqrMagnitude > 1e-6f ? vs.normalized : -c.camUp;
+            float R = size * 0.42f, L = size * 1.25f;          // bulb radius, total length (front tip to tail tip)
+            DropRibbon(b, p, fwd, R + 0.005f, L + 0.008f, A(EstherFx.SweatRim, alpha));   // edge first
+            DropRibbon(b, p, fwd, R, L, A(EstherFx.SweatBlue, alpha));
+            Vector3 side = Vector3.Cross(fwd, (c.camPos - p).normalized).normalized;
+            b.Sprite(p - fwd * (R * 0.9f) + side * (R * 0.35f), R * 0.75f, A(White, 0.9f * alpha), DGFxPaint.SoftDot, 0, false);
+        }
+
+        static void DropRibbon(FxBatch b, Vector3 p, Vector3 fwd, float R, float L, Color col)
+        {
+            // points run from the front tip (round end) to the tail tip; the ribbon cell fades at the last point
+            var r = b.Ribbon(DGFxPaint.Ribbon, false);
+            const int pts = 9;
+            Vector3 front = p + fwd * (R * 0.2f);
+            for (int k = 0; k < pts; k++)
+            {
+                float x = L * k / (pts - 1);
+                float w = x < R ? 2f * Mathf.Sqrt(Mathf.Max(0f, R * R - (R - x) * (R - x)))
+                                : 2f * R * (1f - (x - R) / (L - R));
+                r.Add(front - fwd * x, Mathf.Max(w * 1.15f, 0.0008f), col);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ S10: guards drag Haman away, dust at his feet
+    public sealed class DustDrag : FxDef
+    {
+        public override string Id => "dust_drag";
+        public override float DefaultDur => 4f;
+
+        const float Step = 0.09f;          // a puff pair every 0.09 s of travel
+        const float Life = 1.1f;
+
+        public override void Emit(FxCtx c, FxBatch b)
+        {
+            float env = Env(c.t, c.dur, 0f, 0.6f);
+            if (env <= 0 || c.track.Count == 0) return;
+            int first = Mathf.Max(0, Mathf.FloorToInt((c.t - Life * 1.4f) / Step));
+            int last = Mathf.FloorToInt(Mathf.Min(c.t, c.dur - 0.4f) / Step);
+            for (int k = first; k <= last; k++)
+            {
+                float ts = k * Step;
+                float age = c.t - ts;
+                if (age < 0) continue;
+                Vector3 p = c.track.Sample(ts), q = c.track.Sample(ts - 0.1f);
+                Vector3 mv = p - q; mv.y = 0;
+                float speed = mv.magnitude / 0.1f;
+                float strength = Smooth(0.015f, 0.09f, speed);        // standing still: no dust
+                if (strength < 0.05f) continue;
+                Vector3 back = mv / Mathf.Max(1e-5f, mv.magnitude);
+                Vector3 across = new Vector3(-back.z, 0, back.x);
+                back = -back;
+                Vector3 g = FxCtx.Ground(p, 0.004f);
+
+                // the scuff left on the page: a flat beige smudge that lingers a little longer than the puffs
+                float sa = age / (Life * 1.4f);
+                if (sa < 1)
+                    b.Sprite(g + across * (0.008f * FxRand.Signed(c.seed, k, 0)), Mathf.Lerp(0.03f, 0.05f, OutCubic(sa)) * (0.6f + 0.4f * strength),
+                             A(EstherFx.DragDust, 0.45f * strength * Sat(sa * 8f) * (1 - sa) * env), DGFxPaint.Dust,
+                             FxRand.H(c.seed, k, 1) * Tau, false, FxFace.Ground);
+
+                for (int s = 0; s < 2; s++)
+                {
+                    int id = k * 2 + s;
+                    float life = Life * Mathf.Lerp(0.75f, 1f, FxRand.H(c.seed, id, 2));
+                    float a = age / life;
+                    if (a >= 1) continue;
+                    float e = OutCubic(a);
+                    float sideSign = s == 0 ? -1f : 1f;
+                    float hump = 4f * a * (1 - a);                       // up a little, then settles back on the page
+                    Vector3 pos = g + back * (0.025f * e * Mathf.Lerp(0.6f, 1.2f, FxRand.H(c.seed, id, 3)))
+                                    + across * (sideSign * (0.008f + 0.022f * e) * Mathf.Lerp(0.6f, 1.2f, FxRand.H(c.seed, id, 4)))
+                                    + Vector3.up * (0.006f + 0.028f * hump * Mathf.Lerp(0.5f, 1f, FxRand.H(c.seed, id, 5)) * strength);
+                    float size = Mathf.Lerp(0.018f, 0.06f, e) * Mathf.Lerp(0.8f, 1.2f, FxRand.H(c.seed, id, 6)) * (0.6f + 0.4f * strength);
+                    Color col = Color.Lerp(EstherFx.DragDust, PaperDeep, 0.5f * FxRand.H(c.seed, id, 7));
+                    b.Sprite(pos, size, A(col, 0.9f * strength * Sat(a * 8f) * Mathf.Pow(1 - a, 1.3f) * env), DGFxPaint.Dust,
+                             FxRand.H(c.seed, id, 8) * Tau + a * 1.2f);
+                }
             }
         }
     }

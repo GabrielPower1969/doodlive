@@ -9,8 +9,8 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:vivian (take 3 of 4)",
    "measure": {
-    "asr": "很久很久以前,在波斯的书山城里,住着一位很有权力的国王,亚哈隋鲁王。",
-    "errorRate": 0.067,
+    "asr": "很久很久以前,在波斯的书山城里,住着一位很有权力的国王,亚哈随鲁王。",
+    "errorRate": 0.033,
     "f0MedianHz": 228.2,
     "f0SdSemitones": 4.92,
     "f0RangeSemitones": 14.65,
@@ -36,12 +36,12 @@
    "sec": 7.31,
    "maxSec": 7.36,
    "slackSec": 0.05,
-   "gapToNextSec": 2.2,
+   "gapToNextSec": 1.6,
    "lufs": -16.0,
    "truePeakDbtp": -2.0,
    "source": "qwen:vivian (take 2 of 4)",
    "measure": {
-    "asr": "国王选了一位又美丽又善良的女孩做王后她的名字叫以斯帖",
+    "asr": "国王选了一位又美丽又善良的女孩做王后,她的名字叫以斯帖。",
     "errorRate": 0.0,
     "f0MedianHz": 240.3,
     "f0SdSemitones": 5.44,
@@ -55,7 +55,7 @@
     "phraseRates": [
      4.23,
      5.16,
-     4.11,
+     5.48,
      2.59
     ],
     "sec": 7.31,
@@ -63,105 +63,220 @@
     "pace": 3.56
    }
   },
-  "es_03": {
-   "sec": 4.88,
-   "maxSec": 5.4,
-   "slackSec": 0.52,
-   "gapToNextSec": 1.02,
+  "es_03a": {
+   "sec": 2.94,
+   "maxSec": 6.02,
+   "slackSec": 3.08,
+   "gapToNextSec": 3.73,
    "lufs": -16.2,
-   "truePeakDbtp": -2.0,
-   "source": "edge:zh-CN-YunxiNeural",
+   "truePeakDbtp": -2.1,
+   "source": "qwen_design:herald-design (take 1 of 4)",
    "measure": {
-    "asr": "哼,我可是王最看重的大臣,谁见了我都得弯腰下板",
-    "errorRate": 0.048,
-    "f0MedianHz": 191.3,
-    "f0SdSemitones": 5.5,
-    "f0RangeSemitones": 16.65,
+    "asr": "哈曼大人 假到!",
+    "errorRate": 0.167,
+    "f0MedianHz": 195.1,
+    "f0SdSemitones": 8.15,
+    "f0RangeSemitones": 21.9,
     "pausesSec": [
-     0.33,
-     0.25,
-     0.44
+     0.67
     ],
     "phraseRates": [
-     6.67,
-     4.35,
-     5.38
+     4.71
     ],
-    "sec": 4.88,
-    "speechSec": 3.71,
-    "pace": 4.3
+    "sec": 2.94,
+    "speechSec": 2.08,
+    "pace": 2.04
+   }
+  },
+  "es_03b": {
+   "sec": 2.87,
+   "maxSec": 3.85,
+   "slackSec": 0.98,
+   "gapToNextSec": 1.63,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.8,
+   "source": "crowd:8 voices",
+   "measure": {
+    "asr": "拜见阿们的大人。",
+    "errorRate": 0.5,
+    "f0MedianHz": 344.6,
+    "f0SdSemitones": 6.88,
+    "f0RangeSemitones": 16.89,
+    "pausesSec": [],
+    "phraseRates": [
+     2.97
+    ],
+    "sec": 2.87,
+    "speechSec": 2.36,
+    "pace": 2.09
+   }
+  },
+  "es_03": {
+   "sec": 9.92,
+   "maxSec": 9.97,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.5,
+   "lufs": -16.2,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 3 of 4)",
+   "measure": {
+    "asr": "哼哼,看见没有,人人见了我都得弯腰,我可是全国第一大官。哈哈哈哈。",
+    "errorRate": 0.0,
+    "f0MedianHz": 198.9,
+    "f0SdSemitones": 8.95,
+    "f0RangeSemitones": 27.53,
+    "pausesSec": [
+     0.14,
+     0.15,
+     0.2,
+     0.26,
+     0.21,
+     0.64,
+     0.16,
+     0.52
+    ],
+    "phraseRates": [
+     5.33,
+     4.42,
+     3.61,
+     3.9,
+     3.6
+    ],
+    "sec": 9.92,
+    "speechSec": 7.5,
+    "pace": 2.82,
+    "acting": {
+     "kind": "laugh",
+     "regionSec": [
+      6.96,
+      9.92
+     ],
+     "bursts": 10,
+     "burstRate": 3.81,
+     "intervalCV": 0.84,
+     "hnrDiffDb": -4.1,
+     "pitchRiseSt": 26.1,
+     "pitchSdSt": 11.0,
+     "verdict": "laugh",
+     "score": 4.84
+    }
    }
   },
   "es_04": {
-   "sec": 8.41,
-   "maxSec": 8.46,
+   "sec": 6.83,
+   "maxSec": 6.88,
    "slackSec": 0.05,
-   "gapToNextSec": 1.8,
-   "lufs": -16.1,
-   "truePeakDbtp": -2.1,
+   "gapToNextSec": 0.4,
+   "lufs": -16.2,
+   "truePeakDbtp": -1.9,
    "source": "qwen:vivian (take 0 of 4)",
    "measure": {
-    "asr": "可是摩迪改只拜上帝,不肯向哈曼下拜。哈曼气得直跺脚。",
-    "errorRate": 0.087,
-    "f0MedianHz": 278.8,
-    "f0SdSemitones": 5.19,
-    "f0RangeSemitones": 16.04,
+    "asr": "可是有一个人偏偏不拜他,莫迪改说,我只拜上帝。",
+    "errorRate": 0.1,
+    "f0MedianHz": 268.6,
+    "f0SdSemitones": 5.22,
+    "f0RangeSemitones": 17.12,
     "pausesSec": [
-     0.51,
-     0.56,
-     0.32,
-     0.49
+     0.42,
+     0.46,
+     0.75,
+     0.67
     ],
     "phraseRates": [
-     3.88,
-     4.03,
-     4.29
+     3.05,
+     3.25,
+     5.48,
+     3.74
     ],
-    "sec": 8.41,
-    "speechSec": 6.37,
-    "pace": 2.73
+    "sec": 6.83,
+    "speechSec": 4.39,
+    "pace": 2.93
+   }
+  },
+  "es_04b": {
+   "sec": 4.86,
+   "maxSec": 6.01,
+   "slackSec": 1.15,
+   "gapToNextSec": 3.0,
+   "lufs": -16.3,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 0 of 6)",
+   "measure": {
+    "asr": "什么?他竟敢不拜我,气死我了。哼,哼,哼。",
+    "errorRate": 0.0,
+    "f0MedianHz": 274.3,
+    "f0SdSemitones": 8.93,
+    "f0RangeSemitones": 23.2,
+    "pausesSec": [
+     0.49,
+     0.54,
+     0.27,
+     0.35,
+     0.36
+    ],
+    "phraseRates": [
+     4.81,
+     5.26
+    ],
+    "sec": 4.86,
+    "speechSec": 2.7,
+    "pace": 3.08,
+    "acting": {
+     "kind": "tantrum",
+     "lastPulsesDb": [
+      71.8,
+      83.3,
+      84.1
+     ],
+     "hmphRiseDb": 12.4,
+     "risingSteps": 2,
+     "pitchTopSt": 9.9,
+     "loudSwingDb": 15.2,
+     "verdict": "tantrum",
+     "score": 4.5
+    }
    }
   },
   "es_05": {
-   "sec": 6.24,
-   "maxSec": 6.29,
-   "slackSec": 0.05,
-   "gapToNextSec": 0.65,
-   "lufs": -16.1,
-   "truePeakDbtp": -2.1,
-   "source": "edge:zh-CN-YunxiNeural",
+   "sec": 8.07,
+   "maxSec": 11.09,
+   "slackSec": 3.02,
+   "gapToNextSec": 3.62,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 1 of 4)",
    "measure": {
     "asr": "王啊,有一群人不守您的规矩,不如让我把他们都除掉吧。",
     "errorRate": 0.0,
-    "f0MedianHz": 150.0,
-    "f0SdSemitones": 4.46,
-    "f0RangeSemitones": 12.91,
+    "f0MedianHz": 159.6,
+    "f0SdSemitones": 5.92,
+    "f0RangeSemitones": 17.72,
     "pausesSec": [
-     0.49,
-     0.53,
-     0.52,
-     0.68
+     0.32,
+     0.37,
+     0.62,
+     0.22
     ],
     "phraseRates": [
-     5.19,
-     6.1,
-     6.78
+     3.92,
+     3.25,
+     3.2
     ],
-    "sec": 6.24,
-    "speechSec": 3.87,
-    "pace": 3.68
+    "sec": 8.07,
+    "speechSec": 6.38,
+    "pace": 2.85
    }
   },
   "es_06": {
    "sec": 5.88,
    "maxSec": 6.29,
    "slackSec": 0.41,
-   "gapToNextSec": 1.76,
+   "gapToNextSec": 1.56,
    "lufs": -16.3,
    "truePeakDbtp": -1.9,
    "source": "qwen:uncle_fu (take 1 of 4)",
    "measure": {
-    "asr": "嗯好吧这枚戒指给你你看着办",
+    "asr": "嗯,好吧,这枚戒指给你,你看着办。",
     "errorRate": 0.0,
     "f0MedianHz": 99.7,
     "f0SdSemitones": 8.83,
@@ -172,11 +287,37 @@
      0.43
     ],
     "phraseRates": [
-     3.91
+     4.69,
+     4.71
     ],
     "sec": 5.88,
     "speechSec": 3.98,
     "pace": 2.21
+   }
+  },
+  "es_06b": {
+   "sec": 2.95,
+   "maxSec": 3.0,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.1,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 0 of 4)",
+   "measure": {
+    "asr": "这下谁也拦不住我了。",
+    "errorRate": 0.111,
+    "f0MedianHz": 158.1,
+    "f0SdSemitones": 7.48,
+    "f0RangeSemitones": 26.46,
+    "pausesSec": [
+     0.27
+    ],
+    "phraseRates": [
+     4.55
+    ],
+    "sec": 2.95,
+    "speechSec": 2.53,
+    "pace": 4.07
    }
   },
   "es_07": {
@@ -188,7 +329,7 @@
    "truePeakDbtp": -2.0,
    "source": "edge:zh-CN-YunyangNeural",
    "measure": {
-    "asr": "李斯帖也要去求王救我们说不定你当上王后就是为了今天",
+    "asr": "李斯帖也要去求王救我们。说不定你当上王后就是为了今天。",
     "errorRate": 0.08,
     "f0MedianHz": 123.4,
     "f0SdSemitones": 9.47,
@@ -202,6 +343,7 @@
     "phraseRates": [
      5.88,
      6.09,
+     6.25,
      4.3,
      4.04
     ],
@@ -247,7 +389,7 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:serena (take 0 of 4)",
    "measure": {
-    "asr": "好,请大家为我祷告,我要去见王,就算有危险,我也要去。",
+    "asr": "好,请大家为我祷告。我要去见王,就算有危险,我也要去。",
     "errorRate": 0.0,
     "f0MedianHz": 395.5,
     "f0SdSemitones": 2.89,
@@ -260,7 +402,7 @@
     ],
     "phraseRates": [
      5.51,
-     3.26,
+     5.43,
      4.85,
      5.97
     ],
@@ -278,7 +420,7 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:vivian (take 1 of 4)",
    "measure": {
-    "asr": "以斯帖一步一步走上王宫的台阶,王会怎么做呢?",
+    "asr": "以斯帖一步一步走上王宫的台阶。王会怎么做呢?",
     "errorRate": 0.0,
     "f0MedianHz": 211.0,
     "f0SdSemitones": 4.96,
@@ -309,7 +451,7 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:uncle_fu (take 1 of 4)",
    "measure": {
-    "asr": "以斯帖王后 你来了你想要什么就算是半个国家 我也给你",
+    "asr": "以斯帖王后,你来了!你想要什么,就算是半个国家,我也给你!",
     "errorRate": 0.042,
     "f0MedianHz": 267.1,
     "f0SdSemitones": 5.07,
@@ -322,9 +464,10 @@
     ],
     "phraseRates": [
      3.79,
+     4.05,
      5.75,
-     4.48,
-     2.63
+     5.22,
+     3.51
     ],
     "sec": 6.91,
     "speechSec": 5.41,
@@ -335,7 +478,7 @@
    "sec": 3.07,
    "maxSec": 3.94,
    "slackSec": 0.87,
-   "gapToNextSec": 4.02,
+   "gapToNextSec": 1.82,
    "lufs": -16.1,
    "truePeakDbtp": -2.0,
    "source": "qwen:serena (take 0 of 4)",
@@ -358,6 +501,248 @@
     "pace": 5.22
    }
   },
+  "es_12b": {
+   "sec": 6.36,
+   "maxSec": 7.84,
+   "slackSec": 1.48,
+   "gapToNextSec": 2.73,
+   "lufs": -16.2,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 5 of 6)",
+   "measure": {
+    "asr": "王后的宴席只请了王田和我,我真是太了不起了。",
+    "errorRate": 0.105,
+    "f0MedianHz": 226.3,
+    "f0SdSemitones": 8.05,
+    "f0RangeSemitones": 23.48,
+    "pausesSec": [
+     0.24,
+     0.41,
+     0.17,
+     0.21
+    ],
+    "phraseRates": [
+     4.63,
+     3.2,
+     4.12
+    ],
+    "sec": 6.36,
+    "speechSec": 5.18,
+    "pace": 3.3,
+    "acting": {
+     "kind": "laugh",
+     "regionSec": [
+      3.6,
+      5.6
+     ],
+     "bursts": 6,
+     "burstRate": 3.73,
+     "intervalCV": 0.36,
+     "hnrDiffDb": 0.6,
+     "pitchRiseSt": 7.0,
+     "pitchSdSt": 4.0,
+     "verdict": "laugh",
+     "score": 4.2
+    }
+   }
+  },
+  "es_12c": {
+   "sec": 4.92,
+   "maxSec": 4.97,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.6,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:uncle_fu (take 1 of 4)",
+   "measure": {
+    "asr": "哈曼,我想尊容一个人,你说该怎么做呢?",
+    "errorRate": 0.062,
+    "f0MedianHz": 156.9,
+    "f0SdSemitones": 7.4,
+    "f0RangeSemitones": 26.17,
+    "pausesSec": [
+     0.52,
+     0.42,
+     0.21
+    ],
+    "phraseRates": [
+     4.96,
+     5.08,
+     3.6
+    ],
+    "sec": 4.92,
+    "speechSec": 3.62,
+    "pace": 3.25
+   }
+  },
+  "es_12d": {
+   "sec": 3.17,
+   "maxSec": 3.22,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.7,
+   "lufs": -16.3,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 1 of 4)",
+   "measure": {
+    "asr": "嘿嘿,除了我,还有谁呢?",
+    "errorRate": 0.0,
+    "f0MedianHz": 139.1,
+    "f0SdSemitones": 5.67,
+    "f0RangeSemitones": 17.35,
+    "pausesSec": [
+     0.19
+    ],
+    "phraseRates": [
+     2.78,
+     3.88
+    ],
+    "sec": 3.17,
+    "speechSec": 2.83,
+    "pace": 2.84
+   }
+  },
+  "es_12e": {
+   "sec": 8.31,
+   "maxSec": 9.37,
+   "slackSec": 1.06,
+   "gapToNextSec": 1.51,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 2 of 4)",
+   "measure": {
+    "asr": "要给他穿上王袍,骑上王的马,还要有人在前面大声喊,看呐,这就是王要尊荣的人。",
+    "errorRate": 0.03,
+    "f0MedianHz": 189.7,
+    "f0SdSemitones": 7.29,
+    "f0RangeSemitones": 21.47,
+    "pausesSec": [
+     0.15,
+     0.31,
+     0.33,
+     0.26,
+     0.22
+    ],
+    "phraseRates": [
+     5.51,
+     5.38,
+     4.98,
+     4.69,
+     3.55
+    ],
+    "sec": 8.31,
+    "speechSec": 6.89,
+    "pace": 3.97
+   }
+  },
+  "es_12f": {
+   "sec": 4.27,
+   "maxSec": 4.32,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.0,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:uncle_fu (take 2 of 4)",
+   "measure": {
+    "asr": "好主意,你就照这样去尊荣莫迪改吧。",
+    "errorRate": 0.133,
+    "f0MedianHz": 225.5,
+    "f0SdSemitones": 7.81,
+    "f0RangeSemitones": 26.67,
+    "pausesSec": [
+     0.74,
+     0.27
+    ],
+    "phraseRates": [
+     3.8,
+     3.37,
+     4.26
+    ],
+    "sec": 4.27,
+    "speechSec": 3.09,
+    "pace": 3.51
+   }
+  },
+  "es_12g": {
+   "sec": 2.87,
+   "maxSec": 3.53,
+   "slackSec": 0.66,
+   "gapToNextSec": 1.61,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 5 of 6)",
+   "measure": {
+    "asr": "莫 莫 莫的 改。",
+    "errorRate": 0.5,
+    "f0MedianHz": 308.3,
+    "f0SdSemitones": 10.06,
+    "f0RangeSemitones": 29.62,
+    "pausesSec": [
+     0.37,
+     0.37
+    ],
+    "phraseRates": [
+     1.96
+    ],
+    "sec": 2.87,
+    "speechSec": 1.97,
+    "pace": 1.74
+   }
+  },
+  "es_12h": {
+   "sec": 6.91,
+   "maxSec": 6.96,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.3,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:vivian (take 1 of 4)",
+   "measure": {
+    "asr": "于是哈曼只好牵着王的马,带着莫地梁改满城走,还得一边走一边喊。",
+    "errorRate": 0.111,
+    "f0MedianHz": 222.4,
+    "f0SdSemitones": 6.25,
+    "f0RangeSemitones": 18.01,
+    "pausesSec": [
+     0.25,
+     0.24,
+     0.5
+    ],
+    "phraseRates": [
+     4.62,
+     4.81,
+     4.82
+    ],
+    "sec": 6.91,
+    "speechSec": 5.79,
+    "pace": 3.91
+   }
+  },
+  "es_12i": {
+   "sec": 3.22,
+   "maxSec": 4.72,
+   "slackSec": 1.5,
+   "gapToNextSec": 5.25,
+   "lufs": -16.1,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 2 of 4)",
+   "measure": {
+    "asr": "这就是王要尊荣的人。哼。",
+    "errorRate": 0.0,
+    "f0MedianHz": 197.5,
+    "f0SdSemitones": 6.49,
+    "f0RangeSemitones": 18.39,
+    "pausesSec": [
+     0.41,
+     0.73
+    ],
+    "phraseRates": [
+     3.66
+    ],
+    "sec": 3.22,
+    "speechSec": 1.94,
+    "pace": 3.1
+   }
+  },
   "es_13": {
    "sec": 4.43,
    "maxSec": 4.48,
@@ -367,7 +752,7 @@
    "truePeakDbtp": -2.1,
    "source": "qwen:serena (take 2 of 4)",
    "measure": {
-    "asr": "王啊 有人要害我 还要害我的族人",
+    "asr": "王啊,有人要害我,还要害我的族人。",
     "errorRate": 0.0,
     "f0MedianHz": 319.1,
     "f0SdSemitones": 2.35,
@@ -376,8 +761,7 @@
      0.22
     ],
     "phraseRates": [
-     2.94,
-     3.58
+     3.26
     ],
     "sec": 4.43,
     "speechSec": 4.09,
@@ -393,7 +777,7 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:uncle_fu (take 0 of 4)",
    "measure": {
-    "asr": "什么 是谁 谁敢这样做",
+    "asr": "什么?是谁?谁敢这样做?",
     "errorRate": 0.0,
     "f0MedianHz": 380.2,
     "f0SdSemitones": 5.93,
@@ -420,7 +804,7 @@
    "truePeakDbtp": -2.1,
    "source": "qwen:serena (take 0 of 4)",
    "measure": {
-    "asr": "就是他这个坏人哈曼",
+    "asr": "就是他,这个坏人哈曼。",
     "errorRate": 0.0,
     "f0MedianHz": 444.5,
     "f0SdSemitones": 6.23,
@@ -430,7 +814,7 @@
     ],
     "phraseRates": [
      4.35,
-     3.85
+     5.77
     ],
     "sec": 2.3,
     "speechSec": 1.73,
@@ -438,31 +822,97 @@
    }
   },
   "es_16": {
-   "sec": 2.46,
-   "maxSec": 3.68,
-   "slackSec": 1.22,
-   "gapToNextSec": 3.77,
-   "lufs": -16.2,
-   "truePeakDbtp": -2.0,
-   "source": "edge:zh-CN-YunxiNeural",
+   "sec": 5.34,
+   "maxSec": 7.19,
+   "slackSec": 1.85,
+   "gapToNextSec": 2.2,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.1,
+   "source": "qwen:dylan (take 4 of 6)",
    "measure": {
-    "asr": "不不不王啊饶了我吧",
-    "errorRate": 0.0,
-    "f0MedianHz": 223.1,
-    "f0SdSemitones": 5.55,
-    "f0RangeSemitones": 18.94,
+    "asr": "不,不,不,王后,救救我吧。啊,饶命啊。",
+    "errorRate": 0.083,
+    "f0MedianHz": 281.1,
+    "f0SdSemitones": 3.83,
+    "f0RangeSemitones": 12.09,
     "pausesSec": [
-     0.25,
-     0.27,
-     0.32,
-     0.45
+     0.34,
+     0.74,
+     0.24,
+     0.55
     ],
     "phraseRates": [
-     6.67
+     5.19,
+     2.45
     ],
-    "sec": 2.46,
-    "speechSec": 1.0,
-    "pace": 3.66
+    "sec": 5.34,
+    "speechSec": 3.31,
+    "pace": 2.62
+   }
+  },
+  "es_16b": {
+   "sec": 2.03,
+   "maxSec": 2.08,
+   "slackSec": 0.05,
+   "gapToNextSec": 2.3,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:uncle_fu (take 2 of 4)",
+   "measure": {
+    "asr": "来人,把他带走。",
+    "errorRate": 0.0,
+    "f0MedianHz": 251.8,
+    "f0SdSemitones": 6.97,
+    "f0RangeSemitones": 16.33,
+    "pausesSec": [
+     0.48
+    ],
+    "phraseRates": [
+     3.3
+    ],
+    "sec": 2.03,
+    "speechSec": 1.42,
+    "pace": 2.96
+   }
+  },
+  "es_16c": {
+   "sec": 8.37,
+   "maxSec": 8.42,
+   "slackSec": 0.05,
+   "gapToNextSec": 2.2,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.1,
+   "source": "qwen:dylan (take 4 of 6) + tail fade",
+   "measure": {
+    "asr": "不 要啊,放开我,我是大官,我是…不 啊 啊 啊",
+    "errorRate": 0.091,
+    "f0MedianHz": 280.3,
+    "f0SdSemitones": 5.24,
+    "f0RangeSemitones": 14.95,
+    "pausesSec": [
+     0.28,
+     0.21,
+     0.17,
+     0.14,
+     0.27
+    ],
+    "phraseRates": [
+     4.11,
+     4.35,
+     1.37
+    ],
+    "sec": 8.37,
+    "speechSec": 6.94,
+    "pace": 1.91,
+    "acting": {
+     "kind": "wail",
+     "endHoldSec": 2.92,
+     "endHoldPitchSt": 0.6,
+     "startHoldSec": 1.26,
+     "tailSlopeDbPerSec": -22.2,
+     "verdict": "wail",
+     "score": 4.12
+    }
    }
   },
   "es_17": {
@@ -474,7 +924,7 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:vivian (take 1 of 4)",
    "measure": {
-    "asr": "王把哈曼带走了,上帝的百姓得救了,大家又唱又跳,好开心!",
+    "asr": "王把哈曼带走了,上帝的百姓得救了,大家又唱又跳,好开心。",
     "errorRate": 0.042,
     "f0MedianHz": 293.9,
     "f0SdSemitones": 4.34,
@@ -504,8 +954,8 @@
    "truePeakDbtp": -2.0,
    "source": "qwen:vivian (take 1 of 4)",
    "measure": {
-    "asr": "以色天害怕的时候,还是选择了勇敢,选择了信靠上帝,你也可以哦。",
-    "errorRate": 0.074,
+    "asr": "以斯天害怕的时候,还是选择了勇敢,选择了信靠上帝,你也可以哦。",
+    "errorRate": 0.037,
     "f0MedianHz": 259.1,
     "f0SdSemitones": 4.5,
     "f0RangeSemitones": 14.83,
@@ -562,7 +1012,7 @@
    "sec": 6.47,
    "maxSec": 7.36,
    "slackSec": 0.89,
-   "gapToNextSec": 3.04,
+   "gapToNextSec": 2.44,
    "lufs": -16.2,
    "truePeakDbtp": -2.1,
    "source": "edge:en-US-AvaMultilingualNeural",
@@ -586,75 +1036,209 @@
     "pace": 3.09
    }
   },
-  "es_03": {
-   "sec": 5.35,
-   "maxSec": 5.4,
+  "es_03a": {
+   "sec": 5.97,
+   "maxSec": 6.02,
    "slackSec": 0.05,
-   "gapToNextSec": 0.55,
-   "lufs": -16.2,
-   "truePeakDbtp": -2.0,
-   "source": "edge:en-GB-RyanNeural",
+   "gapToNextSec": 0.7,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.1,
+   "source": "qwen_design:herald-design (take 3 of 4)",
    "measure": {
-    "asr": "HMPH. I am the king's most important man. Everyone must bow down to me.",
+    "asr": "Make way! For the great Lord Haman.",
     "errorRate": 0.0,
-    "f0MedianHz": 135.2,
-    "f0SdSemitones": 6.39,
-    "f0RangeSemitones": 18.72,
+    "f0MedianHz": 335.6,
+    "f0SdSemitones": 9.37,
+    "f0RangeSemitones": 29.77,
     "pausesSec": [
-     0.31,
-     0.27
+     0.22,
+     0.47
+    ],
+    "phraseRates": [],
+    "sec": 5.97,
+    "speechSec": 4.9,
+    "pace": 1.34
+   }
+  },
+  "es_03b": {
+   "sec": 3.8,
+   "maxSec": 3.85,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.7,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.1,
+   "source": "crowd:8 voices",
+   "measure": {
+    "asr": "Hail Lord Heyman! Hail Lord Heyman!",
+    "errorRate": 1.333,
+    "f0MedianHz": 218.1,
+    "f0SdSemitones": 6.54,
+    "f0RangeSemitones": 17.97,
+    "pausesSec": [],
+    "phraseRates": [
+     2.49
+    ],
+    "sec": 3.8,
+    "speechSec": 3.21,
+    "pace": 1.05
+   }
+  },
+  "es_03": {
+   "sec": 9.79,
+   "maxSec": 9.97,
+   "slackSec": 0.18,
+   "gapToNextSec": 0.63,
+   "lufs": -16.1,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 5 of 6)",
+   "measure": {
+    "asr": "Oh, did you see that? Everyone bows when I walk by. I'm the greatest man in the whole kingdom.",
+    "errorRate": 0.0,
+    "f0MedianHz": 154.1,
+    "f0SdSemitones": 5.93,
+    "f0RangeSemitones": 19.34,
+    "pausesSec": [
+     0.42,
+     0.13,
+     0.39,
+     0.19,
+     0.14,
+     0.13,
+     0.15
     ],
     "phraseRates": [
-     4.73,
-     4.76
+     2.99,
+     4.67,
+     4.03
     ],
-    "sec": 5.35,
-    "speechSec": 4.62,
-    "pace": 3.36
+    "sec": 9.79,
+    "speechSec": 8.09,
+    "pace": 2.96,
+    "acting": {
+     "kind": "laugh",
+     "regionSec": [
+      7.08,
+      9.79
+     ],
+     "bursts": 10,
+     "burstRate": 4.59,
+     "intervalCV": 0.1,
+     "hnrDiffDb": -6.0,
+     "pitchRiseSt": 5.3,
+     "pitchSdSt": 7.5,
+     "verdict": "half",
+     "score": 3.74
+    }
    }
   },
   "es_04": {
-   "sec": 5.97,
-   "maxSec": 8.46,
-   "slackSec": 2.49,
-   "gapToNextSec": 4.24,
-   "lufs": -16.0,
+   "sec": 5.28,
+   "maxSec": 6.88,
+   "slackSec": 1.6,
+   "gapToNextSec": 1.95,
+   "lufs": -16.1,
    "truePeakDbtp": -2.1,
    "source": "edge:en-US-AvaMultilingualNeural",
    "measure": {
-    "asr": "But Mordecai bowed only to God, not to Haman. Haman stomped his feet in anger.",
+    "asr": "But one man would not bow. Mordecai said, I bow only to God.",
     "errorRate": 0.0,
-    "f0MedianHz": 201.1,
-    "f0SdSemitones": 5.4,
-    "f0RangeSemitones": 21.41,
+    "f0MedianHz": 201.3,
+    "f0SdSemitones": 3.76,
+    "f0RangeSemitones": 10.71,
     "pausesSec": [
-     0.51,
-     0.42
+     0.47,
+     0.4
     ],
     "phraseRates": [
-     4.81,
-     3.41,
-     4.69
+     3.75,
+     3.92,
+     3.7
     ],
-    "sec": 5.97,
-    "speechSec": 4.88,
-    "pace": 3.85
+    "sec": 5.28,
+    "speechSec": 4.24,
+    "pace": 3.03
+   }
+  },
+  "es_04b": {
+   "sec": 5.96,
+   "maxSec": 6.01,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.9,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 4 of 6)",
+   "measure": {
+    "asr": "What? He won't bow to me! Grrr! Hmph! Hmph! Hmph!",
+    "errorRate": 0.0,
+    "f0MedianHz": 327.3,
+    "f0SdSemitones": 7.83,
+    "f0RangeSemitones": 24.48,
+    "pausesSec": [
+     0.57,
+     0.13,
+     0.68,
+     0.28,
+     0.36,
+     0.34
+    ],
+    "phraseRates": [
+     3.57
+    ],
+    "sec": 5.96,
+    "speechSec": 3.42,
+    "pace": 1.68,
+    "acting": {
+     "kind": "tantrum",
+     "lastPulsesDb": [
+      84.8,
+      84.3,
+      85.3
+     ],
+     "hmphRiseDb": 0.5,
+     "risingSteps": 1,
+     "pitchTopSt": 8.3,
+     "loudSwingDb": 14.4,
+     "verdict": "half",
+     "score": 2.26
+    }
    }
   },
   "es_05": {
-   "sec": 5.77,
-   "maxSec": 6.29,
-   "slackSec": 0.52,
-   "gapToNextSec": 1.12,
-   "lufs": -16.1,
-   "truePeakDbtp": -2.0,
-   "source": "edge:en-GB-RyanNeural"
+   "sec": 11.04,
+   "maxSec": 11.09,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.65,
+   "lufs": -16.2,
+   "truePeakDbtp": -1.9,
+   "source": "qwen:dylan (take 1 of 4)",
+   "measure": {
+    "asr": "Oh, king, there are some people who don't keep your laws. Why not? Let me get rid of them.",
+    "errorRate": 0.053,
+    "f0MedianHz": 110.0,
+    "f0SdSemitones": 5.49,
+    "f0RangeSemitones": 15.22,
+    "pausesSec": [
+     0.39,
+     0.18,
+     0.82,
+     0.72,
+     0.13
+    ],
+    "phraseRates": [
+     2.93,
+     2.0,
+     2.82
+    ],
+    "sec": 11.04,
+    "speechSec": 8.66,
+    "pace": 1.81
+   }
   },
   "es_06": {
    "sec": 6.24,
    "maxSec": 6.29,
    "slackSec": 0.05,
-   "gapToNextSec": 1.4,
+   "gapToNextSec": 1.2,
    "lufs": -16.1,
    "truePeakDbtp": -2.1,
    "source": "edge:en-US-ChristopherNeural",
@@ -678,6 +1262,31 @@
     "pace": 1.92
    }
   },
+  "es_06b": {
+   "sec": 2.7,
+   "maxSec": 3.0,
+   "slackSec": 0.3,
+   "gapToNextSec": 1.35,
+   "lufs": -16.2,
+   "truePeakDbtp": -1.8,
+   "source": "qwen:dylan (take 0 of 4)",
+   "measure": {
+    "asr": "Now nobody can stop me!",
+    "errorRate": 0.0,
+    "f0MedianHz": 269.1,
+    "f0SdSemitones": 5.16,
+    "f0RangeSemitones": 17.6,
+    "pausesSec": [
+     0.26
+    ],
+    "phraseRates": [
+     3.68
+    ],
+    "sec": 2.7,
+    "speechSec": 2.31,
+    "pace": 3.71
+   }
+  },
   "es_07": {
    "sec": 7.02,
    "maxSec": 7.07,
@@ -685,7 +1294,27 @@
    "gapToNextSec": 0.75,
    "lufs": -16.3,
    "truePeakDbtp": -2.1,
-   "source": "edge:en-GB-ThomasNeural"
+   "source": "edge:en-GB-ThomasNeural",
+   "measure": {
+    "asr": "Esther, you must ask the king to save us. Maybe this is why you became queen for a time just like this.",
+    "errorRate": 0.0,
+    "f0MedianHz": 120.9,
+    "f0SdSemitones": 3.43,
+    "f0RangeSemitones": 12.43,
+    "pausesSec": [
+     0.33,
+     0.51,
+     0.28
+    ],
+    "phraseRates": [
+     4.62,
+     3.96,
+     3.11
+    ],
+    "sec": 7.02,
+    "speechSec": 5.7,
+    "pace": 3.42
+   }
   },
   "es_08": {
    "sec": 4.11,
@@ -803,7 +1432,7 @@
    "sec": 3.89,
    "maxSec": 3.94,
    "slackSec": 0.05,
-   "gapToNextSec": 3.2,
+   "gapToNextSec": 1.0,
    "lufs": -16.0,
    "truePeakDbtp": -4.1,
    "source": "edge:en-US-EmmaMultilingualNeural",
@@ -823,6 +1452,235 @@
     "sec": 3.89,
     "speechSec": 3.36,
     "pace": 3.6
+   }
+  },
+  "es_12b": {
+   "sec": 7.79,
+   "maxSec": 7.84,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.3,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 4 of 6)",
+   "measure": {
+    "asr": "The queen's banquet. Only the king and me. Aren't I wonderful?",
+    "errorRate": 0.0,
+    "f0MedianHz": 286.2,
+    "f0SdSemitones": 5.74,
+    "f0RangeSemitones": 15.77,
+    "pausesSec": [
+     0.57,
+     0.39,
+     0.16,
+     0.23
+    ],
+    "phraseRates": [
+     1.71,
+     2.6,
+     3.08
+    ],
+    "sec": 7.79,
+    "speechSec": 6.27,
+    "pace": 2.18,
+    "acting": {
+     "kind": "laugh",
+     "regionSec": [
+      5.56,
+      5.94
+     ],
+     "bursts": 0,
+     "burstRate": 0.0,
+     "intervalCV": 0.0,
+     "hnrDiffDb": -11.5,
+     "pitchRiseSt": -7.0,
+     "pitchSdSt": 7.0,
+     "verdict": "read",
+     "score": 0.5
+    }
+   }
+  },
+  "es_12c": {
+   "sec": 4.13,
+   "maxSec": 4.97,
+   "slackSec": 0.84,
+   "gapToNextSec": 1.39,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "edge:en-US-ChristopherNeural",
+   "measure": {
+    "asr": "Haman, there is a man I want to honor. What should I do for him?",
+    "errorRate": 0.067,
+    "f0MedianHz": 111.6,
+    "f0SdSemitones": 3.88,
+    "f0RangeSemitones": 12.46,
+    "pausesSec": [
+     0.37,
+     0.47
+    ],
+    "phraseRates": [
+     5.7,
+     5.77
+    ],
+    "sec": 4.13,
+    "speechSec": 3.13,
+    "pace": 4.12
+   }
+  },
+  "es_12d": {
+   "sec": 2.67,
+   "maxSec": 3.22,
+   "slackSec": 0.55,
+   "gapToNextSec": 1.2,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 0 of 4)",
+   "measure": {
+    "asr": "Who could that be but me?",
+    "errorRate": 0.0,
+    "f0MedianHz": 123.9,
+    "f0SdSemitones": 6.31,
+    "f0RangeSemitones": 15.62,
+    "pausesSec": [],
+    "phraseRates": [
+     2.36
+    ],
+    "sec": 2.67,
+    "speechSec": 2.54,
+    "pace": 2.99
+   }
+  },
+  "es_12e": {
+   "sec": 9.32,
+   "maxSec": 9.37,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.5,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 0 of 4)",
+   "measure": {
+    "asr": "Dress him in the royal robe. Sit him on the king's own horse. And have someone shout, This is the man the king honors.",
+    "errorRate": 0.042,
+    "f0MedianHz": 278.9,
+    "f0SdSemitones": 6.84,
+    "f0RangeSemitones": 21.15,
+    "pausesSec": [
+     0.6,
+     0.32,
+     0.37
+    ],
+    "phraseRates": [
+     3.55,
+     3.41,
+     2.7,
+     3.51
+    ],
+    "sec": 9.32,
+    "speechSec": 7.87,
+    "pace": 2.79
+   }
+  },
+  "es_12f": {
+   "sec": 3.32,
+   "maxSec": 4.32,
+   "slackSec": 1.0,
+   "gapToNextSec": 1.95,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.0,
+   "source": "edge:en-US-ChristopherNeural",
+   "measure": {
+    "asr": "Good idea. Now go and do all of that for Mordecai.",
+    "errorRate": 0.0,
+    "f0MedianHz": 115.6,
+    "f0SdSemitones": 3.18,
+    "f0RangeSemitones": 11.21,
+    "pausesSec": [
+     0.38
+    ],
+    "phraseRates": [
+     5.36,
+     4.93
+    ],
+    "sec": 3.32,
+    "speechSec": 2.79,
+    "pace": 4.21
+   }
+  },
+  "es_12g": {
+   "sec": 3.48,
+   "maxSec": 3.53,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.0,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.1,
+   "source": "qwen:dylan (take 0 of 6)",
+   "measure": {
+    "asr": "More, more! Mordecai!",
+    "errorRate": 0.0,
+    "f0MedianHz": 309.5,
+    "f0SdSemitones": 6.39,
+    "f0RangeSemitones": 19.79,
+    "pausesSec": [
+     0.37
+    ],
+    "phraseRates": [
+     2.01
+    ],
+    "sec": 3.48,
+    "speechSec": 2.93,
+    "pace": 1.44
+   }
+  },
+  "es_12h": {
+   "sec": 5.66,
+   "maxSec": 6.96,
+   "slackSec": 1.3,
+   "gapToNextSec": 1.55,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.1,
+   "source": "edge:en-US-AvaMultilingualNeural",
+   "measure": {
+    "asr": "So Haman had to lead Mordecai through the city on the king's horse, shouting all the way.",
+    "errorRate": 0.0,
+    "f0MedianHz": 217.6,
+    "f0SdSemitones": 4.17,
+    "f0RangeSemitones": 8.7,
+    "pausesSec": [
+     0.42
+    ],
+    "phraseRates": [
+     4.3,
+     4.46
+    ],
+    "sec": 5.66,
+    "speechSec": 5.07,
+    "pace": 3.89
+   }
+  },
+  "es_12i": {
+   "sec": 4.67,
+   "maxSec": 4.72,
+   "slackSec": 0.05,
+   "gapToNextSec": 3.8,
+   "lufs": -16.3,
+   "truePeakDbtp": -1.6,
+   "source": "qwen:dylan (take 3 of 4)",
+   "measure": {
+    "asr": "This is the man the King honors.",
+    "errorRate": 0.143,
+    "f0MedianHz": 120.1,
+    "f0SdSemitones": 8.34,
+    "f0RangeSemitones": 29.91,
+    "pausesSec": [
+     0.51,
+     0.16,
+     0.45
+    ],
+    "phraseRates": [
+     2.91
+    ],
+    "sec": 4.67,
+    "speechSec": 3.39,
+    "pace": 1.93
    }
   },
   "es_13": {
@@ -906,32 +1764,96 @@
    }
   },
   "es_16": {
-   "sec": 3.63,
-   "maxSec": 3.68,
+   "sec": 7.14,
+   "maxSec": 7.19,
    "slackSec": 0.05,
-   "gapToNextSec": 2.6,
+   "gapToNextSec": 0.4,
    "lufs": -16.2,
-   "truePeakDbtp": -1.9,
-   "source": "edge:en-GB-RyanNeural",
+   "truePeakDbtp": -1.8,
+   "source": "qwen:dylan (take 5 of 6)",
    "measure": {
-    "asr": "No, no, no. Please, my king, have mercy.",
+    "asr": "No, no, no. My queen, save me. Oh, king, have mercy.",
     "errorRate": 0.0,
-    "f0MedianHz": 147.6,
-    "f0SdSemitones": 6.61,
-    "f0RangeSemitones": 21.58,
+    "f0MedianHz": 225.7,
+    "f0SdSemitones": 5.06,
+    "f0RangeSemitones": 13.88,
     "pausesSec": [
-     0.18,
-     0.19,
-     0.19,
-     0.2,
-     0.23
+     0.22,
+     0.13,
+     0.42,
+     0.3
     ],
     "phraseRates": [
-     5.17
+     3.26,
+     2.33
     ],
-    "sec": 3.63,
-    "speechSec": 2.47,
-    "pace": 2.48
+    "sec": 7.14,
+    "speechSec": 5.91,
+    "pace": 1.68
+   }
+  },
+  "es_16b": {
+   "sec": 1.95,
+   "maxSec": 2.08,
+   "slackSec": 0.13,
+   "gapToNextSec": 2.38,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.1,
+   "source": "edge:en-US-ChristopherNeural",
+   "measure": {
+    "asr": "Guards, take him away.",
+    "errorRate": 0.0,
+    "f0MedianHz": 108.8,
+    "f0SdSemitones": 3.85,
+    "f0RangeSemitones": 11.7,
+    "pausesSec": [
+     0.36
+    ],
+    "phraseRates": [
+     4.76
+    ],
+    "sec": 1.95,
+    "speechSec": 1.44,
+    "pace": 2.56
+   }
+  },
+  "es_16c": {
+   "sec": 6.57,
+   "maxSec": 8.42,
+   "slackSec": 1.85,
+   "gapToNextSec": 4.0,
+   "lufs": -16.2,
+   "truePeakDbtp": -2.0,
+   "source": "qwen:dylan (take 1 of 4) + tail fade",
+   "measure": {
+    "asr": "No! Let me go! I'm a very important man. I'm... Wahahah!",
+    "errorRate": 0.111,
+    "f0MedianHz": 229.7,
+    "f0SdSemitones": 4.44,
+    "f0RangeSemitones": 13.07,
+    "pausesSec": [
+     0.22,
+     0.42,
+     0.61,
+     0.27,
+     0.18,
+     0.13
+    ],
+    "phraseRates": [
+     4.83
+    ],
+    "sec": 6.57,
+    "speechSec": 4.51,
+    "pace": 2.13,
+    "acting": {
+     "kind": "wail",
+     "endHoldSec": 0.36,
+     "endHoldPitchSt": 5.6,
+     "startHoldSec": 1.41,
+     "tailSlopeDbPerSec": -14.4,
+     "verdict": "wail",
+     "score": 3.6
+    }
    }
   },
   "es_17": {
