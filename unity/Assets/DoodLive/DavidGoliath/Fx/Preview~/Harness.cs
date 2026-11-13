@@ -40,6 +40,7 @@ static class Harness {
     bool firstFx = true;
     esther = args.Length > 1 && args[1] == "esther";
     var timeline = esther ? new Dictionary<string,float>{{"brazier_fire",3f},{"crown_sparkle",1.6f},{"ring_glint",0.8f},{"prayer_glow",6f},{"sceptre_beam",4f},{"tension_dim",3f},{"truth_flash",0.6f},{"confetti",3f},{"golden_rays",4f},{"petals",5f}}
+    if (args.Length > 1 && args[1] == "ruth") { RuthPreview.Run(outDir, mn, sz); return; }   // Ruth rows: RuthPreview.cs
                           : new Dictionary<string,float>{{"dust_puff",0.6f},{"memory_lion_bear",3.8f},{"brook_ripple",2.4f},{"faith_glow",5.6f},{"sling_trail",2.4f},{"stone_trail",0.5f},{"hit_flash",0.4f},{"dizzy_stars",1.0f},{"dust_burst",1.6f},{"confetti",3.0f},{"golden_rays",4.0f}};
     foreach (var kv in timeline) {
       var def = FxLibrary.Get(kv.Key); if (def == null) throw new Exception("missing " + kv.Key);

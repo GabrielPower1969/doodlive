@@ -1,0 +1,111 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec), so a stretched scene stays covered and the bed never runs into the next scene.",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "baby_coo",
+   "secs": 2.4,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -12.0
+  },
+  {
+   "id": "birds",
+   "secs": 10.0,
+   "loop": true,
+   "gainDb": -16,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -14.8,
+   "loopStart": 0.0,
+   "loopEnd": 10.0,
+   "stopAtCue": "boaz",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5
+  },
+  {
+   "id": "cheer",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -17.2
+  },
+  {
+   "id": "crickets_dusk",
+   "secs": 16.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.1,
+   "loopStart": 0.0,
+   "loopEnd": 16.0,
+   "stopAtCue": "night",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5
+  },
+  {
+   "id": "crickets_night",
+   "secs": 20.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -2.8,
+   "lufs": -19.3,
+   "loopStart": 0.0,
+   "loopEnd": 20.0,
+   "stopAtCue": "wedding",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5
+  },
+  {
+   "id": "rustle",
+   "secs": 1.3,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.9
+  },
+  {
+   "id": "soft_chime",
+   "secs": 2.8,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -16.3
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -12.9
+  },
+  {
+   "id": "stalks_drop",
+   "secs": 1.4,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -21.9
+  },
+  {
+   "id": "tambourine",
+   "secs": 1.6,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -1.7,
+   "lufs": -16.2
+  }
+ ]
+}

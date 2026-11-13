@@ -1,0 +1,21 @@
+{
+ "_doc": "Face decal per clip (docs/ruth/CONTRACT.md §3-4). Integration-owned; read by tools/story/pack.py.",
+ "ruth": {
+  "default": "calm",
+  "clips": {"idle": "calm", "walk": "calm", "talk": "talk", "sad": "sad", "shake_head": "sad", "hold_hands": "brave",
+            "hug": "pray", "cheer_up": "joy", "glean": "calm", "stand_up": "calm", "bow_kneel": "shy", "shy": "shy",
+            "carry_walk": "joy", "show_bundle": "joy", "joy": "joy", "ask_humble": "shy", "wave": "joy"}
+ },
+ "naomi": {
+  "default": "tender",
+  "clips": {"idle": "tired", "walk_tired": "tired", "talk": "talk", "sad": "sad", "send_away": "sad",
+            "listen_moved": "tender", "hug": "tender", "nod": "tender", "surprised": "surprised", "bless_up": "joy",
+            "clap": "joy", "hold_baby": "tender", "joy": "joy"}
+ },
+ "boaz": {
+  "default": "smile",
+  "clips": {"idle": "smile", "walk": "smile", "talk": "talk", "greet": "smile", "look_curious": "curious",
+            "talk_kind": "kind", "hand_on_heart": "kind", "sneaky_drop": "sneaky", "chuckle": "laugh", "listen": "kind",
+            "joy": "joy", "wave": "joy"}
+ }
+}

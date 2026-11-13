@@ -52,6 +52,15 @@ namespace DoodLive.Story
         public Camera Cinematic { get; set; }
 
         DGTimeline tl; DGCues cues;
+        VoiceCast cast;                                            // docs/VOICE-SYSTEM.md: the voices installed for this play
+        // music loop sections and ambience stop cues (story packs from Ruth on; absent keys = old behaviour)
+        [System.Serializable] class CueLoop { public string cue; public float loopStart, loopEnd; }
+        [System.Serializable] class CueLoops { public CueLoop[] cues; }
+        [System.Serializable] class SfxStop { public string id, stopAtCue; public float fadeOutSec; }
+        [System.Serializable] class SfxStops { public SfxStop[] sfx; }
+        readonly Dictionary<string, CueLoop> cueLoops = new Dictionary<string, CueLoop>();
+        readonly Dictionary<string, SfxStop> sfxStops = new Dictionary<string, SfxStop>();
+        float sfxLoopFade = -1, sfxLoopFrom;
         readonly Dictionary<string, DGSfxMixEntry> mix = new Dictionary<string, DGSfxMixEntry>();
         readonly Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
         readonly Dictionary<string, DGActor> byId = new Dictionary<string, DGActor>();
@@ -65,7 +74,7 @@ namespace DoodLive.Story
         PlayableGraph setGraph; AnimationClipPlayable[] setPlayables;
         [System.NonSerialized] public bool fxEnabled = true;
 
-        void Awake() => Init();
+        void Awake() { Init(); if (Application.isPlaying) VoiceBank.Prepare(storyId, L10n.Lang); }
 
         void Init()
         {
@@ -87,11 +96,14 @@ namespace DoodLive.Story
             if (tl != null) return true;
             var j = Resources.Load<TextAsset>(ResDir + "timeline");
             if (!j) { Debug.LogError($"Story {storyId}: Resources/{ResDir}timeline.json missing (run DoodLive > Setup Project)"); return false; }
-            tl = DGTimeline.Load(j.text);
+            cast = VoiceBank.Resolve(storyId, L10n.Lang, j.text);
+            tl = StoryRetime.Load(j.text, VoiceBank.Durations(cast));
             var m = Resources.Load<TextAsset>(ResDir + "sfx_mix");
             if (m) foreach (var e in JsonUtility.FromJson<DGSfxMix>(m.text).sfx) mix[e.id] = e;
+            sfxStops.Clear(); if (m) { var ss = JsonUtility.FromJson<SfxStops>(m.text); if (ss?.sfx != null) foreach (var e in ss.sfx) if (!string.IsNullOrEmpty(e.stopAtCue)) sfxStops[e.id] = e; }
             var c = Resources.Load<TextAsset>(ResDir + "music_cues");
             cues = c ? JsonUtility.FromJson<DGCues>(c.text) : new DGCues();
+            cueLoops.Clear(); if (c) { var cl = JsonUtility.FromJson<CueLoops>(c.text); if (cl?.cues != null) foreach (var e in cl.cues) if (e.loopEnd > e.loopStart + 0.2f) cueLoops[e.cue] = e; }
             Debug.Log($"Story {storyId}: {tl.duration} s, cast [{string.Join(",", tl.cast ?? new string[0])}], {tl.acting.Length} acting, {tl.lines.Length} lines, {tl.fx.Length} fx, {tl.sfx.Length} sfx, {tl.music.Length} music, {tl.props.Length} props");
             return true;
         }
@@ -105,7 +117,7 @@ namespace DoodLive.Story
         // ---------------- control ----------------
         public void Begin()
         {
-            if (!LoadData()) return;
+            tl = null; if (!LoadData()) return;   // re-read: the installed voices may have changed (VOICE-SYSTEM.md)
             Init();
             StopAudio(); DGFx.StopAll();
             DGFx.Stage = transform; DGFx.ShakeTarget = shake; if (fxEnabled) DGFx.Prewarm();
@@ -143,7 +155,7 @@ namespace DoodLive.Story
         void StopAudio()
         {
             foreach (var s in new[] { voice, sfx, sfxLoop, musicA, musicB }) if (s) s.Stop();
-            musicCur = musicOld = null; loopId = null;
+            musicCur = musicOld = null; loopId = null; musicCueId = null; if (sfxLoopFade > 0 && sfxLoop) sfxLoop.volume = sfxLoopFrom; sfxLoopFade = -1;
         }
 
         void SetFrozen(bool f)
@@ -244,6 +256,7 @@ namespace DoodLive.Story
                 A.moveT1 = a.t + Mathf.Max(0.05f, natural / A.curRate);
                 A.moving = dist > 1e-4f;
             }
+                if (a.t <= 0.01f) { A.pos = A.moveTo; A.moving = false; Place(A); }   // a mark at t = 0 is the starting place, not a walk
         }
 
         void Move(DGActor A, float dt)
@@ -319,7 +332,7 @@ namespace DoodLive.Story
         // ---------------- lines ----------------
         void Say(DGLine l)
         {
-            var c = Clip($"voice/{(L10n.IsZh ? "zh" : "en")}/{l.id}");
+            var c = cast != null ? cast.Clip(l.id) : Clip($"voice/{(L10n.IsZh ? "zh" : "en")}/{l.id}");
             voice.Stop();
             if (c) { voice.clip = c; voice.volume = 1; voice.Play(); }
             Line = l;
@@ -357,7 +370,7 @@ namespace DoodLive.Story
             var c = Clip("sfx/" + s.id); if (!c) return;
             mix.TryGetValue(s.id, out var m);
             float gain = m != null ? Mathf.Pow(10, m.gainDb / 20f) : 0.7f;
-            if (m != null && m.loop) { sfxLoop.clip = c; sfxLoop.volume = gain; sfxLoop.Play(); loopId = s.id; }
+            if (m != null && m.loop) { sfxLoopFade = -1; sfxLoop.clip = c; sfxLoop.volume = gain; sfxLoop.Play(); loopId = s.id; }
             else sfx.PlayOneShot(c, gain);
         }
 
@@ -367,16 +380,29 @@ namespace DoodLive.Story
             var next = musicCur == musicA ? musicB : musicA;
             if (musicCur && musicCur.isPlaying) { musicOld = musicCur; musicOldFrom = musicCur.volume; musicFadeT = 0; }
             next.Stop(); next.clip = c; next.loop = false; next.volume = MusicVol(); next.Play();
-            musicCur = next;
+            musicCur = next; musicCueId = m.cue;
+            if (sfxLoop.isPlaying && loopId != null && sfxStops.TryGetValue(loopId, out var st) && st.stopAtCue == m.cue)
+            { sfxLoopFade = Mathf.Max(0.05f, st.fadeOutSec > 0 ? st.fadeOutSec : 1f); sfxLoopFrom = sfxLoop.volume; }
         }
 
         float MusicVol() => 0.8f * MusicGain * voiceDuck;
+        string musicCueId;
 
         void Mix(float dt)
         {
             if (dt <= 0) return;
             voiceDuck = Mathf.MoveTowards(voiceDuck, voice.isPlaying ? 0.5f : 1f, dt * 2.5f);
-            if (musicCur && musicCur.isPlaying) musicCur.volume = MusicVol();
+            if (musicCur && musicCur.isPlaying)
+            {
+                musicCur.volume = MusicVol();
+                // stretched scene: loop the cue's quiet final section until the next cue (cues.json loopStart/loopEnd)
+                if (musicCueId != null && cueLoops.TryGetValue(musicCueId, out var lp) && musicCur.time >= lp.loopEnd) musicCur.time -= lp.loopEnd - lp.loopStart;
+            }
+            if (sfxLoopFade > 0)
+            {
+                float v = sfxLoop.volume - sfxLoopFrom * dt / sfxLoopFade;
+                if (v <= 0) { sfxLoop.Stop(); sfxLoop.volume = sfxLoopFrom; sfxLoopFade = -1; loopId = null; } else sfxLoop.volume = v;
+            }
             if (musicOld)
             {
                 musicFadeT += dt;

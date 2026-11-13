@@ -60,6 +60,7 @@ namespace DoodLive.DavidGoliath
                     // Esther (story pack #2, StoryFxEsther.cs): added after D&G so an existing id is never replaced
                     foreach (var d in EstherFx.Defs)
                         if (!map.ContainsKey(d.Id)) map[d.Id] = d;
+                    foreach (var d in RuthFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Ruth (pack #3, StoryFxRuth.cs)
                 }
                 return map;
             }

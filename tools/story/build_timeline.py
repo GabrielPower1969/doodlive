@@ -5,6 +5,14 @@ Lines get the time their voices really need: each line lasts the longer of its z
 (assets/<id>/audio/voice/durations.json); before the voices exist, an estimate (zh 4.2 characters/s, en 2.6 words/s)
 stands in, and `maxSec` in the output is that duration, so the voice check (tools/story/voice.py check) and the
 director both read the same numbers. Usage: python3 tools/story/build_timeline.py <id> [--estimate]
+
+Retime anchors (docs/VOICE-SYSTEM.md): every line, event and shot also carries `anchor` = {line, edge, dt}, the cursor
+segment it was authored in: `line` = the last line before it in story.py ("" = the start of the play), `edge` = "end"
+(that line's voice end) or "origin", `dt` = its offset from there (includes the line's `post`, any pauses, the event's
+own dt, the next line's `pre`). Lines also carry `dur` (the voice length the play was timed to) and `pre` / `post`;
+the top level carries `durationAnchor`. The app (StoryRetime.cs) and tools/voice/retime.py move every element by the
+shift of its anchor when an installed clip is longer or shorter than `dur`, so a new voice never needs a rebuild.
+Only keys are added: every older field and every absolute `t` is unchanged.
 """
 import json, os, re, sys, types
 
@@ -51,7 +59,13 @@ def estimate(zh, en):
     return max(zc / 4.2 + 0.25 * zh.count("……") + 0.15 * len(re.findall(r"[，、？！。—]", zh)), ew / 2.6) + 0.3
 
 
-def build(sid, use_estimate=False):
+def _anchor(base_line, base_t, x):
+    """Anchor of something at raw time x, authored in the cursor segment that starts at base_t (end of base_line's voice)."""
+    return {"line": base_line or "", "edge": "end" if base_line else "origin", "dt": round(x - base_t, 4)}
+
+
+def build(sid, use_estimate=False, write=True, durations=None):
+    """write=False: return the timeline without writing files; durations: {lang: {line: sec}} instead of durations.json."""
     sys.modules["tools_story"] = types.SimpleNamespace(shot=shot, line=line, act=act, fx=fx, sfx=sfx, music=music,
                                                        prop=prop, pause=pause)
     src = os.path.join(ROOT, "docs", sid, "storyboard", "story.py")
@@ -59,6 +73,10 @@ def build(sid, use_estimate=False):
     exec(compile(open(src, encoding="utf-8").read(), src, "exec"), mod.__dict__)
     dur_path = os.path.join(ROOT, "assets", sid, "audio", "voice", "durations.json")
     durs = json.load(open(dur_path)) if os.path.exists(dur_path) and not use_estimate else {}
+    if durations is not None:
+        durs = durations
+    base_line, base_t = "", 0.0          # retime anchor: the cursor segment we are in (docs/VOICE-SYSTEM.md)
+    shot_anchors = []
     t = 0.0; shots, acting, lines, fxs, sfxs, mus, props = [], [], [], [], [], [], []
     measured = 0
     for e in mod.SEQUENCE:
@@ -66,28 +84,38 @@ def build(sid, use_estimate=False):
         if k == "shot":
             if shots: shots[-1]["t1"] = round(t, 2)
             s = {kk: e[kk] for kk in ("id", "title_zh", "title_en", "camera", "desc")}; s["t0"] = round(t, 2); shots.append(s)
+            shot_anchors.append(_anchor(base_line, base_t, t))
         elif k == "line":
             got = [durs.get(l, {}).get(e["id"]) for l in ("zh", "en")]
             got = [g for g in got if g]
             d = max(got) if got else estimate(e["zh"], e["en"]); measured += bool(got)
             t += e["pre"]
             lines.append({"id": e["id"], "t": round(t, 2), "who": e["who"], "voice": e["who"], "maxSec": round(d + 0.05, 2),
-                          "ref": e["ref"], "zh": e["zh"], "en": e["en"], "dir": e["dir"]})
-            t += d + e["post"]
+                          "ref": e["ref"], "zh": e["zh"], "en": e["en"], "dir": e["dir"],
+                          "dur": round(d, 4), "pre": e["pre"], "post": e["post"], "anchor": _anchor(base_line, base_t, t)})
+            t += d
+            base_line, base_t = e["id"], t
+            t += e["post"]
         elif k == "pause":
             t += e["sec"]
         else:
             at = round(max(0.0, t + e.get("dt", 0.0)), 2)
             body = {kk: v for kk, v in e.items() if kk not in ("_kind", "dt")}
-            {"act": acting, "fx": fxs, "sfx": sfxs, "music": mus, "prop": props}[k].append({"t": at, **body})
+            {"act": acting, "fx": fxs, "sfx": sfxs, "music": mus, "prop": props}[k].append(
+                {"t": at, **body, "anchor": _anchor(base_line, base_t, t + e.get("dt", 0.0))})
     shots[-1]["t1"] = round(t, 2)
+    for s, a in zip(shots, shot_anchors):
+        s["anchor"] = a
     for L in (acting, fxs, sfxs, mus, props): L.sort(key=lambda x: x["t"])
     tl = {"version": 1, "story": sid, "cast": mod.CAST, "set": mod.SET, "duration": round(t, 2), "fps": 30,
           "shots": shots, "acting": acting, "lines": lines, "fx": fxs, "sfx": sfxs, "music": mus, "props": props,
-          "requestedClips": [], "timedFrom": "voices" if measured == len(lines) else f"estimate ({measured}/{len(lines)} voiced)"}
+          "requestedClips": [], "timedFrom": "voices" if measured == len(lines) else f"estimate ({measured}/{len(lines)} voiced)",
+          "durationAnchor": _anchor(base_line, base_t, t), "retime": 1}
     # checks: lines never overlap, every cue starts inside the play
     for a, b in zip(lines, lines[1:]):
         assert a["t"] + a["maxSec"] <= b["t"] + 1e-6, f"{a['id']} runs into {b['id']}"
+    if not write:
+        return tl
     out = os.path.join(ROOT, "assets", sid, "timeline.json"); os.makedirs(os.path.dirname(out), exist_ok=True)
     json.dump(tl, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     md = [f"# {sid} — storyboard (generated by tools/story/build_timeline.py; edit docs/{sid}/storyboard/story.py)", "",

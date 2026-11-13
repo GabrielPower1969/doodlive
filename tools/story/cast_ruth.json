@@ -1,0 +1,963 @@
+{
+ "_doc": "Ruth voice cast (docs/ruth/VOICE.md). Schema: tools/story/voice.py docstring; breaths: tools/story/voice_extras.py.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "ruth": {
+   "zh": "路得",
+   "en": "Ruth"
+  },
+  "naomi": {
+   "zh": "拿俄米",
+   "en": "Naomi"
+  },
+  "boaz": {
+   "zh": "波阿斯",
+   "en": "Boaz"
+  },
+  "reapers": {
+   "zh": "收割的人",
+   "en": "Reapers"
+  }
+ },
+ "sayMap": {
+  "zh": {
+   "路得": "路德",
+   "俄备得": "俄备德"
+  }
+ },
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句："
+   },
+   "ruth": {
+    "engine": "qwen",
+    "voice": "serena",
+    "takes": 4,
+    "minPace": 3.0,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位二十岁左右的年轻姑娘，温柔、善良、有点害羞但很勇敢，像真人在演儿童广播剧，自然不做作，有真实的呼吸，语速正常流畅。这一句："
+   },
+   "boaz": {
+    "engine": "qwen",
+    "voice": "uncle_fu",
+    "takes": 4,
+    "minPace": 3.0,
+    "fx": "warm",
+    "chain": "expressive",
+    "instruct": "一位四十多岁的田主，声音浑厚温暖，爽朗慈爱，像一位亲切的大叔，像真人在演儿童广播剧，自然不做作，语速正常。这一句："
+   },
+   "reapers": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "field",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.16,
+    "seed": 11,
+    "instruct": "一个在田里干活的人，从田那头大声回应主人，高高兴兴、很自然，像真人。",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "eric",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rate": "+6%",
+      "delay": 0.09,
+      "gainDb": -3
+     },
+     {
+      "engine": "qwen",
+      "voice": "dylan",
+      "delay": 0.17,
+      "gainDb": -2,
+      "seed": 2
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "-4%",
+      "delay": 0.31,
+      "gainDb": -6
+     }
+    ]
+   },
+   "naomi": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.3,
+    "f0Hz": [
+     140,
+     205
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "女性，六十多岁的老奶奶。音调中低，嗓音柔和、略带沙哑和气声，带着岁月的疲惫，但温暖慈爱。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句："
+   }
+  },
+  "en": {
+   "reapers": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "field",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.16,
+    "seed": 11,
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "en-US-GuyNeural",
+      "rate": "+4%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "en-AU-NatashaNeural",
+      "rate": "+8%",
+      "delay": 0.1,
+      "gainDb": -3
+     },
+     {
+      "engine": "edge",
+      "voice": "en-US-RogerNeural",
+      "rate": "-4%",
+      "delay": 0.19,
+      "gainDb": -2
+     },
+     {
+      "engine": "edge",
+      "voice": "en-GB-ThomasNeural",
+      "rate": "+0%",
+      "delay": 0.33,
+      "gainDb": -6
+     }
+    ]
+   },
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.narrator"
+   },
+   "ruth": {
+    "engine": "edge",
+    "voice": "en-US-EmmaMultilingualNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.ruth"
+   },
+   "boaz": {
+    "engine": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-6%",
+    "pitch": "+0Hz",
+    "fx": "warm",
+    "chain": "expressive",
+    "breathFrom": "zh.boaz"
+   },
+   "naomi": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.3,
+    "maxPause": 1.3,
+    "f0Hz": [
+     130,
+     185
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "Female, around seventy, an elderly grandmother. Low pitch, husky, breathy and slightly creaky voice with the softness of old age; tired, but warm and loving. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. This line: ",
+    "breathFrom": "zh.naomi"
+   }
+  }
+ },
+ "lines": {
+  "ru_01": {
+   "m": "讲故事的开头，轻柔亲切，语速自然；说到“都去世了”之前停一下，声音低一点、很温柔，但不阴沉",
+   "m_en": "storyteller opening; soft and slow; a real pause before 'had died', the voice drops and goes tender, never gloomy",
+   "d": "画面：睡前，你翻开一本大图画书，孩子靠在你身边。",
+   "d_en": "Picture: bedtime, a big picture book open, the child leaning on you.",
+   "zh": {
+    "breath": {
+     "after": "两个儿子",
+     "gain": -4
+    },
+    "takes": 4,
+    "say": "很久以前，有一位老妈妈，叫拿俄米。她的丈夫和两个儿子，都去世了。她的身边，只剩下儿媳妇路德。"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Long ago, there was a woman named Naomi.",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "Her husband and her two sons",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.38
+     },
+     {
+      "text": "had died...",
+      "rate": "-18%",
+      "pitch": "-3Hz",
+      "gap": 0.62
+     },
+     {
+      "text": "and now only Ruth, her son's wife, was left with her.",
+      "rate": "-6%",
+      "pitch": "+0Hz"
+     }
+    ],
+    "breath": {
+     "after": "two sons",
+     "gain": -4
+    }
+   }
+  },
+  "ru_02": {
+   "m": "疲惫又慈爱，有点哽咽；开口前先轻轻叹一口气；最后那个“啊”很轻，几乎是在求她",
+   "m_en": "tired and loving, a little choked; a soft sigh before she starts; the last 'all right?' is gentle, almost begging",
+   "d": "画面：你握着一个你很爱的人的手，却要劝她离开你。",
+   "d_en": "Picture: you hold the hand of someone you love and tell her to leave you.",
+   "zh": {
+    "breath": {
+     "before": true
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true
+    }
+   }
+  },
+  "ru_03": {
+   "m": "发自内心，眼泪快掉下来但很坚定；“不，我不走”说得快而坚决，后面更温暖、更深情；“你的上帝”之前吸一口气",
+   "m_en": "from the heart, close to tears but steady; quick and firm on 'No, I won't leave you', then slower and warmer; a breath before 'Your God'",
+   "d": "画面：你紧紧握住婆婆的手，怎么也不肯放开。",
+   "d_en": "Picture: you hold your mother-in-law's hands tight and won't let go.",
+   "zh": {
+    "breath": {
+     "after": "我也住在哪里"
+    },
+    "maxErr": 0.0
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "No, I won't leave you!",
+      "rate": "+6%",
+      "pitch": "+1Hz",
+      "gap": 0.42
+     },
+     {
+      "text": "Where you go, I will go.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Where you stay, I will stay.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.58
+     },
+     {
+      "text": "Your God...",
+      "rate": "-16%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "will be my God.",
+      "rate": "-12%",
+      "pitch": "-1Hz"
+     }
+    ],
+    "breath": {
+     "after": "I will stay"
+    }
+   }
+  },
+  "ru_04": {
+   "m": "声音里有走路的节奏（走呀走）；说到“终于”时亮起来；说到收大麦时带一点微笑",
+   "m_en": "a walking rhythm in the voice ('walked and walked'); brighter on 'at last'; a small smile on the harvest",
+   "d": "画面：你用手指在图画书上沿着长长的路走到伯利恒。",
+   "d_en": "Picture: your finger walks along the long road in the picture book to Bethlehem.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "They walked and walked,",
+      "rate": "-2%",
+      "pitch": "+0Hz",
+      "gap": 0.18
+     },
+     {
+      "text": "a long, long way,",
+      "rate": "-12%",
+      "pitch": "-1Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "and at last they came to Bethlehem.",
+      "rate": "+0%",
+      "pitch": "+2Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "It was barley harvest time.",
+      "rate": "-4%",
+      "pitch": "+1Hz"
+     }
+    ]
+   }
+  },
+  "ru_05": {
+   "m": "先长长地叹一口气；轻声、空落落的；后半句前停一下",
+   "m_en": "a long sigh first; quiet, empty; slow, with a break before the second half",
+   "d": "画面：你站在空空的老家门口，什么都没有了。",
+   "d_en": "Picture: you stand at the door of an empty old home.",
+   "zh": {
+    "breath": {
+     "before": true
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true
+    }
+   }
+  },
+  "ru_06": {
+   "m": "先温柔地安慰，然后变得明亮、带着微笑、有干劲；结尾稍快",
+   "m_en": "gentle first, then bright and eager with a little smile; a bit quicker at the end",
+   "d": "画面：你蹲下来拉着难过的奶奶的手，想让她笑一笑。",
+   "d_en": "Picture: you crouch by a sad grandmother and try to make her smile.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Don't be sad, Mother.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.36
+     },
+     {
+      "text": "I'll go and pick up grain in the fields,",
+      "rate": "+2%",
+      "pitch": "+1Hz",
+      "gap": 0.15
+     },
+     {
+      "text": "then we'll have food to eat!",
+      "rate": "+6%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "ru_07": {
+   "m": "平静地讲解，像家长指着图画给孩子看；“一根一根”一个字一个字地说清楚",
+   "m_en": "calm, explaining, like a parent pointing at a picture; slow on 'one stalk at a time'",
+   "d": "画面：你指着书上田边的小麦穗给孩子看。",
+   "d_en": "Picture: you point to the stalks at the edge of the field in the book.",
+   "zh": {
+    "maxErr": 0.07
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "In Israel, the harvesters left some grain behind for poor people to pick up.",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "So Ruth knelt at the edge of the field and picked it up,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.22
+     },
+     {
+      "text": "one stalk at a time.",
+      "rate": "-18%",
+      "pitch": "-1Hz"
+     }
+    ]
+   }
+  },
+  "ru_08": {
+   "m": "温暖，带一点欣赏",
+   "m_en": "warm, a little admiring",
+   "d": "画面：你在介绍一位你很佩服的好人。",
+   "d_en": "Picture: you introduce a good man you admire.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "The field belonged to a man named Boaz.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.36
+     },
+     {
+      "text": "He was rich, and he was very kind.",
+      "rate": "-8%",
+      "pitch": "+1Hz"
+     }
+    ]
+   }
+  },
+  "ru_09": {
+   "m": "爽朗友好，声音能传到田的另一头；满脸笑容",
+   "m_en": "hearty and friendly, loud enough to carry across a field; a big smile",
+   "d": "画面：你一大早走进自家的田，跟干活的人大声打招呼。",
+   "d_en": "Picture: early morning, you walk into your field and call out to your workers.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Good morning, everyone!",
+      "rate": "+4%",
+      "pitch": "+2Hz",
+      "gap": 0.26
+     },
+     {
+      "text": "The Lord be with you!",
+      "rate": "+0%",
+      "pitch": "+0Hz"
+     }
+    ]
+   }
+  },
+  "ru_10": {
+   "m": "三四个干活的人从田那头一起回答，高高兴兴，有先有后，不整齐",
+   "m_en": "three or four workers answering together from across the field, cheerful, a little ragged",
+   "d": "画面：你们在田里弯着腰干活，抬头大声回应主人。",
+   "d_en": "Picture: you are bent over in the field and look up to call back to the owner.",
+   "zh": {},
+   "en": {}
+  },
+  "ru_11": {
+   "m": "走着走着停下来，好奇又温和；先“咦”一声在想",
+   "m_en": "he stops mid-step, curious and gentle; a thinking 'Hm' first",
+   "d": "画面：你忽然看见一个没见过的人，歪着头想。",
+   "d_en": "Picture: you suddenly spot someone new and tilt your head.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Hm?",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.48
+     },
+     {
+      "text": "Who's that young woman over there?",
+      "rate": "-6%",
+      "pitch": "+1Hz"
+     }
+    ]
+   }
+  },
+  "ru_12": {
+   "m": "慈祥，像父亲一样，不慌不忙；说“那边”时像在指着水罐",
+   "m_en": "kind, fatherly, unhurried; as if pointing at the jars on 'water jars'",
+   "d": "画面：你对一个新来的孩子说：在这儿别怕，渴了就去喝水。",
+   "d_en": "Picture: you tell a newcomer not to worry and to drink when thirsty.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Stay here and gather in my field.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Don't go anywhere else.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "And when you're thirsty,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.15
+     },
+     {
+      "text": "go and drink from the water jars.",
+      "rate": "-6%",
+      "pitch": "+0Hz"
+     }
+    ]
+   }
+  },
+  "ru_13": {
+   "m": "害羞、惊讶，几乎是小声说；问句轻轻往上扬",
+   "m_en": "shy, amazed, almost a whisper; the question rises gently",
+   "d": "画面：一个大人对你特别好，你不敢相信，小声问为什么。",
+   "d_en": "Picture: a grown-up is very kind to you; you quietly ask why.",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -2
+    }
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "I'm a stranger here...",
+      "rate": "-12%",
+      "pitch": "-1Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "why are you so kind to me?",
+      "rate": "-8%",
+      "pitch": "+2Hz"
+     }
+    ],
+    "breath": {
+     "before": true,
+     "gain": -2
+    }
+   }
+  },
+  "ru_14": {
+   "m": "温暖、感动，声音里带着笑；祝福那句更郑重",
+   "m_en": "warm and moved, a smile in the voice; the blessing a little slower",
+   "d": "画面：你听说一个人很孝顺，你真心为她高兴。",
+   "d_en": "Picture: you've heard how good someone has been, and you are glad for her.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "I've heard all about how good you've been to Naomi.",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.42
+     },
+     {
+      "text": "May God reward you for it!",
+      "rate": "-12%",
+      "pitch": "+1Hz"
+     }
+    ]
+   }
+  },
+  "ru_15": {
+   "m": "压低声音的悄悄话，调皮、咧嘴笑；先神神秘秘，说到“留给她捡”时俏皮地扬起来，最后嘿嘿笑两声",
+   "m_en": "stage whisper, playful, grinning; slow and secretive, then a cheeky lift on 'for her to pick up', then a little chuckle",
+   "d": "画面：你偷偷给好朋友多放了一块糖，还不想让她知道。",
+   "d_en": "Picture: you secretly slip an extra sweet to a friend.",
+   "zh": {
+    "asrIgnore": "[嘿噓嘘]",
+    "acting": {
+     "kind": "laugh",
+     "after": "捡",
+     "written": 2
+    }
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Psst...",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "when you cut the barley,",
+      "rate": "-14%",
+      "pitch": "-1Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "drop a little extra on purpose...",
+      "rate": "-12%",
+      "pitch": "-1Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "for her to pick up!",
+      "rate": "+4%",
+      "pitch": "+3Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Heh heh.",
+      "rate": "+0%",
+      "pitch": "+2Hz"
+     }
+    ],
+    "asrIgnore": "heh"
+   }
+  },
+  "ru_16": {
+   "m": "越说越高兴；“满满一大捆”说得又大又圆",
+   "m_en": "building delight; big and round on 'great big bundle'",
+   "d": "画面：你把一大捆东西抱给孩子看：哇，这么多！",
+   "d_en": "Picture: you show the child a huge armful: look how much!",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "By evening,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.32
+     },
+     {
+      "text": "Ruth had gathered a great big bundle of barley!",
+      "rate": "-4%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "ru_17": {
+   "m": "真的很惊讶，这是她第一次听起来开心；说“这么多呀”时笑出来一点",
+   "m_en": "genuinely amazed, the first time she sounds happy; a little laugh on 'So much!'",
+   "d": "画面：孩子抱回一大堆东西，你惊喜得睁大眼睛。",
+   "d_en": "Picture: a child brings home a huge armful and your eyes go wide.",
+   "zh": {
+    "breath": {
+     "before": true
+    },
+    "acting": {
+     "kind": "laugh",
+     "after": "这么多",
+     "before": "你今天",
+     "written": 0
+    },
+    "f0Hz": [
+     140,
+     250
+    ]
+   },
+   "en": {
+    "breath": {
+     "before": true
+    },
+    "f0Hz": [
+     130,
+     210
+    ]
+   }
+  },
+  "ru_18": {
+   "m": "开心，有点喘，很自豪",
+   "m_en": "happy, a bit breathless, proud",
+   "d": "画面：你一路跑回家，急着告诉妈妈好消息。",
+   "d_en": "Picture: you ran all the way home to tell good news.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "A man called Boaz.",
+      "rate": "+4%",
+      "pitch": "+1Hz",
+      "gap": 0.24
+     },
+     {
+      "text": "He was so kind to me!",
+      "rate": "+6%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "ru_19": {
+   "m": "惊讶变成喜悦和感激的泪；“他没有忘记我们”之前声音一哽",
+   "m_en": "surprise turning into joy and thankful tears; a catch in the voice before 'He hasn't forgotten us'",
+   "d": "画面：你忽然明白，上帝一直在照顾你，眼泪涌上来。",
+   "d_en": "Picture: you suddenly see you were cared for all along, and tears come.",
+   "zh": {
+    "breath": {
+     "after": "感谢上帝"
+    },
+    "f0Hz": [
+     140,
+     250
+    ]
+   },
+   "en": {
+    "breath": {
+     "after": "Thank God"
+    },
+    "f0Hz": [
+     130,
+     210
+    ]
+   }
+  },
+  "ru_20": {
+   "m": "夜里，压低声音，有点秘密，带着盼望",
+   "m_en": "hushed, night-time, a little secret and hopeful",
+   "d": "画面：夜里，你小声给孩子讲一个秘密的计划。",
+   "d_en": "Picture: at night you whisper a secret plan to the child.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Naomi thought,",
+      "rate": "-10%",
+      "pitch": "-1Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "'If only Boaz would take care of Ruth!'",
+      "rate": "-8%",
+      "pitch": "+1Hz",
+      "gap": 0.6
+     },
+     {
+      "text": "So one night, Ruth went to find Boaz at the threshing floor.",
+      "rate": "-8%",
+      "pitch": "-1Hz"
+     }
+    ]
+   }
+  },
+  "ru_21": {
+   "m": "轻轻的，紧张又勇敢；“求您”之前轻轻吸一口气",
+   "m_en": "soft, nervous, brave; a small breath before 'will you please'",
+   "d": "画面：你鼓起勇气，向一位大人请求帮忙。",
+   "d_en": "Picture: you gather your courage to ask a grown-up for help.",
+   "zh": {
+    "breath": {
+     "after": "您是我们的亲人"
+    }
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Boaz, you're part of our family...",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "will you please take care of us?",
+      "rate": "-8%",
+      "pitch": "+1Hz"
+     }
+    ],
+    "breath": {
+     "after": "our family"
+    }
+   }
+  },
+  "ru_22": {
+   "m": "先非常温柔，然后说承诺时坚定、肯定；带着笑",
+   "m_en": "very gentle, then firm and sure on the promise; a smile",
+   "d": "画面：一个孩子害怕地来求你，你蹲下来让她放心。",
+   "d_en": "Picture: a frightened child asks you for help and you reassure her.",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -3
+    }
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Don't be afraid, my daughter.",
+      "rate": "-14%",
+      "pitch": "+0Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "Everyone knows you're a good woman.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "I will take care of you,",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.15
+     },
+     {
+      "text": "I promise!",
+      "rate": "-6%",
+      "pitch": "+1Hz"
+     }
+    ],
+    "breath": {
+     "before": true,
+     "gain": -3
+    }
+   }
+  },
+  "ru_23": {
+   "m": "明亮、开心，听得见的笑容",
+   "m_en": "bright and happy, a smile you can hear",
+   "d": "画面：你在讲一场热热闹闹的婚礼。",
+   "d_en": "Picture: you describe a joyful wedding.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "And so Boaz married Ruth.",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.36
+     },
+     {
+      "text": "The whole town came to celebrate with them!",
+      "rate": "+2%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "ru_24": {
+   "m": "轻柔温馨，像在看摇篮里的宝宝；名字说得清楚、温柔",
+   "m_en": "soft and tender, like looking into a cradle; slow on the name",
+   "d": "画面：你俯身看着摇篮里睡着的小宝宝。",
+   "d_en": "Picture: you lean over a sleeping baby in a cradle.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Before long, they had a baby boy.",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "They named him...",
+      "rate": "-12%",
+      "pitch": "+0Hz",
+      "gap": 0.32
+     },
+     {
+      "text": "Obed.",
+      "rate": "-22%",
+      "pitch": "+1Hz"
+     }
+    ]
+   }
+  },
+  "ru_25": {
+   "m": "喜极而泣，半笑半哭；像摇着宝宝的节奏；最后几个字充满惊奇",
+   "m_en": "happy tears, half laughing; a rocking rhythm; the last words full of wonder",
+   "d": "画面：你抱着刚出生的小孙子，轻轻摇着。",
+   "d_en": "Picture: you rock your newborn grandson in your arms.",
+   "zh": {
+    "breath": {
+     "before": true
+    },
+    "f0Hz": [
+     140,
+     250
+    ]
+   },
+   "en": {
+    "breath": {
+     "before": true
+    },
+    "f0Hz": [
+     130,
+     210
+    ]
+   }
+  },
+  "ru_26": {
+   "m": "调皮，凑近孩子分享秘密；说到“大卫”时开心地揭晓",
+   "m_en": "playful, leaning in to share a secret; a big happy reveal on 'David'",
+   "d": "画面：你凑到孩子耳边：告诉你一个秘密哦！",
+   "d_en": "Picture: you lean to the child's ear: want to know a secret?",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "And guess what?",
+      "rate": "+0%",
+      "pitch": "+3Hz",
+      "gap": 0.48
+     },
+     {
+      "text": "When Obed grew up, he had a grandson named...",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "David.",
+      "rate": "-10%",
+      "pitch": "+3Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "Yes, the David who beat Goliath!",
+      "rate": "+4%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "ru_27": {
+   "m": "温暖的结尾，直接对孩子说；最后一句带着笑",
+   "m_en": "warm moral, speaking right to the child; a smile on the last sentence",
+   "d": "画面：讲完故事，你摸摸孩子的头。",
+   "d_en": "Picture: the story is over and you stroke the child's hair.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Ruth never left Naomi,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "and God took care of them all along.",
+      "rate": "-8%",
+      "pitch": "-1Hz",
+      "gap": 0.62
+     },
+     {
+      "text": "You can love your family like that too!",
+      "rate": "-4%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  }
+ }
+}

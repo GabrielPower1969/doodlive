@@ -17,6 +17,8 @@ Outputs (assets/<id>/sheet/ unless noted; names read by Unity's StorySetup)
 
 Run from the repo root:
   python3 tools/story/make_sheet.py esther                                                build the sheet
+  STORY_OUT_ROOT=/tmp/x python3 tools/story/make_sheet.py esther       same, outputs under /tmp/x/assets/<id>/sheet and
+      /tmp/x/print (inputs still from the repo): to compare a story's sheet without touching the committed one
   blender -b --factory-startup --python tools/story/make_sheet.py -- esther render        set + cast wearing the demo
       colouring, phone view etc. -> assets/<id>/sheet/textured_*.png (look: colours must land on the right parts)
 """
@@ -24,6 +26,7 @@ import json, math, os, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+OUT_ROOT = Path(os.environ.get("STORY_OUT_ROOT", str(ROOT)))          # where sheet/ and print/ outputs go
 WORK = Path(os.environ.get("STORY_WORK", "/tmp/story_work"))
 SS = 2
 INK = (0x26, 0x20, 0x19)
@@ -34,7 +37,7 @@ def setup(sid):
     global SID, A, OUT, MODEL, DESIGN, SH, PW, PH, AX, AY, AW, AH, ART_H, LINE_PX, DETAIL_PX, STORY
     SID = sid
     A = ROOT / "assets" / sid
-    OUT = A / "sheet"; MODEL = A / "model"
+    OUT = OUT_ROOT / "assets" / sid / "sheet"; MODEL = A / "model"
     DESIGN = json.load(open(A / "design.json"))
     SH = DESIGN["sheet"]
     PW, PH = SH["page"]; AX, AY, AW, AH = SH["art"]
@@ -212,9 +215,9 @@ def build():
         d.text((fx + fw / 2, fy + 76), l2, fill=(154, 154, 154), font=f2, anchor="mm")
         return page
     page = page_with(ink_page)
-    (ROOT / "print").mkdir(exist_ok=True)
-    page.save(ROOT / f"print/{SID}-A4.png")
-    page.save(ROOT / f"print/{SID}-A4.pdf", resolution=150)
+    (OUT_ROOT / "print").mkdir(parents=True, exist_ok=True)
+    page.save(OUT_ROOT / f"print/{SID}-A4.png")
+    page.save(OUT_ROOT / f"print/{SID}-A4.pdf", resolution=150)
     page.save(OUT / "reference.png")
     page_with(demo_page).save(OUT / "demo-sheet.png")
     json.dump({"page": [PW, PH], "art": [AX, AY, AW, AH], "markers": SH["markers"], "markerSize": SH["markerSize"],
@@ -255,7 +258,10 @@ def build():
     for c, v in rc["characters"].items():
         for r, e in v["regions"].items():
             if e.get("anchorUV"):
-                samples[f"{c}.{r}"] = (e["anchorUV"], c, e["anchoredTo"])
+                ch_, want_ = c, e["anchoredTo"]
+                if "." in want_:                       # "<char|set>.<region>": a texel in another drawing
+                    ch_, want_ = want_.split(".", 1)
+                samples[f"{c}.{r}"] = (e["anchorUV"], ch_, want_)
     for e in st.get("constUV", []):
         samples["set." + e["node"]] = (e["uv"], "set", e["region"])
     us = {}
@@ -296,6 +302,15 @@ def build():
 
 # ============================================================================================ textured renders
 PAGE_LAYER = {}
+# one story scene per pack (name, stage {who: (x, z, y, yaw)}, eye, target, vfov, resolution)
+STORY_SCENE = {
+    "esther": ("textured_banquet", {"esther": (0.06, 0.10, 0.0, 30), "king": (0.0, -0.05, 0.0, 0),
+                                    "haman": (0.36, 0.10, 0.0, -60)},
+               (-0.04, 0.40, 1.05), (0.20, 0.08, -0.05), 40, (1280, 720)),
+    "ruth": ("textured_field", {"ruth": (0.24, 0.12, 0.0, 40), "boaz": (0.30, 0.13, 0.0, -70),
+                                "naomi": (-0.40, -0.22, 0.0, 10)},
+             (-0.10, 0.42, 1.00), (0.12, 0.08, -0.12), 40, (1280, 720)),
+}
 
 
 def render():
@@ -328,6 +343,11 @@ def render():
         bpy.ops.import_scene.gltf(filepath=str(path))
         return [o for o in bpy.data.objects if o not in before]
     objs = imp(MODEL / f"{STORY['set']}.glb")
+    if SID != "esther":                                  # set props hidden at the start of the play stay hidden
+        for n in DESIGN.get("set", {}).get("hiddenAtStart", []):
+            o = bpy.data.objects.get(n)
+            for h in ([o] + list(o.children_recursive)) if o else []:
+                h.hide_render = True
     roots = {}
     for ch in STORY["cast"]:
         new = imp(MODEL / f"{ch}.glb"); objs += new
@@ -392,9 +412,7 @@ def render():
              ("textured_phone_play", opening, (-0.08, 0.95, 1.15), (-0.08, 0.05, -0.50), 55, (720, 1280)),
              ("textured_front", marks, (0.0, 0.26, 2.3), (0.0, 0.20, -0.25), 21, (1600, 1000)),
              ("textured_cast", marks, (0.0, 0.22, 1.25), (0.0, 0.19, 0.0), 22, (1600, 900)),
-             ("textured_banquet", {"esther": (0.06, 0.10, 0.0, 30), "king": (0.0, -0.05, 0.0, 0),
-                                   "haman": (0.36, 0.10, 0.0, -60)},
-              (-0.04, 0.40, 1.05), (0.20, 0.08, -0.05), 40, (1280, 720)),
+             STORY_SCENE.get(SID, STORY_SCENE["esther"]),
              ("textured_top", marks, (0.30, 0.75, 0.55), (0.10, 0.05, -0.15), 45, (1280, 900))]
     for name, stg, eye, tgt, vfov, res in shots:
         stage(stg)
@@ -402,7 +420,7 @@ def render():
         cam.location = e; cam.rotation_euler = (t - e).to_track_quat('-Z', 'Y').to_euler()
         cam.data.angle_y = math.radians(vfov)
         sc.render.resolution_x, sc.render.resolution_y = res
-        if ink and name not in ("textured_banquet", "textured_top"):
+        if ink and name not in (STORY_SCENE.get(SID, STORY_SCENE["esther"])[0], "textured_top"):
             continue
         sc.render.filepath = str((WORK / f"{SID}_{name}_ink.png") if ink else (OUT / f"{name}.png"))
         bpy.ops.render.render(write_still=True)

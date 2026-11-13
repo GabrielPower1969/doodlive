@@ -1,8 +1,9 @@
 #!/bin/sh
 # Off-Unity preview of the D&G effects: runs the real DGFxPaint/DGFxCore/DGFxEffects code under .NET 8
 # (referencing Unity's UnityEngine.CoreModule.dll for Vector3/Color), dumps the exact triangles, renders PNGs.
-# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther]   (needs dotnet 8, python3 + numpy + Pillow)
-#   no argument: David & Goliath ids -> fx_contact.png;  "esther": Esther ids -> fx_contact_esther.png
+# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther|ruth]   (needs dotnet 8, python3 + numpy + Pillow)
+#   no argument: David & Goliath ids -> fx_contact.png;  "esther": Esther ids -> fx_contact_esther.png;
+#   "ruth": Ruth ids over a stand-in Bethlehem set (tints applied) -> fx_contact_ruth.png
 # Unity ignores this folder (name ends in ~); the build project is generated in a temp dir.
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"
@@ -32,7 +33,11 @@ XML
 dotnet build "$WORK/fxpreview.csproj" -nologo -v q -o "$WORK/bin"
 dotnet "$WORK/bin/fxpreview.dll" "$WORK/out" "$SET"
 python3 -I "$HERE/render.py" "$WORK/out"
-if [ "$SET" = esther ]; then
+    <Compile Include="$FX/StoryFxRuth.cs" />
+    <Compile Include="$HERE/RuthPreview.cs" />
+if [ "$SET" = ruth ]; then
+  cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_ruth.png"; echo "wrote $HERE/fx_contact_ruth.png"
+elif [ "$SET" = esther ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_esther.png"; echo "wrote $HERE/fx_contact_esther.png"
 else
   cp "$WORK/out/atlas.png" "$WORK/out/fx_contact.png" "$HERE/"; echo "wrote $HERE/atlas.png $HERE/fx_contact.png"

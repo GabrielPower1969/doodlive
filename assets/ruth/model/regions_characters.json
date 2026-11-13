@@ -1,0 +1,866 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/ru_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as D&G id_2x).",
+ "sheet": {
+  "ruth": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "naomi": {
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "boaz": {
+   "sheetX": 0.33,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "ruth": {
+   "height": 0.33,
+   "bboxSheet": [
+    -0.1064,
+    0.0165,
+    0.1064,
+    0.3421
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#F1C6A0",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1064,
+      0.0188,
+      0.1064,
+      0.3331
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#4A2E1F",
+     "zh": "头发",
+     "en": "hair",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.024,
+      0.2745,
+      0.024,
+      0.3373
+     ]
+    },
+    "dress": {
+     "id": 3,
+     "hex": "#9CC5A1",
+     "zh": "长裙",
+     "en": "dress",
+     "parts": [
+      "dress"
+     ],
+     "bboxSheet": [
+      -0.0934,
+      0.0304,
+      0.0935,
+      0.2663
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#A8743F",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0299,
+      0.0165,
+      0.0299,
+      0.0359
+     ]
+    },
+    "belt": {
+     "id": 5,
+     "hex": "#8A5A3B",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltTie"
+     ],
+     "bboxSheet": [
+      -0.0294,
+      0.1512,
+      0.0294,
+      0.2181
+     ]
+    },
+    "bracelet": {
+     "id": 6,
+     "hex": "#3FB8AF",
+     "zh": "手链",
+     "en": "bracelet",
+     "parts": [
+      "bracelet"
+     ],
+     "bboxSheet": [
+      0.0841,
+      0.1711,
+      0.0949,
+      0.1794
+     ],
+     "anchoredTo": "bracelet",
+     "anchorUV": [
+      0.59175,
+      0.14405
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "scarf": {
+     "id": 7,
+     "hex": "#F3E9D2",
+     "zh": "头巾",
+     "en": "head-scarf",
+     "parts": [
+      "scarf"
+     ],
+     "bboxSheet": [
+      -0.0417,
+      0.1892,
+      0.0415,
+      0.3421
+     ]
+    },
+    "sheaf": {
+     "id": 8,
+     "hex": "#E2A93B",
+     "zh": "麦捆",
+     "en": "barley sheaf",
+     "parts": [
+      "sheaf"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.sheaf",
+     "anchorUV": [
+      0.07375,
+      0.88447
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.ruth.propUV.sheaf = [u, v])"
+    },
+    "sheafTie": {
+     "id": 9,
+     "hex": "#8A5A3B",
+     "zh": "麦捆绳",
+     "en": "sheaf tie",
+     "parts": [
+      "sheaf"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.sheafTie",
+     "anchorUV": [
+      0.07425,
+      0.90933
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.ruth.propUV.sheafTie = [u, v])"
+    },
+    "stalks": {
+     "id": 10,
+     "hex": "#E8B84A",
+     "zh": "麦穗",
+     "en": "barley stalks",
+     "parts": [
+      "stalks"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.barley",
+     "anchorUV": [
+      0.91925,
+      0.85432
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.ruth.propUV.stalks = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02015,
+     0.2636,
+     0.02015,
+     0.3039
+    ],
+    "px": 512,
+    "default": "calm",
+    "files": {
+     "calm": "docs/ruth/design/faces/ruth_calm.png",
+     "sad": "docs/ruth/design/faces/ruth_sad.png",
+     "talk": "docs/ruth/design/faces/ruth_talk.png",
+     "shy": "docs/ruth/design/faces/ruth_shy.png",
+     "joy": "docs/ruth/design/faces/ruth_joy.png",
+     "pray": "docs/ruth/design/faces/ruth_pray.png",
+     "brave": "docs/ruth/design/faces/ruth_brave.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk": "calm",
+     "talk": "talk",
+     "sad": "sad",
+     "shake_head": "brave",
+     "hold_hands": "brave",
+     "hug": "sad",
+     "cheer_up": "joy",
+     "glean": "calm",
+     "stand_up": "calm",
+     "bow_kneel": "pray",
+     "shy": "shy",
+     "carry_walk": "joy",
+     "show_bundle": "joy",
+     "joy": "joy",
+     "ask_humble": "shy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "sheaf": {
+     "bone": "sheaf",
+     "mesh": "ruth_sheaf",
+     "node": "ruth/sheaf",
+     "shownByDefault": false
+    },
+    "stalks": {
+     "bone": "stalks",
+     "mesh": "ruth_stalks",
+     "node": "ruth/stalks",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "ruth.FACE",
+     "uv": [
+      0.49975,
+      0.22229
+     ],
+     "local": [
+      -0.0002,
+      0.2578
+     ]
+    },
+    "handR.skin": {
+     "target": "ruth.FACE",
+     "uv": [
+      0.49975,
+      0.22229
+     ],
+     "local": [
+      -0.0002,
+      0.2578
+     ]
+    },
+    "legL.skin": {
+     "target": "ruth.FACE",
+     "uv": [
+      0.49975,
+      0.22229
+     ],
+     "local": [
+      -0.0002,
+      0.2578
+     ]
+    },
+    "legR.skin": {
+     "target": "ruth.FACE",
+     "uv": [
+      0.49975,
+      0.22229
+     ],
+     "local": [
+      -0.0002,
+      0.2578
+     ]
+    }
+   }
+  },
+  "naomi": {
+   "height": 0.31,
+   "bboxSheet": [
+    -0.4389,
+    0.0162,
+    -0.2252,
+    0.3288
+   ],
+   "regions": {
+    "skin": {
+     "id": 11,
+     "hex": "#E9BC98",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4389,
+      0.0186,
+      -0.2252,
+      0.3199
+     ]
+    },
+    "hair": {
+     "id": 12,
+     "hex": "#C9C4BE",
+     "zh": "头发",
+     "en": "hair",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3535,
+      0.2662,
+      -0.3065,
+      0.3239
+     ]
+    },
+    "robe": {
+     "id": 13,
+     "hex": "#B98A9E",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.4311,
+      0.0232,
+      -0.229,
+      0.2616
+     ]
+    },
+    "sandals": {
+     "id": 14,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3596,
+      0.0164,
+      -0.3004,
+      0.0353
+     ]
+    },
+    "sash": {
+     "id": 15,
+     "hex": "#D9A63A",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      -0.3649,
+      0.1352,
+      -0.2951,
+      0.2141
+     ]
+    },
+    "shawl": {
+     "id": 16,
+     "hex": "#8FA3B8",
+     "zh": "披巾",
+     "en": "shawl",
+     "parts": [
+      "shawl"
+     ],
+     "bboxSheet": [
+      -0.378,
+      0.1676,
+      -0.2827,
+      0.3288
+     ]
+    },
+    "staff": {
+     "id": 17,
+     "hex": "#9B6B43",
+     "zh": "手杖",
+     "en": "staff",
+     "parts": [
+      "staff"
+     ],
+     "bboxSheet": [
+      -0.4378,
+      0.0162,
+      -0.427,
+      0.2246
+     ]
+    },
+    "baby": {
+     "id": 18,
+     "hex": "#F3E9D2",
+     "zh": "襁褓",
+     "en": "baby's wrap",
+     "parts": [
+      "baby"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "ruth.scarf",
+     "anchorUV": [
+      0.53225,
+      0.20844
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.naomi.propUV.baby = [u, v])"
+    },
+    "babyFace": {
+     "id": 19,
+     "hex": "#F1C6A0",
+     "zh": "宝宝的脸",
+     "en": "baby's face",
+     "parts": [
+      "baby"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "ruth.skin",
+     "anchorUV": [
+      0.49975,
+      0.22229
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.naomi.propUV.babyFace = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.01963,
+     0.25677,
+     0.01963,
+     0.29602
+    ],
+    "px": 512,
+    "default": "tender",
+    "files": {
+     "tender": "docs/ruth/design/faces/naomi_tender.png",
+     "sad": "docs/ruth/design/faces/naomi_sad.png",
+     "tired": "docs/ruth/design/faces/naomi_tired.png",
+     "talk": "docs/ruth/design/faces/naomi_talk.png",
+     "surprised": "docs/ruth/design/faces/naomi_surprised.png",
+     "joy": "docs/ruth/design/faces/naomi_joy.png"
+    },
+    "clipExpression": {
+     "idle": "tender",
+     "walk_tired": "tired",
+     "talk": "talk",
+     "sad": "sad",
+     "send_away": "sad",
+     "listen_moved": "tender",
+     "hug": "tender",
+     "nod": "tender",
+     "surprised": "surprised",
+     "bless_up": "joy",
+     "clap": "joy",
+     "hold_baby": "tender",
+     "joy": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [
+     [
+      "chest",
+      15.0
+     ],
+     [
+      "neck",
+      14.0
+     ],
+     [
+      "head",
+      -17.0
+     ],
+     [
+      "upperArmL",
+      -15.0
+     ],
+     [
+      "upperArmR",
+      -15.0
+     ]
+    ],
+    "note": "Naomi: the stoop (degrees about design X) is baked into the rest skeleton"
+   },
+   "props": {
+    "staff": {
+     "bone": "staff",
+     "mesh": "naomi_staff",
+     "node": "naomi/staff",
+     "shownByDefault": true
+    },
+    "baby": {
+     "bone": "baby",
+     "mesh": "naomi_baby",
+     "node": "naomi/baby",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "naomi.FACE",
+     "uv": [
+      0.16975,
+      0.21536
+     ],
+     "local": [
+      -0.0002,
+      0.2493
+     ]
+    },
+    "handR.skin": {
+     "target": "naomi.FACE",
+     "uv": [
+      0.16975,
+      0.21536
+     ],
+     "local": [
+      -0.0002,
+      0.2493
+     ]
+    },
+    "legL.skin": {
+     "target": "naomi.FACE",
+     "uv": [
+      0.16975,
+      0.21536
+     ],
+     "local": [
+      -0.0002,
+      0.2493
+     ]
+    },
+    "legR.skin": {
+     "target": "naomi.FACE",
+     "uv": [
+      0.16975,
+      0.21536
+     ],
+     "local": [
+      -0.0002,
+      0.2493
+     ]
+    }
+   }
+  },
+  "boaz": {
+   "height": 0.38,
+   "bboxSheet": [
+    0.1877,
+    0.0167,
+    0.4723,
+    0.3955
+   ],
+   "regions": {
+    "skin": {
+     "id": 20,
+     "hex": "#D9A27A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1877,
+      0.0193,
+      0.4723,
+      0.3818
+     ]
+    },
+    "hair": {
+     "id": 21,
+     "hex": "#3A2418",
+     "zh": "头发",
+     "en": "hair",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      0.3018,
+      0.3173,
+      0.3582,
+      0.3906
+     ]
+    },
+    "beard": {
+     "id": 22,
+     "hex": "#3A2418",
+     "zh": "胡子",
+     "en": "beard",
+     "parts": [
+      "beard",
+      "moustache"
+     ],
+     "bboxSheet": [
+      0.301,
+      0.3112,
+      0.359,
+      0.3516
+     ]
+    },
+    "tunic": {
+     "id": 23,
+     "hex": "#EFE3C8",
+     "zh": "内袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2051,
+      0.0248,
+      0.455,
+      0.3053
+     ]
+    },
+    "sandals": {
+     "id": 24,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2897,
+      0.0167,
+      0.3703,
+      0.0391
+     ]
+    },
+    "sash": {
+     "id": 25,
+     "hex": "#B5532E",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      0.2803,
+      0.1856,
+      0.3797,
+      0.2512
+     ]
+    },
+    "robe": {
+     "id": 26,
+     "hex": "#6E7F3A",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      0.2053,
+      0.0319,
+      0.4547,
+      0.304
+     ]
+    },
+    "headcloth": {
+     "id": 27,
+     "hex": "#EDE2C6",
+     "zh": "头巾",
+     "en": "head-cloth",
+     "parts": [
+      "headcloth"
+     ],
+     "bboxSheet": [
+      0.2645,
+      0.2431,
+      0.3955,
+      0.3955
+     ]
+    },
+    "cord": {
+     "id": 28,
+     "hex": "#4B3A26",
+     "zh": "头箍",
+     "en": "head cord",
+     "parts": [
+      "cord"
+     ],
+     "bboxSheet": [
+      0.2951,
+      0.3714,
+      0.3649,
+      0.3955
+     ],
+     "anchoredTo": "cord",
+     "anchorUV": [
+      0.85775,
+      0.31194
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "stalks": {
+     "id": 29,
+     "hex": "#E8B84A",
+     "zh": "麦穗",
+     "en": "barley stalks",
+     "parts": [
+      "stalks"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.barley",
+     "anchorUV": [
+      0.91925,
+      0.85432
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.boaz.propUV.stalks = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.31015,
+     0.02268,
+     0.35551
+    ],
+    "px": 512,
+    "default": "smile",
+    "files": {
+     "smile": "docs/ruth/design/faces/boaz_smile.png",
+     "talk": "docs/ruth/design/faces/boaz_talk.png",
+     "curious": "docs/ruth/design/faces/boaz_curious.png",
+     "kind": "docs/ruth/design/faces/boaz_kind.png",
+     "sneaky": "docs/ruth/design/faces/boaz_sneaky.png",
+     "laugh": "docs/ruth/design/faces/boaz_laugh.png",
+     "joy": "docs/ruth/design/faces/boaz_joy.png"
+    },
+    "clipExpression": {
+     "idle": "smile",
+     "walk": "smile",
+     "talk": "talk",
+     "greet": "smile",
+     "look_curious": "curious",
+     "talk_kind": "kind",
+     "hand_on_heart": "kind",
+     "sneaky_drop": "sneaky",
+     "chuckle": "laugh",
+     "listen": "kind",
+     "joy": "joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "stalks": {
+     "bone": "stalks",
+     "mesh": "boaz_stalks",
+     "node": "boaz/stalks",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "boaz.FACE",
+     "uv": [
+      0.82225,
+      0.25244
+     ],
+     "local": [
+      -0.0077,
+      0.2948
+     ]
+    },
+    "handR.skin": {
+     "target": "boaz.FACE",
+     "uv": [
+      0.82225,
+      0.25244
+     ],
+     "local": [
+      -0.0077,
+      0.2948
+     ]
+    },
+    "legL.skin": {
+     "target": "boaz.FACE",
+     "uv": [
+      0.82225,
+      0.25244
+     ],
+     "local": [
+      -0.0077,
+      0.2948
+     ]
+    },
+    "legR.skin": {
+     "target": "boaz.FACE",
+     "uv": [
+      0.82225,
+      0.25244
+     ],
+     "local": [
+      -0.0077,
+      0.2948
+     ]
+    }
+   }
+  }
+ }
+}
