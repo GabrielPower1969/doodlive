@@ -18,13 +18,18 @@ namespace DoodLive.DavidGoliath
         public float t; public string who, clip, face; public float blend = 0.25f;
         public float[] to;                                   // XZ target in art-width units (design axes); empty = stay put
         public bool HasTarget => to != null && to.Length >= 2;
+        public float y = float.NaN;                          // story packs: base height for this mark (the king on the dais)
     }
 
     [Serializable]
-    public class DGLine { public string id, who, zh, en, @ref; public float t, maxSec; }
+    public class DGLine { public string id, who, zh, en, @ref, voice, dir; public float t, maxSec; }
+
+    /// <summary>Story packs: show / hide a node ("king/ring", "palace/table") at t (docs/esther/CONTRACT.md §5).</summary>
+    [Serializable]
+    public class DGProp { public float t; public string node; public bool show; }
 
     [Serializable]
-    public class DGFxCue { public float t, dur; public string id, at; }
+    public class DGFxCue { public float t, dur; public string id, at, to; }   // to: optional far end (sceptre_beam)
 
     [Serializable]
     public class DGSfxCue { public float t; public string id; }
@@ -37,6 +42,9 @@ namespace DoodLive.DavidGoliath
     {
         public int version, fps;
         public float duration;
+        public string story, set;                            // story packs (docs/STORY-ARCHITECTURE.md); empty for David & Goliath
+        public string[] cast;
+        public DGProp[] props;
         public DGShot[] shots;
         public DGActing[] acting;
         public DGLine[] lines;
@@ -54,6 +62,8 @@ namespace DoodLive.DavidGoliath
             Array.Sort(t.fx, (a, b) => a.t.CompareTo(b.t));
             Array.Sort(t.sfx, (a, b) => a.t.CompareTo(b.t));
             Array.Sort(t.music, (a, b) => a.t.CompareTo(b.t));
+            if (t.props == null) t.props = new DGProp[0];
+            Array.Sort(t.props, (a, b) => a.t.CompareTo(b.t));
             return t;
         }
 
@@ -75,7 +85,7 @@ namespace DoodLive.DavidGoliath
     // assets/david-goliath/anim/clips.json (Animation role): clip lengths, loop flags, markers.
     [Serializable] public class DGClipInfo
     {
-        public string action, @char, clip; public int frames; public float seconds; public bool loop, rootMotion;
+        public string action, @char, clip; public int frames; public float seconds, naturalSpeed; public bool loop, rootMotion;   // naturalSpeed: story packs, in-place locomotion (art units / s)
         public DGClipMarkers markers;
         public DGDesertEvent[] desertEvents;                  // david_kneel_pick: hide desert/fiveStones/stoneK at sec
     }

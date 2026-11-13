@@ -1,0 +1,990 @@
+{
+ "note": "regions.png pixel value = id (0 = paper), same pixels as lineart.png. Cast: rest pose, front orthographic (UV0 front projection at characters.<id>.sheetX/sheetY). char 'set': drawings of the set (design.json set.drawings; 'part' = drawing, 'nodes' = the set nodes that sample it). Parts with detailOf are printed as detail lines and take that region's colour (anchorUV).",
+ "ids": [
+  {
+   "id": 1,
+   "char": "esther",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 2,
+   "char": "esther",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#4A2E1F"
+  },
+  {
+   "id": 3,
+   "char": "esther",
+   "part": "robe",
+   "piece": 0,
+   "region": "robe",
+   "hex": "#F6EEDC"
+  },
+  {
+   "id": 4,
+   "char": "esther",
+   "part": "robe",
+   "piece": 1,
+   "region": "robe",
+   "hex": "#F6EEDC"
+  },
+  {
+   "id": 5,
+   "char": "esther",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 6,
+   "char": "esther",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 7,
+   "char": "esther",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 8,
+   "char": "esther",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#C9893F"
+  },
+  {
+   "id": 9,
+   "char": "esther",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 10,
+   "char": "esther",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 11,
+   "char": "esther",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#F1C6A0"
+  },
+  {
+   "id": 12,
+   "char": "esther",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#C9893F"
+  },
+  {
+   "id": 13,
+   "char": "esther",
+   "part": "underSash",
+   "piece": 0,
+   "region": "underSash",
+   "hex": "#8CC8F0"
+  },
+  {
+   "id": 14,
+   "char": "esther",
+   "part": "sash",
+   "piece": 0,
+   "region": "sash",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 15,
+   "char": "esther",
+   "part": "sashKnot",
+   "piece": 1,
+   "region": "sash",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 16,
+   "char": "esther",
+   "part": "cape",
+   "piece": 0,
+   "region": "cape",
+   "hex": "#C8323F"
+  },
+  {
+   "id": 17,
+   "char": "esther",
+   "part": "braid",
+   "piece": 1,
+   "region": "hair",
+   "hex": "#4A2E1F"
+  },
+  {
+   "id": 18,
+   "char": "esther",
+   "part": "braid",
+   "piece": 2,
+   "region": "sash",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 19,
+   "char": "esther",
+   "part": "necklace",
+   "piece": 0,
+   "region": "necklace",
+   "hex": "#F2C14E",
+   "detailOf": "sash"
+  },
+  {
+   "id": 20,
+   "char": "esther",
+   "part": "necklace",
+   "piece": 1,
+   "region": "pendant",
+   "hex": "#2F5FD0",
+   "detailOf": "underSash"
+  },
+  {
+   "id": 21,
+   "char": "esther",
+   "part": "diadem",
+   "piece": 0,
+   "region": "diadem",
+   "hex": "#F2C14E",
+   "detailOf": "sash"
+  },
+  {
+   "id": 22,
+   "char": "king",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 23,
+   "char": "king",
+   "part": "earR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 24,
+   "char": "king",
+   "part": "earL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 25,
+   "char": "king",
+   "part": "hair",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#3A2418"
+  },
+  {
+   "id": 26,
+   "char": "king",
+   "part": "beard",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#3A2418"
+  },
+  {
+   "id": 27,
+   "char": "king",
+   "part": "moustache",
+   "piece": 1,
+   "region": "beard",
+   "hex": "#3A2418"
+  },
+  {
+   "id": 28,
+   "char": "king",
+   "part": "robe",
+   "piece": 0,
+   "region": "robe",
+   "hex": "#6A3FB5"
+  },
+  {
+   "id": 29,
+   "char": "king",
+   "part": "robe",
+   "piece": 1,
+   "region": "robe",
+   "hex": "#6A3FB5"
+  },
+  {
+   "id": 30,
+   "char": "king",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 31,
+   "char": "king",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 32,
+   "char": "king",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 33,
+   "char": "king",
+   "part": "legL",
+   "piece": 0,
+   "region": "shoes",
+   "hex": "#8A5A34"
+  },
+  {
+   "id": 34,
+   "char": "king",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 35,
+   "char": "king",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 36,
+   "char": "king",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#D9A27A"
+  },
+  {
+   "id": 37,
+   "char": "king",
+   "part": "legR",
+   "piece": 0,
+   "region": "shoes",
+   "hex": "#8A5A34"
+  },
+  {
+   "id": 38,
+   "char": "king",
+   "part": "collar",
+   "piece": 0,
+   "region": "collar",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 39,
+   "char": "king",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 40,
+   "char": "king",
+   "part": "medallion",
+   "piece": 1,
+   "region": "belt",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 41,
+   "char": "king",
+   "part": "crown",
+   "piece": 0,
+   "region": "crown",
+   "hex": "#6A3FB5"
+  },
+  {
+   "id": 42,
+   "char": "king",
+   "part": "crown",
+   "piece": 1,
+   "region": "crownBands",
+   "hex": "#F2C14E",
+   "detailOf": "collar"
+  },
+  {
+   "id": 43,
+   "char": "king",
+   "part": "crown",
+   "piece": 2,
+   "region": "crownBands",
+   "hex": "#F2C14E",
+   "detailOf": "collar"
+  },
+  {
+   "id": 44,
+   "char": "king",
+   "part": "sceptre",
+   "piece": 0,
+   "region": "sceptre",
+   "hex": "#F2C14E"
+  },
+  {
+   "id": 45,
+   "char": "king",
+   "part": "ring",
+   "piece": 0,
+   "region": "ring",
+   "hex": "#F2C14E",
+   "detailOf": "collar"
+  },
+  {
+   "id": 46,
+   "char": "haman",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 47,
+   "char": "haman",
+   "part": "earR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 48,
+   "char": "haman",
+   "part": "earL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 49,
+   "char": "haman",
+   "part": "hair",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#2A1C16"
+  },
+  {
+   "id": 50,
+   "char": "haman",
+   "part": "goatee",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#2A1C16"
+  },
+  {
+   "id": 51,
+   "char": "haman",
+   "part": "moustache",
+   "piece": 1,
+   "region": "beard",
+   "hex": "#2A1C16"
+  },
+  {
+   "id": 52,
+   "char": "haman",
+   "part": "robe",
+   "piece": 0,
+   "region": "robe",
+   "hex": "#8E2B3A"
+  },
+  {
+   "id": 53,
+   "char": "haman",
+   "part": "robe",
+   "piece": 4,
+   "region": "panels",
+   "hex": "#D9A63A"
+  },
+  {
+   "id": 54,
+   "char": "haman",
+   "part": "robe",
+   "piece": 3,
+   "region": "panels",
+   "hex": "#D9A63A"
+  },
+  {
+   "id": 55,
+   "char": "haman",
+   "part": "robe",
+   "piece": 1,
+   "region": "robe",
+   "hex": "#8E2B3A"
+  },
+  {
+   "id": 56,
+   "char": "haman",
+   "part": "robe",
+   "piece": 2,
+   "region": "panels",
+   "hex": "#D9A63A"
+  },
+  {
+   "id": 57,
+   "char": "haman",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 58,
+   "char": "haman",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 59,
+   "char": "haman",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 60,
+   "char": "haman",
+   "part": "legL",
+   "piece": 0,
+   "region": "shoes",
+   "hex": "#5A3A28"
+  },
+  {
+   "id": 61,
+   "char": "haman",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 62,
+   "char": "haman",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 63,
+   "char": "haman",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2B48C"
+  },
+  {
+   "id": 64,
+   "char": "haman",
+   "part": "legR",
+   "piece": 0,
+   "region": "shoes",
+   "hex": "#5A3A28"
+  },
+  {
+   "id": 65,
+   "char": "haman",
+   "part": "sash",
+   "piece": 5,
+   "region": "panels",
+   "hex": "#D9A63A"
+  },
+  {
+   "id": 66,
+   "char": "haman",
+   "part": "cap",
+   "piece": 0,
+   "region": "cap",
+   "hex": "#1F5C66"
+  },
+  {
+   "id": 67,
+   "char": "haman",
+   "part": "cap",
+   "piece": 1,
+   "region": "capRim",
+   "hex": "#F2C14E",
+   "detailOf": "panels"
+  },
+  {
+   "id": 68,
+   "char": "haman",
+   "part": "ring",
+   "piece": 0,
+   "region": "ring",
+   "hex": "#F2C14E",
+   "detailOf": "panels"
+  },
+  {
+   "id": 69,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "rosette",
+   "hex": "#F2C14E",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 70,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "wallBrick",
+   "hex": "#7CC0CC",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 71,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "wallStone",
+   "hex": "#EADFC8",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 72,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "frieze",
+   "hex": "#2F5FD0",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 73,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "guardBody",
+   "hex": "#E8B53C",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 74,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "guardWing",
+   "hex": "#8CC8F0",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 75,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "guardCoverts",
+   "hex": "#2F5FD0",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 76,
+   "char": "set",
+   "part": "wall",
+   "piece": 0,
+   "region": "guardMane",
+   "hex": "#C8643C",
+   "nodes": [
+    "wallRelief"
+   ]
+  },
+  {
+   "id": 77,
+   "char": "set",
+   "part": "column",
+   "piece": 0,
+   "region": "colGold",
+   "hex": "#E8B53C",
+   "nodes": [
+    "columnL",
+    "columnR"
+   ]
+  },
+  {
+   "id": 78,
+   "char": "set",
+   "part": "column",
+   "piece": 0,
+   "region": "colShaft",
+   "hex": "#E8D3A8",
+   "nodes": [
+    "columnL",
+    "columnR"
+   ]
+  },
+  {
+   "id": 79,
+   "char": "set",
+   "part": "column",
+   "piece": 0,
+   "region": "colBull",
+   "hex": "#E2C48E",
+   "nodes": [
+    "columnL",
+    "columnR"
+   ]
+  },
+  {
+   "id": 80,
+   "char": "set",
+   "part": "curtain",
+   "piece": 0,
+   "region": "curtainBand",
+   "hex": "#E8B53C",
+   "nodes": [
+    "curtainL",
+    "curtainR"
+   ]
+  },
+  {
+   "id": 81,
+   "char": "set",
+   "part": "curtain",
+   "piece": 0,
+   "region": "curtain",
+   "hex": "#B5283A",
+   "nodes": [
+    "curtainL",
+    "curtainR"
+   ]
+  },
+  {
+   "id": 82,
+   "char": "set",
+   "part": "curtain",
+   "piece": 0,
+   "region": "cord",
+   "hex": "#F2C14E",
+   "nodes": [
+    "curtainL",
+    "curtainR"
+   ]
+  },
+  {
+   "id": 83,
+   "char": "set",
+   "part": "throne",
+   "piece": 0,
+   "region": "throneGold",
+   "hex": "#E8B53C",
+   "nodes": [
+    "throne"
+   ]
+  },
+  {
+   "id": 84,
+   "char": "set",
+   "part": "throne",
+   "piece": 0,
+   "region": "throneDisc",
+   "hex": "#E8743C",
+   "nodes": [
+    "throne"
+   ]
+  },
+  {
+   "id": 85,
+   "char": "set",
+   "part": "throne",
+   "piece": 0,
+   "region": "throneCushion",
+   "hex": "#C8323F",
+   "nodes": [
+    "throne"
+   ]
+  },
+  {
+   "id": 86,
+   "char": "set",
+   "part": "throne",
+   "piece": 0,
+   "region": "throneBack",
+   "hex": "#2F5FD0",
+   "nodes": [
+    "throne"
+   ]
+  },
+  {
+   "id": 87,
+   "char": "set",
+   "part": "dais",
+   "piece": 0,
+   "region": "daisStep",
+   "hex": "#E8D3A8",
+   "nodes": [
+    "dais"
+   ]
+  },
+  {
+   "id": 88,
+   "char": "set",
+   "part": "dais",
+   "piece": 0,
+   "region": "daisTrim",
+   "hex": "#E8B53C",
+   "nodes": [
+    "dais"
+   ]
+  },
+  {
+   "id": 89,
+   "char": "set",
+   "part": "dais",
+   "piece": 0,
+   "region": "daisRug",
+   "hex": "#2F5FD0",
+   "nodes": [
+    "dais"
+   ]
+  },
+  {
+   "id": 90,
+   "char": "set",
+   "part": "brazier",
+   "piece": 0,
+   "region": "brazier",
+   "hex": "#A8682E",
+   "nodes": [
+    "brazierL",
+    "brazierR"
+   ]
+  },
+  {
+   "id": 91,
+   "char": "set",
+   "part": "brazier",
+   "piece": 0,
+   "region": "brazierRim",
+   "hex": "#E8B53C",
+   "nodes": [
+    "brazierL",
+    "brazierR"
+   ]
+  },
+  {
+   "id": 92,
+   "char": "set",
+   "part": "brazier",
+   "piece": 0,
+   "region": "coal",
+   "hex": "#6B2A1C",
+   "nodes": [
+    "brazierL",
+    "brazierR"
+   ]
+  },
+  {
+   "id": 93,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "tableGold",
+   "hex": "#E8B53C",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 94,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "tableCloth",
+   "hex": "#F6EEDC",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 95,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "goblet",
+   "hex": "#F2C14E",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 96,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "bowl",
+   "hex": "#A8682E",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 97,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "fruitRed",
+   "hex": "#C8323F",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 98,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "grapes",
+   "hex": "#6A3FB5",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 99,
+   "char": "set",
+   "part": "banquet",
+   "piece": 0,
+   "region": "bread",
+   "hex": "#D9A35A",
+   "nodes": [
+    "table",
+    "goblet1",
+    "goblet2",
+    "bowl",
+    "bread"
+   ]
+  },
+  {
+   "id": 100,
+   "char": "set",
+   "part": "carpet",
+   "piece": 0,
+   "region": "carpetBorder",
+   "hex": "#C8643C",
+   "nodes": [
+    "carpet"
+   ]
+  },
+  {
+   "id": 101,
+   "char": "set",
+   "part": "carpet",
+   "piece": 0,
+   "region": "carpetField",
+   "hex": "#3B4A8C",
+   "nodes": [
+    "carpet"
+   ]
+  },
+  {
+   "id": 102,
+   "char": "set",
+   "part": "carpet",
+   "piece": 0,
+   "region": "carpetInlay",
+   "hex": "#F2C14E",
+   "nodes": [
+    "carpet"
+   ]
+  },
+  {
+   "id": 103,
+   "char": "set",
+   "part": "floor",
+   "piece": 0,
+   "region": "floorA",
+   "hex": "#EFE6D4",
+   "nodes": [
+    "floor"
+   ]
+  },
+  {
+   "id": 104,
+   "char": "set",
+   "part": "floor",
+   "piece": 0,
+   "region": "floorB",
+   "hex": "#E7DBC3",
+   "nodes": [
+    "floor"
+   ]
+  }
+ ]
+}

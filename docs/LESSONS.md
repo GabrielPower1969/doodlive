@@ -340,3 +340,32 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - **沙漠加强轮：** 当作系数用的材质参数要用 `SetVector`，`SetColor` 在线性色彩空间会再做一次伽马换算；只给一个故事换环境光时按材质调，不要改全局设置。
 - **升级 Unity 6（6000.3.27f1，2026-10-29）：** 2022.3 个人版关不掉开屏，Unity 6 个人版可以（`PlayerSettings.SplashScreen.show/showUnityLogo = false`）；URP 17 在 6.3 里不再支持兼容模式，要把 `UniversalRenderPipelineGlobalSettings.asset` 的 `m_EnableRenderCompatibilityMode` 改成 0（打开 Render Graph），否则打包直接报错；最低 Android API 变成 25；AR Foundation 6 用 `trackablesChanged`，旧的 `trackedImagesChanged` 已过时；Unity 6 默认用 GameActivity，我们固定成 Activity；包版本照编辑器自带的 `PackageManager/Editor/manifest.json` 填（AR Foundation / ARCore 6.3.5）。
 - **旗子不飘（模拟器发现，2026-10-29）：** `AnimationClip.SampleAnimation` 对非 Legacy 动画只在编辑器里有效，打包后每帧报错、旗子不动；要像人物一样用 Animator + PlayableGraph 播放（每个旗子一层 `AnimationLayerMixerPlayable`）。编辑器预览（DGPreview）看不出这个 bug，只有真机或模拟器的日志能看出来。
+
+### L49 · Blank colouring sheets are invisible to ARCore image tracking · 2026-11-13 · confirmed
+- Symptom: after the Unity 6 build neither the David & Goliath sheet nor the angel sheet could be scanned.
+- Cause: the reference library held the **blank** sheets. `arcoreimg eval-img` (the tool ARCore's build runs; its
+  "Low scoring image report" is in the Build log) scored them: David & Goliath blank **0/100**, angel blank 15, themed
+  p1 pages 0-5; the coloured demo page 90 and a fully coloured print 100 (Google asks for >= 75). A colouring page is
+  white space and a few long outlines; colouring then changes the inside, so the inside can never be the anchor.
+  Doodle borders in the margins did not help (still 0): the score wants texture spread over the whole image.
+- Fix: find sheets by their 4 printed corner markers (`Scripts/Vision/MarkerDetector.cs`, pure C#), tell them apart by
+  the title band (`SheetIdentifier.cs`, signatures from `tools/make_sheet_signatures.py`), pose from the marker rays
+  plus a depth/plane hit for real size (`SheetFinder.cs`). ARCore image tracking stays as a second path, with the
+  coloured versions added to its library.
+- Test: `tests/vision` (dotnet) on synthetic frames from `make_synthetic.py` (perspective, any rotation, lighting,
+  blur, noise, clutter, random colouring): 3 x 200-400 frames, ~97 % found and identified with corners within 2.5 %
+  of the frame, 0 wrong stories, 0 false sheets on clutter, ~4 ms per detection.
+- Pitfalls met on the way: markers near the frame edge were rejected because a ring sample fell off-frame; the top-24
+  blob list dropped tiny markers next to big background shapes (fixed by trying the top-10 quads and letting the title
+  decide); a mirrored corner order matched the title ~0.5 (fixed: the page can never be seen from behind, so mirrored
+  orders are skipped); landscape frames must be downscaled by the short side, not the width.
+
+### L50 · A child's recording squashed by the TTS level chain sounded unnatural in the app · 2026-11-13 · confirmed
+- Symptom: David's lines recorded by a child sounded "changed, unnatural" in the app.
+- Checked: the app does not change them. The phone's own output (recorded with `scrcpy --audio-codec=raw`) matched
+  the clip: same pitch (400 vs 403 Hz), no effect in the playback path.
+- Cause: the import chain was built for flat TTS: +2 dB presence EQ (added by hand), a fast 3:1 compressor (5 ms) and
+  a 3 ms / 40 ms limiter to -16 LUFS. A child's voice has 15-19 dB crest factor, so the limiter ate 2-4 dB off every
+  shout; dg_17 was also time-stretched 4 %.
+- Fix: `tools/dg_voice_build.py` has a `natural` chain for recordings (1.8:1 soft knee, 25 ms attack, 8 ms / 200 ms
+  limiter, -17 LUFS); no EQ boost; no time-stretch — give the line time in the timeline instead (dg_17 maxSec 3.0).

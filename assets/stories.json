@@ -1,0 +1,9 @@
+{
+ "_doc": "Story registry (docs/STORY-ARCHITECTURE.md). The only list of stories: home screen order, sheets, engine. Sheet names = ARCore reference names and sheet_signatures.json names.",
+ "stories": [
+  {"id": "david-goliath", "engine": "dg", "order": 1, "title_zh": "大卫和歌利亚", "title_en": "David & Goliath",
+   "sheets": ["david-goliath-A4", "david-goliath-A4-demo", "david-goliath-A4-colored"], "version": 1, "status": "live"},
+  {"id": "esther", "engine": "story", "order": 2, "title_zh": "勇敢的王后", "title_en": "The Brave Queen",
+   "sheets": ["esther-A4", "esther-A4-demo"], "cast": ["esther", "king", "haman"], "set": "palace", "version": 1, "status": "beta"}
+ ]
+}

@@ -87,6 +87,6 @@ overlap (≥ 0.2 s apart). All text is public Bible content (it goes to edge-tts
 | `dg_14` | 62.2 | David | 你靠的是刀和枪，我靠的是耶和华的名！ | You come with sword and spear. I come in the name of the LORD! | 1 Samuel 17:45 | 6.0 (3.6 / 5.4) |
 | `dg_15` | 68.6 | Narrator | 大卫跑上前去，甩起了机弦！ | David ran forward and swung his sling! | 1 Samuel 17:48-49 | 3.0 (2.4 / 2.7) |
 | `dg_16` | 76.6 | Narrator | 石头打中额头，巨人咚地倒下了！ | The stone hit his forehead. Down fell the giant! | 1 Samuel 17:49-50 | 3.9 (2.9 / 3.5) |
-| `dg_17` | 81.4 | David | 这场仗，是属于上帝的！ | The battle belongs to the LORD! | 1 Samuel 17:47 | 2.9 (2.0 / 2.3) |
+| `dg_17` | 81.4 | David | 这场仗，是属于上帝的！ | The battle belongs to the LORD! | 1 Samuel 17:47 | 3.0 (2.0 / 2.3) |
 | `dg_18` | 84.6 | Narrator | 个子小不要紧，勇气和信靠上帝更重要！ | Courage and trust in God matter more than size! | 1 Samuel 17:45-47 (moral) | 4.0 (3.6 / 3.5) |
 <!-- LINES:END -->

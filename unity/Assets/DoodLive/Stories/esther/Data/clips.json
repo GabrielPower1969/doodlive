@@ -1,0 +1,5319 @@
+{
+ "fps": 30,
+ "units": "art-width",
+ "clips": [
+  {
+   "action": "esther_idle",
+   "char": "esther",
+   "clip": "idle",
+   "frames": 150,
+   "seconds": 5.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "breathes, shifts her weight L->R->L, looks round (neck leads, head follows), blinks at irregular times (single and double); fingers stir; braid and cape settle after each head turn",
+   "samples": {
+    "0": {
+     "head": [
+      -0.00074,
+      0.28458,
+      0.0
+     ],
+     "jaw": [
+      -0.00075,
+      0.28682,
+      -0.00255
+     ],
+     "handR": [
+      -0.05791,
+      0.15198,
+      0.0322
+     ],
+     "handL": [
+      0.0542,
+      0.15356,
+      0.03871
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      -0.0009,
+      0.17826,
+      0.0
+     ],
+     "braid3": [
+      -0.02598,
+      0.22812,
+      0.01773
+     ]
+    },
+    "75": {
+     "head": [
+      0.00613,
+      0.2835,
+      0.0
+     ],
+     "jaw": [
+      0.00575,
+      0.28578,
+      -0.00249
+     ],
+     "handR": [
+      -0.04908,
+      0.15259,
+      0.03871
+     ],
+     "handL": [
+      0.06302,
+      0.15079,
+      0.0322
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.0023,
+      0.0219
+     ],
+     "hips": [
+      0.00484,
+      0.17721,
+      0.0
+     ],
+     "braid3": [
+      -0.0206,
+      0.22751,
+      0.02066
+     ]
+    },
+    "150": {
+     "head": [
+      -0.00074,
+      0.28458,
+      0.0
+     ],
+     "jaw": [
+      -0.00075,
+      0.28682,
+      -0.00255
+     ],
+     "handR": [
+      -0.05791,
+      0.15198,
+      0.0322
+     ],
+     "handL": [
+      0.0542,
+      0.15356,
+      0.03871
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      -0.0009,
+      0.17826,
+      0.0
+     ],
+     "braid3": [
+      -0.02598,
+      0.22812,
+      0.01773
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0025,
+    "plantedToeDriftMax": 0.0018
+   }
+  },
+  {
+   "action": "esther_walk",
+   "char": "esther",
+   "clip": "walk",
+   "frames": 36,
+   "seconds": 1.2,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 18,
+     "sec": 0.6
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "graceful in-place walk, 100 steps/min; hips bob and drop, chest counter-turns, arms swing softly with lagging forearms and hands; braid and cape swing",
+   "naturalSpeed": 0.1042,
+   "stride": 0.075,
+   "samples": {
+    "0": {
+     "head": [
+      -0.00334,
+      0.28448,
+      0.00279
+     ],
+     "jaw": [
+      -0.00342,
+      0.28679,
+      0.00031
+     ],
+     "handR": [
+      -0.05645,
+      0.14683,
+      0.02614
+     ],
+     "handL": [
+      0.05535,
+      0.15945,
+      0.04338
+     ],
+     "footL": [
+      0.01781,
+      0.02106,
+      0.03582
+     ],
+     "toeR": [
+      -0.01782,
+      0.00307,
+      -0.00415
+     ],
+     "hips": [
+      0.0,
+      0.17826,
+      0.0
+     ],
+     "braid3": [
+      -0.02901,
+      0.22759,
+      0.01974
+     ]
+    },
+    "18": {
+     "head": [
+      0.00334,
+      0.28448,
+      0.00279
+     ],
+     "jaw": [
+      0.00342,
+      0.28679,
+      0.00031
+     ],
+     "handR": [
+      -0.05535,
+      0.15945,
+      0.04338
+     ],
+     "handL": [
+      0.05645,
+      0.14683,
+      0.02614
+     ],
+     "footL": [
+      0.01782,
+      0.0206,
+      -0.026
+     ],
+     "toeR": [
+      -0.01781,
+      0.01299,
+      0.06265
+     ],
+     "hips": [
+      0.0,
+      0.17826,
+      0.0
+     ],
+     "braid3": [
+      -0.02263,
+      0.22857,
+      0.01942
+     ]
+    },
+    "36": {
+     "head": [
+      -0.00334,
+      0.28448,
+      0.00279
+     ],
+     "jaw": [
+      -0.00342,
+      0.28679,
+      0.00031
+     ],
+     "handR": [
+      -0.05645,
+      0.14683,
+      0.02614
+     ],
+     "handL": [
+      0.05535,
+      0.15945,
+      0.04338
+     ],
+     "footL": [
+      0.01781,
+      0.02106,
+      0.03582
+     ],
+     "toeR": [
+      -0.01782,
+      0.00307,
+      -0.00415
+     ],
+     "hips": [
+      0.0,
+      0.17826,
+      0.0
+     ],
+     "braid3": [
+      -0.02901,
+      0.22759,
+      0.01974
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0035,
+    "naturalSpeed": 0.1042
+   }
+  },
+  {
+   "action": "esther_talk",
+   "char": "esther",
+   "clip": "talk",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "jaw in an irregular syllable rhythm with word gaps; head nods on the stressed syllables; right hand rises palm-up and opens on the beats, closes softly between; weight shift; two blinks",
+   "samples": {
+    "0": {
+     "head": [
+      0.0038,
+      0.28632,
+      0.0
+     ],
+     "jaw": [
+      0.00355,
+      0.28851,
+      -0.00258
+     ],
+     "handR": [
+      -0.05212,
+      0.16632,
+      0.053
+     ],
+     "handL": [
+      0.0561,
+      0.16214,
+      0.04868
+     ],
+     "footL": [
+      0.01982,
+      0.0177,
+      -0.00097
+     ],
+     "toeR": [
+      -0.01977,
+      0.00507,
+      0.02362
+     ],
+     "hips": [
+      0.00243,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02192,
+      0.22911,
+      0.01898
+     ]
+    },
+    "45": {
+     "head": [
+      -0.0038,
+      0.2863,
+      0.00145
+     ],
+     "jaw": [
+      -0.0034,
+      0.28878,
+      -0.00082
+     ],
+     "handR": [
+      -0.05094,
+      0.20871,
+      0.07977
+     ],
+     "handL": [
+      0.0474,
+      0.16771,
+      0.05616
+     ],
+     "footL": [
+      0.01977,
+      0.01854,
+      -0.00094
+     ],
+     "toeR": [
+      -0.01982,
+      0.00423,
+      0.02359
+     ],
+     "hips": [
+      -0.00243,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02849,
+      0.23166,
+      0.01577
+     ]
+    },
+    "90": {
+     "head": [
+      0.0038,
+      0.28632,
+      0.0
+     ],
+     "jaw": [
+      0.00355,
+      0.28851,
+      -0.00258
+     ],
+     "handR": [
+      -0.05212,
+      0.16632,
+      0.053
+     ],
+     "handL": [
+      0.0561,
+      0.16214,
+      0.04868
+     ],
+     "footL": [
+      0.01982,
+      0.0177,
+      -0.00097
+     ],
+     "toeR": [
+      -0.01977,
+      0.00507,
+      0.02362
+     ],
+     "hips": [
+      0.00243,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02192,
+      0.22911,
+      0.01898
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0011,
+    "plantedToeDriftMax": 0.0001
+   }
+  },
+  {
+   "action": "esther_worried",
+   "char": "esther",
+   "clip": "worried",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "small and scared: shoulders up, chest sunk, head down, hands held together at the chest and wringing; quick glances left and right with holds; nervous weight shifts; frequent blinks",
+   "samples": {
+    "0": {
+     "head": [
+      -0.0,
+      0.28255,
+      0.01019
+     ],
+     "jaw": [
+      -0.00024,
+      0.28551,
+      0.00856
+     ],
+     "handR": [
+      -0.00533,
+      0.21176,
+      0.04309
+     ],
+     "handL": [
+      0.01067,
+      0.218,
+      0.04152
+     ],
+     "footL": [
+      0.01582,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01582,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      0.0,
+      0.177,
+      0.0
+     ],
+     "braid3": [
+      -0.02373,
+      0.22499,
+      0.01807
+     ]
+    },
+    "60": {
+     "head": [
+      -0.00316,
+      0.28254,
+      0.01019
+     ],
+     "jaw": [
+      -0.00382,
+      0.28536,
+      0.00844
+     ],
+     "handR": [
+      -0.00872,
+      0.21149,
+      0.04443
+     ],
+     "handL": [
+      0.00718,
+      0.21839,
+      0.03952
+     ],
+     "footL": [
+      0.01582,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01582,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      -0.0015,
+      0.177,
+      0.0
+     ],
+     "braid3": [
+      -0.02913,
+      0.22472,
+      0.02458
+     ]
+    },
+    "120": {
+     "head": [
+      -0.0,
+      0.28255,
+      0.01019
+     ],
+     "jaw": [
+      -0.00024,
+      0.28551,
+      0.00856
+     ],
+     "handR": [
+      -0.00533,
+      0.21176,
+      0.04309
+     ],
+     "handL": [
+      0.01067,
+      0.218,
+      0.04152
+     ],
+     "footL": [
+      0.01582,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01582,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      0.0,
+      0.177,
+      0.0
+     ],
+     "braid3": [
+      -0.02373,
+      0.22499,
+      0.01807
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0026,
+    "plantedToeDriftMax": 0.0016
+   }
+  },
+  {
+   "action": "esther_pray",
+   "char": "esther",
+   "clip": "pray",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "kneeling (upright, on both knees), hands folded at the chest, head bowed; slow deep breathing, a small sway, the folded hands lift a little on each breath. Starts and ends in the kneeling pose: play the extra clip esther_kneel before it for the way down",
+   "samples": {
+    "0": {
+     "head": [
+      -0.00069,
+      0.22358,
+      -0.01423
+     ],
+     "jaw": [
+      -0.00069,
+      0.22684,
+      -0.01519
+     ],
+     "handR": [
+      -0.007,
+      0.16577,
+      0.02621
+     ],
+     "handL": [
+      0.00699,
+      0.16594,
+      0.02622
+     ],
+     "footL": [
+      0.02182,
+      0.05,
+      -0.065
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.118,
+      -0.02
+     ],
+     "braid3": [
+      -0.04207,
+      0.17677,
+      -0.00538
+     ]
+    },
+    "45": {
+     "head": [
+      0.00069,
+      0.22358,
+      -0.01423
+     ],
+     "jaw": [
+      0.00069,
+      0.22684,
+      -0.01519
+     ],
+     "handR": [
+      -0.00699,
+      0.16594,
+      0.02622
+     ],
+     "handL": [
+      0.007,
+      0.16577,
+      0.02621
+     ],
+     "footL": [
+      0.02182,
+      0.05,
+      -0.065
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.118,
+      -0.02
+     ],
+     "braid3": [
+      -0.04118,
+      0.17849,
+      -0.00361
+     ]
+    },
+    "90": {
+     "head": [
+      -0.00069,
+      0.22358,
+      -0.01423
+     ],
+     "jaw": [
+      -0.00069,
+      0.22684,
+      -0.01519
+     ],
+     "handR": [
+      -0.007,
+      0.16577,
+      0.02621
+     ],
+     "handL": [
+      0.00699,
+      0.16594,
+      0.02622
+     ],
+     "footL": [
+      0.02182,
+      0.05,
+      -0.065
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.118,
+      -0.02
+     ],
+     "braid3": [
+      -0.04207,
+      0.17677,
+      -0.00538
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0056,
+    "meshMinAt": [
+     30,
+     "esther_body",
+     [
+      -0.018,
+      -0.006,
+      -0.031
+     ]
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "esther_kneel",
+   "char": "esther",
+   "clip": "kneel",
+   "frames": 36,
+   "seconds": 1.2,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "knees_down": {
+     "frame": 24,
+     "sec": 0.8
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "EXTRA (not in CONTRACT \u00a74): stand -> kneel, right knee first, hands come together; ends in frame 0 of pray",
+   "extra": true,
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05606,
+      0.15445,
+      0.03547
+     ],
+     "footL": [
+      0.01781,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01781,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.03533,
+      0.2338,
+      0.01933
+     ]
+    },
+    "18": {
+     "head": [
+      0.0,
+      0.23952,
+      -0.00982
+     ],
+     "jaw": [
+      0.0,
+      0.24221,
+      -0.01189
+     ],
+     "handR": [
+      -0.05179,
+      0.11853,
+      0.03516
+     ],
+     "handL": [
+      0.05179,
+      0.11853,
+      0.03516
+     ],
+     "footL": [
+      0.01982,
+      0.0335,
+      -0.033
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.1335,
+      -0.015
+     ],
+     "braid3": [
+      -0.03559,
+      0.18685,
+      0.00495
+     ]
+    },
+    "36": {
+     "head": [
+      0.0,
+      0.2239,
+      -0.01716
+     ],
+     "jaw": [
+      0.0,
+      0.22707,
+      -0.01836
+     ],
+     "handR": [
+      -0.007,
+      0.16594,
+      0.02626
+     ],
+     "handL": [
+      0.007,
+      0.16594,
+      0.02626
+     ],
+     "footL": [
+      0.02182,
+      0.05,
+      -0.065
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.118,
+      -0.02
+     ],
+     "braid3": [
+      -0.03642,
+      0.17101,
+      -0.01312
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0052,
+    "meshMinAt": [
+     36,
+     "esther_body",
+     [
+      -0.019,
+      -0.005,
+      -0.028
+     ]
+    ],
+    "plantedToeDriftMax": 0.0238
+   }
+  },
+  {
+   "action": "esther_rise_brave",
+   "char": "esther",
+   "clip": "rise_brave",
+   "frames": 84,
+   "seconds": 2.8,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "stand": {
+     "frame": 46,
+     "sec": 1.533
+    },
+    "chin_up": {
+     "frame": 62,
+     "sec": 2.067
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "from the kneeling prayer: deep breath, hands part, left foot steps forward, pushes up to standing, feet together, then chin up and chest open, shoulders back, hands close into soft fists at her sides; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.2239,
+      -0.01716
+     ],
+     "jaw": [
+      0.0,
+      0.22707,
+      -0.01836
+     ],
+     "handR": [
+      -0.007,
+      0.16594,
+      0.02626
+     ],
+     "handL": [
+      0.007,
+      0.16594,
+      0.02626
+     ],
+     "footL": [
+      0.02182,
+      0.05,
+      -0.065
+     ],
+     "toeR": [
+      -0.02182,
+      0.02311,
+      -0.05716
+     ],
+     "hips": [
+      0.0,
+      0.118,
+      -0.02
+     ],
+     "braid3": [
+      -0.03637,
+      0.17117,
+      -0.01287
+     ]
+    },
+    "42": {
+     "head": [
+      0.0,
+      0.28228,
+      0.01089
+     ],
+     "jaw": [
+      -0.00011,
+      0.28487,
+      0.00871
+     ],
+     "handR": [
+      -0.05362,
+      0.1555,
+      0.04941
+     ],
+     "handL": [
+      0.05362,
+      0.1555,
+      0.04941
+     ],
+     "footL": [
+      0.0178,
+      0.02114,
+      0.04792
+     ],
+     "toeR": [
+      -0.01805,
+      0.00433,
+      0.01926
+     ],
+     "hips": [
+      0.0,
+      0.17645,
+      0.00208
+     ],
+     "braid3": [
+      -0.02555,
+      0.22364,
+      0.021
+     ]
+    },
+    "84": {
+     "head": [
+      0.0,
+      0.28568,
+      -0.00902
+     ],
+     "jaw": [
+      9e-05,
+      0.2871,
+      -0.0121
+     ],
+     "handR": [
+      -0.05403,
+      0.15127,
+      0.02749
+     ],
+     "handL": [
+      0.05403,
+      0.15127,
+      0.02749
+     ],
+     "footL": [
+      0.01781,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01781,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02597,
+      0.23249,
+      0.01885
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0072,
+    "meshMinAt": [
+     25,
+     "esther_body",
+     [
+      -0.02,
+      -0.007,
+      -0.001
+     ]
+    ],
+    "plantedToeDriftMax": 0.0295
+   }
+  },
+  {
+   "action": "esther_climb",
+   "char": "esther",
+   "clip": "climb",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 24,
+     "sec": 0.8
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "careful steps up toward the throne: slow, knees lifted high, both hands gather the skirt at the front; leans a little forward, looks down at the step then up at the king",
+   "naturalSpeed": 0.0473,
+   "stride": 0.05,
+   "samples": {
+    "0": {
+     "head": [
+      -0.00361,
+      0.28189,
+      0.01144
+     ],
+     "jaw": [
+      -0.00373,
+      0.28496,
+      0.01
+     ],
+     "handR": [
+      -0.0398,
+      0.14375,
+      0.04021
+     ],
+     "handL": [
+      0.03884,
+      0.14641,
+      0.03996
+     ],
+     "footL": [
+      0.01782,
+      0.01727,
+      0.024
+     ],
+     "toeR": [
+      -0.01782,
+      0.00285,
+      0.01036
+     ],
+     "hips": [
+      0.0,
+      0.17648,
+      0.0
+     ],
+     "braid3": [
+      -0.02937,
+      0.22742,
+      0.02185
+     ]
+    },
+    "24": {
+     "head": [
+      0.00361,
+      0.28189,
+      0.01144
+     ],
+     "jaw": [
+      0.00373,
+      0.28496,
+      0.01
+     ],
+     "handR": [
+      -0.03884,
+      0.14641,
+      0.03996
+     ],
+     "handL": [
+      0.0398,
+      0.14375,
+      0.04021
+     ],
+     "footL": [
+      0.01782,
+      0.01689,
+      -0.01388
+     ],
+     "toeR": [
+      -0.01782,
+      0.00555,
+      0.04944
+     ],
+     "hips": [
+      0.0,
+      0.17648,
+      0.0
+     ],
+     "braid3": [
+      -0.02226,
+      0.22961,
+      0.02267
+     ]
+    },
+    "48": {
+     "head": [
+      -0.00361,
+      0.28189,
+      0.01144
+     ],
+     "jaw": [
+      -0.00373,
+      0.28496,
+      0.01
+     ],
+     "handR": [
+      -0.0398,
+      0.14375,
+      0.04021
+     ],
+     "handL": [
+      0.03884,
+      0.14641,
+      0.03996
+     ],
+     "footL": [
+      0.01782,
+      0.01727,
+      0.024
+     ],
+     "toeR": [
+      -0.01782,
+      0.00285,
+      0.01036
+     ],
+     "hips": [
+      0.0,
+      0.17648,
+      0.0
+     ],
+     "braid3": [
+      -0.02937,
+      0.22742,
+      0.02185
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0031,
+    "naturalSpeed": 0.0473
+   }
+  },
+  {
+   "action": "esther_bow",
+   "char": "esther",
+   "clip": "bow",
+   "frames": 66,
+   "seconds": 2.2,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "down": {
+     "frame": 34,
+     "sec": 1.133
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "graceful curtsey to the king: small rise and breath (anticipation), right foot slides behind, knees bend, torso and head bow, hands hold the skirt out; holds the low pose (next: touch_sceptre)",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05606,
+      0.15445,
+      0.03547
+     ],
+     "footL": [
+      0.01782,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01781,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02584,
+      0.22998,
+      0.01683
+     ]
+    },
+    "33": {
+     "head": [
+      0.0,
+      0.23861,
+      0.01836
+     ],
+     "jaw": [
+      0.00017,
+      0.24199,
+      0.01849
+     ],
+     "handR": [
+      -0.06521,
+      0.11117,
+      0.02149
+     ],
+     "handL": [
+      0.06521,
+      0.11117,
+      0.02149
+     ],
+     "footL": [
+      0.01782,
+      0.017,
+      0.00515
+     ],
+     "toeR": [
+      -0.00758,
+      0.00719,
+      -0.03798
+     ],
+     "hips": [
+      0.0,
+      0.13903,
+      -0.01229
+     ],
+     "braid3": [
+      -0.02984,
+      0.18761,
+      0.0093
+     ]
+    },
+    "66": {
+     "head": [
+      0.0,
+      0.23988,
+      0.01798
+     ],
+     "jaw": [
+      0.00016,
+      0.24327,
+      0.01804
+     ],
+     "handR": [
+      -0.06506,
+      0.11221,
+      0.0218
+     ],
+     "handL": [
+      0.06506,
+      0.11221,
+      0.0218
+     ],
+     "footL": [
+      0.01782,
+      0.017,
+      0.005
+     ],
+     "toeR": [
+      -0.00782,
+      0.00706,
+      -0.03646
+     ],
+     "hips": [
+      0.0,
+      0.14,
+      -0.012
+     ],
+     "braid3": [
+      -0.03027,
+      0.18853,
+      0.00674
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0082,
+    "meshMinAt": [
+     40,
+     "esther_body",
+     [
+      -0.005,
+      -0.008,
+      -0.014
+     ]
+    ],
+    "plantedToeDriftMax": 0.0544
+   }
+  },
+  {
+   "action": "esther_touch_sceptre",
+   "char": "esther",
+   "clip": "touch_sceptre",
+   "frames": 66,
+   "seconds": 2.2,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "touch": {
+     "frame": 36,
+     "sec": 1.2
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "rises from the curtsey, takes a small breath, reaches up with the left hand and touches the tip of the king's sceptre (target computed from king_extend_sceptre at the S08 marks), holds it a moment, draws the hand back to her chest, relieved; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.23988,
+      0.01798
+     ],
+     "jaw": [
+      0.00016,
+      0.24327,
+      0.01804
+     ],
+     "handR": [
+      -0.06506,
+      0.11221,
+      0.0218
+     ],
+     "handL": [
+      0.06506,
+      0.11221,
+      0.0218
+     ],
+     "footL": [
+      0.01782,
+      0.017,
+      0.005
+     ],
+     "toeR": [
+      -0.00782,
+      0.00706,
+      -0.03646
+     ],
+     "hips": [
+      0.0,
+      0.14,
+      -0.012
+     ],
+     "braid3": [
+      -0.03025,
+      0.18854,
+      0.00684
+     ]
+    },
+    "33": {
+     "head": [
+      0.0027,
+      0.2899,
+      -0.00469
+     ],
+     "jaw": [
+      0.00231,
+      0.29156,
+      -0.00762
+     ],
+     "handR": [
+      -0.05377,
+      0.16371,
+      0.04704
+     ],
+     "handL": [
+      0.04259,
+      0.31041,
+      0.0391
+     ],
+     "footL": [
+      0.01782,
+      0.02191,
+      0.00289
+     ],
+     "toeR": [
+      -0.0178,
+      0.00842,
+      0.02374
+     ],
+     "hips": [
+      0.0,
+      0.18382,
+      0.0
+     ],
+     "braid3": [
+      -0.02311,
+      0.23683,
+      0.02446
+     ]
+    },
+    "66": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28881,
+      -0.00231
+     ],
+     "handR": [
+      -0.008,
+      0.22,
+      0.046
+     ],
+     "handL": [
+      0.01,
+      0.23,
+      0.044
+     ],
+     "footL": [
+      0.01782,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01781,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02601,
+      0.22931,
+      0.01392
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0072,
+    "meshMinAt": [
+     0,
+     "esther_body",
+     [
+      -0.006,
+      -0.007,
+      -0.008
+     ]
+    ],
+    "plantedToeDriftMax": 0.0537
+   }
+  },
+  {
+   "action": "esther_invite",
+   "char": "esther",
+   "clip": "invite",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "open": {
+     "frame": 24,
+     "sec": 0.8
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "open-arm invitation: draws in and breathes (anticipation), both arms sweep open, palms up, fingers open, weight forward, head tilt with a smile; settles with the right hand still offering and the left at the chest; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05606,
+      0.15445,
+      0.03547
+     ],
+     "footL": [
+      0.0198,
+      0.0181,
+      -0.00096
+     ],
+     "toeR": [
+      -0.0198,
+      0.00463,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02584,
+      0.22998,
+      0.01683
+     ]
+    },
+    "30": {
+     "head": [
+      0.0,
+      0.28628,
+      0.00633
+     ],
+     "jaw": [
+      -0.00024,
+      0.28837,
+      0.00366
+     ],
+     "handR": [
+      -0.05947,
+      0.21431,
+      0.09554
+     ],
+     "handL": [
+      0.05947,
+      0.21431,
+      0.09554
+     ],
+     "footL": [
+      0.0198,
+      0.0181,
+      0.00504
+     ],
+     "toeR": [
+      -0.0198,
+      0.00478,
+      0.02365
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.006
+     ],
+     "braid3": [
+      -0.02147,
+      0.22861,
+      0.02707
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.28628,
+      0.00633
+     ],
+     "jaw": [
+      -3e-05,
+      0.28837,
+      0.00365
+     ],
+     "handR": [
+      -0.06342,
+      0.20043,
+      0.08892
+     ],
+     "handL": [
+      0.01403,
+      0.22202,
+      0.06112
+     ],
+     "footL": [
+      0.0198,
+      0.0181,
+      0.00504
+     ],
+     "toeR": [
+      -0.0198,
+      0.00478,
+      0.02365
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.006
+     ],
+     "braid3": [
+      -0.02344,
+      0.22903,
+      0.02551
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0016,
+    "plantedToeDriftMax": 0.006
+   }
+  },
+  {
+   "action": "esther_point",
+   "char": "esther",
+   "clip": "point",
+   "frames": 45,
+   "seconds": 1.5,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "point": {
+     "frame": 14,
+     "sec": 0.467
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "accuses: pulls the arm back and turns the chest (anticipation), snaps the right arm out straight at the target, leans in, chin up; small overshoot and settle; left hand a fist at her side; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05271,
+      0.15374,
+      0.03547
+     ],
+     "footL": [
+      0.0198,
+      0.0181,
+      -0.00096
+     ],
+     "toeR": [
+      -0.0198,
+      0.00463,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.02584,
+      0.22998,
+      0.01683
+     ]
+    },
+    "22": {
+     "head": [
+      -2e-05,
+      0.28614,
+      0.0113
+     ],
+     "jaw": [
+      0.00037,
+      0.28837,
+      0.00878
+     ],
+     "handR": [
+      -0.03433,
+      0.25928,
+      0.10845
+     ],
+     "handL": [
+      0.03761,
+      0.15871,
+      0.05906
+     ],
+     "footL": [
+      0.0198,
+      0.01824,
+      -0.00091
+     ],
+     "toeR": [
+      -0.0198,
+      0.00471,
+      0.03556
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.006
+     ],
+     "braid3": [
+      -0.02722,
+      0.23031,
+      0.02593
+     ]
+    },
+    "45": {
+     "head": [
+      -1e-05,
+      0.28614,
+      0.01115
+     ],
+     "jaw": [
+      0.00038,
+      0.28837,
+      0.00863
+     ],
+     "handR": [
+      -0.03433,
+      0.2589,
+      0.10843
+     ],
+     "handL": [
+      0.03757,
+      0.15882,
+      0.05923
+     ],
+     "footL": [
+      0.0198,
+      0.01824,
+      -0.00091
+     ],
+     "toeR": [
+      -0.0198,
+      0.00471,
+      0.03556
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.006
+     ],
+     "braid3": [
+      -0.02687,
+      0.23032,
+      0.02606
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0016,
+    "plantedToeDriftMax": 0.012
+   }
+  },
+  {
+   "action": "esther_joy",
+   "char": "esther",
+   "clip": "joy",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "twirl": {
+     "frame": 8,
+     "sec": 0.267
+    },
+    "hop": {
+     "frame": 50,
+     "sec": 1.667
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "dips, twirls once on her toes (arms out, braid and cape fly out and catch up), dips again, hops with both arms up, lands softly; loops",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05606,
+      0.15445,
+      0.03547
+     ],
+     "footL": [
+      0.01782,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01782,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.0269,
+      0.23245,
+      0.02034
+     ]
+    },
+    "36": {
+     "head": [
+      0.00015,
+      0.28646,
+      1e-05
+     ],
+     "jaw": [
+      0.00031,
+      0.28878,
+      -0.00246
+     ],
+     "handR": [
+      -0.06102,
+      0.15537,
+      0.03171
+     ],
+     "handL": [
+      0.05593,
+      0.15516,
+      0.03975
+     ],
+     "footL": [
+      0.01784,
+      0.01821,
+      0.00027
+     ],
+     "toeR": [
+      -0.01938,
+      0.00448,
+      0.02218
+     ],
+     "hips": [
+      0.0,
+      0.18014,
+      0.0
+     ],
+     "braid3": [
+      -0.03267,
+      0.22922,
+      -0.01167
+     ]
+    },
+    "72": {
+     "head": [
+      0.0,
+      0.28633,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.28865,
+      -0.00247
+     ],
+     "handR": [
+      -0.05606,
+      0.15445,
+      0.03547
+     ],
+     "handL": [
+      0.05606,
+      0.15445,
+      0.03547
+     ],
+     "footL": [
+      0.01782,
+      0.01807,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01782,
+      0.0046,
+      0.0236
+     ],
+     "hips": [
+      0.0,
+      0.18,
+      0.0
+     ],
+     "braid3": [
+      -0.0269,
+      0.23245,
+      0.02034
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0029,
+    "plantedToeDriftMax": 0.0549
+   }
+  },
+  {
+   "action": "esther_wave",
+   "char": "esther",
+   "clip": "wave",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "waves to the viewer: right hand up by her head, forearm sways side to side, the wrist and fingers follow late; body sways and bounces softly on the knees, head tilts; left hand at the waist",
+   "samples": {
+    "0": {
+     "head": [
+      0.00273,
+      0.27926,
+      0.0
+     ],
+     "jaw": [
+      0.00314,
+      0.28146,
+      -0.00255
+     ],
+     "handR": [
+      -0.086,
+      0.316,
+      0.04
+     ],
+     "handL": [
+      0.05207,
+      0.17368,
+      0.06113
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      0.0,
+      0.173,
+      0.0
+     ],
+     "braid3": [
+      -0.02806,
+      0.22661,
+      0.01669
+     ]
+    },
+    "24": {
+     "head": [
+      0.0012,
+      0.27931,
+      0.0
+     ],
+     "jaw": [
+      0.00119,
+      0.28155,
+      -0.00255
+     ],
+     "handR": [
+      -0.086,
+      0.316,
+      0.04
+     ],
+     "handL": [
+      0.05339,
+      0.17512,
+      0.06113
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      0.0,
+      0.173,
+      0.0
+     ],
+     "braid3": [
+      -0.02578,
+      0.22326,
+      0.01797
+     ]
+    },
+    "48": {
+     "head": [
+      0.00273,
+      0.27926,
+      0.0
+     ],
+     "jaw": [
+      0.00314,
+      0.28146,
+      -0.00255
+     ],
+     "handR": [
+      -0.086,
+      0.316,
+      0.04
+     ],
+     "handL": [
+      0.05207,
+      0.17368,
+      0.06113
+     ],
+     "footL": [
+      0.01982,
+      0.017,
+      -0.001
+     ],
+     "toeR": [
+      -0.01982,
+      0.00353,
+      0.02356
+     ],
+     "hips": [
+      0.0,
+      0.173,
+      0.0
+     ],
+     "braid3": [
+      -0.02806,
+      0.22661,
+      0.01669
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0001,
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_sit_idle",
+   "char": "king",
+   "clip": "sit_idle",
+   "frames": 150,
+   "seconds": 5.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "seated, heavy: slow deep breathing with one sigh, slow head turns (neck leads), heavy slow blinks; the left hand rests on the knee, fingers drum once; the sceptre stands in the right fist",
+   "samples": {
+    "0": {
+     "head": [
+      -0.00097,
+      0.27261,
+      -0.0181
+     ],
+     "jaw": [
+      -0.00108,
+      0.27494,
+      -0.02187
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05389,
+      0.15151,
+      0.07613
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09662,
+      0.28311,
+      0.09356
+     ]
+    },
+    "75": {
+     "head": [
+      0.00097,
+      0.27242,
+      -0.02125
+     ],
+     "jaw": [
+      0.00157,
+      0.27469,
+      -0.02502
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05387,
+      0.15238,
+      0.07507
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09831,
+      0.28399,
+      0.08834
+     ]
+    },
+    "150": {
+     "head": [
+      -0.00097,
+      0.27261,
+      -0.0181
+     ],
+     "jaw": [
+      -0.00108,
+      0.27494,
+      -0.02187
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05389,
+      0.15151,
+      0.07613
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09662,
+      0.28311,
+      0.09356
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0098,
+     -0.0096
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_sit_talk",
+   "char": "king",
+   "clip": "sit_talk",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "seated, speaks slowly: deep jaw in an irregular rhythm, nods on the stressed syllables, the left hand lifts from the knee palm-up and opens on the beats; leans in a little",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      -0.00025,
+      0.27529,
+      -0.0119
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.06,
+      0.15966,
+      0.08186
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.0961,
+      0.28321,
+      0.09355
+     ]
+    },
+    "48": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      0.00025,
+      0.27529,
+      -0.0119
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.06,
+      0.18304,
+      0.09122
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09651,
+      0.28432,
+      0.08825
+     ]
+    },
+    "96": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      -0.00025,
+      0.27529,
+      -0.0119
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.06,
+      0.15966,
+      0.08186
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.0961,
+      0.28321,
+      0.09355
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0147,
+     -0.0147
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_sit_listen",
+   "char": "king",
+   "clip": "sit_listen",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "leans in toward the speaker, head tilted, strokes his beard with the left hand, slow 'hmm' nods; slow blinks",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.26756,
+      0.01724
+     ],
+     "jaw": [
+      -0.00051,
+      0.27133,
+      0.01495
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.01409,
+      0.21099,
+      0.03343
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09474,
+      0.28348,
+      0.09333
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.26756,
+      0.01724
+     ],
+     "jaw": [
+      -7e-05,
+      0.27133,
+      0.01489
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.00876,
+      0.21032,
+      0.03477
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09516,
+      0.28458,
+      0.08807
+     ]
+    },
+    "120": {
+     "head": [
+      0.0,
+      0.26756,
+      0.01724
+     ],
+     "jaw": [
+      -0.00051,
+      0.27133,
+      0.01495
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.01409,
+      0.21099,
+      0.03343
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09474,
+      0.28348,
+      0.09333
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0142,
+     -0.0142
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_give_ring",
+   "char": "king",
+   "clip": "give_ring",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "release": {
+     "frame": 30,
+     "sec": 1.0
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "careless: leans back with a sigh, then holds out his right hand (ring finger first, the sceptre tilting away) toward Haman and keeps it there; marker release = hand fully out, Haman may take the ring",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      0.0,
+      0.27523,
+      -0.01196
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.054,
+      0.15,
+      0.078
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09502,
+      0.28404,
+      0.09074
+     ]
+    },
+    "30": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      0.00045,
+      0.27541,
+      -0.01179
+     ],
+     "handR": [
+      -0.05619,
+      0.18917,
+      0.09903
+     ],
+     "handL": [
+      0.054,
+      0.15,
+      0.078
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.1502,
+      0.2903,
+      0.11654
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.27257,
+      -0.0084
+     ],
+     "jaw": [
+      0.00045,
+      0.27541,
+      -0.01179
+     ],
+     "handR": [
+      -0.05627,
+      0.18678,
+      0.09814
+     ],
+     "handL": [
+      0.054,
+      0.15,
+      0.078
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.15161,
+      0.28661,
+      0.11542
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0147,
+     -0.0095
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_extend_sceptre",
+   "char": "king",
+   "clip": "extend_sceptre",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "out": {
+     "frame": 30,
+     "sec": 1.0
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "surprised, leans back a little and breathes in, then leans forward and holds the golden sceptre out to Esther, the knob lowering to her (tip lands at EXTEND_TIP, king-local) with a small overshoot; keeps it",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.27261,
+      -0.0181
+     ],
+     "jaw": [
+      0.0,
+      0.27488,
+      -0.02191
+     ],
+     "handR": [
+      -0.07861,
+      0.15084,
+      0.04139
+     ],
+     "handL": [
+      0.05391,
+      0.15131,
+      0.07637
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.0989,
+      0.28502,
+      0.07198
+     ]
+    },
+    "30": {
+     "head": [
+      0.0,
+      0.26985,
+      0.01075
+     ],
+     "jaw": [
+      3e-05,
+      0.27338,
+      0.00806
+     ],
+     "handR": [
+      -0.07698,
+      0.15808,
+      0.05237
+     ],
+     "handL": [
+      0.054,
+      0.15,
+      0.078
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.04091,
+      0.26846,
+      0.12868
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.26985,
+      0.01075
+     ],
+     "jaw": [
+      3e-05,
+      0.27338,
+      0.00806
+     ],
+     "handR": [
+      -0.0771,
+      0.16026,
+      0.05098
+     ],
+     "handL": [
+      0.054,
+      0.15,
+      0.078
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.03996,
+      0.27,
+      0.12798
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0147,
+     -0.0096
+    ],
+    "plantedToeDriftMax": 0.0,
+    "sceptreTipEnd": [
+     -0.04,
+     0.27,
+     0.128
+    ]
+   }
+  },
+  {
+   "action": "king_sit_smile",
+   "char": "king",
+   "clip": "sit_smile",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "kind and relaxed: leans back a little, warm head tilt, chuckles (shoulders bounce three times), slow nod; left hand open on the knee; slow blinks",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.2723,
+      -0.02294
+     ],
+     "jaw": [
+      -0.00017,
+      0.27434,
+      -0.02687
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05384,
+      0.15245,
+      0.07487
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09732,
+      0.28298,
+      0.09362
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.2723,
+      -0.02294
+     ],
+     "jaw": [
+      -0.00024,
+      0.27432,
+      -0.02688
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05384,
+      0.15245,
+      0.07487
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09771,
+      0.2841,
+      0.08832
+     ]
+    },
+    "120": {
+     "head": [
+      0.0,
+      0.2723,
+      -0.02294
+     ],
+     "jaw": [
+      -0.00017,
+      0.27434,
+      -0.02687
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05384,
+      0.15245,
+      0.07487
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09732,
+      0.28298,
+      0.09362
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "seatGap": [
+     -0.0098,
+     -0.0098
+    ],
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "king_stand_angry",
+   "char": "king",
+   "clip": "stand_angry",
+   "frames": 54,
+   "seconds": 1.8,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "up": {
+     "frame": 26,
+     "sec": 0.867
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "rises from the throne in anger: leans forward and grips (anticipation), pushes up and forward onto his feet in front of the seat, chest swells (overshoot), settles into a wide angry stance, fists; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.27261,
+      -0.0181
+     ],
+     "jaw": [
+      0.0,
+      0.27488,
+      -0.02191
+     ],
+     "handR": [
+      -0.074,
+      0.15,
+      0.06
+     ],
+     "handL": [
+      0.05391,
+      0.15131,
+      0.07637
+     ],
+     "footL": [
+      0.0316,
+      0.018,
+      0.078
+     ],
+     "toeR": [
+      -0.0316,
+      0.00433,
+      0.10628
+     ],
+     "hips": [
+      0.0,
+      0.154,
+      -0.012
+     ],
+     "sceptreTip": [
+      -0.09706,
+      0.28365,
+      0.09098
+     ]
+    },
+    "27": {
+     "head": [
+      0.0,
+      0.31126,
+      0.07879
+     ],
+     "jaw": [
+      0.0,
+      0.31333,
+      0.07487
+     ],
+     "handR": [
+      -0.0814,
+      0.1823,
+      0.14888
+     ],
+     "handL": [
+      0.08825,
+      0.17409,
+      0.13678
+     ],
+     "footL": [
+      0.03329,
+      0.02227,
+      0.08706
+     ],
+     "toeR": [
+      -0.03329,
+      0.0086,
+      0.11534
+     ],
+     "hips": [
+      0.0,
+      0.19266,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.1113,
+      0.31482,
+      0.17885
+     ]
+    },
+    "54": {
+     "head": [
+      0.0,
+      0.30882,
+      0.084
+     ],
+     "jaw": [
+      0.0,
+      0.31141,
+      0.0804
+     ],
+     "handR": [
+      -0.07807,
+      0.17285,
+      0.1441
+     ],
+     "handL": [
+      0.08467,
+      0.16527,
+      0.13146
+     ],
+     "footL": [
+      0.03348,
+      0.01962,
+      0.08702
+     ],
+     "toeR": [
+      -0.03348,
+      0.00596,
+      0.1153
+     ],
+     "hips": [
+      0.0,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.10868,
+      0.30527,
+      0.17379
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0016,
+    "plantedToeDriftMax": 0.0092
+   }
+  },
+  {
+   "action": "king_angry_idle",
+   "char": "king",
+   "clip": "angry_idle",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "standing, furious: big heaving breaths, fists clench and loosen, weight shifts, a snort (head jerk) and a glare that does not leave its target",
+   "samples": {
+    "0": {
+     "head": [
+      0.00591,
+      0.30845,
+      0.07743
+     ],
+     "jaw": [
+      0.00592,
+      0.31065,
+      0.07358
+     ],
+     "handR": [
+      -0.07333,
+      0.1803,
+      0.15155
+     ],
+     "handL": [
+      0.08929,
+      0.1698,
+      0.13949
+     ],
+     "footL": [
+      0.03356,
+      0.01884,
+      0.08701
+     ],
+     "toeR": [
+      -0.03336,
+      0.00682,
+      0.11532
+     ],
+     "hips": [
+      0.0038,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.10292,
+      0.31286,
+      0.18162
+     ]
+    },
+    "45": {
+     "head": [
+      -0.00591,
+      0.30845,
+      0.07743
+     ],
+     "jaw": [
+      -0.00592,
+      0.31065,
+      0.07358
+     ],
+     "handR": [
+      -0.08281,
+      0.17873,
+      0.15128
+     ],
+     "handL": [
+      0.08003,
+      0.17151,
+      0.13978
+     ],
+     "footL": [
+      0.03336,
+      0.02049,
+      0.08704
+     ],
+     "toeR": [
+      -0.03356,
+      0.00517,
+      0.11529
+     ],
+     "hips": [
+      -0.0038,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.11252,
+      0.31127,
+      0.18131
+     ]
+    },
+    "90": {
+     "head": [
+      0.00591,
+      0.30845,
+      0.07743
+     ],
+     "jaw": [
+      0.00592,
+      0.31065,
+      0.07358
+     ],
+     "handR": [
+      -0.07333,
+      0.1803,
+      0.15155
+     ],
+     "handL": [
+      0.08929,
+      0.1698,
+      0.13949
+     ],
+     "footL": [
+      0.03356,
+      0.01884,
+      0.08701
+     ],
+     "toeR": [
+      -0.03336,
+      0.00682,
+      0.11532
+     ],
+     "hips": [
+      0.0038,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.10292,
+      0.31286,
+      0.18162
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0016,
+    "plantedToeDriftMax": 0.0002
+   }
+  },
+  {
+   "action": "king_point_away",
+   "char": "king",
+   "clip": "point_away",
+   "frames": 45,
+   "seconds": 1.5,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "point": {
+     "frame": 16,
+     "sec": 0.533
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "orders Haman away: pulls the left arm back across the chest (anticipation), flings it out to his left, arm straight, hand flat, head and chest follow; overshoot and hold; the sceptre hand drops to his side",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.30848,
+      0.07743
+     ],
+     "jaw": [
+      0.0,
+      0.31068,
+      0.07358
+     ],
+     "handR": [
+      -0.07807,
+      0.17953,
+      0.15141
+     ],
+     "handL": [
+      0.08,
+      0.17,
+      0.108
+     ],
+     "footL": [
+      0.03348,
+      0.01962,
+      0.08702
+     ],
+     "toeR": [
+      -0.03348,
+      0.00596,
+      0.1153
+     ],
+     "hips": [
+      0.0,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.10773,
+      0.31209,
+      0.18147
+     ]
+    },
+    "22": {
+     "head": [
+      0.00353,
+      0.30845,
+      0.07719
+     ],
+     "jaw": [
+      0.00131,
+      0.31043,
+      0.0739
+     ],
+     "handR": [
+      -0.05135,
+      0.18177,
+      0.17274
+     ],
+     "handL": [
+      0.15355,
+      0.27369,
+      0.12742
+     ],
+     "footL": [
+      0.03353,
+      0.01936,
+      0.08702
+     ],
+     "toeR": [
+      -0.03341,
+      0.00631,
+      0.11531
+     ],
+     "hips": [
+      0.004,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.07595,
+      0.31514,
+      0.20373
+     ]
+    },
+    "45": {
+     "head": [
+      0.00354,
+      0.30848,
+      0.07745
+     ],
+     "jaw": [
+      0.00132,
+      0.31047,
+      0.07416
+     ],
+     "handR": [
+      -0.05118,
+      0.18132,
+      0.17249
+     ],
+     "handL": [
+      0.15308,
+      0.26969,
+      0.12881
+     ],
+     "footL": [
+      0.03353,
+      0.01936,
+      0.08702
+     ],
+     "toeR": [
+      -0.03341,
+      0.00631,
+      0.11531
+     ],
+     "hips": [
+      0.004,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.07582,
+      0.31468,
+      0.20348
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0021,
+    "plantedToeDriftMax": 0.0001
+   }
+  },
+  {
+   "action": "king_celebrate",
+   "char": "king",
+   "clip": "celebrate",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "standing, glad and kind: both arms up (sceptre raised high in the right), bounces on his knees, head back laughing, the left hand waves; heavy, not quick",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.30867,
+      0.07962
+     ],
+     "jaw": [
+      7e-05,
+      0.31024,
+      0.07547
+     ],
+     "handR": [
+      -0.11308,
+      0.33607,
+      0.14975
+     ],
+     "handL": [
+      0.11584,
+      0.35413,
+      0.12828
+     ],
+     "footL": [
+      0.03348,
+      0.01962,
+      0.08702
+     ],
+     "toeR": [
+      -0.03348,
+      0.00596,
+      0.1153
+     ],
+     "hips": [
+      0.0,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.12663,
+      0.4736,
+      0.15669
+     ]
+    },
+    "30": {
+     "head": [
+      0.0,
+      0.30867,
+      0.07962
+     ],
+     "jaw": [
+      -7e-05,
+      0.31024,
+      0.07547
+     ],
+     "handR": [
+      -0.11308,
+      0.33607,
+      0.14975
+     ],
+     "handL": [
+      0.11584,
+      0.35413,
+      0.12828
+     ],
+     "footL": [
+      0.03348,
+      0.01962,
+      0.08702
+     ],
+     "toeR": [
+      -0.03348,
+      0.00596,
+      0.1153
+     ],
+     "hips": [
+      0.0,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.12806,
+      0.46833,
+      0.19363
+     ]
+    },
+    "60": {
+     "head": [
+      0.0,
+      0.30867,
+      0.07962
+     ],
+     "jaw": [
+      7e-05,
+      0.31024,
+      0.07547
+     ],
+     "handR": [
+      -0.11308,
+      0.33607,
+      0.14975
+     ],
+     "handL": [
+      0.11584,
+      0.35413,
+      0.12828
+     ],
+     "footL": [
+      0.03348,
+      0.01962,
+      0.08702
+     ],
+     "toeR": [
+      -0.03348,
+      0.00596,
+      0.1153
+     ],
+     "hips": [
+      0.0,
+      0.19,
+      0.084
+     ],
+     "sceptreTip": [
+      -0.12663,
+      0.4736,
+      0.15669
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0057,
+    "meshMinAt": [
+     45,
+     "king_body",
+     [
+      0.044,
+      -0.006,
+      0.137
+     ]
+    ],
+    "plantedToeDriftMax": 0.0001
+   }
+  },
+  {
+   "action": "haman_idle",
+   "char": "haman",
+   "clip": "idle",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "comic and smug: rubs his hands together, bounces up on his toes twice, sly head tilts and glances, blinks (one slow sly one)",
+   "samples": {
+    "0": {
+     "head": [
+      0.00475,
+      0.30681,
+      -0.00223
+     ],
+     "jaw": [
+      0.00479,
+      0.3086,
+      -0.00519
+     ],
+     "handR": [
+      -0.00717,
+      0.21667,
+      0.05587
+     ],
+     "handL": [
+      0.01287,
+      0.21825,
+      0.05569
+     ],
+     "footL": [
+      0.0229,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0229,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.00235,
+      0.193,
+      0.004
+     ],
+     "cap": [
+      0.00537,
+      0.33474,
+      -0.00987
+     ]
+    },
+    "60": {
+     "head": [
+      -0.00379,
+      0.31529,
+      -0.00407
+     ],
+     "jaw": [
+      -0.00395,
+      0.31698,
+      -0.00708
+     ],
+     "handR": [
+      -0.01286,
+      0.22653,
+      0.05673
+     ],
+     "handL": [
+      0.00709,
+      0.22893,
+      0.0565
+     ],
+     "footL": [
+      0.0229,
+      0.04011,
+      -0.001
+     ],
+     "toeR": [
+      -0.0229,
+      0.01562,
+      0.01715
+     ],
+     "hips": [
+      -0.00235,
+      0.20166,
+      0.004
+     ],
+     "cap": [
+      -0.00168,
+      0.34282,
+      -0.01281
+     ]
+    },
+    "120": {
+     "head": [
+      0.00475,
+      0.30681,
+      -0.00223
+     ],
+     "jaw": [
+      0.00479,
+      0.3086,
+      -0.00519
+     ],
+     "handR": [
+      -0.00717,
+      0.21667,
+      0.05587
+     ],
+     "handL": [
+      0.01287,
+      0.21825,
+      0.05569
+     ],
+     "footL": [
+      0.0229,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0229,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.00235,
+      0.193,
+      0.004
+     ],
+     "cap": [
+      0.00537,
+      0.33474,
+      -0.00987
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0006,
+    "plantedToeDriftMax": 0.0021
+   }
+  },
+  {
+   "action": "haman_strut",
+   "char": "haman",
+   "clip": "strut",
+   "frames": 30,
+   "seconds": 1.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 15,
+     "sec": 0.5
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "proud bouncy walk: chest out, leans back, knees lifted, big hip bounce, arms swing wide and stiff with the hands flopping late, chin up, head bobs on each step",
+   "naturalSpeed": 0.125,
+   "stride": 0.07,
+   "samples": {
+    "0": {
+     "head": [
+      -0.00507,
+      0.31083,
+      -0.01004
+     ],
+     "jaw": [
+      -0.00509,
+      0.31221,
+      -0.01321
+     ],
+     "handR": [
+      -0.07842,
+      0.16323,
+      0.04003
+     ],
+     "handL": [
+      0.07079,
+      0.19229,
+      0.07182
+     ],
+     "footL": [
+      0.01888,
+      0.02386,
+      0.03329
+     ],
+     "toeR": [
+      -0.0189,
+      0.00532,
+      -0.00729
+     ],
+     "hips": [
+      0.0,
+      0.19814,
+      0.004
+     ],
+     "cap": [
+      -0.00579,
+      0.33748,
+      -0.02137
+     ]
+    },
+    "15": {
+     "head": [
+      0.00507,
+      0.31083,
+      -0.01004
+     ],
+     "jaw": [
+      0.00509,
+      0.31221,
+      -0.01321
+     ],
+     "handR": [
+      -0.07079,
+      0.19229,
+      0.07182
+     ],
+     "handL": [
+      0.07842,
+      0.16323,
+      0.04003
+     ],
+     "footL": [
+      0.0189,
+      0.02721,
+      -0.0285
+     ],
+     "toeR": [
+      -0.01888,
+      0.01884,
+      0.06336
+     ],
+     "hips": [
+      0.0,
+      0.19814,
+      0.004
+     ],
+     "cap": [
+      0.00579,
+      0.33748,
+      -0.02137
+     ]
+    },
+    "30": {
+     "head": [
+      -0.00507,
+      0.31083,
+      -0.01004
+     ],
+     "jaw": [
+      -0.00509,
+      0.31221,
+      -0.01321
+     ],
+     "handR": [
+      -0.07842,
+      0.16323,
+      0.04003
+     ],
+     "handL": [
+      0.07079,
+      0.19229,
+      0.07182
+     ],
+     "footL": [
+      0.01888,
+      0.02386,
+      0.03329
+     ],
+     "toeR": [
+      -0.0189,
+      0.00532,
+      -0.00729
+     ],
+     "hips": [
+      0.0,
+      0.19814,
+      0.004
+     ],
+     "cap": [
+      -0.00579,
+      0.33748,
+      -0.02137
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0006,
+    "naturalSpeed": 0.125
+   }
+  },
+  {
+   "action": "haman_walk",
+   "char": "haman",
+   "clip": "walk",
+   "frames": 24,
+   "seconds": 0.8,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 12,
+     "sec": 0.4
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "EXTRA (timeline S04 asks for haman walk; not in CONTRACT \u00a74): a quick sneaky scurry on tiptoe, hunched forward, knees bent, hands rubbing at the chest, head low and glancing",
+   "extra": true,
+   "naturalSpeed": 0.1818,
+   "stride": 0.08,
+   "samples": {
+    "0": {
+     "head": [
+      -0.00397,
+      0.30035,
+      0.02298
+     ],
+     "jaw": [
+      -0.00386,
+      0.30273,
+      0.02046
+     ],
+     "handR": [
+      -0.00925,
+      0.20388,
+      0.05019
+     ],
+     "handL": [
+      0.01066,
+      0.20664,
+      0.05025
+     ],
+     "footL": [
+      0.0189,
+      0.0245,
+      0.039
+     ],
+     "toeR": [
+      -0.0189,
+      0.00641,
+      -0.0145
+     ],
+     "hips": [
+      0.0,
+      0.18851,
+      0.004
+     ],
+     "cap": [
+      -0.00495,
+      0.32925,
+      0.02133
+     ]
+    },
+    "12": {
+     "head": [
+      0.00397,
+      0.30035,
+      0.02298
+     ],
+     "jaw": [
+      0.00377,
+      0.30273,
+      0.02047
+     ],
+     "handR": [
+      -0.01073,
+      0.20472,
+      0.0497
+     ],
+     "handL": [
+      0.00932,
+      0.2058,
+      0.05075
+     ],
+     "footL": [
+      0.0189,
+      0.03006,
+      -0.03373
+     ],
+     "toeR": [
+      -0.0189,
+      0.00431,
+      0.06183
+     ],
+     "hips": [
+      0.0,
+      0.18851,
+      0.004
+     ],
+     "cap": [
+      0.00485,
+      0.32926,
+      0.02133
+     ]
+    },
+    "24": {
+     "head": [
+      -0.00397,
+      0.30035,
+      0.02298
+     ],
+     "jaw": [
+      -0.00386,
+      0.30273,
+      0.02046
+     ],
+     "handR": [
+      -0.00925,
+      0.20388,
+      0.05019
+     ],
+     "handL": [
+      0.01066,
+      0.20664,
+      0.05025
+     ],
+     "footL": [
+      0.0189,
+      0.0245,
+      0.039
+     ],
+     "toeR": [
+      -0.0189,
+      0.00641,
+      -0.0145
+     ],
+     "hips": [
+      0.0,
+      0.18851,
+      0.004
+     ],
+     "cap": [
+      -0.00495,
+      0.32925,
+      0.02133
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0006,
+    "naturalSpeed": 0.1818
+   }
+  },
+  {
+   "action": "haman_talk",
+   "char": "haman",
+   "clip": "talk",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "oily talk: jaw in an irregular rhythm, shrugs and palms-up gestures on the stressed syllables, head waggles, leans in and out",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.31094,
+      -0.00161
+     ],
+     "jaw": [
+      -0.00036,
+      0.3128,
+      -0.00451
+     ],
+     "handR": [
+      -0.06484,
+      0.18381,
+      0.06942
+     ],
+     "handL": [
+      0.06484,
+      0.18381,
+      0.06942
+     ],
+     "footL": [
+      0.02287,
+      0.01919,
+      -0.00094
+     ],
+     "toeR": [
+      -0.02287,
+      0.00512,
+      0.0261
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.0028
+     ],
+     "cap": [
+      -0.00199,
+      0.33901,
+      -0.0085
+     ]
+    },
+    "45": {
+     "head": [
+      0.0,
+      0.31091,
+      -0.0018
+     ],
+     "jaw": [
+      8e-05,
+      0.31274,
+      -0.00474
+     ],
+     "handR": [
+      -0.06446,
+      0.17961,
+      0.06581
+     ],
+     "handL": [
+      0.06446,
+      0.17961,
+      0.06581
+     ],
+     "footL": [
+      0.02287,
+      0.0192,
+      -0.00093
+     ],
+     "toeR": [
+      -0.02287,
+      0.00513,
+      0.02611
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.00317
+     ],
+     "cap": [
+      -0.00155,
+      0.33888,
+      -0.00916
+     ]
+    },
+    "90": {
+     "head": [
+      0.0,
+      0.31094,
+      -0.00161
+     ],
+     "jaw": [
+      -0.00036,
+      0.3128,
+      -0.00451
+     ],
+     "handR": [
+      -0.06484,
+      0.18381,
+      0.06942
+     ],
+     "handL": [
+      0.06484,
+      0.18381,
+      0.06942
+     ],
+     "footL": [
+      0.02287,
+      0.01919,
+      -0.00094
+     ],
+     "toeR": [
+      -0.02287,
+      0.00512,
+      0.0261
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.0028
+     ],
+     "cap": [
+      -0.00199,
+      0.33901,
+      -0.0085
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0018,
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "haman_demand",
+   "char": "haman",
+   "clip": "demand",
+   "frames": 45,
+   "seconds": 1.5,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "wide": {
+     "frame": 16,
+     "sec": 0.533
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "'everyone must bow to me!': crouches and draws his arms in (anticipation), springs up onto his toes and throws his arms wide and up, chest out, chin up; bounces down and holds the pose",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.31083,
+      -0.00223
+     ],
+     "jaw": [
+      0.0,
+      0.31262,
+      -0.00519
+     ],
+     "handR": [
+      -0.0556,
+      0.16953,
+      0.05695
+     ],
+     "handL": [
+      0.0556,
+      0.16953,
+      0.05695
+     ],
+     "footL": [
+      0.0189,
+      0.01915,
+      -0.00093
+     ],
+     "toeR": [
+      -0.0189,
+      0.00508,
+      0.02611
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.0,
+      0.33877,
+      -0.00987
+     ]
+    },
+    "22": {
+     "head": [
+      0.0,
+      0.30982,
+      -0.01557
+     ],
+     "jaw": [
+      0.0,
+      0.31041,
+      -0.01898
+     ],
+     "handR": [
+      -0.14177,
+      0.32003,
+      0.03103
+     ],
+     "handL": [
+      0.14177,
+      0.32003,
+      0.03103
+     ],
+     "footL": [
+      0.02878,
+      0.02084,
+      -0.00088
+     ],
+     "toeR": [
+      -0.02878,
+      0.00515,
+      0.02526
+     ],
+     "hips": [
+      0.0,
+      0.19835,
+      0.004
+     ],
+     "cap": [
+      0.0,
+      0.33303,
+      -0.0329
+     ]
+    },
+    "45": {
+     "head": [
+      0.0,
+      0.30861,
+      -0.0151
+     ],
+     "jaw": [
+      0.0,
+      0.30923,
+      -0.01851
+     ],
+     "handR": [
+      -0.14249,
+      0.3165,
+      0.03214
+     ],
+     "handL": [
+      0.14249,
+      0.3165,
+      0.03214
+     ],
+     "footL": [
+      0.02881,
+      0.0195,
+      -0.00091
+     ],
+     "toeR": [
+      -0.02881,
+      0.00543,
+      0.02613
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.0,
+      0.33196,
+      -0.03224
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0006,
+    "plantedToeDriftMax": 0.0069
+   }
+  },
+  {
+   "action": "haman_whisper",
+   "char": "haman",
+   "clip": "whisper",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "sly whisper: leans to his right and forward toward the king, right hand cupped at the side of his mouth, left hand behind his back; jaw murmurs, eyebrows of the sly face; sneaky glances back",
+   "samples": {
+    "0": {
+     "head": [
+      0.00477,
+      0.30848,
+      0.02004
+     ],
+     "jaw": [
+      0.00552,
+      0.31094,
+      0.01773
+     ],
+     "handR": [
+      -0.02582,
+      0.29753,
+      0.04353
+     ],
+     "handL": [
+      0.03027,
+      0.15351,
+      -0.03835
+     ],
+     "footL": [
+      0.0249,
+      0.0206,
+      -0.001
+     ],
+     "toeR": [
+      -0.02889,
+      0.00424,
+      0.02606
+     ],
+     "hips": [
+      -0.006,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.01276,
+      0.33631,
+      0.02082
+     ]
+    },
+    "45": {
+     "head": [
+      0.00477,
+      0.30848,
+      0.02004
+     ],
+     "jaw": [
+      0.00486,
+      0.31107,
+      0.01775
+     ],
+     "handR": [
+      -0.01872,
+      0.29539,
+      0.04978
+     ],
+     "handL": [
+      0.03027,
+      0.15351,
+      -0.03835
+     ],
+     "footL": [
+      0.0249,
+      0.0206,
+      -0.001
+     ],
+     "toeR": [
+      -0.02889,
+      0.00424,
+      0.02606
+     ],
+     "hips": [
+      -0.006,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.01204,
+      0.33652,
+      0.02027
+     ]
+    },
+    "90": {
+     "head": [
+      0.00477,
+      0.30848,
+      0.02004
+     ],
+     "jaw": [
+      0.00552,
+      0.31094,
+      0.01773
+     ],
+     "handR": [
+      -0.02582,
+      0.29753,
+      0.04353
+     ],
+     "handL": [
+      0.03027,
+      0.15351,
+      -0.03835
+     ],
+     "footL": [
+      0.0249,
+      0.0206,
+      -0.001
+     ],
+     "toeR": [
+      -0.02889,
+      0.00424,
+      0.02606
+     ],
+     "hips": [
+      -0.006,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.01276,
+      0.33631,
+      0.02082
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0009,
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "haman_take_ring",
+   "char": "haman",
+   "clip": "take_ring",
+   "frames": 45,
+   "seconds": 1.5,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "grab": {
+     "frame": 20,
+     "sec": 0.667
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "greedy snatch: rubs his hands and leans back (anticipation), darts the left hand forward and up and grabs the ring, pulls it to his chest, admires it with a gleeful bounce; holds",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.31083,
+      -0.00223
+     ],
+     "jaw": [
+      0.0,
+      0.31262,
+      -0.00519
+     ],
+     "handR": [
+      -0.01,
+      0.22047,
+      0.05587
+     ],
+     "handL": [
+      0.06288,
+      0.17094,
+      0.05683
+     ],
+     "footL": [
+      0.02287,
+      0.01922,
+      -0.00093
+     ],
+     "toeR": [
+      -0.02287,
+      0.00515,
+      0.02611
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.0,
+      0.33877,
+      -0.00987
+     ]
+    },
+    "22": {
+     "head": [
+      0.0,
+      0.31008,
+      0.01712
+     ],
+     "jaw": [
+      0.0,
+      0.31254,
+      0.01468
+     ],
+     "handR": [
+      -0.01,
+      0.20832,
+      0.05213
+     ],
+     "handL": [
+      0.03315,
+      0.26358,
+      0.13041
+     ],
+     "footL": [
+      0.02286,
+      0.01949,
+      0.01496
+     ],
+     "toeR": [
+      -0.02287,
+      0.00515,
+      0.02611
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.0,
+      0.33904,
+      0.01644
+     ]
+    },
+    "45": {
+     "head": [
+      0.0,
+      0.31083,
+      -0.00223
+     ],
+     "jaw": [
+      -0.0006,
+      0.31292,
+      -0.00493
+     ],
+     "handR": [
+      -0.01,
+      0.22047,
+      0.05587
+     ],
+     "handL": [
+      0.016,
+      0.24,
+      0.072
+     ],
+     "footL": [
+      0.02287,
+      0.01922,
+      -0.00093
+     ],
+     "toeR": [
+      -0.02287,
+      0.00515,
+      0.02611
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      -0.00336,
+      0.33929,
+      -0.00645
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0018,
+    "plantedToeDriftMax": 0.0159
+   }
+  },
+  {
+   "action": "haman_smug",
+   "char": "haman",
+   "clip": "smug",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "arms crossed, chin up, half-lidded eyes, taps his right foot, head bobs to it, nose in the air; one slow self-satisfied nod",
+   "samples": {
+    "0": {
+     "head": [
+      0.00468,
+      0.31044,
+      -0.00541
+     ],
+     "jaw": [
+      0.00475,
+      0.31186,
+      -0.00857
+     ],
+     "handR": [
+      0.03728,
+      0.24178,
+      0.06474
+     ],
+     "handL": [
+      -0.02886,
+      0.23581,
+      0.05567
+     ],
+     "footL": [
+      0.02488,
+      0.01885,
+      -0.00095
+     ],
+     "toeR": [
+      -0.02481,
+      0.0057,
+      0.03605
+     ],
+     "hips": [
+      0.00235,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.00396,
+      0.33721,
+      -0.01646
+     ]
+    },
+    "60": {
+     "head": [
+      -0.00468,
+      0.31044,
+      -0.00541
+     ],
+     "jaw": [
+      -0.00476,
+      0.31211,
+      -0.00844
+     ],
+     "handR": [
+      0.03071,
+      0.24318,
+      0.06474
+     ],
+     "handL": [
+      -0.03513,
+      0.23449,
+      0.05567
+     ],
+     "footL": [
+      0.02481,
+      0.01976,
+      -0.00089
+     ],
+     "toeR": [
+      -0.02488,
+      0.00479,
+      0.03604
+     ],
+     "hips": [
+      -0.00235,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      -0.00398,
+      0.33801,
+      -0.01427
+     ]
+    },
+    "120": {
+     "head": [
+      0.00468,
+      0.31044,
+      -0.00541
+     ],
+     "jaw": [
+      0.00475,
+      0.31186,
+      -0.00857
+     ],
+     "handR": [
+      0.03728,
+      0.24178,
+      0.06474
+     ],
+     "handL": [
+      -0.02886,
+      0.23581,
+      0.05567
+     ],
+     "footL": [
+      0.02488,
+      0.01885,
+      -0.00095
+     ],
+     "toeR": [
+      -0.02481,
+      0.0057,
+      0.03605
+     ],
+     "hips": [
+      0.00235,
+      0.197,
+      0.004
+     ],
+     "cap": [
+      0.00396,
+      0.33721,
+      -0.01646
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0012,
+    "plantedToeDriftMax": 0.0024
+   }
+  },
+  {
+   "action": "haman_shock",
+   "char": "haman",
+   "clip": "shock",
+   "frames": 36,
+   "seconds": 1.2,
+   "loop": false,
+   "rootMotion": false,
+   "markers": {
+    "slip": {
+     "frame": 10,
+     "sec": 0.333
+    }
+   },
+   "loopSeamMaxErr": null,
+   "rootMaxOffset": 0.0,
+   "notes": "caught! freezes for a beat, jumps straight up with arms flung out, the cap pops and slips back askew (marker slip), lands knock-kneed and crouched, hands up; cap stays askew (and in cower / led_away)",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.311,
+      -0.0032
+     ],
+     "jaw": [
+      0.0,
+      0.31314,
+      -0.00592
+     ],
+     "handR": [
+      -0.06288,
+      0.16913,
+      0.05094
+     ],
+     "handL": [
+      0.06288,
+      0.16913,
+      0.05094
+     ],
+     "footL": [
+      0.01888,
+      0.01908,
+      -0.00096
+     ],
+     "toeR": [
+      -0.01888,
+      0.00501,
+      0.02608
+     ],
+     "hips": [
+      0.0,
+      0.197,
+      0.0
+     ],
+     "cap": [
+      0.0,
+      0.33966,
+      -0.00737
+     ]
+    },
+    "18": {
+     "head": [
+      0.0,
+      0.28714,
+      0.0007
+     ],
+     "jaw": [
+      0.0,
+      0.28959,
+      -0.00175
+     ],
+     "handR": [
+      -0.06434,
+      0.19772,
+      0.08925
+     ],
+     "handL": [
+      0.06594,
+      0.20103,
+      0.0903
+     ],
+     "footL": [
+      0.01959,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.01959,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.0,
+      0.17318,
+      -0.00345
+     ],
+     "cap": [
+      0.003,
+      0.31378,
+      -0.01018
+     ]
+    },
+    "36": {
+     "head": [
+      0.0,
+      0.26918,
+      0.00794
+     ],
+     "jaw": [
+      0.0,
+      0.27213,
+      0.00612
+     ],
+     "handR": [
+      -0.016,
+      0.2539,
+      0.05998
+     ],
+     "handL": [
+      0.016,
+      0.25858,
+      0.05682
+     ],
+     "footL": [
+      0.0209,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0209,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.0,
+      0.157,
+      -0.01
+     ],
+     "cap": [
+      0.003,
+      0.2976,
+      0.00338
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0025,
+    "plantedToeDriftMax": 0.002
+   }
+  },
+  {
+   "action": "haman_cower",
+   "char": "haman",
+   "clip": "cower",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {},
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "crouched and trembling, knees together, hands up in front of his face, peeks out between them and ducks back; cap askew",
+   "samples": {
+    "0": {
+     "head": [
+      0.0,
+      0.26571,
+      0.01945
+     ],
+     "jaw": [
+      0.0,
+      0.26898,
+      0.01834
+     ],
+     "handR": [
+      -0.016,
+      0.24338,
+      0.06619
+     ],
+     "handL": [
+      0.016,
+      0.24851,
+      0.0638
+     ],
+     "footL": [
+      0.0209,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0209,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.0,
+      0.157,
+      -0.01
+     ],
+     "cap": [
+      0.003,
+      0.29442,
+      0.0214
+     ]
+    },
+    "24": {
+     "head": [
+      0.0,
+      0.26571,
+      0.01945
+     ],
+     "jaw": [
+      -0.00032,
+      0.26881,
+      0.01796
+     ],
+     "handR": [
+      -0.03015,
+      0.23452,
+      0.06296
+     ],
+     "handL": [
+      0.03015,
+      0.23964,
+      0.06057
+     ],
+     "footL": [
+      0.0209,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0209,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.0,
+      0.157,
+      -0.01
+     ],
+     "cap": [
+      0.00142,
+      0.29455,
+      0.0176
+     ]
+    },
+    "48": {
+     "head": [
+      0.0,
+      0.26571,
+      0.01945
+     ],
+     "jaw": [
+      0.0,
+      0.26898,
+      0.01834
+     ],
+     "handR": [
+      -0.016,
+      0.24338,
+      0.06619
+     ],
+     "handL": [
+      0.016,
+      0.24851,
+      0.0638
+     ],
+     "footL": [
+      0.0209,
+      0.018,
+      -0.001
+     ],
+     "toeR": [
+      -0.0209,
+      0.00393,
+      0.02604
+     ],
+     "hips": [
+      0.0,
+      0.157,
+      -0.01
+     ],
+     "cap": [
+      0.003,
+      0.29442,
+      0.0214
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0014,
+    "plantedToeDriftMax": 0.0
+   }
+  },
+  {
+   "action": "haman_led_away",
+   "char": "haman",
+   "clip": "led_away",
+   "frames": 36,
+   "seconds": 1.2,
+   "loop": true,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 18,
+     "sec": 0.6
+    }
+   },
+   "loopSeamMaxErr": 0.0,
+   "rootMaxOffset": 0.0,
+   "notes": "backward shuffle: crouched, little quick steps backward, hands up, glances back over his shoulder and back to the king; cap askew",
+   "naturalSpeed": 0.0672,
+   "stride": 0.05,
+   "samples": {
+    "0": {
+     "head": [
+      -0.00388,
+      0.28708,
+      0.01624
+     ],
+     "jaw": [
+      -0.00397,
+      0.29011,
+      0.01457
+     ],
+     "handR": [
+      -0.01924,
+      0.26838,
+      0.06721
+     ],
+     "handL": [
+      0.01263,
+      0.27283,
+      0.06401
+     ],
+     "footL": [
+      0.0189,
+      0.0206,
+      -0.026
+     ],
+     "toeR": [
+      -0.0189,
+      0.00419,
+      0.04148
+     ],
+     "hips": [
+      0.0,
+      0.176,
+      -0.006
+     ],
+     "cap": [
+      -0.00181,
+      0.31578,
+      0.01319
+     ]
+    },
+    "18": {
+     "head": [
+      0.00388,
+      0.28708,
+      0.01624
+     ],
+     "jaw": [
+      0.00224,
+      0.28995,
+      0.01523
+     ],
+     "handR": [
+      -0.01274,
+      0.2695,
+      0.06721
+     ],
+     "handL": [
+      0.01935,
+      0.27171,
+      0.06401
+     ],
+     "footL": [
+      0.0189,
+      0.01804,
+      0.01432
+     ],
+     "toeR": [
+      -0.0189,
+      0.00291,
+      -0.00118
+     ],
+     "hips": [
+      0.0,
+      0.176,
+      -0.006
+     ],
+     "cap": [
+      -0.00116,
+      0.31551,
+      0.01441
+     ]
+    },
+    "36": {
+     "head": [
+      -0.00388,
+      0.28708,
+      0.01624
+     ],
+     "jaw": [
+      -0.00397,
+      0.29011,
+      0.01457
+     ],
+     "handR": [
+      -0.01924,
+      0.26838,
+      0.06721
+     ],
+     "handL": [
+      0.01263,
+      0.27283,
+      0.06401
+     ],
+     "footL": [
+      0.0189,
+      0.0206,
+      -0.026
+     ],
+     "toeR": [
+      -0.0189,
+      0.00419,
+      0.04148
+     ],
+     "hips": [
+      0.0,
+      0.176,
+      -0.006
+     ],
+     "cap": [
+      -0.00181,
+      0.31578,
+      0.01319
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0008,
+    "naturalSpeed": 0.0672
+   }
+  }
+ ],
+ "timelineMissing": [],
+ "requestedClips": [],
+ "stage": {
+  "daisTop": 0.07,
+  "throne": [
+   0.0,
+   -0.3
+  ],
+  "stepFoot": [
+   0.0,
+   -0.12
+  ],
+  "seatAboveRoot": 0.11599999999999999,
+  "kingStandZ": 0.088,
+  "sceptreTipKingLocal": [
+   -0.04,
+   0.27,
+   0.128
+  ]
+ }
+}

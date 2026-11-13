@@ -66,17 +66,28 @@ def loudness(f):
     return i, p
 
 
-def normalise(src, wav, mp3):
-    """Gentle compression, gain to LUFS, peak limiter, 44.1 kHz mono s16 WAV, then a 96 kbps MP3 copy.
+# Two level chains. TTS is flat and takes firm control. A real person (above all a child) is peaky: the firm chain
+# squashed the peaks of the 2026-11-13 recording and it sounded pinched and unnatural in the app (LESSONS L50), so
+# recordings get a slow, soft-knee compressor and a limiter that only catches the odd peak.
+CHAIN = {
+    "tts": dict(comp="acompressor=threshold=-24dB:ratio=3:attack=5:release=80", lim_attack=3, lim_release=40, lufs=LUFS),
+    # -17 LUFS: one dB of headroom halves the peak limiting on a child's voice; music ducks under speech anyway
+    "natural": dict(comp="acompressor=threshold=-30dB:ratio=1.8:knee=8:attack=25:release=250", lim_attack=8, lim_release=200, lufs=LUFS - 1),
+}
+
+
+def normalise(src, wav, mp3, chain="tts"):
+    """Compression, gain to LUFS, peak limiter, 44.1 kHz mono s16 WAV, then a 96 kbps MP3 copy.
     (Two-pass linear loudnorm left short peaky clips 4-10 dB quiet because it never limits; this does.)"""
+    c = CHAIN[chain]
     tmp = wav + ".pre.wav"
-    ffmpeg("-i", src, "-af", "acompressor=threshold=-24dB:ratio=3:attack=5:release=80,aresample=44100",
-           "-ac", "1", "-c:a", "pcm_f32le", tmp)
-    gain = LUFS - loudness(tmp)[0]
+    ffmpeg("-i", src, "-af", f"{c['comp']},aresample=44100", "-ac", "1", "-c:a", "pcm_f32le", tmp)
+    target = c["lufs"]
+    gain = target - loudness(tmp)[0]
     for _ in range(3):                                  # the limiter eats a little loudness; re-aim until within 0.3 LU
-        ffmpeg("-i", tmp, "-af", f"volume={gain:.2f}dB,alimiter=limit={10 ** ((TP - 0.6) / 20):.3f}:attack=3:release=40:level=disabled",
+        ffmpeg("-i", tmp, "-af", f"volume={gain:.2f}dB,alimiter=limit={10 ** ((TP - 0.6) / 20):.3f}:attack={c['lim_attack']}:release={c['lim_release']}:level=disabled",
                "-ac", "1", "-ar", "44100", "-c:a", "pcm_s16le", wav)
-        err = LUFS - loudness(wav)[0]
+        err = target - loudness(wav)[0]
         if abs(err) <= 0.3:
             break
         gain += err
@@ -173,7 +184,7 @@ def cmd_import(a):
                 continue
             pre = os.path.join(tmp, f"{lid}.wav")       # trim again: a recorded take may carry room tone at the ends
             ffmpeg("-i", f, "-af", f"{TRIM},{PAD}", "-ac", "1", pre)
-            normalise(pre, os.path.join(OUT, a.lang, f"{lid}.wav"), os.path.join(OUT, a.lang, f"{lid}.mp3"))
+            normalise(pre, os.path.join(OUT, a.lang, f"{lid}.wav"), os.path.join(OUT, a.lang, f"{lid}.mp3"), chain="natural")
             src.setdefault(a.lang, {})[lid] = f"own:{os.path.basename(os.path.abspath(a.dir))}"
             n += 1
             print(f"{a.lang} {lid}: imported {f}")

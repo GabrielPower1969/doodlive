@@ -89,6 +89,10 @@ namespace DoodLive
             { "dg_goliath", "歌利亚" },
             { "dg_saul", "扫罗王" },
             { "dg_soldiers", "以色列士兵" },
+            { "dg_esther", "以斯帖" },
+            { "dg_king", "亚哈随鲁王" },
+            { "dg_haman", "哈曼" },
+            { "dg_mordecai", "末底改" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -171,6 +175,10 @@ namespace DoodLive
             { "dg_goliath", "Goliath" },
             { "dg_saul", "King Saul" },
             { "dg_soldiers", "Soldiers" },
+            { "dg_esther", "Esther" },
+            { "dg_king", "King Xerxes" },
+            { "dg_haman", "Haman" },
+            { "dg_mordecai", "Mordecai" },
         };
         static string lang;
         public static string Lang

@@ -40,7 +40,12 @@ namespace DoodLive.EditorTools
             bool dgOk = DGSetup.CopyInputs();                                   // David & Goliath (docs/david-goliath/INTEGRATION.md)
             if (dgOk) DGSetup.CheckTemplate($"{Root}/Resources/template.json");
             var sheetPaths = Sheets.Select(n => $"{Root}/Tracking/{n}.png").ToList();
-            if (dgOk) sheetPaths.Add(DGSetup.SheetPath);                          // reference image "david-goliath-A4"
+            if (dgOk) { sheetPaths.Add(DGSetup.SheetPath); sheetPaths.AddRange(DGSetup.ColouredSheetPaths); }   // "david-goliath-A4*"
+            if (!File.Exists($"{Root}/Resources/sheet_signatures.json"))
+                throw new System.Exception("Resources/sheet_signatures.json missing: run python3 tools/make_sheet_signatures.py");
+            // generic story packs (assets/stories.json, engine "story"): import + stage prefab; their sheets join the library
+            var packs = DoodLive.Story.EditorTools.StorySetup.SetupAll(ImportTexture);
+            foreach (var r in packs) sheetPaths.AddRange(r.trackingSheets);
             var sheets = sheetPaths.Select(p => ImportTexture(p, readable: true, maxSize: 2048)).ToArray();
             var demo = ImportTexture($"{Root}/Textures/demo-colored.png", readable: false, maxSize: 1024);
             foreach (var ui in Directory.GetFiles($"{Root}/Resources/UI", "*.png"))   // Paper & Crayon icons (tools/make_ui_icons.py): crisp, uncompressed
@@ -59,7 +64,7 @@ namespace DoodLive.EditorTools
             }
             SetupXR();
             SetupPlayer();
-            MakeScene(library, prefab, mats, demo, dgPrefab, dgMats, dgDemo);
+            MakeScene(library, prefab, mats, demo, dgPrefab, dgMats, dgDemo, packs.Select(r => r.prefab).ToArray());
             AssetDatabase.SaveAssets();
             Debug.Log("DoodLive setup done");
         }
@@ -499,7 +504,7 @@ namespace DoodLive.EditorTools
 
         // ---------------- scene ----------------
         static void MakeScene(XRReferenceImageLibrary library, GameObject angelPrefab, Dictionary<string, Material> mats, Texture2D demo,
-                              GameObject dgPrefab, Material[] dgMats, Texture2D dgDemo)
+                              GameObject dgPrefab, Material[] dgMats, Texture2D dgDemo, GameObject[] packPrefabs)
         {
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
@@ -534,7 +539,10 @@ namespace DoodLive.EditorTools
             var images = originGo.AddComponent<ARTrackedImageManager>();
             images.referenceLibrary = library;
             images.requestedMaxNumberOfMovingImages = 1;
-            originGo.AddComponent<ARAnchorManager>();   // fallback anchors (ARColoringController.AnchorHere)
+            originGo.AddComponent<ARAnchorManager>();   // fallback anchors (ARColoringController.AnchorHere) + SheetFinder anchors
+            var raycasts = originGo.AddComponent<ARRaycastManager>();   // SheetFinder: real sheet size from the depth / plane hit
+            var planes = originGo.AddComponent<ARPlaneManager>();       // planes for that hit (table) when depth is not ready
+            planes.requestedDetectionMode = UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Horizontal | UnityEngine.XR.ARSubsystems.PlaneDetectionMode.Vertical;
 
             var light = new GameObject("Directional Light").AddComponent<Light>();
             light.type = LightType.Directional;
@@ -551,6 +559,8 @@ namespace DoodLive.EditorTools
             var app = new GameObject("DoodLive");
             var ctl = app.AddComponent<ARColoringController>();
             ctl.session = session; ctl.trackedImages = images; ctl.cameraManager = camMgr; ctl.cameraBackground = bg; ctl.arCamera = cam;
+            var finder = app.AddComponent<SheetFinder>();
+            finder.cameraBackground = bg; finder.arCamera = cam; finder.raycasts = raycasts; ctl.finder = finder;
             ctl.angel = angel.GetComponent<Animator>();
             ctl.pageMaterials = new[] { mats["robe"], mats["skin"], mats["hair"], mats["wing"], mats["gold"] };   // cloud stays white (not page-coloured)
             ctl.demoTexture = demo;
@@ -560,6 +570,7 @@ namespace DoodLive.EditorTools
                 ctl.story = stage.GetComponent<DoodLive.DavidGoliath.DGDirector>();
                 ctl.dgMaterials = dgMats; ctl.dgDemoTexture = dgDemo;
             }
+            ctl.packs = packPrefabs.Where(p => p).Select(p => ((GameObject)PrefabUtility.InstantiatePrefab(p)).GetComponent<DoodLive.Story.StoryDirector>()).ToArray();
             ctl.sfx = app.AddComponent<AudioSource>();
             ctl.voice = app.AddComponent<AudioSource>();
             ctl.music = app.AddComponent<AudioSource>();

@@ -14,8 +14,11 @@ using UnityEngine.Playables;
 
 namespace DoodLive.DavidGoliath
 {
-    public class DGDirector : MonoBehaviour
+    public class DGDirector : MonoBehaviour, IStoryPlayer
     {
+        public string StoryId => "david-goliath";
+        public float MusicGain { get => MusicLevel; set => MusicLevel = value; }
+        public Camera Cinematic { get => cinematic; set => cinematic = value; }
         public DGActor david, goliath;
         [Tooltip("Identity pivot above both actors; DGFx shakes it (never the AR holder)")]
         public Transform shake;

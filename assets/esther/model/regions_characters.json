@@ -1,0 +1,767 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/es_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as D&G id_2x).",
+ "sheet": {
+  "esther": {
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "king": {
+   "sheetX": 0.02,
+   "sheetY": 0.015
+  },
+  "haman": {
+   "sheetX": 0.34,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "esther": {
+   "height": 0.34,
+   "bboxSheet": [
+    -0.4489,
+    0.0165,
+    -0.211,
+    0.3545
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#F1C6A0",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "eyelids",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4403,
+      0.0281,
+      -0.2197,
+      0.3447
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#4A2E1F",
+     "zh": "头发",
+     "en": "hair",
+     "parts": [
+      "braid",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3612,
+      0.2137,
+      -0.3054,
+      0.3496
+     ]
+    },
+    "robe": {
+     "id": 3,
+     "hex": "#F6EEDC",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.4489,
+      0.0237,
+      -0.211,
+      0.2755
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#C9893F",
+     "zh": "鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3609,
+      0.0165,
+      -0.2991,
+      0.0281
+     ]
+    },
+    "underSash": {
+     "id": 5,
+     "hex": "#8CC8F0",
+     "zh": "蓝腰巾",
+     "en": "blue under-sash",
+     "parts": [
+      "underSash"
+     ],
+     "bboxSheet": [
+      -0.3612,
+      0.2104,
+      -0.2988,
+      0.2291
+     ]
+    },
+    "sash": {
+     "id": 6,
+     "hex": "#F2C14E",
+     "zh": "金腰带",
+     "en": "gold sash",
+     "parts": [
+      "braid",
+      "sash",
+      "sashKnot"
+     ],
+     "bboxSheet": [
+      -0.3604,
+      0.1649,
+      -0.2996,
+      0.2299
+     ]
+    },
+    "cape": {
+     "id": 7,
+     "hex": "#C8323F",
+     "zh": "披肩",
+     "en": "cape",
+     "parts": [
+      "cape"
+     ],
+     "bboxSheet": [
+      -0.3785,
+      0.203,
+      -0.2815,
+      0.2754
+     ]
+    },
+    "necklace": {
+     "id": 8,
+     "hex": "#F2C14E",
+     "zh": "项链",
+     "en": "necklace",
+     "parts": [
+      "necklace"
+     ],
+     "bboxSheet": [
+      -0.359,
+      0.2551,
+      -0.301,
+      0.2736
+     ],
+     "anchoredTo": "sash",
+     "anchorUV": [
+      0.17925,
+      0.17828
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of sash"
+    },
+    "pendant": {
+     "id": 9,
+     "hex": "#2F5FD0",
+     "zh": "星形坠子",
+     "en": "star pendant",
+     "parts": [
+      "necklace"
+     ],
+     "bboxSheet": [
+      -0.3343,
+      0.2486,
+      -0.3257,
+      0.2568
+     ],
+     "anchoredTo": "underSash",
+     "anchorUV": [
+      0.17175,
+      0.17461
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of underSash"
+    },
+    "diadem": {
+     "id": 10,
+     "hex": "#F2C14E",
+     "zh": "冠冕",
+     "en": "diadem",
+     "parts": [
+      "diadem"
+     ],
+     "bboxSheet": [
+      -0.3545,
+      0.3224,
+      -0.3055,
+      0.3545
+     ],
+     "anchoredTo": "sash",
+     "anchorUV": [
+      0.17925,
+      0.17828
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of sash"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02088,
+     0.27304,
+     0.02088,
+     0.3148
+    ],
+    "px": 512,
+    "default": "calm",
+    "files": {
+     "calm": "docs/esther/design/faces/esther_calm.png",
+     "worried": "docs/esther/design/faces/esther_worried.png",
+     "pray": "docs/esther/design/faces/esther_pray.png",
+     "brave": "docs/esther/design/faces/esther_brave.png",
+     "talk": "docs/esther/design/faces/esther_talk.png",
+     "joy": "docs/esther/design/faces/esther_joy.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk": "calm",
+     "talk": "talk",
+     "worried": "worried",
+     "pray": "pray",
+     "rise_brave": "brave",
+     "climb": "brave",
+     "bow": "calm",
+     "touch_sceptre": "brave",
+     "invite": "calm",
+     "point": "brave",
+     "joy": "joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "face skin",
+     "uv": [
+      0.16975,
+      0.27404
+     ],
+     "local": [
+      -0.0002,
+      0.3213
+     ]
+    },
+    "handR.skin": {
+     "target": "face skin",
+     "uv": [
+      0.16975,
+      0.27404
+     ],
+     "local": [
+      -0.0002,
+      0.3213
+     ]
+    },
+    "braid.sash": {
+     "target": "sash",
+     "uv": [
+      0.17925,
+      0.17828
+     ],
+     "local": [
+      0.0093,
+      0.2038
+     ]
+    }
+   }
+  },
+  "king": {
+   "height": 0.4,
+   "bboxSheet": [
+    -0.1929,
+    0.0168,
+    0.1557,
+    0.4151
+   ],
+   "regions": {
+    "skin": {
+     "id": 11,
+     "hex": "#D9A27A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "eyelids",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1186,
+      0.0304,
+      0.1537,
+      0.3644
+     ]
+    },
+    "beard": {
+     "id": 12,
+     "hex": "#3A2418",
+     "zh": "胡子和头发",
+     "en": "beard and hair",
+     "parts": [
+      "beard",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.0077,
+      0.2936,
+      0.0477,
+      0.374
+     ]
+    },
+    "robe": {
+     "id": 13,
+     "hex": "#6A3FB5",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.1156,
+      0.0242,
+      0.1557,
+      0.2915
+     ]
+    },
+    "shoes": {
+     "id": 14,
+     "hex": "#8A5A34",
+     "zh": "鞋",
+     "en": "shoes",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0192,
+      0.0168,
+      0.0592,
+      0.0304
+     ]
+    },
+    "collar": {
+     "id": 15,
+     "hex": "#F2C14E",
+     "zh": "金领",
+     "en": "gold collar",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": [
+      -0.0392,
+      0.2644,
+      0.0792,
+      0.2916
+     ]
+    },
+    "belt": {
+     "id": 16,
+     "hex": "#F2C14E",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "medallion"
+     ],
+     "bboxSheet": [
+      -0.0257,
+      0.2237,
+      0.0657,
+      0.2423
+     ]
+    },
+    "crown": {
+     "id": 17,
+     "hex": "#6A3FB5",
+     "zh": "王冠",
+     "en": "crown",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      -0.0088,
+      0.3557,
+      0.0488,
+      0.4151
+     ]
+    },
+    "crownBands": {
+     "id": 18,
+     "hex": "#F2C14E",
+     "zh": "王冠金边",
+     "en": "crown bands",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      -0.0108,
+      0.3598,
+      0.0508,
+      0.4111
+     ],
+     "anchoredTo": "collar",
+     "anchorUV": [
+      0.51975,
+      0.22677
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of collar"
+    },
+    "sceptre": {
+     "id": 19,
+     "hex": "#F2C14E",
+     "zh": "金杖",
+     "en": "sceptre",
+     "parts": [
+      "sceptre"
+     ],
+     "bboxSheet": [
+      -0.1929,
+      0.1183,
+      -0.0804,
+      0.3115
+     ],
+     "anchoredTo": "sceptre",
+     "anchorUV": [
+      0.32925,
+      0.24307
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of sceptre"
+    },
+    "ring": {
+     "id": 20,
+     "hex": "#F2C14E",
+     "zh": "戒指",
+     "en": "signet ring",
+     "parts": [
+      "ring"
+     ],
+     "bboxSheet": [
+      -0.12,
+      0.1691,
+      -0.1121,
+      0.1759
+     ],
+     "anchoredTo": "collar",
+     "anchorUV": [
+      0.51975,
+      0.22677
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of collar"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.0216,
+     0.29538,
+     0.0216,
+     0.33858
+    ],
+    "px": 512,
+    "default": "stern",
+    "files": {
+     "stern": "docs/esther/design/faces/king_stern.png",
+     "listen": "docs/esther/design/faces/king_listen.png",
+     "smile": "docs/esther/design/faces/king_smile.png",
+     "surprised": "docs/esther/design/faces/king_surprised.png",
+     "angry": "docs/esther/design/faces/king_angry.png"
+    },
+    "clipExpression": {
+     "sit_idle": "stern",
+     "sit_talk": "stern",
+     "sit_listen": "listen",
+     "give_ring": "stern",
+     "extend_sceptre": "smile",
+     "sit_smile": "smile",
+     "stand_angry": "angry",
+     "angry_idle": "angry",
+     "point_away": "angry",
+     "celebrate": "smile"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "face skin",
+     "uv": [
+      0.50775,
+      0.26671
+     ],
+     "local": [
+      -0.0122,
+      0.3123
+     ]
+    },
+    "handR.skin": {
+     "target": "face skin",
+     "uv": [
+      0.50775,
+      0.26671
+     ],
+     "local": [
+      -0.0122,
+      0.3123
+     ]
+    }
+   }
+  },
+  "haman": {
+   "height": 0.37,
+   "bboxSheet": [
+    0.2128,
+    0.0166,
+    0.4673,
+    0.3858
+   ],
+   "regions": {
+    "skin": {
+     "id": 21,
+     "hex": "#E2B48C",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "eyelids",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2156,
+      0.0292,
+      0.4644,
+      0.3623
+     ]
+    },
+    "beard": {
+     "id": 22,
+     "hex": "#2A1C16",
+     "zh": "胡子和头发",
+     "en": "beard and hair",
+     "parts": [
+      "goatee",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      0.3186,
+      0.2885,
+      0.3614,
+      0.3717
+     ],
+     "anchoredTo": "beard",
+     "anchorUV": [
+      0.83975,
+      0.25367
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of beard"
+    },
+    "robe": {
+     "id": 23,
+     "hex": "#8E2B3A",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      0.2254,
+      0.0387,
+      0.4548,
+      0.2945
+     ]
+    },
+    "panels": {
+     "id": 24,
+     "hex": "#D9A63A",
+     "zh": "镶边",
+     "en": "panels and cuffs",
+     "parts": [
+      "robe",
+      "sash"
+     ],
+     "bboxSheet": [
+      0.2128,
+      0.024,
+      0.4673,
+      0.2449
+     ]
+    },
+    "shoes": {
+     "id": 25,
+     "hex": "#5A3A28",
+     "zh": "鞋",
+     "en": "shoes",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.3073,
+      0.0166,
+      0.3727,
+      0.0339
+     ]
+    },
+    "cap": {
+     "id": 26,
+     "hex": "#1F5C66",
+     "zh": "帽子",
+     "en": "cap",
+     "parts": [
+      "cap"
+     ],
+     "bboxSheet": [
+      0.3171,
+      0.3498,
+      0.3629,
+      0.3858
+     ]
+    },
+    "capRim": {
+     "id": 27,
+     "hex": "#F2C14E",
+     "zh": "帽边",
+     "en": "cap rim",
+     "parts": [
+      "cap"
+     ],
+     "bboxSheet": [
+      0.3173,
+      0.3503,
+      0.3627,
+      0.3645
+     ],
+     "anchoredTo": "panels",
+     "anchorUV": [
+      0.73275,
+      0.14853
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of panels"
+    },
+    "ring": {
+     "id": 28,
+     "hex": "#F2C14E",
+     "zh": "戒指",
+     "en": "signet ring",
+     "parts": [
+      "ring"
+     ],
+     "bboxSheet": [
+      0.4584,
+      0.1663,
+      0.4656,
+      0.1717
+     ],
+     "anchoredTo": "panels",
+     "anchorUV": [
+      0.73275,
+      0.14853
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour of panels"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02052,
+     0.29831,
+     0.02052,
+     0.33935
+    ],
+    "px": 512,
+    "default": "smug",
+    "files": {
+     "smug": "docs/esther/design/faces/haman_smug.png",
+     "sly": "docs/esther/design/faces/haman_sly.png",
+     "shocked": "docs/esther/design/faces/haman_shocked.png",
+     "scared": "docs/esther/design/faces/haman_scared.png"
+    },
+    "clipExpression": {
+     "idle": "smug",
+     "strut": "smug",
+     "talk": "sly",
+     "demand": "smug",
+     "whisper": "sly",
+     "take_ring": "sly",
+     "smug": "smug",
+     "shock": "shocked",
+     "cower": "scared",
+     "led_away": "scared"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "face skin",
+     "uv": [
+      0.83025,
+      0.26915
+     ],
+     "local": [
+      -0.0097,
+      0.3153
+     ]
+    },
+    "handR.skin": {
+     "target": "face skin",
+     "uv": [
+      0.83025,
+      0.26915
+     ],
+     "local": [
+      -0.0097,
+      0.3153
+     ]
+    }
+   }
+  }
+ }
+}

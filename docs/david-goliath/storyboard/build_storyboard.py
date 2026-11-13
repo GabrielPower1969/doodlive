@@ -214,7 +214,7 @@ LINES = [
     dict(id="dg_16", t=76.6, who="narrator", maxSec=3.9, ref="1 Samuel 17:49-50",
          zh="石头打中额头，巨人咚地倒下了！",
          en="The stone hit his forehead. Down fell the giant!"),
-    dict(id="dg_17", t=81.4, who="david", maxSec=2.9, ref="1 Samuel 17:47",
+    dict(id="dg_17", t=81.4, who="david", maxSec=3.0, ref="1 Samuel 17:47",
          zh="这场仗，是属于上帝的！",
          en="The battle belongs to the LORD!"),
     dict(id="dg_18", t=84.6, who="narrator", maxSec=4.0, ref="1 Samuel 17:45-47 (moral)",

@@ -1,0 +1,809 @@
+{
+ "version": 1,
+ "set": {
+  "generatedBy": "pipeline/es_palace.py",
+  "doc": "docs/esther/SET.md",
+  "contract": "docs/esther/CONTRACT.md §6",
+  "root": "palace",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "daisTop": 0.07,
+  "throneSeat": {
+   "x": 0.0,
+   "z": -0.3,
+   "h": 0.186,
+   "note": "top of the cushion; seat front edge z -0.226, back panel front z -0.379"
+  },
+  "marks": {
+   "throneSeat": [
+    0.0,
+    -0.3
+   ],
+   "stepsFoot": [
+    0.0,
+    -0.12
+   ],
+   "table": [
+    0.22,
+    0.08
+   ]
+  },
+  "flames": {
+   "flameL": [
+    -0.29,
+    0.148,
+    -0.13
+   ],
+   "flameR": [
+    0.29,
+    0.148,
+    -0.13
+   ]
+  },
+  "footprints": {
+   "dais": {
+    "steps": [
+     [
+      0.135,
+      -0.15
+     ],
+     [
+      0.125,
+      -0.17
+     ],
+     [
+      0.115,
+      -0.19
+     ]
+    ],
+    "back": -0.5,
+    "note": "half-width, front z per step"
+   },
+   "columns": [
+    [
+     -0.28,
+     -0.43
+    ],
+    [
+     0.28,
+     -0.43
+    ]
+   ],
+   "braziers": [
+    [
+     -0.29,
+     -0.13
+    ],
+    [
+     0.29,
+     -0.13
+    ]
+   ],
+   "table": [
+    0.145,
+    0.045,
+    0.295,
+    0.115
+   ],
+   "carpet": [
+    -0.12,
+    -0.118,
+    0.12,
+    0.205
+   ],
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "wall": [
+    -0.6,
+    -0.64,
+    0.6,
+    -0.58
+   ]
+  },
+  "animations": {
+   "curtainSway": {
+    "node": "curtains",
+    "length": 4.0,
+    "fps": 24,
+    "loop": true
+   }
+  },
+  "hiddenAtStart": [
+   "table"
+  ],
+  "uvRule": {
+   "front": "u = m*x / scale + sheetX + 0.5, v = ((h + k*(zRef - z)) / scale + sheetY) / 1.227 (m = -1 when mirror; k = 0 unless given)",
+   "plan": "u = x / scale + sheetX + 0.5, v = ((zRef - z) / scale + sheetY) / 1.227",
+   "tile": "tile (i, j) local (lx, lz): u = sheetX + ((i%2)*w + lx) / scale + 0.5, v = (sheetY + ((j%2)*d + lz) / scale) / 1.227",
+   "const": "one uv for the whole mesh"
+  },
+  "drawings": {
+   "wall": {
+    "members": [
+     "wallRelief"
+    ],
+    "kind": "front",
+    "scale": 1.5,
+    "cx": 0.0,
+    "y0": 0.997,
+    "sheetX": 0.0,
+    "sheetY": 0.99833,
+    "bboxSheet": [
+     -0.4033,
+     0.997,
+     0.4033,
+     1.211
+    ],
+    "bbox3D": [
+     -0.605,
+     -0.002,
+     0.605,
+     0.319
+    ]
+   },
+   "column": {
+    "members": [
+     "columnL"
+    ],
+    "kind": "front",
+    "scale": 1.05,
+    "cx": -0.405,
+    "y0": 0.445,
+    "sheetX": -0.13833,
+    "sheetY": 0.4469,
+    "bboxSheet": [
+     -0.4812,
+     0.445,
+     -0.3288,
+     0.9787
+    ],
+    "bbox3D": [
+     -0.36,
+     -0.002,
+     -0.2,
+     0.5584
+    ]
+   },
+   "curtain": {
+    "members": [
+     "curtainL"
+    ],
+    "kind": "front",
+    "scale": 1.0,
+    "cx": -0.215,
+    "y0": 0.452,
+    "sheetX": -0.0034,
+    "sheetY": 0.449,
+    "bboxSheet": [
+     -0.3116,
+     0.452,
+     -0.1184,
+     0.859
+    ],
+    "bbox3D": [
+     -0.3082,
+     0.003,
+     -0.115,
+     0.41
+    ]
+   },
+   "throne": {
+    "members": [
+     "throne"
+    ],
+    "kind": "front",
+    "scale": 1.05,
+    "cx": 0.0,
+    "y0": 0.598,
+    "sheetX": 0.0,
+    "sheetY": 0.53116,
+    "bboxSheet": [
+     -0.0963,
+     0.598,
+     0.0963,
+     0.9785
+    ],
+    "bbox3D": [
+     -0.1012,
+     0.0702,
+     0.1012,
+     0.4697
+    ]
+   },
+   "dais": {
+    "members": [
+     "dais"
+    ],
+    "kind": "front",
+    "k": 0.3,
+    "zRef": -0.15,
+    "scale": 1.3,
+    "cx": 0.0,
+    "y0": 0.445,
+    "sheetX": 0.0,
+    "sheetY": 0.44654,
+    "bboxSheet": [
+     -0.1038,
+     0.445,
+     0.1038,
+     0.5814
+    ],
+    "bbox3D": [
+     -0.135,
+     -0.002,
+     0.135,
+     0.1753
+    ]
+   },
+   "brazier": {
+    "members": [
+     "brazierL"
+    ],
+    "kind": "front",
+    "scale": 0.8,
+    "cx": 0.21,
+    "y0": 0.765,
+    "sheetX": 0.5725,
+    "sheetY": 0.7651,
+    "bboxSheet": [
+     0.161,
+     0.765,
+     0.259,
+     0.9458
+    ],
+    "bbox3D": [
+     -0.3292,
+     -0.0001,
+     -0.2508,
+     0.1445
+    ]
+   },
+   "banquet": {
+    "members": [
+     "table",
+     "goblet1",
+     "goblet2",
+     "bowl",
+     "bread"
+    ],
+    "kind": "front",
+    "scale": 0.72,
+    "cx": 0.355,
+    "y0": 0.445,
+    "sheetX": 0.04944,
+    "sheetY": 0.44517,
+    "bboxSheet": [
+     0.2467,
+     0.445,
+     0.4633,
+     0.5671
+    ],
+    "bbox3D": [
+     0.142,
+     -0.0001,
+     0.298,
+     0.0878
+    ]
+   },
+   "carpet": {
+    "members": [
+     "carpet"
+    ],
+    "kind": "plan",
+    "zRef": 0.214,
+    "scale": 1.25,
+    "cx": 0.385,
+    "y0": 0.6,
+    "sheetX": 0.385,
+    "sheetY": 0.6,
+    "bboxSheet": [
+     0.289,
+     0.6,
+     0.481,
+     0.8656
+    ],
+    "bbox3D": [
+     -0.12,
+     -0.0,
+     0.12,
+     0.332
+    ]
+   },
+   "floor": {
+    "members": [
+     "floor"
+    ],
+    "kind": "tile",
+    "scale": 1.3,
+    "cx": 0.215,
+    "y0": 0.605,
+    "sheetX": 0.15731,
+    "sheetY": 0.605,
+    "bboxSheet": [
+     0.1573,
+     0.605,
+     0.2727,
+     0.7165
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "floor",
+    "drawing": "floor",
+    "frontUV": {
+     "kind": "tile",
+     "scale": 1.3,
+     "sheetX": 0.15731,
+     "sheetY": 0.605,
+     "tile": {
+      "x0": -0.6,
+      "zFront": 0.21,
+      "w": 0.075,
+      "d": 0.0725,
+      "nx": 16,
+      "nz": 11
+     }
+    },
+    "regions": [
+     "floorA",
+     "floorB"
+    ],
+    "heightMax": 0.0022,
+    "tris": 1788,
+    "sharesDrawing": null
+   },
+   {
+    "id": "carpet",
+    "drawing": "carpet",
+    "frontUV": {
+     "kind": "plan",
+     "zRef": 0.214,
+     "scale": 1.25,
+     "sheetX": 0.385,
+     "sheetY": 0.6
+    },
+    "regions": [
+     "carpetBorder",
+     "carpetField",
+     "carpetInlay"
+    ],
+    "heightMax": 0.0053,
+    "tris": 218,
+    "sharesDrawing": null
+   },
+   {
+    "id": "dais",
+    "drawing": "dais",
+    "frontUV": {
+     "kind": "front",
+     "k": 0.3,
+     "zRef": -0.15,
+     "scale": 1.3,
+     "sheetX": 0.0,
+     "sheetY": 0.44654
+    },
+    "regions": [
+     "daisRug",
+     "daisStep",
+     "daisTrim"
+    ],
+    "heightMax": 0.0714,
+    "tris": 1651,
+    "sharesDrawing": null
+   },
+   {
+    "id": "throne",
+    "drawing": "throne",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.05,
+     "sheetX": 0.0,
+     "sheetY": 0.53116
+    },
+    "regions": [
+     "throneBack",
+     "throneCushion",
+     "throneDisc",
+     "throneGold"
+    ],
+    "heightMax": 0.4697,
+    "tris": 4142,
+    "sharesDrawing": null
+   },
+   {
+    "id": "columnL",
+    "drawing": "column",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.05,
+     "sheetX": -0.13833,
+     "sheetY": 0.4469
+    },
+    "regions": [
+     "colBull",
+     "colGold",
+     "colShaft"
+    ],
+    "heightMax": 0.5584,
+    "tris": 5148,
+    "sharesDrawing": null
+   },
+   {
+    "id": "columnR",
+    "drawing": "column",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.05,
+     "sheetX": -0.67167,
+     "sheetY": 0.4469
+    },
+    "regions": [
+     "colBull",
+     "colGold",
+     "colShaft"
+    ],
+    "heightMax": 0.5584,
+    "tris": 5148,
+    "sharesDrawing": "shift of columnL"
+   },
+   {
+    "id": "curtainL",
+    "drawing": "curtain",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.0,
+     "sheetX": -0.0034,
+     "sheetY": 0.449
+    },
+    "regions": [
+     "cord",
+     "curtain",
+     "curtainBand"
+    ],
+    "heightMax": 0.41,
+    "tris": 3456,
+    "sharesDrawing": null
+   },
+   {
+    "id": "curtainR",
+    "drawing": "curtain",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.0,
+     "sheetX": -0.0034,
+     "sheetY": 0.449,
+     "mirror": true
+    },
+    "regions": [
+     "cord",
+     "curtain",
+     "curtainBand"
+    ],
+    "heightMax": 0.41,
+    "tris": 3456,
+    "sharesDrawing": "mirror of curtainL"
+   },
+   {
+    "id": "curtainRod",
+    "drawing": null,
+    "frontUV": {
+     "kind": "const",
+     "uv": [
+      0.2966,
+      0.68704
+     ]
+    },
+    "regions": [
+     "curtainBand"
+    ],
+    "heightMax": 0.4199,
+    "tris": 20,
+    "sharesDrawing": null
+   },
+   {
+    "id": "brazierL",
+    "drawing": "brazier",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.8,
+     "sheetX": 0.5725,
+     "sheetY": 0.7651
+    },
+    "regions": [
+     "brazier",
+     "brazierRim",
+     "coal"
+    ],
+    "heightMax": 0.1445,
+    "tris": 1448,
+    "sharesDrawing": null
+   },
+   {
+    "id": "brazierR",
+    "drawing": "brazier",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.8,
+     "sheetX": -0.1525,
+     "sheetY": 0.7651
+    },
+    "regions": [
+     "brazier",
+     "brazierRim",
+     "coal"
+    ],
+    "heightMax": 0.1445,
+    "tris": 1448,
+    "sharesDrawing": "shift of brazierL"
+   },
+   {
+    "id": "wallRelief",
+    "drawing": "wall",
+    "frontUV": {
+     "kind": "front",
+     "scale": 1.5,
+     "sheetX": 0.0,
+     "sheetY": 0.99833
+    },
+    "regions": [
+     "frieze",
+     "guardBody",
+     "guardCoverts",
+     "guardMane",
+     "guardWing",
+     "rosette",
+     "wallBrick",
+     "wallStone"
+    ],
+    "heightMax": 0.319,
+    "tris": 5708,
+    "sharesDrawing": null
+   },
+   {
+    "id": "table",
+    "drawing": "banquet",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.72,
+     "sheetX": 0.04944,
+     "sheetY": 0.44517
+    },
+    "regions": [
+     "tableCloth",
+     "tableGold"
+    ],
+    "heightMax": 0.0492,
+    "tris": 806,
+    "sharesDrawing": null
+   },
+   {
+    "id": "goblet1",
+    "drawing": "banquet",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.72,
+     "sheetX": 0.04944,
+     "sheetY": 0.44517
+    },
+    "regions": [
+     "goblet"
+    ],
+    "heightMax": 0.0878,
+    "tris": 352,
+    "sharesDrawing": null
+   },
+   {
+    "id": "goblet2",
+    "drawing": "banquet",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.72,
+     "sheetX": 0.04944,
+     "sheetY": 0.44517
+    },
+    "regions": [
+     "goblet"
+    ],
+    "heightMax": 0.0878,
+    "tris": 352,
+    "sharesDrawing": null
+   },
+   {
+    "id": "bowl",
+    "drawing": "banquet",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.72,
+     "sheetX": 0.04944,
+     "sheetY": 0.44517
+    },
+    "regions": [
+     "bowl",
+     "fruitRed",
+     "grapes"
+    ],
+    "heightMax": 0.0864,
+    "tris": 1140,
+    "sharesDrawing": null
+   },
+   {
+    "id": "bread",
+    "drawing": "banquet",
+    "frontUV": {
+     "kind": "front",
+     "scale": 0.72,
+     "sheetX": 0.04944,
+     "sheetY": 0.44517
+    },
+    "regions": [
+     "bread"
+    ],
+    "heightMax": 0.0607,
+    "tris": 256,
+    "sharesDrawing": null
+   }
+  ],
+  "sheetLayout": {
+   "status": "final (2026-11-14): composed by tools/story/make_sheet.py esther from model/set_id_2x.png",
+   "characters": {
+    "esther": {
+     "sheetX": -0.33,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      -0.4489,
+      0.0165,
+      -0.211,
+      0.3545
+     ]
+    },
+    "king": {
+     "sheetX": 0.02,
+     "sheetY": 0.015,
+     "height": 0.4,
+     "box": [
+      -0.1929,
+      0.0168,
+      0.1557,
+      0.4151
+     ]
+    },
+    "haman": {
+     "sheetX": 0.34,
+     "sheetY": 0.015,
+     "height": 0.37,
+     "box": [
+      0.2128,
+      0.0166,
+      0.4673,
+      0.3858
+     ]
+    }
+   },
+   "note": "figures at the bottom (front view, scale 1, characters.<id>.sheetX/sheetY); set drawings above them (set.drawings); outlines lie outside each drawing, so UVs need no inset"
+  },
+  "demoColours": {
+   "floorA": "#EFE6D4",
+   "floorB": "#E7DBC3",
+   "carpetField": "#3B4A8C",
+   "carpetBorder": "#C8643C",
+   "carpetInlay": "#F2C14E",
+   "daisStep": "#E8D3A8",
+   "daisTrim": "#E8B53C",
+   "daisRug": "#2F5FD0",
+   "throneGold": "#E8B53C",
+   "throneCushion": "#C8323F",
+   "throneBack": "#2F5FD0",
+   "throneDisc": "#E8743C",
+   "colShaft": "#E8D3A8",
+   "colGold": "#E8B53C",
+   "colBull": "#E2C48E",
+   "curtain": "#B5283A",
+   "curtainBand": "#E8B53C",
+   "cord": "#F2C14E",
+   "brazier": "#A8682E",
+   "brazierRim": "#E8B53C",
+   "coal": "#6B2A1C",
+   "wallStone": "#EADFC8",
+   "wallBrick": "#7CC0CC",
+   "frieze": "#2F5FD0",
+   "rosette": "#F2C14E",
+   "guardBody": "#E8B53C",
+   "guardWing": "#8CC8F0",
+   "guardCoverts": "#2F5FD0",
+   "guardMane": "#C8643C",
+   "tableGold": "#E8B53C",
+   "tableCloth": "#F6EEDC",
+   "goblet": "#F2C14E",
+   "bowl": "#A8682E",
+   "fruitRed": "#C8323F",
+   "grapes": "#6A3FB5",
+   "fruitGreen": "#9BC25A",
+   "bread": "#D9A35A"
+  },
+  "tris": 36537,
+  "budget": 40000
+ },
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath; faces come from decals (no face ink)"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "以斯帖",
+   "pinyin": "yǐ sī tiě",
+   "english": "Esther",
+   "box": 76,
+   "gap": 12,
+   "cy": 100,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "以斯帖记 · Esther"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy 100 puts the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "esther": {
+   "height": 0.34,
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "king": {
+   "height": 0.4,
+   "sheetX": 0.02,
+   "sheetY": 0.015
+  },
+  "haman": {
+   "height": 0.37,
+   "sheetX": 0.34,
+   "sheetY": 0.015
+  }
+ }
+}

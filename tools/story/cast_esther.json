@@ -1,0 +1,588 @@
+{
+ "_doc": "Esther voice cast and per-line direction, read by tools/story/voice.py (see its docstring and docs/esther/VOICE.md). engine 'edge' = Microsoft neural voices via edge-tts (rate/pitch are prosody values); engine 'qwen' = Qwen3-TTS run locally (voice = speaker, instruct = acting note). fx: plain, warm, nasal, offstage. chain: expressive (TTS at -16 LUFS, gentle compressor) unless stated. lines.<id>.<lang>.phrases speaks the line in phrases joined by `gap` seconds of silence.",
+ "names": {
+  "narrator": {
+   "zh": "旁白",
+   "en": "Narrator"
+  },
+  "esther": {
+   "zh": "以斯帖",
+   "en": "Esther"
+  },
+  "king": {
+   "zh": "亚哈随鲁王",
+   "en": "King Xerxes"
+  },
+  "haman": {
+   "zh": "哈曼",
+   "en": "Haman"
+  },
+  "mordecai": {
+   "zh": "末底改（幕后）",
+   "en": "Mordecai (off-stage)"
+  }
+ },
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句："
+   },
+   "esther": {
+    "engine": "qwen",
+    "voice": "serena",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位年轻的王后，温柔、善良、勇敢，像真人在演儿童广播剧，自然不做作，语速正常流畅。这一句："
+   },
+   "king": {
+    "engine": "qwen",
+    "voice": "uncle_fu",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "warm",
+    "chain": "expressive",
+    "instruct": "一位声音低沉、说话从容的国王，平静时很和蔼，像真人在演儿童广播剧，语速正常。这一句："
+   },
+   "haman": {
+    "engine": "edge",
+    "voice": "zh-CN-YunxiNeural",
+    "rate": "+0%",
+    "pitch": "+2Hz",
+    "fx": "nasal",
+    "chain": "expressive"
+   },
+   "mordecai": {
+    "engine": "edge",
+    "voice": "zh-CN-YunyangNeural",
+    "rate": "-8%",
+    "pitch": "-4Hz",
+    "fx": "offstage",
+    "chain": "expressive"
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive"
+   },
+   "esther": {
+    "engine": "edge",
+    "voice": "en-US-EmmaMultilingualNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive"
+   },
+   "king": {
+    "engine": "edge",
+    "voice": "en-US-ChristopherNeural",
+    "rate": "-10%",
+    "pitch": "-2Hz",
+    "fx": "warm",
+    "chain": "expressive"
+   },
+   "haman": {
+    "engine": "edge",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "pitch": "+4Hz",
+    "fx": "nasal",
+    "chain": "expressive"
+   },
+   "mordecai": {
+    "engine": "edge",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "-8%",
+    "pitch": "-4Hz",
+    "fx": "offstage",
+    "chain": "expressive"
+   }
+  }
+ },
+ "lines": {
+  "es_01": {
+   "m": "讲故事的开头，温暖、不急，带一点神秘；说名字前停一下",
+   "d": "画面：睡前，你翻开一本大图画书，孩子靠在你身边。",
+   "m_en": "storyteller opening; warm, unhurried, a little mysterious; small pause before the name",
+   "d_en": "Picture: bedtime, a big picture book open, the child leaning on you.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Long, long ago,",
+      "rate": "-14%",
+      "gap": 0.3
+     },
+     {
+      "text": "in the city of Susa, there lived a very powerful king.",
+      "rate": "-6%",
+      "gap": 0.45
+     },
+     {
+      "text": "His name was... King Xerxes.",
+      "rate": "-12%",
+      "pitch": "-2Hz"
+     }
+    ]
+   }
+  },
+  "es_02": {
+   "m": "温柔、带着笑；说到她的名字时放慢",
+   "d": "画面：你在给孩子介绍一位你很喜欢的人。",
+   "m_en": "tender, smiling; slow down on her name",
+   "d_en": "Picture: you are introducing someone you love.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "The king chose a beautiful, kind young woman to be his queen.",
+      "rate": "-6%",
+      "gap": 0.35
+     },
+     {
+      "text": "Her name was... Esther.",
+      "rate": "-14%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "es_03": {
+   "m": "神气、有点鼻音、很得意；开头哼一声；滑稽，不吓人",
+   "d": "画面：你挺着肚子，下巴抬得高高的，等着别人鞠躬。",
+   "m_en": "puffed-up, nasal, pleased with himself; a sniff at the start; comic, not scary",
+   "d_en": "Picture: chest out, chin up, waiting for everyone to bow.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哼！",
+      "rate": "-10%",
+      "pitch": "+6Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "我可是王最看重的大臣！",
+      "rate": "+4%",
+      "gap": 0.2
+     },
+     {
+      "text": "谁见了我，都得弯腰下拜！",
+      "pitch": "+4Hz"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmph!",
+      "rate": "-10%",
+      "pitch": "+6Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "I am the king's most important man!",
+      "rate": "+4%",
+      "gap": 0.2
+     },
+     {
+      "text": "Everyone must bow down to me!",
+      "pitch": "+4Hz"
+     }
+    ]
+   }
+  },
+  "es_04": {
+   "m": "平平地讲，说到跺脚时有点好笑",
+   "d": "画面：你在学一个生气的人跺脚，孩子在笑。",
+   "m_en": "matter-of-fact, then a little amused on the stomping",
+   "d_en": "Picture: you act out someone stomping; the child giggles.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "But Mordecai bowed only to God, not to Haman.",
+      "rate": "-6%",
+      "gap": 0.35
+     },
+     {
+      "text": "Haman stomped his feet in anger!",
+      "rate": "+4%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "es_05": {
+   "m": "小声、慢、油滑；两次鬼鬼祟祟的停顿",
+   "d": "画面：你凑到别人耳边说悄悄话，眼睛还往两边看。",
+   "m_en": "sly half-whisper, slow, oily; two sneaky pauses",
+   "d_en": "Picture: whispering in someone's ear, eyes darting left and right.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "王啊……",
+      "rate": "-15%",
+      "pitch": "-2Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "有一群人，不守您的规矩。",
+      "rate": "-10%",
+      "gap": 0.45
+     },
+     {
+      "text": "不如……让我把他们都除掉吧？",
+      "rate": "-12%"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "O king...",
+      "rate": "-15%",
+      "pitch": "-2Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "there are some people who don't keep your laws.",
+      "rate": "-10%",
+      "gap": 0.45
+     },
+     {
+      "text": "Why not... let me get rid of them?",
+      "rate": "-12%"
+     }
+    ]
+   }
+  },
+  "es_06": {
+   "m": "低沉、随便、有点无聊；先“嗯……”想一想",
+   "d": "画面：你懒洋洋地坐在大椅子上，随手把东西递出去。",
+   "m_en": "deep, careless, a little bored; a thinking 'hmm' first",
+   "d_en": "Picture: slumped in a big chair, handing something over without looking.",
+   "zh": {
+    "maxPause": 1.3
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmm...",
+      "rate": "-20%",
+      "gap": 0.35
+     },
+     {
+      "text": "very well. Take my ring. Do as you see fit.",
+      "rate": "-10%"
+     }
+    ]
+   }
+  },
+  "es_07": {
+   "m": "年长的男人，着急但充满爱；从远处喊来；最后一句放慢",
+   "d": "画面：你站在门外，隔着门对你疼爱的孩子说话。",
+   "m_en": "older man, urgent but loving, from a distance; slower on the last sentence",
+   "d_en": "Picture: outside a door, speaking through it to someone you love.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "以斯帖，你要去求王救我们！",
+      "rate": "-4%",
+      "gap": 0.45
+     },
+     {
+      "text": "说不定，你当上王后，就是为了今天！",
+      "rate": "-14%"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Esther, you must ask the king to save us!",
+      "rate": "-4%",
+      "gap": 0.45
+     },
+     {
+      "text": "Maybe this is why you became queen, for a time just like this!",
+      "rate": "-14%"
+     }
+    ]
+   }
+  },
+  "es_08": {
+   "m": "害怕、小声、犹豫；“可是”前吸一口气",
+   "d": "画面：你很想帮忙，可是心里怕得发抖。",
+   "m_en": "scared, quiet, hesitant; breath before 'but'",
+   "d_en": "Picture: you want to help, but you are shaking inside.",
+   "zh": {
+    "maxPause": 1.2
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "But...",
+      "rate": "-15%",
+      "pitch": "-2Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "anyone who goes to the king without being called could die...",
+      "rate": "-10%",
+      "pitch": "-3Hz"
+     }
+    ]
+   }
+  },
+  "es_09": {
+   "m": "深吸一口气，然后稳稳地、勇敢地说；越说越坚定，最后最有力",
+   "d": "画面：你擦干眼泪，站起来，下定决心。",
+   "m_en": "a deep breath, then steady and brave; rising resolve, strongest on the last words",
+   "d_en": "Picture: you wipe your tears, stand up and decide.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "All right.",
+      "rate": "-4%",
+      "gap": 0.45
+     },
+     {
+      "text": "Please pray for me.",
+      "rate": "-10%",
+      "gap": 0.35
+     },
+     {
+      "text": "I will go to the king, even if it's dangerous!",
+      "rate": "-2%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "es_10": {
+   "m": "压低声音、紧张、慢；问句悬在那里",
+   "d": "画面：你讲到最紧张的地方，孩子屏住呼吸。",
+   "m_en": "hushed, suspenseful, slow; let the question hang",
+   "d_en": "Picture: the scariest part of the story; the child holds their breath.",
+   "zh": {
+    "maxPause": 1.4
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Step by step, Esther climbed the palace stairs...",
+      "rate": "-14%",
+      "pitch": "-2Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "What would the king do?",
+      "rate": "-16%"
+     }
+    ]
+   }
+  },
+  "es_11": {
+   "m": "先惊讶，然后温暖、大方；声音里带着笑",
+   "d": "画面：你看见心爱的人突然来了，很高兴。",
+   "m_en": "surprised, then warm and generous; a smile in the voice",
+   "d_en": "Picture: someone you love turns up by surprise and you are glad.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Queen Esther!",
+      "pitch": "+4Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "You've come.",
+      "rate": "-8%",
+      "gap": 0.3
+     },
+     {
+      "text": "What is it you want? Even half my kingdom, it's yours!",
+      "rate": "-6%"
+     }
+    ]
+   }
+  },
+  "es_12": {
+   "m": "有礼貌、甜、有点小聪明；轻快",
+   "d": "画面：你笑眯眯地请人来家里吃饭，心里有个计划。",
+   "m_en": "polite, sweet, a little clever; light",
+   "d_en": "Picture: inviting someone to dinner with a smile, a plan in mind.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "My king, will you come to my banquet?",
+      "gap": 0.3
+     },
+     {
+      "text": "And bring Haman too.",
+      "rate": "-4%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "es_13": {
+   "m": "发抖但勇敢；说到“我的族人”时声音哽一下",
+   "d": "画面：你鼓起勇气说出一件让你很难过的事。",
+   "m_en": "trembling but brave; voice catches on 'my people'",
+   "d_en": "Picture: you find the courage to say something that hurts.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "My king...",
+      "rate": "-12%",
+      "gap": 0.4
+     },
+     {
+      "text": "someone wants to destroy me,",
+      "rate": "-6%",
+      "gap": 0.25
+     },
+     {
+      "text": "and all my people!",
+      "rate": "-14%",
+      "pitch": "-2Hz"
+     }
+    ]
+   }
+  },
+  "es_14": {
+   "m": "又惊又气，大声但不是吼；短促有力",
+   "d": "画面：你听说有人欺负你最爱的人。",
+   "m_en": "shocked and angry, loud but not shouting; short sharp phrases",
+   "d_en": "Picture: you hear someone has been hurting the person you love most.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "What?!",
+      "rate": "+4%",
+      "pitch": "+4Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Who is he?",
+      "gap": 0.2
+     },
+     {
+      "text": "Who would dare?"
+     }
+    ]
+   }
+  },
+  "es_15": {
+   "m": "清楚、坚定；说“哈曼”前停一拍，鼓起勇气",
+   "d": "画面：你伸出手指，指着做坏事的人。",
+   "m_en": "clear and firm, a beat of courage before 'Haman'",
+   "d_en": "Picture: you point straight at the one who did wrong.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "It's him!",
+      "gap": 0.3
+     },
+     {
+      "text": "This wicked man,",
+      "gap": 0.3
+     },
+     {
+      "text": "Haman!",
+      "rate": "-6%"
+     }
+    ]
+   }
+  },
+  "es_16": {
+   "m": "吓得尖声慌张、快、滑稽",
+   "d": "画面：你被抓个正着，吓得跳了起来。",
+   "m_en": "squeaky panic, fast, comic",
+   "d_en": "Picture: caught red-handed, you jump in fright.",
+   "zh": {
+    "rate": "+14%",
+    "pitch": "+10Hz"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "No, no, no!",
+      "rate": "+16%",
+      "pitch": "+12Hz",
+      "gap": 0.12
+     },
+     {
+      "text": "Please, my king, have mercy!",
+      "rate": "+12%",
+      "pitch": "+10Hz"
+     }
+    ]
+   }
+  },
+  "es_17": {
+   "m": "先松一口气，然后很开心；开心的部分快一点",
+   "d": "画面：故事的危险过去了，你和孩子一起拍手。",
+   "m_en": "relief, then bright joy; speed up a little on the happy part",
+   "d_en": "Picture: the danger is over; you and the child clap together.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "The king had Haman taken away.",
+      "rate": "-8%",
+      "gap": 0.35
+     },
+     {
+      "text": "God's people were saved!",
+      "pitch": "+3Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "Everyone sang and danced for joy!",
+      "rate": "+6%",
+      "pitch": "+4Hz"
+     }
+    ]
+   }
+  },
+  "es_18": {
+   "m": "温暖的结尾，直接对孩子说；“你也可以哦”带着笑",
+   "d": "画面：你看着孩子的眼睛，轻轻摸摸他的头。",
+   "m_en": "warm moral, speaking right to the child; smile on 'You can too'",
+   "d_en": "Picture: you look the child in the eyes and stroke their hair.",
+   "zh": {},
+   "en": {
+    "phrases": [
+     {
+      "text": "Esther was scared, but she chose to be brave and to trust God.",
+      "rate": "-8%",
+      "gap": 0.45
+     },
+     {
+      "text": "You can too!",
+      "pitch": "+4Hz"
+     }
+    ]
+   }
+  }
+ }
+}

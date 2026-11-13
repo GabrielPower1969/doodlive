@@ -373,7 +373,7 @@ namespace DoodLive
             }
 
             // -- David & Goliath: chapter title, subtitles, pause card, replay button
-            if (dgMode && story && story.Running && (live || state == State.Reveal)) StoryGUI(w, h, top, bottom, edge, chip, land);
+            if (dgMode && active != null && active.Running && (live || state == State.Reveal)) StoryGUI(w, h, top, bottom, edge, chip, land);
 
             // -- 08 Lost: a drawn sheet + arrow shows where the paper goes
             if (dim > 0)
@@ -443,12 +443,25 @@ namespace DoodLive
             if (PaperButton(new Rect(cx - bw / 2, y + s + u * 1.85f, bw, u * 1.05f), L10n.T("demo"), boxPaper, txtTag)) ShowDemo();
             // the David & Goliath play (web: the "battle" entry); demo run with the sample colouring
             if (story && PaperButton(new Rect(cx - bw / 2, y + s + u * 3.2f, bw, u * 1.05f), L10n.T("dgDemo"), boxSun, txtTag)) ShowDemoDG();
+            // story packs (assets/stories.json): one entry each, below David & Goliath
+            if (packs != null)
+            {
+                int k = 0;
+                foreach (var p in packs)
+                {
+                    if (!p) continue;
+                    string label = (L10n.IsZh ? p.titleZh : p.titleEn) + (L10n.IsZh ? " · 看演示" : " · demo");
+                    if (PaperButton(new Rect(cx - bw / 2, y + s + u * (4.4f + 1.25f * k), bw, u * 1.05f), label, boxSun, txtTag)) ShowDemoStory(p);
+                    k++;
+                }
+            }
         }
 
         // ---------------- David & Goliath overlay (Paper & Crayon, same cards as the angel's bubble) ----------------
         string lastLineId; float lineFade;
         void StoryGUI(float w, float h, float top, float bottom, float edge, float chip, bool land)
         {
+            var story = active; if (story == null) return;
             var line = story.Line;
             // chapter title: the shot's name for 2.6 s at the top, where the status pill sits while scanning
             var shot = story.Shot;
@@ -520,8 +533,8 @@ namespace DoodLive
         }
         DavidGoliath.DGLine FindLine(string id)
         {
-            if (id == null || story == null) return null;
-            var tl = story.Timeline; if (tl == null) return null;
+            if (id == null || active == null) return null;
+            var tl = active.Timeline; if (tl == null) return null;
             foreach (var l in tl.lines) if (l.id == id) return l;
             return null;
         }

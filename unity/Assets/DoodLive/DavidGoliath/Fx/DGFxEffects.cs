@@ -57,6 +57,9 @@ namespace DoodLive.DavidGoliath
                                  new StoneTrail(), new HitFlash(), new DizzyStars(), new DustBurst(), new Confetti(), new GoldenRays(),
                              })
                         map[d.Id] = d;
+                    // Esther (story pack #2, StoryFxEsther.cs): added after D&G so an existing id is never replaced
+                    foreach (var d in EstherFx.Defs)
+                        if (!map.ContainsKey(d.Id)) map[d.Id] = d;
                 }
                 return map;
             }

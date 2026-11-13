@@ -101,6 +101,7 @@ namespace DoodLive.DavidGoliath
             DGFxInstance.Live.Clear();
             DGFxRunner.ClearShake();
             FlashAlpha = 0;
+            StoryLight.Reset();   // Esther stage light: drop tension_dim / truth_flash at once
         }
 
         /// <summary>Build the atlas and materials now (about 1M pixel evaluations) instead of on the first Play.</summary>

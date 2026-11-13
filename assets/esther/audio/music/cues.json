@@ -1,0 +1,115 @@
+{
+ "rule": "Start each cue at its timeline t at full level and fade the previous cue out over 0.6 s from that t. Every non-final cue is its span + 0.6 s long so the fade has music under it; the final cue fades out by itself over its last 2.5 s. Music sits at -20 LUFS; duck it ~7 dB under voice lines.",
+ "crossfadeSec": 0.6,
+ "lufs": -20.0,
+ "cues": [
+  {
+   "cue": "palace_theme",
+   "t": 0.0,
+   "span": 19.72,
+   "secs": 20.32,
+   "lastCue": false,
+   "loop": false,
+   "bars": 11,
+   "bpm": 100.4,
+   "lufs": -20.0,
+   "truePeak": -3.8
+  },
+  {
+   "cue": "haman_theme",
+   "t": 19.72,
+   "span": 15.41,
+   "secs": 16.01,
+   "lastCue": false,
+   "loop": false,
+   "bars": 7,
+   "bpm": 109.0,
+   "lufs": -20.0,
+   "truePeak": -3.3
+  },
+  {
+   "cue": "tension",
+   "t": 35.13,
+   "span": 15.53,
+   "secs": 16.13,
+   "lastCue": false,
+   "loop": false,
+   "bars": 6,
+   "bpm": 92.7,
+   "lufs": -20.0,
+   "truePeak": -4.0
+  },
+  {
+   "cue": "mordecai",
+   "t": 50.66,
+   "span": 27.06,
+   "secs": 27.66,
+   "lastCue": false,
+   "loop": false,
+   "bars": 8,
+   "bpm": 71.0,
+   "lufs": -20.0,
+   "truePeak": -4.8
+  },
+  {
+   "cue": "approach",
+   "t": 77.72,
+   "span": 11.87,
+   "secs": 12.47,
+   "lastCue": false,
+   "loop": false,
+   "bars": 5,
+   "bpm": 101.1,
+   "lufs": -20.0,
+   "truePeak": -2.5
+  },
+  {
+   "cue": "sceptre",
+   "t": 89.59,
+   "span": 14.2,
+   "secs": 14.8,
+   "lastCue": false,
+   "loop": false,
+   "bars": 4,
+   "bpm": 67.6,
+   "lufs": -20.0,
+   "truePeak": -2.0
+  },
+  {
+   "cue": "banquet",
+   "t": 103.79,
+   "span": 7.53,
+   "secs": 8.13,
+   "lastCue": false,
+   "loop": false,
+   "bars": 4,
+   "bpm": 95.6,
+   "lufs": -20.0,
+   "truePeak": -3.3
+  },
+  {
+   "cue": "truth",
+   "t": 111.32,
+   "span": 13.29,
+   "secs": 13.89,
+   "lastCue": false,
+   "loop": false,
+   "bars": 6,
+   "bpm": 108.4,
+   "lufs": -20.0,
+   "truePeak": -3.0
+  },
+  {
+   "cue": "celebration",
+   "t": 124.61,
+   "span": 19.77,
+   "secs": 19.77,
+   "lastCue": true,
+   "loop": false,
+   "bars": 11,
+   "bpm": 133.5,
+   "lufs": -20.0,
+   "truePeak": -3.7
+  }
+ ]
+}

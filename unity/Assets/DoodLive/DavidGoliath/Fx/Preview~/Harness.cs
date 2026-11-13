@@ -2,6 +2,7 @@ using System; using System.IO; using System.Text; using System.Collections.Gener
 using UnityEngine; using DoodLive.DavidGoliath;
 static class Harness {
   static string F(float v) => v.ToString("0.#####", CultureInfo.InvariantCulture);
+  static bool esther;
   static Vector3 Anchor(string id, float t) {
     switch (id) {
       case "dust_puff": return new Vector3(0.17f, 0.01f, -0.25f);
@@ -14,7 +15,16 @@ static class Harness {
       case "dizzy_stars": return new Vector3(0.12f, 0.72f - 0.1f*t, -0.25f + 0.1f*t);
       case "dust_burst": return new Vector3(0.1f, 0.08f, 0.1f);
       case "confetti": return new Vector3(-0.1f, 0.27f, 0.25f);
-      case "golden_rays": return new Vector3(-0.1f, 0f, 0.25f);
+      case "golden_rays": return esther ? new Vector3(0f, 0f, -0.05f) : new Vector3(-0.1f, 0f, 0.25f);
+      // Esther (stage marks from docs/esther/CONTRACT.md §6)
+      case "brazier_fire": return new Vector3(-0.18f, 0.12f, -0.14f);
+      case "crown_sparkle": return new Vector3(0f, 0.43f, -0.30f);
+      case "ring_glint": return new Vector3(0.06f, 0.22f, -0.26f);
+      case "prayer_glow": return new Vector3(0f, 0.13f, -0.05f);
+      case "sceptre_beam": return new Vector3(0.05f, 0.30f, -0.27f);
+      case "tension_dim": return Vector3.zero;
+      case "truth_flash": return new Vector3(0.05f, 0.24f, 0.0f);
+      case "petals": return new Vector3(0.22f, 0f, 0.08f);
     }
     return Vector3.zero;
   }
@@ -28,7 +38,9 @@ static class Harness {
     for (int i = 0; i < n; i++) { var c = DGFxPaint.Cells[i]; mn[i] = new Vector2(c[0]/(float)S, c[1]/(float)S); sz[i] = new Vector2(c[2]/(float)S, c[3]/(float)S); }
     var sb = new StringBuilder(); sb.Append("{");
     bool firstFx = true;
-    var timeline = new Dictionary<string,float>{{"dust_puff",0.6f},{"memory_lion_bear",3.8f},{"brook_ripple",2.4f},{"faith_glow",5.6f},{"sling_trail",2.4f},{"stone_trail",0.5f},{"hit_flash",0.4f},{"dizzy_stars",1.0f},{"dust_burst",1.6f},{"confetti",3.0f},{"golden_rays",4.0f}};
+    esther = args.Length > 1 && args[1] == "esther";
+    var timeline = esther ? new Dictionary<string,float>{{"brazier_fire",3f},{"crown_sparkle",1.6f},{"ring_glint",0.8f},{"prayer_glow",6f},{"sceptre_beam",4f},{"tension_dim",3f},{"truth_flash",0.6f},{"confetti",3f},{"golden_rays",4f},{"petals",5f}}
+                          : new Dictionary<string,float>{{"dust_puff",0.6f},{"memory_lion_bear",3.8f},{"brook_ripple",2.4f},{"faith_glow",5.6f},{"sling_trail",2.4f},{"stone_trail",0.5f},{"hit_flash",0.4f},{"dizzy_stars",1.0f},{"dust_burst",1.6f},{"confetti",3.0f},{"golden_rays",4.0f}};
     foreach (var kv in timeline) {
       var def = FxLibrary.Get(kv.Key); if (def == null) throw new Exception("missing " + kv.Key);
       var ctx = new FxCtx { dur = kv.Value, seed = 12345 };
@@ -37,6 +49,7 @@ static class Harness {
       float[] fr = {0.08f,0.25f,0.45f,0.65f,0.85f};
       // camera: viewer side, looking at the start anchor
       var look = Anchor(kv.Key, 0); if (kv.Key=="golden_rays") look += Vector3.up*0.35f; if (kv.Key=="dust_burst"||kv.Key=="confetti") look += Vector3.up*0.1f;
+      if (kv.Key=="sceptre_beam") look = (look + EstherFx.BeamTarget) * 0.5f; if (kv.Key=="petals") look += Vector3.up*0.15f;
       var camPos = look + new Vector3(0.25f, 0.35f, 1.1f);
       var fwd = (look - camPos).normalized; var right = Vector3.Cross(Vector3.up, fwd).normalized; var up = Vector3.Cross(fwd, right);
       ctx.camPos = camPos; ctx.camRight = right; ctx.camUp = up;

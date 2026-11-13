@@ -18,6 +18,9 @@ namespace DoodLive.EditorTools
         public const string Dir = "Assets/DoodLive/DavidGoliath";
         public const string SheetName = "david-goliath-A4";                  // reference image name (prefix "david-goliath")
         public const string SheetPath = Dir + "/Tracking/" + SheetName + ".png";
+        // Coloured versions for ARCore image tracking (a blank page scores 0/100 there; these score 90-100). The marker
+        // path (SheetFinder) finds any version; these only help when the image path locks first (LESSONS L49).
+        public static readonly string[] ColouredSheetPaths = { Dir + "/Tracking/" + SheetName + "-demo.png", Dir + "/Tracking/" + SheetName + "-colored.png" };
         const string Res = Dir + "/Resources/DG";
         static string RepoRoot => Path.GetFullPath(Path.Combine(Application.dataPath, "..", ".."));
         static string A(string rel) => Path.Combine(RepoRoot, "assets/david-goliath", rel);
@@ -45,6 +48,8 @@ namespace DoodLive.EditorTools
                 (A("design.json"), $"{Dir}/Data/design.json"),
                 (A("sheet/template.json"), $"{Dir}/Data/template.json"),
                 (A("sheet/reference.png"), SheetPath),                       // = print/david-goliath-A4.png (RIG.md §5)
+                (A("sheet/demo-sheet.png"), ColouredSheetPaths[0]),            // the design.json demo colouring on the page
+                (Path.Combine(RepoRoot, "print/david-goliath-A4-colored.png"), ColouredSheetPaths[1]),   // the bright coloured print
                 (A("sheet/demo-colored.png"), $"{Dir}/Textures/dg-demo-colored.png"),
                 (A("sheet/demo-sheet.png"), $"{Dir}/Textures/dg-demo-sheet.png"),
                 // sand-ground mask fitted to the real print by tools/make_dg_sheet.py (CONTRACT §12.4; Design's

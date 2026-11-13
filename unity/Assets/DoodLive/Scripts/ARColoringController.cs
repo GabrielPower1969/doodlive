@@ -33,7 +33,8 @@ namespace DoodLive
 
         [Header("AR")]
         public ARSession session;
-        public ARTrackedImageManager trackedImages;
+        public ARTrackedImageManager trackedImages;   // image path: coloured pages, sheets on screens
+        public SheetFinder finder;                    // marker path: any sheet, blank or coloured (LESSONS L49)
         public ARCameraManager cameraManager;
         public ARCameraBackground cameraBackground;
         public Camera arCamera;
@@ -50,8 +51,21 @@ namespace DoodLive
         public Material[] dgMaterials;        // page-coloured materials of both characters
         public Texture2D dgDemoTexture;       // assets/david-goliath/sheet/demo-colored.png
         public const string DGSheetPrefix = "david-goliath";
-        Transform dgHolder; bool dgMode;      // dgMode: the stage, not the angel, is on the page
+        [Header("Story packs (assets/stories.json, generic engine; docs/STORY-ARCHITECTURE.md)")]
+        public Story.StoryDirector[] packs;
+        Transform dgHolder; bool dgMode;      // dgMode: a story stage, not the angel, is on the page
+        IStoryPlayer active;                  // the story on the page (David & Goliath or a pack)
         Transform Holder => dgMode && dgHolder ? dgHolder : holder;
+        IEnumerable<IStoryPlayer> Players()
+        {
+            if (story) yield return story;
+            if (packs != null) foreach (var p in packs) if (p) yield return p;
+        }
+        IStoryPlayer PlayerForSheet(string sheetName)
+        {
+            foreach (var p in Players()) if (sheetName.StartsWith(p.StoryId)) return p;
+            return null;
+        }
 
         [Header("Sound")]
         public AudioSource sfx, voice, music;
@@ -94,18 +108,34 @@ namespace DoodLive
             holder = new GameObject("AngelHolder").transform;
             angel.transform.SetParent(holder, false);
             angel.gameObject.SetActive(false);
-            if (story)
-            {
-                dgHolder = new GameObject("DGHolder").transform;
-                story.transform.SetParent(dgHolder, false);
-                story.gameObject.SetActive(false);
-            }
+            dgHolder = new GameObject("StoryHolder").transform;   // every story stage hangs here; one is active at a time
+            foreach (var p in Players()) { p.transform.SetParent(dgHolder, false); p.gameObject.SetActive(false); }
             if (session) session.enabled = false;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             muted = PlayerPrefs.GetInt("muted", 0) == 1; AudioListener.volume = muted ? 0 : 1;
             haptics = PlayerPrefs.GetInt("haptics", 1) == 1; musicBed = PlayerPrefs.GetFloat("musicBed", musicBed);
             MakeCues();
             Go(State.Home);
+            // QA / demo recording: `adb shell am start -n <pkg>/com.unity3d.player.UnityPlayerActivity --es demo esther`
+            string autoDemo = null;
+#if UNITY_ANDROID && !UNITY_EDITOR
+            try
+            {
+                using (var up = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                using (var act = up.GetStatic<AndroidJavaObject>("currentActivity"))
+                using (var intent = act.Call<AndroidJavaObject>("getIntent"))
+                    autoDemo = intent.Call<string>("getStringExtra", "demo");
+            }
+            catch (System.Exception e) { Debug.LogWarning("DoodLive: intent read failed " + e.Message); }
+#endif
+            if (!string.IsNullOrEmpty(autoDemo)) StartCoroutine(AutoDemo(autoDemo));
+        }
+
+        IEnumerator AutoDemo(string id)
+        {
+            yield return new WaitForSeconds(1.5f);
+            foreach (var p in Players()) if (p.StoryId == id) { Debug.Log($"DoodLive auto demo '{id}'"); ShowDemoStory(p); yield break; }
+            if (id == "angel") ShowDemo();
         }
 
         void Go(State s)
@@ -148,10 +178,18 @@ namespace DoodLive
             Go(State.ScanSearch);
         }
 
-        ARTrackedImage Sheet()
+        // A sheet seen now: ARCore image tracking first (when it has a coloured page to work with), else the markers.
+        SheetTarget imageSheet;
+        SheetTarget Sheet()
         {
-            if (!trackedImages) return null;
-            foreach (var t in trackedImages.trackables) if (t.trackingState == TrackingState.Tracking) return t;
+            if (trackedImages)
+                foreach (var t in trackedImages.trackables)
+                    if (t.trackingState == TrackingState.Tracking)
+                    {
+                        if (imageSheet == null || imageSheet.Image != t) imageSheet = new SheetTarget(t);
+                        return imageSheet;
+                    }
+            if (finder && finder.Current != null && finder.Current.Tracking) return finder.Current;
             return null;
         }
 
@@ -159,25 +197,26 @@ namespace DoodLive
         {
             float dt = Time.deltaTime; stateT += dt;
             TickAudio(dt);
-            if (dgMode && story)
+            if (dgMode && active != null)
             {   // the play holds while the app is away, the sheet is lost or the grown-ups panel is open
-                story.Hold = paused || state == State.LiveLost || moreOpen;
-                story.MusicLevel = Mathf.Clamp(musicBed / 0.22f, 0, 2);
+                active.Hold = paused || state == State.LiveLost || moreOpen;
+                active.MusicGain = Mathf.Clamp(musicBed / 0.22f, 0, 2);
             }
+            if (finder) finder.Active = arReady && !paused && !showMode && state >= State.ScanSearch && state != State.Reveal;
             if (paused) return;
             switch (state)
             {
                 case State.ScanSearch:
-                    if (Sheet()) Go(State.ScanLocked);
+                    if (Sheet() != null) Go(State.ScanLocked);
                     else if (stateT > HelpAfter) Go(State.ScanHelp);
                     break;
                 case State.ScanLocked:
-                    if (!Sheet()) { lockedFor = 0; Go(State.ScanSearch); break; }
+                    if (Sheet() == null) { lockedFor = 0; Go(State.ScanSearch); break; }
                     lockedFor += dt;
                     if (lockedFor >= LockSeconds && !capturing) StartCoroutine(Capture(Sheet()));
                     break;
                 case State.ScanHelp:
-                    if (Sheet()) Go(State.ScanLocked);
+                    if (Sheet() != null) Go(State.ScanLocked);
                     break;
                 case State.Reveal:
                     if (stateT >= RevealSeconds) Go(State.LiveIdle);
@@ -189,7 +228,7 @@ namespace DoodLive
                     if (tap.HasValue && dgMode)
                     {   // the play is the button: tap = pause / resume (the replay button sits in the UI at the end)
                         lastTouch = Time.time; moreOpen = false;
-                        if (story && !story.Finished) { Cue(cueClick); story.TogglePause(); }
+                        if (active != null && !active.Finished) { Cue(cueClick); active.TogglePause(); }
                     }
                     else if (tap.HasValue)
                     {   // the angel is the button (screen 06): tap the 3D title = read it, anywhere else = trumpet
@@ -210,7 +249,7 @@ namespace DoodLive
             if (Input.GetKeyDown(KeyCode.Escape)) Back();   // Android back button
         }
 
-        bool TrackingLost() => !showMode && anchoredSheet && anchoredSheet.trackingState != TrackingState.Tracking;
+        bool TrackingLost() => !showMode && anchoredSheet != null && !anchoredSheet.Tracking;
 
         void Back()
         {
@@ -222,11 +261,12 @@ namespace DoodLive
         void Rescan()
         {
             StopVoice(); greetCount = 0; moreOpen = false;
+            if (finder) finder.Forget();
             if (arReady) Go(State.ScanSearch); else Go(State.Home);
         }
 
         // ---------------- capture / bake ----------------
-        IEnumerator Capture(ARTrackedImage sheet)
+        IEnumerator Capture(SheetTarget sheet)
         {
             capturing = true;
             yield return new WaitForEndOfFrame();
@@ -240,7 +280,8 @@ namespace DoodLive
             var frame = frameTex.GetPixels32(); Destroy(frameTex);
 
             var expected = new Vector2[4];
-            for (int i = 0; i < 4; i++) { var s = arCamera.WorldToScreenPoint(sheet.transform.TransformPoint(PageToLocal(sheet, tpl.markers[i]))); expected[i] = new Vector2(s.x, s.y); }
+            if (sheet.ScreenMarkers != null) System.Array.Copy(sheet.ScreenMarkers, expected, 4);   // marker path: measured, way up known
+            else for (int i = 0; i < 4; i++) { var s = arCamera.WorldToScreenPoint(sheet.transform.TransformPoint(PageToLocal(sheet, tpl.markers[i]))); expected[i] = new Vector2(s.x, s.y); }
             float markerPx = Vector2.Distance(expected[0], expected[1]) / Mathf.Max(1, tpl.markers[1].x - tpl.markers[0].x) * 64;
             float radius = Mathf.Max(16, markerPx * 1.5f);
             var pts = PageWarp.RefineMarkers(frame, W, H, expected, radius);
@@ -258,11 +299,12 @@ namespace DoodLive
             rawPx = PageWarp.WarpArt(frame, W, H, Hm, tpl.art, TexSize);
             PageWarp.WhiteBalance(rawPx);
             cleanPx = PageWarp.EraseLines(rawPx, TexSize, TexSize);
-            dgMode = story && sheet.referenceImage.name.StartsWith(DGSheetPrefix);
-            Debug.Log($"DoodLive sheet '{sheet.referenceImage.name}' -> {(dgMode ? "David & Goliath" : "angel")}");
+            active = PlayerForSheet(sheet.Name);
+            dgMode = active != null;
+            Debug.Log($"DoodLive sheet '{sheet.Name}' ({(sheet.Image ? "image" : "markers")}) -> {(dgMode ? active.StoryId : "angel")}");
             ApplyPage();
             PlaceOnSheet(sheet);
-            ShowTitle(sheet.referenceImage.name);
+            ShowTitle(sheet.Name);
             capturing = false;
             statusKey = "recognised";
             Go(State.Reveal);
@@ -277,17 +319,17 @@ namespace DoodLive
             }
         }
 
-        Vector3 PageToLocal(ARTrackedImage sheet, Vector2 px)
+        Vector3 PageToLocal(SheetTarget sheet, Vector2 px)
         {
             var size = sheet.size;
             return new Vector3((px.x / tpl.page.x - 0.5f) * size.x, 0, (0.5f - px.y / tpl.page.y) * size.y);
         }
 
         // ---------------- placement (LESSONS L14, L24, L25) ----------------
-        ARTrackedImage anchoredSheet;
+        SheetTarget anchoredSheet;
         Vector2 placePage; float placeFlat, placeYaw;
 
-        void PlaceOnSheet(ARTrackedImage sheet)
+        void PlaceOnSheet(SheetTarget sheet)
         {
             var st = sheet.transform;
             placeFlat = Mathf.InverseLerp(0.45f, 0.85f, Mathf.Abs(Vector3.Dot(st.up, Vector3.up)));
@@ -311,7 +353,7 @@ namespace DoodLive
 
         void FitToSheet(float k)
         {
-            var sheet = anchoredSheet; if (!sheet) return;
+            var sheet = anchoredSheet; if (sheet == null || !sheet.IsAlive) return;
             var st = sheet.transform;
             var pos = st.TransformPoint(PageToLocal(sheet, placePage)) + st.up * (0.03f * (1 - placeFlat) * sheet.size.x);
             float artW = tpl.art.width / tpl.page.x * sheet.size.x;
@@ -326,7 +368,7 @@ namespace DoodLive
 
         void LateUpdate()
         {
-            if (state >= State.LiveIdle && !showMode && anchoredSheet && anchoredSheet.trackingState == TrackingState.Tracking)
+            if (state >= State.LiveIdle && !showMode && anchoredSheet != null && anchoredSheet.IsAlive && anchoredSheet.Tracking)
                 FitToSheet(Mathf.Clamp01(Time.deltaTime * 8f));
         }
 
@@ -345,8 +387,8 @@ namespace DoodLive
         void OnDisable() { if (trackedImages) trackedImages.trackablesChanged.RemoveListener(OnImagesChanged); }
         void OnImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> e)
         {
-            if (!anchoredSheet) return;
-            foreach (var r in e.removed) if (r.Key == anchoredSheet.trackableId) { AnchorHere(); return; }
+            if (anchoredSheet == null || !anchoredSheet.Image) return;
+            foreach (var r in e.removed) if (r.Key == anchoredSheet.Image.trackableId) { AnchorHere(); return; }
         }
 
         void PlaceInFront()
@@ -368,6 +410,7 @@ namespace DoodLive
             pageTex.SetPixels32(showLines ? rawPx : cleanPx); pageTex.Apply(false);
             foreach (var m in pageMaterials) m.SetTexture("_BaseMap", pageTex);
             if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", pageTex);
+            if (packs != null) foreach (var p in packs) if (p && p.pageMaterials != null) foreach (var m in p.pageMaterials) if (m) m.SetTexture("_BaseMap", pageTex);
         }
         void UseDemoTexture() { rawPx = cleanPx = null; foreach (var m in pageMaterials) m.SetTexture("_BaseMap", demoTexture); }
 
@@ -393,12 +436,13 @@ namespace DoodLive
         // ---------------- flow actions ----------------
         void StartReveal()
         {
-            if (dgMode && story)
-            {   // David & Goliath: the director owns music and voice; the angel's theme must not play under it
+            if (dgMode && active != null)
+            {   // a story: the director owns music and voice; the angel's theme must not play under it
                 angel.gameObject.SetActive(false); StopVoice(); if (music) music.Stop();
-                story.gameObject.SetActive(true);
-                story.MusicLevel = Mathf.Clamp(musicBed / 0.22f, 0, 2);
-                story.Begin();
+                foreach (var p in Players()) if (p != active) p.gameObject.SetActive(false);
+                active.gameObject.SetActive(true);
+                active.MusicGain = Mathf.Clamp(musicBed / 0.22f, 0, 2);
+                active.Begin();
                 sfx.PlayOneShot(chime);
                 moreOpen = false; flashT = Time.time; lastTouch = Time.time + 1.5f; statusKey = "";
                 return;
@@ -488,26 +532,30 @@ namespace DoodLive
 
         // Home screen's David & Goliath entry: the play with the sample colouring (assets/david-goliath/sheet/demo-colored.png)
         // on a printed page. Without AR the shot list's camera hints drive the view; in AR the phone is the camera.
-        void ShowDemoDG()
+        void ShowDemoDG() => ShowDemoStory(story);
+
+        // Home screen's story entries: the play with the pack's sample colouring on a printed page. Without AR the
+        // shot list's camera hints drive the view; in AR the phone is the camera.
+        void ShowDemoStory(IStoryPlayer p)
         {
-            if (!story) return;
+            if (p == null || (p is UnityEngine.Object o && !o)) return;
             Cue(cueClick);
             StopStory();
-            showMode = true; dgMode = true;
+            showMode = true; active = p; dgMode = true;
             NoArCamera();
             rawPx = cleanPx = null;
-            if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", dgDemoTexture);
+            if (p == (IStoryPlayer)story) { if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", dgDemoTexture); }
+            else if (p is Story.StoryDirector sd && sd.pageMaterials != null) foreach (var m in sd.pageMaterials) if (m) m.SetTexture("_BaseMap", sd.demoTexture);
             PlaceInFront();
-            story.ShowDemoPage(true);
-            story.cinematic = arReady ? null : arCamera;
+            p.ShowDemoPage(true);
+            p.Cinematic = arReady ? null : arCamera;
             Go(State.Reveal);
         }
 
         void StopStory()
         {
-            if (!story) { dgMode = false; return; }
-            story.Stop(); story.ShowDemoPage(false); story.gameObject.SetActive(false);
-            dgMode = false;
+            foreach (var p in Players()) { p.Stop(); p.ShowDemoPage(false); p.gameObject.SetActive(false); }
+            dgMode = false; active = null;
         }
 
         public void Action() => Blow();
@@ -556,7 +604,7 @@ namespace DoodLive
         {
             paused = p;
             if (p) { if (voice.isPlaying) voice.Pause(); } else { voice.UnPause(); idleSince = Time.time; }
-            if (dgMode && story) story.Hold = p || state == State.LiveLost || moreOpen;
+            if (dgMode && active != null) active.Hold = p || state == State.LiveLost || moreOpen;
         }
 
         // UI lives in ARColoringController.UI.cs (Paper & Crayon, docs/DESIGN-DIRECTION.md)
