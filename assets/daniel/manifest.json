@@ -1,0 +1,63 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "daniel",
+ "registry": {
+  "id": "daniel",
+  "engine": "story",
+  "order": 4,
+  "title_zh": "但以理与狮子",
+  "title_en": "Daniel and the Lions",
+  "sheets": [
+   "daniel-A4",
+   "daniel-A4-demo"
+  ],
+  "cast": [
+   "daniel",
+   "king",
+   "officer",
+   "lion",
+   "lion2"
+  ],
+  "paint": {
+   "lion2": "lion2_paint.png"
+  },
+  "set": "babylon",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "daniel",
+  "pinyin": "dàn yǐ lǐ yǔ shī zi",
+  "blurb_zh": "但以理天天向上帝祷告，被扔进狮子坑，上帝派天使封住了狮子的口。",
+  "blurb_en": "Daniel keeps praying to God, is thrown to the lions, and God sends an angel to shut their mouths.",
+  "minutes": 5,
+  "cover": {
+   "video": "demo-daniel-0d79c74-dirty.20261114-0354.mp4",
+   "t": 248,
+   "box": [
+    600,
+    1250,
+    1050
+   ]
+  },
+  "after": "ruth"
+ },
+ "strings": {
+  "dg_daniel": {
+   "zh": "但以理",
+   "en": "Daniel"
+  },
+  "dg_officer": {
+   "zh": "大臣",
+   "en": "Official"
+  },
+  "dg_daniel_king": {
+   "zh": "大流士王",
+   "en": "King Darius"
+  }
+ },
+ "fx": {
+  "class": "DanielFx",
+  "note": "Daniel (pack #4, StoryFxDaniel.cs)"
+ }
+}

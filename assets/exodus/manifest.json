@@ -1,0 +1,66 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "exodus",
+ "registry": {
+  "id": "exodus",
+  "engine": "story",
+  "order": 5,
+  "title_zh": "出埃及",
+  "title_en": "Let My People Go!",
+  "sheets": [
+   "exodus-A4",
+   "exodus-A4-demo"
+  ],
+  "cast": [
+   "moses",
+   "pharaoh",
+   "miriam"
+  ],
+  "set": "egypt",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "exodus",
+  "pinyin": "chū āi jí",
+  "blurb_zh": "摩西带着以色列人离开埃及，上帝把红海分开，他们从海中间的干地走了过去。",
+  "blurb_en": "Moses leads God's people out of Egypt, and God opens a dry path right through the sea.",
+  "minutes": 5,
+  "cover": {
+   "video": "demo-exodus-0d79c74-dirty.20261114-0414.mp4",
+   "t": 220,
+   "box": [
+    640,
+    1400,
+    960
+   ]
+  },
+  "after": "daniel"
+ },
+ "strings": {
+  "dg_moses": {
+   "zh": "摩西",
+   "en": "Moses"
+  },
+  "dg_pharaoh": {
+   "zh": "法老",
+   "en": "Pharaoh"
+  },
+  "dg_miriam": {
+   "zh": "米利暗",
+   "en": "Miriam"
+  },
+  "dg_god": {
+   "zh": "上帝",
+   "en": "God"
+  },
+  "dg_people": {
+   "zh": "以色列人",
+   "en": "The Israelites"
+  }
+ },
+ "fx": {
+  "class": "ExodusFx",
+  "note": "Exodus (StoryFxExodus.cs)"
+ }
+}

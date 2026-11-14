@@ -1,0 +1,62 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "ruth",
+ "registry": {
+  "id": "ruth",
+  "engine": "story",
+  "order": 3,
+  "title_zh": "忠心的路得",
+  "title_en": "Faithful Ruth",
+  "sheets": [
+   "ruth-A4",
+   "ruth-A4-demo"
+  ],
+  "cast": [
+   "ruth",
+   "naomi",
+   "boaz"
+  ],
+  "set": "bethlehem",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "ruth",
+  "pinyin": "zhōng xīn de lù dé",
+  "blurb_zh": "路得不离开婆婆拿俄米，在麦田里拾麦穗，遇见了善良的波阿斯。",
+  "blurb_en": "Ruth stays with Naomi, gathers barley in the fields, and meets kind Boaz.",
+  "minutes": 4,
+  "cover": {
+   "video": "demo-ruth-d0ecee9-dirty.20261114-0012.mp4",
+   "t": 125,
+   "box": [
+    570,
+    1260,
+    900
+   ]
+  },
+  "after": "esther"
+ },
+ "strings": {
+  "dg_ruth": {
+   "zh": "路得",
+   "en": "Ruth"
+  },
+  "dg_naomi": {
+   "zh": "拿俄米",
+   "en": "Naomi"
+  },
+  "dg_boaz": {
+   "zh": "波阿斯",
+   "en": "Boaz"
+  },
+  "dg_reapers": {
+   "zh": "收割的人",
+   "en": "Reapers"
+  }
+ },
+ "fx": {
+  "class": "RuthFx",
+  "note": "Ruth (pack #3, StoryFxRuth.cs)"
+ }
+}

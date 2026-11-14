@@ -45,6 +45,11 @@ unity/Assets/DoodLive/Editor/SheetPdfSetup.cs  print/<sheet>.pdf -> StreamingAss
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
 docs/LESSONS.md        pitfalls log: symptom → cause → fix → prevention
+pipeline/story_kit/    shared Blender code of every story pack (characters / animation / stage), included by
+                       pipeline/<xx>_*.py; tools/story/music_kit.py the shared music engine (docs/STORY-KIT.md)
+assets/<id>/manifest.json  a pack's entries in stories.json / library.json / strings.json / DGFxEffects.cs;
+                       merged by tools/story/merge_packs.py — never edit those shared files by hand
+docs/NEW-STORY.md      add-a-story checklist (two review gates); tools/story/check.py <id> validates a pack
 unity/, tools/make_audio.py   Unity port, owned by a separate session while in progress
 ```
 

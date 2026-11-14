@@ -1,21 +1,26 @@
 {
  "_doc": "Story registry (docs/STORY-ARCHITECTURE.md). The only list of stories: home screen order, sheets, engine. Sheet names = ARCore reference names and sheet_signatures.json names.",
  "stories": [
+  {"id": "gabriel", "engine": "story", "order": 0, "title_zh": "大天使加百列", "title_en": "Gabriel the Archangel",
+   "sheets": ["gabriel-A4", "gabriel-A4-demo"], "cast": ["gabriel"], "set": "heaven", "version": 1, "status": "beta"},
   {"id": "david-goliath", "engine": "dg", "order": 1, "title_zh": "大卫和歌利亚", "title_en": "David & Goliath",
-   "sheets": ["david-goliath-A4", "david-goliath-A4-demo", "david-goliath-A4-colored"], "version": 1, "status": "live"},
+   "sheets": ["david-goliath-A4", "david-goliath-A4-demo", "david-goliath-A4-colored"], "version": 1,
+   "status": "live"},
   {"id": "esther", "engine": "story", "order": 2, "title_zh": "勇敢的王后", "title_en": "The Brave Queen",
    "sheets": ["esther-A4", "esther-A4-demo"], "cast": ["esther", "king", "haman", "guard1", "guard2"],
-   "paint": {"guard1": "guard_paint.png", "guard2": "guard_paint.png"}, "set": "palace", "version": 1, "status": "beta"},
+   "paint": {"guard1": "guard_paint.png", "guard2": "guard_paint.png"}, "set": "palace", "version": 1,
+   "status": "beta"},
   {"id": "ruth", "engine": "story", "order": 3, "title_zh": "忠心的路得", "title_en": "Faithful Ruth",
-   "sheets": ["ruth-A4", "ruth-A4-demo"], "cast": ["ruth", "naomi", "boaz"], "set": "bethlehem", "version": 1, "status": "beta"},
+   "sheets": ["ruth-A4", "ruth-A4-demo"], "cast": ["ruth", "naomi", "boaz"], "set": "bethlehem", "version": 1,
+   "status": "beta"},
   {"id": "daniel", "engine": "story", "order": 4, "title_zh": "但以理与狮子", "title_en": "Daniel and the Lions",
    "sheets": ["daniel-A4", "daniel-A4-demo"], "cast": ["daniel", "king", "officer", "lion", "lion2"],
    "paint": {"lion2": "lion2_paint.png"}, "set": "babylon", "version": 1, "status": "beta"},
   {"id": "exodus", "engine": "story", "order": 5, "title_zh": "出埃及", "title_en": "Let My People Go!",
-   "sheets": ["exodus-A4", "exodus-A4-demo"], "cast": ["moses", "pharaoh", "miriam"], "set": "egypt", "version": 1, "status": "beta"},
+   "sheets": ["exodus-A4", "exodus-A4-demo"], "cast": ["moses", "pharaoh", "miriam"], "set": "egypt", "version": 1,
+   "status": "beta"},
   {"id": "prodigal", "engine": "story", "order": 6, "title_zh": "浪子回家", "title_en": "The Son Who Came Home",
-   "sheets": ["prodigal-A4", "prodigal-A4-demo"], "cast": ["son", "father", "brother"], "set": "homeland", "version": 1, "status": "beta"},
-  {"id": "gabriel", "engine": "story", "order": 0, "title_zh": "大天使加百列", "title_en": "Gabriel the Archangel",
-   "sheets": ["gabriel-A4", "gabriel-A4-demo"], "cast": ["gabriel"], "set": "heaven", "version": 1, "status": "beta"}
+   "sheets": ["prodigal-A4", "prodigal-A4-demo"], "cast": ["son", "father", "brother"], "set": "homeland",
+   "version": 1, "status": "beta"}
  ]
 }

@@ -1,0 +1,66 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "prodigal",
+ "registry": {
+  "id": "prodigal",
+  "engine": "story",
+  "order": 6,
+  "title_zh": "浪子回家",
+  "title_en": "The Son Who Came Home",
+  "sheets": [
+   "prodigal-A4",
+   "prodigal-A4-demo"
+  ],
+  "cast": [
+   "son",
+   "father",
+   "brother"
+  ],
+  "set": "homeland",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "prodigal",
+  "pinyin": "làng zǐ huí jiā",
+  "blurb_zh": "小儿子拿了钱去远方，花光了才想回家；爸爸远远看见他，就跑过去抱住了他。",
+  "blurb_en": "The younger son spends everything far away; when he comes home, his father runs to hug him.",
+  "minutes": 4,
+  "cover": {
+   "video": "demo-prodigal-bd95eed-dirty.20261114-0804.mp4",
+   "t": 124,
+   "box": [
+    560,
+    1400,
+    1000
+   ]
+  },
+  "after": "exodus"
+ },
+ "strings": {
+  "dg_son": {
+   "zh": "小儿子",
+   "en": "Little brother"
+  },
+  "dg_father": {
+   "zh": "爸爸",
+   "en": "Father"
+  },
+  "dg_brother": {
+   "zh": "哥哥",
+   "en": "Big brother"
+  },
+  "dg_friends": {
+   "zh": "朋友们",
+   "en": "Friends"
+  },
+  "dg_servants": {
+   "zh": "仆人",
+   "en": "Servants"
+  }
+ },
+ "fx": {
+  "class": "ProdigalFx",
+  "note": "Prodigal (pack #6, StoryFxProdigal.cs)"
+ }
+}
