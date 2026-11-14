@@ -1,0 +1,707 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther, Ruth and Daniel"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "大天使加百列",
+   "pinyin": "dà tiān shǐ jiā bǎi liè",
+   "english": "Gabriel the Archangel",
+   "box": 80,
+   "gap": 50,
+   "cy": 102,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "six boxes, like David & Goliath (76 / 12 / 100) and Daniel (84 / 22 / 104): box 80 / gap 50 / cy 102 was the most distinct of a grid of candidates that keep the pinyin 6 mm from the top edge (most similar other title NCC 0.35; tools/story/sheet_gabriel.py signature)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "路加福音 1 章 · Luke 1"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge"
+ },
+ "characters": {
+  "gabriel": {
+   "sheetX": 0.0,
+   "sheetY": 0.015,
+   "projection": "front",
+   "height": 0.62
+  }
+ },
+ "_note": "sheet, lines, characters.* and set/* are written by pipeline/ga_heaven.py (Set + sheet role)",
+ "set": {
+  "generatedBy": "pipeline/ga_heaven.py",
+  "doc": "docs/gabriel/SET.md",
+  "contract": "docs/gabriel/CONTRACT.md §6",
+  "root": "heaven",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "clouds": [
+    0.0,
+    0.0,
+    -0.19
+   ],
+   "gate": [
+    0.0,
+    0.0,
+    -0.5
+   ],
+   "gateGlow": [
+    0.0,
+    0.296,
+    -0.488
+   ],
+   "islandL": [
+    -0.45,
+    0.23,
+    -0.3
+   ],
+   "islandR": [
+    0.45,
+    0.23,
+    -0.28
+   ],
+   "frontClouds": [
+    0.0,
+    0.0,
+    0.1
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "gate": [
+    -0.377,
+    -0.5855,
+    0.377,
+    -0.479
+   ],
+   "wallFrontZ": -0.5,
+   "gatehouseFrontZ": -0.488,
+   "door": {
+    "halfWidth": 0.05,
+    "sill": 0.06,
+    "top": 0.208
+   },
+   "steps": [
+    {
+     "top": 0.06,
+     "frontZ": -0.444,
+     "halfWidth": 0.118
+    },
+    {
+     "top": 0.048,
+     "frontZ": -0.423,
+     "halfWidth": 0.13
+    },
+    {
+     "top": 0.036,
+     "frontZ": -0.402,
+     "halfWidth": 0.142
+    },
+    {
+     "top": 0.024,
+     "frontZ": -0.381,
+     "halfWidth": 0.154
+    },
+    {
+     "top": 0.012,
+     "frontZ": -0.36,
+     "halfWidth": 0.166
+    }
+   ],
+   "islandL": {
+    "centre": [
+     -0.45,
+     -0.3
+    ],
+    "radius": 0.085
+   },
+   "islandR": {
+    "centre": [
+     0.45,
+     -0.28
+    ],
+    "radius": 0.085
+   },
+   "marks": {
+    "sky/stand": [
+     0.0,
+     0.02
+    ],
+    "front": [
+     0.0,
+     0.1
+    ]
+   }
+  },
+  "heights": {
+   "gateMax": 0.4195,
+   "wallTop": 0.2,
+   "towerTop": 0.3755,
+   "gatehouseCornice": 0.369,
+   "rosetteCentre": 0.296,
+   "threshold": 0.06,
+   "islandRock": [
+    0.18,
+    0.262
+   ],
+   "islandGrassTop": 0.28,
+   "islandMax": 0.418,
+   "cloudsMax": 0.0763,
+   "centreStageMax": 0.0364,
+   "wingSweepMax": 0.037,
+   "roundTheMarksMax": 0.0149
+  },
+  "hiddenAtStart": [],
+  "clouds": {
+   "clumps": 33,
+   "frontPuffs": 6,
+   "rule": "clumps are instances of one sculpted template per node; every vertex stays under allowed_h(x, z) (0.016 round the marks, 0.034 in the centre stage and the wing sweep, 0.096 at the back and the sides)"
+  },
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the template position for the cloud clumps",
+   "cleanTexel": "faces with n . D < 0.22 (edge-on or facing away, n in drawing space) or hidden behind another part of their drawing take one clean texel of their own region",
+   "namedTexels": "the cloud base sheet, the rosette rays and the pebbles under the islets take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "gate": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.34,
+    "cx": 0.0,
+    "y0": 0.7676,
+    "fit": "above",
+    "members": [
+     "gate",
+     "gateGlow"
+    ],
+    "decorOnly": [
+     "gateWall",
+     "gateGold",
+     "gateGlow",
+     "gateLight"
+    ],
+    "sheetX": 0.0,
+    "sheetY": 0.7676,
+    "bboxSheet": [
+     -0.2813,
+     0.7676,
+     0.2813,
+     1.0807
+    ]
+   },
+   "islandL": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.4
+    ],
+    "D": [
+     0.0,
+     0.4,
+     1
+    ],
+    "scale": 1.12,
+    "cx": -0.39,
+    "y0": 0.8001,
+    "fit": "above",
+    "members": [
+     "islandL"
+    ],
+    "decorOnly": [
+     "rock",
+     "water"
+    ],
+    "sheetX": 0.01625,
+    "sheetY": 0.68654,
+    "bboxSheet": [
+     -0.4766,
+     0.8001,
+     -0.3034,
+     1.1717
+    ]
+   },
+   "islandR": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.4
+    ],
+    "D": [
+     0.0,
+     0.4,
+     1
+    ],
+    "scale": 1.12,
+    "cx": 0.39,
+    "y0": 0.8025,
+    "fit": "above",
+    "members": [
+     "islandR"
+    ],
+    "decorOnly": [
+     "rock",
+     "water"
+    ],
+    "sheetX": -0.01223,
+    "sheetY": 0.69609,
+    "bboxSheet": [
+     0.3074,
+     0.8025,
+     0.4726,
+     1.1737
+    ]
+   },
+   "clouds": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.0,
+     0.5,
+     1
+    ],
+    "scale": 1.45,
+    "cx": -0.325,
+    "y0": 0.03,
+    "members": [],
+    "sheetX": -0.32293,
+    "sheetY": 0.07379,
+    "bboxSheet": [
+     -0.4774,
+     0.03,
+     -0.1726,
+     0.1408
+    ]
+   },
+   "frontClouds": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.0,
+     0.35,
+     1
+    ],
+    "scale": 1.2,
+    "cx": 0.345,
+    "y0": 0.03,
+    "members": [],
+    "sheetX": 0.34667,
+    "sheetY": 0.06733,
+    "bboxSheet": [
+     0.21,
+     0.03,
+     0.48,
+     0.1906
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "clouds",
+    "drawing": "clouds",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.0,
+      0.5,
+      1
+     ],
+     "scale": 1.45,
+     "sheetX": -0.32293,
+     "sheetY": 0.07379
+    },
+    "instanced": true,
+    "namedTexels": {
+     "base": [
+      "clouds",
+      "cloudShade"
+     ]
+    },
+    "regions": [
+     "base",
+     "cloud",
+     "cloudShade"
+    ],
+    "heightMax": 0.0763,
+    "tris": 22947
+   },
+   {
+    "id": "gate",
+    "drawing": "gate",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.34,
+     "sheetX": 0.0,
+     "sheetY": 0.7676
+    },
+    "instanced": false,
+    "namedTexels": {
+     "ray": [
+      "gate",
+      "gateGold"
+     ]
+    },
+    "regions": [
+     "gateGold",
+     "gateLight",
+     "gateWall",
+     "ray"
+    ],
+    "heightMax": 0.4195,
+    "tris": 6883
+   },
+   {
+    "id": "gateGlow",
+    "drawing": "gate",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.34,
+     "sheetX": 0.0,
+     "sheetY": 0.7676
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "gateGlow"
+    ],
+    "heightMax": 0.3268,
+    "tris": 270
+   },
+   {
+    "id": "islandL",
+    "drawing": "islandL",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.4
+     ],
+     "D": [
+      0.0,
+      0.4,
+      1
+     ],
+     "scale": 1.12,
+     "sheetX": 0.01625,
+     "sheetY": 0.68654
+    },
+    "instanced": false,
+    "namedTexels": {
+     "pebble": [
+      "islandL",
+      "rock"
+     ]
+    },
+    "regions": [
+     "grass",
+     "mist",
+     "pebble",
+     "rock",
+     "tree",
+     "water"
+    ],
+    "heightMax": 0.418,
+    "tris": 3949
+   },
+   {
+    "id": "islandR",
+    "drawing": "islandR",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.4
+     ],
+     "D": [
+      0.0,
+      0.4,
+      1
+     ],
+     "scale": 1.12,
+     "sheetX": -0.01223,
+     "sheetY": 0.69609
+    },
+    "instanced": false,
+    "namedTexels": {
+     "pebble": [
+      "islandR",
+      "rock"
+     ]
+    },
+    "regions": [
+     "grass",
+     "mist",
+     "pebble",
+     "rock",
+     "tree",
+     "water"
+    ],
+    "heightMax": 0.418,
+    "tris": 3761
+   },
+   {
+    "id": "frontClouds",
+    "drawing": "frontClouds",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.0,
+      0.35,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.34667,
+     "sheetY": 0.06733
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "cloudShade"
+    ],
+    "heightMax": 0.037,
+    "tris": 3708
+   }
+  ],
+  "constUV": [
+   {
+    "node": "clouds/base",
+    "uv": [
+     0.2075,
+     0.04849
+    ],
+    "region": "cloudShade"
+   },
+   {
+    "node": "gate/ray",
+    "uv": [
+     0.2535,
+     0.81703
+    ],
+    "region": "gateGold"
+   },
+   {
+    "node": "islandL/pebble",
+    "uv": [
+     0.0985,
+     0.79829
+    ],
+    "region": "rock"
+   },
+   {
+    "node": "islandR/pebble",
+    "uv": [
+     0.9035,
+     0.7991
+    ],
+    "region": "rock"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "measured": {
+    "centreStageMaxH": 0.0364,
+    "wingSweepMaxH": 0.037,
+    "keepClearStageMaxH": 0.0273,
+    "roundTheMarksMaxH": 0.0149,
+    "cloudsMaxH": 0.0763,
+    "gateMaxH": 0.4195,
+    "islandMinMaxH(mist to tree top)": {
+     "islandL": [
+      0.046,
+      0.418
+     ],
+     "islandR": [
+      0.046,
+      0.418
+     ]
+    },
+    "bounds": [
+     -0.6,
+     0.6,
+     -0.5875,
+     0.21
+    ],
+    "minH": 0.0
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "gabriel": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.62,
+     "box": [
+      -0.4867,
+      0.0154,
+      0.4867,
+      0.8111
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json",
+   "check": "OK",
+   "info": {
+    "castMask": true,
+    "setWithin15pxOfCastPx": 0
+   }
+  },
+  "demoColours": {
+   "cloud": "#FFF6E2",
+   "cloudShade": "#F7DDB0",
+   "gateWall": "#F6EEDC",
+   "gateGold": "#EED48E",
+   "gateGlow": "#F2A43A",
+   "gateLight": "#F8C56B",
+   "rock": "#C9A47A",
+   "grass": "#A9CF72",
+   "tree": "#7DAA55",
+   "water": "#BFE6F5",
+   "mist": "#FFF6E2"
+  },
+  "tris": 41518,
+  "budget": 45000
+ }
+}

@@ -131,6 +131,7 @@ namespace DoodLive
             { "dg_brother", "哥哥" },
             { "dg_friends", "朋友们" },
             { "dg_servants", "仆人" },
+            { "dg_gabriel", "加百列" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -255,6 +256,7 @@ namespace DoodLive
             { "dg_brother", "Big brother" },
             { "dg_friends", "Friends" },
             { "dg_servants", "Servants" },
+            { "dg_gabriel", "Gabriel" },
         };
         static string lang;
         public static string Lang

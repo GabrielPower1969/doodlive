@@ -1,0 +1,419 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/ga_character.py",
+ "note": "Colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as Ruth / Daniel).",
+ "sheet": {
+  "gabriel": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "gabriel": {
+   "height": 0.62,
+   "bboxSheet": [
+    -0.4867,
+    0.0154,
+    0.4867,
+    0.8111
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#F2C9A0",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR"
+     ],
+     "bboxSheet": [
+      -0.2448,
+      0.2508,
+      0.2448,
+      0.6098
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#9A6533",
+     "zh": "头发",
+     "en": "hair",
+     "parts": [
+      "hair",
+      "locks"
+     ],
+     "bboxSheet": [
+      -0.0485,
+      0.4912,
+      0.0531,
+      0.6408
+     ]
+    },
+    "cuirass": {
+     "id": 3,
+     "hex": "#F1E7D2",
+     "zh": "胸甲",
+     "en": "cuirass",
+     "parts": [
+      "torso"
+     ],
+     "bboxSheet": [
+      -0.0891,
+      0.3893,
+      0.0891,
+      0.5232
+     ]
+    },
+    "leggings": {
+     "id": 4,
+     "hex": "#F1E7D2",
+     "zh": "裤子",
+     "en": "leggings",
+     "parts": [
+      "legL",
+      "legR",
+      "torso"
+     ],
+     "bboxSheet": [
+      -0.0701,
+      0.0545,
+      0.0701,
+      0.3893
+     ]
+    },
+    "sleeves": {
+     "id": 5,
+     "hex": "#F1E7D2",
+     "zh": "袖子",
+     "en": "sleeves",
+     "parts": [
+      "armL",
+      "armR"
+     ],
+     "bboxSheet": [
+      -0.1918,
+      0.3491,
+      0.1918,
+      0.5193
+     ]
+    },
+    "vambraces": {
+     "id": 6,
+     "hex": "#E6B23E",
+     "zh": "护臂",
+     "en": "vambraces",
+     "parts": [
+      "vambraceL",
+      "vambraceR"
+     ],
+     "bboxSheet": [
+      -0.2285,
+      0.3103,
+      0.2285,
+      0.4031
+     ]
+    },
+    "greaves": {
+     "id": 7,
+     "hex": "#E6B23E",
+     "zh": "护腿和靴子",
+     "en": "greaves and boots",
+     "parts": [
+      "greaveL",
+      "greaveR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0677,
+      0.0154,
+      0.0677,
+      0.2263
+     ]
+    },
+    "pauldrons": {
+     "id": 8,
+     "hex": "#E6B23E",
+     "zh": "肩甲",
+     "en": "pauldrons",
+     "parts": [
+      "pauldronL",
+      "pauldronR"
+     ],
+     "bboxSheet": [
+      -0.1782,
+      0.4093,
+      0.1782,
+      0.5256
+     ]
+    },
+    "collar": {
+     "id": 9,
+     "hex": "#E6B23E",
+     "zh": "金领",
+     "en": "gold collar",
+     "parts": [
+      "gorget"
+     ],
+     "bboxSheet": [
+      -0.0659,
+      0.4784,
+      0.0659,
+      0.5178
+     ]
+    },
+    "skirt": {
+     "id": 10,
+     "hex": "#F1E7D2",
+     "zh": "短裙",
+     "en": "skirt",
+     "parts": [
+      "skirt"
+     ],
+     "bboxSheet": [
+      -0.0829,
+      0.3008,
+      0.0829,
+      0.3786
+     ]
+    },
+    "sash": {
+     "id": 11,
+     "hex": "#D9732C",
+     "zh": "腰带和前襟",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "tabard"
+     ],
+     "bboxSheet": [
+      -0.065,
+      0.1972,
+      0.0653,
+      0.421
+     ]
+    },
+    "belt": {
+     "id": 12,
+     "hex": "#E6B23E",
+     "zh": "金腰带",
+     "en": "belt",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.0649,
+      0.3747,
+      0.0649,
+      0.4133
+     ]
+    },
+    "wingFeathers": {
+     "id": 17,
+     "hex": "#F3EAD6",
+     "zh": "翅膀的长羽毛",
+     "en": "long wing feathers",
+     "parts": [
+      "wingL",
+      "wingR"
+     ],
+     "bboxSheet": [
+      -0.4867,
+      0.107,
+      0.4867,
+      0.8111
+     ]
+    },
+    "wingCoverts": {
+     "id": 18,
+     "hex": "#FFFDF6",
+     "zh": "翅膀上层的短羽毛",
+     "en": "wing coverts",
+     "parts": [
+      "wingL",
+      "wingR"
+     ],
+     "bboxSheet": [
+      -0.401,
+      0.2905,
+      0.401,
+      0.702
+     ]
+    },
+    "scabbard": {
+     "id": 13,
+     "hex": "#F1E7D2",
+     "zh": "剑鞘",
+     "en": "scabbard",
+     "parts": [
+      "sword"
+     ],
+     "bboxSheet": [
+      0.0702,
+      0.1333,
+      0.107,
+      0.3889
+     ]
+    },
+    "hilt": {
+     "id": 14,
+     "hex": "#E6B23E",
+     "zh": "剑柄",
+     "en": "sword hilt",
+     "parts": [
+      "sword"
+     ],
+     "bboxSheet": [
+      0.0465,
+      0.1298,
+      0.1129,
+      0.4597
+     ]
+    },
+    "gem": {
+     "id": 15,
+     "hex": "#3C8FD8",
+     "zh": "宝石",
+     "en": "sword gem",
+     "parts": [
+      "sword"
+     ],
+     "bboxSheet": [
+      0.068,
+      0.3822,
+      0.0908,
+      0.4021
+     ],
+     "anchoredTo": "gem",
+     "anchorUV": [
+      0.58375,
+      0.31846
+     ],
+     "printNote": "small region: takes the colour of its own widest printed spot"
+    },
+    "trumpet": {
+     "id": 16,
+     "hex": "#E6B23E",
+     "zh": "号角",
+     "en": "trumpet",
+     "parts": [
+      "trumpet"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "gabriel.pauldrons",
+     "anchorUV": [
+      0.37125,
+      0.3751
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.gabriel.propUV.trumpet = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.03114,
+     0.52198,
+     0.03114,
+     0.58426
+    ],
+    "px": 512,
+    "default": "smile",
+    "files": {
+     "calm": "docs/gabriel/design/faces/gabriel_calm.png",
+     "smile": "docs/gabriel/design/faces/gabriel_smile.png",
+     "talk": "docs/gabriel/design/faces/gabriel_talk.png",
+     "kind": "docs/gabriel/design/faces/gabriel_kind.png",
+     "joy": "docs/gabriel/design/faces/gabriel_joy.png",
+     "announce": "docs/gabriel/design/faces/gabriel_announce.png",
+     "blow": "docs/gabriel/design/faces/gabriel_blow.png",
+     "wink": "docs/gabriel/design/faces/gabriel_wink.png"
+    },
+    "clipExpression": {
+     "idle": "smile",
+     "hover": "calm",
+     "fly_down": "calm",
+     "fold_wings": "smile",
+     "walk": "calm",
+     "kneel_talk": "kind",
+     "stand_up": "smile",
+     "talk": "talk",
+     "point_up": "kind",
+     "raise_trumpet": "joy",
+     "blow_trumpet": "blow",
+     "spread_wings": "announce",
+     "bless": "kind",
+     "wave": "joy",
+     "fly_up": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 20.0,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "wings": "spread (the sheet pose)"
+   },
+   "wings": {
+    "feathersPerWing": 195,
+    "bones": [
+     "wing?1",
+     "wing?2",
+     "wing?3",
+     "wing?_prim"
+    ],
+    "primFanDeg": 96.0,
+    "note": "see docs/gabriel/RIG.md §4 for the fold / flap recipes"
+   },
+   "props": {
+    "trumpet": {
+     "bone": "trumpet",
+     "mesh": "gabriel_trumpet",
+     "node": "gabriel/trumpet",
+     "shownByDefault": false
+    },
+    "sword": {
+     "bone": "sword",
+     "mesh": "gabriel_sword",
+     "node": "gabriel/sword",
+     "shownByDefault": true
+    }
+   },
+   "trumpet": {
+    "mouthpieceLocal": [
+     -0.1736,
+     0.2431,
+     0.0934
+    ],
+    "bellLocal": [
+     -0.2903,
+     0.3248,
+     -0.1746
+    ],
+    "note": "rest-pose positions (character-local, design axes) of the two ends of the trumpet"
+   },
+   "partAnchors": {
+    "eyelidAnchor.skin": {
+     "target": "gabriel.FACE",
+     "uv": [
+      0.49975,
+      0.43215
+     ],
+     "local": [
+      -0.0002,
+      0.5152
+     ]
+    }
+   }
+  }
+ }
+}

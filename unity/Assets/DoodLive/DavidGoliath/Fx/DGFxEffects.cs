@@ -64,6 +64,7 @@ namespace DoodLive.DavidGoliath
                     foreach (var d in DanielFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d; // Daniel (pack #4, StoryFxDaniel.cs)
                     foreach (var d in ExodusFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d; // Exodus (StoryFxExodus.cs)
                     foreach (var d in ProdigalFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d; // Prodigal (pack #6, StoryFxProdigal.cs)
+                    foreach (var d in GabrielFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d; // Gabriel (StoryFxGabriel.cs)
                 }
                 return map;
             }

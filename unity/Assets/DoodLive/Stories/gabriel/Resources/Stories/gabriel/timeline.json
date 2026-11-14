@@ -1,0 +1,868 @@
+{
+ "version": 1,
+ "story": "gabriel",
+ "cast": [
+  "gabriel"
+ ],
+ "set": "heaven",
+ "duration": 89.19,
+ "fps": 30,
+ "shots": [
+  {
+   "id": "S01",
+   "title_zh": "天上的城",
+   "title_en": "The city of light",
+   "camera": {
+    "type": "orbit",
+    "target": "all",
+    "dist": 0.95,
+    "height": 0.46,
+    "yawDeg": -20
+   },
+   "desc": "Slow orbit over a sea of golden clouds; the shining gate at the back; rays of light. A bright point high in the sky grows into a winged figure coming down.",
+   "t0": 0.0,
+   "t1": 12.18,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "id": "S02",
+   "title_zh": "从天而降",
+   "title_en": "Down from heaven",
+   "camera": {
+    "type": "follow",
+    "target": "gabriel",
+    "dist": 0.7,
+    "height": 0.3,
+    "yawDeg": 15
+   },
+   "desc": "Gabriel comes down through a column of light with slow, huge wing beats, lands softly on the clouds, folds his wings and looks at the child.",
+   "t0": 12.18,
+   "t1": 18.58,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S03",
+   "title_zh": "不要怕",
+   "title_en": "Do not be afraid",
+   "camera": {
+    "type": "fixed",
+    "target": "gabriel",
+    "dist": 0.55,
+    "height": 0.22,
+    "yawDeg": -10
+   },
+   "desc": "He steps forward and goes down on one knee to the child's height, smiling.",
+   "t0": 18.58,
+   "t1": 31.98,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 6.7
+   }
+  },
+  {
+   "id": "S04",
+   "title_zh": "送信的天使",
+   "title_en": "The messenger",
+   "camera": {
+    "type": "orbit",
+    "target": "gabriel",
+    "dist": 0.62,
+    "height": 0.24,
+    "yawDeg": 25
+   },
+   "desc": "He stands, points back toward the earth, then up to heaven while he remembers.",
+   "t0": 31.98,
+   "t1": 50.57,
+   "anchor": {
+    "line": "ga_03",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S05",
+   "title_zh": "最好的消息",
+   "title_en": "The best news of all",
+   "camera": {
+    "type": "fixed",
+    "target": "gabriel",
+    "dist": 0.6,
+    "height": 0.18,
+    "yawDeg": -25
+   },
+   "desc": "He lifts the golden trumpet, spreads his wings wide and blows a great call; golden notes and light burst over the clouds.",
+   "t0": 50.57,
+   "t1": 63.56,
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S06",
+   "title_zh": "你很安全",
+   "title_en": "You are safe",
+   "camera": {
+    "type": "orbit",
+    "target": "gabriel",
+    "dist": 0.58,
+    "height": 0.2,
+    "yawDeg": 10
+   },
+   "desc": "Wings wide, he lowers the trumpet and lays a hand on his heart, then opens his palm toward the child.",
+   "t0": 63.56,
+   "t1": 72.33,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 8.0
+   }
+  },
+  {
+   "id": "S07",
+   "title_zh": "涂上你的颜色",
+   "title_en": "Colour me in",
+   "camera": {
+    "type": "orbit",
+    "target": "all",
+    "dist": 0.85,
+    "height": 0.34,
+    "yawDeg": -15
+   },
+   "desc": "He waves, crouches, springs up and flies back toward the gate of light; feathers drift down.",
+   "t0": 72.33,
+   "t1": 89.19,
+   "anchor": {
+    "line": "ga_07",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "acting": [
+  {
+   "t": 0.0,
+   "who": "gabriel",
+   "clip": "hover",
+   "blend": 0.25,
+   "to": [
+    0.0,
+    0.02
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 12.18,
+   "who": "gabriel",
+   "clip": "fly_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 17.18,
+   "who": "gabriel",
+   "clip": "fold_wings",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 5.3
+   }
+  },
+  {
+   "t": 18.58,
+   "who": "gabriel",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.0,
+    0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 6.7
+   }
+  },
+  {
+   "t": 20.18,
+   "who": "gabriel",
+   "clip": "kneel_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 8.3
+   }
+  },
+  {
+   "t": 21.38,
+   "who": "gabriel",
+   "clip": "kneel_talk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 9.5
+   }
+  },
+  {
+   "t": 31.98,
+   "who": "gabriel",
+   "clip": "stand_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_03",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 33.18,
+   "who": "gabriel",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_03",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 40.66,
+   "who": "gabriel",
+   "clip": "point_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_04",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 50.57,
+   "who": "gabriel",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 50.57,
+   "who": "gabriel",
+   "clip": "raise_trumpet",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 55.76,
+   "who": "gabriel",
+   "clip": "blow_trumpet",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 61.16,
+   "who": "gabriel",
+   "clip": "spread_wings",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 5.6
+   }
+  },
+  {
+   "t": 63.56,
+   "who": "gabriel",
+   "clip": "bless",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 8.0
+   }
+  },
+  {
+   "t": 72.33,
+   "who": "gabriel",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_07",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 77.95,
+   "who": "gabriel",
+   "clip": "fly_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 0.3
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "ga_01",
+   "t": 1.45,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 10.48,
+   "ref": "Revelation 21:23; Luke 1:19",
+   "zh": "在天上，有一座发光的城。那里住着上帝的天使。其中有一位大天使，名字叫加百列。",
+   "en": "High above, there is a city full of light, where God's angels live. One of them is a great archangel. His name is Gabriel.",
+   "dir": "hushed wonder, like opening a treasure box; slow, a smile on the name 加百列 / 'Gabriel'",
+   "dur": 10.43,
+   "pre": 0.25,
+   "post": 0.3,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 1.45
+   }
+  },
+  {
+   "id": "ga_02",
+   "t": 20.58,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 5.65,
+   "ref": "Luke 1:13, 1:19",
+   "zh": "不要怕，小朋友！我是加百列，是站在上帝面前的天使。",
+   "en": "Don't be afraid, little one! I am Gabriel. I stand in the presence of God.",
+   "dir": "warm, strong and gentle at once, a big brother kneeling down to a small child; a smile in the voice; the name said with quiet joy",
+   "dur": 5.6,
+   "pre": 2.0,
+   "post": 0.5,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 8.7
+   }
+  },
+  {
+   "id": "ga_03",
+   "t": 26.98,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 4.45,
+   "ref": "Luke 1:19",
+   "zh": "上帝常常派我，把他的好消息，送给他爱的人。",
+   "en": "God sends me to carry His good news to the people He loves.",
+   "dir": "kind, like telling a secret about his job; a little proud and happy",
+   "dur": 4.4,
+   "pre": 0.3,
+   "post": 0.6,
+   "anchor": {
+    "line": "ga_02",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "ga_04",
+   "t": 33.38,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 6.83,
+   "ref": "Daniel 9:21-23",
+   "zh": "很久以前，但以理在祷告，我就飞去告诉他：上帝很爱你！",
+   "en": "Long ago, when Daniel was praying, I flew to him to tell him: God loves you very much!",
+   "dir": "storytelling, bright; a little lift on 飞去 / 'flew'; tender on 很爱你 / 'loves you'",
+   "dur": 6.78,
+   "pre": 1.4,
+   "post": 0.5,
+   "anchor": {
+    "line": "ga_03",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "id": "ga_05",
+   "t": 41.26,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 8.76,
+   "ref": "Luke 1:26-31",
+   "zh": "后来，我又去见一个叫马利亚的女孩，告诉她：你要生一个儿子，给他起名叫耶稣！",
+   "en": "Later, I went to a young woman named Mary, and told her: you will have a baby boy, and you will name him Jesus!",
+   "dir": "joyful and full of wonder; slow and glowing on 耶稣 / 'Jesus'",
+   "dur": 8.71,
+   "pre": 0.6,
+   "post": 0.6,
+   "anchor": {
+    "line": "ga_04",
+    "edge": "end",
+    "dt": 1.1
+   }
+  },
+  {
+   "id": "ga_06",
+   "t": 51.37,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 4.24,
+   "ref": "Luke 2:10",
+   "zh": "这是全世界最好的消息！听——",
+   "en": "It's the best news in the whole world! Listen...",
+   "dir": "excited, building; a breath and a hush on 听 / 'Listen'",
+   "dur": 4.19,
+   "pre": 0.8,
+   "post": 0.2,
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "ga_07",
+   "t": 64.76,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 7.02,
+   "ref": "Isaiah 41:10; Psalm 121:7-8",
+   "zh": "上帝爱你。不管你在哪里，他都看顾你。所以，不要怕！",
+   "en": "God loves you. Wherever you are, He is watching over you. So don't be afraid!",
+   "dir": "the heart of the story: slow, warm, very sure; a soft pause before 所以 / 'So'",
+   "dur": 6.97,
+   "pre": 1.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 9.2
+   }
+  },
+  {
+   "id": "ga_08",
+   "t": 72.73,
+   "who": "gabriel",
+   "voice": "gabriel",
+   "maxSec": 4.97,
+   "ref": "",
+   "zh": "下次，把我涂上你最喜欢的颜色吧！再见啦！",
+   "en": "Next time, colour me in with your favourite colours! Goodbye for now!",
+   "dir": "playful and warm, a laugh in it; big friendly goodbye",
+   "dur": 4.92,
+   "pre": 0.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "ga_07",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "ga_09",
+   "t": 80.55,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.29,
+   "ref": "Luke 2:10",
+   "zh": "加百列飞回了天上。上帝的好消息，也是给你的哦！",
+   "en": "Gabriel flew back up to heaven. And God's good news is for you, too!",
+   "dir": "warm closing, speaking right to the child; smile on the last words",
+   "dur": 6.24,
+   "pre": 2.6,
+   "post": 2.4,
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 2.9
+   }
+  }
+ ],
+ "fx": [
+  {
+   "t": 0.0,
+   "id": "heaven_rays",
+   "at": "stage",
+   "dur": 999,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "id": "cloud_drift",
+   "at": "stage",
+   "dur": 999,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 12.18,
+   "id": "descend_light",
+   "at": "gabriel.root",
+   "dur": 6.4,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 13.18,
+   "id": "feather_fall",
+   "at": "gabriel.chest",
+   "dur": 6.0,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 16.35,
+   "id": "wing_gust",
+   "at": "gabriel.root",
+   "dur": 1.4,
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 4.47
+   }
+  },
+  {
+   "t": 41.06,
+   "id": "sparkle",
+   "at": "gabriel.handR",
+   "dur": 1.2,
+   "anchor": {
+    "line": "ga_04",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 56.26,
+   "id": "trumpet_notes",
+   "at": "gabriel.trumpet",
+   "dur": 4.5,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 56.36,
+   "id": "golden_rays",
+   "at": "gabriel.root",
+   "dur": 5.0,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 56.76,
+   "id": "feather_fall",
+   "at": "gabriel.chest",
+   "dur": 5.0,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 64.16,
+   "id": "bless_glow",
+   "at": "gabriel.chest",
+   "dur": 5.0,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 8.6
+   }
+  },
+  {
+   "t": 78.55,
+   "id": "wing_gust",
+   "at": "gabriel.root",
+   "dur": 1.2,
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 79.35,
+   "id": "feather_fall",
+   "at": "stage",
+   "dur": 6.0,
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 1.7
+   }
+  }
+ ],
+ "sfx": [
+  {
+   "t": 12.58,
+   "id": "wing_flap",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 13.78,
+   "id": "wing_flap",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "t": 14.98,
+   "id": "wing_flap",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 3.1
+   }
+  },
+  {
+   "t": 16.28,
+   "id": "whoosh_land",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 4.4
+   }
+  },
+  {
+   "t": 17.38,
+   "id": "wing_fold",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 5.5
+   }
+  },
+  {
+   "t": 41.06,
+   "id": "sparkle",
+   "anchor": {
+    "line": "ga_04",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 56.26,
+   "id": "trumpet_call",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 61.36,
+   "id": "choir_ah",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 5.8
+   }
+  },
+  {
+   "t": 78.55,
+   "id": "wing_flap",
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 79.45,
+   "id": "wing_flap",
+   "anchor": {
+    "line": "ga_08",
+    "edge": "end",
+    "dt": 1.8
+   }
+  }
+ ],
+ "music": [
+  {
+   "t": 0.0,
+   "cue": "heaven",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 12.18,
+   "cue": "descend",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 18.58,
+   "cue": "gentle",
+   "anchor": {
+    "line": "ga_01",
+    "edge": "end",
+    "dt": 6.7
+   }
+  },
+  {
+   "t": 31.98,
+   "cue": "story",
+   "anchor": {
+    "line": "ga_03",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 50.57,
+   "cue": "fanfare",
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 63.56,
+   "cue": "gentle",
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 8.0
+   }
+  },
+  {
+   "t": 72.33,
+   "cue": "finale",
+   "anchor": {
+    "line": "ga_07",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "props": [
+  {
+   "t": 0.0,
+   "node": "gabriel/trumpet",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "gabriel/sword",
+   "show": true,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 50.57,
+   "node": "gabriel/trumpet",
+   "show": true,
+   "anchor": {
+    "line": "ga_05",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 63.56,
+   "node": "gabriel/trumpet",
+   "show": false,
+   "anchor": {
+    "line": "ga_06",
+    "edge": "end",
+    "dt": 8.0
+   }
+  }
+ ],
+ "requestedClips": [],
+ "timedFrom": "voices",
+ "durationAnchor": {
+  "line": "ga_09",
+  "edge": "end",
+  "dt": 2.4
+ },
+ "retime": 1
+}

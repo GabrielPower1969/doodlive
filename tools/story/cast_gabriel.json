@@ -1,0 +1,297 @@
+{
+ "_doc": "Gabriel voice cast (docs/gabriel/VOICE.md). Schema: tools/story/voice.py docstring; breaths, pitch pinning (f0Hz): tools/story/voice_extras.py; timbre pinning (mfccRef) and the clean-voice floor (hnrMin): tools/story/voice_gabriel.py.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "gabriel": {
+   "zh": "大天使加百列",
+   "en": "Gabriel the archangel"
+  }
+ },
+ "refZh": {
+  "Revelation ": "启示录 ",
+  "Luke ": "路加福音 ",
+  "Daniel ": "但以理书 ",
+  "Isaiah ": "以赛亚书 ",
+  "Psalm ": "诗篇 "
+ },
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "the storyteller of Esther, Ruth, Exodus, Prodigal and Daniel (Qwen vivian): the family's narrator across packs"
+   },
+   "gabriel": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 16,
+    "minPace": 3.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     130,
+     172
+    ],
+    "hnrMin": 7.5,
+    "mfccRef": [
+     100.56,
+     14.69,
+     9.79,
+     26.72,
+     -32.32,
+     -23.17,
+     30.69,
+     -24.86,
+     -13.34,
+     -3.37,
+     -14.47,
+     -18.56
+    ],
+    "mfccTol": 50,
+    "mfccWeight": 0.04,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，二十八岁左右，高大的年轻人。醇厚、温暖、有磁性的男中音，声音干净明亮、不沙哑，阳光、真诚、爱笑，像英雄大哥哥蹲下来轻声跟小朋友说话，绝不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。这一句：",
+    "why": "VoiceDesign young warm baritone (audition E seed 1: 139-189 Hz, HNR 9.3, CER 0.04); pinned 130-172 Hz so he stays one man and stays above Daniel (105 Hz). Not uncle_fu (three kings / fathers), not Daniel's design; eric misreads the name (加倍力); the edge voices read flat"
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.narrator",
+    "why": "the narrator of every pack, phrased"
+   },
+   "gabriel": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.4,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "hnrMin": 9.0,
+    "mfccRef": [
+     125.43,
+     86.07,
+     17.44,
+     42.41,
+     -6.93,
+     -9.07,
+     11.07,
+     -10.69,
+     -8.75,
+     -6.92,
+     -1.37,
+     -2.36
+    ],
+    "mfccTol": 50,
+    "mfccWeight": 0.04,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "Male, about thirty, a young warrior. A low-pitched, deep, warm baritone with a full chest, clean and steady, never husky; noble and strong, he smiles as he speaks and is very gentle with little children; never shouting.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace. This line: ",
+    "why": "VoiceDesign warm baritone (audition C: 110-162 / 117-136 / 110-138 Hz on three seeds, HNR 11-14, WER 0): the only designed voice that stayed in one register on every seed; pinned 105-150 Hz. Not ryan (Daniel), not William (kings, God), not Andrew / Brian (Boaz, the brothers)"
+   }
+  }
+ },
+ "lines": {
+  "ga_01": {
+   "m": "轻轻的、带着惊叹，像打开一个宝盒；慢一点；说到“加百列”时带着微笑",
+   "m_en": "hushed wonder, like opening a treasure box; slow; a smile on the name 'Gabriel'",
+   "d": "画面：睡前，你指着窗外的星星，小声告诉孩子天上有什么。",
+   "d_en": "Picture: bedtime; you point at the stars and tell the child in a low voice what is up there.",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    },
+    "phrases": [
+     {
+      "text": "High above,",
+      "rate": "-10%",
+      "pitch": "+1Hz",
+      "gap": 0.28
+     },
+     {
+      "text": "there is a city full of light,",
+      "rate": "-12%",
+      "pitch": "+2Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "where God's angels live.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "One of them is a great archangel.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "His name is Gabriel.",
+      "rate": "-15%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "ga_02": {
+   "m": "温暖、有力量又温柔，像大哥哥蹲下来对小朋友说话；声音里带着微笑；说自己名字时带着安静的喜乐",
+   "m_en": "warm, strong and gentle at once, a big brother kneeling down to a small child; a smile in the voice; the name said with quiet joy",
+   "d": "画面：你蹲下来，平视一个有点害怕的小朋友，对他笑。",
+   "d_en": "Picture: you kneel down to the eye level of a slightly scared child and smile.",
+   "zh": {
+    "pick": 2,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 2 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 4 takes that pass the gates; f0 167 Hz, HNR 8.7 dB, err 0.00"
+   },
+   "en": {
+    "takes": 12,
+    "pick": 8,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 8 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 4 takes that pass the gates; f0 132 Hz, HNR 9.9 dB, err 0.00"
+   }
+  },
+  "ga_03": {
+   "m": "亲切，像悄悄告诉小朋友自己的工作；有一点自豪，很开心",
+   "m_en": "kind, like telling a secret about his job; a little proud and happy",
+   "d": "画面：你告诉孩子“我的工作是送好消息”。",
+   "d_en": "Picture: you tell a child 'my job is to bring good news'.",
+   "zh": {
+    "pick": 0,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 0 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 3 takes that pass the gates; f0 157 Hz, HNR 9.7 dB, err 0.00"
+   },
+   "en": {
+    "pick": 2,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 2 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 3 takes that pass the gates; f0 126 Hz, HNR 12.5 dB, err 0.00"
+   }
+  },
+  "ga_04": {
+   "m": "讲故事的口气，明亮；“飞去”轻轻上扬；“上帝很爱你”说得温柔",
+   "m_en": "storytelling, bright; a little lift on 'flew'; tender on 'God loves you very much'",
+   "d": "画面：你一边比划一边讲自己飞了很远的路。",
+   "d_en": "Picture: you show with your hands how far you flew.",
+   "zh": {
+    "pick": 6,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 6 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 5 takes that pass the gates; f0 153 Hz, HNR 7.0 dB, err 0.00"
+   },
+   "en": {
+    "pick": 0,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 0 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 5 takes that pass the gates; f0 142 Hz, HNR 12.7 dB, err 0.00"
+   }
+  },
+  "ga_05": {
+   "m": "喜乐、充满惊叹；说到“耶稣”时放慢、发亮",
+   "m_en": "joyful and full of wonder; slow and glowing on 'Jesus'",
+   "d": "画面：你在告诉别人一个最大的好消息。",
+   "d_en": "Picture: you are telling someone the biggest good news there is.",
+   "zh": {
+    "pick": 14,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 14 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 7 takes that pass the gates; f0 142 Hz, HNR 8.9 dB, err 0.00"
+   },
+   "en": {
+    "pick": 0,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 0 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 6 takes that pass the gates; f0 112 Hz, HNR 10.9 dB, err 0.00"
+   }
+  },
+  "ga_06": {
+   "m": "兴奋，越说越亮；说“听”之前吸一口气，“听”字轻轻的、拉长，像让大家安静下来",
+   "m_en": "excited, building; a breath, then a hushed, drawn-out 'Listen', as if asking everyone to be still",
+   "d": "画面：你举起号角，眼睛发亮，让小朋友竖起耳朵。",
+   "d_en": "Picture: you lift the trumpet, eyes shining, and make the child prick up their ears.",
+   "zh": {
+    "f0Hz": [
+     130,
+     200
+    ],
+    "pick": 8,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 8 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 1 takes that pass the gates; f0 183 Hz, HNR 5.1 dB, err 0.00",
+    "hnrMin": 5.5
+   },
+   "en": {
+    "takes": 12,
+    "pick": 5,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 5 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 4 takes that pass the gates; f0 127 Hz, HNR 12.5 dB, err 0.00"
+   }
+  },
+  "ga_07": {
+   "m": "故事的中心：慢、温暖、非常确定；“所以”之前轻轻停一下；最后“不要怕”带着微笑",
+   "m_en": "the heart of the story: slow, warm, very sure; a soft pause before 'So'; a smile on 'don't be afraid'",
+   "d": "画面：你把手放在胸口，看着孩子的眼睛。",
+   "d_en": "Picture: your hand on your heart, looking into the child's eyes.",
+   "zh": {
+    "pick": 5,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 5 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 4 takes that pass the gates; f0 147 Hz, HNR 9.2 dB, err 0.00"
+   },
+   "en": {
+    "pick": 1,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 1 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 4 takes that pass the gates; f0 121 Hz, HNR 13.9 dB, err 0.00"
+   }
+  },
+  "ga_08": {
+   "m": "俏皮又温暖，带着笑；大大方方地说再见",
+   "m_en": "playful and warm, a laugh in it; a big friendly goodbye",
+   "d": "画面：你一边挥手一边准备飞走。",
+   "d_en": "Picture: you wave as you get ready to fly off.",
+   "zh": {
+    "pick": 1,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 1 is the take of this line nearest to the set's anchor (ga_02 take 2) in timbre and pitch among the 1 takes that pass the gates; f0 164 Hz, HNR 6.9 dB, err 0.00"
+   },
+   "en": {
+    "takes": 12,
+    "pick": 9,
+    "pickWhy": "one-man set (voice_gabriel.py consistent): take 9 is the take of this line nearest to the set's anchor (ga_07 take 1) in timbre and pitch among the 2 takes that pass the gates; f0 118 Hz, HNR 13.5 dB, err 0.25"
+   }
+  },
+  "ga_09": {
+   "m": "温暖的结尾，直接对着孩子说；最后几个字带着微笑",
+   "m_en": "warm closing, speaking right to the child; a smile on the last words",
+   "d": "画面：你合上图画书，摸摸孩子的头。",
+   "d_en": "Picture: you close the picture book and stroke the child's hair.",
+   "en": {
+    "phrases": [
+     {
+      "text": "Gabriel flew back up to heaven.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "And God's good news",
+      "rate": "-10%",
+      "pitch": "+1Hz",
+      "gap": 0.12
+     },
+     {
+      "text": "is for you, too!",
+      "rate": "-14%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  }
+ }
+}

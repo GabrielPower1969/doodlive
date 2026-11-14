@@ -123,6 +123,7 @@ export const STR = {
     dg_brother: "哥哥",
     dg_friends: "朋友们",
     dg_servants: "仆人",
+    dg_gabriel: "加百列",
   },
   en: {
     appTitle: "DoodLive · Colour-in Angel AR",
@@ -246,6 +247,7 @@ export const STR = {
     dg_brother: "Big brother",
     dg_friends: "Friends",
     dg_servants: "Servants",
+    dg_gabriel: "Gabriel",
   },
 };
 const saved = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();
