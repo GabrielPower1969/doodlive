@@ -57,11 +57,13 @@ namespace DoodLive.DavidGoliath
                                  new StoneTrail(), new HitFlash(), new DizzyStars(), new DustBurst(), new Confetti(), new GoldenRays(),
                              })
                         map[d.Id] = d;
-                    // Esther (story pack #2, StoryFxEsther.cs): added after D&G so an existing id is never replaced
-                    foreach (var d in EstherFx.Defs)
-                        if (!map.ContainsKey(d.Id)) map[d.Id] = d;
+                    // Story packs, added after D&G so an existing id is never replaced. GENERATED from each pack's
+                    // assets/<id>/manifest.json "fx" by tools/story/merge_packs.py: do not edit between the markers.
+                    // story-fx:start
+                    foreach (var d in EstherFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Esther (pack #2, StoryFxEsther.cs)
                     foreach (var d in RuthFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Ruth (pack #3, StoryFxRuth.cs)
-                    foreach (var d in DanielFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d; // Daniel (pack #4, StoryFxDaniel.cs)
+                    foreach (var d in DanielFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Daniel (pack #4, StoryFxDaniel.cs)
+                    // story-fx:end
                 }
                 return map;
             }

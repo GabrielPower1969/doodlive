@@ -1,0 +1,76 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "esther",
+ "registry": {
+  "id": "esther",
+  "engine": "story",
+  "order": 2,
+  "title_zh": "勇敢的王后",
+  "title_en": "The Brave Queen",
+  "sheets": [
+   "esther-A4",
+   "esther-A4-demo"
+  ],
+  "cast": [
+   "esther",
+   "king",
+   "haman",
+   "guard1",
+   "guard2"
+  ],
+  "paint": {
+   "guard1": "guard_paint.png",
+   "guard2": "guard_paint.png"
+  },
+  "set": "palace",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "esther",
+  "pinyin": "yǒng gǎn de wáng hòu",
+  "blurb_zh": "以斯帖王后很害怕，却还是勇敢地去见国王，救了她的族人。",
+  "blurb_en": "Queen Esther is afraid, but she bravely goes to the king and saves her people.",
+  "minutes": 3,
+  "cover": {
+   "video": "demo-esther-3d0090b-dirty.20261113-2336.mp4",
+   "t": 150,
+   "box": [
+    390,
+    1320,
+    1200
+   ]
+  },
+  "after": "david-goliath"
+ },
+ "strings": {
+  "dg_esther": {
+   "zh": "以斯帖",
+   "en": "Esther"
+  },
+  "dg_king": {
+   "zh": "亚哈随鲁王",
+   "en": "King Xerxes"
+  },
+  "dg_haman": {
+   "zh": "哈曼",
+   "en": "Haman"
+  },
+  "dg_mordecai": {
+   "zh": "末底改",
+   "en": "Mordecai"
+  },
+  "dg_herald": {
+   "zh": "传令官",
+   "en": "Herald"
+  },
+  "dg_crowd": {
+   "zh": "众人",
+   "en": "Crowd"
+  }
+ },
+ "fx": {
+  "class": "EstherFx",
+  "note": "Esther (pack #2, StoryFxEsther.cs)"
+ }
+}

@@ -29,6 +29,8 @@ docs/<id>/design/faces/<cast>_<expr>.png
 
 ## Adding a story
 
+Full checklist with review gates and the shared kit: `docs/NEW-STORY.md`, `docs/STORY-KIT.md`. In short:
+
 1. Registry entry in `assets/stories.json` (`engine: "story"`).
 2. `docs/<id>/storyboard/story.py` (beats), `tools/story/voice.py <id> gen`, `tools/story/build_timeline.py <id>`.
 3. Blender: characters, set, animation, sheet (see the pack's CONTRACT.md).

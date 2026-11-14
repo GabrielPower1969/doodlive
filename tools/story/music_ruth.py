@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Original score and sound effects for "Ruth" (story pack #3; docs/ruth/CONTRACT.md section 7, docs/ruth/MUSIC.md).
 
-Same machinery as Esther, shared rather than forked: this script imports tools/story/music_esther.py as a library
+Same machinery as Esther, shared rather than forked: this script imports tools/story/music_kit.py (moved out of music_esther.py)
 (Score / Part / mel / groove / fill_phrase / Ctx, the FluidSynth renderer, the convolution hall, loudness and file
 helpers, the synthesis primitives) and never changes it, so Esther's output is untouched. Only the Ruth cues, the
 Ruth effects and the Ruth paths live here.
@@ -38,8 +38,8 @@ from scipy import signal
 from scipy.io import wavfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import music_esther as me                                                  # noqa: E402  (shared library)
-from music_esther import (Score, Ctx, mel, groove, note, SR, XFADE, MUSIC_LUFS, SFX_PEAK_DB, DUCK_DB,  # noqa: E402
+import music_kit as me                                                     # noqa: E402  (shared engine)
+from music_kit import (Score, Ctx, mel, groove, note, SR, XFADE, MUSIC_LUFS, SFX_PEAK_DB, DUCK_DB,  # noqa: E402
                           HARP, KOTO, NYLON, CELESTA, GLOCK, XYLO, STRINGS, SLOW_STR, TREM_STR, PIZZ, CELLO, CBASS,
                           CHOIR, OOHS, FLUTE, OBOE, BASSOON, CLARINET, TIMPANI, HORN, DRUMS,
                           BDRUM, CLAP, TAMB, HI_BONGO, LO_BONGO, MUTE_CONGA, OPEN_CONGA, LO_CONGA, HI_WOOD, LO_WOOD,
@@ -695,7 +695,7 @@ def render_split(s):
 
 
 def clean_tmp():
-    """music_esther's renderer leaves one temp dir per stem; keep ours in one run dir and empty it after each cue
+    """music_kit's renderer leaves one temp dir per stem; keep ours in one run dir and empty it after each cue
     (a full unattended run otherwise leaks several GB)."""
     root = tempfile.tempdir
     if root and os.path.basename(root).startswith("music_ruth_"):
@@ -851,7 +851,7 @@ def sfx_crickets_night(ctx):
 
 
 def sfx_sparkle(ctx):
-    """Naomi's blessing: Esther's shower of tiny bells (D major pentatonic), shared from music_esther."""
+    """Naomi's blessing: Esther's shower of tiny bells (D major pentatonic), shared from music_kit."""
     return me.sfx_sparkle()
 
 
@@ -930,7 +930,7 @@ def cue_spans(tl):
 def build_music(tl, only=None):
     spans = cue_spans(tl)
     names = [c["cue"] for c in spans]
-    assert len(set(names)) == len(names), "a Ruth cue plays twice; add music_esther.cue_files-style handling"
+    assert len(set(names)) == len(names), "a Ruth cue plays twice; add cue_files-style handling as in music_esther.py"
     missing = sorted(set(names) - set(MUSIC)); assert not missing, f"no composer for cue(s) {missing}"
     path_json = f"{MUSIC_DIR}/cues.json"
     old = {c["cue"]: c for c in json.load(open(path_json))["cues"]} if only and os.path.exists(path_json) else {}
