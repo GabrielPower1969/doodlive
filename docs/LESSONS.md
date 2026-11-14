@@ -384,3 +384,11 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   `ARColoringController.LineFree` erases the lines of every story's demo texture once (RenderTexture read-back).
 - Prevention: any new story character built by front projection needs the same pass (Esther/Ruth use their own
   occlusion fix, `es_characters.py`); check a BACK view render, not only the front, before calling a model done.
+
+### L52 · A Unity Android build cut another session's phone recording · 2026-11-14 · confirmed
+- Symptom: a scrcpy demo recording on the Pixel stopped at 105 s while `scripts/build-apk.sh` ran in another session.
+- Cause: Unity's Android build (even `-batchmode`, no install) restarts the adb server, which drops every live adb
+  connection, scrcpy included.
+- Prevention: a build counts as "using the phone". When several sessions share one machine, nobody runs
+  `build-apk.sh`, `install-apk.sh`, `record-demo.sh` or any adb command while another session is recording; announce
+  each of them first and wait for "phone free".

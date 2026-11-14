@@ -1,0 +1,757 @@
+{
+ "_doc": "The prodigal son voice cast (docs/prodigal/VOICE.md). Schema: tools/story/voice.py docstring; breaths: voice_extras.py; `reverb` / `grid` / `mfccRef` are read by tools/story/voice_exodus.py, which tools/story/voice_prodigal.py (this pack's wrapper) imports. `designs` = alternative VoiceDesign descriptions auditioned (voice_prodigal.py audition ROLE LANG LINE --design N).",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "son": {
+   "zh": "小儿子",
+   "en": "The younger son"
+  },
+  "father": {
+   "zh": "爸爸",
+   "en": "The father"
+  },
+  "brother": {
+   "zh": "哥哥",
+   "en": "The big brother"
+  },
+  "friends": {
+   "zh": "朋友们",
+   "en": "Friends"
+  },
+  "servants": {
+   "zh": "仆人",
+   "en": "Servants"
+  }
+ },
+ "refZh": {
+  "Luke ": "路加福音 "
+ },
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 3,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "same voice and note as Ruth / Esther / Exodus: one storyteller across the packs"
+   },
+   "son": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 5,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十岁左右的小儿子，大男孩。声音年轻、明亮、清亮，音调中等偏高，口齿清楚，说话轻快灵活，有点调皮、爱耍宝，情绪变化大，表情丰富。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     265
+    ],
+    "f0Ceil": 300,
+    "mfccRef": [
+     170.25,
+     -59.67,
+     -22.72,
+     -44.95,
+     -54.56,
+     -24.83,
+     13.56,
+     -59.77,
+     -16.42,
+     -5.97,
+     -25.03,
+     -14.26
+    ],
+    "mfccTol": 70,
+    "mfccWeight": 0.15,
+    "why": "VoiceDesign young man; one person across 11 lines by the pitch pin and the timbre pin (reference: audition take pr_02 seed 0). CustomVoice `eric` was tried for stability and rejected: Sichuan accent (做->住, 饿->我) even when told to speak standard Mandarin"
+   },
+   "father": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 5,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，六十岁左右的爸爸，花白胡子的农庄主人。声音温暖、圆润、干净的男中音，一点也不沙哑、不粗糙，音色柔和明亮，说话慢慢的、轻轻的，非常慈祥、有耐心，常常带着笑意，感情很深，一动情声音就有点哽咽。身体硬朗，精神好。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.4,
+    "maxPause": 1.3,
+    "f0Hz": [
+     110,
+     210
+    ],
+    "f0Ceil": 300,
+    "mfccTol": 70,
+    "mfccWeight": 0.15,
+    "why": "VoiceDesign, warm sixty, clean and round (not husky): the first, husky description came out 51 from Moses (inside his spread) and was replaced. Timbre reference: audition take pr_27 seed 0 (157 Hz, HNR 11 dB vs Moses 4.5); takes closer than 85 to Moses' centroid lose points. Not Boaz / Esther's king (uncle_fu).",
+    "mfccRef": [
+     111.67,
+     57.57,
+     43.39,
+     28.03,
+     -2.66,
+     -3.13,
+     15.33,
+     -16.33,
+     -15.23,
+     -8.7,
+     -1.55,
+     -18.63
+    ],
+    "mfccAvoid": [
+     {
+      "who": "moses",
+      "ref": [
+       90.04,
+       32.54,
+       -6.16,
+       6.04,
+       -42.77,
+       -14.46,
+       41.15,
+       -23.27,
+       -14.47,
+       -5.71,
+       3.41,
+       -17.64
+      ],
+      "min": 85,
+      "weight": 0.15
+     }
+    ]
+   },
+   "brother": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十八岁左右的大儿子，天天下地干活的庄稼汉，大个子。声音低沉、厚重、有点粗哑，鼻音重一点，说话闷声闷气、慢吞吞、硬邦邦的，爱发牢骚，心里委屈。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     185
+    ],
+    "f0Ceil": 300,
+    "mfccTol": 70,
+    "mfccWeight": 0.15,
+    "why": "VoiceDesign, low, thick, a bit nasal and gruff; the earlier descriptions came out as high as the son (timbre 50 apart). Timbre reference: audition pr_26 seed 0 (129 Hz); kept away from the son's centroid.",
+    "mfccRef": [
+     175.07,
+     49.74,
+     25.9,
+     4.48,
+     -48.63,
+     -31.87,
+     17.37,
+     -22.43,
+     -29.84,
+     -7.59,
+     -0.94,
+     -2.51
+    ],
+    "mfccAvoid": [
+     {
+      "who": "son",
+      "ref": [
+       118.53,
+       -14.52,
+       -20.17,
+       -37.89,
+       -46.6,
+       -27.23,
+       9.21,
+       -44.95,
+       -28.37,
+       -11.41,
+       -22.3,
+       -27.62
+      ],
+      "min": 90,
+      "weight": 0.15
+     }
+    ]
+   },
+   "friends": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.15,
+    "seed": 31,
+    "instruct": "几个年轻朋友一起说，嘻嘻哈哈、很自然，像真人。",
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunxiNeural",
+      "rate": "+12%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rate": "+16%",
+      "delay": 0.08,
+      "gainDb": -3
+     },
+     {
+      "engine": "qwen",
+      "voice": "dylan",
+      "delay": 0.14,
+      "gainDb": -5,
+      "seed": 2
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+18%",
+      "delay": 0.2,
+      "gainDb": -6,
+      "semitones": 0.8
+     }
+    ]
+   },
+   "servants": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.6,
+    "wet": 0.2,
+    "seed": 41,
+    "instruct": "两三个仆人一起高兴地答应主人，干脆、热情。",
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "+6%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "+10%",
+      "delay": 0.07,
+      "gainDb": -4,
+      "semitones": -1.0
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rate": "+12%",
+      "delay": 0.13,
+      "gainDb": -6
+     }
+    ]
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "why": "same as Ruth / Esther / Exodus"
+   },
+   "son": {
+    "engine": "edge",
+    "voice": "en-US-BrianMultilingualNeural",
+    "rate": "+0%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive"
+   },
+   "father": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "Male, about sixty, a kind farmer father with a grey beard. A clear, smooth, warm and gentle baritone, bright and soft, not gravelly, not husky, not rough at all; patient and unhurried, often smiling as he talks; his feelings run deep and his voice catches when he is moved. Healthy and full of life. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not stagey, real breaths, normal flowing pace. This line: ",
+    "minPace": 2.0,
+    "maxPause": 1.3,
+    "f0Hz": [
+     100,
+     200
+    ],
+    "f0Ceil": 300,
+    "mfccTol": 70,
+    "mfccWeight": 0.15,
+    "why": "Qwen VoiceDesign, not edge: he laughs through tears (pr_21) and his voice catches (pr_03); the deep multilingual edge voices are taken (Andrew = Boaz, William = Exodus God / Daniel's king). Clear, smooth description after the first (husky) one came out 36 from en Moses. Timbre reference: audition pr_21 seed 1; kept away from Moses' centroid.",
+    "mfccRef": [
+     166.32,
+     -19.07,
+     -32.22,
+     18.37,
+     -16.04,
+     -49.51,
+     13.34,
+     -25.72,
+     -33.52,
+     -8.82,
+     -9.65,
+     -5.09
+    ],
+    "mfccAvoid": [
+     {
+      "who": "moses",
+      "ref": [
+       141.36,
+       65.37,
+       5.78,
+       35.7,
+       6.6,
+       -12.94,
+       9.5,
+       -1.98,
+       -6.8,
+       -14.32,
+       1.59,
+       -1.69
+      ],
+      "min": 85,
+      "weight": 0.15
+     }
+    ]
+   },
+   "brother": {
+    "engine": "edge",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "+0%",
+    "pitch": "-4Hz",
+    "fx": "plain",
+    "chain": "expressive"
+   },
+   "friends": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.15,
+    "seed": 31,
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "en-US-EricNeural",
+      "rate": "+14%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "en-GB-LibbyNeural",
+      "rate": "+18%",
+      "delay": 0.08,
+      "gainDb": -3
+     },
+     {
+      "engine": "edge",
+      "voice": "en-CA-LiamNeural",
+      "rate": "+12%",
+      "delay": 0.14,
+      "gainDb": -5
+     },
+     {
+      "engine": "edge",
+      "voice": "en-US-AriaNeural",
+      "rate": "+20%",
+      "delay": 0.2,
+      "gainDb": -6,
+      "semitones": 0.8
+     }
+    ]
+   },
+   "servants": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.6,
+    "wet": 0.2,
+    "seed": 41,
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "en-US-RogerNeural",
+      "rate": "+8%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "en-GB-ThomasNeural",
+      "rate": "+10%",
+      "delay": 0.07,
+      "gainDb": -4
+     },
+     {
+      "engine": "edge",
+      "voice": "en-AU-NatashaNeural",
+      "rate": "+12%",
+      "delay": 0.13,
+      "gainDb": -6
+     }
+    ]
+   }
+  }
+ },
+ "lines": {
+  "pr_01": {
+   "m": "讲故事的开头，温暖亲切；“弟弟呢”之后停一下，带着一点笑意说“就爱玩”"
+  },
+  "pr_02": {
+   "m": "调皮、轻松、有点被宠坏了，大大咧咧地伸手要钱；“好好玩一玩”说得特别兴奋、明亮，像要去游乐园"
+  },
+  "pr_03": {
+   "m": "先轻轻叹一口气“唉……”（真的叹气）；然后慈爱、很慢；“你……”之后哽咽一下，再轻轻说“要小心啊”",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw"
+   }
+  },
+  "pr_04": {
+   "m": "满不在乎、像唱歌一样一边走一边喊，开开心心"
+  },
+  "pr_05": {
+   "m": "低声嘟囔、不屑，从鼻子里“哼”一声（真的哼），自言自语",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜",
+    "seed": 4,
+    "takes": 5,
+    "note": "seeds 0-3: the best-scored take dropped the 哼 (就知道玩。); seeds 4-8 tried"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Hmph.",
+      "rate": "-10%",
+      "gap": 0.3
+     },
+     {
+      "text": "All he thinks about is having fun.",
+      "rate": "-4%",
+      "pitch": "-4Hz"
+     }
+    ]
+   }
+  },
+  "pr_06": {
+   "m": "轻快生动，有点不赞成，像在讲一个淘气的朋友；“花钱像流水一样”说得夸张一点"
+  },
+  "pr_07": {
+   "m": "显摆、大声、哈哈笑着请客，得意洋洋"
+  },
+  "pr_08": {
+   "m": "一群朋友一起欢呼，嘻嘻哈哈"
+  },
+  "pr_09": {
+   "m": "先疑惑地“咦？”（真的一声），翻口袋找钱；然后慢慢明白过来，越来越慌，最后“一个都没有了”声音小小的、发虚",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Huh?",
+      "rate": "-6%",
+      "pitch": "+10Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "Where's my money?...",
+      "rate": "+4%",
+      "gap": 0.55
+     },
+     {
+      "text": "There's none left?",
+      "rate": "-14%",
+      "pitch": "-6Hz"
+     }
+    ]
+   }
+  },
+  "pr_10": {
+   "m": "突然冷淡、敷衍，边说边走开",
+   "tail": {
+    "fade": 1.2,
+    "lowpass": 2200
+   }
+  },
+  "pr_11": {
+   "m": "放慢，严肃，声音干干的、轻轻的"
+  },
+  "pr_12": {
+   "m": "平平地说，说到“喂猪”时轻轻皱一下眉"
+  },
+  "pr_13": {
+   "m": "有气无力、又饿又可怜，自己可怜自己；“好饿呀”拖长；“看起来都好香”带着好笑的馋劲儿",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "I'm so hungry...",
+      "rate": "-22%",
+      "pitch": "-6Hz",
+      "gap": 0.6
+     },
+     {
+      "text": "even the pigs' pods look yummy...",
+      "rate": "-16%",
+      "pitch": "-4Hz"
+     }
+    ]
+   }
+  },
+  "pr_14": {
+   "m": "很轻、慢慢想明白，快要哭了，声音发酸",
+   "en": {
+    "phrases": [
+     {
+      "text": "Even the workers at my dad's house have plenty to eat...",
+      "rate": "-12%",
+      "pitch": "-4Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "and here I am, starving.",
+      "rate": "-18%",
+      "pitch": "-8Hz"
+     }
+    ]
+   }
+  },
+  "pr_15": {
+   "m": "忽然想到办法，眼睛一亮，充满希望，声音抬起来"
+  },
+  "pr_16": {
+   "m": "一边走一边练习道歉，认真、有点笨拙，句子之间吸一口气，像在背台词",
+   "en": {
+    "phrases": [
+     {
+      "text": "Dad, I was wrong...",
+      "rate": "-8%",
+      "gap": 0.4
+     },
+     {
+      "text": "I sinned against God and against you.",
+      "rate": "-6%",
+      "gap": 0.35
+     },
+     {
+      "text": "I don't deserve to be your son.",
+      "rate": "-8%",
+      "pitch": "-3Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Let me be one of your workers.",
+      "rate": "-4%"
+     }
+    ]
+   }
+  },
+  "pr_17": {
+   "m": "自言自语，先“嗯……”（真的一声，想一想），然后点点头，有点紧张",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Hmm...",
+      "rate": "-20%",
+      "gap": 0.35
+     },
+     {
+      "text": "yes. I'll say that.",
+      "rate": "-6%"
+     }
+    ]
+   }
+  },
+  "pr_18": {
+   "m": "温柔、慢慢地，带着盼望和想念"
+  },
+  "pr_19": {
+   "m": "不敢相信，声音一点点抬高，越说越激动、越高兴，呼吸都快了",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw"
+   }
+  },
+  "pr_20": {
+   "m": "小声地哭着说，声音发抖、抽泣，很小很小；最后一句没说完就停住",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Dad, I was wrong.",
+      "rate": "-18%",
+      "pitch": "-8Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "I don't deserve to be your son...",
+      "rate": "-20%",
+      "pitch": "-10Hz"
+     }
+    ]
+   }
+  },
+  "pr_21": {
+   "m": "高兴得一边哭一边笑，带着笑声抢着打断他，大声、忙忙碌碌地吩咐，开心极了",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw"
+   }
+  },
+  "pr_22": {
+   "m": "两三个仆人一起热情地答应，干脆"
+  },
+  "pr_23": {
+   "m": "对所有人高兴地宣布，声音洪亮、喜极而泣；“失而又得”放慢、加重"
+  },
+  "pr_24": {
+   "m": "先疑惑地“咦？”（真的一声），侧耳听；然后“什么？”越说越生气，不敢相信",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Huh?",
+      "pitch": "+6Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "What's all that noise at home?...",
+      "rate": "-4%",
+      "gap": 0.5
+     },
+     {
+      "text": "What?",
+      "pitch": "+10Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "My brother's back, and Dad's throwing him a party?",
+      "rate": "+6%",
+      "pitch": "+4Hz"
+     }
+    ]
+   }
+  },
+  "pr_25": {
+   "m": "从鼻子里重重地“哼！”一声（真的哼），赌气、倔强、大声",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|哎|唉|阿|咦|嗯|呀|耶|呜"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|ah|whoa|huh|wow|oh|hmm|yay|um|uh|aw",
+    "phrases": [
+     {
+      "text": "Hmph!",
+      "rate": "-10%",
+      "gap": 0.3
+     },
+     {
+      "text": "I'm not going in!",
+      "rate": "+4%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "pr_26": {
+   "m": "委屈又生气，越说越激动，最后一句声音有点发颤、快要哭出来",
+   "en": {
+    "phrases": [
+     {
+      "text": "I've worked for you every single day and never disobeyed you.",
+      "rate": "+2%",
+      "gap": 0.4
+     },
+     {
+      "text": "But you never even gave me a little goat!",
+      "rate": "+6%",
+      "pitch": "+6Hz"
+     }
+    ]
+   }
+  },
+  "pr_27": {
+   "m": "非常温柔、耐心、慢慢地，两个儿子都爱；最后是一个带着盼望的问句"
+  },
+  "pr_28": {
+   "m": "温暖地点出道理，直接对孩子说话"
+  },
+  "pr_29": {
+   "m": "微笑着、轻轻地鼓励孩子，最后一句像一个拥抱"
+  }
+ },
+ "designs": {
+  "zh.son": [
+   {
+    "engine": "qwen",
+    "voice": "eric",
+    "design": "",
+    "instruct": "用标准普通话说，不带四川口音、不说方言，字音清楚。像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句："
+   }
+  ],
+  "zh.brother": [
+   {
+    "design": "男性，二十六七岁的大儿子，天天下地干活的青年农夫。声音偏低、结实、粗一点、有点闷，说话直来直去、硬邦邦的，爱嘟囔、有点倔，心里委屈。普通话标准。",
+    "note": "first description: 184-215 Hz, as high as the son; replaced"
+   },
+   {
+    "design": "男性，二十六七岁的大儿子，天天下地干活的青年农夫，大个子。男中低音，嗓音粗、厚、胸腔共鸣足，音调偏低，说话慢一点、闷声闷气、硬邦邦的，爱嘟囔、有点倔，心里委屈。普通话标准。",
+    "note": "second description: timbre 50 from the son; replaced"
+   }
+  ],
+  "zh.father": [
+   {
+    "design": "男性，六十岁左右的爸爸，花白胡子的农庄主人。声音温暖、柔和、醇厚的中低音，略带一点沙哑，说话慢慢的，非常慈祥、有耐心，感情很深，一动情声音就有点哽咽。身体硬朗，声音不虚弱、不发抖。普通话标准。",
+    "note": "first description (husky): timbre 51 from Moses' centroid, inside both spreads; replaced 2026-11-14"
+   }
+  ],
+  "en.father": [
+   {
+    "design": "Male, about sixty, a kind farmer father with a grey beard. A warm, soft, mellow baritone with a little husk, gentle and patient, unhurried; his feelings run deep and his voice catches when he is moved. Healthy and strong, not frail, not shaky. Standard American English.",
+    "note": "first description (a little husk): timbre 36 from en Moses; replaced"
+   }
+  ]
+ }
+}

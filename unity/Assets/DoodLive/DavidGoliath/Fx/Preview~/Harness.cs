@@ -42,6 +42,8 @@ static class Harness {
     for (int i = 0; i < n; i++) { var c = DGFxPaint.Cells[i]; mn[i] = new Vector2(c[0]/(float)S, c[1]/(float)S); sz[i] = new Vector2(c[2]/(float)S, c[3]/(float)S); }
     if (args.Length > 1 && args[1] == "ruth") { RuthPreview.Run(outDir, mn, sz); return; }   // Ruth rows: RuthPreview.cs
     if (args.Length > 1 && args[1] == "daniel") { DanielPreview.Run(outDir, mn, sz); return; }   // Daniel rows: DanielPreview.cs
+    if (args.Length > 1 && args[1] == "exodus") { ExodusPreview.Run(outDir, mn, sz); return; }   // Exodus rows: ExodusPreview.cs
+    if (args.Length > 1 && args[1] == "prodigal") { ProdigalPreview.Run(outDir, mn, sz); return; }   // Prodigal rows: ProdigalPreview.cs
     var sb = new StringBuilder(); sb.Append("{");
     bool firstFx = true;
     esther = args.Length > 1 && args[1] == "esther";

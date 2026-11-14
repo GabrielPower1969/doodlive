@@ -37,6 +37,7 @@ namespace DoodLive.EditorTools
             foreach (var d in new[] { "Resources", "Tracking", "Textures", "Materials", "Angel", "Settings", "Scenes" })
                 Directory.CreateDirectory(Path.Combine(Root, d));
             CopyInputs();
+            SheetPdfSetup.Copy();                                               // book-page save / share / print (docs/LIBRARY.md)
             bool dgOk = DGSetup.CopyInputs();                                   // David & Goliath (docs/david-goliath/INTEGRATION.md)
             if (dgOk) DGSetup.CheckTemplate($"{Root}/Resources/template.json");
             var sheetPaths = Sheets.Select(n => $"{Root}/Tracking/{n}.png").ToList();

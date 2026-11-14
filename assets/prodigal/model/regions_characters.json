@@ -1,0 +1,822 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/pr_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as D&G id_2x).",
+ "sheet": {
+  "father": {
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "son": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "brother": {
+   "sheetX": 0.33,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "father": {
+   "height": 0.36,
+   "bboxSheet": [
+    -0.4661,
+    0.0166,
+    -0.1939,
+    0.3785
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#D39A6F",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4661,
+      0.0191,
+      -0.1939,
+      0.3649
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#B9B4AE",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "beardLong",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.3572,
+      0.2621,
+      -0.3028,
+      0.3734
+     ]
+    },
+    "tunic": {
+     "id": 3,
+     "hex": "#F1E6CC",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.4487,
+      0.0244,
+      -0.2113,
+      0.2941
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3683,
+      0.0166,
+      -0.2917,
+      0.0378
+     ]
+    },
+    "sash": {
+     "id": 5,
+     "hex": "#8A5A3B",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      -0.3775,
+      0.1741,
+      -0.2825,
+      0.2413
+     ]
+    },
+    "robe": {
+     "id": 6,
+     "hex": "#3F7A55",
+     "zh": "袍子",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.4486,
+      0.033,
+      -0.2113,
+      0.2932
+     ]
+    },
+    "headcloth": {
+     "id": 7,
+     "hex": "#FBF8EF",
+     "zh": "头巾",
+     "en": "head-cloth",
+     "parts": [
+      "headcloth"
+     ],
+     "bboxSheet": [
+      -0.3924,
+      0.2355,
+      -0.267,
+      0.3785
+     ]
+    },
+    "cord": {
+     "id": 8,
+     "hex": "#3E6FB0",
+     "zh": "头巾绳",
+     "en": "head-cloth cord",
+     "parts": [
+      "cord"
+     ],
+     "bboxSheet": [
+      -0.3645,
+      0.3536,
+      -0.2955,
+      0.3676
+     ],
+     "anchoredTo": "cord",
+     "anchorUV": [
+      0.16725,
+      0.29279
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "purse": {
+     "id": 9,
+     "hex": "#8A5A3B",
+     "zh": "钱袋",
+     "en": "money bag",
+     "parts": [
+      "purse"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "father.sash",
+     "anchorUV": [
+      0.15925,
+      0.18888
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.father.propUV.purse = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02171,
+     0.29686,
+     0.02171,
+     0.34027
+    ],
+    "px": 512,
+    "default": "kind",
+    "files": {
+     "kind": "docs/prodigal/design/faces/father_kind.png",
+     "talk": "docs/prodigal/design/faces/father_talk.png",
+     "sad": "docs/prodigal/design/faces/father_sad.png",
+     "longing": "docs/prodigal/design/faces/father_longing.png",
+     "surprise": "docs/prodigal/design/faces/father_surprise.png",
+     "joy": "docs/prodigal/design/faces/father_joy.png",
+     "cry_joy": "docs/prodigal/design/faces/father_cry_joy.png",
+     "plead": "docs/prodigal/design/faces/father_plead.png"
+    },
+    "clipExpression": {
+     "idle": "kind",
+     "walk": "kind",
+     "talk": "talk",
+     "sad_give": "sad",
+     "wave_sad": "sad",
+     "look_far": "longing",
+     "see_son": "surprise",
+     "run": "joy",
+     "hug": "cry_joy",
+     "call_servants": "joy",
+     "feast_cheer": "joy",
+     "dance": "joy",
+     "plead": "plead",
+     "arm_out": "kind"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [
+     [
+      "chest",
+      6.0
+     ],
+     [
+      "neck",
+      5.0
+     ],
+     [
+      "head",
+      -7.0
+     ],
+     [
+      "upperArmL",
+      -6.0
+     ],
+     [
+      "upperArmR",
+      -6.0
+     ]
+    ],
+    "note": "father: the slight stoop (degrees about design X) is baked into the rest skeleton"
+   },
+   "props": {
+    "purse": {
+     "bone": "purse",
+     "mesh": "father_purse",
+     "node": "father/purse",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "father.FACE",
+     "uv": [
+      0.15575,
+      0.26671
+     ],
+     "local": [
+      -0.0142,
+      0.3123
+     ]
+    },
+    "handR.skin": {
+     "target": "father.FACE",
+     "uv": [
+      0.15575,
+      0.26671
+     ],
+     "local": [
+      -0.0142,
+      0.3123
+     ]
+    },
+    "legL.skin": {
+     "target": "father.FACE",
+     "uv": [
+      0.15575,
+      0.26671
+     ],
+     "local": [
+      -0.0142,
+      0.3123
+     ]
+    },
+    "legR.skin": {
+     "target": "father.FACE",
+     "uv": [
+      0.15575,
+      0.26671
+     ],
+     "local": [
+      -0.0142,
+      0.3123
+     ]
+    }
+   }
+  },
+  "son": {
+   "height": 0.34,
+   "bboxSheet": [
+    -0.1213,
+    0.0165,
+    0.1213,
+    0.3537
+   ],
+   "regions": {
+    "skin": {
+     "id": 10,
+     "hex": "#E2A878",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1213,
+      0.0189,
+      0.1213,
+      0.3416
+     ]
+    },
+    "hair": {
+     "id": 11,
+     "hex": "#4A2E1F",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "hair",
+      "tufts"
+     ],
+     "bboxSheet": [
+      -0.0245,
+      0.2898,
+      0.0241,
+      0.3537
+     ]
+    },
+    "tunic": {
+     "id": 12,
+     "hex": "#6FB3E0",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.0875,
+      0.1309,
+      0.0875,
+      0.2735
+     ]
+    },
+    "sandals": {
+     "id": 13,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0336,
+      0.0165,
+      0.0336,
+      0.0365
+     ]
+    },
+    "sash": {
+     "id": 14,
+     "hex": "#F2C230",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      -0.0396,
+      0.1554,
+      0.0396,
+      0.2263
+     ]
+    },
+    "vest": {
+     "id": 15,
+     "hex": "#D2483A",
+     "zh": "小背心",
+     "en": "vest",
+     "parts": [
+      "vest"
+     ],
+     "bboxSheet": [
+      -0.0529,
+      0.2307,
+      0.0528,
+      0.2722
+     ]
+    },
+    "ring": {
+     "id": 16,
+     "hex": "#E8B83A",
+     "zh": "戒指",
+     "en": "ring",
+     "parts": [
+      "ring"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "son.sash",
+     "anchorUV": [
+      0.51375,
+      0.17624
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.son.propUV.ring = [u, v])"
+    },
+    "purse": {
+     "id": 17,
+     "hex": "#8A5A3B",
+     "zh": "钱袋",
+     "en": "money bag",
+     "parts": [
+      "purse"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "father.sash",
+     "anchorUV": [
+      0.15925,
+      0.18888
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.son.propUV.purse = [u, v])"
+    },
+    "robeTrim": {
+     "id": 18,
+     "hex": "#E8B83A",
+     "zh": "袍子金边",
+     "en": "robe border",
+     "parts": [
+      "robe",
+      "robeL",
+      "robeR"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "son.sash",
+     "anchorUV": [
+      0.51375,
+      0.17624
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.son.propUV.robeTrim = [u, v])"
+    },
+    "robe": {
+     "id": 19,
+     "hex": "#7B4FA6",
+     "zh": "袍子",
+     "en": "robe",
+     "parts": [
+      "robe",
+      "robeL",
+      "robeR"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "father.robe",
+     "anchorUV": [
+      0.26375,
+      0.17828
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.son.propUV.robe = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.0202,
+     0.27612,
+     0.0202,
+     0.31652
+    ],
+    "px": 512,
+    "default": "cheeky",
+    "files": {
+     "cheeky": "docs/prodigal/design/faces/son_cheeky.png",
+     "talk": "docs/prodigal/design/faces/son_talk.png",
+     "joy": "docs/prodigal/design/faces/son_joy.png",
+     "puzzled": "docs/prodigal/design/faces/son_puzzled.png",
+     "shock": "docs/prodigal/design/faces/son_shock.png",
+     "sad": "docs/prodigal/design/faces/son_sad.png",
+     "hungry": "docs/prodigal/design/faces/son_hungry.png",
+     "cry": "docs/prodigal/design/faces/son_cry.png",
+     "idea": "docs/prodigal/design/faces/son_idea.png",
+     "amazed": "docs/prodigal/design/faces/son_amazed.png"
+    },
+    "clipExpression": {
+     "idle": "cheeky",
+     "walk": "cheeky",
+     "talk": "talk",
+     "laze": "cheeky",
+     "ask_money": "cheeky",
+     "wave_bye": "joy",
+     "strut": "cheeky",
+     "toss_coins": "joy",
+     "party_dance": "joy",
+     "empty_pockets": "shock",
+     "sad_idle": "sad",
+     "sad_walk": "sad",
+     "feed_pigs": "sad",
+     "hungry_look": "hungry",
+     "sit_sad": "cry",
+     "idea_stand": "idea",
+     "practise": "puzzled",
+     "walk_tired": "sad",
+     "hug": "cry",
+     "sorry_head": "sad",
+     "amazed": "amazed",
+     "dance": "joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "purse": {
+     "bone": "purse",
+     "mesh": "son_purse",
+     "node": "son/purse",
+     "shownByDefault": false
+    },
+    "robe": {
+     "bone": "robe",
+     "mesh": "son_robe",
+     "node": "son/robe",
+     "shownByDefault": false
+    },
+    "robeL": {
+     "bone": "robeL",
+     "mesh": "son_robeL",
+     "node": "son/robeL",
+     "shownByDefault": false
+    },
+    "robeR": {
+     "bone": "robeR",
+     "mesh": "son_robeR",
+     "node": "son/robeR",
+     "shownByDefault": false
+    },
+    "ring": {
+     "bone": "ring",
+     "mesh": "son_ring",
+     "node": "son/ring",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "son.FACE",
+     "uv": [
+      0.49975,
+      0.23003
+     ],
+     "local": [
+      -0.0002,
+      0.2672
+     ]
+    },
+    "handR.skin": {
+     "target": "son.FACE",
+     "uv": [
+      0.49975,
+      0.23003
+     ],
+     "local": [
+      -0.0002,
+      0.2672
+     ]
+    }
+   }
+  },
+  "brother": {
+   "height": 0.37,
+   "bboxSheet": [
+    0.1705,
+    0.0163,
+    0.4718,
+    0.3815
+   ],
+   "regions": {
+    "skin": {
+     "id": 20,
+     "hex": "#C98E62",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1828,
+      0.0192,
+      0.4718,
+      0.3625
+     ]
+    },
+    "hair": {
+     "id": 21,
+     "hex": "#3A2418",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      0.3016,
+      0.3051,
+      0.3584,
+      0.3791
+     ]
+    },
+    "tunic": {
+     "id": 22,
+     "hex": "#A8582E",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "cuffs",
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2246,
+      0.1413,
+      0.4354,
+      0.297
+     ]
+    },
+    "belt": {
+     "id": 23,
+     "hex": "#B89466",
+     "zh": "绳腰带和绑腿",
+     "en": "rope belt and leg wraps",
+     "parts": [
+      "belt",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2771,
+      0.0384,
+      0.3832,
+      0.2386
+     ]
+    },
+    "sandals": {
+     "id": 24,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2886,
+      0.0166,
+      0.3714,
+      0.0384
+     ]
+    },
+    "headcloth": {
+     "id": 25,
+     "hex": "#E9D9B6",
+     "zh": "头巾",
+     "en": "head-cloth",
+     "parts": [
+      "clothKnot",
+      "headcloth"
+     ],
+     "bboxSheet": [
+      0.3003,
+      0.2662,
+      0.3597,
+      0.3815
+     ]
+    },
+    "hoe": {
+     "id": 26,
+     "hex": "#9B6B43",
+     "zh": "锄头柄",
+     "en": "hoe handle",
+     "parts": [
+      "hoe"
+     ],
+     "bboxSheet": [
+      0.1873,
+      0.0346,
+      0.1952,
+      0.2666
+     ]
+    },
+    "blade": {
+     "id": 27,
+     "hex": "#7A7F86",
+     "zh": "锄头刃",
+     "en": "hoe blade",
+     "parts": [
+      "hoe"
+     ],
+     "bboxSheet": [
+      0.1705,
+      0.0163,
+      0.2105,
+      0.0489
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02208,
+     0.30129,
+     0.02208,
+     0.34544
+    ],
+    "px": 512,
+    "default": "neutral",
+    "files": {
+     "neutral": "docs/prodigal/design/faces/brother_neutral.png",
+     "talk": "docs/prodigal/design/faces/brother_talk.png",
+     "frown": "docs/prodigal/design/faces/brother_frown.png",
+     "angry": "docs/prodigal/design/faces/brother_angry.png",
+     "hurt": "docs/prodigal/design/faces/brother_hurt.png",
+     "soft": "docs/prodigal/design/faces/brother_soft.png"
+    },
+    "clipExpression": {
+     "idle": "neutral",
+     "walk_hoe": "neutral",
+     "talk": "talk",
+     "work_field": "neutral",
+     "shake_head": "frown",
+     "listen_music": "frown",
+     "stomp_cross": "angry",
+     "complain": "angry",
+     "soften": "hurt",
+     "take_hand": "soft"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "hoe": {
+     "bone": "hoe",
+     "mesh": "brother_hoe",
+     "node": "brother/hoe",
+     "shownByDefault": true
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.82325,
+      0.24593
+     ],
+     "local": [
+      -0.0067,
+      0.2868
+     ]
+    },
+    "handR.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.82325,
+      0.24593
+     ],
+     "local": [
+      -0.0067,
+      0.2868
+     ]
+    }
+   }
+  }
+ }
+}

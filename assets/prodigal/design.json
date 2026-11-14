@@ -1,0 +1,1766 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther, Ruth and Exodus; faces come from decals (no face ink)"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "浪子回家",
+   "pinyin": "làng zǐ huí jiā",
+   "english": "The Son Who Came Home",
+   "box": 76,
+   "gap": 12,
+   "cy": 100,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "浪子的比喻 · The Prodigal Son"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy 100 puts the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "father": {
+   "height": 0.36,
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "son": {
+   "height": 0.34,
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "brother": {
+   "height": 0.37,
+   "sheetX": 0.33,
+   "sheetY": 0.015
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/pr_homeland.py",
+  "doc": "docs/prodigal/SET.md",
+  "contract": "docs/prodigal/CONTRACT.md §6",
+  "root": "homeland",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "house": [
+    -0.38,
+    0.0,
+    -0.47
+   ],
+   "door": {
+    "hinge": [
+     -0.35500000000000004,
+     0.0,
+     -0.3815
+    ],
+    "frontZ": -0.378,
+    "width": 0.05,
+    "height": 0.093
+   },
+   "courtyard": [
+    -0.31,
+    0.0,
+    -0.18
+   ],
+   "well": [
+    -0.46,
+    0.0,
+    -0.04
+   ],
+   "figTree": [
+    -0.5,
+    0.0,
+    -0.28
+   ],
+   "field": [
+    0.09,
+    0.0,
+    -0.4
+   ],
+   "tavern": [
+    0.4,
+    0.0,
+    -0.47
+   ],
+   "pigpen": [
+    0.41,
+    0.0,
+    0.06
+   ],
+   "pods": [
+    0.48,
+    0.0,
+    0.1
+   ],
+   "pigs": [
+    0.49,
+    0.0,
+    0.06
+   ],
+   "feast": [
+    -0.42,
+    0.0,
+    -0.215
+   ],
+   "lamps": [
+    -0.42,
+    0.0,
+    -0.215
+   ],
+   "lampsFlame": {
+    "lampsFlame": [
+     -0.4632,
+     0.0414,
+     -0.1923
+    ],
+    "lampsFlame2": [
+     -0.397,
+     0.0414,
+     -0.1948
+    ],
+    "lampsFlame3": [
+     -0.3499,
+     0.0414,
+     -0.1926
+    ],
+    "lampsFlame4": [
+     -0.379,
+     0.0975,
+     -0.364
+    ],
+    "lampsFlame5": [
+     -0.281,
+     0.0975,
+     -0.364
+    ],
+    "lampsFlame6": [
+     -0.3155,
+     0.103,
+     -0.3285
+    ],
+    "lampsFlame7": [
+     -0.361,
+     0.1045,
+     -0.303
+    ],
+    "lampsFlame8": [
+     -0.4065,
+     0.116,
+     -0.2775
+    ]
+   }
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "house": [
+    -0.52,
+    -0.55,
+    -0.24,
+    -0.39
+   ],
+   "stair": [
+    -0.24,
+    -0.55,
+    -0.205,
+    -0.39
+   ],
+   "courtyardPaving": [
+    -0.545,
+    -0.39,
+    -0.08,
+    0.02
+   ],
+   "wellRadius": 0.04,
+   "bench": [
+    -0.46,
+    -0.32
+   ],
+   "oven": [
+    -0.505,
+    -0.125
+   ],
+   "field": [
+    -0.06,
+    0.24,
+    -0.52,
+    -0.28
+   ],
+   "plantedRowsFrontZ": -0.402,
+   "tavern": [
+    0.255,
+    -0.535,
+    0.545,
+    -0.395
+   ],
+   "awning": [
+    0.262,
+    -0.532,
+    0.538,
+    -0.365
+   ],
+   "awningFrontEdge": {
+    "z": -0.365,
+    "h": 0.168,
+    "x": [
+     0.262,
+     0.538
+    ]
+   },
+   "stall": [
+    0.54,
+    -0.32
+   ],
+   "pen": [
+    0.26,
+    -0.06,
+    0.56,
+    0.18
+   ],
+   "trough": [
+    0.48,
+    0.1
+   ],
+   "feastTable": [
+    -0.51,
+    -0.2475,
+    -0.32999999999999996,
+    -0.1825
+   ],
+   "pigs": [
+    [
+     0.462,
+     0.048
+    ],
+    [
+     0.445,
+     0.14
+    ],
+    [
+     0.452,
+     -0.022
+    ],
+    [
+     0.505,
+     0.02
+    ]
+   ],
+   "trotCircle": {
+    "centre": [
+     0.522,
+     0.02
+    ],
+    "r": 0.017
+   }
+  },
+  "heights": {
+   "houseWall": 0.2,
+   "parapetTop": 0.21300000000000002,
+   "boothTop": 0.254,
+   "doorFrameFrontZ": -0.367,
+   "awningBack": 0.214,
+   "awningFront": 0.168,
+   "columns": 0.15,
+   "figTop": 0.2852,
+   "backdropTop": 0.314,
+   "tableTop": 0.034,
+   "fence": 0.058,
+   "wheatMax": 0.0474
+  },
+  "animations": {
+   "pigsWiggle": {
+    "node": "pigs",
+    "mesh": "pigBodies",
+    "length": 4.0,
+    "fps": 24,
+    "loop": true,
+    "note": "snouts rooting, tails twitching, pig 4 trots a circle r 0.017 round [0.522, 0.02]"
+   }
+  },
+  "hiddenAtStart": [
+   "feast",
+   "lamps"
+  ],
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the drawing position for packed parts / instanced pieces",
+   "edgeOn": "faces with n . D < 0.22 (edge-on or facing away) take one clean texel of their region (L51)",
+   "namedTexels": "scattered bits take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "backdrop": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.78,
+    "cx": -0.14,
+    "y0": 1.03,
+    "decorOnly": [
+     "sea"
+    ],
+    "members": [
+     "backdrop"
+    ],
+    "sheetX": -0.14,
+    "sheetY": 1.03,
+    "bboxSheet": [
+     -0.4771,
+     1.03,
+     0.1971,
+     1.2064
+    ]
+   },
+   "fig": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.55,
+    "cx": 0.3,
+    "y0": 1.02,
+    "members": [
+     "figTree"
+    ],
+    "sheetX": 0.62337,
+    "sheetY": 1.02,
+    "bboxSheet": [
+     0.2368,
+     1.02,
+     0.3632,
+     1.204
+    ]
+   },
+   "pig": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.76,
+    "cx": 0.43,
+    "y0": 1.11,
+    "members": [
+     "pigBodies"
+    ],
+    "sheetX": 0.42189,
+    "sheetY": 1.11,
+    "bboxSheet": [
+     0.3769,
+     1.11,
+     0.4831,
+     1.1733
+    ]
+   },
+   "house": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.3,
+     0.42,
+     1
+    ],
+    "scale": 1.25,
+    "cx": -0.297,
+    "y0": 0.7,
+    "decorOnly": [
+     "wall",
+     "reed"
+    ],
+    "members": [
+     "house",
+     "door",
+     "roofBooth"
+    ],
+    "sheetX": -0.15822,
+    "sheetY": 0.58406,
+    "bboxSheet": [
+     -0.4833,
+     0.7,
+     -0.1107,
+     0.9407
+    ]
+   },
+   "tavern": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.3,
+     0.42,
+     1
+    ],
+    "scale": 1.97,
+    "cx": 0.074,
+    "y0": 0.725,
+    "decorOnly": [
+     "marble",
+     "column",
+     "crate"
+    ],
+    "members": [
+     "tavern"
+    ],
+    "sheetX": -0.09663,
+    "sheetY": 0.725,
+    "bboxSheet": [
+     -0.0966,
+     0.725,
+     0.2446,
+     0.9441
+    ]
+   },
+   "yard": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.3,
+     0.42,
+     1
+    ],
+    "scale": 1.5,
+    "cx": 0.37,
+    "y0": 0.7,
+    "decorOnly": [
+     "wallStone",
+     "well"
+    ],
+    "members": [
+     "well",
+     "yard"
+    ],
+    "sheetX": 0.25804,
+    "sheetY": 0.7,
+    "bboxSheet": [
+     0.258,
+     0.7,
+     0.482,
+     0.8756
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.5,
+    "cx": -0.31,
+    "y0": 0.41,
+    "decorOnly": [
+     "paving",
+     "wheat",
+     "soil",
+     "road"
+    ],
+    "members": [
+     "ground",
+     "courtyard",
+     "road",
+     "field"
+    ],
+    "sheetX": -0.31,
+    "sheetY": 0.47,
+    "bboxSheet": [
+     -0.4814,
+     0.41,
+     -0.1386,
+     0.6379
+    ]
+   },
+   "pen": {
+    "A": [
+     1,
+     0,
+     -0.1
+    ],
+    "B": [
+     0,
+     1,
+     -0.55
+    ],
+    "D": [
+     0.1,
+     0.55,
+     1
+    ],
+    "scale": 1.6,
+    "cx": 0.03,
+    "y0": 0.41,
+    "decorOnly": [
+     "mud"
+    ],
+    "members": [
+     "pigpen",
+     "pods"
+    ],
+    "sheetX": -0.12269,
+    "sheetY": 0.41,
+    "bboxSheet": [
+     -0.1227,
+     0.41,
+     0.1827,
+     0.613
+    ]
+   },
+   "feast": {
+    "A": [
+     1,
+     0,
+     -0.1
+    ],
+    "B": [
+     0,
+     1,
+     -0.55
+    ],
+    "D": [
+     0.1,
+     0.55,
+     1
+    ],
+    "scale": 0.85,
+    "cx": 0.355,
+    "y0": 0.42,
+    "members": [
+     "feast",
+     "lamps"
+    ],
+    "sheetX": 0.24529,
+    "sheetY": 0.42,
+    "bboxSheet": [
+     0.2453,
+     0.42,
+     0.4647,
+     0.6077
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.5,
+     "sheetX": -0.31,
+     "sheetY": 0.47
+    },
+    "packed": null,
+    "namedTexels": {
+     "tuft": [
+      "fig",
+      "figLeaf"
+     ],
+     "dryTuft": [
+      "backdrop",
+      "olive"
+     ],
+     "pebble": [
+      "yard",
+      "well"
+     ],
+     "stone": [
+      "yard",
+      "wallStone"
+     ],
+     "flowerY": [
+      "tavern",
+      "stallCloth"
+     ],
+     "flowerR": [
+      "feast",
+      "cushion"
+     ]
+    },
+    "regions": [
+     "dryTuft",
+     "earth",
+     "flowerR",
+     "flowerY",
+     "grass",
+     "pebble",
+     "stone",
+     "tuft"
+    ],
+    "heightMax": 0.0178,
+    "tris": 7698
+   },
+   {
+    "id": "backdrop",
+    "drawing": "backdrop",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.78,
+     "sheetX": -0.14,
+     "sheetY": 1.03
+    },
+    "packed": null,
+    "namedTexels": {
+     "boat": [
+      "house",
+      "door"
+     ],
+     "town": [
+      "tavern",
+      "marble"
+     ]
+    },
+    "regions": [
+     "boat",
+     "cypress",
+     "hillFar",
+     "hillFarBack",
+     "hillHome",
+     "hillHomeFar",
+     "olive",
+     "sea",
+     "town"
+    ],
+    "heightMax": 0.314,
+    "tris": 4894
+   },
+   {
+    "id": "house",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.15822,
+     "sheetY": 0.58406
+    },
+    "packed": null,
+    "namedTexels": null,
+    "regions": [
+     "beam",
+     "frame",
+     "grapes",
+     "jar",
+     "roof",
+     "vine",
+     "wall",
+     "windowDark"
+    ],
+    "heightMax": 0.2215,
+    "tris": 5822
+   },
+   {
+    "id": "roofBooth",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.15822,
+     "sheetY": 0.58406
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": null,
+    "regions": [
+     "beam",
+     "reed"
+    ],
+    "heightMax": 0.254,
+    "tris": 92
+   },
+   {
+    "id": "door",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.15822,
+     "sheetY": 0.58406
+    },
+    "packed": null,
+    "namedTexels": {
+     "ring": [
+      "tavern",
+      "windowDark"
+     ]
+    },
+    "regions": [
+     "door",
+     "ring"
+    ],
+    "heightMax": 0.093,
+    "tris": 160
+   },
+   {
+    "id": "courtyard",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.5,
+     "sheetX": -0.31,
+     "sheetY": 0.47
+    },
+    "packed": null,
+    "namedTexels": null,
+    "regions": [
+     "paving"
+    ],
+    "heightMax": 0.0036,
+    "tris": 91
+   },
+   {
+    "id": "well",
+    "drawing": "yard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.5,
+     "sheetX": 0.25804,
+     "sheetY": 0.7
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": {
+     "rope": [
+      "pen",
+      "straw"
+     ]
+    },
+    "regions": [
+     "rope",
+     "water",
+     "well",
+     "wood"
+    ],
+    "heightMax": 0.11,
+    "tris": 734
+   },
+   {
+    "id": "figTree",
+    "drawing": "fig",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.55,
+     "sheetX": 0.62337,
+     "sheetY": 1.02
+    },
+    "packed": null,
+    "namedTexels": {
+     "fig": [
+      "feast",
+      "food"
+     ]
+    },
+    "regions": [
+     "fig",
+     "figLeaf",
+     "figTrunk"
+    ],
+    "heightMax": 0.2852,
+    "tris": 2908
+   },
+   {
+    "id": "yard",
+    "drawing": "yard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.5,
+     "sheetX": 0.25804,
+     "sheetY": 0.7
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": null,
+    "regions": [
+     "jar",
+     "oven",
+     "wallStone",
+     "windowDark",
+     "wood"
+    ],
+    "heightMax": 0.046,
+    "tris": 3005
+   },
+   {
+    "id": "field",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.5,
+     "sheetX": -0.31,
+     "sheetY": 0.47
+    },
+    "packed": null,
+    "namedTexels": {
+     "wheatBlade": [
+      "ground",
+      "wheat"
+     ]
+    },
+    "regions": [
+     "soil",
+     "wheat",
+     "wheatBlade"
+    ],
+    "heightMax": 0.0474,
+    "tris": 2494
+   },
+   {
+    "id": "road",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.5,
+     "sheetX": -0.31,
+     "sheetY": 0.47
+    },
+    "packed": null,
+    "namedTexels": null,
+    "regions": [
+     "road"
+    ],
+    "heightMax": 0.0031,
+    "tris": 668
+   },
+   {
+    "id": "tavern",
+    "drawing": "tavern",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.97,
+     "sheetX": -0.09663,
+     "sheetY": 0.725
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": {
+     "flagA": [
+      "feast",
+      "cushion"
+     ],
+     "flagB": [
+      "tavern",
+      "stallCloth"
+     ],
+     "flagC": [
+      "backdrop",
+      "sea"
+     ],
+     "flagD": [
+      "fig",
+      "figLeaf"
+     ],
+     "cord": [
+      "pen",
+      "straw"
+     ],
+     "pole": [
+      "pen",
+      "trough"
+     ],
+     "stool": [
+      "pen",
+      "trough"
+     ],
+     "cup": [
+      "tavern",
+      "stallCloth"
+     ],
+     "fruit": [
+      "tavern",
+      "amphora"
+     ],
+     "melon": [
+      "fig",
+      "figLeaf"
+     ],
+     "roofTile": [
+      "tavern",
+      "amphora"
+     ]
+    },
+    "regions": [
+     "amphora",
+     "awning",
+     "awningB",
+     "column",
+     "cord",
+     "crate",
+     "cup",
+     "flagA",
+     "flagB",
+     "flagC",
+     "flagD",
+     "fruit",
+     "marble",
+     "melon",
+     "paint",
+     "pole",
+     "roofTile",
+     "stallCloth",
+     "stool",
+     "table",
+     "windowDark"
+    ],
+    "heightMax": 0.2555,
+    "tris": 7951
+   },
+   {
+    "id": "pigpen",
+    "drawing": "pen",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.1
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.1,
+      0.55,
+      1
+     ],
+     "scale": 1.6,
+     "sheetX": -0.12269,
+     "sheetY": 0.41
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": null,
+    "regions": [
+     "fence",
+     "mud",
+     "straw",
+     "trough"
+    ],
+    "heightMax": 0.0572,
+    "tris": 1832
+   },
+   {
+    "id": "pods",
+    "drawing": "pen",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.1
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.1,
+      0.55,
+      1
+     ],
+     "scale": 1.6,
+     "sheetX": -0.12269,
+     "sheetY": 0.41
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": {
+     "pod": [
+      "pen",
+      "pods"
+     ]
+    },
+    "regions": [
+     "pod",
+     "pods"
+    ],
+    "heightMax": 0.021,
+    "tris": 1050
+   },
+   {
+    "id": "pigBodies",
+    "drawing": "pig",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.76,
+     "sheetX": 0.42189,
+     "sheetY": 1.11
+    },
+    "packed": null,
+    "namedTexels": {
+     "eye": [
+      "tavern",
+      "windowDark"
+     ]
+    },
+    "regions": [
+     "eye",
+     "pig",
+     "snout"
+    ],
+    "heightMax": 0.0481,
+    "tris": 3424
+   },
+   {
+    "id": "feast",
+    "drawing": "feast",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.1
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.1,
+      0.55,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.24529,
+     "sheetY": 0.42
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": {
+     "tableLeg": [
+      "pen",
+      "trough"
+     ],
+     "cup": [
+      "tavern",
+      "stallCloth"
+     ]
+    },
+    "regions": [
+     "bread",
+     "cloth",
+     "cup",
+     "cushion",
+     "cushionB",
+     "dish",
+     "food",
+     "grapes",
+     "tableLeg",
+     "tableWood"
+    ],
+    "heightMax": 0.0572,
+    "tris": 2074
+   },
+   {
+    "id": "lamps",
+    "drawing": "feast",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.1
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.1,
+      0.55,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.24529,
+     "sheetY": 0.42
+    },
+    "packed": "drawing positions (P) shifted so parts sit side by side",
+    "namedTexels": {
+     "cord": [
+      "pen",
+      "straw"
+     ],
+     "lamp": [
+      "feast",
+      "dish"
+     ],
+     "lantern": [
+      "tavern",
+      "windowDark"
+     ],
+     "lampGlass": [
+      "tavern",
+      "stallCloth"
+     ]
+    },
+    "regions": [
+     "cord",
+     "lamp",
+     "lampGlass",
+     "lantern"
+    ],
+    "heightMax": 0.1505,
+    "tris": 1504
+   }
+  ],
+  "constUV": [
+   {
+    "node": "ground/tuft",
+    "uv": [
+     0.8445,
+     0.92461
+    ],
+    "region": "figLeaf"
+   },
+   {
+    "node": "ground/dryTuft",
+    "uv": [
+     0.2885,
+     0.88142
+    ],
+    "region": "olive"
+   },
+   {
+    "node": "ground/pebble",
+    "uv": [
+     0.9095,
+     0.58965
+    ],
+    "region": "well"
+   },
+   {
+    "node": "ground/stone",
+    "uv": [
+     0.8035,
+     0.69967
+    ],
+    "region": "wallStone"
+   },
+   {
+    "node": "ground/flowerY",
+    "uv": [
+     0.4325,
+     0.6304
+    ],
+    "region": "stallCloth"
+   },
+   {
+    "node": "ground/flowerR",
+    "uv": [
+     0.8995,
+     0.42991
+    ],
+    "region": "cushion"
+   },
+   {
+    "node": "field/wheatBlade",
+    "uv": [
+     0.2135,
+     0.48859
+    ],
+    "region": "wheat"
+   },
+   {
+    "node": "backdrop/boat",
+    "uv": [
+     0.1665,
+     0.6035
+    ],
+    "region": "door"
+   },
+   {
+    "node": "backdrop/town",
+    "uv": [
+     0.4605,
+     0.68663
+    ],
+    "region": "marble"
+   },
+   {
+    "node": "door/ring",
+    "uv": [
+     0.4955,
+     0.68908
+    ],
+    "region": "windowDark"
+   },
+   {
+    "node": "well/rope",
+    "uv": [
+     0.6745,
+     0.34352
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "figTree/fig",
+    "uv": [
+     0.8545,
+     0.37857
+    ],
+    "region": "food"
+   },
+   {
+    "node": "tavern/flagA",
+    "uv": [
+     0.8995,
+     0.42991
+    ],
+    "region": "cushion"
+   },
+   {
+    "node": "tavern/flagB",
+    "uv": [
+     0.4325,
+     0.6304
+    ],
+    "region": "stallCloth"
+   },
+   {
+    "node": "tavern/flagC",
+    "uv": [
+     0.5095,
+     0.89283
+    ],
+    "region": "sea"
+   },
+   {
+    "node": "tavern/flagD",
+    "uv": [
+     0.8445,
+     0.92461
+    ],
+    "region": "figLeaf"
+   },
+   {
+    "node": "tavern/cord",
+    "uv": [
+     0.6745,
+     0.34352
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "tavern/pole",
+    "uv": [
+     0.6185,
+     0.34026
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "tavern/stool",
+    "uv": [
+     0.6185,
+     0.34026
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "tavern/cup",
+    "uv": [
+     0.4325,
+     0.6304
+    ],
+    "region": "stallCloth"
+   },
+   {
+    "node": "tavern/fruit",
+    "uv": [
+     0.5595,
+     0.60024
+    ],
+    "region": "amphora"
+   },
+   {
+    "node": "tavern/melon",
+    "uv": [
+     0.8445,
+     0.92461
+    ],
+    "region": "figLeaf"
+   },
+   {
+    "node": "tavern/roofTile",
+    "uv": [
+     0.5595,
+     0.60024
+    ],
+    "region": "amphora"
+   },
+   {
+    "node": "pods/pod",
+    "uv": [
+     0.5595,
+     0.44458
+    ],
+    "region": "pods"
+   },
+   {
+    "node": "pigBodies/eye",
+    "uv": [
+     0.4955,
+     0.68908
+    ],
+    "region": "windowDark"
+   },
+   {
+    "node": "feast/tableLeg",
+    "uv": [
+     0.6185,
+     0.34026
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "feast/cup",
+    "uv": [
+     0.4325,
+     0.6304
+    ],
+    "region": "stallCloth"
+   },
+   {
+    "node": "lamps/cord",
+    "uv": [
+     0.6745,
+     0.34352
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "lamps/lamp",
+    "uv": [
+     0.9515,
+     0.38835
+    ],
+    "region": "dish"
+   },
+   {
+    "node": "lamps/lantern",
+    "uv": [
+     0.4955,
+     0.68908
+    ],
+    "region": "windowDark"
+   },
+   {
+    "node": "lamps/lampGlass",
+    "uv": [
+     0.4325,
+     0.6304
+    ],
+    "region": "stallCloth"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "soft": {
+    "start father -0.33,0>-0.30,-0.24": [
+     0.0145,
+     0.0489,
+     [
+      "ground"
+     ]
+    ],
+    "start brother 0.33,0>0.02,-0.34": [
+     0.0176,
+     0.0117,
+     [
+      "ground"
+     ]
+    ]
+   },
+   "feastTableMinDist": 0.0633,
+   "exempt": {}
+  },
+  "sheetLayout": {
+   "characters": {
+    "father": {
+     "sheetX": -0.33,
+     "sheetY": 0.015,
+     "height": 0.36,
+     "box": [
+      -0.4661,
+      0.0166,
+      -0.1939,
+      0.3785
+     ]
+    },
+    "son": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      -0.1213,
+      0.0165,
+      0.1213,
+      0.3537
+     ]
+    },
+    "brother": {
+     "sheetX": 0.33,
+     "sheetY": 0.015,
+     "height": 0.37,
+     "box": [
+      0.1705,
+      0.0163,
+      0.4718,
+      0.3815
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json",
+   "placesSetHere": {}
+  },
+  "demoColours": {
+   "grass": "#A9C46C",
+   "earth": "#D8B98A",
+   "road": "#E9D9B6",
+   "paving": "#D9C29A",
+   "soil": "#9A6A43",
+   "wheat": "#B7C25A",
+   "mud": "#7A5638",
+   "hillHome": "#A7C26A",
+   "hillHomeFar": "#8DB06A",
+   "hillFar": "#D9B77A",
+   "hillFarBack": "#C29A6A",
+   "sea": "#4E9CC9",
+   "cypress": "#3F6E43",
+   "olive": "#8FA876",
+   "backRoad": "#E9D9B6",
+   "town": "#F1EADB",
+   "wall": "#E3D3B0",
+   "roof": "#C9A77A",
+   "door": "#8A5A3B",
+   "frame": "#CDBB94",
+   "windowDark": "#4A3324",
+   "beam": "#8A5A3B",
+   "vine": "#5E9A4A",
+   "grapes": "#6B3F7A",
+   "reed": "#D9C27A",
+   "wallStone": "#BFB49E",
+   "well": "#A9A49A",
+   "water": "#3E7FB0",
+   "wood": "#9B6B43",
+   "rope": "#C9A66B",
+   "jar": "#C27A4A",
+   "oven": "#C9875A",
+   "figLeaf": "#5E9A4A",
+   "figTrunk": "#8C7A68",
+   "marble": "#F1EADB",
+   "roofTile": "#C96F4A",
+   "column": "#F6F0E2",
+   "awning": "#D2483A",
+   "awningB": "#F6F0E2",
+   "paint": "#3E6FB0",
+   "table": "#B07A47",
+   "amphora": "#C46A3C",
+   "stallCloth": "#F2C230",
+   "fruit": "#F08A2E",
+   "melon": "#7DB04A",
+   "crate": "#B08A5A",
+   "fence": "#9B6B43",
+   "trough": "#7E5536",
+   "pods": "#6B4426",
+   "shed": "#B08A5A",
+   "straw": "#E9D08A",
+   "pig": "#F2A7A0",
+   "snout": "#E07F86",
+   "tableWood": "#8A5A3B",
+   "cloth": "#FBF8EF",
+   "bread": "#D9A45A",
+   "dish": "#C9875A",
+   "food": "#B5532E",
+   "cup": "#E8B83A",
+   "cushion": "#D2483A",
+   "cushionB": "#3E6FB0",
+   "lamp": "#C9875A",
+   "lantern": "#4A4038",
+   "lampGlass": "#F6D47A"
+  },
+  "tris": 46401,
+  "budget": 70000
+ }
+}

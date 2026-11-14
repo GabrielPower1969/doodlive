@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Merged into the app manifest by Unity (an .androidlib with only a manifest; no gradle file, no resources).
+     The provider class is compiled from Assets/Plugins/Android/DoodLiveFileProvider.java (docs/LIBRARY.md, "Sheet actions").
+     It serves only <cacheDir>/shared/ (the colouring-sheet PDF copied out of the APK) to the share sheet, read-only. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="today.onemorething.doodlive.sharemanifest">
+    <application>
+        <provider
+            android:name="today.onemorething.doodlive.share.DoodLiveFileProvider"
+            android:authorities="${applicationId}.doodlive.files"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+    </application>
+</manifest>

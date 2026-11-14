@@ -1,0 +1,22 @@
+{
+ "_doc": "Face decal per clip (docs/prodigal/CONTRACT.md §3-4). Integration-owned; read by tools/story/pack.py.",
+ "son": {
+  "default": "cheeky",
+  "clips": {"idle": "cheeky", "walk": "cheeky", "talk": "talk", "laze": "cheeky", "ask_money": "cheeky", "wave_bye": "joy",
+            "strut": "cheeky", "toss_coins": "joy", "party_dance": "joy", "empty_pockets": "puzzled", "sad_idle": "sad",
+            "sad_walk": "sad", "feed_pigs": "sad", "hungry_look": "hungry", "sit_sad": "cry", "idea_stand": "idea",
+            "practise": "talk", "walk_tired": "sad", "hug": "cry", "sorry_head": "cry", "amazed": "amazed", "dance": "joy",
+            "wave": "joy"}
+ },
+ "father": {
+  "default": "kind",
+  "clips": {"idle": "kind", "walk": "kind", "talk": "talk", "sad_give": "sad", "wave_sad": "sad", "look_far": "longing",
+            "see_son": "surprise", "run": "joy", "hug": "cry_joy", "call_servants": "joy", "feast_cheer": "joy",
+            "dance": "joy", "plead": "plead", "arm_out": "plead"}
+ },
+ "brother": {
+  "default": "neutral",
+  "clips": {"idle": "neutral", "walk_hoe": "neutral", "talk": "talk", "work_field": "neutral", "shake_head": "frown",
+            "listen_music": "frown", "stomp_cross": "angry", "complain": "angry", "soften": "hurt", "take_hand": "soft"}
+ }
+}

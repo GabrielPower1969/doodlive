@@ -1,0 +1,764 @@
+{
+ "_doc": "Exodus voice cast (docs/exodus/VOICE.md). Schema: tools/story/voice.py docstring; breaths: voice_extras.py; `reverb` (role) and `grid` (line) are read by tools/story/voice_exodus.py, the Exodus wrapper.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "moses": {
+   "zh": "摩西",
+   "en": "Moses"
+  },
+  "pharaoh": {
+   "zh": "法老",
+   "en": "Pharaoh"
+  },
+  "miriam": {
+   "zh": "米利暗",
+   "en": "Miriam"
+  },
+  "god": {
+   "zh": "上帝",
+   "en": "God"
+  },
+  "people": {
+   "zh": "以色列人",
+   "en": "The Israelites"
+  }
+ },
+ "refZh": {
+  "Exodus ": "出埃及记 "
+ },
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 3,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "same voice and note as Ruth / Esther: one storyteller across the packs"
+   },
+   "moses": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，八十岁左右的老爷爷，白胡子的牧羊人。声音偏低、苍老、粗糙，带点沙哑，说话踏实稳重，有力量。性格谦和朴实。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     90,
+     185
+    ],
+    "hnrMax": 9,
+    "mfccRef": [
+     91.57,
+     -28.17,
+     -38.3,
+     17.42,
+     -57.09,
+     -18.03,
+     40.46,
+     -31.44,
+     -14.62,
+     -14.74,
+     5.7,
+     -26.91
+    ],
+    "mfccTol": 60,
+    "mfccWeight": 0.1
+   },
+   "pharaoh": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，四十多岁，自以为了不起的卡通国王。低沉、洪亮、圆润的男中音，胸腔共鸣很足，拿腔拿调、爱拖长音，说话夸张滑稽，像儿童动画片里的搞笑反派。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.4,
+    "maxPause": 1.2,
+    "f0Hz": [
+     100,
+     300
+    ]
+   },
+   "miriam": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "女性，三十岁左右的大姐姐。声音明亮、清脆，语速偏快，热情、温暖、有活力，干脆利落。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 3.2,
+    "f0Hz": [
+     180,
+     360
+    ]
+   },
+   "god": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 3,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，中年，声音低沉、浑厚、温暖，非常平静、从容，说话不急不慢，慈爱而有分量，像一位慈爱的父亲，绝不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。这一句：",
+    "minPace": 2.4,
+    "maxPause": 1.3,
+    "reverb": {
+     "rt60": 1.4,
+     "wet": 0.2,
+     "predelay": 0.025,
+     "tail": 0.35
+    },
+    "f0Hz": [
+     70,
+     140
+    ],
+    "mfccRef": [
+     57.08,
+     -0.08,
+     3.17,
+     -6.49,
+     -27.35,
+     -31.85,
+     18.99,
+     -15.35,
+     -14.9,
+     -2.22,
+     4.82,
+     -1.04
+    ],
+    "mfccTol": 60,
+    "mfccWeight": 0.1
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.6,
+    "wet": 0.18,
+    "seed": 21,
+    "instruct": "一群刚刚得救的人一起欢呼，高高兴兴、很自然，像真人。",
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "+10%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "qwen",
+      "voice": "eric",
+      "delay": 0.07,
+      "gainDb": -5,
+      "seed": 1
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rate": "+14%",
+      "delay": 0.12,
+      "gainDb": -6
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-YunxiNeural",
+      "rate": "+8%",
+      "delay": 0.17,
+      "gainDb": -7,
+      "semitones": -1.0
+     },
+     {
+      "engine": "edge",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rate": "+16%",
+      "delay": 0.23,
+      "gainDb": -8
+     }
+    ]
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.narrator",
+    "why": "same as Ruth / Esther"
+   },
+   "moses": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "Male, in his seventies, an old shepherd. Low, deep, slightly gravelly and breathy voice that clearly sounds old, but strong and steady, not frail or shaky. Humble, gentle and warm. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not stagey, real breaths, normal flowing pace. This line: ",
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     85,
+     185
+    ],
+    "breathFrom": "zh.moses"
+   },
+   "pharaoh": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 4,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "Male, in his forties, a vain cartoon king. A low, rich, booming baritone with lots of chest resonance, pompous and theatrical, drawling his words, comic and over the top like a funny villain in a children's animated film. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not stagey, real breaths, normal flowing pace. This line: ",
+    "minPace": 2.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     100,
+     300
+    ],
+    "breathFrom": "zh.pharaoh"
+   },
+   "miriam": {
+    "engine": "edge",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+4%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.miriam"
+   },
+   "god": {
+    "engine": "edge",
+    "voice": "en-AU-WilliamMultilingualNeural",
+    "rate": "-12%",
+    "pitch": "-2Hz",
+    "fx": "warm",
+    "chain": "expressive",
+    "reverb": {
+     "rt60": 1.4,
+     "wet": 0.2,
+     "predelay": 0.025,
+     "tail": 0.35
+    }
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.6,
+    "wet": 0.18,
+    "seed": 21,
+    "members": [
+     {
+      "engine": "edge",
+      "voice": "en-US-GuyNeural",
+      "rate": "+16%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
+      "engine": "edge",
+      "voice": "en-AU-NatashaNeural",
+      "rate": "+18%",
+      "delay": 0.09,
+      "gainDb": -4
+     },
+     {
+      "engine": "edge",
+      "voice": "en-US-RogerNeural",
+      "rate": "+10%",
+      "delay": 0.15,
+      "gainDb": -5
+     },
+     {
+      "engine": "edge",
+      "voice": "en-GB-LibbyNeural",
+      "rate": "+20%",
+      "delay": 0.2,
+      "gainDb": -6
+     },
+     {
+      "engine": "edge",
+      "voice": "en-US-EricNeural",
+      "rate": "+14%",
+      "delay": 0.26,
+      "gainDb": -7,
+      "semitones": 0.8
+     }
+    ]
+   }
+  }
+ },
+ "lines": {
+  "ex_01": {
+   "m": "讲故事的开头，亲切、带点沉重；说到“累得腰都直不起来”时声音里有真的疲惫和心疼",
+   "breath": {
+    "before": true,
+    "gain": -4
+   }
+  },
+  "ex_02": {
+   "m": "神气活现、颐指气使，很享受自己的声音；两个“快点”一声比一声高；最后不屑地“哼”一声，鼻子朝天",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "pick": 3,
+    "pickWhy": "the only clean take that keeps the snooty 哼 at the end (take 2 scored higher but dropped it)"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "pick": 1,
+    "pickWhy": "keeps the snooty 'Hmph!' at the end (err 0)"
+   }
+  },
+  "ex_03": {
+   "m": "又累又轻，发自内心的祷告，像小声对上帝说话；“求你”之前停一下；真诚，不哭腔，不煽情",
+   "zh": {
+    "breath": {
+     "after": "你听见我们在哭吗",
+     "gain": -3
+    }
+   },
+   "en": {
+    "breath": {
+     "after": "crying",
+     "gain": -3
+    }
+   }
+  },
+  "ex_04": {
+   "m": "温柔、娓娓道来；说到“胡子都白啦”时带着微笑"
+  },
+  "ex_05": {
+   "m": "老人家的好奇：先拖长声音“咦？”一声，想不通，自言自语；“我过去看看”轻一点，有点小心",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh"
+   }
+  },
+  "ex_06": {
+   "m": "平静、低沉、慈爱地呼唤他的名字，不大声，像父亲叫孩子；两声“摩西”之间停一下，第二声更亲切",
+   "en": {
+    "phrases": [
+     {
+      "text": "Moses!",
+      "rate": "-14%",
+      "gap": 0.55
+     },
+     {
+      "text": "Moses!",
+      "rate": "-16%",
+      "pitch": "-4Hz"
+     }
+    ]
+   }
+  },
+  "ex_07": {
+   "m": "吓了一跳，结结巴巴，然后谦卑、轻声地回答"
+  },
+  "ex_08": {
+   "m": "平稳、温暖、从容；说到“听见了他们的哭声”时充满怜悯；后半句坚定而慈爱地差派他",
+   "en": {
+    "phrases": [
+     {
+      "text": "I have seen my people suffering in Egypt,",
+      "gap": 0.3
+     },
+     {
+      "text": "and I have heard them crying.",
+      "rate": "-16%",
+      "pitch": "-3Hz",
+      "gap": 0.6
+     },
+     {
+      "text": "Now go to Pharaoh, and bring my people out of Egypt.",
+      "rate": "-10%"
+     }
+    ]
+   }
+  },
+  "ex_09": {
+   "m": "紧张、害羞、没自信，指着自己；“就……就”真的结巴一下；最后不好意思地叹口气、苦笑"
+  },
+  "ex_10": {
+   "m": "温和，带着一点笑意，很有耐心，像在逗一个害羞的孩子"
+  },
+  "ex_11": {
+   "m": "滑稽地吓坏了，又快又尖，声音都劈了；第二个“蛇”更高更尖，像跳起来",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "minPace": 1.5,
+    "f0Hz": [
+     90,
+     300
+    ]
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "minPace": 1.5,
+    "f0Hz": [
+     85,
+     300
+    ]
+   }
+  },
+  "ex_12": {
+   "m": "慈爱、安慰，声音里带着微笑；“我会和你同在”说得特别温柔、笃定",
+   "en": {
+    "phrases": [
+     {
+      "text": "Don't be afraid.",
+      "rate": "-12%",
+      "gap": 0.35
+     },
+     {
+      "text": "Take it by the tail.",
+      "rate": "-8%",
+      "gap": 0.45
+     },
+     {
+      "text": "I will be with you,",
+      "rate": "-18%",
+      "pitch": "-3Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "and I will teach you what to say.",
+      "rate": "-12%"
+     }
+    ]
+   }
+  },
+  "ex_13": {
+   "m": "先深吸一口气，然后下定决心，勇敢、坚定，带一点微笑",
+   "breath": {
+    "before": true,
+    "gain": 0
+   },
+   "zh": {
+    "pick": 0,
+    "pickWhy": "keeps the pause in 好……我去 (2.0 s); the top-scored take rushed it into 1.0 s"
+   }
+  },
+  "ex_14": {
+   "m": "勇敢、洪亮、清楚，害羞的老人不见了，声音有力；“让我的百姓走”之前顿一下，然后一字一字地说"
+  },
+  "ex_15": {
+   "m": "开头先夸张地放声哈哈大笑（真的笑，不是念“哈”）；然后傲慢地嘲笑“哪个上帝呀”；最后像小孩一样耍赖、跺脚：“就是不放！”",
+   "zh": {
+    "acting": {
+     "kind": "laugh",
+     "before": "上帝",
+     "written": 3
+    },
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "takes": 5
+   },
+   "en": {
+    "acting": {
+     "kind": "laugh",
+     "before": "god",
+     "written": 3
+    },
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "takes": 5,
+    "pick": 3,
+    "pickWhy": "opens with a real 'Ha ha ha!' (laugh measure 3.6, verdict laugh) at 8.5 s; the top score's transcript has no laugh at the start"
+   }
+  },
+  "ex_16": {
+   "m": "轻快、有节奏地数出一样又一样的灾，像讲好玩的事；说到“青蛙”时忍不住偷笑"
+  },
+  "ex_17": {
+   "m": "滑稽：先疑惑地小声学一声“呱？”，愣住；然后突然尖叫，声音又尖又高，手忙脚乱、说得飞快；最后慌慌张张地连声认输",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "minPace": 2.0,
+    "takes": 5,
+    "f0Hz": [
+     100,
+     420
+    ]
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "minPace": 2.0,
+    "takes": 5,
+    "f0Hz": [
+     100,
+     420
+    ]
+   }
+  },
+  "ex_18": {
+   "m": "带点调侃、心知肚明，像在告状说一个调皮的小孩又耍赖了"
+  },
+  "ex_19": {
+   "m": "狡猾地嘿嘿偷笑两声，然后得意洋洋、唱歌似地拖着调子说“不放了”，像小孩耍赖“略略略”",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "minPace": 1.5,
+    "pick": 1,
+    "pickWhy": "has the sly 嘿嘿 chuckle and the sing-song 不放啦; the 'best' take by word error said only 不放了 (whisper counts 啦 vs 了 as an error)"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "minPace": 1.5,
+    "pick": 0,
+    "pickWhy": "the only take with the sly 'Heh heh' before 'changed my mind'"
+   }
+  },
+  "ex_20": {
+   "m": "压低声音，庄重但让人安心、平静；说到“平平安安的”时很温暖"
+  },
+  "ex_21": {
+   "m": "兴奋的悄悄话，又快又忙，招呼大家；说到“出发啦”时激动得发抖"
+  },
+  "ex_22": {
+   "m": "这里一点也不好笑：疲惫、伤心、认输了；先长长地叹一口气，声音很轻",
+   "breath": {
+    "before": true,
+    "gain": 0
+   },
+   "zh": {
+    "minPace": 1.8,
+    "maxPause": 1.4
+   },
+   "en": {
+    "minPace": 1.6,
+    "maxPause": 1.4
+   }
+  },
+  "ex_23": {
+   "m": "一群人一起欢呼，有先有后，不整齐，有人在笑"
+  },
+  "ex_24": {
+   "m": "充满惊奇，温暖明亮"
+  },
+  "ex_25": {
+   "m": "滑稽地发脾气：先突然愣住“等等！”，反应过来后气急败坏、越说越委屈，最后跺着脚大声发号施令",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "takes": 5
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "takes": 5
+   }
+  },
+  "ex_26": {
+   "m": "害怕、着急、上气不接下气，说得很快；问“我们怎么办呀”时音调越来越高",
+   "zh": {
+    "f0Hz": [
+     180,
+     420
+    ]
+   }
+  },
+  "ex_27": {
+   "m": "沉着、坚定、有力，整个故事里最稳的声音；像一只手按在她肩上安慰她"
+  },
+  "ex_28": {
+   "m": "越讲越惊奇；“哗”字又快又响亮；说到“干干的路”时充满赞叹"
+  },
+  "ex_29": {
+   "m": "先惊呆了，轻轻地“哇……”，然后开心地大声招呼大家",
+   "breath": {
+    "before": true,
+    "gain": -2
+   },
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh"
+   }
+  },
+  "ex_30": {
+   "m": "滑稽：先骄傲地大喊冲锋、拖长音；然后一下子愣住、疑惑；接着摇摇晃晃慌得直叫；最后一声又尖又长的嚎叫，像掉进水里",
+   "zh": {
+    "acting": {
+     "kind": "wail"
+    },
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "minPace": 1.8,
+    "maxPause": 1.2,
+    "takes": 5,
+    "f0Hz": [
+     100,
+     400
+    ]
+   },
+   "en": {
+    "acting": {
+     "kind": "wail"
+    },
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "minPace": 1.6,
+    "maxPause": 1.2,
+    "takes": 5,
+    "f0Hz": [
+     100,
+     400
+    ]
+   }
+  },
+  "ex_31": {
+   "m": "松了一口气，喜乐；说到“平平安安地”时温暖、柔和"
+  },
+  "ex_32": {
+   "m": "湿漉漉、闷闷不乐：鼻子发痒，吸两口气“阿……阿……”，越憋越大，最后一个小小的、好笑的喷嚏“阿嚏”，不要太响",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|呱|哎|阿|嚏|咦",
+    "minPace": 0.8,
+    "maxPause": 1.0,
+    "pick": 1,
+    "pickWhy": "the only take whose last burst is unvoiced (a real 'choo' hiss, voiced fraction 0.00 in its last 0.35 s); whisper cannot transcribe a sneeze"
+   },
+   "en": {
+    "asrIgnore": "ha|hmph|heh|hey|waaah|waah|ah|achoo|aaah|ribbit|whoa|huh|wow|oh",
+    "minPace": 0.8,
+    "maxPause": 1.0,
+    "pick": 2,
+    "pickWhy": "'Ah! Ah! Achoo!': the only take that is a sneeze; the top score said 'Oh, oh, oh...'"
+   }
+  },
+  "ex_33": {
+   "m": "跟着手鼓有节奏地半唱半念，快乐、带着笑；每一句都跳起来",
+   "zh": {
+    "phrases": [
+     {
+      "text": "唱歌吧，",
+      "instruct": "跟着手鼓的节拍，像唱儿歌一样有节奏地半唱半念，快乐、带着笑，每个字都踩在拍子上。"
+     },
+     {
+      "text": "向上帝唱歌！",
+      "instruct": "跟着手鼓的节拍，像唱儿歌一样有节奏地半唱半念，快乐、带着笑，每个字都踩在拍子上。"
+     },
+     {
+      "text": "他大大得胜，",
+      "instruct": "跟着手鼓的节拍，像唱儿歌一样有节奏地半唱半念，快乐、带着笑，每个字都踩在拍子上。"
+     },
+     {
+      "text": "把马和兵车，",
+      "instruct": "跟着手鼓的节拍，像唱儿歌一样有节奏地半唱半念，快乐、带着笑，每个字都踩在拍子上。"
+     },
+     {
+      "text": "都抛在海里！",
+      "instruct": "跟着手鼓的节拍，像唱儿歌一样有节奏地半唱半念，快乐、带着笑，每个字都踩在拍子上。"
+     }
+    ],
+    "grid": {
+     "beatSec": 1.071429,
+     "onsetsBeats": [
+      0,
+      1,
+      3,
+      5,
+      6
+     ]
+    },
+    "minPace": 1.5,
+    "maxPause": 1.2,
+    "takes": 4
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Sing to the Lord,",
+      "rate": "+18%",
+      "pitch": "+3Hz"
+     },
+     {
+      "text": "sing!",
+      "rate": "+0%",
+      "pitch": "+5Hz"
+     },
+     {
+      "text": "He has won the victory!",
+      "rate": "+6%",
+      "pitch": "+2Hz"
+     },
+     {
+      "text": "Horse and chariot,",
+      "rate": "+4%",
+      "pitch": "+4Hz"
+     },
+     {
+      "text": "he threw into the sea!",
+      "rate": "+2%",
+      "pitch": "+2Hz"
+     }
+    ],
+    "grid": {
+     "beatSec": 1.071429,
+     "onsetsBeats": [
+      0,
+      1,
+      2,
+      4,
+      6
+     ]
+    }
+   }
+  },
+  "ex_34": {
+   "m": "大家跟着她一起唱，开心、有节奏，有点不整齐",
+   "zh": {
+    "phrases": [
+     {
+      "text": "唱歌吧！"
+     },
+     {
+      "text": "向上帝唱歌！"
+     }
+    ],
+    "grid": {
+     "beatSec": 1.071429,
+     "onsetsBeats": [
+      0,
+      1
+     ]
+    }
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Sing to the Lord!"
+     },
+     {
+      "text": "Sing!"
+     }
+    ],
+    "grid": {
+     "beatSec": 1.071429,
+     "onsetsBeats": [
+      0,
+      1
+     ]
+    }
+   }
+  },
+  "ex_35": {
+   "m": "温暖、感恩，像爷爷带着微笑讲故事"
+  },
+  "ex_36": {
+   "m": "温暖的结尾，直接对孩子说；最后一句带着微笑"
+  }
+ }
+}

@@ -158,6 +158,7 @@ namespace DoodLive.Story
         void EndSeek(float t)
         {
             seeking = false;
+            ExodusStage.Seek(seekFx, t);   // Exodus: the sea walls stand if a sea_part started and no sea_close finished by t (no-op elsewhere)
             foreach (var f in seekFx)
             {
                 float end = f.t + (f.dur > 0 ? f.dur : 1f);

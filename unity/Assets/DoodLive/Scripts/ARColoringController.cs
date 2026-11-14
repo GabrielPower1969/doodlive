@@ -254,6 +254,7 @@ namespace DoodLive
 
         void Back()
         {
+            if (howtoOpen) { CloseHowto(); return; }   // the how-to video (ARColoringController.Howto.cs)
             if (state >= State.LiveIdle) Rescan();
             else if (state >= State.ScanSearch && state != State.Reveal) Go(State.Home);
             else if (state == State.Home && libOpen != null) libOpen = null;

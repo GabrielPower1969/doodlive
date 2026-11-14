@@ -1,0 +1,95 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it with a fadeInSec fade-in at its timeline sfx event, or, if the timeline has none (inTimeline: false), when the music cue startAtCue starts (t is that time in the current timeline), and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "birds",
+   "secs": 11.0,
+   "loop": false,
+   "gainDb": -14,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -15.8
+  },
+  {
+   "id": "cheer",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.0
+  },
+  {
+   "id": "coins",
+   "secs": 2.6,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.5
+  },
+  {
+   "id": "crickets_night",
+   "secs": 20.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -19.2,
+   "loopStart": 0.0,
+   "loopEnd": 20.0,
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "startAtCue": "feast",
+   "stopAtCue": "finale",
+   "inTimeline": true,
+   "t": 144.04
+  },
+  {
+   "id": "footsteps_run",
+   "secs": 2.6,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -21.9
+  },
+  {
+   "id": "oink",
+   "secs": 1.5,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.8
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -13.9
+  },
+  {
+   "id": "tummy",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -6,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.2
+  },
+  {
+   "id": "wind_dry",
+   "secs": 7.0,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.1
+  }
+ ]
+}

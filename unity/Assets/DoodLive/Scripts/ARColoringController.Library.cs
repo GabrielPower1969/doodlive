@@ -92,7 +92,8 @@ namespace DoodLive
         // ---------------- scrolling the shelf (once per frame, from Update) ----------------
         void LibraryInput()
         {
-            if (state != State.Home || libOpen != null || moreOpen) { libPressing = false; return; }
+            HowtoTick();
+            if (state != State.Home || libOpen != null || moreOpen || howtoOpen) { libPressing = false; return; }
             bool down = Input.touchCount > 0 || Input.GetMouseButton(0);
             float y = Input.touchCount > 0 ? Screen.height - Input.GetTouch(0).position.y : Screen.height - Input.mousePosition.y;
             if (down && !libPressing) { libPressing = true; libDragged = false; libPressY = y; libPressScroll = libScroll; libVel = 0; }
@@ -168,6 +169,7 @@ namespace DoodLive
             Tinted(white, new Rect(0, 0, w, h), DesignTokens.Paper);
             if (libOpen != null && Book(libOpen) is LibBook ob) BookPage(ob, w, h, top, bottom, edge, chip, land);
             else Shelf(w, h, top, bottom, edge, chip, land);
+            SheetNoteGUI(w, h, bottom);   // saved / hold-hint note (ARColoringController.SheetActions.cs)
             GUI.color = Color.white;
         }
 
@@ -188,6 +190,7 @@ namespace DoodLive
             // header: logo + language switch (the lock chip is drawn by the chips block, top right)
             Logo(new Rect(x0 - u * 0.3f, y - u * 0.05f, u * 4.6f, chip));
             LangChip(new Rect(w - edge - chip - u * 0.3f - u * 2.6f, y + chip * 0.1f, u * 2.6f, chip * 0.8f));
+            if (HowtoSeen) HowtoChip(new Rect(w - edge - chip - u * 0.3f - u * 2.6f - u * 0.25f - chip * 0.8f, y + chip * 0.1f, chip * 0.8f, chip * 0.8f));   // "?" = how to play
             y += chip + u * 0.35f;
 
             float scanH = u * 1.35f, footer = bottom + scanH + u * 0.9f;
@@ -199,6 +202,9 @@ namespace DoodLive
             GUI.Label(new Rect(x0, cy, x1 - x0, u * 0.8f), "今天想读哪个故事？", LS(true, u * 0.62f, DesignTokens.Ink));
             GUI.Label(new Rect(x0, cy + u * 0.72f, x1 - x0, u * 0.6f), "Which story shall we read today?", LS(false, u * 0.4f, DesignTokens.InkSoft));
             cy += u * 1.6f;
+
+            // how to play (first run only; afterwards the "?" chip): ARColoringController.Howto.cs
+            if (!HowtoSeen) cy = HowtoCard(x0, x1, cy, land);
 
             // keep reading
             string last = PlayerPrefs.GetString("lib.last", "");
@@ -300,21 +306,26 @@ namespace DoodLive
             y += bh + u * 0.7f;
 
             // chapters: the timeline's shots; read ones are green, the next one is sun-yellow
-            if (n > 0 && y < h - bottom - u * 1.5f)
+            float actH = SheetRowHeight(b);   // save / share / print row at the bottom (ARColoringController.SheetActions.cs)
+            if (n > 0 && y < h - bottom - actH - u * 1.5f)
             {
                 Bi(new Rect(land ? tx : w / 2 - u * 2.1f, y, u * 6, u * 0.6f), "章节", "Chapters", u * 0.42f, DesignTokens.Ink);
                 y += u * 0.75f;
                 int cols = land ? 4 : 3; float gap = u * 0.25f, cwid = (tw - gap * (cols - 1)) / cols, chH = u * 0.95f;
+                // every chapter must fit above the grown-ups' row: shrink the buttons (not below 0.62 u) before dropping any
+                int rowsN = (n + cols - 1) / cols; float room = h - bottom - actH - u * 0.2f - y;
+                if (rowsN > 0) chH = Mathf.Clamp((room - gap * (rowsN - 1)) / rowsN, u * 0.62f, u * 0.95f);
                 for (int i = 0; i < n; i++)
                 {
                     var r = new Rect(tx + (i % cols) * (cwid + gap), y + (i / cols) * (chH + gap), cwid, chH);
-                    if (r.yMax > h - bottom - u * 0.2f) break;
+                    if (r.yMax > h - bottom - actH - u * 0.2f) break;
                     var fill = i < sh || Done(b.id) ? boxLeaf : i == sh && sh > 0 ? boxSun : boxPaper;
                     if (Tap(PaperButton(r, "", fill, txtTag, lip * 0.5f))) OpenBook(b, i);
                     GUI.Label(new Rect(r.x + u * 0.12f, r.y, u * 0.5f, chH), (i + 1).ToString(), LS(false, u * 0.36f, DesignTokens.Ink, TextAnchor.MiddleCenter));
                     GUI.Label(new Rect(r.x + u * 0.55f, r.y, r.width - u * 0.65f, chH), ShotTitle(b.shots[i]), LS(L10n.IsZh, u * (L10n.IsZh ? 0.3f : 0.26f), DesignTokens.Ink));
                 }
             }
+            if (actH > 0) SheetActionsRow(b, new Rect(tx, h - bottom - actH, tw, actH - u * 0.45f));
         }
     }
 }

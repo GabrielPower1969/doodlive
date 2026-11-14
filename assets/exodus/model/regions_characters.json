@@ -1,0 +1,820 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/ex_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as D&G id_2x).",
+ "sheet": {
+  "moses": {
+   "sheetX": 0.0,
+   "sheetY": 0.027
+  },
+  "pharaoh": {
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "miriam": {
+   "sheetX": 0.33,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "moses": {
+   "height": 0.37,
+   "bboxSheet": [
+    -0.1654,
+    0.0287,
+    0.139,
+    0.3983
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#D39A6F",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1445,
+      0.0313,
+      0.139,
+      0.3931
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#F4F1EA",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "beardLong",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.0292,
+      0.2641,
+      0.0292,
+      0.3978
+     ]
+    },
+    "tunic": {
+     "id": 3,
+     "hex": "#F1E6CC",
+     "zh": "内袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.1224,
+      0.0368,
+      0.1225,
+      0.3162
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0392,
+      0.0287,
+      0.0392,
+      0.0511
+     ]
+    },
+    "belt": {
+     "id": 5,
+     "hex": "#B89466",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.0482,
+      0.1797,
+      0.0486,
+      0.2545
+     ]
+    },
+    "mantleA": {
+     "id": 6,
+     "hex": "#C98B3A",
+     "zh": "外袍条纹 A",
+     "en": "mantle stripe A",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      -0.1114,
+      0.0973,
+      0.1115,
+      0.3134
+     ]
+    },
+    "mantleB": {
+     "id": 7,
+     "hex": "#6B4426",
+     "zh": "外袍条纹 B",
+     "en": "mantle stripe B",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      -0.1184,
+      0.0947,
+      0.1185,
+      0.3151
+     ]
+    },
+    "staff": {
+     "id": 8,
+     "hex": "#8A5E3A",
+     "zh": "牧杖",
+     "en": "staff",
+     "parts": [
+      "staff"
+     ],
+     "bboxSheet": [
+      -0.1654,
+      0.03,
+      -0.13,
+      0.3983
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02246,
+     0.3072,
+     0.02246,
+     0.35212
+    ],
+    "px": 512,
+    "default": "calm",
+    "files": {
+     "calm": "docs/exodus/design/faces/moses_calm.png",
+     "talk": "docs/exodus/design/faces/moses_talk.png",
+     "curious": "docs/exodus/design/faces/moses_curious.png",
+     "amazed": "docs/exodus/design/faces/moses_amazed.png",
+     "worried": "docs/exodus/design/faces/moses_worried.png",
+     "scared": "docs/exodus/design/faces/moses_scared.png",
+     "brave": "docs/exodus/design/faces/moses_brave.png",
+     "pray": "docs/exodus/design/faces/moses_pray.png",
+     "joy": "docs/exodus/design/faces/moses_joy.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk_staff": "calm",
+     "talk": "talk",
+     "look_curious": "curious",
+     "startle": "scared",
+     "kneel_bow": "pray",
+     "who_me": "worried",
+     "throw_staff": "brave",
+     "jump_back": "scared",
+     "grab_tail": "worried",
+     "nod_brave": "brave",
+     "staff_raise": "brave",
+     "sigh_head": "worried",
+     "brave_talk": "talk",
+     "staff_over_sea": "brave",
+     "clap": "joy",
+     "talk_warm": "talk",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [
+     [
+      "chest",
+      8.0
+     ],
+     [
+      "neck",
+      8.0
+     ],
+     [
+      "head",
+      -10.0
+     ],
+     [
+      "upperArmL",
+      -8.0
+     ],
+     [
+      "upperArmR",
+      -8.0
+     ]
+    ],
+    "note": "Moses: the slight stoop (degrees about design X) is baked into the rest skeleton"
+   },
+   "props": {
+    "staff": {
+     "bone": "staff",
+     "mesh": "moses_staff",
+     "node": "moses/staff",
+     "shownByDefault": true
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "moses.FACE",
+     "uv": [
+      0.49975,
+      0.31438
+     ],
+     "local": [
+      -0.0002,
+      0.3588
+     ]
+    },
+    "handR.skin": {
+     "target": "moses.FACE",
+     "uv": [
+      0.49975,
+      0.31438
+     ],
+     "local": [
+      -0.0002,
+      0.3588
+     ]
+    },
+    "legL.skin": {
+     "target": "moses.FACE",
+     "uv": [
+      0.49975,
+      0.31438
+     ],
+     "local": [
+      -0.0002,
+      0.3588
+     ]
+    },
+    "legR.skin": {
+     "target": "moses.FACE",
+     "uv": [
+      0.49975,
+      0.31438
+     ],
+     "local": [
+      -0.0002,
+      0.3588
+     ]
+    }
+   }
+  },
+  "pharaoh": {
+   "height": 0.39,
+   "bboxSheet": [
+    -0.4681,
+    0.0167,
+    -0.1919,
+    0.4029
+   ],
+   "regions": {
+    "skin": {
+     "id": 9,
+     "hex": "#C98E62",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR",
+      "torso"
+     ],
+     "bboxSheet": [
+      -0.4681,
+      0.0194,
+      -0.1919,
+      0.3888
+     ]
+    },
+    "kilt": {
+     "id": 10,
+     "hex": "#FBF8EF",
+     "zh": "短裙",
+     "en": "kilt",
+     "parts": [
+      "kilt"
+     ],
+     "bboxSheet": [
+      -0.3759,
+      0.1388,
+      -0.2841,
+      0.2548
+     ]
+    },
+    "sash": {
+     "id": 11,
+     "hex": "#C2413A",
+     "zh": "围裙腰带",
+     "en": "apron sash",
+     "parts": [
+      "apron",
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.3643,
+      0.1447,
+      -0.2957,
+      0.2548
+     ]
+    },
+    "bands": {
+     "id": 12,
+     "hex": "#E8B83A",
+     "zh": "金饰",
+     "en": "gold bands",
+     "parts": [
+      "apron",
+      "bands",
+      "cobra",
+      "fbeard"
+     ],
+     "bboxSheet": [
+      -0.4533,
+      0.1546,
+      -0.2067,
+      0.4029
+     ]
+    },
+    "sandals": {
+     "id": 13,
+     "hex": "#E8B83A",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3659,
+      0.0167,
+      -0.2941,
+      0.0397
+     ]
+    },
+    "collar": {
+     "id": 14,
+     "hex": "#3FB8AF",
+     "zh": "宽项圈",
+     "en": "collar",
+     "parts": [
+      "collar",
+      "collarBeads"
+     ],
+     "bboxSheet": [
+      -0.3758,
+      0.2654,
+      -0.2845,
+      0.3035
+     ]
+    },
+    "nemesB": {
+     "id": 16,
+     "hex": "#E8B83A",
+     "zh": "头巾条纹 B",
+     "en": "head-cloth stripe B",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": [
+      -0.3762,
+      0.2424,
+      -0.2839,
+      0.394
+     ]
+    },
+    "nemesA": {
+     "id": 15,
+     "hex": "#2F5DA8",
+     "zh": "头巾条纹 A",
+     "en": "head-cloth stripe A",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": [
+      -0.3767,
+      0.2394,
+      -0.2834,
+      0.3995
+     ]
+    },
+    "chariot": {
+     "id": 17,
+     "hex": "#E0B13A",
+     "zh": "战车",
+     "en": "chariot",
+     "parts": [
+      "chariot",
+      "wheelL"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "pharaoh.nemesB",
+     "anchorUV": [
+      0.16075,
+      0.3152
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.pharaoh.propUV.chariot = [u, v])"
+    },
+    "chariotTrim": {
+     "id": 18,
+     "hex": "#C2413A",
+     "zh": "战车花边",
+     "en": "chariot trim",
+     "parts": [
+      "chariot",
+      "wheelL"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "pharaoh.sash",
+     "anchorUV": [
+      0.16975,
+      0.14487
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.pharaoh.propUV.chariotTrim = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02311,
+     0.31606,
+     0.02311,
+     0.36228
+    ],
+    "px": 512,
+    "default": "smug",
+    "files": {
+     "smug": "docs/exodus/design/faces/pharaoh_smug.png",
+     "talk": "docs/exodus/design/faces/pharaoh_talk.png",
+     "laugh": "docs/exodus/design/faces/pharaoh_laugh.png",
+     "angry": "docs/exodus/design/faces/pharaoh_angry.png",
+     "shock": "docs/exodus/design/faces/pharaoh_shock.png",
+     "scared": "docs/exodus/design/faces/pharaoh_scared.png",
+     "sad": "docs/exodus/design/faces/pharaoh_sad.png",
+     "sneaky": "docs/exodus/design/faces/pharaoh_sneaky.png",
+     "soggy": "docs/exodus/design/faces/pharaoh_soggy.png"
+    },
+    "clipExpression": {
+     "idle": "smug",
+     "walk": "smug",
+     "talk": "talk",
+     "smug": "smug",
+     "point_order": "angry",
+     "laugh": "laugh",
+     "arms_crossed": "smug",
+     "frog_panic": "scared",
+     "sneaky_no": "sneaky",
+     "sad_sit": "sad",
+     "tantrum": "angry",
+     "ride": "smug",
+     "wobble": "shock",
+     "soggy_sit": "soggy",
+     "sneeze": "soggy",
+     "angry": "angry"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "chariot": {
+     "bone": "chariot",
+     "mesh": "pharaoh_chariot",
+     "node": "pharaoh/chariot",
+     "shownByDefault": false
+    },
+    "wheelL": {
+     "bone": "wheelL",
+     "mesh": "pharaoh_wheelL",
+     "node": "pharaoh/wheelL",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.15675,
+      0.28423
+     ],
+     "local": [
+      -0.0132,
+      0.3338
+     ]
+    },
+    "handR.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.15675,
+      0.28423
+     ],
+     "local": [
+      -0.0132,
+      0.3338
+     ]
+    }
+   }
+  },
+  "miriam": {
+   "height": 0.34,
+   "bboxSheet": [
+    0.2179,
+    0.0165,
+    0.4421,
+    0.3593
+   ],
+   "regions": {
+    "skin": {
+     "id": 19,
+     "hex": "#E2AE84",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2179,
+      0.0165,
+      0.4421,
+      0.3496
+     ]
+    },
+    "hair": {
+     "id": 20,
+     "hex": "#4A2E1F",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "braid",
+      "hair"
+     ],
+     "bboxSheet": [
+      0.3046,
+      0.2183,
+      0.3689,
+      0.3541
+     ]
+    },
+    "dress": {
+     "id": 21,
+     "hex": "#F2B33D",
+     "zh": "长裙",
+     "en": "dress",
+     "parts": [
+      "dress"
+     ],
+     "bboxSheet": [
+      0.24,
+      0.0427,
+      0.4201,
+      0.2778
+     ]
+    },
+    "hem": {
+     "id": 22,
+     "hex": "#3E6FB0",
+     "zh": "裙边",
+     "en": "hem border",
+     "parts": [
+      "dress"
+     ],
+     "bboxSheet": [
+      0.232,
+      0.0241,
+      0.428,
+      0.2093
+     ]
+    },
+    "belt": {
+     "id": 23,
+     "hex": "#B5532E",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltTie",
+      "braid"
+     ],
+     "bboxSheet": [
+      0.2989,
+      0.1573,
+      0.3611,
+      0.233
+     ]
+    },
+    "necklace": {
+     "id": 24,
+     "hex": "#E86A5A",
+     "zh": "项链",
+     "en": "necklace",
+     "parts": [
+      "necklace"
+     ],
+     "bboxSheet": [
+      0.2933,
+      0.2564,
+      0.3667,
+      0.2722
+     ],
+     "anchoredTo": "necklace",
+     "anchorUV": [
+      0.82975,
+      0.21088
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "scarf": {
+     "id": 25,
+     "hex": "#2E9C9A",
+     "zh": "头巾",
+     "en": "head-scarf",
+     "parts": [
+      "scarf"
+     ],
+     "bboxSheet": [
+      0.2855,
+      0.1889,
+      0.3744,
+      0.3593
+     ]
+    },
+    "tambourine": {
+     "id": 26,
+     "hex": "#B07A47",
+     "zh": "手鼓",
+     "en": "tambourine",
+     "parts": [
+      "tambourine"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "moses.staff",
+     "anchorUV": [
+      0.36375,
+      0.31398
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.miriam.propUV.tambourine = [u, v])"
+    },
+    "ribbons": {
+     "id": 27,
+     "hex": "#E86A5A",
+     "zh": "彩带",
+     "en": "ribbons",
+     "parts": [
+      "tambourine"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "miriam.belt",
+     "anchorUV": [
+      0.81525,
+      0.18113
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.miriam.propUV.ribbons = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02119,
+     0.27726,
+     0.02119,
+     0.31964
+    ],
+    "px": 512,
+    "default": "calm",
+    "files": {
+     "calm": "docs/exodus/design/faces/miriam_calm.png",
+     "talk": "docs/exodus/design/faces/miriam_talk.png",
+     "sad": "docs/exodus/design/faces/miriam_sad.png",
+     "pray": "docs/exodus/design/faces/miriam_pray.png",
+     "worried": "docs/exodus/design/faces/miriam_worried.png",
+     "scared": "docs/exodus/design/faces/miriam_scared.png",
+     "wow": "docs/exodus/design/faces/miriam_wow.png",
+     "joy": "docs/exodus/design/faces/miriam_joy.png",
+     "sing": "docs/exodus/design/faces/miriam_sing.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk": "calm",
+     "talk": "talk",
+     "carry_brick": "sad",
+     "pray_stand": "pray",
+     "hurry_wave": "worried",
+     "joy": "joy",
+     "scared": "scared",
+     "wow": "wow",
+     "tambourine_dance": "sing",
+     "wave": "joy",
+     "clap": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "tambourine": {
+     "bone": "tambourine",
+     "mesh": "miriam_tambourine",
+     "node": "miriam/tambourine",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "miriam.FACE",
+     "uv": [
+      0.82975,
+      0.23248
+     ],
+     "local": [
+      -0.0003,
+      0.2702
+     ]
+    },
+    "handR.skin": {
+     "target": "miriam.FACE",
+     "uv": [
+      0.82975,
+      0.23248
+     ],
+     "local": [
+      -0.0003,
+      0.2702
+     ]
+    },
+    "legL.skin": {
+     "target": "miriam.FACE",
+     "uv": [
+      0.82975,
+      0.23248
+     ],
+     "local": [
+      -0.0003,
+      0.2702
+     ]
+    },
+    "legR.skin": {
+     "target": "miriam.FACE",
+     "uv": [
+      0.82975,
+      0.23248
+     ],
+     "local": [
+      -0.0003,
+      0.2702
+     ]
+    }
+   }
+  }
+ }
+}

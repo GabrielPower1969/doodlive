@@ -220,6 +220,7 @@ namespace DoodLive
             float w = Screen.width, h = Screen.height, top = h - Screen.safeArea.yMax, bottom = Screen.safeArea.yMin;
             bool land = w > h, live = state >= State.LiveIdle, scanning = state == State.ScanSearch || state == State.ScanLocked || state == State.ScanHelp;
             float chip = u * 1.15f, edge = u * 0.35f;
+            if (howtoOpen) { HowtoGUI(w, h, top, bottom, edge, chip); return; }   // fullscreen how-to video (ARColoringController.Howto.cs)
 
             // -- reveal flash + lost dimming
             float flash = Mathf.Clamp01(1 - (Time.time - flashT) / 0.25f);

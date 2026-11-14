@@ -1,0 +1,173 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "bricks",
+   "secs": 2.2,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -23.9
+  },
+  {
+   "id": "bush_whoosh",
+   "secs": 2.8,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.7
+  },
+  {
+   "id": "buzz",
+   "secs": 3.0,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.6
+  },
+  {
+   "id": "chariot",
+   "secs": 3.2,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -22.3
+  },
+  {
+   "id": "cheer",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.5
+  },
+  {
+   "id": "crickets_night",
+   "secs": 20.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.1,
+   "loopStart": 0.0,
+   "loopEnd": 20.0,
+   "stopAtCue": "exodus",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5
+  },
+  {
+   "id": "croak",
+   "secs": 0.9,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.8
+  },
+  {
+   "id": "drip",
+   "secs": 2.6,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -2.6,
+   "lufs": -22.6
+  },
+  {
+   "id": "hail",
+   "secs": 3.0,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -2.3,
+   "lufs": -19.3
+  },
+  {
+   "id": "hiss",
+   "secs": 1.7,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -2.4,
+   "lufs": -15.2
+  },
+  {
+   "id": "sea_rush",
+   "secs": 5.5,
+   "loop": false,
+   "gainDb": -6,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -19.9
+  },
+  {
+   "id": "sheep_bells",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -15,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -15.5
+  },
+  {
+   "id": "sigh_crowd",
+   "secs": 2.4,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.8
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -13.6
+  },
+  {
+   "id": "splash",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -5,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -20.7
+  },
+  {
+   "id": "sting",
+   "secs": 2.0,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.2
+  },
+  {
+   "id": "wheel_pop",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -5,
+   "samplePeak": -3.0,
+   "truePeak": -2.5,
+   "lufs": -28.7
+  },
+  {
+   "id": "wind",
+   "secs": 9.5,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.7
+  }
+ ]
+}

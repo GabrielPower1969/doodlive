@@ -14,6 +14,7 @@ Colour-in AR angel prototype. Static web app (three.js 0.170 vendored in `web/ve
 | D&G assets (models, desert, sheet, checks) | `pipeline/dg_make_all.sh` (Blender headless; `$DG_WORK` defaults to `/tmp/dg_work`) |
 | Design tokens (both apps) | edit `tools/design/tokens.json` → `python3 tools/gen_tokens.py` (→ `web/tokens.css`, `DesignTokens.cs`) |
 | UI icons for Unity | edit `tools/design/icons/*.svg` → `python3 tools/make_ui_icons.py` (headless Chrome → `Resources/UI/*.png`) |
+| Syntax-check the Android Java (no Unity) | `$J/OpenJDK/bin/javac -source 8 -target 8 -bootclasspath $J/SDK/platforms/android-34/android.jar -d /tmp/j unity/Assets/Plugins/Android/*.java` with `J=<Unity 6000.3.27f1>/PlaybackEngines/AndroidPlayer` |
 | Unity APK, install, QA | `scripts/build-apk.sh` → `scripts/install-apk.sh <serial>` → `scripts/qa-shots.sh <serial> [--quick]` |
 
 ## Map
@@ -38,6 +39,9 @@ pipeline/dg_*.py       Blender: dg_build (characters), dg_desert (desert set), d
 docs/david-goliath/    production contract + one doc per role; INTEGRATION.md = how the play runs, how to add a story
 docs/DESIGN-DIRECTION.md  approved design (Figma link, 10 screens, sources); docs/UX-PLAN.md the state machine
 unity/Assets/DoodLive/Scripts/ARColoringController.Library.cs  home screen = library (covers, keep reading, chapters); docs/LIBRARY.md
+unity/Assets/DoodLive/Scripts/ARColoringController.Howto.cs   home "how to play" card / "?" chip + fullscreen VideoPlayer (StreamingAssets/howto/howto[_en].mp4)
+unity/Assets/DoodLive/Scripts/ARColoringController.SheetActions.cs  book page save PDF / share / print (2 s hold); Java in unity/Assets/Plugins/Android/
+unity/Assets/DoodLive/Editor/SheetPdfSetup.cs  print/<sheet>.pdf -> StreamingAssets/sheets/ + Resources/sheet_pdfs.json (generated, run by Setup)
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
 docs/LESSONS.md        pitfalls log: symptom → cause → fix → prevention

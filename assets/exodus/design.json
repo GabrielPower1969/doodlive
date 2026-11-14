@@ -1,0 +1,2275 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther and Ruth; faces come from decals (no face ink)"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "出埃及",
+   "pinyin": "chū āi jí",
+   "english": "Let My People Go!",
+   "box": 76,
+   "gap": 12,
+   "cy": 100,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "出埃及记 · Exodus"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy 100 puts the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "moses": {
+   "height": 0.37,
+   "sheetX": 0.0,
+   "sheetY": 0.027
+  },
+  "pharaoh": {
+   "height": 0.39,
+   "sheetX": -0.33,
+   "sheetY": 0.015
+  },
+  "miriam": {
+   "height": 0.34,
+   "sheetX": 0.33,
+   "sheetY": 0.015
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/ex_egypt.py",
+  "doc": "docs/exodus/SET.md",
+  "contract": "docs/exodus/CONTRACT.md §6",
+  "root": "egypt",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "bushFlame": [
+    0.14,
+    0.088,
+    -0.38
+   ],
+   "bush": [
+    0.14,
+    0.0,
+    -0.36
+   ],
+   "pillarWest": [
+    0.16,
+    0.0,
+    -0.12
+   ],
+   "sea": [
+    0.3,
+    0.0,
+    -0.015
+   ],
+   "seaWater": [
+    0.3,
+    0.0,
+    -0.015
+   ],
+   "seaWallBack": [
+    0.3,
+    0.0,
+    0.02
+   ],
+   "seaWallFront": [
+    0.3,
+    0.0,
+    0.13
+   ],
+   "looseWheel": [
+    0.28,
+    0.0,
+    0.05
+   ],
+   "palace": [
+    -0.36,
+    0.0,
+    -0.48
+   ],
+   "throne": [
+    -0.36,
+    0.03,
+    -0.458
+   ],
+   "houses": [
+    -0.02,
+    0.0,
+    -0.47
+   ],
+   "doorMarks": [
+    -0.02,
+    0.0,
+    -0.41
+   ],
+   "nile": [
+    -0.55,
+    0.0,
+    -0.04
+   ],
+   "nileWater": [
+    -0.55,
+    0.0,
+    -0.04
+   ],
+   "brickyard": [
+    -0.36,
+    0.0,
+    -0.11
+   ],
+   "straw": [
+    -0.452,
+    0.0,
+    -0.04
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "palace": [
+    -0.55,
+    -0.56,
+    -0.17,
+    -0.4
+   ],
+   "daisFrontZ": -0.36,
+   "houses": [
+    [
+     -0.135,
+     -0.53,
+     -0.027,
+     -0.415
+    ],
+    [
+     -0.006,
+     -0.522,
+     0.096,
+     -0.408
+    ]
+   ],
+   "brickyard": [
+    -0.48,
+    -0.2,
+    -0.24,
+    -0.02
+   ],
+   "nile": [
+    -0.6,
+    -0.345,
+    -0.493,
+    0.21
+   ],
+   "sea": [
+    0.2,
+    -0.24,
+    0.4,
+    0.21
+   ],
+   "crossingLane": [
+    0.02,
+    0.13
+   ],
+   "seaWaterParts": {
+    "seaWaterBack": [
+     -0.24,
+     0.02
+    ],
+    "seaWaterLane": [
+     0.02,
+     0.13
+    ],
+    "seaWaterFront": [
+     0.13,
+     0.21
+    ]
+   },
+   "mountain": [
+    0.1,
+    -0.5875,
+    0.6,
+    -0.4
+   ],
+   "wildernessLane": [
+    0.04,
+    0.62,
+    -0.34,
+    -0.26
+   ],
+   "palms": {
+    "palace": [
+     [
+      -0.588,
+      -0.535
+     ],
+     [
+      -0.158,
+      -0.552
+     ]
+    ],
+    "farShore": [
+     [
+      0.468,
+      -0.425
+     ],
+     [
+      0.585,
+      -0.168
+     ],
+     [
+      0.575,
+      0.005
+     ]
+    ]
+   },
+   "obelisks": [
+    [
+     -0.577,
+     -0.432
+    ],
+    [
+     -0.157,
+     -0.383
+    ]
+   ],
+   "crowdWest": [
+    [
+     -0.455,
+     -0.15
+    ],
+    [
+     -0.412,
+     -0.158
+    ],
+    [
+     -0.372,
+     -0.098
+    ],
+    [
+     -0.42,
+     -0.078
+    ],
+    [
+     -0.3,
+     -0.168
+    ],
+    [
+     -0.318,
+     -0.09
+    ],
+    [
+     -0.262,
+     -0.132
+    ],
+    [
+     -0.47,
+     -0.092
+    ]
+   ],
+   "crowdShore": [
+    [
+     -0.088,
+     -0.198
+    ],
+    [
+     0.172,
+     -0.228
+    ],
+    [
+     0.19,
+     -0.198
+    ],
+    [
+     0.176,
+     -0.17
+    ],
+    [
+     0.191,
+     -0.14
+    ],
+    [
+     0.188,
+     -0.098
+    ],
+    [
+     0.19,
+     -0.058
+    ],
+    [
+     0.192,
+     -0.026
+    ]
+   ],
+   "crowdFar": [
+    [
+     0.47,
+     -0.2
+    ],
+    [
+     0.5,
+     -0.17
+    ],
+    [
+     0.476,
+     -0.135
+    ],
+    [
+     0.53,
+     -0.125
+    ],
+    [
+     0.555,
+     -0.092
+    ],
+    [
+     0.505,
+     -0.08
+    ],
+    [
+     0.545,
+     -0.05
+    ],
+    [
+     0.468,
+     -0.058
+    ],
+    [
+     0.535,
+     -0.2
+    ],
+    [
+     0.57,
+     -0.15
+    ]
+   ]
+  },
+  "heights": {
+   "daisTop": 0.03,
+   "columns": 0.2,
+   "cornice": 0.25,
+   "obelisk": 0.258,
+   "houses": [
+    0.086,
+    0.097
+   ],
+   "bushTop": 0.1127,
+   "mountainTop": 0.2598,
+   "seaSurfaceMax": 0.0085,
+   "seaWallBack": 0.2666,
+   "seaWallFront": 0.1653
+  },
+  "seaWalls": {
+   "rest": "node scale (1, 0.02, 1) and hidden; Effects raise the scale to (1, 1, 1) for sea_part and back for sea_close (origin at the wall's foot on the lane edge)",
+   "back": {
+    "node": "seaWallBack",
+    "faces": "+z (inner face at z 0.02)"
+   },
+   "front": {
+    "node": "seaWallFront",
+    "faces": "-z (inner face at z 0.13)"
+   },
+   "report": {
+    "seaWaterBackMaxH": 0.0085,
+    "seaWaterLaneMaxH": 0.0084,
+    "seaWaterFrontMaxH": 0.0085,
+    "seaBedMaxH": 0.0036,
+    "seaWallBackH": 0.2666,
+    "seaWallBackZ": [
+     -0.23,
+     0.043
+    ],
+    "seaWallBackX": [
+     0.1941,
+     0.4079
+    ],
+    "seaWallBackIntoLane": 0.023,
+    "seaWallFrontH": 0.1653,
+    "seaWallFrontZ": [
+     0.1205,
+     0.21
+    ],
+    "seaWallFrontX": [
+     0.1973,
+     0.4055
+    ],
+    "seaWallFrontIntoLane": 0.0095
+   }
+  },
+  "hiddenAtStart": [
+   "doorMarks",
+   "crowdShore",
+   "crowdFar",
+   "looseWheel",
+   "seaWallBack",
+   "seaWallFront"
+  ],
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the template position for instanced pieces",
+   "edgeOn": "faces with n . D < 0.22 (n in drawing space: edge-on or facing away) take one clean texel of their region",
+   "namedTexels": "scattered bits, the lane water and the sea walls take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "backdrop": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.62,
+    "cx": -0.105,
+    "y0": 1.02,
+    "decorOnly": [
+     "pyramid",
+     "dune"
+    ],
+    "members": [
+     "backdrop",
+     "pyramids",
+     "mountain"
+    ],
+    "sheetX": -0.105,
+    "sheetY": 1.02,
+    "bboxSheet": [
+     -0.4754,
+     1.02,
+     0.2654,
+     1.1879
+    ]
+   },
+   "bush": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.95,
+    "cx": 0.413,
+    "y0": 1.085,
+    "members": [
+     "bush"
+    ],
+    "sheetX": 0.26512,
+    "sheetY": 1.085,
+    "bboxSheet": [
+     0.3453,
+     1.085,
+     0.4807,
+     1.2036
+    ]
+   },
+   "papyrus": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.85,
+    "cx": 0.392,
+    "y0": 0.63,
+    "members": [
+     "nileBoat"
+    ],
+    "sheetX": 0.34318,
+    "sheetY": 0.63207,
+    "bboxSheet": [
+     0.304,
+     0.63,
+     0.48,
+     0.7608
+    ]
+   },
+   "palace": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.3,
+     0.42,
+     1
+    ],
+    "scale": 1.25,
+    "cx": -0.293,
+    "y0": 0.735,
+    "decorOnly": [
+     "pave",
+     "obelisk"
+    ],
+    "members": [
+     "palace",
+     "dais",
+     "throne"
+    ],
+    "sheetX": -0.10392,
+    "sheetY": 0.61337,
+    "bboxSheet": [
+     -0.4835,
+     0.735,
+     -0.1025,
+     1.0013
+    ]
+   },
+   "houses": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.3,
+     0.42,
+     1
+    ],
+    "scale": 1.0,
+    "cx": 0.05,
+    "y0": 0.843,
+    "decorOnly": [
+     "mudWall",
+     "roof"
+    ],
+    "members": [
+     "houses",
+     "doorMarks"
+    ],
+    "sheetX": -0.06445,
+    "sheetY": 0.67773,
+    "bboxSheet": [
+     -0.0891,
+     0.843,
+     0.1891,
+     1.0052
+    ]
+   },
+   "palm": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.1,
+    "cx": 0.4,
+    "y0": 0.79,
+    "members": [],
+    "sheetX": 0.38719,
+    "sheetY": 0.79341,
+    "bboxSheet": [
+     0.3258,
+     0.79,
+     0.4742,
+     1.0118
+    ]
+   },
+   "brickyard": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.6
+    ],
+    "D": [
+     0.0,
+     0.6,
+     1
+    ],
+    "scale": 0.85,
+    "cx": 0.122,
+    "y0": 0.625,
+    "decorOnly": [
+     "brick"
+    ],
+    "members": [
+     "brickyard",
+     "straw"
+    ],
+    "sheetX": 0.53436,
+    "sheetY": 0.61429,
+    "bboxSheet": [
+     -0.033,
+     0.625,
+     0.277,
+     0.8213
+    ]
+   },
+   "people": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.2,
+    "cx": 0.3295,
+    "y0": 0.435,
+    "members": [],
+    "creases": false,
+    "sheetX": 0.19061,
+    "sheetY": 0.43535,
+    "bboxSheet": [
+     0.1751,
+     0.435,
+     0.4839,
+     0.5475
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.1,
+    "cx": -0.288,
+    "y0": 0.435,
+    "decorOnly": [
+     "nile"
+    ],
+    "members": [
+     "ground",
+     "nileWater"
+    ],
+    "sheetX": -0.288,
+    "sheetY": 0.50274,
+    "bboxSheet": [
+     -0.4815,
+     0.435,
+     -0.0945,
+     0.6923
+    ]
+   },
+   "sea": {
+    "A": [
+     0,
+     0,
+     1
+    ],
+    "B": [
+     1,
+     0,
+     0
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 1.85,
+    "cx": 0.041,
+    "y0": 0.44,
+    "decorOnly": [
+     "sea",
+     "seaDeep"
+    ],
+    "members": [
+     "seaWaterBack",
+     "seaWaterFront",
+     "seaBed"
+    ],
+    "sheetX": 0.04911,
+    "sheetY": 0.33189,
+    "bboxSheet": [
+     -0.0806,
+     0.44,
+     0.1626,
+     0.5481
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.1,
+     "sheetX": -0.288,
+     "sheetY": 0.50274
+    },
+    "instanced": false,
+    "namedTexels": {
+     "tuft": [
+      "palm",
+      "frond"
+     ],
+     "pebble": [
+      "palace",
+      "stone"
+     ],
+     "stone": [
+      "backdrop",
+      "rock"
+     ]
+    },
+    "regions": [
+     "beach",
+     "farSand",
+     "pebble",
+     "sand",
+     "stone",
+     "track",
+     "tuft",
+     "wetSand"
+    ],
+    "heightMax": 0.0168,
+    "tris": 4903
+   },
+   {
+    "id": "backdrop",
+    "drawing": "backdrop",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.105,
+     "sheetY": 1.02
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "dune",
+     "duneFar"
+    ],
+    "heightMax": 0.2552,
+    "tris": 703
+   },
+   {
+    "id": "pyramids",
+    "drawing": "backdrop",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.105,
+     "sheetY": 1.02
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "pyramid",
+     "pyramidCap"
+    ],
+    "heightMax": 0.272,
+    "tris": 18
+   },
+   {
+    "id": "mountain",
+    "drawing": "backdrop",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.105,
+     "sheetY": 1.02
+    },
+    "instanced": false,
+    "namedTexels": {
+     "ledge": [
+      "ground",
+      "track"
+     ]
+    },
+    "regions": [
+     "ledge",
+     "rock",
+     "shrub"
+    ],
+    "heightMax": 0.2598,
+    "tris": 3393
+   },
+   {
+    "id": "palace",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.10392,
+     "sheetY": 0.61337
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "capital",
+     "column",
+     "gold",
+     "obelisk",
+     "paint",
+     "pave",
+     "stone",
+     "wing"
+    ],
+    "heightMax": 0.2564,
+    "tris": 6804
+   },
+   {
+    "id": "dais",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.10392,
+     "sheetY": 0.61337
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "dais",
+     "gold"
+    ],
+    "heightMax": 0.0314,
+    "tris": 60
+   },
+   {
+    "id": "throne",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.25,
+     "sheetX": -0.10392,
+     "sheetY": 0.61337
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "cushion",
+     "throne"
+    ],
+    "heightMax": 0.14,
+    "tris": 512
+   },
+   {
+    "id": "palacePalms",
+    "drawing": "palm",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.1,
+     "sheetX": 0.38719,
+     "sheetY": 0.79341
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "dates",
+     "frond",
+     "palmTrunk"
+    ],
+    "heightMax": 0.2283,
+    "tris": 1628
+   },
+   {
+    "id": "nile",
+    "drawing": "papyrus",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.34318,
+     "sheetY": 0.63207
+    },
+    "instanced": true,
+    "namedTexels": {
+     "lotusPad": [
+      "papyrus",
+      "lotusPad"
+     ],
+     "lotus": [
+      "papyrus",
+      "lotus"
+     ]
+    },
+    "regions": [
+     "lotus",
+     "lotusPad",
+     "papyrusHead",
+     "reed"
+    ],
+    "heightMax": 0.1204,
+    "tris": 5740
+   },
+   {
+    "id": "nileWater",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.1,
+     "sheetX": -0.288,
+     "sheetY": 0.50274
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "nile"
+    ],
+    "heightMax": 0.0053,
+    "tris": 775
+   },
+   {
+    "id": "nileBoat",
+    "drawing": "papyrus",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.34318,
+     "sheetY": 0.63207
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "boat",
+     "rope"
+    ],
+    "heightMax": 0.0198,
+    "tris": 584
+   },
+   {
+    "id": "brickyard",
+    "drawing": "brickyard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.6
+     ],
+     "D": [
+      0.0,
+      0.6,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.53436,
+     "sheetY": 0.61429
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "brick",
+     "mud",
+     "trough",
+     "water"
+    ],
+    "heightMax": 0.0622,
+    "tris": 1662
+   },
+   {
+    "id": "straw",
+    "drawing": "brickyard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.6
+     ],
+     "D": [
+      0.0,
+      0.6,
+      1
+     ],
+     "scale": 0.85,
+     "sheetX": 0.53436,
+     "sheetY": 0.61429
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "straw"
+    ],
+    "heightMax": 0.0308,
+    "tris": 260
+   },
+   {
+    "id": "crowdWest",
+    "drawing": "people",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.19061,
+     "sheetY": 0.43535
+    },
+    "instanced": true,
+    "namedTexels": {
+     "brick": [
+      "brickyard",
+      "brick"
+     ],
+     "jar": [
+      "houses",
+      "jar"
+     ],
+     "eye": [
+      "houses",
+      "doorway"
+     ],
+     "band": [
+      "brickyard",
+      "trough"
+     ],
+     "beard": [
+      "houses",
+      "doorway"
+     ]
+    },
+    "regions": [
+     "band",
+     "beard",
+     "brick",
+     "cloth",
+     "eye",
+     "jar",
+     "robeA",
+     "robeB",
+     "robeC",
+     "skin"
+    ],
+    "heightMax": 0.1298,
+    "tris": 4598
+   },
+   {
+    "id": "houses",
+    "drawing": "houses",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.0,
+     "sheetX": -0.06445,
+     "sheetY": 0.67773
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "doorway",
+     "jar",
+     "mudWall",
+     "roof",
+     "wood"
+    ],
+    "heightMax": 0.115,
+    "tris": 2070
+   },
+   {
+    "id": "doorMarks",
+    "drawing": "houses",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.3,
+      0.42,
+      1
+     ],
+     "scale": 1.0,
+     "sheetX": -0.06445,
+     "sheetY": 0.67773
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "doorMark"
+    ],
+    "heightMax": 0.0724,
+    "tris": 144
+   },
+   {
+    "id": "bush",
+    "drawing": "bush",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.95,
+     "sheetX": 0.26512,
+     "sheetY": 1.085
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "bushLeaf",
+     "bushRock",
+     "bushWood"
+    ],
+    "heightMax": 0.1127,
+    "tris": 1640
+   },
+   {
+    "id": "seaWaterBack",
+    "drawing": "sea",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      1
+     ],
+     "B": [
+      1,
+      0,
+      0
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 1.85,
+     "sheetX": 0.04911,
+     "sheetY": 0.33189
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "foam",
+     "sea",
+     "seaDeep"
+    ],
+    "heightMax": 0.0085,
+    "tris": 1708
+   },
+   {
+    "id": "seaWaterLane",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sea": [
+      "sea",
+      "sea"
+     ],
+     "seaDeep": [
+      "sea",
+      "seaDeep"
+     ],
+     "foam": [
+      "sea",
+      "foam"
+     ],
+     "fish": [
+      "sea",
+      "seaDeep"
+     ]
+    },
+    "regions": [
+     "sea",
+     "seaDeep"
+    ],
+    "heightMax": 0.0084,
+    "tris": 772
+   },
+   {
+    "id": "seaWaterFront",
+    "drawing": "sea",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      1
+     ],
+     "B": [
+      1,
+      0,
+      0
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 1.85,
+     "sheetX": 0.04911,
+     "sheetY": 0.33189
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "foam",
+     "sea",
+     "seaDeep"
+    ],
+    "heightMax": 0.0085,
+    "tris": 564
+   },
+   {
+    "id": "seaBed",
+    "drawing": "sea",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      1
+     ],
+     "B": [
+      1,
+      0,
+      0
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 1.85,
+     "sheetX": 0.04911,
+     "sheetY": 0.33189
+    },
+    "instanced": false,
+    "namedTexels": {
+     "shell": [
+      "sea",
+      "foam"
+     ],
+     "pebble": [
+      "palace",
+      "stone"
+     ],
+     "weed": [
+      "palm",
+      "frond"
+     ],
+     "starfish": [
+      "houses",
+      "doorMark"
+     ]
+    },
+    "regions": [
+     "pebble",
+     "seaBed",
+     "shell",
+     "starfish",
+     "weed"
+    ],
+    "heightMax": 0.0036,
+    "tris": 1528
+   },
+   {
+    "id": "seaWallBack",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sea": [
+      "sea",
+      "sea"
+     ],
+     "seaDeep": [
+      "sea",
+      "seaDeep"
+     ],
+     "foam": [
+      "sea",
+      "foam"
+     ],
+     "fish": [
+      "sea",
+      "seaDeep"
+     ]
+    },
+    "regions": [
+     "fish",
+     "foam",
+     "sea",
+     "seaDeep"
+    ],
+    "heightMax": 0.2666,
+    "tris": 8072
+   },
+   {
+    "id": "seaWallFront",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sea": [
+      "sea",
+      "sea"
+     ],
+     "seaDeep": [
+      "sea",
+      "seaDeep"
+     ],
+     "foam": [
+      "sea",
+      "foam"
+     ],
+     "fish": [
+      "sea",
+      "seaDeep"
+     ]
+    },
+    "regions": [
+     "fish",
+     "foam",
+     "sea",
+     "seaDeep"
+    ],
+    "heightMax": 0.1653,
+    "tris": 6980
+   },
+   {
+    "id": "farShore",
+    "drawing": "palm",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.1,
+     "sheetX": 0.38719,
+     "sheetY": 0.79341
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "dates",
+     "frond",
+     "palmTrunk"
+    ],
+    "heightMax": 0.2595,
+    "tris": 2442
+   },
+   {
+    "id": "farRocks",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "stone": [
+      "backdrop",
+      "rock"
+     ]
+    },
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.016,
+    "tris": 336
+   },
+   {
+    "id": "crowdShore",
+    "drawing": "people",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.19061,
+     "sheetY": 0.43535
+    },
+    "instanced": true,
+    "namedTexels": {
+     "brick": [
+      "brickyard",
+      "brick"
+     ],
+     "jar": [
+      "houses",
+      "jar"
+     ],
+     "eye": [
+      "houses",
+      "doorway"
+     ],
+     "band": [
+      "brickyard",
+      "trough"
+     ],
+     "beard": [
+      "houses",
+      "doorway"
+     ]
+    },
+    "regions": [
+     "band",
+     "beard",
+     "bundle",
+     "cloth",
+     "eye",
+     "jar",
+     "robeA",
+     "robeB",
+     "robeC",
+     "sheepFace",
+     "skin",
+     "wool"
+    ],
+    "heightMax": 0.1412,
+    "tris": 4932
+   },
+   {
+    "id": "crowdFar",
+    "drawing": "people",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.19061,
+     "sheetY": 0.43535
+    },
+    "instanced": true,
+    "namedTexels": {
+     "brick": [
+      "brickyard",
+      "brick"
+     ],
+     "jar": [
+      "houses",
+      "jar"
+     ],
+     "eye": [
+      "houses",
+      "doorway"
+     ],
+     "band": [
+      "brickyard",
+      "trough"
+     ],
+     "beard": [
+      "houses",
+      "doorway"
+     ]
+    },
+    "regions": [
+     "band",
+     "beard",
+     "bundle",
+     "cloth",
+     "eye",
+     "jar",
+     "robeA",
+     "robeB",
+     "robeC",
+     "sheepFace",
+     "skin",
+     "wool"
+    ],
+    "heightMax": 0.1317,
+    "tris": 6220
+   },
+   {
+    "id": "looseWheel",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "gold": [
+      "palace",
+      "gold"
+     ]
+    },
+    "regions": [
+     "gold"
+    ],
+    "heightMax": 0.0068,
+    "tris": 328
+   }
+  ],
+  "constUV": [
+   {
+    "node": "ground/tuft",
+    "uv": [
+     0.9055,
+     0.81214
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "ground/pebble",
+    "uv": [
+     0.1695,
+     0.71027
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "ground/stone",
+    "uv": [
+     0.6435,
+     0.86186
+    ],
+    "region": "rock"
+   },
+   {
+    "node": "nile/lotusPad",
+    "uv": [
+     0.8515,
+     0.51956
+    ],
+    "region": "lotusPad"
+   },
+   {
+    "node": "nile/lotus",
+    "uv": [
+     0.8575,
+     0.52934
+    ],
+    "region": "lotus"
+   },
+   {
+    "node": "seaWaterLane/sea",
+    "uv": [
+     0.4905,
+     0.43154
+    ],
+    "region": "sea"
+   },
+   {
+    "node": "seaWaterLane/seaDeep",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaWaterLane/foam",
+    "uv": [
+     0.4265,
+     0.43888
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "seaWaterLane/fish",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaWallBack/sea",
+    "uv": [
+     0.4905,
+     0.43154
+    ],
+    "region": "sea"
+   },
+   {
+    "node": "seaWallBack/seaDeep",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaWallBack/foam",
+    "uv": [
+     0.4265,
+     0.43888
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "seaWallBack/fish",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaWallFront/sea",
+    "uv": [
+     0.4905,
+     0.43154
+    ],
+    "region": "sea"
+   },
+   {
+    "node": "seaWallFront/seaDeep",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaWallFront/foam",
+    "uv": [
+     0.4265,
+     0.43888
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "seaWallFront/fish",
+    "uv": [
+     0.5395,
+     0.40383
+    ],
+    "region": "seaDeep"
+   },
+   {
+    "node": "seaBed/shell",
+    "uv": [
+     0.4265,
+     0.43888
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "seaBed/pebble",
+    "uv": [
+     0.1695,
+     0.71027
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "seaBed/weed",
+    "uv": [
+     0.9055,
+     0.81214
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "seaBed/starfish",
+    "uv": [
+     0.5885,
+     0.72657
+    ],
+    "region": "doorMark"
+   },
+   {
+    "node": "farRocks/stone",
+    "uv": [
+     0.6435,
+     0.86186
+    ],
+    "region": "rock"
+   },
+   {
+    "node": "looseWheel/gold",
+    "uv": [
+     0.2065,
+     0.7502
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "crowdWest/brick",
+    "uv": [
+     0.4925,
+     0.66218
+    ],
+    "region": "brick"
+   },
+   {
+    "node": "crowdWest/jar",
+    "uv": [
+     0.4365,
+     0.69723
+    ],
+    "region": "jar"
+   },
+   {
+    "node": "crowdWest/eye",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "crowdWest/band",
+    "uv": [
+     0.5965,
+     0.52445
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "crowdWest/beard",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "crowdShore/brick",
+    "uv": [
+     0.4925,
+     0.66218
+    ],
+    "region": "brick"
+   },
+   {
+    "node": "crowdShore/jar",
+    "uv": [
+     0.4365,
+     0.69723
+    ],
+    "region": "jar"
+   },
+   {
+    "node": "crowdShore/eye",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "crowdShore/band",
+    "uv": [
+     0.5965,
+     0.52445
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "crowdShore/beard",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "crowdFar/brick",
+    "uv": [
+     0.4925,
+     0.66218
+    ],
+    "region": "brick"
+   },
+   {
+    "node": "crowdFar/jar",
+    "uv": [
+     0.4365,
+     0.69723
+    ],
+    "region": "jar"
+   },
+   {
+    "node": "crowdFar/eye",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "crowdFar/band",
+    "uv": [
+     0.5965,
+     0.52445
+    ],
+    "region": "trough"
+   },
+   {
+    "node": "crowdFar/beard",
+    "uv": [
+     0.4685,
+     0.72005
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "mountain/ledge",
+    "uv": [
+     0.3415,
+     0.48778
+    ],
+    "region": "track"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "soft": {
+    "start moses 0.00,0>0.64,-0.30": [
+     0.2284,
+     0.0204,
+     [
+      "farShore",
+      "ground"
+     ]
+    ],
+    "start pharaoh -0.33,0>-0.36,-0.30": [
+     0.1298,
+     0.0001,
+     [
+      "brickyard",
+      "crowdWest",
+      "ground"
+     ]
+    ]
+   },
+   "exempt": {
+    "seaWallBack": "the walls stand only while the sea is parted; the lane between them is checked (SEA_LANE)",
+    "seaWallFront": "as seaWallBack",
+    "looseWheel": "lies at Pharaoh's feet on purpose (S12, while he stands at (0.24, 0.07))",
+    "seaWaterLane": "the lane surface (<= 0.012) that Effects hide"
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "moses": {
+     "sheetX": 0.0,
+     "sheetY": 0.027,
+     "height": 0.37,
+     "box": [
+      -0.1654,
+      0.0287,
+      0.139,
+      0.3983
+     ]
+    },
+    "pharaoh": {
+     "sheetX": -0.33,
+     "sheetY": 0.015,
+     "height": 0.39,
+     "box": [
+      -0.4681,
+      0.0167,
+      -0.1919,
+      0.4029
+     ]
+    },
+    "miriam": {
+     "sheetX": 0.33,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      0.2179,
+      0.0165,
+      0.4421,
+      0.3593
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json",
+   "placesSetHere": {
+    "moses": [
+     0.0,
+     0.027
+    ]
+   },
+   "awaitingCharacterRerender": []
+  },
+  "demoColours": {
+   "sand": "#E8CC92",
+   "track": "#F0DDB2",
+   "wetSand": "#C8A97A",
+   "beach": "#F0E0B6",
+   "farSand": "#F3E6C4",
+   "nile": "#3E8FC4",
+   "sea": "#2C7FA8",
+   "seaDeep": "#1F6690",
+   "foam": "#E6F3F2",
+   "seaBed": "#C8A97A",
+   "duneFar": "#E9C98C",
+   "dune": "#EBD3A0",
+   "pyramid": "#E2BE7A",
+   "pyramidCap": "#E0B13A",
+   "rock": "#B5643F",
+   "ledgeTop": "#CF8A5C",
+   "ledge": "#E0B184",
+   "shrub": "#8C8A55",
+   "pave": "#E9D6AE",
+   "stone": "#E3C998",
+   "paint": "#2F5DA8",
+   "column": "#EFE0BE",
+   "capital": "#5FA58A",
+   "gold": "#E0B13A",
+   "dais": "#D8BB86",
+   "throne": "#E8B83A",
+   "cushion": "#C2413A",
+   "obelisk": "#DDB08F",
+   "wing": "#2F5DA8",
+   "mudWall": "#C99A6B",
+   "roof": "#D9B26A",
+   "doorway": "#4A3324",
+   "wood": "#8A5E3A",
+   "jar": "#B8653A",
+   "doorMark": "#C2413A",
+   "brick": "#A9673F",
+   "straw": "#E9D08A",
+   "trough": "#8A5E3A",
+   "water": "#6CB2DA",
+   "mud": "#9C7650",
+   "reed": "#6FA24A",
+   "papyrusHead": "#A6C25E",
+   "lotus": "#F4A6B8",
+   "lotusPad": "#5E9A48",
+   "boat": "#D9B26A",
+   "rope": "#8A5E3A",
+   "bushWood": "#5E4330",
+   "bushLeaf": "#8FA876",
+   "bushRock": "#B39074",
+   "palmTrunk": "#8A6A44",
+   "frond": "#4F8A3C",
+   "dates": "#B5532E",
+   "robeA": "#C98B3A",
+   "robeB": "#8FA3B8",
+   "robeC": "#B5532E",
+   "cloth": "#F1E6CC",
+   "skin": "#C68A5E",
+   "bundle": "#B07A47",
+   "wool": "#F4F1EA",
+   "sheepFace": "#4A3A30"
+  },
+  "tris": 69376,
+  "budget": 75000
+ }
+}
