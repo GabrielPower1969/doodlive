@@ -2187,9 +2187,9 @@ GUARDS = ("guard1", "guard2")
 # S10 marks the grips are fitted to (story.py, 2026-11-14): Haman kneels facing the king; guard1 0.11 to his RIGHT and
 # guard2 0.11 to his LEFT, both 0.02 ahead, both facing him for `grab`; then all three translate by S10_TRAVEL, the guards
 # facing the travel and Haman turned 180 deg from it by the director (`backwards: true`).
-S10_HAMAN = (0.20, 0.12)
+S10_HAMAN = (0.25, 0.12)
 S10_KING = (0.0, -0.30)
-S10_GUARD = {"guard1": (0.29, 0.055), "guard2": (0.092, 0.149)}
+S10_GUARD = {"guard1": (0.334, 0.047), "guard2": (0.145, 0.159)}
 S10_TRAVEL = (0.75, 0.28)
 H_ARM_GRIP = {"L": (0.076, 0.241, -0.016), "R": (-0.076, 0.241, -0.016)}   # haman_dragged upper arm (60 % to the elbow), mean
 GUARD_HOLDS = {"guard1": "R", "guard2": "L"}                                # which of Haman's arms each guard holds

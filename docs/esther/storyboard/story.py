@@ -234,7 +234,8 @@ SEQUENCE = [
     act("haman", "shock", face="king", dt=-0.4), sfx("boing", dt=-0.2),
     fx("sweat_drops", "haman.head", dur=2.0, dt=0.2),
     act("king", "angry_idle", face="haman"),
-    act("haman", "beg", to=(0.20, 0.12), face="esther", dt=0.7),
+    act("haman", "beg", to=(0.25, 0.12), face="esther", dt=0.7),
+    act("esther", "worried", face="haman", dt=0.7),   # arm down before he crawls close (it went through his head)
     line("es_16", "haman", "不、不、不！王后，救救我吧！王啊，饶命啊！",
          "No, no, no! My queen, save me! Oh king, have mercy!",
          "Esther 7:7-8", dir="blubbering, squeaky panic, fast and breathless, close to tears; comic", pre=0.8, post=0.2),
@@ -243,8 +244,8 @@ SEQUENCE = [
          "Guards! Take him away!",
          "Esther 7:8-9", dir="a royal command, loud, deep and final; not a scream", pre=0.2, post=0.1),
     prop("guard1", show=True, dt=-0.6), prop("guard2", show=True, dt=-0.6),
-    # marks: 0.11 to each side of Haman (beg mark 0.20, 0.12, facing the king) and 0.02 ahead; guard1 on his right
-    act("guard1", "march", to=(0.29, 0.055), face="haman", dt=-0.6), act("guard2", "march", to=(0.092, 0.149), face="haman", dt=-0.6),
+    # marks: 0.11 to each side of Haman (beg mark 0.25, 0.12, facing the king) and 0.02 ahead; guard1 on his right
+    act("guard1", "march", to=(0.334, 0.047), face="haman", dt=-0.6), act("guard2", "march", to=(0.145, 0.159), face="haman", dt=-0.6),
     sfx("armor_march"),
     pause(2.0),
     act("guard1", "grab", face="haman"), act("guard2", "grab", face="haman"),
@@ -254,8 +255,8 @@ SEQUENCE = [
          "Nooo! Let me go! I'm a very important man! I'm... waaaah!",
          "Esther 7:8", dir="wailing and kicking as he is dragged off; long howling 'no', then outraged, then a big wail that fades away into the distance",
          pre=0.2, post=0.2),
-    act("haman", "dragged", to=(0.95, 0.40), face="king", dt=-6.0),
-    act("guard1", "drag", to=(1.04, 0.335), face=None, dt=-6.0), act("guard2", "drag", to=(0.842, 0.429), face=None, dt=-6.0),
+    act("haman", "dragged", to=(1.00, 0.40), face="king", dt=-6.0),
+    act("guard1", "drag", to=(1.084, 0.327), face=None, dt=-6.0), act("guard2", "drag", to=(0.895, 0.439), face=None, dt=-6.0),
     fx("dust_drag", "haman.footL", dur=5.0, dt=-5.9), sfx("scurry", dt=-5.6),
     pause(1.2),   # the drag (~0.8 art units at naturalSpeed 0.16) ends ~5 s after it starts, just off the page
     prop("guard1", show=False), prop("guard2", show=False), prop("haman", show=False),
