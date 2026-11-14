@@ -30,6 +30,14 @@ for tl_path in sorted(_glob.glob(f"{ROOT}/assets/*/timeline.json")):
         tl = json.load(open(tl_path, encoding="utf-8"))
         ALL += "".join(x.get(k, "") for x in tl.get("lines", []) + tl.get("shots", []) for k in ("zh", "en", "title_zh", "title_en"))
 ALL += "".join(globals().get("extra_titles", []))
+# the home-screen library (docs/LIBRARY.md): book titles, pinyin, blurbs and the screen's own words
+if os.path.exists(f"{ROOT}/assets/library.json"):
+    for _b in json.load(open(f"{ROOT}/assets/library.json", encoding="utf-8"))["books"]:
+        ALL += "".join(str(_b.get(k, "")) for k in ("title_zh", "title_en", "pinyin", "blurb_zh", "blurb_en"))
+_lib_cs = f"{ROOT}/unity/Assets/DoodLive/Scripts/ARColoringController.Library.cs"
+if os.path.exists(_lib_cs):
+    import re as _re
+    ALL += "".join(_re.findall(r'"([^"\n]*)"', open(_lib_cs, encoding="utf-8").read())) + "▶"
 LEARN = "天使炙热愤怒神圣大卫歌利亚"   # characters taught on the sheets (3D titles + word card)
 CHARS = {"latin": LATIN, "all": ALL, "learn": LEARN}
 

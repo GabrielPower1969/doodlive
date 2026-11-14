@@ -158,7 +158,7 @@ namespace DoodLive
         {
             Tinted(disc, new Rect(r.x, r.y + r.height * 0.08f, r.width, r.height), DesignTokens.Ink);
             Tinted(disc, r, fill);
-            GUI.Label(r, text, LS(true, r.height * 0.42f, DesignTokens.Ink, TextAnchor.MiddleCenter));
+            GUI.Label(r, text, LS(text.Length <= 1, r.height * (text.Length <= 1 ? 0.42f : 0.27f), DesignTokens.Ink, TextAnchor.MiddleCenter));
         }
 
         void LibraryGUI(float w, float h, float top, float bottom, float edge, float chip, bool land, float alpha)
@@ -215,7 +215,7 @@ namespace DoodLive
                 GUI.Label(new Rect(tx, card.y + u * 1.38f, tw, u * 0.5f), lb.en, LS(false, u * 0.38f, DesignTokens.Ink));
                 if (n > 0 && !fin)
                 {
-                    GUI.Label(new Rect(tx, card.y + u * 1.95f, tw, u * 0.5f), $"第 {sh + 1}/{n} 幕 · {ShotTitle(lb.shots[Mathf.Min(sh, n - 1)])}", LS(L10n.IsZh, u * 0.34f, DesignTokens.Ink));
+                    GUI.Label(new Rect(tx, card.y + u * 1.95f, tw, u * 0.5f), (L10n.IsZh ? $"第 {sh + 1}/{n} 幕 · " : $"Part {sh + 1} of {n} · ") + ShotTitle(lb.shots[Mathf.Min(sh, n - 1)]), LS(L10n.IsZh, u * 0.34f, DesignTokens.Ink));
                     Bar(new Rect(tx, card.y + u * 2.55f, tw, u * 0.26f), (sh + 0.5f) / n, DesignTokens.Leaf);
                 }
                 float ps = u * 1.6f; var play = new Rect(card.xMax - ps - u * 0.3f, card.center.y - ps / 2, ps, ps);
@@ -226,7 +226,9 @@ namespace DoodLive
             // the bookshelf
             Bi(new Rect(x0, cy, x1 - x0, u * 0.7f), "我的书架", "My bookshelf", u * 0.5f, DesignTokens.Ink);
             cy += u * 0.95f;
-            int cols = land ? 4 : 2; float gap = u * 0.55f, bw = (x1 - x0 - gap * (cols - 1)) / cols, bh = bw * 4f / 3f;
+            int cols = land ? 4 : 2; float gap = u * 0.55f, bw = (x1 - x0 - gap * (cols - 1)) / cols;
+            if (land) bw = Mathf.Min(bw, view.height * 0.62f * 3f / 4f);   // landscape: a whole row of covers in view
+            float bh = bw * 4f / 3f, gx = x0 + (x1 - x0 - (cols * bw + (cols - 1) * gap)) / 2;
             for (int r0 = 0; r0 * cols < books.Length; r0++)   // shelf planks first, the frames stand on them
             {
                 float py = cy + r0 * (bh + u * 2.2f) + bh;
@@ -237,7 +239,7 @@ namespace DoodLive
             for (int i = 0; i < books.Length; i++)
             {
                 var b = books[i]; int c = i % cols, r = i / cols;
-                float bx = x0 + c * (bw + gap), by = cy + r * (bh + u * 2.2f);
+                float bx = gx + c * (bw + gap), by = cy + r * (bh + u * 2.2f);
                 var cover = new Rect(bx, by, bw, bh);
                 FramedCover(new Rect(cover.x, cover.y - u * 0.15f, cover.width, cover.height), b.id, (i % 2 == 0 ? -1f : 1f));
                 // mark: new / finished / reading
@@ -288,7 +290,7 @@ namespace DoodLive
             float btnW = land ? Mathf.Min(tw, u * 7) : tw, bx = land ? tx : w / 2 - btnW / 2, bh = u * 1.1f;
             if (sh > 0 && n > 0)
             {
-                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), $"▶  接着看第 {sh + 1} 幕 · Continue", boxSun, txtTag))) OpenBook(b, sh);
+                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), L10n.IsZh ? $"▶  接着看第 {sh + 1} 幕 · Continue" : $"▶  Continue from part {sh + 1} · 接着看", boxSun, txtTag))) OpenBook(b, sh);
                 y += bh + u * 0.45f;
                 if (Tap(PaperButton(new Rect(bx, y, btnW, bh), "从头看 · Start from the beginning", boxPaper, txtTag))) OpenBook(b, 0);
             }
