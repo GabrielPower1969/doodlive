@@ -1924,7 +1924,121 @@ def build_character(ch):
     bpy.ops.object.vertex_group_normalize_all(group_select_mode='ALL', lock_active=False)
     am = bodyo.modifiers.new("Armature", 'ARMATURE'); am.object = rig
     cage_quads = sum(len(pt["cage"].f) for pt in C.parts)
+    one_sided_uvs(ch, [bodyo] + props)
     return rig, bodyo, props, cage_quads
+
+
+# =============================================================================================== one-sided page texture
+VIS_NZ = 0.22          # a face is "drawn on the sheet" only if it faces the viewer at least this much (design n.z) ...
+DECAL_NZ = 0.40        # ... and the face decal (eyes, brows, mouth) only on faces that look this straight ahead
+
+
+def one_sided_uvs(ch, objs):
+    """Owner 2026-11-14: "大卫和歌利亚都是双面气球人". The front projection printed the sheet straight through the body, so
+    the back of the head showed the face and beard, the back of the armour its scales, the back of the shield its boss,
+    and grazing side faces smeared outlines into stripes. Fix: only faces that the sheet actually depicts (facing the
+    viewer AND not hidden behind another part in rest pose) keep the projection; every other face takes one constant UV
+    deep inside the visible area of its own (piece, region) — the back of a tunic is the tunic's colour, plain. The
+    face decal is kept only on visible faces that look straight ahead, so no eyes on the cheeks or the back."""
+    from mathutils.bvhtree import BVHTree
+    bpy.context.view_layer.update()
+    faces = []                                   # (obj, poly index, world centroid, design nz, key piece, region)
+    verts_all, tris_all = [], []
+    for o in objs:
+        me = o.data; M = o.matrix_world; R = M.to_3x3()
+        pid = [0] * len(me.polygons); rid = [0] * len(me.polygons)
+        me.attributes["dg_piece"].data.foreach_get("value", pid); me.attributes["dg_region"].data.foreach_get("value", rid)
+        base = len(verts_all)
+        verts_all.extend(M @ v.co for v in me.vertices)
+        for p in me.polygons:
+            vs = list(p.vertices)
+            for k in range(1, len(vs) - 1):
+                tris_all.append((base + vs[0], base + vs[k], base + vs[k + 1]))
+            n = (R @ p.normal).normalized()
+            faces.append((o, p.index, M @ p.center, -n.y, pid[p.index], rid[p.index]))
+    bvh = BVHTree.FromPolygons(verts_all, tris_all)
+    toward = Vector((0, -1, 0))                  # Blender -Y = design +Z = toward the viewer
+    vis = []
+    for o, pi, c, nz, _, _ in faces:
+        ok = nz > VIS_NZ
+        if ok:
+            hit = bvh.ray_cast(c + toward * 2e-4, toward, 5.0)
+            ok = hit[0] is None
+        vis.append(ok)
+    # per-key UV centroids of visible faces (the projected sheet position)
+    def face_uv(o, pi):
+        me = o.data; uv = me.uv_layers["UVMap"].data; p = me.polygons[pi]
+        s = Vector((0.0, 0.0))
+        for li in p.loop_indices: s += Vector(uv[li].uv)
+        return s / p.loop_total
+    from mathutils.kdtree import KDTree
+    vuv = [(face_uv(o, pi), pc, rg) for (o, pi, _, _, pc, rg), v in zip(faces, vis) if v]
+    kd = KDTree(len(vuv))
+    for i, (u, _, _) in enumerate(vuv): kd.insert((u.x, u.y, 0.0), i)
+    kd.balance()
+    # ink mask of the printed line art (same art rectangle as UV0): an anchor must sit on clean paint, never on a line
+    # (the app erases lines, but a flat colour read off a line edge turns a whole shield back or hand black)
+    ink = None
+    la = os.path.join(SHEET, "lineart.png")
+    if os.path.exists(la):
+        import numpy as np
+        im = bpy.data.images.load(la); w, h = im.size
+        px = np.array(im.pixels[:], dtype=np.float32).reshape(h, w, 4)       # row 0 = bottom (v = 0)
+        dark = (px[..., :3].sum(axis=2) < 2.2)
+        clear = np.zeros((h, w), dtype=np.int8)                             # px of clean paint all round, capped at 6
+        acc = dark.copy(); free = ~acc
+        for r in range(1, 7):
+            pad = np.pad(acc, 1)
+            acc = acc | pad[:-2, 1:-1] | pad[2:, 1:-1] | pad[1:-1, :-2] | pad[1:-1, 2:]
+            clear[free & ~acc] = r
+            free = ~acc
+        ink = (clear, w, h); bpy.data.images.remove(im)
+
+    def clearance(u):
+        if ink is None: return 6
+        clear, w, h = ink
+        x = min(w - 1, max(0, int(u.x * w))); y = min(h - 1, max(0, int(u.y * h)))
+        return int(clear[y, x])
+
+    anchors_key, anchors_reg = {}, {}
+    for u, pc, rg in vuv:                        # score = UV distance to the nearest visible face of another key
+        cl = clearance(u)
+        if cl < 1:
+            continue
+        best = None
+        for (co, j, d) in kd.find_n((u.x, u.y, 0.0), 24):
+            if (vuv[j][1], vuv[j][2]) != (pc, rg):
+                best = d; break
+        score = (min(cl, 4), best if best is not None else 1.0)   # clean paint first, then far from other areas
+        for tab, k in ((anchors_key, (pc, rg)), (anchors_reg, rg)):
+            if k not in tab or score > tab[k][0]:
+                tab[k] = (score, (u.x, u.y))
+    hidden = 0; nodecal = 0; under = 0
+    for (o, pi, c, nz, pc, rg), v in zip(faces, vis):
+        me = o.data; p = me.polygons[pi]
+        du0 = me.uv_layers["decal"].data
+        if v and nz >= DECAL_NZ and any(0.0 <= du0[li].uv[0] <= 1.0 and 0.0 <= du0[li].uv[1] <= 1.0
+                                        for li in p.loop_indices):
+            # under the face decal the printed eyes / mouth are only a drawing guide; their anti-aliased remains
+            # survive the line-erase as grey ghosts beside the decal's eyes. Paint the skin (or beard) plain here.
+            a = anchors_key.get((pc, rg)) or anchors_reg.get(rg)
+            if a:
+                uv = me.uv_layers["UVMap"].data
+                for li in p.loop_indices: uv[li].uv = a[1]
+                under += 1
+        if not v:
+            a = anchors_key.get((pc, rg)) or anchors_reg.get(rg)
+            if a:
+                uv = me.uv_layers["UVMap"].data
+                for li in p.loop_indices: uv[li].uv = a[1]
+                hidden += 1
+        if (not v) or nz < DECAL_NZ:
+            du = me.uv_layers["decal"].data
+            if any(0.0 <= du[li].uv[0] <= 1.0 and 0.0 <= du[li].uv[1] <= 1.0 for li in p.loop_indices):
+                nodecal += 1
+            for li in p.loop_indices: du[li].uv = (-1.0, -1.0)
+    print(f"[{ch}] one-sided UVs: {sum(vis)} visible faces, {hidden} hidden + {under} under-decal faces -> region colour, "
+          f"{nodecal} faces lost the face decal, {len(anchors_key)} anchors")
 
 
 # =============================================================================================== materials / render

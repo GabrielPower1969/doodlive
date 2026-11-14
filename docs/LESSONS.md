@@ -369,3 +369,18 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   shout; dg_17 was also time-stretched 4 %.
 - Fix: `tools/dg_voice_build.py` has a `natural` chain for recordings (1.8:1 soft knee, 25 ms attack, 8 ms / 200 ms
   limiter, -17 LUFS); no EQ boost; no time-stretch — give the line time in the timeline instead (dg_17 maxSec 3.0).
+
+### L51 · Front projection printed the sheet through the body: "two-faced balloon people" · 2026-11-14 · confirmed (renders)
+- Symptom: owner: "大卫和歌利亚都是双面气球人". The back of David's head showed his printed face, the back of Goliath's
+  armour its scale lines and beard, the back of the shield its boss; side faces smeared outlines into stripes. In the
+  home-screen demo every face also showed the printed closed eyes and mouth under the decal's eyes: two faces at once.
+- Cause: (1) UV0 = front orthographic projection for EVERY face, so the back sampled the same front drawing (mirror);
+  (2) the demo play put the raw sample colouring (`demo-colored.png`, ink lines included) on the models, while a real
+  scan goes through `PageWarp.EraseLines` first.
+- Fix: `pipeline/dg_build.py one_sided_uvs`: only faces that face the viewer (n.z > 0.22) and are not hidden behind
+  another part in rest pose (BVH ray toward +Z) keep the projection; all others take one constant UV deep inside the
+  clean paint of their own (piece, region) (anchor chosen off the line art's ink, ≥ 1-4 px clearance); faces under the
+  face decal also go plain (the printed eyes are only a guide). The face decal is dropped on faces with n.z < 0.40.
+  `ARColoringController.LineFree` erases the lines of every story's demo texture once (RenderTexture read-back).
+- Prevention: any new story character built by front projection needs the same pass (Esther/Ruth use their own
+  occlusion fix, `es_characters.py`); check a BACK view render, not only the front, before calling a model done.

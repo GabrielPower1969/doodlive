@@ -547,12 +547,34 @@ namespace DoodLive
             showMode = true; active = p; dgMode = true;
             NoArCamera();
             rawPx = cleanPx = null;
-            if (p == (IStoryPlayer)story) { if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", dgDemoTexture); }
-            else if (p is Story.StoryDirector sd && sd.pageMaterials != null) foreach (var m in sd.pageMaterials) if (m) m.SetTexture("_BaseMap", sd.demoTexture);
+            if (p == (IStoryPlayer)story) { if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", LineFree(dgDemoTexture)); }
+            else if (p is Story.StoryDirector sd && sd.pageMaterials != null) foreach (var m in sd.pageMaterials) if (m) m.SetTexture("_BaseMap", LineFree(sd.demoTexture));
             PlaceInFront();
             p.ShowDemoPage(true);
             p.Cinematic = arReady ? null : arCamera;
             Go(State.Reveal);
+        }
+
+        // The sample colouring still carries the printed ink lines. A real scan has them erased (EraseLines in the
+        // capture path) before it reaches the models, so the demo must too: otherwise the printed eyes and mouth sit
+        // under the face decal and every character shows two faces (owner 2026-11-14, "双面"). Done once per texture
+        // through a RenderTexture, because the imported demo textures are not CPU-readable.
+        readonly Dictionary<Texture2D, Texture2D> lineFree = new Dictionary<Texture2D, Texture2D>();
+        Texture2D LineFree(Texture2D src)
+        {
+            if (!src) return src;
+            if (lineFree.TryGetValue(src, out var done) && done) return done;
+            int w = src.width, h = src.height;
+            var rt = RenderTexture.GetTemporary(w, h, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+            Graphics.Blit(src, rt);
+            var prev = RenderTexture.active; RenderTexture.active = rt;
+            var tmp = new Texture2D(w, h, TextureFormat.RGBA32, false);
+            tmp.ReadPixels(new Rect(0, 0, w, h), 0, 0); tmp.Apply(false);
+            RenderTexture.active = prev; RenderTexture.ReleaseTemporary(rt);
+            tmp.SetPixels32(PageWarp.EraseLines(tmp.GetPixels32(), w, h)); tmp.Apply(false);
+            tmp.wrapMode = src.wrapMode; tmp.filterMode = src.filterMode; tmp.name = src.name + " (line-free)";
+            lineFree[src] = tmp;
+            return tmp;
         }
 
         void StopStory()
