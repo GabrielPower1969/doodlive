@@ -212,7 +212,7 @@ SEQUENCE = [
     prop("palace/table", show=True), fx("petals", "palace.table", dur=2.0), sfx("table_set"),
     act("haman", "strut", to=(0.36, 0.10), face="table"),
     act("esther", "walk", to=(0.06, 0.10), face="king", dt=0.3),
-    act("haman", "idle", face="esther", dt=2.0),
+    act("haman", "idle", face="esther", dt=3.2),   # 0.61 art at strut speed needs ~3 s (an act with no mark stops a walk where it is)
     pause(2.4),
     act("esther", "worried", face="king"),
     line("es_13", "esther", "王啊……有人要害我，还要害我的族人！",

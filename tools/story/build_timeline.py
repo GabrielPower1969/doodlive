@@ -14,7 +14,7 @@ the top level carries `durationAnchor`. The app (StoryRetime.cs) and tools/voice
 shift of its anchor when an installed clip is longer or shorter than `dur`, so a new voice never needs a rebuild.
 Only keys are added: every older field and every absolute `t` is unchanged.
 """
-import json, os, re, sys, types
+import json, math, os, re, sys, types
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -128,7 +128,33 @@ def build(sid, use_estimate=False, write=True, durations=None):
         md.append(f"| {l['id']} | {l['t']:.1f} (+{l['maxSec']:.1f}) | {l['who']} | {l['zh']} | {l['en']} | {l['dir']} |")
     open(os.path.join(ROOT, "docs", sid, "STORYBOARD.md"), "w", encoding="utf-8").write("\n".join(md) + "\n")
     print(f"{sid}: {len(shots)} shots, {len(lines)} lines, {len(acting)} acting, {tl['duration']} s ({tl['timedFrom']}) -> {os.path.relpath(out, ROOT)}")
+    warn_short_walks(sid, tl)
     return tl
+
+
+def warn_short_walks(sid, tl):
+    """StoryDirector stops a walk where it is when the same actor's next beat starts, and plays a locomotion clip at
+    most 1.6x its clips.json naturalSpeed. Warn when a walk cannot reach its mark in time: the actor would stop short
+    and may stand inside someone else (Esther S09/S10, 2026-11-14)."""
+    try:
+        clips = json.load(open(os.path.join(ROOT, "assets", sid, "anim", "clips.json"), encoding="utf-8"))["clips"]
+    except (OSError, KeyError, ValueError):
+        return
+    speed = {c.get("action"): c["naturalSpeed"] for c in clips if c.get("naturalSpeed")}
+    pos, rows = {}, tl["acting"]
+    for i, a in enumerate(rows):
+        if "to" not in a:
+            continue
+        p0 = pos.get(a["who"], tuple(a["to"])); p1 = tuple(a["to"]); pos[a["who"]] = p1
+        v = speed.get(f"{a['who']}_{a['clip']}", 0)
+        d = math.dist(p0, p1)
+        if a["t"] <= 0.01 or d < 1e-4 or not v:
+            continue
+        nxt = next((b["t"] for b in rows[i + 1:] if b["who"] == a["who"]), tl["duration"])
+        need = d / v / 1.6
+        if need > (nxt - a["t"]) + 0.3:
+            print(f"  WARNING {sid}: {a['who']} {a['clip']} at {a['t']:.2f}s needs {need:.1f}s to reach {list(p1)} "
+                  f"but the next beat comes after {nxt - a['t']:.1f}s; it stops short (move the next beat later)")
 
 
 if __name__ == "__main__":
