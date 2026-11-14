@@ -99,6 +99,9 @@ namespace DoodLive
             { "dg_naomi", "拿俄米" },
             { "dg_boaz", "波阿斯" },
             { "dg_reapers", "收割的人" },
+            { "dg_daniel", "但以理" },
+            { "dg_officer", "大臣" },
+            { "dg_daniel_king", "大流士王" },
         };
         static readonly Dictionary<string, string> EN = new Dictionary<string, string>
         {
@@ -191,6 +194,9 @@ namespace DoodLive
             { "dg_naomi", "Naomi" },
             { "dg_boaz", "Boaz" },
             { "dg_reapers", "Reapers" },
+            { "dg_daniel", "Daniel" },
+            { "dg_officer", "Official" },
+            { "dg_daniel_king", "King Darius" },
         };
         static string lang;
         public static string Lang

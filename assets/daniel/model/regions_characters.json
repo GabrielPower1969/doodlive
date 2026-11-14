@@ -1,0 +1,1152 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/da_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom; the lion's in side view), and anchors (regions too small to colour take a constant UV inside a larger region). ID render for the line art: id_characters_2x.png/.json (same scheme as Ruth). lion2 is not on the sheet: her UV0 points into model/lion2_paint.png.",
+ "sheet": {
+  "daniel": {
+   "sheetX": -0.34,
+   "sheetY": 0.015
+  },
+  "king": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "officer": {
+   "sheetX": 0.34,
+   "sheetY": 0.015
+  },
+  "lion": {
+   "sheetX": -0.361,
+   "sheetY": 0.368
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "daniel": {
+   "height": 0.34,
+   "bboxSheet": [
+    -0.4628,
+    0.0165,
+    -0.2172,
+    0.3481
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#DDA67E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4628,
+      0.0189,
+      -0.2172,
+      0.335
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#4A2E1F",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair",
+      "moustache",
+      "ponytail"
+     ],
+     "bboxSheet": [
+      -0.3631,
+      0.2159,
+      -0.3169,
+      0.3481
+     ]
+    },
+    "robe": {
+     "id": 3,
+     "hex": "#F4EEDD",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.45,
+      0.0235,
+      -0.23,
+      0.2721
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3744,
+      0.0165,
+      -0.3056,
+      0.0365
+     ],
+     "anchoredTo": "set.wood",
+     "anchorUV": [
+      0.08325,
+      0.71333
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "collar": {
+     "id": 5,
+     "hex": "#E2B33C",
+     "zh": "金领",
+     "en": "gold collar",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": [
+      -0.3907,
+      0.2359,
+      -0.2893,
+      0.2718
+     ]
+    },
+    "sash": {
+     "id": 6,
+     "hex": "#2F8F9D",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      -0.3801,
+      0.142,
+      -0.2999,
+      0.2248
+     ],
+     "anchoredTo": "set.rugBlue",
+     "anchorUV": [
+      0.78625,
+      0.6575
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02009,
+     0.2747,
+     0.02009,
+     0.31488
+    ],
+    "px": 512,
+    "default": "calm",
+    "files": {
+     "calm": "docs/daniel/design/faces/daniel_calm.png",
+     "talk": "docs/daniel/design/faces/daniel_talk.png",
+     "smile": "docs/daniel/design/faces/daniel_smile.png",
+     "pray": "docs/daniel/design/faces/daniel_pray.png",
+     "sure": "docs/daniel/design/faces/daniel_sure.png",
+     "joy": "docs/daniel/design/faces/daniel_joy.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk": "calm",
+     "talk": "talk",
+     "bow": "calm",
+     "kneel_pray": "pray",
+     "stand_up": "calm",
+     "calm_nod": "sure",
+     "pet_lion": "smile",
+     "wave_up": "joy",
+     "hug": "joy",
+     "wave": "smile"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "daniel.FACE",
+     "uv": [
+      0.15575,
+      0.22596
+     ],
+     "local": [
+      -0.0042,
+      0.2622
+     ]
+    },
+    "handR.skin": {
+     "target": "daniel.FACE",
+     "uv": [
+      0.15575,
+      0.22596
+     ],
+     "local": [
+      -0.0042,
+      0.2622
+     ]
+    },
+    "legL.skin": {
+     "target": "daniel.FACE",
+     "uv": [
+      0.15575,
+      0.22596
+     ],
+     "local": [
+      -0.0042,
+      0.2622
+     ]
+    },
+    "legR.skin": {
+     "target": "daniel.FACE",
+     "uv": [
+      0.15575,
+      0.22596
+     ],
+     "local": [
+      -0.0042,
+      0.2622
+     ]
+    }
+   }
+  },
+  "king": {
+   "height": 0.4,
+   "bboxSheet": [
+    -0.1338,
+    0.0168,
+    0.1337,
+    0.4562
+   ],
+   "regions": {
+    "skin": {
+     "id": 7,
+     "hex": "#D9A27A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1337,
+      0.0304,
+      0.1337,
+      0.3644
+     ]
+    },
+    "beard": {
+     "id": 8,
+     "hex": "#2A1E1A",
+     "zh": "胡子",
+     "en": "beard",
+     "parts": [
+      "beard",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.0278,
+      0.2809,
+      0.0278,
+      0.374
+     ]
+    },
+    "robe": {
+     "id": 9,
+     "hex": "#9E86C8",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.127,
+      0.0242,
+      0.1271,
+      0.2915
+     ]
+    },
+    "shoes": {
+     "id": 10,
+     "hex": "#7A4E2E",
+     "zh": "鞋",
+     "en": "shoes",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.0392,
+      0.0168,
+      0.0392,
+      0.0304
+     ],
+     "anchoredTo": "set.wood",
+     "anchorUV": [
+      0.08325,
+      0.71333
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "belt": {
+     "id": 11,
+     "hex": "#E8B84A",
+     "zh": "金腰带",
+     "en": "belt",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.0502,
+      0.225,
+      0.0502,
+      0.2397
+     ],
+     "anchoredTo": "set.throne",
+     "anchorUV": [
+      0.40725,
+      0.53077
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "medallion": {
+     "id": 12,
+     "hex": "#E8B84A",
+     "zh": "胸前金章",
+     "en": "medallion",
+     "parts": [
+      "claspL",
+      "claspR",
+      "medallion"
+     ],
+     "bboxSheet": [
+      -0.0362,
+      0.2413,
+      0.0362,
+      0.29
+     ],
+     "anchoredTo": "set.throne",
+     "anchorUV": [
+      0.40725,
+      0.53077
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "cape": {
+     "id": 13,
+     "hex": "#3B4F9A",
+     "zh": "披风",
+     "en": "cape",
+     "parts": [
+      "cape"
+     ],
+     "bboxSheet": [
+      -0.0712,
+      0.0453,
+      0.0712,
+      0.292
+     ],
+     "anchoredTo": "set.gateTile",
+     "anchorUV": [
+      0.37375,
+      0.68643
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "crown": {
+     "id": 14,
+     "hex": "#6E4FA8",
+     "zh": "王冠",
+     "en": "crown",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      -0.0292,
+      0.3555,
+      0.0292,
+      0.4562
+     ]
+    },
+    "crownBand": {
+     "id": 15,
+     "hex": "#E8B84A",
+     "zh": "王冠金边",
+     "en": "crown band",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      -0.029,
+      0.3609,
+      0.029,
+      0.3838
+     ],
+     "anchoredTo": "set.throne",
+     "anchorUV": [
+      0.40725,
+      0.53077
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "ring": {
+     "id": 16,
+     "hex": "#E8B84A",
+     "zh": "戒指",
+     "en": "signet ring",
+     "parts": [
+      "ring"
+     ],
+     "bboxSheet": [
+      -0.1338,
+      0.1582,
+      -0.1258,
+      0.1642
+     ],
+     "anchoredTo": "set.throne",
+     "anchorUV": [
+      0.40725,
+      0.53077
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.0216,
+     0.29538,
+     0.0216,
+     0.33858
+    ],
+    "px": 512,
+    "default": "smile",
+    "files": {
+     "smile": "docs/daniel/design/faces/king_smile.png",
+     "talk": "docs/daniel/design/faces/king_talk.png",
+     "proud": "docs/daniel/design/faces/king_proud.png",
+     "worried": "docs/daniel/design/faces/king_worried.png",
+     "sorry": "docs/daniel/design/faces/king_sorry.png",
+     "tired": "docs/daniel/design/faces/king_tired.png",
+     "joy": "docs/daniel/design/faces/king_joy.png"
+    },
+    "clipExpression": {
+     "idle": "smile",
+     "walk_sad": "sorry",
+     "talk": "talk",
+     "talk_happy": "joy",
+     "proud": "proud",
+     "stamp": "proud",
+     "worried": "worried",
+     "pace": "worried",
+     "head_in_hands": "sorry",
+     "reach_out": "sorry",
+     "toss_sigh": "tired",
+     "run": "worried",
+     "call_out": "worried",
+     "joy_jump": "joy",
+     "hug": "joy",
+     "proclaim": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "ring": {
+     "bone": "ring",
+     "mesh": "king_ring",
+     "node": "king/ring",
+     "shownByDefault": true
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "king.FACE",
+     "uv": [
+      0.48775,
+      0.2663
+     ],
+     "local": [
+      -0.0122,
+      0.3118
+     ]
+    },
+    "handR.skin": {
+     "target": "king.FACE",
+     "uv": [
+      0.48775,
+      0.2663
+     ],
+     "local": [
+      -0.0122,
+      0.3118
+     ]
+    },
+    "legL.skin": {
+     "target": "king.FACE",
+     "uv": [
+      0.48775,
+      0.2663
+     ],
+     "local": [
+      -0.0122,
+      0.3118
+     ]
+    },
+    "legR.skin": {
+     "target": "king.FACE",
+     "uv": [
+      0.48775,
+      0.2663
+     ],
+     "local": [
+      -0.0122,
+      0.3118
+     ]
+    }
+   }
+  },
+  "officer": {
+   "height": 0.35,
+   "bboxSheet": [
+    0.2251,
+    0.0166,
+    0.4549,
+    0.3533
+   ],
+   "regions": {
+    "skin": {
+     "id": 17,
+     "hex": "#E2B48C",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR",
+      "nose"
+     ],
+     "bboxSheet": [
+      0.2251,
+      0.0285,
+      0.4549,
+      0.3496
+     ]
+    },
+    "beard": {
+     "id": 18,
+     "hex": "#231A16",
+     "zh": "胡子",
+     "en": "beard",
+     "parts": [
+      "goatee",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      0.3209,
+      0.2726,
+      0.3591,
+      0.3533
+     ],
+     "anchoredTo": "king.beard",
+     "anchorUV": [
+      0.49975,
+      0.24348
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "headband": {
+     "id": 19,
+     "hex": "#E8B84A",
+     "zh": "头带",
+     "en": "headband",
+     "parts": [
+      "headband"
+     ],
+     "bboxSheet": [
+      0.32,
+      0.3254,
+      0.36,
+      0.3449
+     ],
+     "anchoredTo": "set.relief",
+     "anchorUV": [
+      0.45975,
+      0.77241
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "robe": {
+     "id": 20,
+     "hex": "#D9773A",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      0.241,
+      0.0435,
+      0.4391,
+      0.2794
+     ]
+    },
+    "stripes": {
+     "id": 21,
+     "hex": "#B83A2E",
+     "zh": "条纹",
+     "en": "stripes",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      0.2366,
+      0.0311,
+      0.4435,
+      0.199
+     ],
+     "anchoredTo": "set.canopy",
+     "anchorUV": [
+      0.35375,
+      0.565
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "slippers": {
+     "id": 22,
+     "hex": "#8E3B2A",
+     "zh": "尖头鞋",
+     "en": "curly slippers",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.3103,
+      0.0166,
+      0.3697,
+      0.0478
+     ],
+     "anchoredTo": "set.wood",
+     "anchorUV": [
+      0.08325,
+      0.71333
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "sash": {
+     "id": 23,
+     "hex": "#5E8F3E",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash",
+      "sashTie"
+     ],
+     "bboxSheet": [
+      0.3028,
+      0.1592,
+      0.3772,
+      0.2337
+     ],
+     "anchoredTo": "set.frond",
+     "anchorUV": [
+      0.62125,
+      0.59841
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "scroll": {
+     "id": 24,
+     "hex": "#F3E9D2",
+     "zh": "卷轴",
+     "en": "scroll",
+     "parts": [
+      "scroll"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "daniel.robe",
+     "anchorUV": [
+      0.15975,
+      0.06296
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.officer.propUV.scroll = [u, v])"
+    },
+    "seal": {
+     "id": 25,
+     "hex": "#B83A2E",
+     "zh": "封印",
+     "en": "seal",
+     "parts": [
+      "scroll"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.wax",
+     "anchorUV": [
+      0.87425,
+      0.935
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.officer.propUV.seal = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.01941,
+     0.28258,
+     0.01941,
+     0.3214
+    ],
+    "px": 512,
+    "default": "sulky",
+    "files": {
+     "sulky": "docs/daniel/design/faces/officer_sulky.png",
+     "talk": "docs/daniel/design/faces/officer_talk.png",
+     "sly": "docs/daniel/design/faces/officer_sly.png",
+     "flatter": "docs/daniel/design/faces/officer_flatter.png",
+     "gleeful": "docs/daniel/design/faces/officer_gleeful.png",
+     "scared": "docs/daniel/design/faces/officer_scared.png",
+     "nervous": "docs/daniel/design/faces/officer_nervous.png"
+    },
+    "clipExpression": {
+     "idle": "sulky",
+     "walk": "sulky",
+     "talk": "talk",
+     "fold_arms": "sulky",
+     "stomp_walk": "sulky",
+     "grumble": "sulky",
+     "sly_idea": "sly",
+     "rub_hands": "gleeful",
+     "bow_flatter": "flatter",
+     "tiptoe": "sly",
+     "peek": "sly",
+     "point": "gleeful",
+     "scared_jump": "scared",
+     "run_away": "scared"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "scroll": {
+     "bone": "scroll",
+     "mesh": "officer_scroll",
+     "node": "officer/scroll",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "officer.FACE",
+     "uv": [
+      0.83025,
+      0.24919
+     ],
+     "local": [
+      -0.0097,
+      0.2908
+     ]
+    },
+    "handR.skin": {
+     "target": "officer.FACE",
+     "uv": [
+      0.83025,
+      0.24919
+     ],
+     "local": [
+      -0.0097,
+      0.2908
+     ]
+    },
+    "legL.skin": {
+     "target": "officer.FACE",
+     "uv": [
+      0.83025,
+      0.24919
+     ],
+     "local": [
+      -0.0097,
+      0.2908
+     ]
+    },
+    "legR.skin": {
+     "target": "officer.FACE",
+     "uv": [
+      0.83025,
+      0.24919
+     ],
+     "local": [
+      -0.0097,
+      0.2908
+     ]
+    }
+   }
+  },
+  "lion": {
+   "shoulderHeight": 0.13,
+   "bboxSheet": [
+    -0.4778,
+    0.3685,
+    -0.219,
+    0.562
+   ],
+   "regions": {
+    "body": {
+     "id": 26,
+     "hex": "#E2A94A",
+     "zh": "身体",
+     "en": "body",
+     "parts": [
+      "body",
+      "bridge",
+      "earL",
+      "earR",
+      "haunchL",
+      "haunchR",
+      "head",
+      "legBL",
+      "legBR",
+      "legFL",
+      "legFR",
+      "shoulderL",
+      "shoulderR",
+      "tail"
+     ],
+     "bboxSheet": [
+      -0.4716,
+      0.3685,
+      -0.219,
+      0.5506
+     ]
+    },
+    "muzzle": {
+     "id": 27,
+     "hex": "#F3E2B8",
+     "zh": "嘴巴和肚皮",
+     "en": "muzzle and belly",
+     "parts": [
+      "body",
+      "earL",
+      "earR",
+      "muzzle"
+     ],
+     "bboxSheet": [
+      -0.4716,
+      0.4174,
+      -0.2723,
+      0.5465
+     ],
+     "anchoredTo": "set.rugCream",
+     "anchorUV": [
+      0.87175,
+      0.70314
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "nose": {
+     "id": 28,
+     "hex": "#6B3A2A",
+     "zh": "鼻子",
+     "en": "nose",
+     "parts": [
+      "nose"
+     ],
+     "bboxSheet": [
+      -0.4778,
+      0.5071,
+      -0.4682,
+      0.5185
+     ],
+     "anchoredTo": "set.wood",
+     "anchorUV": [
+      0.08325,
+      0.71333
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "mane": {
+     "id": 29,
+     "hex": "#A8562A",
+     "zh": "鬃毛",
+     "en": "mane",
+     "parts": [
+      "forelock",
+      "mane"
+     ],
+     "bboxSheet": [
+      -0.4637,
+      0.4298,
+      -0.3616,
+      0.562
+     ]
+    },
+    "tuft": {
+     "id": 30,
+     "hex": "#5A3420",
+     "zh": "尾巴尖",
+     "en": "tail tuft",
+     "parts": [
+      "tail"
+     ],
+     "bboxSheet": [
+      -0.2682,
+      0.5296,
+      -0.2398,
+      0.5486
+     ],
+     "anchoredTo": "set.wood",
+     "anchorUV": [
+      0.08325,
+      0.71333
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.037,
+     0.11,
+     0.037,
+     0.184
+    ],
+    "px": 512,
+    "default": "curious",
+    "files": {
+     "curious": "docs/daniel/design/faces/lion_curious.png",
+     "sleepy": "docs/daniel/design/faces/lion_sleepy.png",
+     "fierce": "docs/daniel/design/faces/lion_fierce.png",
+     "blissful": "docs/daniel/design/faces/lion_blissful.png",
+     "yawn": "docs/daniel/design/faces/lion_yawn.png"
+    },
+    "clipExpression": {
+     "idle": "curious",
+     "sleep": "sleepy",
+     "wake_up": "sleepy",
+     "roar": "fierce",
+     "growl": "fierce",
+     "prowl": "fierce",
+     "yawn": "yawn",
+     "lie_down": "blissful",
+     "roll_over": "blissful",
+     "walk": "curious"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "pose": "standing on all fours, paws on the page",
+    "facing": "+Z (nose toward the viewer)",
+    "root": "on the ground under the belly centre"
+   },
+   "props": {},
+   "partAnchors": {
+    "earL.muzzle": {
+     "target": "set.rugCream",
+     "uv": [
+      0.87175,
+      0.70314
+     ],
+     "local": [
+      0.7328,
+      0.4948
+     ]
+    },
+    "earR.muzzle": {
+     "target": "set.rugCream",
+     "uv": [
+      0.87175,
+      0.70314
+     ],
+     "local": [
+      0.7328,
+      0.4948
+     ]
+    },
+    "forelock.mane": {
+     "target": "lion.mane",
+     "uv": [
+      0.08925,
+      0.40444
+     ],
+     "local": [
+      -0.0498,
+      0.1283
+     ]
+    }
+   },
+   "projection": {
+    "kind": "side",
+    "note": "UV0 = the lion's left side seen from +X: u = -z + sheetX + 0.5, v = (y + sheetY) / artH (character-local x mirrored to |x|, so both sides share the drawing); faces not seen from the side take one clean texel of their own region"
+   }
+  },
+  "lion2": {
+   "shoulderHeight": 0.12,
+   "bboxSheet": null,
+   "regions": {
+    "body": {
+     "id": 31,
+     "hex": "#D9B47A",
+     "zh": "身体",
+     "en": "body",
+     "parts": [
+      "body",
+      "bridge",
+      "earL",
+      "earR",
+      "haunchL",
+      "haunchR",
+      "head",
+      "legBL",
+      "legBR",
+      "legFL",
+      "legFR",
+      "shoulderL",
+      "shoulderR",
+      "tail"
+     ],
+     "bboxSheet": null
+    },
+    "muzzle": {
+     "id": 32,
+     "hex": "#F1E3C4",
+     "zh": "嘴巴和肚皮",
+     "en": "muzzle and belly",
+     "parts": [
+      "body",
+      "earL",
+      "earR",
+      "muzzle"
+     ],
+     "bboxSheet": null
+    },
+    "nose": {
+     "id": 33,
+     "hex": "#7A4A38",
+     "zh": "鼻子",
+     "en": "nose",
+     "parts": [
+      "nose"
+     ],
+     "bboxSheet": null
+    },
+    "tuft": {
+     "id": 34,
+     "hex": "#8A5A3B",
+     "zh": "尾巴尖",
+     "en": "tail tuft",
+     "parts": [
+      "tail"
+     ],
+     "bboxSheet": null
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.03415,
+     0.10153,
+     0.03415,
+     0.16983
+    ],
+    "px": 512,
+    "default": "curious",
+    "files": {
+     "curious": "docs/daniel/design/faces/lion2_curious.png",
+     "sleepy": "docs/daniel/design/faces/lion2_sleepy.png",
+     "fierce": "docs/daniel/design/faces/lion2_fierce.png",
+     "blissful": "docs/daniel/design/faces/lion2_blissful.png",
+     "yawn": "docs/daniel/design/faces/lion2_yawn.png"
+    },
+    "clipExpression": {
+     "idle": "curious",
+     "sleep": "sleepy",
+     "wake_up": "sleepy",
+     "roar": "fierce",
+     "growl": "fierce",
+     "prowl": "fierce",
+     "yawn": "yawn",
+     "lie_down": "blissful",
+     "roll_over": "blissful",
+     "walk": "curious"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "pose": "standing on all fours, paws on the page",
+    "facing": "+Z (nose toward the viewer)",
+    "root": "on the ground under the belly centre"
+   },
+   "props": {},
+   "partAnchors": {},
+   "paint": "lion2_paint.png",
+   "projection": {
+    "kind": "side",
+    "page": "virtual",
+    "note": "UV0 points into model/lion2_paint.png (u = (-z - 0.020) / 0.340 + 0.5, v = (y - 0.105) / 0.340 + 0.5)"
+   }
+  }
+ }
+}

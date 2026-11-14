@@ -1,0 +1,119 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "angel_choir",
+   "secs": 4.6,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.7
+  },
+  {
+   "id": "crickets_night",
+   "secs": 20.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -2.8,
+   "lufs": -19.3,
+   "loopStart": 0.0,
+   "loopEnd": 20.0,
+   "stopAtCue": "sleepless",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5
+  },
+  {
+   "id": "fanfare",
+   "secs": 2.6,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.9
+  },
+  {
+   "id": "growl",
+   "secs": 1.4,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.0
+  },
+  {
+   "id": "idea_ding",
+   "secs": 1.5,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -12.4
+  },
+  {
+   "id": "purr",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.6
+  },
+  {
+   "id": "roar",
+   "secs": 1.5,
+   "loop": false,
+   "gainDb": -5,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.3
+  },
+  {
+   "id": "rooster",
+   "secs": 2.0,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.5
+  },
+  {
+   "id": "seal_stamp",
+   "secs": 0.9,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -22.4
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -12.5
+  },
+  {
+   "id": "stone_roll",
+   "secs": 1.9,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.1
+  },
+  {
+   "id": "yawn_lion",
+   "secs": 2.4,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.2
+  }
+ ]
+}

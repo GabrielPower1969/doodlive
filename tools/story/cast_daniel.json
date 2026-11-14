@@ -1,0 +1,1195 @@
+{
+ "_doc": "Daniel voice cast (docs/daniel/VOICE.md). Schema: tools/story/voice.py docstring; breaths, timbre pinning (mfccRef): tools/story/voice_extras.py.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "daniel": {
+   "zh": "但以理",
+   "en": "Daniel"
+  },
+  "king": {
+   "zh": "大流士王",
+   "en": "King Darius"
+  },
+  "officer": {
+   "zh": "嫉妒的大臣",
+   "en": "The jealous official"
+  }
+ },
+ "refZh": {
+  "Daniel ": "但以理书 ",
+  "Psalm ": "诗篇 ",
+  "Philippians ": "腓立比书 ",
+  "(softened)": "（改编）"
+ },
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "the storyteller of Esther and Ruth (Qwen vivian): the family's narrator across packs"
+   },
+   "daniel": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 3.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     150
+    ],
+    "mfccRef": [
+     109.06,
+     54.84,
+     31.17,
+     12.18,
+     -13.23,
+     2.47,
+     30.47,
+     -14.34,
+     -7.02,
+     -10.52,
+     -13.27,
+     -0.45
+    ],
+    "mfccTol": 50,
+    "mfccWeight": 0.04,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，三十五岁左右，温暖、沉稳的男中音，声音柔和干净、略带磁性，说话不急不慢，善良可靠，像一位温和的大哥哥。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。这一句：",
+    "why": "VoiceDesign warm baritone (audition 109-127 Hz, F0 SD 4.9 st, CER 0.04); no stock Qwen male is free (uncle_fu = Boaz / Esther's king, dylan = Haman, eric misreads in Sichuan accent)"
+   },
+   "king": {
+    "engine": "qwen",
+    "voice": "uncle_fu",
+    "takes": 5,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "warm",
+    "chain": "expressive",
+    "instruct": "一位又胖又大的国王，声音洪亮、浑厚、圆润，有王者气派，心肠很软，着急的时候有点滑稽，像真人在演儿童广播剧，自然不做作，语速正常。这一句：",
+    "why": "the only male Qwen voice that stayed one person in the audition (146-161 Hz over 3 lines, F0 SD 6.9 st); the VoiceDesign kings drifted 119-262 Hz"
+   },
+   "officer": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     190,
+     330
+    ],
+    "mfccRef": [
+     98.35,
+     -63.59,
+     -72.28,
+     -67.0,
+     -86.23,
+     -19.15,
+     6.37,
+     -62.71,
+     -26.3,
+     -23.18,
+     -21.53,
+     -24.43
+    ],
+    "mfccTol": 50,
+    "mfccWeight": 0.04,
+    "fx": "nasal",
+    "chain": "expressive",
+    "design": "男性，四十岁左右的瘦高个大臣，嗓音尖细、鼻音很重、哼哼唧唧的男高音，说话阴阳怪气、爱抱怨、狡猾，像儿童动画片里滑稽的小坏蛋。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。这一句：",
+    "why": "VoiceDesign nasal whiny tenor (audition seed 1: 235-281 Hz, HNR 7.6-15.9, CER 0.00-0.05); not Haman's dylan"
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "edge",
+    "voice": "en-US-AvaMultilingualNeural",
+    "rate": "-8%",
+    "pitch": "+0Hz",
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.narrator",
+    "why": "Esther / Ruth narrator, phrased"
+   },
+   "daniel": {
+    "engine": "qwen",
+    "voice": "ryan",
+    "takes": 4,
+    "minPace": 2.4,
+    "maxPause": 1.2,
+    "fx": "warm",
+    "chain": "expressive",
+    "instruct": "A calm, warm, kind grown man in his thirties, gentle and steady, a quiet smile in the voice. Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace. This line: ",
+    "why": "Qwen ryan: one fixed speaker that takes acting notes (F0 SD 4.1 st, WER 0); Andrew (Boaz) and Christopher (Esther's king) excluded"
+   },
+   "king": {
+    "engine": "edge",
+    "voice": "en-AU-WilliamMultilingualNeural",
+    "rate": "-6%",
+    "pitch": "+0Hz",
+    "fx": "warm",
+    "chain": "expressive",
+    "breathFrom": "zh.king",
+    "why": "deepest and most consistent (100-113 Hz, MFCC spread 18.6), round and breathy (HNR 6.4); phrased for the comic lines"
+   },
+   "officer": {
+    "engine": "qwen",
+    "voice": "aiden",
+    "takes": 5,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "fx": "nasal",
+    "chain": "expressive",
+    "instruct": "A jealous, sly, whiny, nasal court official: a comic cartoon villain in a children's radio play, big pitch swings, never scary. This line: ",
+    "why": "Qwen aiden: high (161-311 Hz), lively (F0 SD 4.8 st), a fixed speaker so the giggles and shriek can be split into phrases; not dylan"
+   }
+  }
+ },
+ "lines": {
+  "da_01": {
+   "m": "讲故事的开头，温暖亲切；说到“大大的巴比伦城”时带一点惊叹；最后一句又软又喜爱",
+   "m_en": "storyteller opening, warm and unhurried; a little wonder on 大大的巴比伦城 / 'great city'; soft and fond on the last sentence",
+   "d": "画面：睡前，你翻开一本大图画书，孩子靠在你身边。",
+   "d_en": "Picture: bedtime, a big picture book open, the child leaning on you.",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    },
+    "phrases": [
+     {
+      "text": "Long ago",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "there was a man called Daniel.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "When he was young he was taken far from home,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "to the great city of Babylon.",
+      "rate": "-14%",
+      "pitch": "+2Hz",
+      "gap": 0.55
+     },
+     {
+      "text": "He loved God more than anything,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.28
+     },
+     {
+      "text": "and he prayed to Him every day.",
+      "rate": "-12%",
+      "pitch": "-2Hz"
+     }
+    ]
+   }
+  },
+  "da_02": {
+   "m": "又大又暖的国王，很满意他的好朋友；说“我都放心”时带着笑；最后一句气派十足",
+   "m_en": "a big, warm king, pleased with his friend; generous, a laugh in the voice on 我都放心 / 'anything'; grand on the last sentence",
+   "d": "画面：你拍着好朋友的肩膀，夸他是最棒的。",
+   "d_en": "Picture: you pat your best friend on the shoulder and tell him he's the best.",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘"
+   },
+   "en": {
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "phrases": [
+     {
+      "text": "Daniel,",
+      "rate": "-4%",
+      "pitch": "+2Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "you're wise and you're honest.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "I can trust you with anything!",
+      "rate": "+0%",
+      "pitch": "+3Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "I'm going to put you in charge of my whole kingdom!",
+      "rate": "-8%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "da_03": {
+   "m": "谦虚、平静，一位和善的成年男子，带着微笑；最后半句轻一点、真诚",
+   "m_en": "humble and calm, a kind grown-up man; a small smile; slower on the last phrase",
+   "d": "画面：别人夸你，你笑着说“这不是我的功劳”。",
+   "d_en": "Picture: someone praises you and you smile: 'it wasn't really me'."
+  },
+  "da_04": {
+   "m": "嫉妒、生闷气，鼻音重，哼哼唧唧；先重重地“哼”一声；“找啊找”说得快；最后一句委屈地哀叫",
+   "m_en": "sulky, jealous, a bit whiny; a loud 哼 / 'hmph' first; speeds up on 找啊找 / 'looked and looked'; exasperated wail on the last words",
+   "d": "画面：别的小朋友得了小红花，你没得，气得跺脚。",
+   "d_en": "Picture: another child got the gold star, not you, and you stamp your foot.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哼！",
+      "instruct": "鼻子里重重地“哼”一声，气鼓鼓的，像生闷气的小孩，是一个声音，不是念字。",
+      "gap": 0.32
+     },
+     {
+      "text": "凭什么是他？我找啊找，找他的毛病……",
+      "gap": 0.3
+     },
+     {
+      "text": "一个都找不到！他太老实了！",
+      "instruct": "委屈地哀叫起来，像小孩耍赖，越说越尖。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 5
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmph!",
+      "instruct": "A loud, sulky snort through the nose, like a cross child: a sound, not a word.",
+      "gap": 0.32
+     },
+     {
+      "text": "Why him? I looked and looked for something he did wrong...",
+      "gap": 0.3
+     },
+     {
+      "text": "and I couldn't find a thing! He's too honest!",
+      "instruct": "An exasperated, whiny wail, rising higher and higher."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "takes": 5,
+    "pick": 3,
+    "pickWhy": "the auto pick had no 'Hmph' at all (asrIgnore forgives a missing interjection); take 3 has it, F0 SD 4.15"
+   }
+  },
+  "da_05": {
+   "m": "一边想一边放慢，眼睛一亮；“嘿嘿”是真的偷笑出声；最后一句压低声音、得意又调皮",
+   "m_en": "sly, slowing down as the idea comes; a sneaky giggle; whispered and cheeky on the end",
+   "d": "画面：你想到一个恶作剧，捂着嘴偷偷笑。",
+   "d_en": "Picture: you've thought of a prank and giggle behind your hand.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "等等……他天天向他的上帝祷告。",
+      "gap": 0.3
+     },
+     {
+      "text": "嘿嘿，",
+      "instruct": "捂着嘴偷偷坏笑出声：真的在笑，有气声，不是一个字一个字念“嘿嘿”。",
+      "gap": 0.22
+     },
+     {
+      "text": "有办法了！",
+      "instruct": "压低声音，又得意又调皮，像说悄悄话。"
+     }
+    ],
+    "acting": {
+     "kind": "laugh",
+     "after": "祷告",
+     "before": "有办法",
+     "written": 2
+    },
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 5,
+    "pick": 0,
+    "pickWhy": "take 0 (7.4 s, real 嘿嘿 giggle, top score 8.05) lost only on whisper hearing 啦 for 了; the auto pick (take 4) dragged to 11.8 s with an extra 哈哈哈哈"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Wait a minute... he prays to his God every day.",
+      "gap": 0.3
+     },
+     {
+      "text": "Heh heh.",
+      "instruct": "A real sneaky giggle behind the hand, breathy: actually laughing, not reading the words.",
+      "gap": 0.22
+     },
+     {
+      "text": "I've got an idea!",
+      "instruct": "A cheeky, gleeful whisper."
+     }
+    ],
+    "acting": {
+     "kind": "laugh",
+     "after": "every day",
+     "before": "i've got",
+     "written": 2
+    },
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "takes": 5,
+    "pick": 3,
+    "pickWhy": "the only take with a real giggle (laugh score 4.7) lost on whisper writing 'Pfft' for 'Heh heh'"
+   }
+  },
+  "da_06": {
+   "m": "油腔滑调地拍马屁，一边鞠躬；“伟大的王”说得特别夸张；后面又快又急；说到“狮子坑”带一点坏坏的得意",
+   "m_en": "oily, over-sweet flattery, bowing; big on 伟大的王 / 'great King'; then quick and pushy; a wicked little relish on 狮子坑 / 'lions'",
+   "d": "画面：你想要一块糖，拼命夸妈妈最漂亮。",
+   "d_en": "Picture: you want a sweet, so you tell Mum she's the most beautiful mum ever.",
+   "zh": {
+    "takes": 5,
+    "f0Hz": [
+     190,
+     380
+    ]
+   },
+   "en": {
+    "takes": 5
+   }
+  },
+  "da_07": {
+   "m": "被夸得飘飘然，有点得意，呵呵笑；“嗯”是在想；“盖章！”干脆又高兴",
+   "m_en": "flattered and a little vain, chuckling; a thinking 嗯 / 'hmm'; brisk and pleased on 盖章 / 'Seal it'",
+   "d": "画面：有人夸你，你挺起胸膛说“那当然！”",
+   "d_en": "Picture: someone flatters you and you puff out your chest: 'Of course!'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "只向我一个人？",
+      "gap": 0.2
+     },
+     {
+      "text": "嗯……",
+      "instruct": "摸着下巴想一想，“嗯——”是一个拖长的鼻音，不是念字。",
+      "gap": 0.25
+     },
+     {
+      "text": "听起来不错！盖章！",
+      "instruct": "呵呵笑着，干脆又高兴。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 5
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Only to me?",
+      "rate": "-4%",
+      "pitch": "+4Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Hmm...",
+      "rate": "-20%",
+      "pitch": "+0Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "that sounds rather nice!",
+      "rate": "-4%",
+      "pitch": "+3Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "Seal it!",
+      "rate": "+4%",
+      "pitch": "+4Hz"
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa"
+   }
+  },
+  "da_08": {
+   "m": "安静、佩服；“可他还是”后面停一下；“一天三次”稳稳地说",
+   "m_en": "quiet and admiring; a small pause after 可他还是 / 'But'; steady and slow on 一天三次 / 'three times a day'",
+   "d": "画面：每天睡前，你都一样跪在床边祷告。",
+   "d_en": "Picture: every night, the same way, you kneel by the bed to pray.",
+   "zh": {
+    "breath": {
+     "after": "这条法令",
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "after": "new law",
+     "gain": -4
+    },
+    "phrases": [
+     {
+      "text": "Daniel heard about the new law.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "But",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "he went home just as he always did,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "opened his window toward Jerusalem,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "and knelt down to pray,",
+      "rate": "-8%",
+      "pitch": "-1Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "three times a day.",
+      "rate": "-16%",
+      "pitch": "-2Hz"
+     }
+    ]
+   }
+  },
+  "da_09": {
+   "m": "真正的祷告，轻轻的、贴近的，不说教；平静、信靠；“可你是”之前吸一口气；“也帮助我们的王”温柔善良",
+   "m_en": "a real prayer, soft and close, not preachy; calm, trusting; a breath before 可你是 / 'but You are'; gentle and kind on 也帮助我们的王",
+   "d": "画面：你小声跟上帝说心里话。",
+   "d_en": "Picture: you whisper what's in your heart to God.",
+   "zh": {
+    "breath": {
+     "after": "新法令",
+     "gain": -3
+    }
+   },
+   "en": {
+    "breath": {
+     "after": "new law",
+     "gain": -3
+    }
+   }
+  },
+  "da_10": {
+   "m": "先压低声音说悄悄话，又兴奋又坏；“嘿嘿嘿”是真的坏笑出声；最后一句又快又急",
+   "m_en": "whisper at first, gleeful and nasty; rising to a nasty little cackle; quick and excited at the end",
+   "d": "画面：你躲在门后，发现了别人的秘密。",
+   "d_en": "Picture: hiding behind a door, you've just found out someone's secret.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "嘘——看！他在祷告！抓到你了吧！",
+      "instruct": "压低声音说悄悄话，又兴奋又坏。",
+      "gap": 0.2
+     },
+     {
+      "text": "嘿嘿嘿，",
+      "instruct": "忍不住坏笑出声，嘿嘿嘿地笑，有气声，越笑越得意，不是念字。",
+      "gap": 0.18
+     },
+     {
+      "text": "我这就去告诉王！",
+      "instruct": "又快又急，兴奋地要跑去告状。"
+     }
+    ],
+    "acting": {
+     "kind": "laugh",
+     "after": "抓到你了吧",
+     "before": "我这就",
+     "written": 3
+    },
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|嘶",
+    "takes": 5
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Shh! Look! He's praying! Got you now!",
+      "instruct": "An excited, nasty whisper.",
+      "gap": 0.2
+     },
+     {
+      "text": "Heh heh heh,",
+      "instruct": "A nasty little cackle that bursts out: real laughter with breath, not reading the words.",
+      "gap": 0.18
+     },
+     {
+      "text": "I'm going straight to the king!",
+      "instruct": "Quick and excited, already running off to tell."
+     }
+    ],
+    "acting": {
+     "kind": "laugh",
+     "after": "now",
+     "before": "i'm going",
+     "written": 3
+    },
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "takes": 5
+   }
+  },
+  "da_11": {
+   "m": "告状，得意洋洋，手指着人；又快又尖",
+   "m_en": "tattling, triumphant, pointing; fast and shrill",
+   "d": "画面：你跑去跟老师告状：“他犯规了！”",
+   "d_en": "Picture: you run to the teacher: 'He broke the rule!'",
+   "zh": {
+    "takes": 5,
+    "f0Hz": [
+     190,
+     380
+    ]
+   },
+   "en": {
+    "takes": 5
+   }
+  },
+  "da_12": {
+   "m": "先吃一惊，然后着急慌乱；“不行不行”脱口而出；后半句下决心，但心里害怕",
+   "m_en": "shocked, then upset and fumbling; the 不行不行 / 'no, no' tumbles out; determined but afraid on the last half",
+   "d": "画面：你听说好朋友要被罚，急得团团转。",
+   "d_en": "Picture: you hear your best friend is in trouble and you can't keep still.",
+   "en": {
+    "phrases": [
+     {
+      "text": "What?",
+      "rate": "+4%",
+      "pitch": "+6Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "Daniel?",
+      "rate": "-4%",
+      "pitch": "+4Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "No, no...",
+      "rate": "+6%",
+      "pitch": "+2Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "I have to find a way to save him!",
+      "rate": "+2%",
+      "pitch": "+2Hz"
+     }
+    ]
+   }
+  },
+  "da_13": {
+   "m": "假装有礼貌，阴阳怪气、拖着唱腔；最后的“哦”拖长，坏坏的",
+   "m_en": "smug, sing-song, mock-polite; a nasty little 哦 / 'never' at the end",
+   "d": "画面：你提醒别人“你答应过的哦”，心里偷着乐。",
+   "d_en": "Picture: you remind someone 'you promised!' and grin inside.",
+   "zh": {
+    "takes": 5,
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘"
+   },
+   "en": {
+    "takes": 5
+   }
+  },
+  "da_14": {
+   "m": "长长的一声“唉”，真心后悔，快要哭了",
+   "m_en": "a long groan of regret, real sorrow, almost tearful",
+   "d": "画面：你做错了事，后悔得抱住头。",
+   "d_en": "Picture: you did something wrong and hold your head in your hands.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "唉……",
+      "instruct": "长长地、沉沉地叹一口气，真心后悔，是叹气声，不是念字。",
+      "gap": 0.3
+     },
+     {
+      "text": "我怎么这么糊涂呀！",
+      "instruct": "后悔得快要哭了，声音发颤。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 5,
+    "minPace": 1.8,
+    "maxPause": 1.2
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Oh...",
+      "rate": "-25%",
+      "pitch": "-3Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "how could I be so foolish!",
+      "rate": "-10%",
+      "pitch": "-1Hz"
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "maxPause": 1.2
+   }
+  },
+  "da_15": {
+   "m": "低沉、严肃，但温柔，不吓人",
+   "m_en": "low and serious, but gentle; not scary",
+   "d": "画面：天快黑了，故事讲到最难的地方。",
+   "d_en": "Picture: it's getting dark; the story reaches the hard part.",
+   "en": {
+    "phrases": [
+     {
+      "text": "The king had no choice.",
+      "rate": "-8%",
+      "pitch": "-2Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "Daniel was taken to the lions' den.",
+      "rate": "-10%",
+      "pitch": "-3Hz"
+     }
+    ]
+   }
+  },
+  "da_16": {
+   "m": "哽咽，但充满盼望；“但以理”声音一颤；“一定会救你”坚定",
+   "m_en": "choked up but full of hope; a catch in the voice on 但以理; firm and sure on 一定会救你",
+   "d": "画面：你送好朋友远行，眼泪在打转，还给他打气。",
+   "d_en": "Picture: seeing your friend off on a hard trip, tears in your eyes, cheering him on.",
+   "en": {
+    "phrases": [
+     {
+      "text": "Daniel...",
+      "rate": "-14%",
+      "pitch": "-2Hz",
+      "gap": 0.45
+     },
+     {
+      "text": "the God you serve every day...",
+      "rate": "-10%",
+      "pitch": "-1Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "He will save you!",
+      "rate": "-4%",
+      "pitch": "+3Hz"
+     }
+    ]
+   },
+   "breath": {
+    "before": true,
+    "gain": -3
+   }
+  },
+  "da_17": {
+   "m": "平安，安慰国王；安静的力量，带着微笑",
+   "m_en": "peaceful, comforting the king; quiet strength, a small smile",
+   "d": "画面：你拍拍害怕的妹妹：“别怕，我在。”",
+   "d_en": "Picture: you pat your scared little sister: 'Don't worry, I'm here.'",
+   "zh": {
+    "takes": 6
+   },
+   "en": {
+    "pick": 3,
+    "pickWhy": "take 0 dragged a 9-word line to 6.7 s (pace 1.8); take 3 is 5.7 s with the same pitch movement (F0 SD 4.1)"
+   }
+  },
+  "da_18": {
+   "m": "压低声音，有点悬念，“慢慢走过来”轻轻地说；说到“没有害怕”又平静温暖",
+   "m_en": "hushed and suspenseful, slow on 慢慢走过来 / 'crept closer'; then calm and warm on 没有害怕 / 'wasn't afraid'",
+   "d": "画面：关了灯，你给孩子讲故事讲到最紧张的地方。",
+   "d_en": "Picture: lights off, you reach the most exciting part of the bedtime story.",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -3
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -3
+    },
+    "phrases": [
+     {
+      "text": "It was dark in the den.",
+      "rate": "-10%",
+      "pitch": "-2Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "The lions crept closer...",
+      "rate": "-16%",
+      "pitch": "-3Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "and closer...",
+      "rate": "-20%",
+      "pitch": "-4Hz",
+      "gap": 0.6
+     },
+     {
+      "text": "but Daniel wasn't afraid.",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "He knelt down and prayed.",
+      "rate": "-10%",
+      "pitch": "-1Hz"
+     }
+    ]
+   }
+  },
+  "da_19": {
+   "m": "说到光时惊奇、敬畏；然后越来越开心，“大哈欠”“呼噜呼噜”笑出来，俏皮",
+   "m_en": "wonder on the light (slow, awed), then a delighted giggle building through 大哈欠 / 'big yawn' to 呼噜呼噜 / 'purred'; playful and happy",
+   "d": "画面：一只大狮子像小猫一样打呼噜，你忍不住笑。",
+   "d_en": "Picture: a huge lion purring like a kitten, and you can't help laughing.",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘"
+   },
+   "en": {
+    "breath": {
+     "after": "mouths",
+     "gain": -4
+    },
+    "phrases": [
+     {
+      "text": "Suddenly,",
+      "rate": "-4%",
+      "pitch": "+3Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "a light shone in!",
+      "rate": "-10%",
+      "pitch": "+3Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "God sent an angel to shut the lions' mouths.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "And look...",
+      "rate": "-8%",
+      "pitch": "+2Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "the lion gave a great big yawn,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.22
+     },
+     {
+      "text": "lay down,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.22
+     },
+     {
+      "text": "and purred like a giant kitty cat!",
+      "rate": "-2%",
+      "pitch": "+4Hz"
+     }
+    ]
+   }
+  },
+  "da_20": {
+   "m": "有点好笑又有点心疼，像讲一个操心太多的大人",
+   "m_en": "a little funny-sad, like telling about a grown-up who worries too much",
+   "d": "画面：爸爸半夜睡不着，在屋里走来走去。",
+   "d_en": "Picture: Dad can't sleep and walks up and down the house at night.",
+   "en": {
+    "phrases": [
+     {
+      "text": "All night long",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "the king couldn't eat,",
+      "rate": "-6%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "and he couldn't sleep.",
+      "rate": "-12%",
+      "pitch": "-1Hz"
+     }
+    ]
+   }
+  },
+  "da_21": {
+   "m": "翻来覆去，焦急，先叹一大口气；第二个“睡不着”像小孩一样哼哼唧唧，滑稽",
+   "m_en": "restless, fretting, a big tired sigh; a comic whimper on the second 睡不着 / 'can't sleep'",
+   "d": "画面：你明天要去春游，兴奋得睡不着。",
+   "d_en": "Picture: it's the night before the school trip and you just can't sleep.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "唉……",
+      "instruct": "疲惫地、长长地叹一大口气，是叹气声，不是念字。",
+      "gap": 0.3
+     },
+     {
+      "text": "但以理怎么样了？睡不着，",
+      "instruct": "翻来覆去，又着急又困。",
+      "gap": 0.2
+     },
+     {
+      "text": "睡不着啊！",
+      "instruct": "像小孩一样哼哼唧唧地抱怨，滑稽，带一点哭腔。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 5,
+    "minPace": 2.2,
+    "maxPause": 1.2
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Oh dear...",
+      "rate": "-14%",
+      "pitch": "-2Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "how is Daniel?",
+      "rate": "-6%",
+      "pitch": "+2Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "I can't sleep...",
+      "rate": "-10%",
+      "pitch": "+0Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "I just can't sleep!",
+      "rate": "-4%",
+      "pitch": "+5Hz"
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "maxPause": 1.2
+   }
+  },
+  "da_22": {
+   "m": "一路跑来，气喘吁吁，着急，大声朝坑里喊；问的时候声音发颤",
+   "m_en": "out of breath from running, anxious, calling loudly into the den; voice cracks with worry on the question",
+   "d": "画面：你在操场上大声喊找不到的小狗。",
+   "d_en": "Picture: you're calling for your lost puppy across the playground.",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘"
+   },
+   "en": {
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "phrases": [
+     {
+      "text": "Daniel!",
+      "rate": "+4%",
+      "pitch": "+6Hz",
+      "gap": 0.3
+     },
+     {
+      "text": "Daniel!",
+      "rate": "+4%",
+      "pitch": "+8Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "Has your God...",
+      "rate": "-4%",
+      "pitch": "+3Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "been able to save you?",
+      "rate": "-8%",
+      "pitch": "+4Hz"
+     }
+    ]
+   },
+   "breath": {
+    "before": true,
+    "gain": 0
+   }
+  },
+  "da_23": {
+   "m": "从坑里朝上喊，开心，带着笑声；响亮明亮",
+   "m_en": "joyful and calling up from the den, a happy laugh in it; strong and bright",
+   "d": "画面：捉迷藏你被找到了，大声说“我在这儿！”",
+   "d_en": "Picture: found in hide-and-seek, you shout 'I'm here!'",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "f0Hz": [
+     95,
+     200
+    ]
+   },
+   "en": {
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa"
+   }
+  },
+  "da_24": {
+   "m": "大大松了一口气，笑出来，高兴地指挥；“快，快”说得急",
+   "m_en": "huge relief, laughing, bossy-happy; quick 快快 / 'quick, quick'",
+   "d": "画面：你找到了丢的小狗，高兴得跳起来。",
+   "d_en": "Picture: you've found your lost puppy and jump for joy.",
+   "zh": {
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘"
+   },
+   "en": {
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "phrases": [
+     {
+      "text": "Wonderful!",
+      "rate": "+4%",
+      "pitch": "+6Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "Quick, quick,",
+      "rate": "+12%",
+      "pitch": "+4Hz",
+      "gap": 0.15
+     },
+     {
+      "text": "roll the stone away!",
+      "rate": "+6%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "da_25": {
+   "m": "高兴，有点惊奇；最后一句温暖、稳稳地说",
+   "m_en": "glad, a little amazed; slow and warm on the last sentence",
+   "d": "画面：你摔了一跤，爬起来一看，一点都没破皮。",
+   "d_en": "Picture: you fell over, got up, and there isn't a scratch on you.",
+   "en": {
+    "phrases": [
+     {
+      "text": "Daniel walked out of the lions' den",
+      "rate": "-4%",
+      "pitch": "+0Hz",
+      "gap": 0.18
+     },
+     {
+      "text": "without a single scratch!",
+      "rate": "+0%",
+      "pitch": "+3Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "Because he trusted in God.",
+      "rate": "-12%",
+      "pitch": "-1Hz"
+     }
+    ]
+   }
+  },
+  "da_26": {
+   "m": "被抓住了，紧张、嘟嘟囔囔，假装若无其事；声音越来越小",
+   "m_en": "caught out, nervous, mumbling, trying to sound casual; trails off",
+   "d": "画面：你偷吃饼干被发现，想悄悄溜走。",
+   "d_en": "Picture: caught with your hand in the biscuit tin, you try to slip away.",
+   "zh": {
+    "takes": 5,
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "minPace": 2.2,
+    "maxPause": 1.3
+   },
+   "en": {
+    "takes": 5,
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "minPace": 1.8,
+    "maxPause": 1.3
+   }
+  },
+  "da_27": {
+   "m": "卡通式的尖叫，吓得魂都飞了，声音又高又尖，一边跑一边越来越远",
+   "m_en": "a high, comic shriek of fright, cartoon-style; it trails away as he runs",
+   "d": "画面：一只大狗朝你冲过来，你尖叫着逃跑。",
+   "d_en": "Picture: a big dog runs at you and you flee, shrieking.",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哇啊啊——",
+      "instruct": "短促的卡通式尖叫“哇啊啊——”：吓得魂都飞了，声音又高又尖，一两秒就停，真的在尖叫，不是念字。",
+      "gap": 0.08
+     },
+     {
+      "text": "救命啊！",
+      "instruct": "一边拼命逃跑一边尖声大喊救命。"
+     }
+    ],
+    "acting": {
+     "kind": "shriek",
+     "before": "救命",
+     "baseHz": 255
+    },
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘",
+    "takes": 8,
+    "minPace": 1.6,
+    "maxPause": 0.8,
+    "f0Hz": [
+     150,
+     3000
+    ],
+    "mfccTol": 1000
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Waaah!",
+      "instruct": "A high, long cartoon shriek of pure fright, really screaming, held and piercing, not reading the word.",
+      "gap": 0.08
+     },
+     {
+      "text": "Help!",
+      "instruct": "Shrieking for help while running away in a panic."
+     }
+    ],
+    "acting": {
+     "kind": "shriek",
+     "before": "help",
+     "baseHz": 210
+    },
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa",
+    "takes": 6,
+    "minPace": 0.8,
+    "maxPause": 0.8,
+    "pick": 0,
+    "pickWhy": "the auto pick said only 'Help!' (shriek 1.4 read); take 0 is a held shriek (3.4) + 'help', 2.5 s"
+   },
+   "tail": {
+    "fade": 0.9,
+    "lowpass": 2400
+   }
+  },
+  "da_28": {
+   "m": "国王的大宣告，但很欢喜，不严厉；张开双臂；响亮、有力",
+   "m_en": "a king's big proclamation, but joyful, not stern; arms open; strong and ringing",
+   "d": "画面：你站在高处，对全世界大声宣布好消息。",
+   "d_en": "Picture: you stand up high and shout good news to the whole world.",
+   "en": {
+    "phrases": [
+     {
+      "text": "Hear this, everyone in my kingdom!",
+      "rate": "-6%",
+      "pitch": "+2Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "Daniel's God is the living God!",
+      "rate": "-8%",
+      "pitch": "+3Hz",
+      "gap": 0.4
+     },
+     {
+      "text": "He rescues,",
+      "rate": "-6%",
+      "pitch": "+2Hz",
+      "gap": 0.2
+     },
+     {
+      "text": "and He keeps His people safe!",
+      "rate": "-6%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  },
+  "da_29": {
+   "m": "温暖的结尾，直接对孩子说；最后一句带着微笑",
+   "m_en": "warm moral, speaking right to the child; smile on the last sentence",
+   "d": "画面：故事讲完了，你摸摸孩子的头。",
+   "d_en": "Picture: the story is over and you stroke the child's hair.",
+   "zh": {
+    "breath": {
+     "after": "祷告",
+     "gain": -5
+    }
+   },
+   "en": {
+    "breath": {
+     "after": "praying",
+     "gain": -5
+    },
+    "phrases": [
+     {
+      "text": "Even when things were hard,",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.25
+     },
+     {
+      "text": "Daniel kept on praying.",
+      "rate": "-8%",
+      "pitch": "+0Hz",
+      "gap": 0.5
+     },
+     {
+      "text": "You can talk to God any time too.",
+      "rate": "-4%",
+      "pitch": "+2Hz",
+      "gap": 0.35
+     },
+     {
+      "text": "He's always listening!",
+      "rate": "-6%",
+      "pitch": "+3Hz"
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "_doc": "Face decal per clip (docs/daniel/CONTRACT.md §3-4). Integration-owned; read by tools/story/pack.py.",
+ "daniel": {
+  "default": "calm",
+  "clips": {"idle": "calm", "walk": "calm", "talk": "talk", "bow": "smile", "kneel_pray": "pray", "stand_up": "sure",
+            "calm_nod": "sure", "pet_lion": "joy", "wave_up": "joy", "hug": "joy", "wave": "smile"}
+ },
+ "king": {
+  "default": "smile",
+  "clips": {"idle": "smile", "walk_sad": "sorry", "talk": "talk", "talk_happy": "joy", "proud": "proud", "stamp": "proud",
+            "worried": "worried", "pace": "worried", "head_in_hands": "sorry", "reach_out": "sorry", "toss_sigh": "tired",
+            "run": "worried", "call_out": "worried", "joy_jump": "joy", "hug": "joy", "proclaim": "joy"}
+ },
+ "officer": {
+  "default": "sulky",
+  "clips": {"idle": "sly", "talk": "talk", "fold_arms": "sulky", "stomp_walk": "sulky", "grumble": "sulky",
+            "sly_idea": "sly", "rub_hands": "gleeful", "walk": "sly", "bow_flatter": "flatter", "tiptoe": "sly",
+            "peek": "gleeful", "point": "gleeful", "scared_jump": "scared", "run_away": "scared"}
+ },
+ "lion": {
+  "default": "curious",
+  "clips": {"idle": "curious", "sleep": "blissful", "wake_up": "curious", "roar": "fierce", "growl": "fierce",
+            "prowl": "fierce", "yawn": "yawn", "lie_down": "sleepy", "roll_over": "blissful", "walk": "curious"}
+ },
+ "lion2": {
+  "default": "curious",
+  "clips": {"idle": "curious", "sleep": "blissful", "wake_up": "curious", "roar": "fierce", "growl": "fierce",
+            "prowl": "fierce", "yawn": "yawn", "lie_down": "sleepy", "roll_over": "blissful", "walk": "curious"}
+ }
+}

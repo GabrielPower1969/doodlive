@@ -130,7 +130,11 @@ def render_ruth(fx, fr):
     proj = camera(fx["cam"])
     img = np.zeros((H,W,3), np.float32); img[:] = lin(np.array([0.93,0.93,0.93]))   # the room around the page
     zb = np.full((H,W), 1e9)
-    for (*corners, col) in ruth_scene(fx["actors"], fx["cam"]):
+    scene = babylon_scene(fx["actors"], fx["cam"], fx.get("shut", False)) if fx.get("scene")=="daniel" else ruth_scene(fx["actors"], fx["cam"])
+    if fx.get("scene")=="exodus": scene = egypt_scene(fx["actors"], fx["cam"], fr.get("wall", 0), fr.get("lane", True))   # Exodus rows
+    if fx.get("scene")=="prodigal": scene = homeland_scene(fx["actors"], fx["cam"])   # Prodigal rows
+    if fx.get("scene")=="gabriel": scene = heaven_scene(fx["actors"], fx["cam"], fr.get("lift", 0), fx.get("wings", 1))   # Gabriel rows
+    for (*corners, col) in scene:
         C = np.array(corners, np.float64); Pq = proj(C); cl = lin(col).astype(np.float32)
         for tri in ((0,1,2),(0,2,3)):
             raster(img, zb, None, Pq[list(tri)], lambda ww, cl=cl: np.broadcast_to(cl, ww.shape[:2]+(3,)), write_z=True)
@@ -149,11 +153,157 @@ def render_ruth(fx, fr):
                     return lin(tex[...,:3])*lin(A_[...,2:5]), tex[...,3]*A_[...,5]
                 raster(img, zb, None, P[tri], fn, add=add, test_z=True)
     return Image.fromarray((srgb(img)*255).astype(np.uint8))
+# ---- Daniel rows (run.sh daniel): stand-in Babylon (docs/daniel/CONTRACT.md §6) + actors (5th value = slab width)
+def babylon_scene(actors, cam, shut):
+    Q=[]
+    Q.append(([-0.6,0,-0.5875],[0.6,0,-0.5875],[0.6,0,0.21],[-0.6,0,0.21],hexc('#E6CF9E')))             # sandy courtyard
+    Q.append(([-0.40,0.001,-0.30],[0.40,0.001,-0.30],[0.40,0.001,0.18],[-0.40,0.001,0.18],hexc('#D8C6A4'))) # paving
+    for i in range(12):                                                                                    # city wall + crenellations
+        x0=-0.6+i*0.1; x1=x0+0.1
+        Q+=box(((x0+x1)/2,0,-0.575),0.1,0.26,0.03,hexc('#D9B98A'),hexc('#E2C89E'))
+        Q+=box((x0+0.03,0.26,-0.575),0.04,0.03,0.03,hexc('#D9B98A'))
+    Q.append(([-0.06,0,-0.559],[0.06,0,-0.559],[0.06,0.20,-0.559],[-0.06,0.20,-0.559],hexc('#3F74B8')))  # blue gate
+    Q+=box((0,0,-0.46),0.32,0.04,0.20,hexc('#CDB48A'),hexc('#E0CBA0'))                                    # dais
+    for x in (-0.12,0.12): Q+=box((x,0.04,-0.48),0.03,0.22,0.03,hexc('#E9DCC0'))                          # columns
+    Q+=box((0,0.26,-0.48),0.30,0.03,0.12,hexc('#3F74B8'))                                                 # canopy / frieze
+    Q+=box((0,0.04,-0.50),0.07,0.10,0.05,hexc('#E8B84A'))                                                 # throne
+    Q+=box((-0.15,0,-0.36),0.012,0.17,0.012,hexc('#7A5A3A'))                                              # torch pole
+    Q+=box((-0.44,0,-0.44),0.24,0.26,0.20,hexc('#E2C79A'),hexc('#CBA978'))                                # house
+    Q+=box((-0.54,0,-0.14),0.02,0.16,0.20,hexc('#D9BC8C'))                                                # window wall
+    Q.append(([-0.53,0.06,-0.17],[-0.53,0.06,-0.11],[-0.53,0.14,-0.11],[-0.53,0.14,-0.17],hexc('#6A4A35'))) # window
+    Q.append(([-0.48,0.002,-0.19],[-0.40,0.002,-0.19],[-0.40,0.002,-0.09],[-0.48,0.002,-0.09],hexc('#C0504A'))) # rug
+    Q+=box((-0.29,0,-0.07),0.025,0.30,0.025,hexc('#8A6A48'))                                              # palm trunk
+    Q+=box((-0.29,0.28,-0.07),0.18,0.05,0.18,hexc('#6F9A55'))                                             # palm crown
+    Q+=box((0.52,0,0.15),0.10,0.10,0.07,hexc('#E07B5A'),hexc('#F2C14E'))                                  # market stall
+    # den: sandy floor + a ring of stone blocks, opening toward (-0.74, 0.67)
+    cx,cz=0.38,-0.17
+    Q.append(([cx-0.17,0.0015,cz-0.17],[cx+0.17,0.0015,cz-0.17],[cx+0.17,0.0015,cz+0.17],[cx-0.17,0.0015,cz+0.17],hexc('#D7BE8A')))
+    op=np.arctan2(0.67,-0.74)
+    for k in range(20):
+        a=2*np.pi*k/20
+        if abs((a-op+np.pi)%(2*np.pi)-np.pi)<0.36: continue
+        Q+=box((cx+0.175*np.cos(a),0,cz+0.175*np.sin(a)),0.055,0.075,0.055,hexc('#B9AE9A'),hexc('#CFC6B4'))
+    if shut: Q+=box((0.25,0,-0.05),0.10,0.11,0.06,hexc('#A9A294'),hexc('#BDB6A8'))                        # stoneShut
+    else:    Q+=box((0.18,0,-0.13),0.10,0.11,0.06,hexc('#A9A294'),hexc('#BDB6A8'))                        # stoneOpen
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    for (x,z,h,c,*rest) in actors:
+        col=hexc(c); w=rest[0] if rest and rest[0]>0 else h*0.22; base=np.array([x,0,z])
+        hw=w*(0.45 if rest and rest[0]>0 else 0.62)
+        for (y0,y1,ww,cc) in ((0,h*0.82,w,col),(h*0.80,h,hw,hexc('#E8C4A0') if not (rest and rest[0]>0) else col*0.85)):
+            a=base+[0,y0,0]-r*ww/2; b=base+[0,y0,0]+r*ww/2
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+    return Q
+# ---- Exodus rows (run.sh exodus): stand-in Egypt (docs/exodus/CONTRACT.md §6); walls at the frame's scale, lane shown or not
+def egypt_scene(actors, cam, wall, lane):
+    Q=[]
+    Q.append(([-0.6,0,-0.5875],[0.6,0,-0.5875],[0.6,0,0.21],[-0.6,0,0.21],hexc('#EBD3A0')))              # sand
+    Q.append(([-0.60,0.010,-0.30],[-0.50,0.010,-0.30],[-0.50,0.010,0.21],[-0.60,0.010,0.21],hexc('#3E8FC4')))  # nile
+    for i in range(12):                                                                                    # dunes
+        x0=-0.6+i*0.1; x1=x0+0.1; h0=0.10+0.03*np.sin(x0*8); h1=0.10+0.03*np.sin(x1*8)
+        Q.append(([x0,0,-0.57],[x1,0,-0.57],[x1,h1,-0.57],[x0,h0,-0.57],hexc('#E2BE7A')))
+    for x in (-0.50,-0.30):                                                                                # pyramids (flat)
+        Q.append(([x-0.08,0,-0.565],[x+0.08,0,-0.565],[x+0.001,0.22,-0.565],[x-0.001,0.22,-0.565],hexc('#E2BE7A')*0.95))
+    Q+=box((0.35,0,-0.50),0.50,0.30,0.18,hexc('#B5643F'),hexc('#C9805A'))                                 # mountain
+    Q+=box((-0.36,0,-0.44),0.38,0.03,0.12,hexc('#E3C998'))                                                # dais
+    for x in (-0.50,-0.41,-0.31,-0.22): Q+=box((x,0.03,-0.47),0.03,0.20,0.03,hexc('#EFE0BE'))           # columns
+    Q+=box((-0.36,0.23,-0.47),0.36,0.03,0.06,hexc('#E0B13A'))                                             # lintel
+    for x in (-0.08,0.04):                                                                                 # houses + doors
+        Q+=box((x,0,-0.47),0.11,0.10,0.12,hexc('#C99A6B'),hexc('#B88A5B'))
+        Q.append(([x-0.02,0,-0.409],[x+0.02,0,-0.409],[x+0.02,0.07,-0.409],[x-0.02,0.07,-0.409],hexc('#4A2E1F')))
+    Q+=box((-0.36,0,-0.11),0.18,0.05,0.12,hexc('#A9673F'))                                                # bricks
+    Q+=box((0.14,0,-0.36),0.10,0.03,0.08,hexc('#B5643F'))                                                 # rise
+    Q+=box((0.14,0.03,-0.36),0.07,0.08,0.06,hexc('#5E4330'),hexc('#8FA876'))                              # bush
+    Q.append(([0.40,0.002,-0.5875],[0.60,0.002,-0.5875],[0.60,0.002,0.21],[0.40,0.002,0.21],hexc('#F1E2BC')))  # far shore
+    Q.append(([0.20,0.001,0.02],[0.40,0.001,0.02],[0.40,0.001,0.13],[0.20,0.001,0.13],hexc('#C8A97A')))   # sea-bed
+    Q.append(([0.20,0.010,-0.24],[0.40,0.010,-0.24],[0.40,0.010,0.02],[0.20,0.010,0.02],hexc('#2C7FA8')))  # seaWaterBack
+    Q.append(([0.20,0.010,0.13],[0.40,0.010,0.13],[0.40,0.010,0.21],[0.20,0.010,0.21],hexc('#2C7FA8')))    # seaWaterFront
+    if lane: Q.append(([0.20,0.010,0.02],[0.40,0.010,0.02],[0.40,0.010,0.13],[0.20,0.010,0.13],hexc('#2F86AE')))  # seaWaterLane
+    if wall>0:
+        Q+=box((0.30,0,0.0075),0.20,0.24*wall,0.025,hexc('#4FB3C9'),hexc('#8AD3E2'))                     # seaWallBack
+        Q+=box((0.30,0,0.1425),0.20,0.14*wall,0.025,hexc('#4FB3C9'),hexc('#8AD3E2'))                     # seaWallFront
+    for x in (0.46,0.52,0.57): Q+=box((x,0,-0.30),0.02,0.22,0.02,hexc('#8A6A44'))                         # palms
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    for (x,z,h,c) in actors:
+        col=hexc(c); w=h*0.22; base=np.array([x,0,z])
+        for (y0,y1,ww,cc) in ((0,h*0.82,w,col),(h*0.80,h,w*0.62,hexc('#E8C4A0'))):
+            a=base+[0,y0,0]-r*ww/2; b=base+[0,y0,0]+r*ww/2
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+    return Q
+# ---- Prodigal rows (run.sh prodigal): stand-in homeland (docs/prodigal/CONTRACT.md §6)
+def homeland_scene(actors, cam):
+    Q=[]
+    Q.append(([-0.6,0,-0.5875],[0.0,0,-0.5875],[0.0,0,0.21],[-0.6,0,0.21],hexc('#C9C98A')))               # grassy sand (home)
+    Q.append(([0.0,0,-0.5875],[0.6,0,-0.5875],[0.6,0,0.21],[0.0,0,0.21],hexc('#D9BE8A')))                 # dry earth (far)
+    for (a,b) in (((-0.10,-0.06),(0.04,0.02)),((0.04,0.02),(0.16,0.08)),((0.16,0.08),(0.20,0.21)),((0.04,0.02),(0.30,-0.22))):   # road
+        d=np.array(b)-np.array(a); n=np.array([-d[1],d[0]])/np.linalg.norm(d)*0.03
+        Q.append(([a[0]-n[0],0.001,a[1]-n[1]],[b[0]-n[0],0.001,b[1]-n[1]],[b[0]+n[0],0.001,b[1]+n[1]],[a[0]+n[0],0.001,a[1]+n[1]],hexc('#E9D9B6')))
+    Q.append(([-0.52,0.0015,-0.36],[-0.08,0.0015,-0.36],[-0.08,0.0015,0.02],[-0.52,0.0015,0.02],hexc('#D9C29A')))  # courtyard
+    for i in range(12):                                                                                    # hills: green left, tawny right
+        x0=-0.6+i*0.1; x1=x0+0.1; h0=0.20+0.05*np.sin(x0*7); h1=0.20+0.05*np.sin(x1*7)
+        Q.append(([x0,0,-0.565],[x1,0,-0.565],[x1,h1,-0.565],[x0,h0,-0.565],hexc('#A7C26A' if x0<0 else '#D9B77A')))
+    Q+=box((-0.38,0,-0.47),0.28,0.20,0.16,hexc('#E3D3B0'),hexc('#C9A77A'))                                # house
+    Q.append(([-0.41,0,-0.389],[-0.35,0,-0.389],[-0.35,0.11,-0.389],[-0.41,0.11,-0.389],hexc('#8A5A3B')))  # door
+    Q+=box((-0.46,0,-0.04),0.08,0.04,0.08,hexc('#A9A49A'))                                                # well
+    Q+=box((-0.50,0,-0.28),0.025,0.20,0.025,hexc('#7A5A3A')); Q+=box((-0.50,0.18,-0.28),0.14,0.07,0.14,hexc('#5E9A4A'))  # fig
+    Q+=box((-0.54,0,-0.16),0.02,0.04,0.38,hexc('#CDBB98'))                                                # west wall
+    Q.append(([-0.06,0.002,-0.52],[0.24,0.002,-0.52],[0.24,0.002,-0.28],[-0.06,0.002,-0.28],hexc('#9A6A43')))  # field
+    for j in range(4): Q+=box((0.09,0,-0.50+j*0.03),0.28,0.03,0.008,hexc('#B7C25A'))                     # wheat rows
+    Q+=box((0.40,0,-0.50),0.30,0.12,0.08,hexc('#F1EADB'))                                                 # tavern back room
+    for x in (0.27,0.53): Q+=box((x,0,-0.40),0.02,0.20,0.02,hexc('#F1EADB'))                              # columns
+    Q+=box((0.40,0.20,-0.43),0.32,0.015,0.14,hexc('#D2483A'),hexc('#E86A5A'))                             # awning
+    Q+=box((0.54,0,-0.32),0.08,0.08,0.05,hexc('#E07B5A'),hexc('#F2C14E'))                                 # market stall
+    Q.append(([0.26,0.0015,-0.06],[0.56,0.0015,-0.06],[0.56,0.0015,0.18],[0.26,0.0015,0.18],hexc('#7A5638')))  # pen mud
+    for (x,z,sx,sz_) in ((0.42,-0.06,0.28,0.01),(0.26,-0.03,0.01,0.06),(0.26,0.17,0.01,0.02),(0.41,0.18,0.30,0.01),(0.56,0.06,0.01,0.24)):
+        Q+=box((x,0,z),sx,0.05,sz_,hexc('#9B6B43'))                                                       # fence with gaps
+    Q+=box((0.48,0,0.10),0.08,0.025,0.03,hexc('#8A6A44'),hexc('#6B4426'))                                 # trough + pods
+    for (x,z) in ((0.45,0.00),(0.52,0.03),(0.46,0.15),(0.53,0.14)): Q+=box((x,0,z),0.05,0.035,0.035,hexc('#F2A7A0'))   # pigs
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    for (x,z,h,c) in actors:
+        col=hexc(c); w=h*0.22; base=np.array([x,0,z])
+        for (y0,y1,ww,cc) in ((0,h*0.82,w,col),(h*0.80,h,w*0.62,hexc('#E2A878'))):
+            a=base+[0,y0,0]-r*ww/2; b=base+[0,y0,0]+r*ww/2
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+    return Q
+# ---- Gabriel rows (run.sh gabriel): stand-in heaven (docs/gabriel/CONTRACT.md §6); the actor is lifted by the frame's "lift"
+def heaven_scene(actors, cam, lift, wings):
+    Q=[]
+    Q.append(([-0.6,0.035,-0.5875],[0.6,0.035,-0.5875],[0.6,0.035,0.21],[-0.6,0.035,0.21],hexc('#FFF6E2')))        # cloud floor
+    Q.append(([-0.6,0.036,-0.5875],[0.6,0.036,-0.5875],[0.6,0.036,-0.30],[-0.6,0.036,-0.30],hexc('#F7DDB0')))      # far clouds
+    for k in range(7):                                                                                            # higher lumps at the edges
+        z=-0.52+k*0.11; h=0.07+0.03*np.sin(k*2.1)
+        for sx in (-1,1): Q+=box((sx*0.53,0,z),0.14,h,0.10,hexc('#FBEBCB'),hexc('#FFF6E2'))
+    Q+=box((0,0,-0.545),1.20,0.30,0.09,hexc('#F6EEDC'),hexc('#EFE2C4'))                                           # wall, front face z -0.50
+    for x in (-0.50,0.50): Q+=box((x,0,-0.54),0.10,0.38,0.10,hexc('#F2E8D2'),hexc('#EED48E'))                     # towers
+    Q+=box((0,0,-0.54),0.30,0.42,0.10,hexc('#F6EEDC'),hexc('#EED48E'))                                            # gate house
+    for x in (-0.11,0.11): Q+=box((x,0,-0.485),0.03,0.24,0.03,hexc('#EED48E'))                                    # columns
+    Q.append(([-0.07,0.04,-0.489],[0.07,0.04,-0.489],[0.07,0.21,-0.489],[-0.07,0.21,-0.489],hexc('#FBE3A6')))      # arch opening
+    Q.append(([-0.035,0.265,-0.489],[0.035,0.265,-0.489],[0.035,0.335,-0.489],[-0.035,0.335,-0.489],hexc('#F2A43A'))) # rosette glow
+    for k in range(5): Q+=box((0,0,-0.468+k*0.024),0.30+0.02*k,0.115-0.018*k,0.024,hexc('#F3E9D3'),hexc('#FBF3E0')) # 5 steps to z -0.36
+    for (x,z,y) in ((-0.45,-0.30,0.18),(0.45,-0.28,0.20)):                                                        # floating islets
+        b_=box((x,y,z),0.18,0.07,0.14,hexc('#C9A47A'),hexc('#7DAA55')); Q+=b_
+        Q+=box((x+0.03,y+0.07,z),0.05,0.06,0.05,hexc('#6F9A4A'))
+    for sx in (-1,1): Q+=box((sx*0.50,0,0.16),0.18,0.09,0.09,hexc('#FFFBF0'),hexc('#FFFFFF'))                     # front clouds
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    for (x,z,h,c) in actors:
+        base=np.array([x,lift,z]); col=hexc(c)
+        def slab(y0,y1,w,cc,back=0.0):
+            a=base+[0,y0,0]-r*w/2+f*back; b=base+[0,y0,0]+r*w/2+f*back
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+        if wings>0:                                                                                               # spread wings: span 1.0, tips to 0.80
+            for sx in (-1,1):
+                P=lambda u,y: list(base+r*(sx*u)+np.array([0,y,0])+f*0.03)
+                Q.append((P(0.05,0.30),P(0.50,0.50),P(0.47,0.80),P(0.05,0.52),hexc('#FFFDF6')*0.97))
+                Q.append((P(0.05,0.30),P(0.30,0.24),P(0.50,0.50),P(0.05,0.40),hexc('#F3EAD6')))
+        slab(0,0.24,0.10,hexc('#E6B23E'))                                                                         # greaves
+        slab(0.24,0.50,0.135,col); slab(0.30,0.345,0.14,hexc('#D9732C'),-0.001)                                    # cuirass + sash
+        slab(0.47,0.53,0.19,hexc('#E6B23E'),-0.001)                                                               # pauldrons
+        slab(0.53,0.62,0.075,hexc('#F2C9A0'),-0.002); slab(0.585,0.625,0.085,hexc('#9A6533'),-0.003)               # head + hair
+    return Q
 names = list(d.keys())
 sheet = Image.new("RGB",(150+5*W, len(names)*H),(255,255,255)); dr = ImageDraw.Draw(sheet)
 for r,name in enumerate(names):
     fx = d[name]; dr.text((6, r*H+H//2-10), name, fill=(0,0,0)); dr.text((6, r*H+H//2+6), f"{fx['dur']} s", fill=(90,90,90))
     for c,fr in enumerate(fx["frames"]):
-        im = (render_ruth if fx.get("scene")=="ruth" else render)(fx, fr); ImageDraw.Draw(im).text((4,4), f"t={fr['t']:.2f}", fill=(60,60,60))
+        im = (render_ruth if fx.get("scene") in ("ruth","daniel","exodus","prodigal","gabriel") else render)(fx, fr); ImageDraw.Draw(im).text((4,4), f"t={fr['t']:.2f}", fill=(60,60,60))
         sheet.paste(im,(150+c*W, r*H))
 sheet.save(f"{out}/fx_contact.png"); print("ok", sheet.size)

@@ -1,0 +1,1809 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther and Ruth; faces come from decals (no face ink)"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "但以理与狮子",
+   "pinyin": "dàn yǐ lǐ yǔ shī zi",
+   "english": "Daniel and the Lions",
+   "box": 84,
+   "gap": 22,
+   "cy": 104,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box 84 / gap 22 / cy 104 (not 76 / 12 / 100): with the Esther/Ruth values the six boxes matched David & Goliath's six-box title at NCC 0.80; now the most similar other title is NCC 0.37 (tools/story/sheet_daniel.py signature)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "但以理书 6 章 · Daniel 6"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy 100 puts the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "daniel": {
+   "height": 0.34,
+   "sheetX": -0.34,
+   "sheetY": 0.015,
+   "projection": "front"
+  },
+  "king": {
+   "height": 0.4,
+   "sheetX": 0.0,
+   "sheetY": 0.015,
+   "projection": "front"
+  },
+  "officer": {
+   "height": 0.35,
+   "sheetX": 0.34,
+   "sheetY": 0.015,
+   "projection": "front"
+  },
+  "lion": {
+   "height": 0.13,
+   "sheetX": -0.361,
+   "sheetY": 0.368,
+   "projection": "side",
+   "note": "side view (nose to -X, tail to +X), on a second row above Daniel (CONTRACT §2 slots re-planned by Set + sheet, 2026-11-14: the A-pose figures overlapped at the contract slots)"
+  }
+ },
+ "_note": "characters.* written by the Set + sheet role (CONTRACT §2 slots); set/* is written by pipeline/da_babylon.py",
+ "set": {
+  "generatedBy": "pipeline/da_babylon.py",
+  "doc": "docs/daniel/SET.md",
+  "contract": "docs/daniel/CONTRACT.md §6",
+  "root": "babylon",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "torch": [
+    -0.15,
+    0.21,
+    -0.36
+   ],
+   "window": [
+    -0.54,
+    0.1,
+    -0.14
+   ],
+   "throne": [
+    0.0,
+    0.04,
+    -0.497
+   ],
+   "palace": [
+    0.0,
+    0.0,
+    -0.46
+   ],
+   "house": [
+    -0.44,
+    0.0,
+    -0.44
+   ],
+   "windowWall": [
+    -0.54,
+    0.0,
+    -0.14
+   ],
+   "rug": [
+    -0.44,
+    0.0,
+    -0.14
+   ],
+   "palm": [
+    -0.29,
+    0.0,
+    -0.07
+   ],
+   "den": [
+    0.38,
+    0.0,
+    -0.17
+   ],
+   "denOpening": [
+    0.2595,
+    0.0,
+    -0.0431
+   ],
+   "stoneOpen": [
+    0.2084,
+    0.0,
+    -0.2911
+   ],
+   "stoneShut": [
+    0.2595,
+    0.0,
+    -0.0431
+   ],
+   "seal": [
+    0.2458,
+    0.0611,
+    -0.0286
+   ],
+   "market": [
+    0.52,
+    0.0,
+    0.15
+   ],
+   "gate": [
+    0.4,
+    0.0,
+    -0.551
+   ],
+   "cityWall": [
+    0.0,
+    0.0,
+    -0.574
+   ]
+  },
+  "footprints": {
+   "palacePlatform": [
+    -0.165,
+    -0.541,
+    0.165,
+    -0.384
+   ],
+   "stepFrontZ": -0.352,
+   "house": [
+    -0.565,
+    -0.545,
+    -0.297,
+    -0.345
+   ],
+   "windowWall": [
+    -0.5545,
+    -0.24,
+    -0.5305,
+    -0.04
+   ],
+   "rug": [
+    -0.515,
+    -0.195,
+    -0.365,
+    -0.085
+   ],
+   "den": {
+    "centre": [
+     0.38,
+     -0.17
+    ],
+    "innerRadius": 0.16,
+    "innerBulgeToward": [
+     0.3,
+     -0.26
+    ],
+    "wall": 0.03,
+    "openingDirDeg": 133.5,
+    "openingInnerChord": 0.1115,
+    "openingCentre": [
+     0.2595,
+     -0.0431
+    ]
+   },
+   "lionRocks": [
+    [
+     0.45,
+     -0.22
+    ],
+    [
+     0.3,
+     -0.255
+    ]
+   ],
+   "trough": [
+    0.517,
+    -0.165
+   ],
+   "market": [
+    0.43000000000000005,
+    0.07999999999999999,
+    0.5900000000000001,
+    0.205
+   ],
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "wallFrontZ": -0.56
+  },
+  "heights": {
+   "wallTop": 0.215,
+   "wallMax": 0.3,
+   "gateMax": 0.293,
+   "denTop": 0.076,
+   "palmMax": 0.5538,
+   "palmCrownBottomMain": 0.3783,
+   "platformTop": 0.04,
+   "houseMax": 0.269,
+   "windowWall": 0.16
+  },
+  "hiddenAtStart": [
+   "stoneShut",
+   "seal"
+  ],
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the template position for instanced pieces (palms, stones, seal)",
+   "cleanTexel": "faces with n . D < 0.22 (edge-on or facing away, n in drawing space) or hidden behind another part of their drawing take one clean texel of their own region",
+   "namedTexels": "thin bits (torch poles, lattice, cords, fringe, straw, tufts, pebbles, fruit crowns) take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "den": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.72
+    ],
+    "D": [
+     0.0,
+     0.72,
+     1
+    ],
+    "scale": 1.5,
+    "cx": -0.355,
+    "y0": 0.583,
+    "members": [
+     "den"
+    ],
+    "decorOnly": [
+     "denStone",
+     "flatRock"
+    ],
+    "sheetX": -0.60808,
+    "sheetY": 0.59255,
+    "bboxSheet": [
+     -0.4846,
+     0.583,
+     -0.2254,
+     0.8173
+    ]
+   },
+   "house": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.55
+    ],
+    "D": [
+     0.3,
+     0.55,
+     1
+    ],
+    "scale": 1.38,
+    "cx": -0.364,
+    "y0": 0.832,
+    "members": [
+     "house"
+    ],
+    "decorOnly": [
+     "houseWall",
+     "roof",
+     "wood"
+    ],
+    "sheetX": -0.14842,
+    "sheetY": 0.70088,
+    "bboxSheet": [
+     -0.4828,
+     0.832,
+     -0.2452,
+     1.1066
+    ]
+   },
+   "stone": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.98,
+    "cx": 0.372,
+    "y0": 1.084,
+    "members": [],
+    "decorOnly": [
+     "bigStone",
+     "wax"
+    ],
+    "sheetX": 0.3732,
+    "sheetY": 1.08412,
+    "bboxSheet": [
+     0.3096,
+     1.084,
+     0.4344,
+     1.2116
+    ]
+   },
+   "palace": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.34
+    ],
+    "D": [
+     0.0,
+     0.34,
+     1
+    ],
+    "scale": 1.65,
+    "cx": -0.0925,
+    "y0": 0.477,
+    "members": [
+     "palace",
+     "throne"
+    ],
+    "decorOnly": [
+     "palaceWall",
+     "throne"
+    ],
+    "sheetX": -0.0925,
+    "sheetY": 0.40447,
+    "bboxSheet": [
+     -0.1986,
+     0.477,
+     0.0136,
+     0.7294
+    ]
+   },
+   "palm": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.6,
+    "cx": 0.1235,
+    "y0": 0.477,
+    "members": [],
+    "creases": false,
+    "sheetX": 0.10395,
+    "sheetY": 0.477,
+    "bboxSheet": [
+     0.0259,
+     0.477,
+     0.2211,
+     0.7561
+    ]
+   },
+   "gate": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.35,
+    "cx": -0.04,
+    "y0": 0.808,
+    "members": [
+     "gate"
+    ],
+    "decorOnly": [
+     "gateTile",
+     "gateDoor",
+     "relief"
+    ],
+    "sheetX": -0.3363,
+    "sheetY": 0.808,
+    "bboxSheet": [
+     -0.1881,
+     0.808,
+     0.1081,
+     1.025
+    ]
+   },
+   "wall": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.75,
+    "cx": 0.022,
+    "y0": 1.04,
+    "members": [
+     "cityWall"
+    ],
+    "decorOnly": [
+     "mudBrick",
+     "ziggurat"
+    ],
+    "sheetX": 0.13629,
+    "sheetY": 1.04,
+    "bboxSheet": [
+     -0.2066,
+     1.04,
+     0.2506,
+     1.2114
+    ]
+   },
+   "market": {
+    "A": [
+     1,
+     0,
+     -0.25
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.25,
+     0.35,
+     1
+    ],
+    "scale": 0.92,
+    "cx": 0.3595,
+    "y0": 0.374,
+    "members": [
+     "market"
+    ],
+    "decorOnly": [
+     "stallWood"
+    ],
+    "sheetX": -0.12739,
+    "sheetY": 0.44883,
+    "bboxSheet": [
+     0.235,
+     0.374,
+     0.484,
+     0.5808
+    ]
+   },
+   "windowWall": {
+    "A": [
+     0,
+     0,
+     -1
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     1,
+     0,
+     0
+    ],
+    "scale": 1.08,
+    "cx": 0.372,
+    "y0": 0.612,
+    "members": [
+     "windowWall"
+    ],
+    "decorOnly": [
+     "houseWall",
+     "shutter"
+    ],
+    "sheetX": 0.24237,
+    "sheetY": 0.612,
+    "bboxSheet": [
+     0.2757,
+     0.612,
+     0.4683,
+     0.7694
+    ]
+   },
+   "rug": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 0.68,
+    "cx": 0.372,
+    "y0": 0.782,
+    "members": [
+     "rug"
+    ],
+    "creases": false,
+    "sheetX": 1.01906,
+    "sheetY": 0.657,
+    "bboxSheet": [
+     0.2617,
+     0.782,
+     0.4823,
+     0.9438
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 7.0,
+    "cx": 0.372,
+    "y0": 0.957,
+    "members": [
+     "ground"
+    ],
+    "decorOnly": [
+     "paving",
+     "sand"
+    ],
+    "creases": false,
+    "sheetX": 0.372,
+    "sheetY": 0.987,
+    "bboxSheet": [
+     0.2863,
+     0.957,
+     0.4577,
+     1.0709
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 7.0,
+     "sheetX": 0.372,
+     "sheetY": 0.987
+    },
+    "instanced": false,
+    "namedTexels": {
+     "tuft": [
+      "palm",
+      "frond"
+     ],
+     "pebble": [
+      "den",
+      "denStone"
+     ]
+    },
+    "regions": [
+     "paving",
+     "pebble",
+     "sand",
+     "tuft"
+    ],
+    "heightMax": 0.0273,
+    "tris": 5212
+   },
+   {
+    "id": "cityWall",
+    "drawing": "wall",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.75,
+     "sheetX": 0.13629,
+     "sheetY": 1.04
+    },
+    "instanced": false,
+    "namedTexels": {
+     "farTrunk": [
+      "palm",
+      "trunk"
+     ],
+     "palmFar": [
+      "palm",
+      "frond"
+     ]
+    },
+    "regions": [
+     "farTrunk",
+     "mudBrick",
+     "palmFar",
+     "ziggurat"
+    ],
+    "heightMax": 0.3,
+    "tris": 1671
+   },
+   {
+    "id": "gate",
+    "drawing": "gate",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.35,
+     "sheetX": -0.3363,
+     "sheetY": 0.808
+    },
+    "instanced": false,
+    "namedTexels": {
+     "stud": [
+      "gate",
+      "relief"
+     ]
+    },
+    "regions": [
+     "gateDoor",
+     "gateTile",
+     "relief",
+     "stud"
+    ],
+    "heightMax": 0.293,
+    "tris": 7921
+   },
+   {
+    "id": "palace",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.34
+     ],
+     "D": [
+      0.0,
+      0.34,
+      1
+     ],
+     "scale": 1.65,
+     "sheetX": -0.0925,
+     "sheetY": 0.40447
+    },
+    "instanced": false,
+    "namedTexels": {
+     "friezeTile": [
+      "gate",
+      "gateTile"
+     ],
+     "friezeGold": [
+      "gate",
+      "relief"
+     ],
+     "tassel": [
+      "palace",
+      "throne"
+     ],
+     "incense": [
+      "palace",
+      "throne"
+     ],
+     "jar": [
+      "market",
+      "marketJar"
+     ],
+     "torchBowl": [
+      "palace",
+      "throne"
+     ],
+     "torchPole": [
+      "house",
+      "wood"
+     ]
+    },
+    "regions": [
+     "canopy",
+     "friezeGold",
+     "friezeTile",
+     "incense",
+     "jar",
+     "palaceWall",
+     "sandstone",
+     "tassel",
+     "throne",
+     "torchBowl",
+     "torchPole"
+    ],
+    "heightMax": 0.372,
+    "tris": 8113
+   },
+   {
+    "id": "throne",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.34
+     ],
+     "D": [
+      0.0,
+      0.34,
+      1
+     ],
+     "scale": 1.65,
+     "sheetX": -0.0925,
+     "sheetY": 0.40447
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "cushion",
+     "throne"
+    ],
+    "heightMax": 0.2819,
+    "tris": 1543
+   },
+   {
+    "id": "house",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.3,
+      0.55,
+      1
+     ],
+     "scale": 1.38,
+     "sheetX": -0.14842,
+     "sheetY": 0.70088
+    },
+    "instanced": false,
+    "namedTexels": {
+     "iron": [
+      "house",
+      "wood"
+     ],
+     "pot": [
+      "market",
+      "marketJar"
+     ],
+     "leaf": [
+      "palm",
+      "frond"
+     ],
+     "clothBlue": [
+      "rug",
+      "rugBlue"
+     ],
+     "clothRed": [
+      "rug",
+      "rugRed"
+     ]
+    },
+    "regions": [
+     "clothBlue",
+     "clothRed",
+     "houseWall",
+     "iron",
+     "leaf",
+     "pot",
+     "roof",
+     "wood"
+    ],
+    "heightMax": 0.269,
+    "tris": 2248
+   },
+   {
+    "id": "windowWall",
+    "drawing": "windowWall",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      -1
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      1,
+      0,
+      0
+     ],
+     "scale": 1.08,
+     "sheetX": 0.24237,
+     "sheetY": 0.612
+    },
+    "instanced": false,
+    "namedTexels": {
+     "lattice": [
+      "windowWall",
+      "shutter"
+     ],
+     "pot": [
+      "market",
+      "marketJar"
+     ],
+     "leaf": [
+      "palm",
+      "frond"
+     ],
+     "flower": [
+      "rug",
+      "rugRed"
+     ]
+    },
+    "regions": [
+     "flower",
+     "houseWall",
+     "lattice",
+     "leaf",
+     "pot",
+     "shutter"
+    ],
+    "heightMax": 0.17,
+    "tris": 772
+   },
+   {
+    "id": "rug",
+    "drawing": "rug",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 0.68,
+     "sheetX": 1.01906,
+     "sheetY": 0.657
+    },
+    "instanced": false,
+    "namedTexels": {
+     "fringe": [
+      "rug",
+      "rugCream"
+     ]
+    },
+    "regions": [
+     "fringe",
+     "rugBlue",
+     "rugCream",
+     "rugRed"
+    ],
+    "heightMax": 0.0051,
+    "tris": 542
+   },
+   {
+    "id": "palm",
+    "drawing": "palm",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.6,
+     "sheetX": 0.10395,
+     "sheetY": 0.477
+    },
+    "instanced": true,
+    "namedTexels": {
+     "date": [
+      "market",
+      "dates"
+     ],
+     "dateStalk": [
+      "palm",
+      "trunk"
+     ]
+    },
+    "regions": [
+     "date",
+     "dateStalk",
+     "frond",
+     "trunk"
+    ],
+    "heightMax": 0.5538,
+    "tris": 7614
+   },
+   {
+    "id": "den",
+    "drawing": "den",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.72
+     ],
+     "D": [
+      0.0,
+      0.72,
+      1
+     ],
+     "scale": 1.5,
+     "sheetX": -0.60808,
+     "sheetY": 0.59255
+    },
+    "instanced": false,
+    "namedTexels": {
+     "water": [
+      "gate",
+      "gateTile"
+     ],
+     "strawBit": [
+      "den",
+      "straw"
+     ],
+     "pebble": [
+      "den",
+      "denStone"
+     ]
+    },
+    "regions": [
+     "denFloor",
+     "denStone",
+     "flatRock",
+     "pebble",
+     "straw",
+     "strawBit",
+     "water"
+    ],
+    "heightMax": 0.076,
+    "tris": 3936
+   },
+   {
+    "id": "stoneOpen",
+    "drawing": "stone",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.98,
+     "sheetX": 0.3732,
+     "sheetY": 1.08412
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "bigStone"
+    ],
+    "heightMax": 0.1249,
+    "tris": 336
+   },
+   {
+    "id": "stoneShut",
+    "drawing": "stone",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.98,
+     "sheetX": 0.3732,
+     "sheetY": 1.08412
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "bigStone"
+    ],
+    "heightMax": 0.1249,
+    "tris": 336
+   },
+   {
+    "id": "seal",
+    "drawing": "stone",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.98,
+     "sheetX": 0.3732,
+     "sheetY": 1.08412
+    },
+    "instanced": true,
+    "namedTexels": {
+     "cord": [
+      "den",
+      "straw"
+     ]
+    },
+    "regions": [
+     "cord",
+     "wax"
+    ],
+    "heightMax": 0.0834,
+    "tris": 306
+   },
+   {
+    "id": "market",
+    "drawing": "market",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.25
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.25,
+      0.35,
+      1
+     ],
+     "scale": 0.92,
+     "sheetX": -0.12739,
+     "sheetY": 0.44883
+    },
+    "instanced": false,
+    "namedTexels": {
+     "crown": [
+      "market",
+      "pomegranate"
+     ],
+     "basket": [
+      "market",
+      "stallWood"
+     ],
+     "sack": [
+      "market",
+      "awningCream"
+     ]
+    },
+    "regions": [
+     "awningCream",
+     "awningRed",
+     "basket",
+     "crown",
+     "dates",
+     "marketJar",
+     "melon",
+     "pomegranate",
+     "sack",
+     "stallWood"
+    ],
+    "heightMax": 0.1591,
+    "tris": 1881
+   }
+  ],
+  "constUV": [
+   {
+    "node": "ground/tuft",
+    "uv": [
+     0.6205,
+     0.59861
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "ground/pebble",
+    "uv": [
+     0.1385,
+     0.49756
+    ],
+    "region": "denStone"
+   },
+   {
+    "node": "cityWall/farTrunk",
+    "uv": [
+     0.6025,
+     0.42095
+    ],
+    "region": "trunk"
+   },
+   {
+    "node": "cityWall/palmFar",
+    "uv": [
+     0.6205,
+     0.59861
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "gate/stud",
+    "uv": [
+     0.4595,
+     0.77221
+    ],
+    "region": "relief"
+   },
+   {
+    "node": "palace/friezeTile",
+    "uv": [
+     0.5765,
+     0.68826
+    ],
+    "region": "gateTile"
+   },
+   {
+    "node": "palace/friezeGold",
+    "uv": [
+     0.4595,
+     0.77221
+    ],
+    "region": "relief"
+   },
+   {
+    "node": "palace/tassel",
+    "uv": [
+     0.4075,
+     0.53097
+    ],
+    "region": "throne"
+   },
+   {
+    "node": "palace/incense",
+    "uv": [
+     0.4075,
+     0.53097
+    ],
+    "region": "throne"
+   },
+   {
+    "node": "palace/jar",
+    "uv": [
+     0.7925,
+     0.3639
+    ],
+    "region": "marketJar"
+   },
+   {
+    "node": "palace/torchBowl",
+    "uv": [
+     0.4075,
+     0.53097
+    ],
+    "region": "throne"
+   },
+   {
+    "node": "palace/torchPole",
+    "uv": [
+     0.0835,
+     0.71842
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "house/iron",
+    "uv": [
+     0.0835,
+     0.71842
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "house/pot",
+    "uv": [
+     0.7925,
+     0.3639
+    ],
+    "region": "marketJar"
+   },
+   {
+    "node": "house/leaf",
+    "uv": [
+     0.6205,
+     0.59861
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "house/clothBlue",
+    "uv": [
+     0.7865,
+     0.74939
+    ],
+    "region": "rugBlue"
+   },
+   {
+    "node": "house/clothRed",
+    "uv": [
+     0.8235,
+     0.68745
+    ],
+    "region": "rugRed"
+   },
+   {
+    "node": "windowWall/lattice",
+    "uv": [
+     0.8215,
+     0.56764
+    ],
+    "region": "shutter"
+   },
+   {
+    "node": "windowWall/pot",
+    "uv": [
+     0.7925,
+     0.3639
+    ],
+    "region": "marketJar"
+   },
+   {
+    "node": "windowWall/leaf",
+    "uv": [
+     0.6205,
+     0.59861
+    ],
+    "region": "frond"
+   },
+   {
+    "node": "windowWall/flower",
+    "uv": [
+     0.8235,
+     0.68745
+    ],
+    "region": "rugRed"
+   },
+   {
+    "node": "rug/fringe",
+    "uv": [
+     0.8715,
+     0.70375
+    ],
+    "region": "rugCream"
+   },
+   {
+    "node": "palm/date",
+    "uv": [
+     0.9205,
+     0.38509
+    ],
+    "region": "dates"
+   },
+   {
+    "node": "palm/dateStalk",
+    "uv": [
+     0.6025,
+     0.42095
+    ],
+    "region": "trunk"
+   },
+   {
+    "node": "den/water",
+    "uv": [
+     0.5765,
+     0.68826
+    ],
+    "region": "gateTile"
+   },
+   {
+    "node": "den/strawBit",
+    "uv": [
+     0.1495,
+     0.59046
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "den/pebble",
+    "uv": [
+     0.1385,
+     0.49756
+    ],
+    "region": "denStone"
+   },
+   {
+    "node": "seal/cord",
+    "uv": [
+     0.1495,
+     0.59046
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "market/crown",
+    "uv": [
+     0.8635,
+     0.37612
+    ],
+    "region": "pomegranate"
+   },
+   {
+    "node": "market/basket",
+    "uv": [
+     0.8735,
+     0.33945
+    ],
+    "region": "stallWood"
+   },
+   {
+    "node": "market/sack",
+    "uv": [
+     0.8985,
+     0.44621
+    ],
+    "region": "awningCream"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "marks": [
+    {
+     "who": "king",
+     "at": [
+      0.0,
+      -0.3
+     ],
+     "margin": 0.0528
+    },
+    {
+     "who": "king",
+     "at": [
+      -0.05,
+      -0.3
+     ],
+     "margin": 0.0369
+    },
+    {
+     "who": "king",
+     "at": [
+      0.05,
+      0.08
+     ],
+     "margin": 0.0424
+    },
+    {
+     "who": "king",
+     "at": [
+      0.02,
+      -0.02
+     ],
+     "margin": 0.1457
+    },
+    {
+     "who": "daniel",
+     "at": [
+      -0.14,
+      -0.2
+     ],
+     "margin": 0.0392
+    },
+    {
+     "who": "daniel",
+     "at": [
+      -0.3,
+      -0.24
+     ],
+     "margin": 0.0373
+    },
+    {
+     "who": "daniel",
+     "at": [
+      -0.42,
+      -0.14
+     ],
+     "margin": 0.0476
+    },
+    {
+     "who": "daniel",
+     "at": [
+      -0.2,
+      -0.16
+     ],
+     "margin": 0.0433
+    },
+    {
+     "who": "daniel",
+     "at": [
+      0.16,
+      0.03
+     ],
+     "margin": 0.0468
+    },
+    {
+     "who": "daniel",
+     "at": [
+      0.36,
+      -0.13
+     ],
+     "margin": 0.0614
+    },
+    {
+     "who": "daniel",
+     "at": [
+      0.13,
+      0.06
+     ],
+     "margin": 0.0418
+    },
+    {
+     "who": "daniel",
+     "at": [
+      -0.12,
+      0.02
+     ],
+     "margin": 0.1109
+    },
+    {
+     "who": "officer",
+     "at": [
+      0.12,
+      -0.22
+     ],
+     "margin": 0.0036
+    },
+    {
+     "who": "officer",
+     "at": [
+      0.04,
+      0.1
+     ],
+     "margin": 0.0245
+    },
+    {
+     "who": "officer",
+     "at": [
+      0.3,
+      0.1
+     ],
+     "margin": 0.0285
+    },
+    {
+     "who": "officer",
+     "at": [
+      -0.22,
+      -0.02
+     ],
+     "margin": 0.0046
+    },
+    {
+     "who": "officer",
+     "at": [
+      -0.12,
+      0.12
+     ],
+     "margin": 0.1365
+    },
+    {
+     "who": "officer",
+     "at": [
+      -0.3,
+      0.16
+     ],
+     "margin": 0.1481
+    },
+    {
+     "who": "officer",
+     "at": [
+      -0.4,
+      0.18
+     ],
+     "margin": 0.1579
+    },
+    {
+     "who": "lion",
+     "at": [
+      0.45,
+      -0.22
+     ],
+     "margin": 0.006
+    },
+    {
+     "who": "lion2",
+     "at": [
+      0.3,
+      -0.26
+     ],
+     "margin": 0.0076
+    },
+    {
+     "who": "lion",
+     "at": [
+      0.44,
+      -0.09
+     ],
+     "margin": 0.006
+    },
+    {
+     "who": "lion2",
+     "at": [
+      0.28,
+      -0.18
+     ],
+     "margin": 0.0064
+    }
+   ]
+  },
+  "sheetLayout": {
+   "characters": {
+    "daniel": {
+     "sheetX": -0.34,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      -0.4628,
+      0.0165,
+      -0.2172,
+      0.3481
+     ]
+    },
+    "king": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.4,
+     "box": [
+      -0.1338,
+      0.0168,
+      0.1337,
+      0.4562
+     ]
+    },
+    "officer": {
+     "sheetX": 0.34,
+     "sheetY": 0.015,
+     "height": 0.35,
+     "box": [
+      0.2251,
+      0.0166,
+      0.4549,
+      0.3533
+     ]
+    },
+    "lion": {
+     "sheetX": -0.361,
+     "sheetY": 0.368,
+     "height": 0.13,
+     "box": [
+      -0.4778,
+      0.3685,
+      -0.219,
+      0.562
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "sand": "#E2C389",
+   "paving": "#E6D6B4",
+   "mudBrick": "#D8B07A",
+   "roofBeyond": "#D9A06A",
+   "ziggurat": "#C99A62",
+   "palmFar": "#5E9446",
+   "gateTile": "#2E5FA8",
+   "relief": "#E8C15A",
+   "gateDoor": "#8A5A3B",
+   "palaceWall": "#EAD7AE",
+   "sandstone": "#E3CFA3",
+   "canopy": "#B8423A",
+   "frieze": "#2E5FA8",
+   "throne": "#D9A63A",
+   "cushion": "#B8423A",
+   "houseWall": "#D9A06A",
+   "roof": "#C98F5C",
+   "wood": "#8A5A3B",
+   "shutter": "#8A5A3B",
+   "rugRed": "#B8423A",
+   "rugBlue": "#2E5FA8",
+   "rugCream": "#F4EEDD",
+   "frond": "#4F8A3C",
+   "trunk": "#8A6A44",
+   "denStone": "#9C8A72",
+   "denFloor": "#D9B77A",
+   "straw": "#E9D08A",
+   "flatRock": "#B5A68C",
+   "bigStone": "#A79A86",
+   "wax": "#C0392B",
+   "awningRed": "#B8423A",
+   "awningCream": "#F4EEDD",
+   "stallWood": "#A47548",
+   "pomegranate": "#C0392B",
+   "melon": "#7DAA4E",
+   "marketJar": "#C8643C",
+   "dates": "#B8682E"
+  },
+  "tris": 42431,
+  "budget": 80000,
+  "target": 60000
+ }
+}

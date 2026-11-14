@@ -476,6 +476,8 @@ namespace DoodLive
                 float bh = h1 + h2 + u * 0.45f, by = area.yMax - bh + u * 0.15f * (1 - EaseOut(lineFade));
                 var r = new Rect(area.center.x - bw / 2, by, bw, bh);
                 string who = shown.who == "narrator" ? null : L10n.T("dg_" + shown.who);
+                if (who != null && active != null)   // a story may rename a shared cast id (Daniel's "king" is Darius, Esther's is Xerxes)
+                { string sk = $"dg_{active.StoryId}_{shown.who}", sv = L10n.T(sk); if (sv != sk) who = sv; }
                 if (!string.IsNullOrEmpty(who))
                 {
                     var ts = new GUIStyle(txtTag) { wordWrap = false };

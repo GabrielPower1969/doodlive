@@ -1,0 +1,761 @@
+{
+ "setOverCastPx2x": 0,
+ "mergedIntoSameColourNeighbour": [
+  [
+   2,
+   1
+  ],
+  [
+   3,
+   1
+  ],
+  [
+   6,
+   5
+  ],
+  [
+   23,
+   22
+  ],
+  [
+   24,
+   22
+  ],
+  [
+   25,
+   26
+  ],
+  [
+   27,
+   26
+  ],
+  [
+   49,
+   48
+  ],
+  [
+   50,
+   48
+  ],
+  [
+   53,
+   48
+  ],
+  [
+   87,
+   83
+  ]
+ ],
+ "detailParts": 53,
+ "pieces": 150,
+ "slivers(<6px)": [],
+ "regionsBelow6mm(best cell)": [
+  [
+   6.3,
+   "lion.bridge:body"
+  ],
+  [
+   6.3,
+   "lion.haunchL:body"
+  ],
+  [
+   8.2,
+   "daniel.beard:hair"
+  ],
+  [
+   10.8,
+   "lion.tail:body"
+  ],
+  [
+   11.7,
+   "daniel.hair:hair"
+  ],
+  [
+   21.6,
+   "lion.head:body"
+  ],
+  [
+   24.3,
+   "king.beard:beard"
+  ],
+  [
+   24.3,
+   "officer.face:skin"
+  ],
+  [
+   25.5,
+   "lion.legFL:body"
+  ],
+  [
+   26.0,
+   "daniel.face:skin"
+  ],
+  [
+   26.0,
+   "king.face:skin"
+  ],
+  [
+   26.1,
+   "lion.legBL:body"
+  ],
+  [
+   32.0,
+   "daniel.collar:collar"
+  ]
+ ],
+ "regionsWithoutColourableCell": [],
+ "inkWithin6pxOfArtEdge": {
+  "bottom": 0,
+  "top": 0,
+  "left": 0,
+  "right": 0
+ },
+ "anchorSamples": {
+  "daniel.sandals": {
+   "uv": [
+    0.08325,
+    0.71333
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "daniel.sash": {
+   "uv": [
+    0.78625,
+    0.6575
+   ],
+   "region": "set:rugBlue",
+   "want": "rugBlue",
+   "inkDistPx": 17.0,
+   "ok": true
+  },
+  "daniel.skin@handL": {
+   "uv": [
+    0.15575,
+    0.22596
+   ],
+   "region": "daniel:skin",
+   "want": "skin",
+   "inkDistPx": 3.2,
+   "ok": true
+  },
+  "daniel.skin@handR": {
+   "uv": [
+    0.15575,
+    0.22596
+   ],
+   "region": "daniel:skin",
+   "want": "skin",
+   "inkDistPx": 3.2,
+   "ok": true
+  },
+  "daniel.skin@legL": {
+   "uv": [
+    0.15575,
+    0.22596
+   ],
+   "region": "daniel:skin",
+   "want": "skin",
+   "inkDistPx": 3.2,
+   "ok": true
+  },
+  "daniel.skin@legR": {
+   "uv": [
+    0.15575,
+    0.22596
+   ],
+   "region": "daniel:skin",
+   "want": "skin",
+   "inkDistPx": 3.2,
+   "ok": true
+  },
+  "king.shoes": {
+   "uv": [
+    0.08325,
+    0.71333
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "king.belt": {
+   "uv": [
+    0.40725,
+    0.53077
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "king.medallion": {
+   "uv": [
+    0.40725,
+    0.53077
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "king.cape": {
+   "uv": [
+    0.37375,
+    0.68643
+   ],
+   "region": "set:gateTile",
+   "want": "gateTile",
+   "inkDistPx": 0.0,
+   "ok": false
+  },
+  "king.crownBand": {
+   "uv": [
+    0.40725,
+    0.53077
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "king.ring": {
+   "uv": [
+    0.40725,
+    0.53077
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "king.skin@handL": {
+   "uv": [
+    0.48775,
+    0.2663
+   ],
+   "region": "king:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "king.skin@handR": {
+   "uv": [
+    0.48775,
+    0.2663
+   ],
+   "region": "king:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "king.skin@legL": {
+   "uv": [
+    0.48775,
+    0.2663
+   ],
+   "region": "king:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "king.skin@legR": {
+   "uv": [
+    0.48775,
+    0.2663
+   ],
+   "region": "king:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "officer.beard": {
+   "uv": [
+    0.49975,
+    0.24348
+   ],
+   "region": "king:beard",
+   "want": "beard",
+   "inkDistPx": 12.0,
+   "ok": true
+  },
+  "officer.headband": {
+   "uv": [
+    0.45975,
+    0.77241
+   ],
+   "region": "set:relief",
+   "want": "relief",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "officer.stripes": {
+   "uv": [
+    0.35375,
+    0.565
+   ],
+   "region": "set:canopy",
+   "want": "canopy",
+   "inkDistPx": 13.9,
+   "ok": true
+  },
+  "officer.slippers": {
+   "uv": [
+    0.08325,
+    0.71333
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "officer.sash": {
+   "uv": [
+    0.62125,
+    0.59841
+   ],
+   "region": "set:frond",
+   "want": "frond",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "officer.scroll": {
+   "uv": [
+    0.15975,
+    0.06296
+   ],
+   "region": "daniel:robe",
+   "want": "robe",
+   "inkDistPx": 48.1,
+   "ok": true
+  },
+  "officer.seal": {
+   "uv": [
+    0.87425,
+    0.935
+   ],
+   "region": "set:wax",
+   "want": "wax",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "officer.skin@handL": {
+   "uv": [
+    0.83025,
+    0.24919
+   ],
+   "region": "officer:skin",
+   "want": "skin",
+   "inkDistPx": 1.4,
+   "ok": false
+  },
+  "officer.skin@handR": {
+   "uv": [
+    0.83025,
+    0.24919
+   ],
+   "region": "officer:skin",
+   "want": "skin",
+   "inkDistPx": 1.4,
+   "ok": false
+  },
+  "officer.skin@legL": {
+   "uv": [
+    0.83025,
+    0.24919
+   ],
+   "region": "officer:skin",
+   "want": "skin",
+   "inkDistPx": 1.4,
+   "ok": false
+  },
+  "officer.skin@legR": {
+   "uv": [
+    0.83025,
+    0.24919
+   ],
+   "region": "officer:skin",
+   "want": "skin",
+   "inkDistPx": 1.4,
+   "ok": false
+  },
+  "lion.muzzle": {
+   "uv": [
+    0.87175,
+    0.70314
+   ],
+   "region": "set:rugCream",
+   "want": "rugCream",
+   "inkDistPx": 21.0,
+   "ok": true
+  },
+  "lion.nose": {
+   "uv": [
+    0.08325,
+    0.71333
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "lion.tuft": {
+   "uv": [
+    0.08325,
+    0.71333
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "lion.muzzle@earL": {
+   "uv": [
+    0.87175,
+    0.70314
+   ],
+   "region": "set:rugCream",
+   "want": "rugCream",
+   "inkDistPx": 21.0,
+   "ok": true
+  },
+  "lion.muzzle@earR": {
+   "uv": [
+    0.87175,
+    0.70314
+   ],
+   "region": "set:rugCream",
+   "want": "rugCream",
+   "inkDistPx": 21.0,
+   "ok": true
+  },
+  "lion.mane@forelock": {
+   "uv": [
+    0.08925,
+    0.40444
+   ],
+   "region": "lion:mane",
+   "want": "mane",
+   "inkDistPx": 32.2,
+   "ok": true
+  },
+  "set.ground/tuft": {
+   "uv": [
+    0.6205,
+    0.59861
+   ],
+   "region": "set:frond",
+   "want": "frond",
+   "inkDistPx": 18.7,
+   "ok": true
+  },
+  "set.ground/pebble": {
+   "uv": [
+    0.1385,
+    0.49756
+   ],
+   "region": "set:denStone",
+   "want": "denStone",
+   "inkDistPx": 17.8,
+   "ok": true
+  },
+  "set.cityWall/farTrunk": {
+   "uv": [
+    0.6025,
+    0.42095
+   ],
+   "region": "set:trunk",
+   "want": "trunk",
+   "inkDistPx": 18.1,
+   "ok": true
+  },
+  "set.cityWall/palmFar": {
+   "uv": [
+    0.6205,
+    0.59861
+   ],
+   "region": "set:frond",
+   "want": "frond",
+   "inkDistPx": 18.7,
+   "ok": true
+  },
+  "set.gate/stud": {
+   "uv": [
+    0.4595,
+    0.77221
+   ],
+   "region": "set:relief",
+   "want": "relief",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.palace/friezeTile": {
+   "uv": [
+    0.5765,
+    0.68826
+   ],
+   "region": "set:gateTile",
+   "want": "gateTile",
+   "inkDistPx": 29.1,
+   "ok": true
+  },
+  "set.palace/friezeGold": {
+   "uv": [
+    0.4595,
+    0.77221
+   ],
+   "region": "set:relief",
+   "want": "relief",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.palace/tassel": {
+   "uv": [
+    0.4075,
+    0.53097
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "set.palace/incense": {
+   "uv": [
+    0.4075,
+    0.53097
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "set.palace/jar": {
+   "uv": [
+    0.7925,
+    0.3639
+   ],
+   "region": "set:marketJar",
+   "want": "marketJar",
+   "inkDistPx": 16.3,
+   "ok": true
+  },
+  "set.palace/torchBowl": {
+   "uv": [
+    0.4075,
+    0.53097
+   ],
+   "region": "set:throne",
+   "want": "throne",
+   "inkDistPx": 24.8,
+   "ok": true
+  },
+  "set.palace/torchPole": {
+   "uv": [
+    0.0835,
+    0.71842
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "set.house/iron": {
+   "uv": [
+    0.0835,
+    0.71842
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "set.house/pot": {
+   "uv": [
+    0.7925,
+    0.3639
+   ],
+   "region": "set:marketJar",
+   "want": "marketJar",
+   "inkDistPx": 16.3,
+   "ok": true
+  },
+  "set.house/leaf": {
+   "uv": [
+    0.6205,
+    0.59861
+   ],
+   "region": "set:frond",
+   "want": "frond",
+   "inkDistPx": 18.7,
+   "ok": true
+  },
+  "set.house/clothBlue": {
+   "uv": [
+    0.7865,
+    0.74939
+   ],
+   "region": "set:rugBlue",
+   "want": "rugBlue",
+   "inkDistPx": 17.0,
+   "ok": true
+  },
+  "set.house/clothRed": {
+   "uv": [
+    0.8235,
+    0.68745
+   ],
+   "region": "set:rugRed",
+   "want": "rugRed",
+   "inkDistPx": 17.8,
+   "ok": true
+  },
+  "set.windowWall/lattice": {
+   "uv": [
+    0.8215,
+    0.56764
+   ],
+   "region": "set:shutter",
+   "want": "shutter",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "set.windowWall/pot": {
+   "uv": [
+    0.7925,
+    0.3639
+   ],
+   "region": "set:marketJar",
+   "want": "marketJar",
+   "inkDistPx": 16.3,
+   "ok": true
+  },
+  "set.windowWall/leaf": {
+   "uv": [
+    0.6205,
+    0.59861
+   ],
+   "region": "set:frond",
+   "want": "frond",
+   "inkDistPx": 18.7,
+   "ok": true
+  },
+  "set.windowWall/flower": {
+   "uv": [
+    0.8235,
+    0.68745
+   ],
+   "region": "set:rugRed",
+   "want": "rugRed",
+   "inkDistPx": 17.8,
+   "ok": true
+  },
+  "set.rug/fringe": {
+   "uv": [
+    0.8715,
+    0.70375
+   ],
+   "region": "set:rugCream",
+   "want": "rugCream",
+   "inkDistPx": 20.6,
+   "ok": true
+  },
+  "set.palm/date": {
+   "uv": [
+    0.9205,
+    0.38509
+   ],
+   "region": "set:dates",
+   "want": "dates",
+   "inkDistPx": 17.1,
+   "ok": true
+  },
+  "set.palm/dateStalk": {
+   "uv": [
+    0.6025,
+    0.42095
+   ],
+   "region": "set:trunk",
+   "want": "trunk",
+   "inkDistPx": 18.1,
+   "ok": true
+  },
+  "set.den/water": {
+   "uv": [
+    0.5765,
+    0.68826
+   ],
+   "region": "set:gateTile",
+   "want": "gateTile",
+   "inkDistPx": 29.1,
+   "ok": true
+  },
+  "set.den/strawBit": {
+   "uv": [
+    0.1495,
+    0.59046
+   ],
+   "region": "set:straw",
+   "want": "straw",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.den/pebble": {
+   "uv": [
+    0.1385,
+    0.49756
+   ],
+   "region": "set:denStone",
+   "want": "denStone",
+   "inkDistPx": 17.8,
+   "ok": true
+  },
+  "set.seal/cord": {
+   "uv": [
+    0.1495,
+    0.59046
+   ],
+   "region": "set:straw",
+   "want": "straw",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.market/crown": {
+   "uv": [
+    0.8635,
+    0.37612
+   ],
+   "region": "set:pomegranate",
+   "want": "pomegranate",
+   "inkDistPx": 17.5,
+   "ok": true
+  },
+  "set.market/basket": {
+   "uv": [
+    0.8735,
+    0.33945
+   ],
+   "region": "set:stallWood",
+   "want": "stallWood",
+   "inkDistPx": 24.7,
+   "ok": true
+  },
+  "set.market/sack": {
+   "uv": [
+    0.8985,
+    0.44621
+   ],
+   "region": "set:awningCream",
+   "want": "awningCream",
+   "inkDistPx": 21.5,
+   "ok": true
+  }
+ },
+ "inkToPageEdgePx(excl. markers)": {
+  "left": 133,
+  "right": 134,
+  "top": 38,
+  "bottom": 64
+ }
+}

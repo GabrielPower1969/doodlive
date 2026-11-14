@@ -91,6 +91,9 @@ export const STR = {
     dg_naomi: "拿俄米",
     dg_boaz: "波阿斯",
     dg_reapers: "收割的人",
+    dg_daniel: "但以理",
+    dg_officer: "大臣",
+    dg_daniel_king: "大流士王",
   },
   en: {
     appTitle: "DoodLive · Colour-in Angel AR",
@@ -182,6 +185,9 @@ export const STR = {
     dg_naomi: "Naomi",
     dg_boaz: "Boaz",
     dg_reapers: "Reapers",
+    dg_daniel: "Daniel",
+    dg_officer: "Official",
+    dg_daniel_king: "King Darius",
   },
 };
 const saved = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();
