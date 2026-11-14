@@ -63,37 +63,37 @@
     "fx": "field",
     "chain": "expressive",
     "rt60": 0.5,
-    "wet": 0.16,
+    "wet": 0.12,
     "seed": 11,
     "instruct": "一个在田里干活的人，从田那头大声回应主人，高高兴兴、很自然，像真人。",
     "members": [
      {
+      "engine": "edge",
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "+12%",
+      "delay": 0.0,
+      "gainDb": 0
+     },
+     {
       "engine": "qwen",
       "voice": "eric",
-      "delay": 0.0,
-      "gainDb": 0,
+      "delay": 0.08,
+      "gainDb": -6,
       "seed": 1
      },
      {
       "engine": "edge",
       "voice": "zh-CN-XiaoyiNeural",
-      "rate": "+6%",
-      "delay": 0.09,
-      "gainDb": -3
+      "rate": "+18%",
+      "delay": 0.14,
+      "gainDb": -6
      },
      {
       "engine": "qwen",
       "voice": "dylan",
-      "delay": 0.17,
-      "gainDb": -2,
+      "delay": 0.22,
+      "gainDb": -8,
       "seed": 2
-     },
-     {
-      "engine": "edge",
-      "voice": "zh-CN-YunjianNeural",
-      "rate": "-4%",
-      "delay": 0.31,
-      "gainDb": -6
      }
     ]
    },
@@ -194,7 +194,8 @@
     "chain": "expressive",
     "design": "Female, around seventy, an elderly grandmother. Low pitch, husky, breathy and slightly creaky voice with the softness of old age; tired, but warm and loving. Standard American English.",
     "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. This line: ",
-    "breathFrom": "zh.naomi"
+    "breathFrom": "zh.naomi",
+    "hnrMax": 12.0
    }
   }
  },
@@ -206,39 +207,40 @@
    "d_en": "Picture: bedtime, a big picture book open, the child leaning on you.",
    "zh": {
     "breath": {
+     "before": true,
      "after": "两个儿子",
      "gain": -4
     },
-    "takes": 4,
-    "say": "很久以前，有一位老妈妈，叫拿俄米。她的丈夫和两个儿子，都去世了。她的身边，只剩下儿媳妇路德。"
+    "takes": 4
    },
    "en": {
     "phrases": [
      {
-      "text": "Long ago, there was a woman named Naomi.",
-      "rate": "-4%",
+      "text": "Long ago,",
+      "rate": "-6%",
       "pitch": "+0Hz",
-      "gap": 0.5
+      "gap": 0.35
      },
      {
-      "text": "Her husband and her two sons",
+      "text": "Naomi's husband and her two sons",
       "rate": "-8%",
       "pitch": "+0Hz",
       "gap": 0.38
      },
      {
-      "text": "had died...",
+      "text": "died...",
       "rate": "-18%",
       "pitch": "-3Hz",
-      "gap": 0.62
+      "gap": 0.6
      },
      {
-      "text": "and now only Ruth, her son's wife, was left with her.",
+      "text": "and only Ruth, her son's wife, stayed with her.",
       "rate": "-6%",
       "pitch": "+0Hz"
      }
     ],
     "breath": {
+     "before": true,
      "after": "two sons",
      "gain": -4
     }
@@ -477,7 +479,7 @@
    "en": {
     "phrases": [
      {
-      "text": "Hm?",
+      "text": "Hmm?",
       "rate": "-10%",
       "pitch": "+0Hz",
       "gap": 0.48
@@ -487,7 +489,8 @@
       "rate": "-6%",
       "pitch": "+1Hz"
      }
-    ]
+    ],
+    "say": "Hmm? Who's that young woman over there?"
    }
   },
   "ru_12": {
@@ -593,10 +596,10 @@
    "en": {
     "phrases": [
      {
-      "text": "Psst...",
-      "rate": "-10%",
-      "pitch": "+0Hz",
-      "gap": 0.45
+      "text": "Listen...",
+      "rate": "-12%",
+      "pitch": "-1Hz",
+      "gap": 0.42
      },
      {
       "text": "when you cut the barley,",

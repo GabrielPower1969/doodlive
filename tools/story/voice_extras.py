@@ -129,10 +129,18 @@ def _anchor_end(words, anchor, lang):
     return V._anchor_time(words, re.sub(r"[^\w\s']", "", anchor), lang, True)
 
 
-def score_adjust(role, ov, m):
+def hnr_db(wav):
+    """Mean harmonics-to-noise ratio of the voiced frames (dB): lower = breathier / huskier (an age cue)."""
+    import parselmouth
+    hv = parselmouth.Sound(wav).to_harmonicity_cc().values[0]
+    return float(hv[hv > -50].mean())
+
+
+def score_adjust(role, ov, m, wav=None):
     """Added to voice.py's take score. VoiceDesign invents the voice anew on every take (the same description gave a
     98 Hz and a 189 Hz median on two seeds), so a role may pin its voice with `f0Hz: [lo, hi]` (median F0 of the take):
-    takes outside it lose 3 points per 10 % outside, which keeps one person across the lines."""
+    takes outside it lose 3 points per 10 % outside, which keeps one person across the lines. `hnrMax` keeps an old
+    voice husky; `maxErr` keeps a key word."""
     # `maxErr` (per line): a key word must be heard (ru_03 "不，我不走": a livelier take that says 我……我不走 loses)
     pen = -200.0 * max(0.0, m.get("errorRate", 0) - float(ov.get("maxErr", 1.0)))
     lo, hi = (ov.get("f0Hz") or role.get("f0Hz") or (0, 1e9))
@@ -140,6 +148,10 @@ def score_adjust(role, ov, m):
     if not f:
         return pen
     out = max(0.0, lo / f - 1, f / hi - 1)
+    # `hnrMax` (dB): an old, husky voice (Naomi) must stay breathy; a clear, young-sounding take loses 1 point per dB
+    hm = ov.get("hnrMax", role.get("hnrMax"))
+    if hm is not None and wav:
+        pen -= max(0.0, hnr_db(wav) - float(hm))
     return pen - 30.0 * out
 
 

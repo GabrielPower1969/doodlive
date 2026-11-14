@@ -1,52 +1,44 @@
 {
  "zh": {
   "ru_01": {
-   "sec": 14.55,
-   "maxSec": 14.6,
+   "sec": 11.65,
+   "maxSec": 11.7,
    "slackSec": 0.05,
    "gapToNextSec": 0.9,
-   "lufs": -16.0,
-   "truePeakDbtp": -2.1,
-   "source": "qwen:vivian (take 2 of 4) + breath after 两个儿子",
+   "lufs": -16.1,
+   "truePeakDbtp": -1.8,
+   "source": "qwen:vivian (take 1 of 4) + breath after 两个儿子, breath before",
    "measure": {
-    "asr": "很久以前,有一位老妈妈叫拿额米,她的丈夫和两个儿子都去世了,她的身边只剩下儿媳妇,路德。",
-    "errorRate": 0.026,
-    "f0MedianHz": 216.9,
-    "f0SdSemitones": 4.87,
-    "f0RangeSemitones": 15.33,
+    "asr": "等就以前,拿额米的丈夫和两个儿子都去世了,只剩下儿媳妇路德陪着他。",
+    "errorRate": 0.133,
+    "f0MedianHz": 200.5,
+    "f0SdSemitones": 5.28,
+    "f0RangeSemitones": 14.95,
     "pausesSec": [
+     0.59,
+     0.33,
      0.36,
-     0.24,
-     0.57,
-     0.15,
-     0.23,
-     0.35,
-     0.54,
      0.63,
-     0.32,
-     0.54,
-     0.74
+     1.14,
+     0.54
     ],
     "phraseRates": [
-     3.45,
-     4.88,
-     3.06,
-     3.88,
-     4.21,
-     2.97,
-     4.44,
-     3.27
+     2.59,
+     3.92,
+     3.51,
+     3.3,
+     3.57
     ],
-    "sec": 14.55,
-    "speechSec": 9.73,
-    "pace": 2.68
+    "sec": 11.65,
+    "speechSec": 7.54,
+    "pace": 2.58
    }
   },
   "ru_02": {
    "sec": 8.17,
-   "maxSec": 9.14,
-   "slackSec": 0.97,
-   "gapToNextSec": 2.42,
+   "maxSec": 11.58,
+   "slackSec": 3.41,
+   "gapToNextSec": 4.86,
    "lufs": -15.9,
    "truePeakDbtp": -2.9,
    "source": "qwen_design: (take 4 of 6) + breath before",
@@ -144,9 +136,9 @@
   },
   "ru_05": {
    "sec": 8.21,
-   "maxSec": 8.26,
-   "slackSec": 0.05,
-   "gapToNextSec": 0.8,
+   "maxSec": 8.84,
+   "slackSec": 0.63,
+   "gapToNextSec": 1.38,
    "lufs": -16.0,
    "truePeakDbtp": -2.0,
    "source": "qwen_design: (take 0 of 6) + breath before",
@@ -294,33 +286,33 @@
    }
   },
   "ru_10": {
-   "sec": 2.41,
-   "maxSec": 2.46,
+   "sec": 2.23,
+   "maxSec": 2.28,
    "slackSec": 0.05,
    "gapToNextSec": 1.2,
-   "lufs": -16.0,
+   "lufs": -16.1,
    "truePeakDbtp": -2.1,
    "source": "crowd:4 voices",
    "measure": {
-    "asr": "你愿意带益赵就赴一团圆。",
-    "errorRate": 1.25,
-    "f0MedianHz": 172.3,
-    "f0SdSemitones": 7.34,
-    "f0RangeSemitones": 24.24,
+    "asr": "也愿上帝赐福给你。",
+    "errorRate": 0.0,
+    "f0MedianHz": 156.2,
+    "f0SdSemitones": 7.29,
+    "f0RangeSemitones": 26.3,
     "pausesSec": [],
     "phraseRates": [
-     5.79
+     4.4
     ],
-    "sec": 2.41,
-    "speechSec": 1.9,
-    "pace": 3.31
+    "sec": 2.23,
+    "speechSec": 1.82,
+    "pace": 3.58
    }
   },
   "ru_11": {
    "sec": 2.46,
-   "maxSec": 2.54,
-   "slackSec": 0.08,
-   "gapToNextSec": 2.43,
+   "maxSec": 2.51,
+   "slackSec": 0.05,
+   "gapToNextSec": 2.4,
    "lufs": -16.1,
    "truePeakDbtp": -2.0,
    "source": "qwen:uncle_fu (take 3 of 4)",
@@ -439,39 +431,38 @@
    "measure": {
     "asr": "噓,割麦子的时候,故意多掉一些,留给它捡。",
     "errorRate": 0.062,
-    "f0MedianHz": 191.1,
-    "f0SdSemitones": 5.81,
-    "f0RangeSemitones": 17.87,
+    "f0MedianHz": 188.5,
+    "f0SdSemitones": 5.88,
+    "f0RangeSemitones": 17.93,
     "pausesSec": [
-     0.34,
-     0.57,
+     0.31,
+     0.4,
+     0.19,
      0.21,
-     0.23,
-     0.3,
-     0.18
+     0.28
     ],
     "phraseRates": [
-     4.31,
-     4.72,
-     2.68
+     4.24,
+     4.69,
+     1.75
     ],
     "sec": 7.23,
-    "speechSec": 5.24,
+    "speechSec": 5.7,
     "pace": 2.63,
     "acting": {
      "kind": "laugh",
      "regionSec": [
-      6.0,
+      6.04,
       7.23
      ],
-     "bursts": 4,
-     "burstRate": 3.3,
-     "intervalCV": 0.38,
-     "hnrDiffDb": 1.0,
-     "pitchRiseSt": -2.4,
-     "pitchSdSt": 6.1,
-     "verdict": "half",
-     "score": 2.51
+     "bursts": 3,
+     "burstRate": 4.35,
+     "intervalCV": 0.26,
+     "hnrDiffDb": 0.3,
+     "pitchRiseSt": -2.1,
+     "pitchSdSt": 6.0,
+     "verdict": "read",
+     "score": 1.62
     }
    }
   },
@@ -750,9 +741,9 @@
   },
   "ru_25": {
    "sec": 5.85,
-   "maxSec": 5.9,
-   "slackSec": 0.05,
-   "gapToNextSec": 1.2,
+   "maxSec": 7.08,
+   "slackSec": 1.23,
+   "gapToNextSec": 2.38,
    "lufs": -16.0,
    "truePeakDbtp": -4.7,
    "source": "qwen_design: (take 3 of 6) + breath before",
@@ -839,68 +830,63 @@
  },
  "en": {
   "ru_01": {
-   "sec": 11.95,
-   "maxSec": 14.6,
-   "slackSec": 2.65,
-   "gapToNextSec": 3.5,
+   "sec": 9.37,
+   "maxSec": 11.7,
+   "slackSec": 2.33,
+   "gapToNextSec": 3.18,
    "lufs": -16.2,
    "truePeakDbtp": -2.1,
-   "source": "edge:en-US-AvaMultilingualNeural + breath after two sons",
+   "source": "edge:en-US-AvaMultilingualNeural + breath after two sons, breath before",
    "measure": {
-    "asr": "Long ago, there was a woman named Naomi. Her husband and her two sons had died. And now only Ruth, her son's wife, was left with her.",
+    "asr": "Long ago, Naomi's husband and her two sons died, and only Ruth, her son's wife, stayed with her.",
     "errorRate": 0.0,
-    "f0MedianHz": 193.8,
-    "f0SdSemitones": 5.35,
-    "f0RangeSemitones": 21.14,
+    "f0MedianHz": 199.1,
+    "f0SdSemitones": 5.58,
+    "f0RangeSemitones": 21.9,
     "pausesSec": [
-     0.2,
-     0.57,
-     0.24,
+     0.42,
      0.36,
-     0.46,
-     0.7,
-     0.43,
-     0.43
+     0.45,
+     0.68,
+     0.3
     ],
     "phraseRates": [
-     3.95,
-     5.33,
-     2.48,
-     3.12,
-     4.4
+     3.24,
+     2.99,
+     3.57
     ],
-    "sec": 11.95,
-    "speechSec": 8.41,
-    "pace": 2.76
+    "sec": 9.37,
+    "speechSec": 6.64,
+    "pace": 2.35
    }
   },
   "ru_02": {
-   "sec": 9.09,
-   "maxSec": 9.14,
+   "sec": 11.53,
+   "maxSec": 11.58,
    "slackSec": 0.05,
    "gapToNextSec": 1.5,
-   "lufs": -16.0,
-   "truePeakDbtp": -2.8,
+   "lufs": -16.1,
+   "truePeakDbtp": -1.9,
    "source": "qwen_design: (take 3 of 6) + breath before",
    "measure": {
-    "asr": "Ruth, my dear. I'm going home to Bethlehem. You're still young. Go back to your mother's house, all right?",
+    "asr": "Ruth, my dear, I'm going home to Bethlehem. You're still young. Go back to your mother's house, all right?",
     "errorRate": 0.0,
-    "f0MedianHz": 201.8,
-    "f0SdSemitones": 2.98,
-    "f0RangeSemitones": 9.08,
+    "f0MedianHz": 191.0,
+    "f0SdSemitones": 5.54,
+    "f0RangeSemitones": 18.37,
     "pausesSec": [
      0.22,
-     1.06,
-     0.74,
-     0.79
+     0.95,
+     0.66,
+     1.2
     ],
     "phraseRates": [
-     3.83,
-     4.49
+     2.48,
+     3.23
     ],
-    "sec": 9.09,
-    "speechSec": 6.05,
-    "pace": 2.42
+    "sec": 11.53,
+    "speechSec": 8.28,
+    "pace": 1.91
    }
   },
   "ru_03": {
@@ -968,32 +954,34 @@
    }
   },
   "ru_05": {
-   "sec": 6.04,
-   "maxSec": 8.26,
-   "slackSec": 2.22,
-   "gapToNextSec": 2.97,
-   "lufs": -15.9,
-   "truePeakDbtp": -4.5,
-   "source": "qwen_design: (take 1 of 6) + breath before",
+   "sec": 8.79,
+   "maxSec": 8.84,
+   "slackSec": 0.05,
+   "gapToNextSec": 0.8,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.0,
+   "source": "qwen_design: (take 5 of 6) + breath before",
    "measure": {
-    "asr": "Oh, when I left I had everything. Now I've come home with nothing.",
+    "asr": "Oh, when I left, I had everything. Now I've come home with nothing.",
     "errorRate": 0.0,
-    "f0MedianHz": 181.7,
-    "f0SdSemitones": 2.53,
-    "f0RangeSemitones": 7.81,
+    "f0MedianHz": 145.7,
+    "f0SdSemitones": 4.42,
+    "f0RangeSemitones": 8.26,
     "pausesSec": [
      0.2,
-     0.61,
-     1.01,
-     0.23
+     0.64,
+     0.44,
+     1.12,
+     0.27,
+     0.76
     ],
     "phraseRates": [
-     6.25,
-     3.0
+     4.85,
+     2.21
     ],
-    "sec": 6.04,
-    "speechSec": 3.77,
-    "pace": 2.82
+    "sec": 8.79,
+    "speechSec": 5.14,
+    "pace": 1.93
    }
   },
   "ru_06": {
@@ -1109,9 +1097,9 @@
   },
   "ru_10": {
    "sec": 2.02,
-   "maxSec": 2.46,
-   "slackSec": 0.44,
-   "gapToNextSec": 1.59,
+   "maxSec": 2.28,
+   "slackSec": 0.26,
+   "gapToNextSec": 1.41,
    "lufs": -16.2,
    "truePeakDbtp": -2.1,
    "source": "crowd:4 voices",
@@ -1131,28 +1119,28 @@
    }
   },
   "ru_11": {
-   "sec": 2.49,
-   "maxSec": 2.54,
-   "slackSec": 0.05,
-   "gapToNextSec": 2.4,
-   "lufs": -16.1,
-   "truePeakDbtp": -2.1,
+   "sec": 2.27,
+   "maxSec": 2.51,
+   "slackSec": 0.24,
+   "gapToNextSec": 2.59,
+   "lufs": -16.0,
+   "truePeakDbtp": -2.6,
    "source": "edge:en-US-AndrewMultilingualNeural",
    "measure": {
-    "asr": "H.M., who's that young woman over there?",
-    "errorRate": 0.286,
-    "f0MedianHz": 128.8,
-    "f0SdSemitones": 4.99,
-    "f0RangeSemitones": 17.27,
+    "asr": "Hmm, who's that young woman over there?",
+    "errorRate": 0.0,
+    "f0MedianHz": 124.1,
+    "f0SdSemitones": 5.37,
+    "f0RangeSemitones": 17.5,
     "pausesSec": [
      0.55
     ],
     "phraseRates": [
-     5.51
+     6.3
     ],
-    "sec": 2.49,
-    "speechSec": 1.79,
-    "pace": 3.61
+    "sec": 2.27,
+    "speechSec": 1.57,
+    "pace": 3.96
    }
   },
   "ru_12": {
@@ -1241,33 +1229,33 @@
    }
   },
   "ru_15": {
-   "sec": 6.15,
+   "sec": 6.12,
    "maxSec": 7.28,
-   "slackSec": 1.13,
-   "gapToNextSec": 3.48,
+   "slackSec": 1.16,
+   "gapToNextSec": 3.51,
    "lufs": -16.1,
    "truePeakDbtp": -2.1,
    "source": "edge:en-US-AndrewMultilingualNeural",
    "measure": {
-    "asr": "Pussed, when you cut the barley, drop a little extra on purpose for her to pick up. Ha ha.",
-    "errorRate": 0.176,
-    "f0MedianHz": 123.1,
-    "f0SdSemitones": 5.03,
-    "f0RangeSemitones": 15.6,
+    "asr": "Listen, when you cut the barley, drop a little extra on purpose for her to pick up. Ha ha.",
+    "errorRate": 0.118,
+    "f0MedianHz": 121.5,
+    "f0SdSemitones": 4.91,
+    "f0RangeSemitones": 15.29,
     "pausesSec": [
-     0.58,
+     0.49,
      0.26,
      0.46,
      0.37
     ],
     "phraseRates": [
-     5.5,
+     4.59,
      4.92,
      5.97
     ],
-    "sec": 6.15,
-    "speechSec": 4.33,
-    "pace": 3.74
+    "sec": 6.12,
+    "speechSec": 4.38,
+    "pace": 3.92
    }
   },
   "ru_16": {
@@ -1297,30 +1285,31 @@
    }
   },
   "ru_17": {
-   "sec": 4.53,
+   "sec": 6.73,
    "maxSec": 8.27,
-   "slackSec": 3.74,
-   "gapToNextSec": 4.19,
-   "lufs": -16.0,
-   "truePeakDbtp": -4.3,
-   "source": "qwen_design: (take 1 of 6) + breath before",
+   "slackSec": 1.54,
+   "gapToNextSec": 1.99,
+   "lufs": -16.1,
+   "truePeakDbtp": -2.7,
+   "source": "qwen_design: (take 0 of 6) + breath before",
    "measure": {
-    "asr": "Oh my, so much. Whose field were you working in today?",
+    "asr": "Oh my, so much! Whose field were you working in today?",
     "errorRate": 0.0,
-    "f0MedianHz": 237.4,
-    "f0SdSemitones": 3.03,
-    "f0RangeSemitones": 10.62,
+    "f0MedianHz": 203.4,
+    "f0SdSemitones": 6.11,
+    "f0RangeSemitones": 18.64,
     "pausesSec": [
-     0.21,
-     0.16
+     0.3,
+     0.13,
+     0.47
     ],
     "phraseRates": [
-     1.49,
-     4.76
+     0.95,
+     3.56
     ],
-    "sec": 4.53,
-    "speechSec": 3.94,
-    "pace": 2.87
+    "sec": 6.73,
+    "speechSec": 5.58,
+    "pace": 1.93
    }
   },
   "ru_18": {
@@ -1350,31 +1339,32 @@
    }
   },
   "ru_19": {
-   "sec": 5.83,
+   "sec": 7.28,
    "maxSec": 8.98,
-   "slackSec": 3.15,
-   "gapToNextSec": 4.5,
-   "lufs": -16.2,
+   "slackSec": 1.7,
+   "gapToNextSec": 3.05,
+   "lufs": -16.1,
    "truePeakDbtp": -2.0,
-   "source": "qwen_design: (take 2 of 6) + breath after Thank God",
+   "source": "qwen_design: (take 1 of 6) + breath after Thank God",
    "measure": {
-    "asr": "Boaz? Why, he's family. Thank God. He hasn't forgotten us.",
+    "asr": "Boaz? Why, he's family. Thank god. He hasn't forgotten us.",
     "errorRate": 0.0,
-    "f0MedianHz": 217.7,
-    "f0SdSemitones": 4.99,
-    "f0RangeSemitones": 15.9,
+    "f0MedianHz": 209.2,
+    "f0SdSemitones": 5.31,
+    "f0RangeSemitones": 19.76,
     "pausesSec": [
-     0.62,
-     0.75,
-     0.16
+     0.37,
+     0.61,
+     0.13,
+     0.76
     ],
     "phraseRates": [
-     5.21,
-     3.94
+     2.55,
+     3.31
     ],
-    "sec": 5.83,
-    "speechSec": 4.15,
-    "pace": 2.4
+    "sec": 7.28,
+    "speechSec": 5.27,
+    "pace": 1.92
    }
   },
   "ru_20": {
@@ -1521,30 +1511,31 @@
    }
   },
   "ru_25": {
-   "sec": 4.39,
-   "maxSec": 5.9,
-   "slackSec": 1.51,
-   "gapToNextSec": 2.66,
-   "lufs": -16.0,
+   "sec": 7.03,
+   "maxSec": 7.08,
+   "slackSec": 0.05,
+   "gapToNextSec": 1.2,
+   "lufs": -15.9,
    "truePeakDbtp": -3.3,
-   "source": "qwen_design: (take 3 of 6) + breath before",
+   "source": "qwen_design: (take 2 of 6) + breath before",
    "measure": {
     "asr": "My little grandson. God really didn't forget me.",
     "errorRate": 0.0,
-    "f0MedianHz": 242.2,
-    "f0SdSemitones": 3.05,
-    "f0RangeSemitones": 8.93,
+    "f0MedianHz": 222.4,
+    "f0SdSemitones": 4.17,
+    "f0RangeSemitones": 5.96,
     "pausesSec": [
      0.15,
-     0.77
+     0.26,
+     0.73
     ],
     "phraseRates": [
-     2.94,
-     4.29
+     2.16,
+     2.55
     ],
-    "sec": 4.39,
-    "speechSec": 3.26,
-    "pace": 2.73
+    "sec": 7.03,
+    "speechSec": 5.63,
+    "pace": 1.71
    }
   },
   "ru_26": {
