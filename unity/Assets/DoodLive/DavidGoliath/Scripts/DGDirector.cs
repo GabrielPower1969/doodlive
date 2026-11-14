@@ -143,6 +143,37 @@ namespace DoodLive.DavidGoliath
 
         public void Replay() => Begin();
 
+        // ---------------- start at a shot (library "keep reading"): a silent fast-forward ----------------
+        bool seeking; readonly List<DGFxCue> seekFx = new List<DGFxCue>(); DGMusicCue seekMusic; DGSfxCue seekLoop;
+
+        public void BeginAt(int shot)
+        {
+            seeking = true; seekFx.Clear(); seekMusic = null; seekLoop = null;
+            Begin();
+            if (!Running || tl == null || tl.shots == null || shot <= 0 || shot >= tl.shots.Length) { EndSeek(0); return; }
+            float t = tl.shots[shot].t0;
+            while (now < t - 1e-3f) Step(Mathf.Min(0.1f, t - now));
+            EndSeek(t);
+        }
+
+        void EndSeek(float t)
+        {
+            seeking = false;
+            foreach (var f in seekFx)
+            {
+                float end = f.t + (f.dur > 0 ? f.dur : 1f);
+                if (end > t + 0.05f) { var g = f; if (f.dur > 0) { g = new DGFxCue { t = f.t, dur = end - t, id = f.id, at = f.at, to = f.to }; } Fx(g); }
+            }
+            seekFx.Clear();
+            if (seekLoop != null && (seekMusic == null || seekLoop.t >= seekMusic.t)) Sfx(seekLoop);
+            seekLoop = null;
+            if (seekMusic != null)
+            {
+                var m = seekMusic; seekMusic = null; Music(m);
+                if (musicCur && musicCur.clip) musicCur.time = Mathf.Clamp(t - m.t, 0, Mathf.Max(0, musicCur.clip.length - 0.05f));
+            }
+        }
+
         /// <summary>Stop everything (leaving the sheet, new scan). The stage is hidden by the caller.</summary>
         public void Stop()
         {
@@ -310,6 +341,7 @@ namespace DoodLive.DavidGoliath
         // ---------------- lines ----------------
         void Say(DGLine l)
         {
+            if (seeking) return;
             bool zh = L10n.IsZh;
             var c = Clip($"voice/{(zh ? "zh" : "en")}/{l.id}");
             voice.Stop();
@@ -322,6 +354,7 @@ namespace DoodLive.DavidGoliath
         // ---------------- fx ----------------
         void Fx(DGFxCue f)
         {
+            if (seeking) { seekFx.Add(f); return; }
             if (!fxEnabled) return;
             Transform at = transform;
             if (!string.IsNullOrEmpty(f.at))
@@ -337,6 +370,7 @@ namespace DoodLive.DavidGoliath
         // ---------------- sfx ----------------
         void Sfx(DGSfxCue s)
         {
+            if (seeking) { if (mix.TryGetValue(s.id, out var sm) && sm.loop) seekLoop = s; return; }
             // a looping sfx (sling_whoosh) runs until the next sfx of the same family (sling_snap) or the end
             if (loopId != null && Family(s.id) == Family(loopId)) { sfxLoop.Stop(); loopId = null; }
             var c = Clip("sfx/" + s.id); if (!c) return;
@@ -350,6 +384,7 @@ namespace DoodLive.DavidGoliath
         // ---------------- music: each cue starts at full level, the previous one fades out (cues.json) ----------------
         void Music(DGMusicCue m)
         {
+            if (seeking) { seekMusic = m; return; }
             var c = Clip("music/" + m.cue); if (!c) return;
             var next = musicCur == musicA ? musicB : musicA;
             if (musicCur && musicCur.isPlaying) { musicOld = musicCur; musicOldFrom = musicCur.volume; musicFadeT = 0; }

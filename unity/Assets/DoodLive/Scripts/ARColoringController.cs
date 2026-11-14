@@ -146,7 +146,7 @@ namespace DoodLive
             state = s; stateT = 0;
             switch (s)
             {
-                case State.Home: statusKey = ""; angel.gameObject.SetActive(false); StopStory(); break;
+                case State.Home: statusKey = ""; angel.gameObject.SetActive(false); StopStory(); lastSavedShotKey = null; break;
                 case State.Permission: statusKey = "openingCam"; StartCoroutine(Boot()); break;
                 case State.ScanSearch: showMode = false; lockedFor = 0; angel.gameObject.SetActive(false); StopStory(); statusKey = "fit"; break;
                 case State.ScanLocked: statusKey = "found"; Cue(cueLock); break;
@@ -246,6 +246,7 @@ namespace DoodLive
                     if (!TrackingLost()) { untracked = 0; statusKey = "tap"; Go(State.LiveIdle); }
                     break;
             }
+            LibraryInput(); TrackProgress();
             if (Input.GetKeyDown(KeyCode.Escape)) Back();   // Android back button
         }
 
@@ -255,6 +256,7 @@ namespace DoodLive
         {
             if (state >= State.LiveIdle) Rescan();
             else if (state >= State.ScanSearch && state != State.Reveal) Go(State.Home);
+            else if (state == State.Home && libOpen != null) libOpen = null;
             else if (state == State.Home) Application.Quit();
         }
 
@@ -442,7 +444,8 @@ namespace DoodLive
                 foreach (var p in Players()) if (p != active) p.gameObject.SetActive(false);
                 active.gameObject.SetActive(true);
                 active.MusicGain = Mathf.Clamp(musicBed / 0.22f, 0, 2);
-                active.Begin();
+                if (startShot > 0) active.BeginAt(startShot); else active.Begin();   // library: keep reading at a shot
+                startShot = 0;
                 sfx.PlayOneShot(chime);
                 moreOpen = false; flashT = Time.time; lastTouch = Time.time + 1.5f; statusKey = "";
                 return;

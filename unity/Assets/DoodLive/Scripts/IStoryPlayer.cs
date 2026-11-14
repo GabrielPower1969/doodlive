@@ -23,6 +23,9 @@ namespace DoodLive
         GameObject gameObject { get; }
         Transform transform { get; }
         void Begin();
+        /// <summary>Start at shot <paramref name="shot"/> (the library's "keep reading"): everything before it is
+        /// applied silently (moves, props, the music cue playing then, effects still running), then the play goes on.</summary>
+        void BeginAt(int shot);
         void Replay();
         void Stop();
         void TogglePause();

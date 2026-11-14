@@ -245,29 +245,9 @@ namespace DoodLive
                 uiRects.Add(r);
             }
 
-            // -- 01 Home: a sheet of paper; the angel is already climbing out of the drawing
+            // -- 01 Home: the library (ARColoringController.Library.cs; docs/LIBRARY.md)
             float homeA = Fade("home", state == State.Home, 4f);
-            if (homeA > 0)
-            {
-                GUI.color = new Color(1, 1, 1, homeA);
-                Tinted(white, new Rect(0, 0, w, h), DesignTokens.Paper);
-                float rise = 14 * (1 - EaseOut(homeA));
-                if (!land)
-                {
-                    Logo(new Rect(0, top + h * 0.08f + rise, w, u * 1.6f));
-                    GUI.Label(new Rect(u, top + h * 0.08f + u * 1.75f + rise, w - 2 * u, u * 0.8f), L10n.T("tagline"), T(false));
-                    HomeStage(new Rect(w / 2 - u * 3.6f, top + h * 0.23f + rise, u * 7.2f, u * 6.6f));
-                    HomeActions(w / 2, h * 0.69f + rise);
-                }
-                else
-                {
-                    Logo(new Rect(0, top + u * 0.5f + rise, w, u * 1.5f));
-                    HomeStage(new Rect(w * 0.12f, top + u * 2.4f + rise, u * 5.4f, h - top - bottom - u * 3.2f));
-                    HomeActions(w * 0.66f, h * 0.42f + rise);
-                }
-                if (statusKey == "noPerm" || statusKey == "noAR") GUI.Label(new Rect(u, h - bottom - u * 1.6f, w - 2 * u, u * 1.2f), L10n.T(statusKey), T(false));
-                GUI.color = Color.white;
-            }
+            if (homeA > 0) LibraryGUI(w, h, top, bottom, edge, chip, land, homeA);
 
             // -- 02/03 Scan: crayon corners, coach phone, ✓ stamp + shutter ring when found
             float scanA = Fade("scan", state == State.ScanSearch || state == State.ScanLocked, 4f);
@@ -396,6 +376,11 @@ namespace DoodLive
                     int n = 30; float p = Mathf.Clamp01(gateHeld / GateHold);
                     for (int i = 0; i < n * p; i++) { float ang = -Mathf.PI / 2 + i / (float)n * Mathf.PI * 2; var c = rLock.center + new Vector2(Mathf.Cos(ang), Mathf.Sin(ang)) * chip * 0.66f; Tinted(dot, new Rect(c.x - u * 0.1f, c.y - u * 0.1f, u * 0.2f, u * 0.2f), DesignTokens.Red); }
                     if (gateHeld >= GateHold) { moreOpen = true; gateJustOpened = true; gateHeld = 0; Cue(cueLock); }
+                }
+                if (live || state == State.Reveal)   // back to the library from any story or the angel
+                {
+                    var rLib = new Rect(edge, top + edge, chip, chip);
+                    if (Chip(rLib, Icon("library"), DesignTokens.Paper, 0.55f)) BackToLibrary();
                 }
                 if (live && state != State.Reveal)
                 {

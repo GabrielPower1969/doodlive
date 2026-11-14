@@ -37,6 +37,7 @@ pipeline/dg_*.py       Blender: dg_build (characters), dg_desert (desert set), d
                        binding brief docs/david-goliath/CONTRACT.md §11 (2026-10-27 redraw) + §12 (desert boost), how it runs: INTEGRATION.md
 docs/david-goliath/    production contract + one doc per role; INTEGRATION.md = how the play runs, how to add a story
 docs/DESIGN-DIRECTION.md  approved design (Figma link, 10 screens, sources); docs/UX-PLAN.md the state machine
+unity/Assets/DoodLive/Scripts/ARColoringController.Library.cs  home screen = library (covers, keep reading, chapters); docs/LIBRARY.md
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
 docs/LESSONS.md        pitfalls log: symptom → cause → fix → prevention

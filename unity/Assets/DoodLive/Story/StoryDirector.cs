@@ -142,6 +142,37 @@ namespace DoodLive.Story
 
         public void Replay() => Begin();
 
+        // ---------------- start at a shot (library "keep reading"): a silent fast-forward ----------------
+        bool seeking; readonly List<DGFxCue> seekFx = new List<DGFxCue>(); DGMusicCue seekMusic; DGSfxCue seekLoop;
+
+        public void BeginAt(int shot)
+        {
+            seeking = true; seekFx.Clear(); seekMusic = null; seekLoop = null;
+            Begin();
+            if (!Running || tl == null || tl.shots == null || shot <= 0 || shot >= tl.shots.Length) { EndSeek(0); return; }
+            float t = tl.shots[shot].t0;
+            while (now < t - 1e-3f) Step(Mathf.Min(0.1f, t - now));
+            EndSeek(t);
+        }
+
+        void EndSeek(float t)
+        {
+            seeking = false;
+            foreach (var f in seekFx)
+            {
+                float end = f.t + (f.dur > 0 ? f.dur : 1f);
+                if (end > t + 0.05f) { var g = f; if (f.dur > 0) { g = new DGFxCue { t = f.t, dur = end - t, id = f.id, at = f.at, to = f.to }; } Fx(g); }
+            }
+            seekFx.Clear();
+            if (seekLoop != null && (seekMusic == null || seekLoop.t >= seekMusic.t)) Sfx(seekLoop);
+            seekLoop = null;
+            if (seekMusic != null)
+            {
+                var m = seekMusic; seekMusic = null; PlayMusic(m);
+                if (musicCur && musicCur.clip) musicCur.time = Mathf.Clamp(t - m.t, 0, Mathf.Max(0, musicCur.clip.length - 0.05f));
+            }
+        }
+
         public void Stop()
         {
             Running = false; Line = null; Shot = null;
@@ -333,6 +364,7 @@ namespace DoodLive.Story
         // ---------------- lines ----------------
         void Say(DGLine l)
         {
+            if (seeking) return;
             var c = cast != null ? cast.Clip(l.id) : Clip($"voice/{(L10n.IsZh ? "zh" : "en")}/{l.id}");
             voice.Stop();
             if (c) { voice.clip = c; voice.volume = 1; voice.Play(); }
@@ -359,6 +391,7 @@ namespace DoodLive.Story
         // ---------------- fx / sfx / music ----------------
         void Fx(DGFxCue f)
         {
+            if (seeking) { seekFx.Add(f); return; }
             if (!fxEnabled) return;
             var at = Node(f.at);
             if (!at) { Debug.LogWarning($"Story {storyId} fx {f.id}: cannot resolve '{f.at}'"); at = transform; }
@@ -368,6 +401,7 @@ namespace DoodLive.Story
 
         void Sfx(DGSfxCue s)
         {
+            if (seeking) { if (mix.TryGetValue(s.id, out var sm) && sm.loop) seekLoop = s; return; }
             var c = Clip("sfx/" + s.id); if (!c) return;
             mix.TryGetValue(s.id, out var m);
             float gain = m != null ? Mathf.Pow(10, m.gainDb / 20f) : 0.7f;
@@ -377,6 +411,7 @@ namespace DoodLive.Story
 
         void PlayMusic(DGMusicCue m)
         {
+            if (seeking) { seekMusic = m; return; }
             var c = Clip("music/" + m.cue); if (!c) return;
             var next = musicCur == musicA ? musicB : musicA;
             if (musicCur && musicCur.isPlaying) { musicOld = musicCur; musicOldFrom = musicCur.volume; musicFadeT = 0; }
