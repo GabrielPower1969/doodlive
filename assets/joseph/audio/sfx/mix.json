@@ -1,0 +1,103 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "camel_grunt",
+   "secs": 1.0,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.1
+  },
+  {
+   "id": "cell_door",
+   "secs": 2.2,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.2
+  },
+  {
+   "id": "coins",
+   "secs": 1.7,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.5
+  },
+  {
+   "id": "fanfare",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -7,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -14.4
+  },
+  {
+   "id": "harp_gliss",
+   "secs": 3.6,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -15.6
+  },
+  {
+   "id": "moo",
+   "secs": 1.5,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.0
+  },
+  {
+   "id": "sheep_baa",
+   "secs": 1.2,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.2
+  },
+  {
+   "id": "soft_chime",
+   "secs": 3.2,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.5
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -13.8
+  },
+  {
+   "id": "wind_desert",
+   "secs": 10.0,
+   "loop": true,
+   "gainDb": -20,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -18.3,
+   "loopStart": 0.0,
+   "loopEnd": 10.0,
+   "stopAtCue": "brothers",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "seamRatio": 0.186,
+   "halfDb": 1.83
+  }
+ ]
+}

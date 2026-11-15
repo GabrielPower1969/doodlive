@@ -89,6 +89,19 @@ namespace DoodLive.Story.EditorTools
                 if (File.Exists(to) && File.ReadAllBytes(to).SequenceEqual(File.ReadAllBytes(from))) continue;
                 File.Copy(from, to, true);
             }
+            // optional live 3D face per cast member (model/face3d_<c>.json + model/eyes_<c>.png, pipeline "3D eyes");
+            // copies left over from an earlier build go when the pack no longer has them (the actor falls back to decals)
+            foreach (var c in pack.cast)
+            {
+                string fj = Path.Combine(src, "model", $"face3d_{c.id}.json"), ft = Path.Combine(src, "model", $"eyes_{c.id}.png");
+                string dj = $"{dir}/Data/face3d_{c.id}.json", dtx = $"{dir}/Textures/eyes_{c.id}.png";
+                if (File.Exists(fj) && File.Exists(ft))
+                {
+                    foreach (var (f, t) in new[] { (fj, dj), (ft, dtx) })
+                        if (!File.Exists(t) || !File.ReadAllBytes(t).SequenceEqual(File.ReadAllBytes(f))) File.Copy(f, t, true);
+                }
+                else foreach (var t in new[] { dj, dtx }) if (File.Exists(t)) AssetDatabase.DeleteAsset(t);
+            }
             AssetDatabase.Refresh();
             if (!ok) { Debug.LogError($"Story setup {id}: inputs incomplete, pack skipped"); return null; }
 
@@ -136,6 +149,45 @@ namespace DoodLive.Story.EditorTools
                 return m;
             }
             var castMats = pack.cast.Select(c => Mat($"{id}_{c.id}", true)).ToArray();
+            // 3D face materials: eyeballs (DoodLive/DGEye: glossy, a view-fixed catch-light; DGPaperLit if that shader
+            // is missing or unsupported) and brows / lashes (DGPaperLit on the eye atlas), never the scanned page
+            Material FaceMat(string name, Shader shader, Texture2D tex, float smooth)
+            {
+                string path = $"{dir}/Materials/{name}.mat";
+                var m = AssetDatabase.LoadAssetAtPath<Material>(path);
+                if (!m) { m = new Material(shader); AssetDatabase.CreateAsset(m, path); }
+                m.shader = shader;
+                m.SetTexture("_BaseMap", tex); m.SetColor("_BaseColor", Color.white);
+                m.SetFloat("_BaseAmt", 0); m.SetFloat("_DecalAmt", 0); m.SetTexture("_DecalMap", null);
+                m.SetFloat("_Smoothness", smooth); m.SetFloat("_Metallic", 0); m.SetFloat("_Rim", 0);
+                m.SetFloat("_Cull", (float)UnityEngine.Rendering.CullMode.Back); m.SetFloat("_BackTint", 1);
+                m.SetVector("_AmbTint", new Vector4(1.06f, 0.98f, 0.90f, 1));
+                EditorUtility.SetDirty(m);
+                return m;
+            }
+            var faces3d = new FaceData[pack.cast.Length];
+            for (int i = 0; i < pack.cast.Length; i++)
+            {
+                var c = pack.cast[i];
+                var json = AssetDatabase.LoadAssetAtPath<TextAsset>($"{dir}/Data/face3d_{c.id}.json");
+                string tp = $"{dir}/Textures/eyes_{c.id}.png";
+                if (!json || !File.Exists(tp)) continue;
+                var tex = importTexture(tp, false, 512);
+                var ti = (TextureImporter)AssetImporter.GetAtPath(tp);
+                ti.mipmapEnabled = true; ti.alphaIsTransparency = false; ti.filterMode = FilterMode.Trilinear; ti.SaveAndReimport();
+                tex = AssetDatabase.LoadAssetAtPath<Texture2D>(tp);
+                var eyeSh = Shader.Find("DoodLive/DGEye");
+                bool eyeOk = eyeSh && eyeSh.isSupported;
+                if (!eyeOk) Debug.LogWarning($"Story setup {id}: shader DoodLive/DGEye unavailable, {c.id}'s eyes use DGPaperLit");
+                var cfg = JsonUtility.FromJson<DGFace3D.Cfg>(json.text);
+                faces3d[i] = new FaceData
+                {
+                    json = json, eye = FaceMat($"{id}_{c.id}_eyes", eyeOk ? eyeSh : sh, tex, eyeOk ? 0.80f : 0.88f),
+                    lines = FaceMat($"{id}_{c.id}_eyeLines", sh, tex, 0.15f),
+                    eyeMeshes = new HashSet<string>(cfg?.eyeMeshes ?? new string[0]),
+                    lineMeshes = new HashSet<string>(cfg?.lineMeshes ?? new string[0])
+                };
+            }
             // cast members that are not on the colouring sheet (guards) keep their own painted texture, never the scan
             var paperMats = new List<Material>();
             for (int i = 0; i < pack.cast.Length; i++)
@@ -169,7 +221,7 @@ namespace DoodLive.Story.EditorTools
             var actors = new List<DGActor>(); var sheetX = new List<float>();
             for (int i = 0; i < pack.cast.Length; i++)
             {
-                var a = MakeActor(id, pack.cast[i], shake, castMats[i], info);
+                var a = MakeActor(id, pack.cast[i], shake, castMats[i], info, faces3d[i]);
                 if (a) { actors.Add(a); sheetX.Add(pack.cast[i].sheetX); }
             }
             director.actors = actors.ToArray(); director.sheetX = sheetX.ToArray();
@@ -206,7 +258,9 @@ namespace DoodLive.Story.EditorTools
             Debug.Log($"Story setup: set {inst.name} renderers {n}, clips [{string.Join(" ", director.setClips.Select(c => c.name))}]");
         }
 
-        static DGActor MakeActor(string sid, CastInfo c, Transform parent, Material mat, DGClips info)
+        class FaceData { public TextAsset json; public Material eye, lines; public HashSet<string> eyeMeshes, lineMeshes; }
+
+        static DGActor MakeActor(string sid, CastInfo c, Transform parent, Material mat, DGClips info, FaceData face = null)
         {
             string glb = $"{Dir(sid)}/Models/{c.id}.glb";
             var model = AssetDatabase.LoadAssetAtPath<GameObject>(glb);
@@ -236,11 +290,29 @@ namespace DoodLive.Story.EditorTools
             }).ToArray();
             if (!actor.defaultFace) Debug.LogError($"Story setup {sid}: no default face decal for {c.id} ({c.defaultFace})");
             if (actor.defaultFace) mat.SetTexture("_DecalMap", actor.defaultFace);
+            actor.defaultFaceName = c.defaultFace;
+            actor.faceNames = all.Select(x =>
+            {
+                string clip = x.name.Substring(c.id.Length + 1);
+                var cf = c.clipFaces?.FirstOrDefault(k => k.clip == clip);
+                return string.IsNullOrEmpty(cf?.face) ? c.defaultFace : cf.face;
+            }).ToArray();
+            int eyeR = 0, lineR = 0;
             foreach (var r in inst.GetComponentsInChildren<Renderer>(true))
             {
-                var ms = r.sharedMaterials; for (int i = 0; i < ms.Length; i++) ms[i] = mat; r.sharedMaterials = ms;
-                r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                var m = mat; var cast = UnityEngine.Rendering.ShadowCastingMode.On;
+                if (face != null && face.eyeMeshes.Contains(r.gameObject.name)) { m = face.eye; cast = UnityEngine.Rendering.ShadowCastingMode.Off; eyeR++; }
+                else if (face != null && face.lineMeshes.Contains(r.gameObject.name)) { m = face.lines; cast = UnityEngine.Rendering.ShadowCastingMode.Off; lineR++; }
+                var ms = r.sharedMaterials; for (int i = 0; i < ms.Length; i++) ms[i] = m; r.sharedMaterials = ms;
+                r.shadowCastingMode = cast;
                 if (r is SkinnedMeshRenderer smr) smr.updateWhenOffscreen = true;
+            }
+            if (face != null)
+            {
+                var f3 = go.AddComponent<DGFace3D>(); f3.data = face.json; actor.face3d = f3;
+                int shapes = inst.GetComponentsInChildren<SkinnedMeshRenderer>(true).Sum(r => r.sharedMesh ? r.sharedMesh.blendShapeCount : 0);
+                Debug.Log($"Story setup {sid}: {c.id} 3D face: eye renderers {eyeR}, line renderers {lineR}, blend shapes {shapes}");
+                if (eyeR == 0 || lineR == 0 || shapes == 0) Debug.LogError($"Story setup {sid}: {c.id} 3D face incomplete (eyes {eyeR}, lines {lineR}, shapes {shapes})");
             }
             foreach (var b in new[] { "root", "hips", "head", "jaw", "handR" })
                 if (!inst.GetComponentsInChildren<Transform>(true).Any(t => t.name == b)) Debug.LogError($"Story setup {sid}: {c.id} has no bone {b}");

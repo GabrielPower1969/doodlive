@@ -1,0 +1,1171 @@
+{
+ "_doc": "Joseph voice cast (docs/joseph/VOICE.md). Schema: tools/story/voice.py docstring.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "joseph": {
+   "zh": "约瑟",
+   "en": "Joseph"
+  },
+  "jacob": {
+   "zh": "雅各",
+   "en": "Jacob"
+  },
+  "brother": {
+   "zh": "哥哥",
+   "en": "Brother"
+  },
+  "pharaoh": {
+   "zh": "法老",
+   "en": "Pharaoh"
+  }
+ },
+ "refZh": {
+  "Genesis ": "创世记 ",
+  "Romans ": "罗马书 "
+ },
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "the family storyteller (Qwen vivian), as in Esther, Ruth, Exodus, Prodigal, Daniel"
+   },
+   "joseph": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 3.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     135,
+     225
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，声音清亮、温暖的青年男高音，听起来二十岁上下，诚实、明亮、善良，说话干净清楚。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "VoiceDesign clear warm tenor; one voice for 17 and 37: acting notes only",
+    "f0Weight": 150
+   },
+   "jacob": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.3,
+    "f0Hz": [
+     105,
+     140
+    ],
+    "hnrMax": 14.0,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，七十多岁的老爷爷，音调中低而平稳，嗓音沙哑、带气声，苍老但非常温暖慈爱，说话慢一些，始终是同一位老人的声音。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "VoiceDesign old husky loving father",
+    "f0Weight": 150
+   },
+   "brother": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 10,
+    "minPace": 3.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，强壮结实的男中低音，嗓音低沉厚实，有力但不凶，带点冲劲，像一个爱闹脾气、嘴硬心软的大哥哥，听起来像动画片里的角色，让孩子不害怕。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "VoiceDesign strong baritone",
+    "f0Weight": 150
+   },
+   "pharaoh": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     82,
+     115
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，五十岁左右的胖国王，嗓音非常低沉，是浑厚洪亮的男低音，胸腔共鸣很强，圆润、有点夸张，自命不凡又有点憨，心地善良慷慨，像儿童动画片里滑稽可爱的大王。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "VoiceDesign round pompous generous king; comic and kind, not Exodus' vain villain",
+    "f0Weight": 150
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.3,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman telling a Bible story to a child of four to ten at bedtime, like a mother at the bedside: loving, lively, natural, at a natural flowing pace. This line: ",
+    "why": "the same family storyteller in English (Qwen vivian; R7: no edge-tts)"
+   },
+   "joseph": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.3,
+    "maxPause": 1.2,
+    "f0Hz": [
+     140,
+     225
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "Male, a clear, warm young tenor who sounds about twenty-five: honest, bright, kind, clean diction. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. Warm, friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "why": "VoiceDesign clear warm tenor, same person as zh in spirit",
+    "f0Weight": 150
+   },
+   "jacob": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.0,
+    "maxPause": 1.3,
+    "f0Hz": [
+     108,
+     145
+    ],
+    "hnrMax": 14.0,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "Male, around seventy-five, an elderly grandfather. Medium-low pitch, a little husky and breathy with the softness of old age; weathered but warm and loving. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. Warm, friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "why": "VoiceDesign old husky loving father",
+    "f0Weight": 150
+   },
+   "brother": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 10,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "Male, around thirty, a strong, sturdy, deep baritone with a low, thick, chesty voice, powerful but never scary, with a bit of attitude, like a hot-tempered big brother with a soft heart in a children's cartoon. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. Warm, friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "why": "VoiceDesign strong baritone",
+    "f0Weight": 150
+   },
+   "pharaoh": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     88,
+     125
+    ],
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "Male, around fifty, a big, round, jolly king with a very deep, booming bass voice and strong chest resonance: a little pompous but good-hearted and generous, funny and lovable like a king in a children's animated film. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace, never dragging. Warm, friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "why": "VoiceDesign round pompous generous king",
+    "f0Weight": 150
+   }
+  }
+ },
+ "lines": {
+  "js_01": {
+   "m": "讲故事的开头，温暖亲切；说到“最疼的”时带着喜爱",
+   "m_en": "storyteller opening, warm; fond on 最疼的 / 'loved most of all'",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_02": {
+   "m": "慈爱的老父亲，嗓子略沙哑，因为送礼物很高兴；带一声开心的轻笑",
+   "m_en": "an old, loving father, a little husky, delighted with his present; a happy chuckle",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "约瑟，来！",
+      "gap": 0.3,
+      "instruct": "老爷爷开心，带着一声轻轻的笑意。清楚地说出“约瑟”：“约”读第一声（yuē），高而平，“瑟”读 sè。"
+     },
+     {
+      "text": "爸爸给你做了一件新衣服，你看——五颜六色的！",
+      "gap": 0
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "takes": 24,
+    "nameContour": {
+     "char": "约",
+     "atStart": true
+    },
+    "f0Hz": [
+     80,
+     110
+    ],
+    "f0Weight": 150,
+    "seed": 0,
+    "hnrMax": 8.5
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Joseph, come here!",
+      "gap": 0.3,
+      "instruct": "A delighted old man with a soft chuckle in his voice."
+     },
+     {
+      "text": "Father has made you a new coat. Look... all the colours of the rainbow!",
+      "gap": 0
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+"
+   }
+  },
+  "js_03": {
+   "m": "十七岁，轻快明亮。十七岁的少年，惊喜万分，声音里带着笑",
+   "m_en": "a bright boy of seventeen, lighter and quicker; a bright boy of seventeen, thrilled, a laugh in the voice",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哇——太漂亮了！",
+      "gap": 0.25,
+      "instruct": "十七岁少年惊喜得笑出声，声音又明亮又高兴。"
+     },
+     {
+      "text": "谢谢爸爸！",
+      "gap": 0,
+      "instruct": "开心地笑着说。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "f0Hz": [
+     175,
+     225
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Wow, it's beautiful!",
+      "gap": 0.25,
+      "instruct": "A boy thrilled, laughing with joy, bright."
+     },
+     {
+      "text": "Thank you, Father!",
+      "gap": 0,
+      "instruct": "Laughing happily."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+",
+    "f0Hz": [
+     175,
+     225
+    ]
+   }
+  },
+  "js_04": {
+   "m": "自言自语地嘟囔，嫉妒、酸溜溜；一声真正的“哼”",
+   "m_en": "muttering to himself, jealous, sour; a real 哼",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哼，",
+      "gap": 0.35,
+      "instruct": "嘟囔着，嫉妒又不高兴，真的哼了一声，不是念字。"
+     },
+     {
+      "text": "又是他。",
+      "gap": 0.3,
+      "instruct": "低声嘟囔，酸溜溜。"
+     },
+     {
+      "text": "爸爸什么好东西都给他！",
+      "gap": 0,
+      "instruct": "忿忿不平，压低的声音。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmph.",
+      "gap": 0.35,
+      "instruct": "A real sour grunt through the nose, jealous, not reading the word."
+     },
+     {
+      "text": "Him again.",
+      "gap": 0.3,
+      "instruct": "Muttering sourly."
+     },
+     {
+      "text": "Father gives him all the good things!",
+      "gap": 0,
+      "instruct": "Resentful, low."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+"
+   }
+  },
+  "js_05": {
+   "m": "十七岁，轻快明亮。急切、天真，完全没发现自己惹人烦；轻快明亮",
+   "m_en": "a bright boy of seventeen, lighter and quicker; eager, innocent, no idea he is annoying anyone; quick and bright",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "f0Hz": [
+     175,
+     225
+    ]
+   },
+   "en": {
+    "f0Hz": [
+     175,
+     225
+    ]
+   }
+  },
+  "js_06": {
+   "m": "气坏了，声音越来越大、越来越重，不要变尖；“做梦”一把甩出来",
+   "m_en": "outraged, voice getting louder and heavier, never shrill; snaps 做梦 / 'Dream on'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "什么？你是说，我们要向你下拜？",
+      "gap": 0.3
+     },
+     {
+      "text": "做梦！",
+      "gap": 0,
+      "instruct": "气得大吼，声音低沉有力，狠狠地甩出这两个字。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "What? You mean WE are going to bow down to YOU?",
+      "gap": 0.3
+     },
+     {
+      "text": "Dream on!",
+      "gap": 0,
+      "instruct": "Outraged, snapping it out, loud and deep."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+",
+    "takes": 12,
+    "f0Hz": [
+     105,
+     160
+    ]
+   }
+  },
+  "js_07": {
+   "m": "先有点好笑，说到“更生气了”时压低，带着担心",
+   "m_en": "a little amused, then lower and worried on 更生气了 / 'angrier than ever'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "seed": 10,
+    "takes": 10
+   },
+   "en": {}
+  },
+  "js_08": {
+   "m": "认真但温和，不吓人；放慢",
+   "m_en": "serious but gentle, not frightening; slower",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_09": {
+   "m": "十七岁，轻快明亮。从井里向上喊，害怕、哀求；短",
+   "m_en": "a bright boy of seventeen, lighter and quicker; calling up from the well, frightened and pleading; short",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "f0Hz": [
+     175,
+     245
+    ],
+    "takes": 12
+   },
+   "en": {
+    "f0Hz": [
+     175,
+     245
+    ]
+   }
+  },
+  "js_10": {
+   "m": "平淡，底下有点难过；“很远很远”拉长，越说越远",
+   "m_en": "matter-of-fact, sad underneath; long and far on 很远很远 / 'far, far away'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "这时来了一队骆驼商人。",
+      "gap": 0.35
+     },
+     {
+      "text": "哥哥们收了二十块银子，就把约瑟卖了。",
+      "gap": 0.45,
+      "instruct": "平淡，底下有点难过。"
+     },
+     {
+      "text": "商人把他带去了很远很远的埃及。",
+      "gap": 0,
+      "instruct": "拉长“很远很远”，越说越远。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Just then some traders came by with their camels.",
+      "gap": 0.35
+     },
+     {
+      "text": "The brothers took twenty pieces of silver and sold Joseph.",
+      "gap": 0.45,
+      "instruct": "Matter-of-fact, sad underneath."
+     },
+     {
+      "text": "The traders took him far, far away, to Egypt.",
+      "gap": 0,
+      "instruct": "Long and distant on 'far, far away'."
+     }
+    ]
+   }
+  },
+  "js_11": {
+   "m": "老人轻轻的哭声；哽咽，很轻，不是嚎啕",
+   "m_en": "an old man's quiet weeping; broken, very soft; not wailing",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "我的约瑟……",
+      "gap": 0.5,
+      "instruct": "老人轻轻地、哽咽地说，带着低低的抽泣，很轻，不是嚎啕。清楚地说出“约瑟”：“约”读第一声（yuē），高而平，“瑟”读 sè。"
+     },
+     {
+      "text": "我的孩子不见了……",
+      "gap": 0,
+      "instruct": "哽咽，很轻很慢。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "nameContour": {
+     "char": "约"
+    },
+    "f0Hz": [
+     80,
+     110
+    ],
+    "takes": 16,
+    "seed": 0,
+    "hnrMin": 5.0
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "My Joseph...",
+      "gap": 0.5,
+      "instruct": "An old man, quiet and choked with soft sobbing breaths, very soft, not wailing."
+     },
+     {
+      "text": "My boy is gone...",
+      "gap": 0,
+      "instruct": "Choked, very soft and slow."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+"
+   }
+  },
+  "js_12": {
+   "m": "平稳；说“又认真又诚实”时为他骄傲；说“关进了监牢”时叹口气",
+   "m_en": "steady; proud of him on 又认真又诚实; a sigh on 关进了监牢 / 'put in prison'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "在埃及，约瑟做了仆人。",
+      "gap": 0.3
+     },
+     {
+      "text": "他干活又认真又诚实。",
+      "gap": 0.4,
+      "instruct": "为他骄傲。"
+     },
+     {
+      "text": "可是有人冤枉了他，",
+      "gap": 0.25
+     },
+     {
+      "text": "把他关进了监牢。",
+      "gap": 0,
+      "instruct": "叹了口气，放慢。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "In Egypt, Joseph became a servant.",
+      "gap": 0.3
+     },
+     {
+      "text": "He worked hard and he was honest.",
+      "gap": 0.4,
+      "instruct": "Proud of him."
+     },
+     {
+      "text": "But someone told a lie about him,",
+      "gap": 0.25
+     },
+     {
+      "text": "and he was put in prison.",
+      "gap": 0,
+      "instruct": "With a sigh, slower."
+     }
+    ]
+   }
+  },
+  "js_13": {
+   "m": "三十七岁，沉稳偏低。安静，已是个年长一些的青年；难过但信靠，不自怜；声音比从前低、稳",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; quiet, a little older now; sad but trusting; no self-pity",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_14": {
+   "m": "温暖笃定，像把手搭在肩上",
+   "m_en": "warm and sure, like a hand on the shoulder",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_15": {
+   "m": "神秘又好笑的睡前故事声音；“肥肥的”圆，“瘦瘦的”细；说“吃掉了”时倒抽一口气",
+   "m_en": "spooky-funny bedtime voice; round on 肥肥的 / 'fat', thin on 瘦瘦的 / 'skinny'; a gasp on 吃掉了",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "一天夜里，埃及的国王法老做了个怪梦：",
+      "gap": 0.4,
+      "instruct": "神秘又好笑的睡前故事声音。"
+     },
+     {
+      "text": "七头肥肥的牛从河里上来，",
+      "gap": 0.3,
+      "instruct": "“肥肥的”说得圆圆的。"
+     },
+     {
+      "text": "接着七头瘦瘦的牛，",
+      "gap": 0.25,
+      "instruct": "“瘦瘦的”说得又细又尖。"
+     },
+     {
+      "text": "把肥牛吃掉了！",
+      "gap": 0,
+      "instruct": "倒抽一口气，夸张地惊讶。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "One night Pharaoh, the king of Egypt, had a strange dream.",
+      "gap": 0.4,
+      "instruct": "A spooky-funny bedtime voice."
+     },
+     {
+      "text": "Seven fat cows came up out of the river.",
+      "gap": 0.3,
+      "instruct": "Round on 'fat'."
+     },
+     {
+      "text": "Then came seven skinny cows...",
+      "gap": 0.25,
+      "instruct": "Thin and sharp on 'skinny'."
+     },
+     {
+      "text": "and they ate the fat cows right up!",
+      "gap": 0,
+      "instruct": "A gasp, comically shocked."
+     }
+    ]
+   }
+  },
+  "js_16": {
+   "m": "用低沉浑厚的男低音：一位大国王慌了神，滑稽；大嗓门，慌乱但嗓音始终低沉；最后一句霸道",
+   "m_en": "in a deep booming bass, relaxed and genial even when startled: a big jolly king puzzled by a funny dream; bossy and kind on the last sentence",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "啊！",
+      "gap": 0.3,
+      "instruct": "一位低沉浑厚的大国王做噩梦惊醒，吼了一声，夸张，嗓音始终低沉，不要尖。"
+     },
+     {
+      "text": "牛吃牛？麦穗吃麦穗？",
+      "gap": 0.3,
+      "instruct": "慌乱、急急地说，嗓音依然是低沉的男低音。"
+     },
+     {
+      "text": "这是什么意思？谁能告诉我！",
+      "gap": 0,
+      "instruct": "着急又霸道，命令的口气，低沉有力。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "f0Hz": [
+     82,
+     140
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Aah!",
+      "gap": 0.3,
+      "instruct": "A big deep-voiced king waking from a silly dream with a booming 'Aah!', comic, low and round."
+     },
+     {
+      "text": "Cows eating cows? Grain eating grain?",
+      "gap": 0.3,
+      "instruct": "Puzzled and bumbling, deep and round, not high."
+     },
+     {
+      "text": "What does it mean? Somebody tell me!",
+      "gap": 0,
+      "instruct": "Bossy but kind, deep and booming."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+",
+    "takes": 14,
+    "f0Hz": [
+     88,
+     150
+    ],
+    "seed": 40
+   }
+  },
+  "js_17": {
+   "m": "用低沉的男低音：满怀希望，身体前倾；一位好几夜没睡的国王",
+   "m_en": "in a deep bass: hopeful, leaning forward; a king who has not slept",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "takes": 8
+   },
+   "en": {}
+  },
+  "js_18": {
+   "m": "三十七岁，沉稳偏低。谦卑而平静；说“上帝会”时清楚笃定；声音沉稳、偏低",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; humble and calm; clear and sure on 上帝会 / 'God can'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_19": {
+   "m": "三十七岁，沉稳偏低。清楚，像温和的老师扳着手指数；结尾急切又热心；沉稳",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; clear, like a kind teacher counting on his fingers; urgent and helpful at the end",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "七头肥牛，是七个大丰收的年头。",
+      "gap": 0.35
+     },
+     {
+      "text": "七头瘦牛，是七个闹饥荒的年头。",
+      "gap": 0.5
+     },
+     {
+      "text": "请您趁丰收的时候，把粮食存起来！",
+      "gap": 0,
+      "instruct": "诚恳又着急，想帮忙。"
+     }
+    ],
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "The seven fat cows are seven years with plenty of food.",
+      "gap": 0.35
+     },
+     {
+      "text": "The seven skinny cows are seven years with no food at all.",
+      "gap": 0.5
+     },
+     {
+      "text": "So store up grain in the good years, while you can!",
+      "gap": 0,
+      "instruct": "Sincere and urgent, wanting to help."
+     }
+    ],
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_20": {
+   "m": "用低沉浑厚的男低音：高兴极了，洪亮，慷慨，像大笑着说话；最后一句张开双臂",
+   "m_en": "in a deep booming bass: warm and delighted, a big generous laugh in the voice but staying low and round; arms wide on the last sentence",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {
+    "takes": 14,
+    "f0Hz": [
+     88,
+     150
+    ],
+    "seed": 20
+   }
+  },
+  "js_21": {
+   "m": "忙碌明亮；“满满的”说得大大的",
+   "m_en": "busy and bright; big on 满满的 / 'heaps and heaps'",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_22": {
+   "m": "干巴巴，很累；说“只有埃及有粮食”时抬起一点希望",
+   "m_en": "dry and tired, then a lift of hope on 只有埃及有粮食 / 'except in Egypt'",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "后来，饥荒真的来了，到处都没有饭吃。",
+      "gap": 0.4,
+      "instruct": "干巴巴的，很累。"
+     },
+     {
+      "text": "只有埃及有粮食。",
+      "gap": 0.35,
+      "instruct": "抬起一点希望。"
+     },
+     {
+      "text": "雅各就叫儿子们去埃及买粮。",
+      "gap": 0
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Then the hungry years really came. There was no food anywhere...",
+      "gap": 0.4,
+      "instruct": "Dry and tired."
+     },
+     {
+      "text": "except in Egypt.",
+      "gap": 0.35,
+      "instruct": "A lift of hope."
+     },
+     {
+      "text": "So Jacob sent his sons to Egypt to buy grain.",
+      "gap": 0
+     }
+    ]
+   }
+  },
+  "js_23": {
+   "m": "谦卑、疲惫，一点傲气都没有了；低着头",
+   "m_en": "humble, tired, nothing left of the old sneer; head down",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_24": {
+   "m": "压低声音，像和孩子分享一个秘密；说“那个梦”时带着惊叹",
+   "m_en": "hushed, a secret shared with the child; wonder on 那个梦 / 'the dream'",
+   "d": "",
+   "d_en": "",
+   "zh": {},
+   "en": {}
+  },
+  "js_25": {
+   "m": "三十七岁，沉稳偏低。想装成陌生人，可声音在发抖；很轻",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; trying to sound like a stranger, but the voice shakes; very soft",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_26": {
+   "m": "三十七岁，沉稳偏低。泪水和喜悦同时涌出，名字脱口而出",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; the dam breaks: tears and joy at once; the name bursts out",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哥哥，",
+      "gap": 0.3,
+      "instruct": "忍不住了，哽咽。"
+     },
+     {
+      "text": "是我呀——",
+      "gap": 0.3,
+      "instruct": "又哭又笑，声音颤抖。"
+     },
+     {
+      "text": "我就是约瑟！",
+      "gap": 0,
+      "instruct": "名字冲口而出，又高兴又流泪。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Brothers,",
+      "gap": 0.3,
+      "instruct": "Unable to hold back, choked."
+     },
+     {
+      "text": "it's me...",
+      "gap": 0.3,
+      "instruct": "Crying and laughing, trembling."
+     },
+     {
+      "text": "I am Joseph!",
+      "gap": 0,
+      "instruct": "The name bursts out, joyful and in tears."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+",
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_27": {
+   "m": "发抖，羞愧，快哭了；道歉是真心的",
+   "m_en": "shaking, ashamed, close to tears; the apology is real",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "约……约瑟？",
+      "gap": 0.4,
+      "instruct": "不敢相信，结结巴巴。"
+     },
+     {
+      "text": "对不起！",
+      "gap": 0.35,
+      "instruct": "哽咽，真心的。"
+     },
+     {
+      "text": "我们对你做了那么坏的事……",
+      "gap": 0,
+      "instruct": "低着头，快哭了。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "J-Joseph?",
+      "gap": 0.4,
+      "instruct": "Disbelieving, stammering."
+     },
+     {
+      "text": "I'm sorry!",
+      "gap": 0.35,
+      "instruct": "Choked, sincere."
+     },
+     {
+      "text": "We did such a terrible thing to you...",
+      "gap": 0,
+      "instruct": "Head down, close to tears."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+"
+   }
+  },
+  "js_28": {
+   "m": "三十七岁，沉稳偏低。整个故事的中心：温柔，完全原谅，沉稳；说“把坏事变成了好事”时放慢",
+   "m_en": "now a calm governor of thirty-seven, lower and steadier; the heart of the story: gentle, completely forgiving, steady; slow on 把坏事变成了好事",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "别怕，别难过。",
+      "gap": 0.5,
+      "instruct": "非常温柔。"
+     },
+     {
+      "text": "你们本来想害我，",
+      "gap": 0.35,
+      "instruct": "平静，没有怨气。"
+     },
+     {
+      "text": "可是上帝把坏事变成了好事，",
+      "gap": 0.4,
+      "instruct": "这是整个故事的中心，慢，稳，说“坏事变成了好事”时放慢。"
+     },
+     {
+      "text": "好救许多人的命。",
+      "gap": 0,
+      "instruct": "温暖。"
+     }
+    ],
+    "f0Hz": [
+     135,
+     172
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Don't be afraid, and don't be sad.",
+      "gap": 0.5,
+      "instruct": "Very gentle."
+     },
+     {
+      "text": "You meant to hurt me,",
+      "gap": 0.35,
+      "instruct": "Calm, no bitterness."
+     },
+     {
+      "text": "but God turned it into something good,",
+      "gap": 0.4,
+      "instruct": "The heart of the story: slow and steady."
+     },
+     {
+      "text": "to save many lives.",
+      "gap": 0,
+      "instruct": "Warm."
+     }
+    ],
+    "takes": 8,
+    "f0Hz": [
+     135,
+     172
+    ]
+   }
+  },
+  "js_29": {
+   "m": "高兴，幸福得有点喘",
+   "m_en": "glad, a little out of breath with happiness",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "seed": 10,
+    "takes": 10,
+    "pick": 7
+   },
+   "en": {}
+  },
+  "js_30": {
+   "m": "又哭又笑，老人声音里全是光；嗓音仍然低低沙哑，不要尖",
+   "m_en": "happy tears, laughing and crying together; an old voice full of light, still low and husky, never shrill",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "约瑟！",
+      "gap": 0.4,
+      "instruct": "又哭又笑，一位老人欣喜若狂。清楚地说出“约瑟”：“约”读第一声（yuē），高而平，“瑟”读 sè。"
+     },
+     {
+      "text": "我的孩子……",
+      "gap": 0.4,
+      "instruct": "哽咽，开心得发抖。"
+     },
+     {
+      "text": "我又看见你了！",
+      "gap": 0,
+      "instruct": "含着泪笑，声音里全是光。"
+     }
+    ],
+    "asrIgnore": "哈|哼|哇|啊|嘿|呵|哦|唔|嗯|唉|呃|嘘|呜",
+    "takes": 16,
+    "nameContour": {
+     "char": "约"
+    },
+    "f0Hz": [
+     80,
+     110
+    ],
+    "seed": 0,
+    "hnrMin": 5.5
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Joseph!",
+      "gap": 0.4,
+      "instruct": "Laughing and crying together, an old man overjoyed."
+     },
+     {
+      "text": "My boy...",
+      "gap": 0.4,
+      "instruct": "Choked, trembling with joy."
+     },
+     {
+      "text": "I can see you again!",
+      "gap": 0,
+      "instruct": "Laughing through tears, full of light."
+     }
+    ],
+    "asrIgnore": "ha|ho|hmph|hm+|huh|heh|wa+h*|a+h+|oh|uh|shh+|whoa|ooh+|mm+"
+   }
+  },
+  "js_31": {
+   "m": "温暖的结尾，直接对孩子说话；数三个地方",
+   "m_en": "warm moral, speaking right to the child; count the three places gently; smile on the last sentence",
+   "d": "",
+   "d_en": "",
+   "zh": {
+    "phrases": [
+     {
+      "text": "在井里，在监牢里，在王宫里，",
+      "gap": 0.4,
+      "instruct": "一个地方一个地方地数，像数手指。"
+     },
+     {
+      "text": "上帝一直和约瑟在一起。",
+      "gap": 0.5,
+      "instruct": "温暖肯定。"
+     },
+     {
+      "text": "遇到难过的事，你也不是一个人——",
+      "gap": 0.4,
+      "instruct": "直接对孩子说话，轻轻的。"
+     },
+     {
+      "text": "上帝能把坏事变成好事。",
+      "gap": 0,
+      "instruct": "笃定，温暖，像一个承诺。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "In the well, in the prison, in the palace,",
+      "gap": 0.4,
+      "instruct": "Counting the places like fingers."
+     },
+     {
+      "text": "God was with Joseph all the way.",
+      "gap": 0.5,
+      "instruct": "Warm and sure."
+     },
+     {
+      "text": "When sad things happen to you, you are not alone either.",
+      "gap": 0.4,
+      "instruct": "Speaking right to the child, softly."
+     },
+     {
+      "text": "God can turn bad things into good.",
+      "gap": 0,
+      "instruct": "Sure and warm, like a promise."
+     }
+    ]
+   }
+  }
+ }
+}

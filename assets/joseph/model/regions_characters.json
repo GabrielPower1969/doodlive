@@ -1,0 +1,1300 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/js_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour take a constant UV inside a larger region; hidden props take theirs from a printed region). ID render for the line art: id_characters_2x.png/.json (same scheme as D&G id_2x).",
+ "sheet": {
+  "joseph": {
+   "sheetX": -0.34,
+   "sheetY": 0.015
+  },
+  "brother": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "pharaoh": {
+   "sheetX": 0.34,
+   "sheetY": 0.015
+  },
+  "jacob": {
+   "sheetX": -0.34,
+   "sheetY": 0.44
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "joseph": {
+   "height": 0.34,
+   "bboxSheet": [
+    -0.4663,
+    0.0156,
+    -0.2137,
+    0.3549
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#E9B88E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR",
+      "upperArmL",
+      "upperArmR"
+     ],
+     "bboxSheet": [
+      -0.4663,
+      0.0189,
+      -0.2137,
+      0.3469
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#4A2E1F",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3653,
+      0.2937,
+      -0.3147,
+      0.3549
+     ]
+    },
+    "tunic": {
+     "id": 3,
+     "hex": "#F1E7D0",
+     "zh": "内袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.4038,
+      0.0775,
+      -0.2762,
+      0.2704
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#8A5A3B",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3743,
+      0.0156,
+      -0.3057,
+      0.0365
+     ],
+     "anchoredTo": "hair",
+     "anchorUV": [
+      0.14925,
+      0.27852
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "belt": {
+     "id": 5,
+     "hex": "#6E4B30",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.3824,
+      0.1773,
+      -0.2974,
+      0.2707
+     ],
+     "anchoredTo": "hair",
+     "anchorUV": [
+      0.14925,
+      0.27852
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "coat3": {
+     "id": 7,
+     "hex": "#4FA65A",
+     "zh": "彩衣条纹 3",
+     "en": "coat stripe 3",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.3615,
+      0.1166,
+      -0.3185,
+      0.2717
+     ]
+    },
+    "coat4": {
+     "id": 8,
+     "hex": "#3B7FD0",
+     "zh": "彩衣条纹 4",
+     "en": "coat stripe 4",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.3185,
+      0.0823,
+      -0.2706,
+      0.2717
+     ]
+    },
+    "coat5": {
+     "id": 9,
+     "hex": "#8A5CC2",
+     "zh": "彩衣条纹 5",
+     "en": "coat stripe 5",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.34,
+      0.0814,
+      -0.2239,
+      0.2717
+     ]
+    },
+    "coat1": {
+     "id": 10,
+     "hex": "#D9463A",
+     "zh": "彩衣条纹 1",
+     "en": "coat stripe 1",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.4561,
+      0.0821,
+      -0.34,
+      0.2717
+     ]
+    },
+    "coat2": {
+     "id": 6,
+     "hex": "#F2C744",
+     "zh": "彩衣条纹 2",
+     "en": "coat stripe 2",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.4073,
+      0.0815,
+      -0.3615,
+      0.2717
+     ]
+    },
+    "trim": {
+     "id": 11,
+     "hex": "#E8B84A",
+     "zh": "金色镶边",
+     "en": "gold edging",
+     "parts": [
+      "coat"
+     ],
+     "bboxSheet": [
+      -0.4584,
+      0.0806,
+      -0.2216,
+      0.2205
+     ],
+     "anchoredTo": "coat2",
+     "anchorUV": [
+      0.11925,
+      0.10412
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "nemesB": {
+     "id": 13,
+     "hex": "#3B7FD0",
+     "zh": "头巾条纹 B",
+     "en": "head-cloth stripe B",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "joseph.coat4",
+     "anchorUV": [
+      0.20175,
+      0.10615
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.joseph.propUV.nemesB = [u, v])"
+    },
+    "nemesA": {
+     "id": 12,
+     "hex": "#F2C744",
+     "zh": "头巾条纹 A",
+     "en": "head-cloth stripe A",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "joseph.coat2",
+     "anchorUV": [
+      0.11925,
+      0.10412
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.joseph.propUV.nemesA = [u, v])"
+    },
+    "collar1": {
+     "id": 14,
+     "hex": "#D9463A",
+     "zh": "项圈外环",
+     "en": "collar outer ring",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "joseph.coat1",
+     "anchorUV": [
+      0.08525,
+      0.18154
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.joseph.propUV.collar1 = [u, v])"
+    },
+    "collar3": {
+     "id": 15,
+     "hex": "#4FA65A",
+     "zh": "项圈中环",
+     "en": "collar middle ring",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "joseph.coat3",
+     "anchorUV": [
+      0.15975,
+      0.19621
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.joseph.propUV.collar3 = [u, v])"
+    },
+    "collar5": {
+     "id": 16,
+     "hex": "#8A5CC2",
+     "zh": "项圈内环",
+     "en": "collar inner ring",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "joseph.coat5",
+     "anchorUV": [
+      0.23475,
+      0.18154
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.joseph.propUV.collar5 = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02041,
+     0.27896,
+     0.02041,
+     0.31979
+    ],
+    "px": 512,
+    "default": "bright",
+    "files": {
+     "bright": "docs/joseph/design/faces/joseph_bright.png",
+     "talk": "docs/joseph/design/faces/joseph_talk.png",
+     "joy": "docs/joseph/design/faces/joseph_joy.png",
+     "scared": "docs/joseph/design/faces/joseph_scared.png",
+     "sad": "docs/joseph/design/faces/joseph_sad.png",
+     "pray": "docs/joseph/design/faces/joseph_pray.png",
+     "wise": "docs/joseph/design/faces/joseph_wise.png",
+     "moved": "docs/joseph/design/faces/joseph_moved.png",
+     "tears_joy": "docs/joseph/design/faces/joseph_tears_joy.png"
+    },
+    "clipExpression": {
+     "idle": "bright",
+     "talk": "talk",
+     "walk": "bright",
+     "run": "joy",
+     "walk_sad": "sad",
+     "twirl": "joy",
+     "tell_dream": "talk",
+     "in_pit": "scared",
+     "carry_work": "bright",
+     "sit_cell": "sad",
+     "bow_point_up": "pray",
+     "explain": "wise",
+     "stand_proud": "wise",
+     "recognise": "moved",
+     "ask_gently": "wise",
+     "reveal": "tears_joy",
+     "lift_up": "moved",
+     "hug": "tears_joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {
+    "coat": {
+     "bone": "coat",
+     "mesh": "joseph_coat",
+     "node": "joseph/coat",
+     "shownByDefault": true,
+     "skinned": true,
+     "note": "skinned to the body bones + coatL/R; its mesh node is nested under the 'coat' joint in the GLB so 'joseph/coat' toggles it"
+    },
+    "nemes": {
+     "bone": "nemes",
+     "mesh": "joseph_nemes",
+     "node": "joseph/nemes",
+     "shownByDefault": false,
+     "skinned": false
+    },
+    "collar": {
+     "bone": "collar",
+     "mesh": "joseph_collar",
+     "node": "joseph/collar",
+     "shownByDefault": false,
+     "skinned": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    },
+    "handR.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    },
+    "legL.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    },
+    "legR.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    },
+    "upperArmL.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    },
+    "upperArmR.skin": {
+     "target": "joseph.FACE",
+     "uv": [
+      0.15975,
+      0.23044
+     ],
+     "local": [
+      -0.0002,
+      0.2678
+     ]
+    }
+   }
+  },
+  "brother": {
+   "height": 0.38,
+   "bboxSheet": [
+    -0.1459,
+    0.0156,
+    0.1459,
+    0.3914
+   ],
+   "regions": {
+    "skin": {
+     "id": 17,
+     "hex": "#C98E62",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "earL",
+      "earR",
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR",
+      "upperArmL",
+      "upperArmR"
+     ],
+     "bboxSheet": [
+      -0.1459,
+      0.0193,
+      0.1459,
+      0.3863
+     ]
+    },
+    "hair": {
+     "id": 18,
+     "hex": "#231A16",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.0305,
+      0.3109,
+      0.0304,
+      0.3914
+     ]
+    },
+    "tunic": {
+     "id": 19,
+     "hex": "#A8562A",
+     "zh": "内袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.0856,
+      0.1113,
+      0.0855,
+      0.3053
+     ]
+    },
+    "sandals": {
+     "id": 20,
+     "hex": "#6E4B30",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.042,
+      0.0156,
+      0.042,
+      0.0391
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.48975,
+      0.20232
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "belt": {
+     "id": 21,
+     "hex": "#6E4B30",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.0525,
+      0.2348,
+      0.0522,
+      0.253
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.48975,
+      0.20232
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "vest": {
+     "id": 22,
+     "hex": "#5E6B3A",
+     "zh": "羊皮背心",
+     "en": "sheepskin vest",
+     "parts": [
+      "fleece",
+      "vest"
+     ],
+     "bboxSheet": [
+      -0.0619,
+      0.1877,
+      0.0627,
+      0.304
+     ]
+    },
+    "bag": {
+     "id": 23,
+     "hex": "#C9A26A",
+     "zh": "挎包",
+     "en": "sling bag",
+     "parts": [
+      "bag"
+     ],
+     "bboxSheet": [
+      -0.0613,
+      0.1803,
+      0.0613,
+      0.2984
+     ]
+    },
+    "cord": {
+     "id": 24,
+     "hex": "#6E4B30",
+     "zh": "系带",
+     "en": "lacing cord",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.0096,
+      0.2825,
+      0.0096,
+      0.303
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.48975,
+      0.20232
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.31015,
+     0.02268,
+     0.35551
+    ],
+    "px": 512,
+    "default": "sour",
+    "files": {
+     "sour": "docs/joseph/design/faces/brother_sour.png",
+     "talk": "docs/joseph/design/faces/brother_talk.png",
+     "angry": "docs/joseph/design/faces/brother_angry.png",
+     "greedy": "docs/joseph/design/faces/brother_greedy.png",
+     "humble": "docs/joseph/design/faces/brother_humble.png",
+     "shock": "docs/joseph/design/faces/brother_shock.png",
+     "sorry": "docs/joseph/design/faces/brother_sorry.png",
+     "relief": "docs/joseph/design/faces/brother_relief.png"
+    },
+    "clipExpression": {
+     "idle": "sour",
+     "talk": "talk",
+     "walk": "sour",
+     "fold_arms": "sour",
+     "grumble": "sour",
+     "angry_point": "angry",
+     "grab_coat": "angry",
+     "take_coins": "greedy",
+     "bow_low": "humble",
+     "fall_back_scared": "shock",
+     "stand_up": "sorry",
+     "hug": "relief",
+     "wave": "relief"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    },
+    "handR.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    },
+    "legL.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    },
+    "legR.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    },
+    "upperArmL.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    },
+    "upperArmR.skin": {
+     "target": "brother.FACE",
+     "uv": [
+      0.49975,
+      0.30623
+     ],
+     "local": [
+      -0.0002,
+      0.3608
+     ]
+    }
+   }
+  },
+  "pharaoh": {
+   "height": 0.4,
+   "bboxSheet": [
+    0.1892,
+    0.0157,
+    0.4908,
+    0.4686
+   ],
+   "regions": {
+    "skin": {
+     "id": 25,
+     "hex": "#C48A5E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR",
+      "torso"
+     ],
+     "bboxSheet": [
+      0.1892,
+      0.0196,
+      0.4908,
+      0.4011
+     ]
+    },
+    "kilt": {
+     "id": 26,
+     "hex": "#FBF7EC",
+     "zh": "短裙",
+     "en": "kilt",
+     "parts": [
+      "kilt"
+     ],
+     "bboxSheet": [
+      0.2654,
+      0.1273,
+      0.4146,
+      0.2412
+     ]
+    },
+    "gold": {
+     "id": 27,
+     "hex": "#E8B84A",
+     "zh": "金饰",
+     "en": "gold trim",
+     "parts": [
+      "apron",
+      "bands",
+      "belt",
+      "crownBand",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2036,
+      0.0157,
+      0.4764,
+      0.404
+     ],
+     "anchoredTo": "collar",
+     "anchorUV": [
+      0.83675,
+      0.24633
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "apron": {
+     "id": 28,
+     "hex": "#2E5FA8",
+     "zh": "围裙",
+     "en": "apron",
+     "parts": [
+      "apron"
+     ],
+     "bboxSheet": [
+      0.3186,
+      0.1233,
+      0.3614,
+      0.2319
+     ]
+    },
+    "collar": {
+     "id": 29,
+     "hex": "#E8B84A",
+     "zh": "宽项圈",
+     "en": "collar",
+     "parts": [
+      "collar"
+     ],
+     "bboxSheet": [
+      0.2736,
+      0.268,
+      0.4057,
+      0.3133
+     ]
+    },
+    "crownRed": {
+     "id": 30,
+     "hex": "#C8423A",
+     "zh": "王冠红色部分",
+     "en": "crown (red)",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      0.3077,
+      0.384,
+      0.3723,
+      0.4347
+     ]
+    },
+    "crownWhite": {
+     "id": 31,
+     "hex": "#FBF7EC",
+     "zh": "王冠白色部分",
+     "en": "crown (white)",
+     "parts": [
+      "crown"
+     ],
+     "bboxSheet": [
+      0.3089,
+      0.4165,
+      0.3711,
+      0.4686
+     ]
+    },
+    "beard": {
+     "id": 32,
+     "hex": "#2E5FA8",
+     "zh": "礼仪胡须",
+     "en": "ceremonial beard",
+     "parts": [
+      "fbeard"
+     ],
+     "bboxSheet": [
+      0.3355,
+      0.3227,
+      0.3445,
+      0.3475
+     ],
+     "anchoredTo": "apron",
+     "anchorUV": [
+      0.83975,
+      0.1465
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "nemesA": {
+     "id": 33,
+     "hex": "#E8B84A",
+     "zh": "头巾条纹 A",
+     "en": "head-cloth stripe A",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": [
+      0.275,
+      0.2879,
+      0.405,
+      0.4046
+     ],
+     "anchoredTo": "collar",
+     "anchorUV": [
+      0.83675,
+      0.24633
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "nemesB": {
+     "id": 34,
+     "hex": "#2E5FA8",
+     "zh": "头巾条纹 B",
+     "en": "head-cloth stripe B",
+     "parts": [
+      "nemes"
+     ],
+     "bboxSheet": [
+      0.2724,
+      0.2891,
+      0.4075,
+      0.4011
+     ],
+     "anchoredTo": "apron",
+     "anchorUV": [
+      0.83975,
+      0.1465
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "inlay": {
+     "id": 35,
+     "hex": "#2E5FA8",
+     "zh": "青金石镶嵌",
+     "en": "lapis inlay",
+     "parts": [
+      "bands",
+      "collar"
+     ],
+     "bboxSheet": [
+      0.243,
+      0.2323,
+      0.437,
+      0.3093
+     ],
+     "anchoredTo": "apron",
+     "anchorUV": [
+      0.83975,
+      0.1465
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.0245,
+     0.32639,
+     0.0245,
+     0.37539
+    ],
+    "px": 512,
+    "default": "grand",
+    "files": {
+     "grand": "docs/joseph/design/faces/pharaoh_grand.png",
+     "talk": "docs/joseph/design/faces/pharaoh_talk.png",
+     "sleepy": "docs/joseph/design/faces/pharaoh_sleepy.png",
+     "panic": "docs/joseph/design/faces/pharaoh_panic.png",
+     "curious": "docs/joseph/design/faces/pharaoh_curious.png",
+     "delighted": "docs/joseph/design/faces/pharaoh_delighted.png"
+    },
+    "clipExpression": {
+     "idle": "grand",
+     "talk": "talk",
+     "doze": "sleepy",
+     "wake_jump": "panic",
+     "lean_ask": "curious",
+     "delighted": "delighted",
+     "crown_him": "delighted",
+     "wave": "grand"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [],
+    "note": ""
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.82125,
+      0.28708
+     ],
+     "local": [
+      -0.0187,
+      0.3372
+     ]
+    },
+    "handR.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.82125,
+      0.28708
+     ],
+     "local": [
+      -0.0187,
+      0.3372
+     ]
+    },
+    "legL.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.82125,
+      0.28708
+     ],
+     "local": [
+      -0.0187,
+      0.3372
+     ]
+    },
+    "legR.skin": {
+     "target": "pharaoh.FACE",
+     "uv": [
+      0.82125,
+      0.28708
+     ],
+     "local": [
+      -0.0187,
+      0.3372
+     ]
+    }
+   }
+  },
+  "jacob": {
+   "height": 0.33,
+   "bboxSheet": [
+    -0.4706,
+    0.4398,
+    -0.2142,
+    0.7755
+   ],
+   "regions": {
+    "skin": {
+     "id": 36,
+     "hex": "#E2AF8A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4706,
+      0.4439,
+      -0.2142,
+      0.7625
+     ]
+    },
+    "hair": {
+     "id": 37,
+     "hex": "#F4F1EA",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "beardLong",
+      "hair",
+      "moustache"
+     ],
+     "bboxSheet": [
+      -0.3657,
+      0.6497,
+      -0.3143,
+      0.766
+     ]
+    },
+    "robe": {
+     "id": 38,
+     "hex": "#8F7F6C",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.4514,
+      0.4487,
+      -0.2285,
+      0.7007
+     ]
+    },
+    "sandals": {
+     "id": 39,
+     "hex": "#6E4B30",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.3763,
+      0.4406,
+      -0.3037,
+      0.4615
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.17675,
+      0.5218
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "belt": {
+     "id": 40,
+     "hex": "#6E4B30",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltTie"
+     ],
+     "bboxSheet": [
+      -0.3837,
+      0.5736,
+      -0.2963,
+      0.6524
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.17675,
+      0.5218
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    },
+    "shawl": {
+     "id": 41,
+     "hex": "#EFE6D2",
+     "zh": "披巾",
+     "en": "shawl",
+     "parts": [
+      "shawl"
+     ],
+     "bboxSheet": [
+      -0.4022,
+      0.6182,
+      -0.2796,
+      0.7755
+     ]
+    },
+    "stick": {
+     "id": 42,
+     "hex": "#9B6B43",
+     "zh": "手杖",
+     "en": "walking stick",
+     "parts": [
+      "stick"
+     ],
+     "bboxSheet": [
+      -0.4703,
+      0.4398,
+      -0.4567,
+      0.6388
+     ],
+     "anchoredTo": "belt",
+     "anchorUV": [
+      0.17675,
+      0.5218
+     ],
+     "printNote": "too small to colour; print as detail line art, takes the colour at anchorUV"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.0202,
+     0.27618,
+     0.0202,
+     0.31657
+    ],
+    "px": 512,
+    "default": "fond",
+    "files": {
+     "fond": "docs/joseph/design/faces/jacob_fond.png",
+     "talk": "docs/joseph/design/faces/jacob_talk.png",
+     "joy": "docs/joseph/design/faces/jacob_joy.png",
+     "weep": "docs/joseph/design/faces/jacob_weep.png",
+     "tears_joy": "docs/joseph/design/faces/jacob_tears_joy.png"
+    },
+    "clipExpression": {
+     "idle": "fond",
+     "talk": "talk",
+     "give_coat": "joy",
+     "weep": "weep",
+     "walk_old": "fond",
+     "hug": "tears_joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z",
+    "bakedPose": [
+     [
+      "spine",
+      6.0
+     ],
+     [
+      "chest",
+      16.0
+     ],
+     [
+      "neck",
+      14.0
+     ],
+     [
+      "head",
+      -24.0
+     ],
+     [
+      "upperArmL",
+      -20.0
+     ],
+     [
+      "upperArmR",
+      -20.0
+     ]
+    ],
+    "note": "Jacob: the stoop (degrees about design X) is baked into the rest skeleton"
+   },
+   "props": {
+    "stick": {
+     "bone": "stick",
+     "mesh": "jacob_stick",
+     "node": "jacob/stick",
+     "shownByDefault": true,
+     "skinned": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "jacob.FACE",
+     "uv": [
+      0.14575,
+      0.5923
+     ],
+     "local": [
+      -0.0142,
+      0.2868
+     ]
+    },
+    "handR.skin": {
+     "target": "jacob.FACE",
+     "uv": [
+      0.14575,
+      0.5923
+     ],
+     "local": [
+      -0.0142,
+      0.2868
+     ]
+    },
+    "legL.skin": {
+     "target": "jacob.FACE",
+     "uv": [
+      0.14575,
+      0.5923
+     ],
+     "local": [
+      -0.0142,
+      0.2868
+     ]
+    },
+    "legR.skin": {
+     "target": "jacob.FACE",
+     "uv": [
+      0.14575,
+      0.5923
+     ],
+     "local": [
+      -0.0142,
+      0.2868
+     ]
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,1963 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther, Ruth; faces come from decals (no face ink)"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "约瑟的梦",
+   "pinyin": "yuē sè de mèng",
+   "english": "Joseph the Dreamer",
+   "box": 84,
+   "gap": 60,
+   "cy": 106,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box 84 / gap 60 / cy 106: the most distinct of a grid of candidates that keep the pinyin 6 mm from the top edge; most similar other title: Daniel, NCC 0.52 (tools/story/sheet_joseph.py signature; Jonah's sheet included)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "创世记 37–46 章 · Genesis 37–46"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge"
+ },
+ "characters": {
+  "joseph": {
+   "height": 0.34,
+   "sheetX": -0.34,
+   "sheetY": 0.015
+  },
+  "brother": {
+   "height": 0.38,
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "pharaoh": {
+   "height": 0.4,
+   "sheetX": 0.34,
+   "sheetY": 0.015
+  },
+  "jacob": {
+   "height": 0.33,
+   "sheetX": -0.34,
+   "sheetY": 0.44
+  }
+ },
+ "note": "Set + sheet role (pipeline/js_twolands.py) owns sheet slots and set drawings; slots per CONTRACT §2 (Jacob on a second row)",
+ "set": {
+  "generatedBy": "pipeline/js_twolands.py",
+  "doc": "docs/joseph/SET.md",
+  "contract": "docs/joseph/CONTRACT.md §6",
+  "root": "twolands",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer",
+  "nodes": {
+   "ground": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "horizon": [
+    0.0,
+    0.0,
+    -0.566
+   ],
+   "tent": [
+    -0.44,
+    0.0,
+    -0.42
+   ],
+   "sheep": [
+    -0.21,
+    0.0,
+    -0.36
+   ],
+   "olive": [
+    -0.555,
+    0.0,
+    -0.065
+   ],
+   "pit": [
+    -0.35,
+    0.0,
+    0.09
+   ],
+   "bucket": [
+    -0.215,
+    0.0,
+    0.155
+   ],
+   "caravan": [
+    -0.39,
+    0.0,
+    -0.05
+   ],
+   "palace": [
+    0.38,
+    0.0,
+    -0.46
+   ],
+   "throne": [
+    0.38,
+    0.05,
+    -0.495
+   ],
+   "granary": [
+    0.5,
+    0.0,
+    -0.04
+   ],
+   "grainPiles": [
+    0.492,
+    0.0,
+    -0.185
+   ],
+   "sacks": [
+    0.299,
+    0.0,
+    0.178
+   ],
+   "cell": [
+    0.1,
+    0.0,
+    -0.06
+   ],
+   "cellBench": [
+    0.1,
+    0.0,
+    -0.103
+   ],
+   "palms": [
+    0.58,
+    0.0,
+    -0.262
+   ],
+   "dreamSheaves": [
+    -0.32,
+    0.46,
+    -0.16
+   ],
+   "dreamStars": [
+    -0.32,
+    0.46,
+    -0.16
+   ],
+   "dreamSheaves2": [
+    0.3,
+    0.5,
+    0.06
+   ],
+   "dreamCows": [
+    0.3,
+    0.52,
+    -0.26
+   ],
+   "dreamGrain": [
+    0.3,
+    0.52,
+    -0.26
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "tent": [
+    -0.575,
+    -0.51,
+    -0.305,
+    -0.33
+   ],
+   "pit": {
+    "centre": [
+     -0.35,
+     0.09
+    ],
+    "innerRadius": 0.07,
+    "outerRadius": 0.09,
+    "top": 0.08
+   },
+   "bucket": [
+    -0.215,
+    0.155
+   ],
+   "caravan": [
+    -0.39,
+    -0.05
+   ],
+   "olive": [
+    -0.555,
+    -0.065
+   ],
+   "sheep": [
+    [
+     -0.245,
+     -0.352
+    ],
+    [
+     -0.172,
+     -0.395
+    ],
+    [
+     -0.2,
+     -0.318
+    ]
+   ],
+   "palace": {
+    "dais": [
+     0.215,
+     -0.555,
+     0.545,
+     -0.36
+    ],
+    "daisTop": 0.05,
+    "steps": 4,
+    "columns": [
+     [
+      0.258,
+      -0.43
+     ],
+     [
+      0.502,
+      -0.43
+     ]
+    ],
+    "throne": [
+     0.38,
+     -0.495
+    ],
+    "fireBowl": [
+     0.54,
+     -0.325
+    ]
+   },
+   "granary": {
+    "stores": [
+     [
+      0.465,
+      -0.125
+     ],
+     [
+      0.552,
+      -0.068
+     ],
+     [
+      0.532,
+      0.03
+     ]
+    ],
+    "radius": 0.05,
+    "height": 0.16
+   },
+   "grainPiles": {
+    "heaps": [
+     [
+      0.41,
+      -0.205,
+      0.034
+     ],
+     [
+      0.575,
+      -0.165,
+      0.022
+     ]
+    ],
+    "baskets": [
+     [
+      0.58,
+      0.085
+     ],
+     [
+      0.48,
+      -0.215
+     ]
+    ]
+   },
+   "sacks": [
+    [
+     0.3,
+     0.18
+    ],
+    [
+     0.355,
+     0.155
+    ],
+    [
+     0.243,
+     0.2
+    ]
+   ],
+   "cell": {
+    "x": [
+     0.02,
+     0.18
+    ],
+    "z": [
+     -0.14,
+     -0.04
+    ],
+    "height": 0.2,
+    "openSide": "+z",
+    "bench": {
+     "centre": [
+      0.1,
+      -0.103
+     ],
+     "top": 0.062,
+     "size": [
+      0.1,
+      0.036
+     ]
+    }
+   },
+   "palms": [
+    [
+     0.58,
+     -0.262
+    ],
+    [
+     0.14,
+     -0.445
+    ]
+   ]
+  },
+  "dreamPanels": {
+   "dreamSheaves": {
+    "centre": [
+     -0.32,
+     0.46,
+     -0.16
+    ],
+    "width": 0.22,
+    "height": 0.135,
+    "tiltDeg": 15,
+    "drawing": "dreamSheaves"
+   },
+   "dreamStars": {
+    "centre": [
+     -0.32,
+     0.46,
+     -0.16
+    ],
+    "width": 0.22,
+    "height": 0.135,
+    "tiltDeg": 15,
+    "drawing": "dreamStars"
+   },
+   "dreamSheaves2": {
+    "centre": [
+     0.3,
+     0.5,
+     0.06
+    ],
+    "width": 0.22,
+    "height": 0.135,
+    "tiltDeg": 15,
+    "drawing": "dreamSheaves"
+   },
+   "dreamCows": {
+    "centre": [
+     0.3,
+     0.52,
+     -0.26
+    ],
+    "width": 0.24,
+    "height": 0.14,
+    "tiltDeg": 15,
+    "drawing": "dreamCows"
+   },
+   "dreamGrain": {
+    "centre": [
+     0.3,
+     0.52,
+     -0.26
+    ],
+    "width": 0.24,
+    "height": 0.14,
+    "tiltDeg": 15,
+    "drawing": "dreamGrain"
+   }
+  },
+  "hiddenAtStart": [
+   "caravan",
+   "cell",
+   "grainPiles",
+   "sacks",
+   "dreamSheaves",
+   "dreamSheaves2",
+   "dreamStars",
+   "dreamCows",
+   "dreamGrain"
+  ],
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the template position for instanced pieces",
+   "edgeOn": "faces with |n . D| < 0.22 (n in drawing space) take one clean texel of their region",
+   "namedTexels": "no-raster pieces take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "horizon": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 3.03,
+    "cx": -0.278,
+    "y0": 1.118,
+    "members": [
+     "horizon"
+    ],
+    "decorOnly": [
+     "hills"
+    ],
+    "sheetX": -0.28708,
+    "sheetY": 1.118,
+    "bboxSheet": [
+     -0.4851,
+     1.118,
+     -0.0709,
+     1.2101
+    ]
+   },
+   "dreamSheaves": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.97,
+    "cx": 0.071,
+    "y0": 1.062,
+    "members": [],
+    "decorOnly": [
+     "sheafSmall"
+    ],
+    "sheetX": 0.07123,
+    "sheetY": 1.13759,
+    "bboxSheet": [
+     -0.0577,
+     1.062,
+     0.1997,
+     1.2135
+    ]
+   },
+   "dreamStars": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.97,
+    "cx": 0.344,
+    "y0": 1.062,
+    "members": [],
+    "decorOnly": [
+     "sun"
+    ],
+    "sheetX": 0.34423,
+    "sheetY": 1.13759,
+    "bboxSheet": [
+     0.2153,
+     1.062,
+     0.4727,
+     1.2135
+    ]
+   },
+   "sheep": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.72,
+    "cx": -0.167,
+    "y0": 0.988,
+    "members": [],
+    "sheetX": -0.18901,
+    "sheetY": 0.98992,
+    "bboxSheet": [
+     -0.2457,
+     0.988,
+     -0.0883,
+     1.0871
+    ]
+   },
+   "tent": {
+    "A": [
+     1,
+     0,
+     -0.3
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.3,
+     0.5,
+     1
+    ],
+    "scale": 1.45,
+    "cx": -0.37,
+    "y0": 0.829,
+    "members": [
+     "tent"
+    ],
+    "sheetX": -0.15349,
+    "sheetY": 0.71072,
+    "bboxSheet": [
+     -0.4821,
+     0.829,
+     -0.2579,
+     0.9969
+    ]
+   },
+   "pit": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.62
+    ],
+    "D": [
+     0.0,
+     0.62,
+     1
+    ],
+    "scale": 1.3,
+    "cx": -0.16,
+    "y0": 0.829,
+    "members": [
+     "pit"
+    ],
+    "decorOnly": [
+     "wellStone"
+    ],
+    "sheetX": 0.10989,
+    "sheetY": 0.91407,
+    "bboxSheet": [
+     -0.2287,
+     0.829,
+     -0.0913,
+     0.9748
+    ]
+   },
+   "olive": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.6,
+    "cx": -0.005,
+    "y0": 0.829,
+    "members": [
+     "olive"
+    ],
+    "decorOnly": [
+     "oliveCrown"
+    ],
+    "sheetX": 0.31073,
+    "sheetY": 0.83985,
+    "bboxSheet": [
+     -0.0759,
+     0.829,
+     0.0659,
+     1.0499
+    ]
+   },
+   "caravan": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.0,
+    "cx": 0.175,
+    "y0": 0.829,
+    "members": [
+     "caravan"
+    ],
+    "sheetX": 0.59381,
+    "sheetY": 0.8282,
+    "bboxSheet": [
+     0.0787,
+     0.829,
+     0.2713,
+     1.0411
+    ]
+   },
+   "granary": {
+    "A": [
+     1,
+     0,
+     -0.25
+    ],
+    "B": [
+     0,
+     1,
+     -0.45
+    ],
+    "D": [
+     0.25,
+     0.45,
+     1
+    ],
+    "scale": 1.2,
+    "cx": 0.385,
+    "y0": 0.829,
+    "members": [
+     "granary"
+    ],
+    "decorOnly": [
+     "mudBrick"
+    ],
+    "sheetX": -0.05851,
+    "sheetY": 0.86043,
+    "bboxSheet": [
+     0.3098,
+     0.829,
+     0.4602,
+     1.0481
+    ]
+   },
+   "palace": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.42
+    ],
+    "D": [
+     0.0,
+     0.42,
+     1
+    ],
+    "scale": 1.28,
+    "cx": 0.34,
+    "y0": 0.49,
+    "members": [
+     "palace",
+     "throne"
+    ],
+    "sheetX": 0.04312,
+    "sheetY": 0.37187,
+    "bboxSheet": [
+     0.2033,
+     0.49,
+     0.4767,
+     0.8126
+    ]
+   },
+   "dreamCows": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.76,
+    "cx": -0.015,
+    "y0": 0.413,
+    "members": [],
+    "sheetX": -0.01449,
+    "sheetY": 0.51025,
+    "bboxSheet": [
+     -0.1899,
+     0.413,
+     0.1599,
+     0.6084
+    ]
+   },
+   "dreamGrain": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.76,
+    "cx": -0.015,
+    "y0": 0.621,
+    "members": [],
+    "decorOnly": [
+     "earFat",
+     "earThin"
+    ],
+    "sheetX": -0.01449,
+    "sheetY": 0.71825,
+    "bboxSheet": [
+     -0.1899,
+     0.621,
+     0.1599,
+     0.8164
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "pasture": [
+      "horizon",
+      "hills"
+     ],
+     "sand": [
+      "horizon",
+      "desert"
+     ],
+     "dunes": [
+      "horizon",
+      "dunes"
+     ],
+     "road": [
+      "horizon",
+      "dunes"
+     ],
+     "tuft": [
+      "horizon",
+      "hills"
+     ],
+     "stone": [
+      "pit",
+      "wellStone"
+     ],
+     "rock": [
+      "horizon",
+      "pyramid"
+     ]
+    },
+    "regions": [
+     "dunes",
+     "pasture",
+     "road",
+     "rock",
+     "sand",
+     "stone",
+     "tuft"
+    ],
+    "heightMin": -0.0041,
+    "heightMax": 0.0292,
+    "tris": 5867
+   },
+   {
+    "id": "horizon",
+    "drawing": "horizon",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 3.03,
+     "sheetX": -0.28708,
+     "sheetY": 1.118
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "desert",
+     "dunes",
+     "hills",
+     "pyramid"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.279,
+    "tris": 1721
+   },
+   {
+    "id": "tent",
+    "drawing": "tent",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.3
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.3,
+      0.5,
+      1
+     ],
+     "scale": 1.45,
+     "sheetX": -0.15349,
+     "sheetY": 0.71072
+    },
+    "instanced": false,
+    "namedTexels": {
+     "pole": [
+      "olive",
+      "oliveTrunk"
+     ],
+     "clay": [
+      "tent",
+      "rug"
+     ]
+    },
+    "regions": [
+     "clay",
+     "pole",
+     "rug",
+     "tentA",
+     "tentB"
+    ],
+    "heightMin": -0.0013,
+    "heightMax": 0.2103,
+    "tris": 3526
+   },
+   {
+    "id": "sheep",
+    "drawing": "sheep",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.72,
+     "sheetX": -0.18901,
+     "sheetY": 0.98992
+    },
+    "instanced": true,
+    "namedTexels": {
+     "sheepFace": [
+      "sheep",
+      "sheepFace"
+     ]
+    },
+    "regions": [
+     "sheepFace",
+     "wool"
+    ],
+    "heightMin": -0.0014,
+    "heightMax": 0.07,
+    "tris": 2484
+   },
+   {
+    "id": "olive",
+    "drawing": "olive",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.6,
+     "sheetX": 0.31073,
+     "sheetY": 0.83985
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "oliveCrown",
+     "oliveTrunk"
+    ],
+    "heightMin": -0.0174,
+    "heightMax": 0.336,
+    "tris": 2284
+   },
+   {
+    "id": "pit",
+    "drawing": "pit",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.62
+     ],
+     "D": [
+      0.0,
+      0.62,
+      1
+     ],
+     "scale": 1.3,
+     "sheetX": 0.10989,
+     "sheetY": 0.91407
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wellDark": [
+      "tent",
+      "tentB"
+     ]
+    },
+    "regions": [
+     "wellDark",
+     "wellStone"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.08,
+    "tris": 1216
+   },
+   {
+    "id": "bucket",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "bucket": [
+      "olive",
+      "oliveTrunk"
+     ],
+     "rope": [
+      "caravan",
+      "bundle"
+     ]
+    },
+    "regions": [
+     "bucket",
+     "rope"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.0452,
+    "tris": 890
+   },
+   {
+    "id": "caravan",
+    "drawing": "caravan",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.0,
+     "sheetX": 0.59381,
+     "sheetY": 0.8282
+    },
+    "instanced": false,
+    "namedTexels": {
+     "traderRobe": [
+      "caravan",
+      "saddleBlue"
+     ],
+     "traderFace": [
+      "caravan",
+      "camel"
+     ],
+     "traderHood": [
+      "caravan",
+      "bundle"
+     ],
+     "rope": [
+      "caravan",
+      "bundle"
+     ]
+    },
+    "regions": [
+     "bundle",
+     "camel",
+     "rope",
+     "saddleBlue",
+     "saddleRed",
+     "traderFace",
+     "traderHood",
+     "traderRobe"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.2129,
+    "tris": 1728
+   },
+   {
+    "id": "palace",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.0,
+      0.42,
+      1
+     ],
+     "scale": 1.28,
+     "sheetX": 0.04312,
+     "sheetY": 0.37187
+    },
+    "instanced": false,
+    "namedTexels": {
+     "pole": [
+      "palace",
+      "gold"
+     ],
+     "fan": [
+      "palace",
+      "columnCream"
+     ],
+     "fireBowl": [
+      "palace",
+      "gold"
+     ],
+     "flame": [
+      "dreamStars",
+      "sun"
+     ]
+    },
+    "regions": [
+     "bandBlue",
+     "bandRed",
+     "columnCream",
+     "dais",
+     "fan",
+     "fireBowl",
+     "flame",
+     "gold",
+     "lintel",
+     "palaceWall",
+     "pole"
+    ],
+    "heightMin": -0.0006,
+    "heightMax": 0.363,
+    "tris": 2966
+   },
+   {
+    "id": "throne",
+    "drawing": "palace",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.42
+     ],
+     "D": [
+      0.0,
+      0.42,
+      1
+     ],
+     "scale": 1.28,
+     "sheetX": 0.04312,
+     "sheetY": 0.37187
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "throne"
+    ],
+    "heightMin": 0.0486,
+    "heightMax": 0.17,
+    "tris": 492
+   },
+   {
+    "id": "granary",
+    "drawing": "granary",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.25
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.25,
+      0.45,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": -0.05851,
+     "sheetY": 0.86043
+    },
+    "instanced": false,
+    "namedTexels": {
+     "ladder": [
+      "granary",
+      "storeDoor"
+     ]
+    },
+    "regions": [
+     "ladder",
+     "mudBrick",
+     "storeDoor"
+    ],
+    "heightMin": -0.0006,
+    "heightMax": 0.166,
+    "tris": 1461
+   },
+   {
+    "id": "grainPiles",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "grain": [
+      "dreamGrain",
+      "earFat"
+     ],
+     "basket": [
+      "caravan",
+      "bundle"
+     ]
+    },
+    "regions": [
+     "basket",
+     "grain"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.0338,
+    "tris": 576
+   },
+   {
+    "id": "sacks",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "caravan",
+      "bundle"
+     ],
+     "tie": [
+      "granary",
+      "storeDoor"
+     ]
+    },
+    "regions": [
+     "sack",
+     "tie"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.0568,
+    "tris": 744
+   },
+   {
+    "id": "cell",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "granary",
+      "storeDoor"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.206,
+    "tris": 1100
+   },
+   {
+    "id": "cellBench",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "bench": [
+      "pit",
+      "wellStone"
+     ],
+     "jug": [
+      "tent",
+      "rug"
+     ]
+    },
+    "regions": [
+     "bench",
+     "jug"
+    ],
+    "heightMin": 0.0,
+    "heightMax": 0.062,
+    "tris": 396
+   },
+   {
+    "id": "palms",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "palmFrond": [
+      "olive",
+      "oliveCrown"
+     ],
+     "palmTrunk": [
+      "olive",
+      "oliveTrunk"
+     ],
+     "dates": [
+      "tent",
+      "tentA"
+     ]
+    },
+    "regions": [
+     "dates",
+     "palmFrond",
+     "palmTrunk"
+    ],
+    "heightMin": -0.0047,
+    "heightMax": 0.3744,
+    "tris": 1976
+   },
+   {
+    "id": "dreamSheaves",
+    "drawing": "dreamSheaves",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.97,
+     "sheetX": 0.07123,
+     "sheetY": 1.13759
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "daySky",
+     "sheafBig",
+     "sheafSmall"
+    ],
+    "heightMin": 0.3895,
+    "heightMax": 0.5324,
+    "tris": 2250
+   },
+   {
+    "id": "dreamStars",
+    "drawing": "dreamStars",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.97,
+     "sheetX": 0.34423,
+     "sheetY": 1.13759
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "moon",
+     "nightSky",
+     "sun"
+    ],
+    "heightMin": 0.3895,
+    "heightMax": 0.5324,
+    "tris": 2292
+   },
+   {
+    "id": "dreamSheaves2",
+    "drawing": "dreamSheaves",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.97,
+     "sheetX": 0.07123,
+     "sheetY": 1.13759
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "daySky",
+     "sheafBig",
+     "sheafSmall"
+    ],
+    "heightMin": 0.4295,
+    "heightMax": 0.5724,
+    "tris": 2250
+   },
+   {
+    "id": "dreamCows",
+    "drawing": "dreamCows",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.76,
+     "sheetX": -0.01449,
+     "sheetY": 0.51025
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "cowCream",
+     "cowFat",
+     "cowThin",
+     "river"
+    ],
+    "heightMin": 0.4489,
+    "heightMax": 0.5934,
+    "tris": 3286
+   },
+   {
+    "id": "dreamGrain",
+    "drawing": "dreamGrain",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.76,
+     "sheetX": -0.01449,
+     "sheetY": 0.71825
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "cloud",
+     "earFat",
+     "earThin",
+     "meadow"
+    ],
+    "heightMin": 0.4489,
+    "heightMax": 0.5934,
+    "tris": 2712
+   }
+  ],
+  "constUV": [
+   {
+    "node": "ground/pasture",
+    "uv": [
+     0.1135,
+     0.93928
+    ],
+    "region": "hills"
+   },
+   {
+    "node": "ground/sand",
+    "uv": [
+     0.2805,
+     0.92787
+    ],
+    "region": "desert"
+   },
+   {
+    "node": "ground/dunes",
+    "uv": [
+     0.2185,
+     0.93195
+    ],
+    "region": "dunes"
+   },
+   {
+    "node": "ground/road",
+    "uv": [
+     0.2185,
+     0.93195
+    ],
+    "region": "dunes"
+   },
+   {
+    "node": "ground/tuft",
+    "uv": [
+     0.1135,
+     0.93928
+    ],
+    "region": "hills"
+   },
+   {
+    "node": "ground/stone",
+    "uv": [
+     0.3515,
+     0.76161
+    ],
+    "region": "wellStone"
+   },
+   {
+    "node": "ground/rock",
+    "uv": [
+     0.3435,
+     0.95477
+    ],
+    "region": "pyramid"
+   },
+   {
+    "node": "tent/pole",
+    "uv": [
+     0.4705,
+     0.70212
+    ],
+    "region": "oliveTrunk"
+   },
+   {
+    "node": "tent/clay",
+    "uv": [
+     0.1365,
+     0.69804
+    ],
+    "region": "rug"
+   },
+   {
+    "node": "pit/wellDark",
+    "uv": [
+     0.1405,
+     0.78443
+    ],
+    "region": "tentB"
+   },
+   {
+    "node": "sheep/sheepFace",
+    "uv": [
+     0.3855,
+     0.86104
+    ],
+    "region": "sheepFace"
+   },
+   {
+    "node": "bucket/bucket",
+    "uv": [
+     0.4705,
+     0.70212
+    ],
+    "region": "oliveTrunk"
+   },
+   {
+    "node": "bucket/rope",
+    "uv": [
+     0.7285,
+     0.8317
+    ],
+    "region": "bundle"
+   },
+   {
+    "node": "caravan/traderRobe",
+    "uv": [
+     0.7255,
+     0.79829
+    ],
+    "region": "saddleBlue"
+   },
+   {
+    "node": "caravan/traderFace",
+    "uv": [
+     0.7075,
+     0.75754
+    ],
+    "region": "camel"
+   },
+   {
+    "node": "caravan/traderHood",
+    "uv": [
+     0.7285,
+     0.8317
+    ],
+    "region": "bundle"
+   },
+   {
+    "node": "caravan/rope",
+    "uv": [
+     0.7285,
+     0.8317
+    ],
+    "region": "bundle"
+   },
+   {
+    "node": "palace/pole",
+    "uv": [
+     0.8395,
+     0.62143
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "palace/fan",
+    "uv": [
+     0.7515,
+     0.50978
+    ],
+    "region": "columnCream"
+   },
+   {
+    "node": "palace/fireBowl",
+    "uv": [
+     0.8395,
+     0.62143
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "palace/flame",
+    "uv": [
+     0.7965,
+     0.93521
+    ],
+    "region": "sun"
+   },
+   {
+    "node": "granary/ladder",
+    "uv": [
+     0.8845,
+     0.71353
+    ],
+    "region": "storeDoor"
+   },
+   {
+    "node": "grainPiles/grain",
+    "uv": [
+     0.4355,
+     0.5872
+    ],
+    "region": "earFat"
+   },
+   {
+    "node": "grainPiles/basket",
+    "uv": [
+     0.7285,
+     0.8317
+    ],
+    "region": "bundle"
+   },
+   {
+    "node": "sacks/sack",
+    "uv": [
+     0.7285,
+     0.8317
+    ],
+    "region": "bundle"
+   },
+   {
+    "node": "sacks/tie",
+    "uv": [
+     0.8845,
+     0.71353
+    ],
+    "region": "storeDoor"
+   },
+   {
+    "node": "cell/wood",
+    "uv": [
+     0.8845,
+     0.71353
+    ],
+    "region": "storeDoor"
+   },
+   {
+    "node": "cellBench/bench",
+    "uv": [
+     0.3515,
+     0.76161
+    ],
+    "region": "wellStone"
+   },
+   {
+    "node": "cellBench/jug",
+    "uv": [
+     0.1365,
+     0.69804
+    ],
+    "region": "rug"
+   },
+   {
+    "node": "palms/palmFrond",
+    "uv": [
+     0.4985,
+     0.82926
+    ],
+    "region": "oliveCrown"
+   },
+   {
+    "node": "palms/palmTrunk",
+    "uv": [
+     0.4705,
+     0.70212
+    ],
+    "region": "oliveTrunk"
+   },
+   {
+    "node": "palms/dates",
+    "uv": [
+     0.1335,
+     0.76406
+    ],
+    "region": "tentA"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "soft": {
+    "walk joseph -0.800,0.300>0.160,0.060": {
+     "pit": [
+      0.08,
+      0.0047
+     ],
+     "bucket": [
+      0.0452,
+      0.0
+     ]
+    }
+   },
+   "closestLowGeometry": {
+    "mark jacob -0.460,-0.200": 0.0683,
+    "mark jacob -0.100,0.120": 0.0868,
+    "walk jacob -0.460,-0.200>-0.100,0.120": 0.0533,
+    "mark joseph -0.345,-0.167": 0.0819,
+    "mark joseph -0.260,0.040": 0.1083,
+    "mark joseph -0.340,0.080": 0.088,
+    "mark joseph 0.160,0.060": 0.3044,
+    "mark joseph 0.100,-0.060": 0.2731,
+    "mark joseph 0.278,-0.236": 0.1391,
+    "mark joseph 0.420,0.040": 0.0614,
+    "mark joseph 0.340,0.080": 0.0572,
+    "mark joseph 0.140,0.120": 0.1133,
+    "mark joseph 0.020,0.120": 0.2042,
+    "walk joseph -0.345,-0.167>-0.260,0.040": 0.0819,
+    "walk joseph -0.260,0.040>-0.340,0.080": 0.0946,
+    "walk joseph -0.800,0.300>0.160,0.060": 0.0,
+    "walk joseph 0.160,0.060>0.100,-0.060": 0.2731,
+    "walk joseph 0.100,-0.060>0.278,-0.236": 0.1391,
+    "walk joseph 0.278,-0.236>0.420,0.040": 0.0614,
+    "walk joseph 0.420,0.040>0.340,0.080": 0.0572,
+    "walk joseph 0.140,0.120>0.020,0.120": 0.1133,
+    "mark brother -0.160,-0.120": 0.0776,
+    "mark brother -0.156,0.075": 0.0763,
+    "mark brother 0.234,0.124": 0.057,
+    "mark brother 0.160,0.140": 0.0857,
+    "walk brother -0.160,-0.120>-0.156,0.075": 0.0763,
+    "walk brother -0.160,-0.120>0.234,0.124": 0.057,
+    "mark pharaoh 0.380,-0.300": 0.0819
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "joseph": {
+     "sheetX": -0.34,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      -0.4663,
+      0.0165,
+      -0.2137,
+      0.3549
+     ]
+    },
+    "brother": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.38,
+     "box": [
+      -0.1459,
+      0.0167,
+      0.1459,
+      0.3914
+     ]
+    },
+    "pharaoh": {
+     "sheetX": 0.34,
+     "sheetY": 0.015,
+     "height": 0.4,
+     "box": [
+      0.1892,
+      0.0168,
+      0.4908,
+      0.4686
+     ]
+    },
+    "jacob": {
+     "sheetX": -0.34,
+     "sheetY": 0.44,
+     "height": 0.33,
+     "box": [
+      -0.4706,
+      0.4398,
+      -0.2142,
+      0.7755
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "hills": "#C9C27A",
+   "desert": "#EAD9B0",
+   "dunes": "#E3C98F",
+   "pyramid": "#D6B98A",
+   "tentA": "#7A5A40",
+   "tentB": "#3A2E26",
+   "rug": "#B8423A",
+   "wool": "#F3ECDD",
+   "sheepFace": "#4A3A30",
+   "oliveCrown": "#8FA876",
+   "oliveTrunk": "#7A6650",
+   "wellStone": "#A39A8C",
+   "camel": "#D9B47A",
+   "saddleRed": "#B8423A",
+   "saddleBlue": "#2E5FA8",
+   "bundle": "#C9A26A",
+   "dais": "#E3CFA3",
+   "palaceWall": "#D9C9A0",
+   "columnCream": "#F1E3C0",
+   "bandBlue": "#2E5FA8",
+   "bandRed": "#C8423A",
+   "lintel": "#EBDDB8",
+   "gold": "#E8B84A",
+   "throne": "#E8B84A",
+   "mudBrick": "#D8B07A",
+   "storeDoor": "#8A5A3B",
+   "cloud": "#FFFFFF",
+   "daySky": "#CFE6F7",
+   "nightSky": "#2E3F7A",
+   "meadow": "#8DB36A",
+   "sheafBig": "#E8B84A",
+   "sheafSmall": "#F2D27A",
+   "sun": "#F2C744",
+   "moon": "#F7E7A1",
+   "river": "#3B8FD0",
+   "cowFat": "#A9743F",
+   "cowCream": "#F3E2B8",
+   "cowThin": "#8F7F6C",
+   "earFat": "#E8B84A",
+   "earThin": "#C9B98A"
+  },
+  "tris": 42217,
+  "budget": 60000
+ }
+}

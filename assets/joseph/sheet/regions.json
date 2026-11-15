@@ -1,0 +1,1313 @@
+{
+ "note": "regions.png pixel value = id (0 = paper), same pixels as lineart.png. Cast: rest pose, front orthographic (UV0 front projection at characters.<id>.sheetX/sheetY). char 'set': drawings of the set (design.json set.drawings; 'part' = drawing, 'nodes' = the set nodes that sample it). Parts with detailOf are printed as detail lines and take that region's colour (anchorUV).",
+ "ids": [
+  {
+   "id": 1,
+   "char": "joseph",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 2,
+   "char": "joseph",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#4A2E1F"
+  },
+  {
+   "id": 3,
+   "char": "joseph",
+   "part": "tunic",
+   "piece": 0,
+   "region": "tunic",
+   "hex": "#F1E7D0"
+  },
+  {
+   "id": 4,
+   "char": "joseph",
+   "part": "tunic",
+   "piece": 1,
+   "region": "tunic",
+   "hex": "#F1E7D0"
+  },
+  {
+   "id": 5,
+   "char": "joseph",
+   "part": "upperArmL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 6,
+   "char": "joseph",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 7,
+   "char": "joseph",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 8,
+   "char": "joseph",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 9,
+   "char": "joseph",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#8A5A3B",
+   "detailOf": "hair"
+  },
+  {
+   "id": 10,
+   "char": "joseph",
+   "part": "upperArmR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 11,
+   "char": "joseph",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 12,
+   "char": "joseph",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 13,
+   "char": "joseph",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E9B88E"
+  },
+  {
+   "id": 14,
+   "char": "joseph",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#8A5A3B",
+   "detailOf": "hair"
+  },
+  {
+   "id": 15,
+   "char": "joseph",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#6E4B30",
+   "detailOf": "hair"
+  },
+  {
+   "id": 16,
+   "char": "joseph",
+   "part": "tunic",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#6E4B30",
+   "detailOf": "hair"
+  },
+  {
+   "id": 17,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "coat3",
+   "hex": "#4FA65A"
+  },
+  {
+   "id": 18,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "coat4",
+   "hex": "#3B7FD0"
+  },
+  {
+   "id": 19,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "coat5",
+   "hex": "#8A5CC2"
+  },
+  {
+   "id": 20,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "coat1",
+   "hex": "#D9463A"
+  },
+  {
+   "id": 21,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "coat2",
+   "hex": "#F2C744"
+  },
+  {
+   "id": 22,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 1,
+   "region": "coat5",
+   "hex": "#8A5CC2"
+  },
+  {
+   "id": 23,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 1,
+   "region": "coat1",
+   "hex": "#D9463A"
+  },
+  {
+   "id": 24,
+   "char": "joseph",
+   "part": "coat",
+   "piece": 0,
+   "region": "trim",
+   "hex": "#E8B84A",
+   "detailOf": "coat2"
+  },
+  {
+   "id": 25,
+   "char": "joseph",
+   "part": "nemes",
+   "piece": 0,
+   "region": "nemesB",
+   "hex": "#3B7FD0",
+   "detailOf": "joseph.coat4"
+  },
+  {
+   "id": 26,
+   "char": "joseph",
+   "part": "nemes",
+   "piece": 0,
+   "region": "nemesA",
+   "hex": "#F2C744",
+   "detailOf": "joseph.coat2"
+  },
+  {
+   "id": 27,
+   "char": "joseph",
+   "part": "collar",
+   "piece": 0,
+   "region": "collar1",
+   "hex": "#D9463A",
+   "detailOf": "joseph.coat1"
+  },
+  {
+   "id": 28,
+   "char": "joseph",
+   "part": "collar",
+   "piece": 0,
+   "region": "collar3",
+   "hex": "#4FA65A",
+   "detailOf": "joseph.coat3"
+  },
+  {
+   "id": 29,
+   "char": "joseph",
+   "part": "collar",
+   "piece": 0,
+   "region": "collar5",
+   "hex": "#8A5CC2",
+   "detailOf": "joseph.coat5"
+  },
+  {
+   "id": 30,
+   "char": "brother",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 31,
+   "char": "brother",
+   "part": "earR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 32,
+   "char": "brother",
+   "part": "earL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 33,
+   "char": "brother",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#231A16"
+  },
+  {
+   "id": 34,
+   "char": "brother",
+   "part": "beard",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#231A16"
+  },
+  {
+   "id": 35,
+   "char": "brother",
+   "part": "moustache",
+   "piece": 1,
+   "region": "hair",
+   "hex": "#231A16"
+  },
+  {
+   "id": 36,
+   "char": "brother",
+   "part": "tunic",
+   "piece": 0,
+   "region": "tunic",
+   "hex": "#A8562A"
+  },
+  {
+   "id": 37,
+   "char": "brother",
+   "part": "tunic",
+   "piece": 1,
+   "region": "tunic",
+   "hex": "#A8562A"
+  },
+  {
+   "id": 38,
+   "char": "brother",
+   "part": "upperArmL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 39,
+   "char": "brother",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 40,
+   "char": "brother",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 41,
+   "char": "brother",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 42,
+   "char": "brother",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#6E4B30",
+   "detailOf": "belt"
+  },
+  {
+   "id": 43,
+   "char": "brother",
+   "part": "upperArmR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 44,
+   "char": "brother",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 45,
+   "char": "brother",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 46,
+   "char": "brother",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C98E62"
+  },
+  {
+   "id": 47,
+   "char": "brother",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#6E4B30",
+   "detailOf": "belt"
+  },
+  {
+   "id": 48,
+   "char": "brother",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#6E4B30"
+  },
+  {
+   "id": 49,
+   "char": "brother",
+   "part": "vest",
+   "piece": 0,
+   "region": "vest",
+   "hex": "#5E6B3A"
+  },
+  {
+   "id": 50,
+   "char": "brother",
+   "part": "fleece",
+   "piece": 0,
+   "region": "vest",
+   "hex": "#5E6B3A"
+  },
+  {
+   "id": 51,
+   "char": "brother",
+   "part": "bag",
+   "piece": 0,
+   "region": "bag",
+   "hex": "#C9A26A"
+  },
+  {
+   "id": 52,
+   "char": "brother",
+   "part": "tunic",
+   "piece": 0,
+   "region": "cord",
+   "hex": "#6E4B30",
+   "detailOf": "belt"
+  },
+  {
+   "id": 53,
+   "char": "pharaoh",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 54,
+   "char": "pharaoh",
+   "part": "torso",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 55,
+   "char": "pharaoh",
+   "part": "torso",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 56,
+   "char": "pharaoh",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 57,
+   "char": "pharaoh",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 58,
+   "char": "pharaoh",
+   "part": "kilt",
+   "piece": 0,
+   "region": "kilt",
+   "hex": "#FBF7EC"
+  },
+  {
+   "id": 59,
+   "char": "pharaoh",
+   "part": "belt",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 60,
+   "char": "pharaoh",
+   "part": "apron",
+   "piece": 0,
+   "region": "apron",
+   "hex": "#2E5FA8"
+  },
+  {
+   "id": 61,
+   "char": "pharaoh",
+   "part": "apron",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 62,
+   "char": "pharaoh",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 63,
+   "char": "pharaoh",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 64,
+   "char": "pharaoh",
+   "part": "legL",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 65,
+   "char": "pharaoh",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 66,
+   "char": "pharaoh",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C48A5E"
+  },
+  {
+   "id": 67,
+   "char": "pharaoh",
+   "part": "legR",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 68,
+   "char": "pharaoh",
+   "part": "collar",
+   "piece": 0,
+   "region": "collar",
+   "hex": "#E8B84A"
+  },
+  {
+   "id": 69,
+   "char": "pharaoh",
+   "part": "bands",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 70,
+   "char": "pharaoh",
+   "part": "crown",
+   "piece": 0,
+   "region": "crownRed",
+   "hex": "#C8423A"
+  },
+  {
+   "id": 71,
+   "char": "pharaoh",
+   "part": "crown",
+   "piece": 0,
+   "region": "crownWhite",
+   "hex": "#FBF7EC"
+  },
+  {
+   "id": 72,
+   "char": "pharaoh",
+   "part": "crownBand",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 73,
+   "char": "pharaoh",
+   "part": "fbeard",
+   "piece": 0,
+   "region": "beard",
+   "hex": "#2E5FA8",
+   "detailOf": "apron"
+  },
+  {
+   "id": 74,
+   "char": "pharaoh",
+   "part": "nemes",
+   "piece": 0,
+   "region": "nemesA",
+   "hex": "#E8B84A",
+   "detailOf": "collar"
+  },
+  {
+   "id": 75,
+   "char": "pharaoh",
+   "part": "nemes",
+   "piece": 0,
+   "region": "nemesB",
+   "hex": "#2E5FA8",
+   "detailOf": "apron"
+  },
+  {
+   "id": 76,
+   "char": "pharaoh",
+   "part": "collar",
+   "piece": 0,
+   "region": "inlay",
+   "hex": "#2E5FA8",
+   "detailOf": "apron"
+  },
+  {
+   "id": 77,
+   "char": "pharaoh",
+   "part": "bands",
+   "piece": 0,
+   "region": "inlay",
+   "hex": "#2E5FA8",
+   "detailOf": "apron"
+  },
+  {
+   "id": 78,
+   "char": "jacob",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 79,
+   "char": "jacob",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#F4F1EA"
+  },
+  {
+   "id": 80,
+   "char": "jacob",
+   "part": "beard",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#F4F1EA"
+  },
+  {
+   "id": 81,
+   "char": "jacob",
+   "part": "moustache",
+   "piece": 1,
+   "region": "hair",
+   "hex": "#F4F1EA"
+  },
+  {
+   "id": 82,
+   "char": "jacob",
+   "part": "robe",
+   "piece": 0,
+   "region": "robe",
+   "hex": "#8F7F6C"
+  },
+  {
+   "id": 83,
+   "char": "jacob",
+   "part": "robe",
+   "piece": 1,
+   "region": "robe",
+   "hex": "#8F7F6C"
+  },
+  {
+   "id": 84,
+   "char": "jacob",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 85,
+   "char": "jacob",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 86,
+   "char": "jacob",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 87,
+   "char": "jacob",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#6E4B30",
+   "detailOf": "belt"
+  },
+  {
+   "id": 88,
+   "char": "jacob",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 89,
+   "char": "jacob",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 90,
+   "char": "jacob",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#E2AF8A"
+  },
+  {
+   "id": 91,
+   "char": "jacob",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#6E4B30",
+   "detailOf": "belt"
+  },
+  {
+   "id": 92,
+   "char": "jacob",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#6E4B30"
+  },
+  {
+   "id": 93,
+   "char": "jacob",
+   "part": "beltTie",
+   "piece": 1,
+   "region": "belt",
+   "hex": "#6E4B30"
+  },
+  {
+   "id": 94,
+   "char": "jacob",
+   "part": "beardLong",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#F4F1EA"
+  },
+  {
+   "id": 95,
+   "char": "jacob",
+   "part": "shawl",
+   "piece": 0,
+   "region": "shawl",
+   "hex": "#EFE6D2"
+  },
+  {
+   "id": 96,
+   "char": "jacob",
+   "part": "stick",
+   "piece": 0,
+   "region": "stick",
+   "hex": "#9B6B43",
+   "detailOf": "belt"
+  },
+  {
+   "id": 97,
+   "char": "set",
+   "part": "horizon",
+   "piece": 0,
+   "region": "hills",
+   "hex": "#C9C27A",
+   "nodes": [
+    "horizon",
+    "ground"
+   ]
+  },
+  {
+   "id": 98,
+   "char": "set",
+   "part": "horizon",
+   "piece": 0,
+   "region": "desert",
+   "hex": "#EAD9B0",
+   "nodes": [
+    "horizon",
+    "ground"
+   ]
+  },
+  {
+   "id": 99,
+   "char": "set",
+   "part": "horizon",
+   "piece": 0,
+   "region": "dunes",
+   "hex": "#E3C98F",
+   "nodes": [
+    "horizon",
+    "ground"
+   ]
+  },
+  {
+   "id": 100,
+   "char": "set",
+   "part": "horizon",
+   "piece": 0,
+   "region": "pyramid",
+   "hex": "#D6B98A",
+   "nodes": [
+    "horizon",
+    "ground"
+   ]
+  },
+  {
+   "id": 101,
+   "char": "set",
+   "part": "dreamSheaves",
+   "piece": 0,
+   "region": "cloud",
+   "hex": "#FFFFFF",
+   "nodes": [
+    "dreamSheaves",
+    "dreamSheaves2"
+   ]
+  },
+  {
+   "id": 102,
+   "char": "set",
+   "part": "dreamSheaves",
+   "piece": 0,
+   "region": "daySky",
+   "hex": "#CFE6F7",
+   "nodes": [
+    "dreamSheaves",
+    "dreamSheaves2"
+   ]
+  },
+  {
+   "id": 103,
+   "char": "set",
+   "part": "dreamSheaves",
+   "piece": 0,
+   "region": "sheafBig",
+   "hex": "#E8B84A",
+   "nodes": [
+    "dreamSheaves",
+    "dreamSheaves2"
+   ]
+  },
+  {
+   "id": 104,
+   "char": "set",
+   "part": "dreamSheaves",
+   "piece": 0,
+   "region": "sheafSmall",
+   "hex": "#F2D27A",
+   "nodes": [
+    "dreamSheaves",
+    "dreamSheaves2"
+   ]
+  },
+  {
+   "id": 105,
+   "char": "set",
+   "part": "dreamStars",
+   "piece": 0,
+   "region": "cloud",
+   "hex": "#FFFFFF",
+   "nodes": [
+    "dreamStars"
+   ]
+  },
+  {
+   "id": 106,
+   "char": "set",
+   "part": "dreamStars",
+   "piece": 0,
+   "region": "nightSky",
+   "hex": "#2E3F7A",
+   "nodes": [
+    "dreamStars"
+   ]
+  },
+  {
+   "id": 107,
+   "char": "set",
+   "part": "dreamStars",
+   "piece": 0,
+   "region": "sun",
+   "hex": "#F2C744",
+   "nodes": [
+    "dreamStars",
+    "palace"
+   ]
+  },
+  {
+   "id": 108,
+   "char": "set",
+   "part": "dreamStars",
+   "piece": 0,
+   "region": "moon",
+   "hex": "#F7E7A1",
+   "nodes": [
+    "dreamStars"
+   ]
+  },
+  {
+   "id": 109,
+   "char": "set",
+   "part": "sheep",
+   "piece": 0,
+   "region": "wool",
+   "hex": "#F3ECDD",
+   "nodes": [
+    "sheep"
+   ]
+  },
+  {
+   "id": 110,
+   "char": "set",
+   "part": "sheep",
+   "piece": 0,
+   "region": "sheepFace",
+   "hex": "#4A3A30",
+   "nodes": [
+    "sheep",
+    "sheep"
+   ]
+  },
+  {
+   "id": 111,
+   "char": "set",
+   "part": "tent",
+   "piece": 0,
+   "region": "tentB",
+   "hex": "#3A2E26",
+   "nodes": [
+    "tent",
+    "pit"
+   ]
+  },
+  {
+   "id": 112,
+   "char": "set",
+   "part": "tent",
+   "piece": 0,
+   "region": "tentA",
+   "hex": "#7A5A40",
+   "nodes": [
+    "tent",
+    "palms"
+   ]
+  },
+  {
+   "id": 113,
+   "char": "set",
+   "part": "tent",
+   "piece": 0,
+   "region": "rug",
+   "hex": "#B8423A",
+   "nodes": [
+    "tent",
+    "cellBench",
+    "tent"
+   ]
+  },
+  {
+   "id": 114,
+   "char": "set",
+   "part": "pit",
+   "piece": 0,
+   "region": "wellStone",
+   "hex": "#A39A8C",
+   "nodes": [
+    "pit",
+    "cellBench",
+    "ground"
+   ]
+  },
+  {
+   "id": 115,
+   "char": "set",
+   "part": "olive",
+   "piece": 0,
+   "region": "oliveTrunk",
+   "hex": "#7A6650",
+   "nodes": [
+    "olive",
+    "bucket",
+    "palms",
+    "tent"
+   ]
+  },
+  {
+   "id": 116,
+   "char": "set",
+   "part": "olive",
+   "piece": 0,
+   "region": "oliveCrown",
+   "hex": "#8FA876",
+   "nodes": [
+    "olive",
+    "palms"
+   ]
+  },
+  {
+   "id": 117,
+   "char": "set",
+   "part": "caravan",
+   "piece": 0,
+   "region": "camel",
+   "hex": "#D9B47A",
+   "nodes": [
+    "caravan",
+    "caravan"
+   ]
+  },
+  {
+   "id": 118,
+   "char": "set",
+   "part": "caravan",
+   "piece": 0,
+   "region": "saddleRed",
+   "hex": "#B8423A",
+   "nodes": [
+    "caravan"
+   ]
+  },
+  {
+   "id": 119,
+   "char": "set",
+   "part": "caravan",
+   "piece": 0,
+   "region": "saddleBlue",
+   "hex": "#2E5FA8",
+   "nodes": [
+    "caravan",
+    "caravan"
+   ]
+  },
+  {
+   "id": 120,
+   "char": "set",
+   "part": "caravan",
+   "piece": 0,
+   "region": "bundle",
+   "hex": "#C9A26A",
+   "nodes": [
+    "caravan",
+    "bucket",
+    "caravan",
+    "grainPiles",
+    "sacks"
+   ]
+  },
+  {
+   "id": 121,
+   "char": "set",
+   "part": "granary",
+   "piece": 0,
+   "region": "mudBrick",
+   "hex": "#D8B07A",
+   "nodes": [
+    "granary"
+   ]
+  },
+  {
+   "id": 122,
+   "char": "set",
+   "part": "granary",
+   "piece": 0,
+   "region": "storeDoor",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "granary",
+    "cell",
+    "granary",
+    "sacks"
+   ]
+  },
+  {
+   "id": 123,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "dais",
+   "hex": "#E3CFA3",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 124,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "palaceWall",
+   "hex": "#D9C9A0",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 125,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "columnCream",
+   "hex": "#F1E3C0",
+   "nodes": [
+    "palace",
+    "throne",
+    "palace"
+   ]
+  },
+  {
+   "id": 126,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "bandBlue",
+   "hex": "#2E5FA8",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 127,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "bandRed",
+   "hex": "#C8423A",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 128,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "lintel",
+   "hex": "#EBDDB8",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 129,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#E8B84A",
+   "nodes": [
+    "palace",
+    "throne",
+    "palace"
+   ]
+  },
+  {
+   "id": 130,
+   "char": "set",
+   "part": "palace",
+   "piece": 0,
+   "region": "throne",
+   "hex": "#E8B84A",
+   "nodes": [
+    "palace",
+    "throne"
+   ]
+  },
+  {
+   "id": 131,
+   "char": "set",
+   "part": "dreamCows",
+   "piece": 0,
+   "region": "cloud",
+   "hex": "#FFFFFF",
+   "nodes": [
+    "dreamCows"
+   ]
+  },
+  {
+   "id": 132,
+   "char": "set",
+   "part": "dreamCows",
+   "piece": 0,
+   "region": "river",
+   "hex": "#3B8FD0",
+   "nodes": [
+    "dreamCows"
+   ]
+  },
+  {
+   "id": 133,
+   "char": "set",
+   "part": "dreamCows",
+   "piece": 0,
+   "region": "cowFat",
+   "hex": "#A9743F",
+   "nodes": [
+    "dreamCows"
+   ]
+  },
+  {
+   "id": 134,
+   "char": "set",
+   "part": "dreamCows",
+   "piece": 0,
+   "region": "cowCream",
+   "hex": "#F3E2B8",
+   "nodes": [
+    "dreamCows"
+   ]
+  },
+  {
+   "id": 135,
+   "char": "set",
+   "part": "dreamCows",
+   "piece": 0,
+   "region": "cowThin",
+   "hex": "#8F7F6C",
+   "nodes": [
+    "dreamCows"
+   ]
+  },
+  {
+   "id": 136,
+   "char": "set",
+   "part": "dreamGrain",
+   "piece": 0,
+   "region": "cloud",
+   "hex": "#FFFFFF",
+   "nodes": [
+    "dreamGrain"
+   ]
+  },
+  {
+   "id": 137,
+   "char": "set",
+   "part": "dreamGrain",
+   "piece": 0,
+   "region": "meadow",
+   "hex": "#8DB36A",
+   "nodes": [
+    "dreamGrain"
+   ]
+  },
+  {
+   "id": 138,
+   "char": "set",
+   "part": "dreamGrain",
+   "piece": 0,
+   "region": "earFat",
+   "hex": "#E8B84A",
+   "nodes": [
+    "dreamGrain",
+    "grainPiles"
+   ]
+  },
+  {
+   "id": 139,
+   "char": "set",
+   "part": "dreamGrain",
+   "piece": 0,
+   "region": "earThin",
+   "hex": "#C9B98A",
+   "nodes": [
+    "dreamGrain"
+   ]
+  }
+ ]
+}

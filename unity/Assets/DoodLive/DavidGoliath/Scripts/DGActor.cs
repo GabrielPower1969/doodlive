@@ -49,6 +49,7 @@ namespace DoodLive.DavidGoliath
         public void Init()
         {
             if (graph.IsValid()) return;
+            if (face3d) face3d.Init(this);                     // before the first clip pose: measures the rest pose
             if (!animator) animator = GetComponentInChildren<Animator>();
             animator.runtimeAnimatorController = null;
             animator.applyRootMotion = false;            // goliath_fall/down carry their motion in the root BONE (ANIMATION.md §7.3)
@@ -106,11 +107,21 @@ namespace DoodLive.DavidGoliath
         [Tooltip("Face decal per clip, same order as clips (design.json faceDecals.clipExpression)")]
         public Texture2D[] faces;
         public Texture2D defaultFace;
+        [Tooltip("Story packs: face name per clip, same order as clips (faces.json); drives the 3D face if present")]
+        public string[] faceNames;
+        public string defaultFaceName;
+        [Tooltip("Optional live 3D face (eyes, lids, brows); null = decal face only, as before")]
+        public DGFace3D face3d;
 
         public void SetFace(int clip)
         {
             var decal = faces != null && clip >= 0 && clip < faces.Length && faces[clip] ? faces[clip] : defaultFace;
             if (material && decal) material.SetTexture("_DecalMap", decal);
+            if (face3d)
+            {
+                var n = faceNames != null && clip >= 0 && clip < faceNames.Length && !string.IsNullOrEmpty(faceNames[clip]) ? faceNames[clip] : defaultFaceName;
+                face3d.SetExpression(n);
+            }
         }
 
         Dictionary<string, Transform> bones;
