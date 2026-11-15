@@ -19,14 +19,16 @@ namespace DoodLive.DavidGoliath
         public float[] to;                                   // XZ target in art-width units (design axes); empty = stay put
         public bool HasTarget => to != null && to.Length >= 2;
         public float y = float.NaN;                          // story packs: base height for this mark (the king on the dais)
+        public bool snap;                                    // place at `to` at once instead of walking (off-page moves)
     }
 
     [Serializable]
     public class DGLine { public string id, who, zh, en, @ref, voice, dir; public float t, maxSec; }
 
-    /// <summary>Story packs: show / hide a node ("king/ring", "palace/table") at t (docs/esther/CONTRACT.md §5).</summary>
+    /// <summary>Story packs: show / hide a node ("king/ring", "palace/table") at t (docs/esther/CONTRACT.md §5).
+    /// grow &gt; 0: pop in (scale ~0 → 1, ease-out-back) on show, shrink away on hide, over grow seconds; 0 = instant.</summary>
     [Serializable]
-    public class DGProp { public float t; public string node; public bool show; }
+    public class DGProp { public float t; public string node; public bool show; public float grow; }
 
     [Serializable]
     public class DGFxCue { public float t, dur; public string id, at, to; }   // to: optional far end (sceptre_beam)

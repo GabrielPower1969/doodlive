@@ -65,6 +65,12 @@ namespace DoodLive.Story
         readonly Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
         readonly Dictionary<string, DGActor> byId = new Dictionary<string, DGActor>();
         readonly Dictionary<string, float> baseY = new Dictionary<string, float>();
+        readonly Dictionary<string, Vector2> yLerp = new Dictionary<string, Vector2>();   // actor walking to a new height: (from, to) over the move
+        readonly Dictionary<string, bool> shown = new Dictionary<string, bool>();          // false = every renderer of the actor is off (prop "<actor>" hidden)
+        readonly Dictionary<string, float> camW = new Dictionary<string, float>();          // weight of each actor in a group camera target (eased 0..1)
+        class PropTween { public Transform n; public float t0, dur; public bool show; }
+        readonly List<PropTween> tweens = new List<PropTween>();                            // props growing in / shrinking away (DGProp.grow)
+        readonly Dictionary<Transform, Vector3> propScale = new Dictionary<Transform, Vector3>();   // a tweened node's own scale
         Dictionary<string, Transform> setNodes;
         float now, lineEnd, setT;
         int iAct, iLine, iFx, iSfx, iMusic, iProp;
@@ -122,7 +128,9 @@ namespace DoodLive.Story
             StopAudio(); DGFx.StopAll();
             DGFx.Stage = transform; DGFx.ShakeTarget = shake; if (fxEnabled) DGFx.Prewarm();
             now = 0; lineEnd = 0; iAct = iLine = iFx = iSfx = iMusic = iProp = 0; Line = null; Shot = null; setT = 0;
-            Paused = false; Hold = false; frozen = false; camFixedFor = -1; baseY.Clear();
+            Paused = false; Hold = false; frozen = false; camFixedFor = -1; baseY.Clear(); yLerp.Clear(); shown.Clear(); camW.Clear();
+            foreach (var kv in propScale) if (kv.Key) kv.Key.localScale = kv.Value;   // undo last run's grow / shrink
+            tweens.Clear(); propScale.Clear();
             for (int i = 0; i < actors.Length; i++)
                 if (actors[i]) ResetActor(actors[i], sheetX != null && i < sheetX.Length ? sheetX[i] : 0);
             Running = true;
@@ -133,6 +141,7 @@ namespace DoodLive.Story
         void ResetActor(DGActor a, float x)
         {
             a.Init();
+            if (a.face3d) a.face3d.ResetState();
             foreach (var r in a.GetComponentsInChildren<Renderer>(true)) r.enabled = true;   // undo last run's props (an actor led away)
             a.pos = new Vector2(x, 0); a.yaw = 0; a.face = "viewer"; a.cur = a.prev = -1; a.moving = false; a.curRate = 1;
             int idle = a.Clip("idle"); if (idle < 0) idle = a.Clip("sit_idle");
@@ -213,7 +222,10 @@ namespace DoodLive.Story
             if (Line != null && now > lineEnd) Line = null;
             foreach (var a in actors) { if (!a) continue; Move(a, dt); Place(a); a.Evaluate(now); }
             LipSync(dt);
+            Faces(dt);
             SetClips(dt);
+            Tweens();
+            CamWeights(dt);
             Mix(dt);
             if (Cinematic) DriveCamera(Cinematic);
         }
@@ -255,7 +267,51 @@ namespace DoodLive.Story
         {
             var n = Node(p.node);
             if (!n) { Debug.LogWarning($"Story {storyId} prop: no node '{p.node}'"); return; }
-            foreach (var r in n.GetComponentsInChildren<Renderer>(true)) r.enabled = p.show;
+            for (int i = tweens.Count - 1; i >= 0; i--)   // a newer cue on the same node ends the running grow / shrink
+                if (tweens[i].n == n) { n.localScale = propScale[n]; tweens.RemoveAt(i); }
+            if (p.grow > 0 && !(p.show && AllOn(n)))      // grow: pop in from ~0 / shrink away, then hide (already shown: no pop)
+            {
+                if (!propScale.ContainsKey(n)) propScale[n] = n.localScale;
+                if (p.show) { SetRenderers(n, true); n.localScale = propScale[n] * 0.001f; }
+                tweens.Add(new PropTween { n = n, t0 = p.t, dur = p.grow, show = p.show });
+                return;
+            }
+            SetRenderers(n, p.show);
+        }
+
+        void SetRenderers(Transform n, bool on)
+        {
+            foreach (var r in n.GetComponentsInChildren<Renderer>(true)) r.enabled = on;
+            foreach (var a in actors)
+                if (a && (n == a.transform || n.IsChildOf(a.transform)))
+                {   // an actor whose every renderer is off is hidden: group camera targets skip it
+                    bool any = false; foreach (var r in a.GetComponentsInChildren<Renderer>(true)) any |= r.enabled;
+                    shown[a.id] = any;
+                }
+        }
+
+        static bool AllOn(Transform n)
+        {
+            foreach (var r in n.GetComponentsInChildren<Renderer>(true)) if (!r.enabled) return false;
+            return true;
+        }
+
+        // ease-out-back: 0 → 1 with a small overshoot (a pop)
+        static float OutBack(float x) { const float c1 = 1.70158f, c3 = c1 + 1; x -= 1; return 1 + c3 * x * x * x + c1 * x * x; }
+
+        void Tweens()
+        {
+            for (int i = tweens.Count - 1; i >= 0; i--)
+            {
+                var w = tweens[i];
+                if (!w.n) { tweens.RemoveAt(i); continue; }
+                float s = Mathf.Clamp01((now - w.t0) / Mathf.Max(0.01f, w.dur));
+                var s0 = propScale[w.n];
+                if (s < 1) { w.n.localScale = s0 * Mathf.Max(0.001f, OutBack(w.show ? s : 1 - s)); continue; }
+                w.n.localScale = s0;
+                if (!w.show) SetRenderers(w.n, false);
+                tweens.RemoveAt(i);
+            }
         }
 
         // ---------------- acting ----------------
@@ -264,6 +320,7 @@ namespace DoodLive.Story
             var A = Actor(a.who); if (!A) { Debug.LogWarning($"Story {storyId} acting: unknown actor '{a.who}'"); return; }
             int i = A.Clip(a.clip);
             if (i < 0) { Debug.LogWarning($"Story {storyId} acting: {a.who} has no clip '{a.clip}'"); return; }
+            if (yLerp.ContainsKey(A.id)) { if (A.moving) baseY[A.id] = BaseY(A); yLerp.Remove(A.id); }   // a climb cut short stays at its height
             bool keepLoop = i == A.cur && A.loops != null && A.loops[i];
             if (!keepLoop)
             {
@@ -273,6 +330,7 @@ namespace DoodLive.Story
             A.curRate = 1;
             if (!string.IsNullOrEmpty(a.face)) A.face = a.face;
             A.SetFace(i);
+            baseY.TryGetValue(A.id, out float yWas);
             if (!float.IsNaN(a.y)) baseY[A.id] = a.y;
             A.moving = false;
             if (a.HasTarget)
@@ -288,7 +346,8 @@ namespace DoodLive.Story
                 if (vNat > 0 && natural > avail) A.curRate = Mathf.Clamp(natural / avail, 1f, 1.6f);
                 A.moveT1 = a.t + Mathf.Max(0.05f, natural / A.curRate);
                 A.moving = dist > 1e-4f;
-                if (a.t <= 0.01f) { A.pos = A.moveTo; A.moving = false; Place(A); }   // a mark at t = 0 is the starting place, not a walk
+                if (a.t <= 0.01f || a.snap) { A.pos = A.moveTo; A.moving = false; Place(A); }   // a mark at t = 0 is the starting place, not a walk
+                if (A.moving && !float.IsNaN(a.y) && Mathf.Abs(a.y - yWas) > 1e-4f) yLerp[A.id] = new Vector2(yWas, a.y);   // walk up / down to the new height
             }
         }
 
@@ -324,9 +383,22 @@ namespace DoodLive.Story
         }
 
         static Vector3 Local(Vector2 p, float y = 0) => new Vector3(-p.x, y, p.y);
-        void Place(DGActor A)
+
+        // base height now: the mark's y, or, while walking to a mark at a new height, eased like the walk itself
+        float BaseY(DGActor A)
         {
             baseY.TryGetValue(A.id, out float y);
+            if (A.moving && yLerp.TryGetValue(A.id, out var yl))
+            {
+                float s = Mathf.Clamp01((now - A.moveT0) / Mathf.Max(1e-4f, A.moveT1 - A.moveT0));
+                y = Mathf.Lerp(yl.x, yl.y, A.Speed(A.cur) > 0 ? s : s * s * (3 - 2 * s));
+            }
+            return y;
+        }
+
+        void Place(DGActor A)
+        {
+            float y = BaseY(A);
             A.transform.localPosition = Local(A.pos, y);
             A.transform.localRotation = Quaternion.Euler(0, -A.yaw, 0);
         }
@@ -389,6 +461,38 @@ namespace DoodLive.Story
             jaw.localRotation *= Quaternion.Euler(14f * lipLevel, 0, 0);                  // on top of the clip's pose
         }
 
+        // ---------------- live 3D faces (DGFace3D, actors that have one): gaze, blinks, expression blends ----------------
+        void Faces(float dt)
+        {
+            string speaker = Line != null && voice && voice.isPlaying ? Line.who : null;
+            foreach (var a in actors)
+            {
+                if (!a || !a.face3d) continue;
+                a.face3d.speak = a.id == speaker ? lipLevel : 0f;
+                a.face3d.Tick(dt, LookPoint(a));
+            }
+        }
+
+        // where an actor's eyes go: the actor it faces (that actor's eyes), the camera for "viewer", or a set node
+        Vector3? LookPoint(DGActor A)
+        {
+            var o = Actor(A.face);
+            if (o && o != A)
+            {
+                if (o.face3d && o.face3d.EyeCenter.HasValue) return o.face3d.EyeCenter;
+                var h = o.Bone("head");
+                return h ? h.position + transform.TransformVector(Vector3.up * 0.013f)
+                         : o.transform.position + transform.TransformVector(Vector3.up * o.height * 0.9f);
+            }
+            if (string.IsNullOrEmpty(A.face) || A.face == "viewer")
+            {
+                var cam = Cinematic ? Cinematic : Camera.main;
+                return cam ? cam.transform.position : (Vector3?)null;
+            }
+            var n = Node(A.face);
+            return n ? n.position : (Vector3?)null;
+        }
+
         // ---------------- fx / sfx / music ----------------
         void Fx(DGFxCue f)
         {
@@ -406,7 +510,7 @@ namespace DoodLive.Story
             var c = Clip("sfx/" + s.id); if (!c) return;
             mix.TryGetValue(s.id, out var m);
             float gain = m != null ? Mathf.Pow(10, m.gainDb / 20f) : 0.7f;
-            if (m != null && m.loop) { sfxLoopFade = -1; sfxLoop.clip = c; sfxLoop.volume = gain; sfxLoop.Play(); loopId = s.id; }
+            if (m != null && m.loop) { sfxLoopFade = -1; sfxLoopGain = gain; sfxLoop.clip = c; sfxLoop.volume = gain * SfxDuck(); sfxLoop.Play(); loopId = s.id; }
             else sfx.PlayOneShot(c, gain);
         }
 
@@ -424,11 +528,16 @@ namespace DoodLive.Story
 
         string musicCueId;
         float MusicVol() => 0.8f * MusicGain * voiceDuck;
+        // sfx (one-shots and the ambience loop) dip less than music under a voice: 1 -> 0.6 while music goes 1 -> 0.4
+        float sfxLoopGain = 1f;
+        float SfxDuck() => Mathf.Lerp(0.6f, 1f, Mathf.InverseLerp(0.4f, 1f, voiceDuck));
 
         void Mix(float dt)
         {
             if (dt <= 0) return;
-            voiceDuck = Mathf.MoveTowards(voiceDuck, voice.isPlaying ? 0.5f : 1f, dt * 2.5f);
+            voiceDuck = Mathf.MoveTowards(voiceDuck, voice.isPlaying ? 0.4f : 1f, dt * (voice.isPlaying ? 4f : 2.5f));
+            sfx.volume = SfxDuck();
+            if (sfxLoopFade < 0 && sfxLoop.isPlaying) sfxLoop.volume = sfxLoopGain * SfxDuck();
             if (musicCur && musicCur.isPlaying)
             {
                 musicCur.volume = MusicVol();
@@ -468,14 +577,41 @@ namespace DoodLive.Story
         Vector3 Target(string id)
         {
             var A = Actor(id);
-            if (A) { baseY.TryGetValue(A.id, out float y); return transform.TransformPoint(Local(A.pos, y + A.height * 0.55f)); }
+            if (A) return transform.TransformPoint(Local(A.pos, BaseY(A) + A.height * 0.55f));
             if (id == "all" || id == "both" || string.IsNullOrEmpty(id))
-            {
-                Vector2 sum = Vector2.zero; int n = 0; foreach (var a in actors) if (a) { sum += a.pos; n++; }
-                return transform.TransformPoint(Local(n > 0 ? sum / n : Vector2.zero, 0.2f));
+            {   // centre of the actors on stage: hidden ones and ones parked off the page do not count (eased in / out)
+                Vector2 sum = Vector2.zero, sumW = Vector2.zero; int n = 0; float wt = 0;
+                foreach (var a in actors)
+                {
+                    if (!a) continue;
+                    sum += a.pos; n++;
+                    float w = camW.TryGetValue(a.id, out var cw) ? cw : 1; sumW += a.pos * w; wt += w;
+                }
+                var c = wt > 1e-3f ? sumW / wt : (n > 0 ? sum / n : Vector2.zero);   // nobody on stage: the old plain centre
+                return transform.TransformPoint(Local(c, 0.2f));
             }
             var node = Node(id);
             return node ? node.position + transform.up * 0.08f * transform.lossyScale.y : transform.position;
+        }
+
+        // An actor counts for a group camera target while it is shown and not parked off the page. Parked = standing
+        // (not walking) beyond the A4 page with a margin (BuildDemoPage: x ±0.62, z −1.51..0.244), so actors at the page
+        // edge still count and one walking off counts until it stops. The weight eases over 0.5 s so the camera glides.
+        bool OnStage(DGActor a)
+        {
+            if (shown.TryGetValue(a.id, out var on) && !on) return false;
+            if (a.moving) return true;
+            return Mathf.Abs(a.pos.x) <= 0.7f && a.pos.y <= 0.45f && a.pos.y >= -1.6f;
+        }
+
+        void CamWeights(float dt)
+        {
+            foreach (var a in actors)
+            {
+                if (!a) continue;
+                float want = OnStage(a) ? 1 : 0;
+                camW[a.id] = camW.TryGetValue(a.id, out var w) && now > 0 ? Mathf.MoveTowards(w, want, dt / 0.5f) : want;
+            }
         }
 
         void DriveCamera(Camera cam)

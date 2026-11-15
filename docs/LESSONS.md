@@ -392,3 +392,12 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - Prevention: a build counts as "using the phone". When several sessions share one machine, nobody runs
   `build-apk.sh`, `install-apk.sh`, `record-demo.sh` or any adb command while another session is recording; announce
   each of them first and wait for "phone free".
+
+### L53 · Blender 5 shape keys start at value 1.0: every expression on at once in the GLB · 2026-11-15 · confirmed (renders, GLB)
+- Symptom: Joseph's 3D-eye build (`pipeline/js_characters.py` eyes3d) rendered with both eyes shut in a plain
+  workbench check; the glTF mesh `weights` would have been all 1 (Unity applies them as the initial blend shape weights).
+- Cause: in Blender 5.2 `Object.shape_key_add()` creates the key with `value = 1.0` (older versions: 0.0); the glTF
+  exporter writes the current values as the mesh's default morph weights.
+- Fix: set `kb.value = 0.0` right after `shape_key_add` (body and lines meshes).
+- Prevention: after any build with shape keys, read the GLB: every mesh `weights` entry must be 0 and
+  `extras.targetNames` must list the shape names (the runtime binds blend shapes by name).

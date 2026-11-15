@@ -161,12 +161,55 @@ def timbre_dist(wav, ref):
     return float(np.linalg.norm(np.array(mfcc_mean(wav)) - np.array(ref)))
 
 
+def name_contour(wav, ch, lang="zh", at_start=False):
+    """Pitch contour of the first syllable `ch` (whisper word timestamps): slopeSt = last third minus first third of its
+    voiced frames, semitones (yue1 is level, yue4 falls: strongly negative); relToMedianSt = its median against the clip's."""
+    import numpy as np, parselmouth
+    _, words = V.transcribe(wav, lang)
+    w = words[0] if (at_start and words) else next((x for x in words if ch in x[0]), None)
+    if not w:
+        return None
+    a, b = w[1], w[1] + (w[2] - w[1]) / max(1, len(w[0].strip()))     # first character of the word
+    snd = parselmouth.Sound(wav)
+    p = snd.to_pitch_ac(time_step=0.01, pitch_floor=60, pitch_ceiling=450, voicing_threshold=0.5)
+    f, t = p.selected_array["frequency"], p.xs()
+    sel = (t >= a) & (t <= b) & (f > 0)
+    if sel.sum() < 6:
+        return None
+    seg = f[sel]
+    third = max(2, len(seg) // 3)
+    allf = f[f > 0]
+    return {"slopeSt": float(12 * np.log2(np.median(seg[-third:]) / np.median(seg[:third]))),
+            "relToMedianSt": float(12 * np.log2(np.median(seg) / np.median(allf))), "hz": round(float(np.median(seg)), 1),
+            "t": [round(float(a), 2), round(float(b), 2)]}
+
+
 _X = V._extras()
 if _X is not None:
     _orig_adjust = _X.score_adjust
 
     def score_adjust(role, ov, m, wav=None):
         pen = _orig_adjust(role, ov, m, wav)
+        w = ov.get("f0Weight", role.get("f0Weight"))
+        if w is not None:                       # a harder pitch pin (Joseph, 2026-11-15): `f0Weight` points per 100 % outside
+            lo, hi = (ov.get("f0Hz") or role.get("f0Hz") or (0, 1e9))
+            f = m.get("f0MedianHz", 0) or 0
+            if f:
+                pen -= (float(w) - 30.0) * max(0.0, lo / f - 1, f / hi - 1)
+        hm = ov.get("hnrMin", role.get("hnrMin"))
+        if hm is not None and wav:               # a warm, clear voice (God, 2026-11-15): 3 points per dB under `hnrMin`
+            h = _X.hnr_db(wav)
+            m["hnrDb"] = round(h, 1)
+            pen -= 3.0 * max(0.0, float(hm) - h)
+        nc = ov.get("nameContour")               # {"char": "约", "tone": "high"}: first syllable must be level-high (yuē), not falling (yuè)
+        if nc and wav:
+            c = name_contour(wav, nc["char"], ov.get("_lang", "zh"), bool(nc.get("atStart")))
+            if c:
+                m["nameContour"] = c
+                print(f"   name contour {nc['char']}: slope {c['slopeSt']:+.1f} st, level-ratio {c['relToMedianSt']:+.1f} st")
+                pen -= 6.0 * max(0.0, -c["slopeSt"] - 1.0) + 2.0 * max(0.0, -c["relToMedianSt"] - 1.0)
+            else:
+                pen -= 4.0
         ref = ov.get("mfccRef", role.get("mfccRef"))
         if ref and wav:
             d = timbre_dist(wav, ref)

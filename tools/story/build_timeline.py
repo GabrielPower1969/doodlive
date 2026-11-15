@@ -36,8 +36,12 @@ def line(id, who, zh, en, ref, dir="", pre=0.25, post=0.35):
     return _ev("line", id=id, who=who, zh=zh, en=en, ref=ref, dir=dir, pre=pre, post=post)
 
 
-def act(who, clip, to=None, y=None, face=None, blend=0.25, dt=0.0):
+def act(who, clip, to=None, y=None, face=None, blend=0.25, dt=0.0, snap=False):
+    """snap=True: the actor is placed at `to` at once instead of walking there (an actor leaving or entering the page).
+    y: base height at the mark. When the actor walks (`to` given, no snap) and y differs from its current height, the
+    height eases over the walk (up a plank, onto a dais); with snap, without `to`, or at t = 0 the height changes at once."""
     e = _ev("act", who=who, clip=clip, blend=blend, dt=dt)
+    if snap: e["snap"] = True
     if to is not None: e["to"] = [float(to[0]), float(to[1])]
     if y is not None: e["y"] = float(y)
     if face is not None: e["face"] = face
@@ -50,7 +54,13 @@ def fx(id, at, dur=1.0, dt=0.0, to=None):
     return e
 def sfx(id, dt=0.0): return _ev("sfx", id=id, dt=dt)
 def music(cue, dt=0.0): return _ev("music", cue=cue, dt=dt)
-def prop(node, show, dt=0.0): return _ev("prop", node=node, show=bool(show), dt=dt)
+def prop(node, show, dt=0.0, grow=None):
+    """Show / hide a node ("<actor>", "<actor>/<node>", "<set node>") at once. grow=<seconds>: on show the node pops in
+    (scale ~0 -> 1, ease-out-back); on hide it shrinks away, then hides. A whole actor hidden with prop("<actor>", False)
+    no longer counts for the "all" camera target (nor does an actor standing beyond the page edge)."""
+    e = _ev("prop", node=node, show=bool(show), dt=dt)
+    if grow: e["grow"] = float(grow)
+    return e
 def pause(sec): return _ev("pause", sec=float(sec))
 
 
@@ -148,7 +158,7 @@ def warn_short_walks(sid, tl):
         p0 = pos.get(a["who"], tuple(a["to"])); p1 = tuple(a["to"]); pos[a["who"]] = p1
         v = speed.get(f"{a['who']}_{a['clip']}", 0)
         d = math.dist(p0, p1)
-        if a["t"] <= 0.01 or d < 1e-4 or not v:
+        if a["t"] <= 0.01 or a.get("snap") or d < 1e-4 or not v:   # snap: placed at once, no walk
             continue
         nxt = next((b["t"] for b in rows[i + 1:] if b["who"] == a["who"]), tl["duration"])
         need = d / v / 1.6
