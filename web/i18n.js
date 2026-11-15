@@ -124,6 +124,11 @@ export const STR = {
     dg_friends: "朋友们",
     dg_servants: "仆人",
     dg_gabriel: "加百列",
+    dg_jonah: "约拿",
+    dg_captain: "船长",
+    dg_jonah_people: "尼尼微人",
+    dg_joseph: "约瑟",
+    dg_jacob: "雅各",
   },
   en: {
     appTitle: "DoodLive · Colour-in Angel AR",
@@ -248,6 +253,11 @@ export const STR = {
     dg_friends: "Friends",
     dg_servants: "Servants",
     dg_gabriel: "Gabriel",
+    dg_jonah: "Jonah",
+    dg_captain: "Captain",
+    dg_jonah_people: "People of Nineveh",
+    dg_joseph: "Joseph",
+    dg_jacob: "Jacob",
   },
 };
 const saved = (() => { try { return localStorage.getItem('lang'); } catch { return null; } })();

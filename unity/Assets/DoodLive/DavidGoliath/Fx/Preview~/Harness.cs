@@ -45,6 +45,8 @@ static class Harness {
     if (args.Length > 1 && args[1] == "exodus") { ExodusPreview.Run(outDir, mn, sz); return; }   // Exodus rows: ExodusPreview.cs
     if (args.Length > 1 && args[1] == "prodigal") { ProdigalPreview.Run(outDir, mn, sz); return; }   // Prodigal rows: ProdigalPreview.cs
     if (args.Length > 1 && args[1] == "gabriel") { GabrielPreview.Run(outDir, mn, sz); return; }   // Gabriel rows: GabrielPreview.cs
+    if (args.Length > 1 && args[1] == "jonah") { JonahPreview.Run(outDir, mn, sz); return; }   // Jonah rows: JonahPreview.cs
+    if (args.Length > 1 && args[1] == "joseph") { JosephPreview.Run(outDir, mn, sz); return; }   // Joseph rows: JosephPreview.cs
     var sb = new StringBuilder(); sb.Append("{");
     bool firstFx = true;
     esther = args.Length > 1 && args[1] == "esther";

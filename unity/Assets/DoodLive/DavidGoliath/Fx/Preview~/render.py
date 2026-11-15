@@ -130,16 +130,20 @@ def render_ruth(fx, fr):
     proj = camera(fx["cam"])
     img = np.zeros((H,W,3), np.float32); img[:] = lin(np.array([0.93,0.93,0.93]))   # the room around the page
     zb = np.full((H,W), 1e9)
-    scene = babylon_scene(fx["actors"], fx["cam"], fx.get("shut", False)) if fx.get("scene")=="daniel" else ruth_scene(fx["actors"], fx["cam"])
+    scene = babylon_scene(fx["actors"], fx["cam"], fx.get("shut", False)) if fx.get("scene")=="daniel" else ruth_scene([] if fx.get("scene") in ("coast","belly","twolands") else fx["actors"], fx["cam"])
     if fx.get("scene")=="exodus": scene = egypt_scene(fx["actors"], fx["cam"], fr.get("wall", 0), fr.get("lane", True))   # Exodus rows
     if fx.get("scene")=="prodigal": scene = homeland_scene(fx["actors"], fx["cam"])   # Prodigal rows
     if fx.get("scene")=="gabriel": scene = heaven_scene(fx["actors"], fx["cam"], fr.get("lift", 0), fx.get("wings", 1))   # Gabriel rows
+    if fx.get("scene") in ("coast","belly"): scene = coast_scene(fx["actors"], fx["cam"], fx["scene"]=="belly")   # Jonah rows
+    if fx.get("scene")=="twolands": scene = twolands_scene(fx["actors"], fx["cam"], fx["panel"])   # Joseph rows
     for (*corners, col) in scene:
         C = np.array(corners, np.float64); Pq = proj(C); cl = lin(col).astype(np.float32)
         for tri in ((0,1,2),(0,2,3)):
             raster(img, zb, None, Pq[list(tri)], lambda ww, cl=cl: np.broadcast_to(cl, ww.shape[:2]+(3,)), write_z=True)
     tint = np.array(fr.get("tint",[1,1,1]))
     img *= lin(tint).astype(np.float32)          # StoryTintStage multiply overlay (applies to set, actors, room)
+    if fr.get("dim",0)>0: img = img*(1-fr["dim"])+lin(np.array([0.07,0.10,0.28]))*fr["dim"]        # StoryFxStage dim overlay (Jonah / Joseph rows)
+    if fr.get("flash",0)>0: img = img*(1-fr["flash"])+lin(np.array([0.90,0.95,1.0]))*fr["flash"]   # cold flash overlay
     v = np.array(fr["v"], np.float32).reshape(-1,9)
     if len(v):
         P = proj(v[:,:3].astype(np.float64))
@@ -299,11 +303,53 @@ def heaven_scene(actors, cam, lift, wings):
         slab(0.47,0.53,0.19,hexc('#E6B23E'),-0.001)                                                               # pauldrons
         slab(0.53,0.62,0.075,hexc('#F2C9A0'),-0.002); slab(0.585,0.625,0.085,hexc('#9A6533'),-0.003)               # head + hair
     return Q
+# ---- Jonah rows (run.sh jonah): stand-in coast (docs/jonah/CONTRACT.md §6); "belly" adds a rib dome at (-0.20, 0.08). Actors: x, z, h, colour, foot y
+def coast_scene(actors, cam, belly):
+    Q=[]
+    Q.append(([-0.6,0,-0.5875],[0.6,0,-0.5875],[0.6,0,0.21],[-0.6,0,0.21],hexc('#E8D3A0')))                      # sand floor
+    Q.append(([-0.6,0.012,-0.5875],[0.06,0.012,-0.5875],[0.06,0.012,0.21],[-0.6,0.012,0.21],hexc('#7DB4C8')))    # sea
+    Q+=box((-0.34,0.012,-0.22),0.38,0.07,0.14,hexc('#A8693A'),hexc('#C98F5A'))                                   # ship hull (deck y 0.10 incl. rim)
+    Q+=box((-0.34,0.08,-0.22),0.02,0.38,0.02,hexc('#8A5A30'))                                                    # mast
+    Q+=box((0.14,0,-0.40),0.10,0.03,0.06,hexc('#C98F5A'))                                                        # rowing boat
+    Q+=box((0.35,0,-0.43),0.50,0.30,0.06,hexc('#EADFC4'),hexc('#D9C9A4'))                                        # nineveh wall
+    Q+=box((0.34,0,-0.43),0.10,0.20,0.07,hexc('#5A4A38'))                                                        # gate opening
+    Q+=box((0.44,0,0.06),0.24,0.04,0.24,hexc('#9BBF6A'))                                                         # hill
+    Q+=box((0.34,0.04,0.06),0.03,0.20,0.03,hexc('#6F9A4A'))                                                      # plant stem
+    if belly:
+        for (x,z,w,d) in ((-0.20,-0.10,0.30,0.05),(-0.33,0.0,0.05,0.22),(-0.07,0.0,0.05,0.22)): Q+=box((x,0.0,z),w,0.30,d,hexc('#D9A08C'),hexc('#E8B8A0'))
+        Q+=box((-0.20,0.30,-0.02),0.34,0.04,0.30,hexc('#C98B7A'))
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    for (x,z,h,c,y) in actors:
+        base=np.array([x,y,z]); col=hexc(c); w=h*0.22
+        for (y0,y1,ww,cc) in ((0,h*0.82,w,col),(h*0.80,h,w*0.62,hexc('#F2C9A0'))):
+            a=base+[0,y0,0]-r*ww/2; b=base+[0,y0,0]+r*ww/2
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+    return Q
+# ---- Joseph rows (run.sh joseph): stand-in twolands (docs/joseph/CONTRACT.md §6) with a flat dream panel facing +Z, tilted 15 degrees to the camera
+def twolands_scene(actors, cam, panel):
+    Q=[]
+    Q.append(([-0.6,0,-0.5875],[-0.05,0,-0.5875],[-0.05,0,0.21],[-0.6,0,0.21],hexc('#B9C77A')))                  # pasture
+    Q.append(([-0.05,0,-0.5875],[0.6,0,-0.5875],[0.6,0,0.21],[-0.05,0,0.21],hexc('#EAD7A8')))                    # sand
+    Q+=box((-0.10,0,-0.56),1.4,0.22,0.02,hexc('#C7B88A'),hexc('#D9CBA0'))                                         # horizon relief
+    Q+=box((-0.44,0,-0.42),0.26,0.20,0.18,hexc('#CFA97A'),hexc('#D8B98C'))                                        # tent
+    Q+=box((0.38,0,-0.46),0.34,0.26,0.20,hexc('#F1E6CC'),hexc('#E8D8B0'))                                         # palace
+    Q+=box((0.50,0,-0.04),0.10,0.16,0.10,hexc('#C98F5A'))                                                         # granary
+    px,py,pz,pw,ph=panel; tilt=np.radians(15)
+    p=np.array(cam[:3]); look=np.array(cam[3:]); f=look-p; f/=np.linalg.norm(f); r=np.cross([0,1,0],f); r/=np.linalg.norm(r)
+    c=np.array([px,py,pz]); up=np.array([0,np.cos(tilt),np.sin(tilt)])
+    Q.append((list(c-[pw/2,0,0]-up*ph/2),list(c+[pw/2,0,0]-up*ph/2),list(c+[pw/2,0,0]+up*ph/2),list(c-[pw/2,0,0]+up*ph/2),hexc('#FAF3E4')))   # the panel
+    Q.append((list(c-[pw/2.6,0,0]-up*ph/3),list(c+[pw/2.6,0,0]-up*ph/3),list(c+[pw/2.6,0,0.001]+up*ph/3),list(c-[pw/2.6,0,0.001]+up*ph/3),hexc('#E3C98E')))   # a picture on it
+    for (x,z,h,cl) in actors:
+        base=np.array([x,0,z]); col=hexc(cl); w=h*0.22
+        for (y0,y1,ww,cc) in ((0,h*0.82,w,col),(h*0.80,h,w*0.62,hexc('#F2C9A0'))):
+            a=base+[0,y0,0]-r*ww/2; b=base+[0,y0,0]+r*ww/2
+            Q.append((list(a),list(b),list(b+[0,y1-y0,0]),list(a+[0,y1-y0,0]),cc))
+    return Q
 names = list(d.keys())
 sheet = Image.new("RGB",(150+5*W, len(names)*H),(255,255,255)); dr = ImageDraw.Draw(sheet)
 for r,name in enumerate(names):
     fx = d[name]; dr.text((6, r*H+H//2-10), name, fill=(0,0,0)); dr.text((6, r*H+H//2+6), f"{fx['dur']} s", fill=(90,90,90))
     for c,fr in enumerate(fx["frames"]):
-        im = (render_ruth if fx.get("scene") in ("ruth","daniel","exodus","prodigal","gabriel") else render)(fx, fr); ImageDraw.Draw(im).text((4,4), f"t={fr['t']:.2f}", fill=(60,60,60))
+        im = (render_ruth if fx.get("scene") in ("ruth","daniel","exodus","prodigal","gabriel","coast","belly","twolands") else render)(fx, fr); ImageDraw.Draw(im).text((4,4), f"t={fr['t']:.2f}", fill=(60,60,60))
         sheet.paste(im,(150+c*W, r*H))
 sheet.save(f"{out}/fx_contact.png"); print("ok", sheet.size)

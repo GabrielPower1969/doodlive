@@ -1,13 +1,15 @@
 #!/bin/sh
 # Off-Unity preview of the D&G effects: runs the real DGFxPaint/DGFxCore/DGFxEffects code under .NET 8
 # (referencing Unity's UnityEngine.CoreModule.dll for Vector3/Color), dumps the exact triangles, renders PNGs.
-# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther|ruth|daniel|exodus|prodigal|gabriel]   (needs dotnet 8, python3 + numpy + Pillow)
+# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther|ruth|daniel|exodus|prodigal|gabriel|jonah|joseph]   (needs dotnet 8, python3 + numpy + Pillow)
 #   no argument: David & Goliath ids -> fx_contact.png;  "esther": Esther ids -> fx_contact_esther.png;
 #   "ruth": Ruth ids over a stand-in Bethlehem set (tints applied) -> fx_contact_ruth.png
 #   "daniel": Daniel ids (+ reused night / lamp / aliases) over a stand-in Babylon set -> fx_contact_daniel.png
 #   "exodus": Exodus ids over a stand-in Egypt (sea walls at the simulated height) -> fx_contact_exodus.png
 #   "prodigal": Prodigal ids (+ reused night / sunset / heart / rays) over a stand-in homeland -> fx_contact_prodigal.png
 #   "gabriel": Gabriel ids (+ reused sparkle / heart_glow / golden_rays) over a stand-in heaven -> fx_contact_gabriel.png
+#   "jonah": Jonah ids (+ alias plant_grow, reused ids) over a stand-in coast / belly -> fx_contact_jonah.png
+#   "joseph": Joseph dream_cloud over a stand-in twolands and dream panel -> fx_contact_joseph.png
 #   FXPREVIEW_WORK=<dir> overrides the build / output dir (default $TMPDIR/dgfx-preview).
 # Unity ignores this folder (name ends in ~); the build project is generated in a temp dir.
 set -e
@@ -43,11 +45,15 @@ cat > "$WORK/fxpreview.csproj" <<XML
     <Compile Include="$FX/StoryFxExodus.cs" />
     <Compile Include="$FX/StoryFxProdigal.cs" />
     <Compile Include="$FX/StoryFxGabriel.cs" />
+    <Compile Include="$FX/StoryFxJonah.cs" />
+    <Compile Include="$FX/StoryFxJoseph.cs" />
     <Compile Include="$HERE/RuthPreview.cs" />
     <Compile Include="$HERE/DanielPreview.cs" />
     <Compile Include="$HERE/ExodusPreview.cs" />
     <Compile Include="$HERE/ProdigalPreview.cs" />
     <Compile Include="$HERE/GabrielPreview.cs" />
+    <Compile Include="$HERE/JonahPreview.cs" />
+    <Compile Include="$HERE/JosephPreview.cs" />
     <Reference Include="UnityEngine.CoreModule"><HintPath>$CORE</HintPath></Reference>
   </ItemGroup>
 </Project>
@@ -55,7 +61,11 @@ XML
 dotnet build "$WORK/fxpreview.csproj" -nologo -v q -o "$WORK/bin"
 dotnet "$WORK/bin/fxpreview.dll" "$WORK/out" "$SET"
 python3 -I "$HERE/render.py" "$WORK/out"
-if [ "$SET" = gabriel ]; then
+if [ "$SET" = jonah ]; then
+  cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_jonah.png"; echo "wrote $HERE/fx_contact_jonah.png"
+elif [ "$SET" = joseph ]; then
+  cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_joseph.png"; echo "wrote $HERE/fx_contact_joseph.png"
+elif [ "$SET" = gabriel ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_gabriel.png"; echo "wrote $HERE/fx_contact_gabriel.png"
 elif [ "$SET" = prodigal ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_prodigal.png"; echo "wrote $HERE/fx_contact_prodigal.png"
