@@ -1,0 +1,875 @@
+{
+ "note": "set drawings at 2x of the page (1240 x 1754 @150 dpi): R = id, G = detail line mask; written by pipeline/jn_coast.py",
+ "size": [
+  2480,
+  3508
+ ],
+ "scale": 2,
+ "ids": [
+  {
+   "id": 1,
+   "char": "set",
+   "part": "ground",
+   "region": "seaFar",
+   "hex": "#2B6FB0",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 2,
+   "char": "set",
+   "part": "ground",
+   "region": "sea",
+   "hex": "#3B8FD0",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 3,
+   "char": "set",
+   "part": "ground",
+   "region": "sand",
+   "hex": "#EAD9B0",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 4,
+   "char": "set",
+   "part": "ground",
+   "region": "road",
+   "hex": "#E3CFA3",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 5,
+   "char": "set",
+   "part": "ground",
+   "region": "earth",
+   "hex": "#B9BE7E",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 6,
+   "char": "set",
+   "part": "ground",
+   "region": "hill",
+   "hex": "#D9B77A",
+   "nodes": [
+    "seaWater",
+    "beach",
+    "road",
+    "ground",
+    "hill"
+   ]
+  },
+  {
+   "id": 7,
+   "char": "set",
+   "part": "ship",
+   "region": "hull",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "ship",
+    "boat"
+   ]
+  },
+  {
+   "id": 8,
+   "char": "set",
+   "part": "ship",
+   "region": "deck",
+   "hex": "#C9A77A",
+   "nodes": [
+    "ship",
+    "boat",
+    "plank"
+   ]
+  },
+  {
+   "id": 9,
+   "char": "set",
+   "part": "ship",
+   "region": "wood",
+   "hex": "#A47548",
+   "nodes": [
+    "ship",
+    "beachProps",
+    "boat",
+    "cargo",
+    "nineveh",
+    "shelter",
+    "ship"
+   ]
+  },
+  {
+   "id": 10,
+   "char": "set",
+   "part": "ship",
+   "region": "stripe",
+   "hex": "#B8423A",
+   "nodes": [
+    "ship"
+   ]
+  },
+  {
+   "id": 11,
+   "char": "set",
+   "part": "ship",
+   "region": "sail",
+   "hex": "#F3E9D2",
+   "nodes": [
+    "ship"
+   ]
+  },
+  {
+   "id": 12,
+   "char": "set",
+   "part": "city",
+   "region": "brick",
+   "hex": "#D8B07A",
+   "nodes": [
+    "nineveh",
+    "gate"
+   ]
+  },
+  {
+   "id": 13,
+   "char": "set",
+   "part": "city",
+   "region": "stone",
+   "hex": "#9C8A72",
+   "nodes": [
+    "nineveh",
+    "gate",
+    "hillProps",
+    "plank"
+   ]
+  },
+  {
+   "id": 14,
+   "char": "set",
+   "part": "city",
+   "region": "house",
+   "hex": "#E6C895",
+   "nodes": [
+    "nineveh",
+    "gate"
+   ]
+  },
+  {
+   "id": 15,
+   "char": "set",
+   "part": "city",
+   "region": "roof",
+   "hex": "#C9A77A",
+   "nodes": [
+    "nineveh",
+    "gate",
+    "cargo"
+   ]
+  },
+  {
+   "id": 16,
+   "char": "set",
+   "part": "city",
+   "region": "door",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "nineveh",
+    "gate"
+   ]
+  },
+  {
+   "id": 17,
+   "char": "set",
+   "part": "city",
+   "region": "lapis",
+   "hex": "#2E5FA8",
+   "nodes": [
+    "nineveh",
+    "gate"
+   ]
+  },
+  {
+   "id": 18,
+   "char": "set",
+   "part": "city",
+   "region": "gold",
+   "hex": "#E8C15A",
+   "nodes": [
+    "nineveh",
+    "gate",
+    "folk1",
+    "folk2",
+    "folk3",
+    "folk4",
+    "folk5",
+    "folk6",
+    "folk7",
+    "folk8",
+    "folk9",
+    "gate"
+   ]
+  },
+  {
+   "id": 19,
+   "char": "set",
+   "part": "plantBig",
+   "region": "leaf",
+   "hex": "#5FA844",
+   "nodes": [
+    "plantBig",
+    "nineveh",
+    "plantBig"
+   ]
+  },
+  {
+   "id": 20,
+   "char": "set",
+   "part": "plantBig",
+   "region": "gourd",
+   "hex": "#B9C85A",
+   "nodes": [
+    "plantBig"
+   ]
+  },
+  {
+   "id": 21,
+   "char": "set",
+   "part": "belly",
+   "region": "ribs",
+   "hex": "#D9A9A6",
+   "nodes": [
+    "belly"
+   ]
+  },
+  {
+   "id": 22,
+   "char": "set",
+   "part": "belly",
+   "region": "bellyWall",
+   "hex": "#ECC6C0",
+   "nodes": [
+    "belly"
+   ]
+  },
+  {
+   "id": 23,
+   "char": "set",
+   "part": "belly",
+   "region": "bellyFloor",
+   "hex": "#17444A",
+   "nodes": [
+    "belly",
+    "folk1",
+    "folk2",
+    "folk3",
+    "folk4",
+    "folk5",
+    "folk6",
+    "folk7",
+    "folk8",
+    "folk9",
+    "worm"
+   ]
+  },
+  {
+   "id": 24,
+   "char": "set",
+   "part": "plantDry",
+   "region": "dry",
+   "hex": "#8A6A44",
+   "nodes": [
+    "plantDry",
+    "hillProps",
+    "plantDry"
+   ]
+  },
+  {
+   "id": 25,
+   "char": "set",
+   "part": "plantDry",
+   "region": "dryGourd",
+   "hex": "#B39060",
+   "nodes": [
+    "plantDry"
+   ]
+  },
+  {
+   "id": 26,
+   "char": "set",
+   "part": "plantSmall",
+   "region": "leaf",
+   "hex": "#5FA844",
+   "nodes": [
+    "plantSmall",
+    "plantSmall",
+    "worm"
+   ]
+  },
+  {
+   "id": 27,
+   "char": "set",
+   "part": "shelter",
+   "region": "cloth",
+   "hex": "#C98F8F",
+   "nodes": [
+    "shelter"
+   ]
+  },
+  {
+   "id": 28,
+   "char": "set",
+   "part": "shelter",
+   "region": "patch",
+   "hex": "#E3B9A0",
+   "nodes": [
+    "shelter",
+    "folk1",
+    "folk2",
+    "folk3",
+    "folk4",
+    "folk5",
+    "folk6",
+    "folk7",
+    "folk8",
+    "folk9"
+   ]
+  },
+  {
+   "id": 29,
+   "char": "set",
+   "part": "wave",
+   "region": "wave",
+   "hex": "#2E7CC4",
+   "nodes": [
+    "seaCrests"
+   ]
+  },
+  {
+   "id": 30,
+   "char": "set",
+   "part": "wave",
+   "region": "foam",
+   "hex": "#FFFFFF",
+   "nodes": [
+    "seaCrests",
+    "beachProps",
+    "seaFoam"
+   ]
+  },
+  {
+   "id": 31,
+   "char": "set",
+   "part": "sack",
+   "region": "sack",
+   "hex": "#EBDDBF",
+   "nodes": [
+    "cargo",
+    "folk1",
+    "folk2",
+    "folk3",
+    "folk4",
+    "folk5",
+    "folk6",
+    "folk7",
+    "folk8",
+    "folk9"
+   ]
+  }
+ ],
+ "constUV": [
+  {
+   "node": "seaFoam/foam",
+   "uv": [
+    0.5775,
+    0.24246
+   ],
+   "region": "foam"
+  },
+  {
+   "node": "ship/wood",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "cargo/jar",
+   "uv": [
+    0.7275,
+    0.94988
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "cargo/sackTie",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "plank/deck",
+   "uv": [
+    0.2585,
+    0.64344
+   ],
+   "region": "deck"
+  },
+  {
+   "node": "plank/stone",
+   "uv": [
+    0.7995,
+    0.75183
+   ],
+   "region": "stone"
+  },
+  {
+   "node": "beachProps/wood",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "beachProps/foam",
+   "uv": [
+    0.5775,
+    0.24246
+   ],
+   "region": "foam"
+  },
+  {
+   "node": "hillProps/stone",
+   "uv": [
+    0.7995,
+    0.75183
+   ],
+   "region": "stone"
+  },
+  {
+   "node": "hillProps/dry",
+   "uv": [
+    0.3585,
+    0.03382
+   ],
+   "region": "dry"
+  },
+  {
+   "node": "shelter/wood",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "gate/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "nineveh/palmTrunk",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "nineveh/palmLeaf",
+   "uv": [
+    0.1945,
+    0.38427
+   ],
+   "region": "leaf"
+  },
+  {
+   "node": "boat/boatHull",
+   "uv": [
+    0.4075,
+    0.56112
+   ],
+   "region": "hull"
+  },
+  {
+   "node": "boat/boatInside",
+   "uv": [
+    0.2585,
+    0.64344
+   ],
+   "region": "deck"
+  },
+  {
+   "node": "boat/wood",
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "plantSmall/leaf",
+   "uv": [
+    0.3885,
+    0.21638
+   ],
+   "region": "leaf"
+  },
+  {
+   "node": "plantBig/leaf",
+   "uv": [
+    0.1945,
+    0.38427
+   ],
+   "region": "leaf"
+  },
+  {
+   "node": "plantDry/dry",
+   "uv": [
+    0.3585,
+    0.03382
+   ],
+   "region": "dry"
+  },
+  {
+   "node": "worm/leaf",
+   "uv": [
+    0.3885,
+    0.21638
+   ],
+   "region": "leaf"
+  },
+  {
+   "node": "worm/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk1/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk1/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk1/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk1/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk2/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk2/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk2/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk2/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk3/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk3/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk3/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk3/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk4/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk4/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk4/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk4/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk5/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk5/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk5/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk5/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk6/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk6/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk6/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk6/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk7/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk7/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk7/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk7/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk8/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk8/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk8/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk8/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  },
+  {
+   "node": "folk9/sack",
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "sack"
+  },
+  {
+   "node": "folk9/patch",
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "patch"
+  },
+  {
+   "node": "folk9/bellyFloor",
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "bellyFloor"
+  },
+  {
+   "node": "folk9/gold",
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "gold"
+  }
+ ]
+}

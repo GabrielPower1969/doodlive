@@ -1,0 +1,61 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "jonah",
+ "registry": {
+  "id": "jonah",
+  "engine": "story",
+  "order": 7,
+  "title_zh": "约拿与大鱼",
+  "title_en": "Jonah and the Big Fish",
+  "sheets": [
+   "jonah-A4",
+   "jonah-A4-demo"
+  ],
+  "cast": [
+   "jonah",
+   "captain",
+   "fish"
+  ],
+  "set": "coast",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "jonah",
+  "pinyin": "yuē ná yǔ dà yú",
+  "blurb_zh": "约拿不想去，偷偷坐船逃跑；遇上大风暴，被大鱼吞进肚子，才明白上帝的心。",
+  "blurb_en": "Jonah runs away by ship, is swallowed by a big fish in a storm, and learns how big God's heart is.",
+  "minutes": 4.7,
+  "cover": {
+   "video": "demo-jonah-a982ee6-dirty.20261114-1331.mp4",
+   "t": 100,
+   "box": [
+    650,
+    1120,
+    1000
+   ]
+  },
+  "after": "prodigal"
+ },
+ "strings": {
+  "dg_jonah": {
+   "zh": "约拿",
+   "en": "Jonah"
+  },
+  "dg_captain": {
+   "zh": "船长",
+   "en": "Captain"
+  },
+  "dg_jonah_people": {
+   "zh": "尼尼微人",
+   "en": "People of Nineveh"
+  }
+ },
+ "fx": {
+  "class": "JonahFx",
+  "note": "Jonah (StoryFxJonah.cs)",
+  "aliases": {
+   "plant_grow": "sparkle"
+  }
+ }
+}

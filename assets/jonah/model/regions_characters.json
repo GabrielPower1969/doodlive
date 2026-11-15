@@ -1,0 +1,874 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/jn_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom; the fish's in side view, nose to -X), and anchors (regions too small to colour, or with a fixed colour, take a constant UV inside a larger region and print as detail lines). ID render for the line art: id_characters_2x.png/.json (same scheme as Ruth / Daniel).",
+ "sheet": {
+  "jonah": {
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "captain": {
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  },
+  "fish": {
+   "sheetX": 0.0,
+   "sheetY": 0.4
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "jonah": {
+   "height": 0.36,
+   "bboxSheet": [
+    -0.4543,
+    0.0191,
+    -0.1857,
+    0.3719
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#E0AE88",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4543,
+      0.0191,
+      -0.1857,
+      0.3664
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#4A3526",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3493,
+      0.2829,
+      -0.2907,
+      0.3719
+     ]
+    },
+    "streaks": {
+     "id": 3,
+     "hex": "#B9B4AE",
+     "zh": "白发",
+     "en": "grey streaks",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3486,
+      0.3279,
+      -0.2914,
+      0.3693
+     ],
+     "fixedColour": true,
+     "anchoredTo": "hair",
+     "anchorUV": [
+      0.17975,
+      0.24063
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "belt": {
+     "id": 4,
+     "hex": "#C9A26A",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltFringe",
+      "headband"
+     ],
+     "bboxSheet": [
+      -0.3741,
+      0.1258,
+      -0.2663,
+      0.3647
+     ]
+    },
+    "tunic": {
+     "id": 5,
+     "hex": "#F1E7D0",
+     "zh": "长袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.4481,
+      0.0621,
+      -0.1918,
+      0.2819
+     ]
+    },
+    "sandals": {
+     "id": 6,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.3644,
+      0.0152,
+      -0.2796,
+      0.0378
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.18025,
+      0.07763
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "coat": {
+     "id": 7,
+     "hex": "#8A5A3B",
+     "zh": "外衣",
+     "en": "coat",
+     "parts": [
+      "coat",
+      "coatHem",
+      "coatTrim"
+     ],
+     "bboxSheet": [
+      -0.4444,
+      0.1057,
+      -0.1953,
+      0.2819
+     ]
+    },
+    "stripes": {
+     "id": 8,
+     "hex": "#D9B57A",
+     "zh": "外衣条纹",
+     "en": "coat stripes",
+     "parts": [
+      "coat",
+      "cuffs"
+     ],
+     "bboxSheet": [
+      -0.4474,
+      0.1061,
+      -0.1926,
+      0.224
+     ]
+    },
+    "seaweed": {
+     "id": 9,
+     "hex": "#4E9A3E",
+     "zh": "海草",
+     "en": "seaweed",
+     "parts": [
+      "seaweed"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "fish.fins",
+     "anchorUV": [
+      0.71925,
+      0.43337
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jonah.propUV.seaweed = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02376,
+     0.28885,
+     0.02376,
+     0.33637
+    ],
+    "px": 512,
+    "default": "grumpy",
+    "projection": "front",
+    "swatches": {
+     "streaks": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "grumpy": "docs/jonah/design/faces/jonah_grumpy.png",
+     "talk": "docs/jonah/design/faces/jonah_talk.png",
+     "shock": "docs/jonah/design/faces/jonah_shock.png",
+     "ashamed": "docs/jonah/design/faces/jonah_ashamed.png",
+     "yuck": "docs/jonah/design/faces/jonah_yuck.png",
+     "pray": "docs/jonah/design/faces/jonah_pray.png",
+     "sorry": "docs/jonah/design/faces/jonah_sorry.png",
+     "sulk": "docs/jonah/design/faces/jonah_sulk.png",
+     "happy": "docs/jonah/design/faces/jonah_happy.png",
+     "wail": "docs/jonah/design/faces/jonah_wail.png",
+     "soft": "docs/jonah/design/faces/jonah_soft.png"
+    },
+    "clipExpression": {
+     "idle": "grumpy",
+     "talk": "talk",
+     "walk": "grumpy",
+     "tiptoe": "sorry",
+     "stomp_walk": "sulk",
+     "listen_up": "shock",
+     "refuse": "sulk",
+     "sleep_curl": "pray",
+     "wake_startled": "shock",
+     "ashamed": "ashamed",
+     "fall_in": "shock",
+     "sit_hold_nose": "yuck",
+     "kneel_pray": "pray",
+     "tumble_out": "shock",
+     "sit_dazed": "sorry",
+     "stand_up": "soft",
+     "nod_ok": "soft",
+     "proclaim": "talk",
+     "surprised": "shock",
+     "sit_sulk": "sulk",
+     "relax_happy": "happy",
+     "wail": "wail",
+     "look_city": "soft",
+     "wave": "soft"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "seaweed": {
+     "bone": "seaweed",
+     "mesh": "jonah_seaweed",
+     "node": "jonah/seaweed",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "jonah.FACE",
+     "uv": [
+      0.16725,
+      0.26141
+     ],
+     "local": [
+      -0.0127,
+      0.3058
+     ]
+    },
+    "handR.skin": {
+     "target": "jonah.FACE",
+     "uv": [
+      0.16725,
+      0.26141
+     ],
+     "local": [
+      -0.0127,
+      0.3058
+     ]
+    },
+    "legL.skin": {
+     "target": "jonah.FACE",
+     "uv": [
+      0.16725,
+      0.26141
+     ],
+     "local": [
+      -0.0127,
+      0.3058
+     ]
+    },
+    "legR.skin": {
+     "target": "jonah.FACE",
+     "uv": [
+      0.16725,
+      0.26141
+     ],
+     "local": [
+      -0.0127,
+      0.3058
+     ]
+    },
+    "cuffs.stripes": {
+     "target": "jonah.stripes",
+     "uv": [
+      0.13775,
+      0.10982
+     ],
+     "local": [
+      -0.0422,
+      0.1198
+     ]
+    },
+    "coatTrim.coat": {
+     "target": "jonah.coat",
+     "uv": [
+      0.14725,
+      0.21007
+     ],
+     "local": [
+      -0.0328,
+      0.2428
+     ]
+    },
+    "coatHem.coat": {
+     "target": "jonah.coat",
+     "uv": [
+      0.14725,
+      0.21007
+     ],
+     "local": [
+      -0.0328,
+      0.2428
+     ]
+    },
+    "headband.belt": {
+     "target": "jonah.belt",
+     "uv": [
+      0.20325,
+      0.17461
+     ],
+     "local": [
+      0.0232,
+      0.1993
+     ]
+    },
+    "beltFringe.belt": {
+     "target": "jonah.belt",
+     "uv": [
+      0.20325,
+      0.17461
+     ],
+     "local": [
+      0.0232,
+      0.1993
+     ]
+    }
+   }
+  },
+  "captain": {
+   "height": 0.38,
+   "bboxSheet": [
+    0.1715,
+    0.0193,
+    0.4685,
+    0.3925
+   ],
+   "regions": {
+    "skin": {
+     "id": 10,
+     "hex": "#C98E66",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1715,
+      0.0193,
+      0.4685,
+      0.3806
+     ]
+    },
+    "wrap": {
+     "id": 11,
+     "hex": "#4FA58A",
+     "zh": "头巾",
+     "en": "head-wrap",
+     "parts": [
+      "wrap"
+     ],
+     "bboxSheet": [
+      0.287,
+      0.2703,
+      0.3531,
+      0.3925
+     ]
+    },
+    "beard": {
+     "id": 12,
+     "hex": "#231A16",
+     "zh": "胡子",
+     "en": "beard",
+     "parts": [
+      "beard"
+     ],
+     "bboxSheet": [
+      0.2799,
+      0.3118,
+      0.3601,
+      0.3553
+     ]
+    },
+    "tunic": {
+     "id": 13,
+     "hex": "#EFE3C8",
+     "zh": "长袍",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2275,
+      0.1273,
+      0.4125,
+      0.3053
+     ]
+    },
+    "vest": {
+     "id": 14,
+     "hex": "#E0A640",
+     "zh": "背心",
+     "en": "vest",
+     "parts": [
+      "vest"
+     ],
+     "bboxSheet": [
+      0.2316,
+      0.2487,
+      0.4084,
+      0.3025
+     ]
+    },
+    "sandals": {
+     "id": 15,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      0.2677,
+      0.0152,
+      0.3674,
+      0.0391
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.83725,
+      0.12042
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "sash": {
+     "id": 16,
+     "hex": "#B5532E",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash"
+     ],
+     "bboxSheet": [
+      0.2596,
+      0.1514,
+      0.3806,
+      0.2597
+     ]
+    },
+    "rope": {
+     "id": 17,
+     "hex": "#C8A472",
+     "zh": "绳子",
+     "en": "rope",
+     "parts": [
+      "bracelets",
+      "rope"
+     ],
+     "bboxSheet": [
+      0.1895,
+      0.1803,
+      0.4507,
+      0.2214
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.83725,
+      0.12042
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "skirt": {
+     "id": 18,
+     "hex": "#2F4F8A",
+     "zh": "短裙",
+     "en": "wrap skirt",
+     "parts": [
+      "skirt"
+     ],
+     "bboxSheet": [
+      0.2423,
+      0.1683,
+      0.4008,
+      0.223
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.30996,
+     0.02268,
+     0.35532
+    ],
+    "px": 512,
+    "default": "jolly",
+    "projection": "front",
+    "swatches": {
+     "rope": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "jolly": "docs/jonah/design/faces/captain_jolly.png",
+     "talk": "docs/jonah/design/faces/captain_talk.png",
+     "shout": "docs/jonah/design/faces/captain_shout.png",
+     "worried": "docs/jonah/design/faces/captain_worried.png",
+     "torn": "docs/jonah/design/faces/captain_torn.png",
+     "amazed": "docs/jonah/design/faces/captain_amazed.png"
+    },
+    "clipExpression": {
+     "idle": "jolly",
+     "talk": "talk",
+     "walk": "jolly",
+     "greet": "jolly",
+     "steer_hard": "worried",
+     "shake_awake": "shout",
+     "refuse_hands": "torn",
+     "heave": "torn",
+     "amazed": "amazed"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "handR.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "legL.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "legR.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "armL.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "armR.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "kneeL.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    },
+    "kneeR.skin": {
+     "target": "captain.FACE",
+     "uv": [
+      0.81275,
+      0.25244
+     ],
+     "local": [
+      -0.0073,
+      0.2948
+     ]
+    }
+   }
+  },
+  "fish": {
+   "size": {
+    "length": 0.5,
+    "height": 0.2,
+    "width": 0.16
+   },
+   "bboxSheet": [
+    -0.2516,
+    0.4028,
+    0.2813,
+    0.6105
+   ],
+   "regions": {
+    "back": {
+     "id": 19,
+     "hex": "#1F7F86",
+     "zh": "背",
+     "en": "back",
+     "parts": [
+      "body"
+     ],
+     "bboxSheet": [
+      -0.2516,
+      0.4666,
+      0.1922,
+      0.5817
+     ]
+    },
+    "mouth": {
+     "id": 20,
+     "hex": "#E58A98",
+     "zh": "嘴里",
+     "en": "mouth inside",
+     "parts": [
+      "body",
+      "teeth",
+      "tongue"
+     ],
+     "bboxSheet": [
+      -0.25,
+      0.4489,
+      -0.1504,
+      0.5314
+     ],
+     "fixedColour": true,
+     "anchoredTo": "belly",
+     "anchorUV": [
+      0.34725,
+      0.36451
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "belly": {
+     "id": 21,
+     "hex": "#BFE9E2",
+     "zh": "肚皮",
+     "en": "belly",
+     "parts": [
+      "body"
+     ],
+     "bboxSheet": [
+      -0.2513,
+      0.4028,
+      0.1883,
+      0.4915
+     ]
+    },
+    "spots": {
+     "id": 22,
+     "hex": "#6CC3BE",
+     "zh": "斑点",
+     "en": "spots",
+     "parts": [
+      "spots"
+     ],
+     "bboxSheet": [
+      -0.114,
+      0.4846,
+      0.119,
+      0.5722
+     ]
+    },
+    "fins": {
+     "id": 23,
+     "hex": "#17666C",
+     "zh": "鳍",
+     "en": "fins",
+     "parts": [
+      "dorsal",
+      "finL",
+      "finR",
+      "tailfin"
+     ],
+     "bboxSheet": [
+      -0.0995,
+      0.4126,
+      0.2813,
+      0.6105
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.262,
+     0.04,
+     -0.102,
+     0.2
+    ],
+    "px": 512,
+    "default": "calm",
+    "projection": "side (X = -z, both cheeks)",
+    "swatches": {
+     "teeth": [
+      0.015,
+      0.835,
+      0.115,
+      0.905
+     ],
+     "tongue": [
+      0.14,
+      0.835,
+      0.28,
+      0.905
+     ],
+     "mouth": [
+      0.015,
+      0.935,
+      0.28,
+      0.99
+     ]
+    },
+    "files": {
+     "calm": "docs/jonah/design/faces/fish_calm.png",
+     "hungry": "docs/jonah/design/faces/fish_hungry.png",
+     "gulp": "docs/jonah/design/faces/fish_gulp.png",
+     "oops": "docs/jonah/design/faces/fish_oops.png",
+     "happy": "docs/jonah/design/faces/fish_happy.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "swim": "calm",
+     "gulp": "gulp",
+     "burp": "oops",
+     "spit": "gulp",
+     "wave_fin": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing UP: lower lids rise over the eyes)",
+    "open": 1.0,
+    "closed": 13.06,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "pose": "hovering level, belly on y = 0, mouth shut",
+    "facing": "+Z (nose toward the viewer)",
+    "root": "on the ground under the middle of the length"
+   },
+   "props": {},
+   "partAnchors": {},
+   "projection": {
+    "kind": "side",
+    "note": "UV0 = the fish's left side seen from +X: u = -z + sheetX + 0.5, v = (y + sheetY) / artH (x mirrored to |x|, so both sides share the drawing); faces not seen from the side take one clean texel of their own region"
+   },
+   "jaw": {
+    "bone": "jaw",
+    "openDeg": 55,
+    "axis": "about the hinge, design X",
+    "hinge": [
+     0.0895,
+     0.146
+    ]
+   }
+  }
+ }
+}

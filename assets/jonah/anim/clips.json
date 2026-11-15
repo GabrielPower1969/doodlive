@@ -1,0 +1,7767 @@
+{
+ "fps": 30,
+ "units": "art-width",
+ "clips": [
+  {
+   "action": "jonah_idle",
+   "char": "jonah",
+   "clip": "idle",
+   "frames": 150,
+   "seconds": 5.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "grumpy: arms loosely crossed, weight shifts L -> R with the hips leading, two huffy breaths (shoulders up, sharp sigh out), turns his chin away (neck leads, head follows) and back, the right toe taps three times, irregular blinks; coat panels and belt end settle after each shift",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00197,
+      0.30131,
+      0.0
+     ],
+     "jaw": [
+      -0.002,
+      0.30383,
+      -0.00362
+     ],
+     "handR": [
+      0.02314,
+      0.20489,
+      0.0344
+     ],
+     "handL": [
+      -0.02679,
+      0.21335,
+      0.0384
+     ],
+     "footL": [
+      0.0256,
+      0.02005,
+      -0.001
+     ],
+     "toeR": [
+      -0.0256,
+      0.00621,
+      0.03487
+     ],
+     "hips": [
+      -0.002,
+      0.18517,
+      0.0
+     ],
+     "coatL": [
+      0.01846,
+      0.23533,
+      0.02777
+     ],
+     "belt1": [
+      0.02075,
+      0.18916,
+      0.03243
+     ]
+    },
+    "75": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00801,
+      0.3003,
+      0.0
+     ],
+     "jaw": [
+      0.00975,
+      0.30255,
+      -0.00337
+     ],
+     "handR": [
+      0.03421,
+      0.20416,
+      0.0344
+     ],
+     "handL": [
+      -0.01581,
+      0.21206,
+      0.0384
+     ],
+     "footL": [
+      0.0256,
+      0.02163,
+      -0.001
+     ],
+     "toeR": [
+      -0.0256,
+      0.00542,
+      0.03487
+     ],
+     "hips": [
+      0.00607,
+      0.18419,
+      0.0
+     ],
+     "coatL": [
+      0.02919,
+      0.23455,
+      0.02777
+     ],
+     "belt1": [
+      0.02905,
+      0.18651,
+      0.03243
+     ]
+    },
+    "150": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00197,
+      0.30131,
+      0.0
+     ],
+     "jaw": [
+      -0.002,
+      0.30383,
+      -0.00362
+     ],
+     "handR": [
+      0.02314,
+      0.20489,
+      0.0344
+     ],
+     "handL": [
+      -0.02679,
+      0.21335,
+      0.0384
+     ],
+     "footL": [
+      0.0256,
+      0.02005,
+      -0.001
+     ],
+     "toeR": [
+      -0.0256,
+      0.00621,
+      0.03487
+     ],
+     "hips": [
+      -0.002,
+      0.18517,
+      0.0
+     ],
+     "coatL": [
+      0.01846,
+      0.23533,
+      0.02777
+     ],
+     "belt1": [
+      0.02075,
+      0.18916,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0003,
+    "plantedDriftMax": 0.0019,
+    "maxStep": 0.0063,
+    "maxStepAt": [
+     28,
+     "seaweed"
+    ],
+    "seamStep": 0.0005,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0005
+  },
+  {
+   "action": "jonah_walk",
+   "char": "jonah",
+   "clip": "walk",
+   "frames": 34,
+   "seconds": 1.133,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 17,
+     "sec": 0.567
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "plain walk, ~106 steps/min: hip bob and drop, chest counter-turn, arms swing with lagging forearms; coat panels swing late",
+   "naturalSpeed": 0.1059,
+   "stride": 0.072,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00366,
+      0.30145,
+      0.00304
+     ],
+     "jaw": [
+      -0.00376,
+      0.30413,
+      -0.00046
+     ],
+     "handR": [
+      -0.07138,
+      0.14539,
+      0.0271
+     ],
+     "handL": [
+      0.06974,
+      0.16227,
+      0.05043
+     ],
+     "footL": [
+      0.02159,
+      0.02077,
+      0.03084
+     ],
+     "toeR": [
+      -0.0216,
+      0.01149,
+      0.00287
+     ],
+     "hips": [
+      0.0,
+      0.18541,
+      0.0
+     ],
+     "coatL": [
+      0.01976,
+      0.23524,
+      0.02777
+     ],
+     "belt1": [
+      0.02264,
+      0.18999,
+      0.03243
+     ]
+    },
+    "17": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00366,
+      0.30145,
+      0.00304
+     ],
+     "jaw": [
+      0.00376,
+      0.30413,
+      -0.00046
+     ],
+     "handR": [
+      -0.06974,
+      0.16227,
+      0.05043
+     ],
+     "handL": [
+      0.07138,
+      0.14539,
+      0.0271
+     ],
+     "footL": [
+      0.0216,
+      0.03003,
+      -0.02216
+     ],
+     "toeR": [
+      -0.02159,
+      0.01295,
+      0.061
+     ],
+     "hips": [
+      0.0,
+      0.18541,
+      0.0
+     ],
+     "coatL": [
+      0.02229,
+      0.23432,
+      0.02931
+     ],
+     "belt1": [
+      0.02295,
+      0.18799,
+      0.03243
+     ]
+    },
+    "34": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00366,
+      0.30145,
+      0.00304
+     ],
+     "jaw": [
+      -0.00376,
+      0.30413,
+      -0.00046
+     ],
+     "handR": [
+      -0.07138,
+      0.14539,
+      0.0271
+     ],
+     "handL": [
+      0.06974,
+      0.16227,
+      0.05043
+     ],
+     "footL": [
+      0.02159,
+      0.02077,
+      0.03084
+     ],
+     "toeR": [
+      -0.0216,
+      0.01149,
+      0.00287
+     ],
+     "hips": [
+      0.0,
+      0.18541,
+      0.0
+     ],
+     "coatL": [
+      0.01976,
+      0.23524,
+      0.02777
+     ],
+     "belt1": [
+      0.02264,
+      0.18999,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0017,
+    "naturalSpeed": 0.1059,
+    "stanceSlipMax": 0.0,
+    "maxStep": 0.0112,
+    "maxStepAt": [
+     20,
+     "fingersR"
+    ],
+    "seamStep": 0.0101,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0101
+  },
+  {
+   "action": "jonah_talk",
+   "char": "jonah",
+   "clip": "talk",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "jaw in an irregular syllable rhythm (lip sync overrides it); nods on the stressed syllables; first phrase the right hand opens palm-up toward the listener, second phrase the left hand taps his chest ('me'); weight shift; two blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00393,
+      0.30329,
+      0.0
+     ],
+     "jaw": [
+      0.00362,
+      0.30575,
+      -0.00365
+     ],
+     "handR": [
+      -0.06757,
+      0.16538,
+      0.05586
+     ],
+     "handL": [
+      0.0728,
+      0.15403,
+      0.04063
+     ],
+     "footL": [
+      0.0246,
+      0.01897,
+      -0.001
+     ],
+     "toeR": [
+      -0.02454,
+      0.00546,
+      0.02693
+     ],
+     "hips": [
+      0.00243,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02403,
+      0.2373,
+      0.02799
+     ],
+     "belt1": [
+      0.02532,
+      0.19021,
+      0.03243
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00393,
+      0.30329,
+      0.0
+     ],
+     "jaw": [
+      -0.00357,
+      0.30587,
+      -0.00356
+     ],
+     "handR": [
+      -0.07102,
+      0.17267,
+      0.0666
+     ],
+     "handL": [
+      0.05685,
+      0.17722,
+      0.06518
+     ],
+     "footL": [
+      0.02454,
+      0.01938,
+      -0.00094
+     ],
+     "toeR": [
+      -0.0246,
+      0.00506,
+      0.02687
+     ],
+     "hips": [
+      -0.00243,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.01767,
+      0.23771,
+      0.02785
+     ],
+     "belt1": [
+      0.02031,
+      0.19124,
+      0.03243
+     ]
+    },
+    "96": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00393,
+      0.30329,
+      0.0
+     ],
+     "jaw": [
+      0.00362,
+      0.30575,
+      -0.00365
+     ],
+     "handR": [
+      -0.06757,
+      0.16538,
+      0.05586
+     ],
+     "handL": [
+      0.0728,
+      0.15403,
+      0.04063
+     ],
+     "footL": [
+      0.0246,
+      0.01897,
+      -0.001
+     ],
+     "toeR": [
+      -0.02454,
+      0.00546,
+      0.02693
+     ],
+     "hips": [
+      0.00243,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02403,
+      0.2373,
+      0.02799
+     ],
+     "belt1": [
+      0.02532,
+      0.19021,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0007,
+    "plantedDriftMax": 0.0001,
+    "maxStep": 0.0228,
+    "maxStepAt": [
+     50,
+     "fingersL"
+    ],
+    "seamStep": 0.0082,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0082
+  },
+  {
+   "action": "jonah_tiptoe",
+   "char": "jonah",
+   "clip": "tiptoe",
+   "frames": 40,
+   "seconds": 1.333,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 20,
+     "sec": 0.667
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "exaggerated cartoon tiptoe: high on his toes, knees lifted high and placed with care, hunched, both hands up at his chest like little paws; every step he looks back over a shoulder (left, then right), the chest turning with the head; coat panels bob",
+   "naturalSpeed": 0.0779,
+   "stride": 0.054,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00394,
+      0.30499,
+      0.02307
+     ],
+     "jaw": [
+      -0.00368,
+      0.30821,
+      0.02007
+     ],
+     "handR": [
+      -0.03,
+      0.2,
+      0.058
+     ],
+     "handL": [
+      0.03,
+      0.2,
+      0.058
+     ],
+     "footL": [
+      0.0216,
+      0.04402,
+      0.026
+     ],
+     "toeR": [
+      -0.0216,
+      0.01842,
+      -0.01253
+     ],
+     "hips": [
+      0.0,
+      0.19229,
+      0.0
+     ],
+     "coatL": [
+      0.01964,
+      0.23288,
+      0.02874
+     ],
+     "belt1": [
+      0.02268,
+      0.19666,
+      0.03243
+     ]
+    },
+    "20": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00419,
+      0.30498,
+      0.02308
+     ],
+     "jaw": [
+      0.00417,
+      0.3082,
+      0.02007
+     ],
+     "handR": [
+      -0.03,
+      0.2,
+      0.058
+     ],
+     "handL": [
+      0.03,
+      0.2,
+      0.058
+     ],
+     "footL": [
+      0.0216,
+      0.04655,
+      -0.02592
+     ],
+     "toeR": [
+      -0.0216,
+      0.0159,
+      0.0394
+     ],
+     "hips": [
+      0.0,
+      0.19229,
+      0.0
+     ],
+     "coatL": [
+      0.0209,
+      0.23106,
+      0.02975
+     ],
+     "belt1": [
+      0.02293,
+      0.19507,
+      0.03243
+     ]
+    },
+    "40": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00394,
+      0.30499,
+      0.02307
+     ],
+     "jaw": [
+      -0.00368,
+      0.30821,
+      0.02007
+     ],
+     "handR": [
+      -0.03,
+      0.2,
+      0.058
+     ],
+     "handL": [
+      0.03,
+      0.2,
+      0.058
+     ],
+     "footL": [
+      0.0216,
+      0.04402,
+      0.026
+     ],
+     "toeR": [
+      -0.0216,
+      0.01842,
+      -0.01253
+     ],
+     "hips": [
+      0.0,
+      0.19229,
+      0.0
+     ],
+     "coatL": [
+      0.01964,
+      0.23288,
+      0.02874
+     ],
+     "belt1": [
+      0.02268,
+      0.19666,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0002,
+    "naturalSpeed": 0.0779,
+    "stanceSlipMax": 0.0,
+    "maxStep": 0.0063,
+    "maxStepAt": [
+     18,
+     "thighR"
+    ],
+    "seamStep": 0.0035,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0035
+  },
+  {
+   "action": "jonah_stomp_walk",
+   "char": "jonah",
+   "clip": "stomp_walk",
+   "frames": 30,
+   "seconds": 1.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "stompL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "stompR": {
+     "frame": 15,
+     "sec": 0.5
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "cross, heavy stamping walk: knees high, each foot slammed down flat (the body jolts on impact), fists clenched and pumping stiffly, head jutting forward, coat flapping",
+   "naturalSpeed": 0.1143,
+   "stride": 0.064,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00607,
+      0.30198,
+      0.00158
+     ],
+     "jaw": [
+      -0.00621,
+      0.30461,
+      -0.00195
+     ],
+     "handR": [
+      -0.06685,
+      0.18232,
+      0.06044
+     ],
+     "handL": [
+      0.06689,
+      0.18933,
+      0.06044
+     ],
+     "footL": [
+      0.02158,
+      0.0216,
+      0.03042
+     ],
+     "toeR": [
+      -0.0216,
+      0.00758,
+      0.00173
+     ],
+     "hips": [
+      0.0,
+      0.18615,
+      0.0
+     ],
+     "coatL": [
+      0.01853,
+      0.23467,
+      0.02712
+     ],
+     "belt1": [
+      0.0226,
+      0.19092,
+      0.03243
+     ]
+    },
+    "15": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00607,
+      0.30198,
+      0.00158
+     ],
+     "jaw": [
+      0.00621,
+      0.30461,
+      -0.00195
+     ],
+     "handR": [
+      -0.06689,
+      0.18933,
+      0.06044
+     ],
+     "handL": [
+      0.06685,
+      0.18232,
+      0.06044
+     ],
+     "footL": [
+      0.0216,
+      0.02352,
+      -0.02503
+     ],
+     "toeR": [
+      -0.02158,
+      0.00768,
+      0.05829
+     ],
+     "hips": [
+      0.0,
+      0.18615,
+      0.0
+     ],
+     "coatL": [
+      0.0235,
+      0.23247,
+      0.02712
+     ],
+     "belt1": [
+      0.02298,
+      0.18853,
+      0.03243
+     ]
+    },
+    "30": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00607,
+      0.30198,
+      0.00158
+     ],
+     "jaw": [
+      -0.00621,
+      0.30461,
+      -0.00195
+     ],
+     "handR": [
+      -0.06685,
+      0.18232,
+      0.06044
+     ],
+     "handL": [
+      0.06689,
+      0.18933,
+      0.06044
+     ],
+     "footL": [
+      0.02158,
+      0.0216,
+      0.03042
+     ],
+     "toeR": [
+      -0.0216,
+      0.00758,
+      0.00173
+     ],
+     "hips": [
+      0.0,
+      0.18615,
+      0.0
+     ],
+     "coatL": [
+      0.01853,
+      0.23467,
+      0.02712
+     ],
+     "belt1": [
+      0.0226,
+      0.19092,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0025,
+    "naturalSpeed": 0.1143,
+    "stanceSlipMax": 0.0043,
+    "maxStep": 0.0315,
+    "maxStepAt": [
+     14,
+     "thighR"
+    ],
+    "seamStep": 0.012,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.012
+  },
+  {
+   "action": "jonah_listen_up",
+   "char": "jonah",
+   "clip": "listen_up",
+   "frames": 54,
+   "seconds": 1.8,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "look": {
+     "frame": 20,
+     "sec": 0.667
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "a little start (shoulders up, blink), then he looks up at the sky - neck first, head after - leaning back a touch; the right hand comes half up, palm up and open ('who, me?'); holds, breathing",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "27": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.30047,
+      -0.01851
+     ],
+     "jaw": [
+      -3e-05,
+      0.29997,
+      -0.02289
+     ],
+     "handR": [
+      -0.0593,
+      0.25356,
+      0.08528
+     ],
+     "handL": [
+      0.06819,
+      0.1746,
+      0.06597
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.24135,
+      0.02625
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "54": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.30047,
+      -0.01851
+     ],
+     "jaw": [
+      -3e-05,
+      0.2999,
+      -0.02288
+     ],
+     "handR": [
+      -0.05888,
+      0.25433,
+      0.08503
+     ],
+     "handL": [
+      0.06817,
+      0.17475,
+      0.06611
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.24135,
+      0.02625
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0001,
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0174,
+    "maxStepAt": [
+     19,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_refuse",
+   "char": "jonah",
+   "clip": "refuse",
+   "frames": 66,
+   "seconds": 2.2,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "no": {
+     "frame": 10,
+     "sec": 0.333
+    },
+    "snort": {
+     "frame": 36,
+     "sec": 1.2
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "head back, then three shrinking head shakes ('No way!'), arms snap across his chest, he turns a shoulder away from the voice with his chin up and a snort (shoulders hop); eyes half shut; holds",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "33": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00228,
+      0.3033,
+      6e-05
+     ],
+     "jaw": [
+      0.00356,
+      0.30562,
+      -0.00346
+     ],
+     "handR": [
+      0.02181,
+      0.21409,
+      0.03584
+     ],
+     "handL": [
+      -0.02809,
+      0.22258,
+      0.0316
+     ],
+     "footL": [
+      0.0246,
+      0.01873,
+      -0.001
+     ],
+     "toeR": [
+      -0.0246,
+      0.00468,
+      0.02615
+     ],
+     "hips": [
+      0.00113,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.01784,
+      0.23733,
+      0.03087
+     ],
+     "belt1": [
+      0.02236,
+      0.1905,
+      0.03352
+     ]
+    },
+    "66": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00799,
+      0.30323,
+      0.0007
+     ],
+     "jaw": [
+      0.01154,
+      0.30501,
+      -0.0012
+     ],
+     "handR": [
+      0.01002,
+      0.21387,
+      0.04108
+     ],
+     "handL": [
+      -0.0342,
+      0.22354,
+      0.01803
+     ],
+     "footL": [
+      0.0246,
+      0.01944,
+      -0.001
+     ],
+     "toeR": [
+      -0.0246,
+      0.00907,
+      0.02403
+     ],
+     "hips": [
+      0.004,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.00886,
+      0.23716,
+      0.03501
+     ],
+     "belt1": [
+      0.02095,
+      0.18993,
+      0.03592
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0012,
+    "plantedDriftMax": 0.0029,
+    "maxStep": 0.0356,
+    "maxStepAt": [
+     22,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "jonah_sleep_curl",
+   "char": "jonah",
+   "clip": "sleep_curl",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "curled on his right side facing the viewer, knees drawn up, hands together under his cheek; two snores per loop: a long slow inhale (chest and shoulders rise, mouth falls open, head tips back a little) and a puffed exhale (mouth shuts); a foot twitch and a lip smack in the second one; eyes shut",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.10741,
+      0.07307,
+      0.04056
+     ],
+     "jaw": [
+      -0.11168,
+      0.07352,
+      0.03953
+     ],
+     "handR": [
+      -0.0939,
+      0.03437,
+      0.0736
+     ],
+     "handL": [
+      -0.0983,
+      0.04236,
+      0.08512
+     ],
+     "footL": [
+      0.08644,
+      0.09467,
+      0.07189
+     ],
+     "toeR": [
+      0.11942,
+      0.05147,
+      0.06419
+     ],
+     "hips": [
+      0.0,
+      0.07307,
+      0.004
+     ],
+     "coatL": [
+      -0.03785,
+      0.09411,
+      0.03353
+     ],
+     "belt1": [
+      -0.00358,
+      0.09589,
+      0.03643
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.10741,
+      0.07307,
+      0.04056
+     ],
+     "jaw": [
+      -0.11168,
+      0.07352,
+      0.03953
+     ],
+     "handR": [
+      -0.0939,
+      0.03437,
+      0.0736
+     ],
+     "handL": [
+      -0.0983,
+      0.04236,
+      0.08512
+     ],
+     "footL": [
+      0.08644,
+      0.09467,
+      0.07189
+     ],
+     "toeR": [
+      0.11942,
+      0.05147,
+      0.06419
+     ],
+     "hips": [
+      0.0,
+      0.07307,
+      0.004
+     ],
+     "coatL": [
+      -0.03785,
+      0.09411,
+      0.03353
+     ],
+     "belt1": [
+      -0.00358,
+      0.09589,
+      0.03643
+     ]
+    },
+    "120": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.10741,
+      0.07307,
+      0.04056
+     ],
+     "jaw": [
+      -0.11168,
+      0.07352,
+      0.03953
+     ],
+     "handR": [
+      -0.0939,
+      0.03437,
+      0.0736
+     ],
+     "handL": [
+      -0.0983,
+      0.04236,
+      0.08512
+     ],
+     "footL": [
+      0.08644,
+      0.09467,
+      0.07189
+     ],
+     "toeR": [
+      0.11942,
+      0.05147,
+      0.06419
+     ],
+     "hips": [
+      0.0,
+      0.07307,
+      0.004
+     ],
+     "coatL": [
+      -0.03785,
+      0.09411,
+      0.03353
+     ],
+     "belt1": [
+      -0.00358,
+      0.09589,
+      0.03643
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0055,
+    "meshMinAt": [
+     112,
+     "jonah_body",
+     [
+      -0.049,
+      -0.006,
+      0.065
+     ],
+     "proxy bone upperArmR"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0108,
+    "maxStepAt": [
+     72,
+     "toeL"
+    ],
+    "seamStep": 0.0004,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0004
+  },
+  {
+   "action": "jonah_lie_down",
+   "char": "jonah",
+   "clip": "lie_down",
+   "frames": 40,
+   "seconds": 1.333,
+   "loop": false,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {
+    "down": {
+     "frame": 30,
+     "sec": 1.0
+    }
+   },
+   "rootMaxOffset": 0.03249,
+   "props": [],
+   "notes": "EXTRA (not in CONTRACT \u00a74, a lead-in for A4): from standing he yawns and stretches, kneels / sits and curls up on his right side; ends in sleep_curl frame 0. Play it before sleep_curl (S02, after the walk to CARGO)",
+   "extra": true,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "20": {
+     "root": [
+      0.0,
+      0.01846,
+      0.0
+     ],
+     "head": [
+      -0.07144,
+      0.2471,
+      0.0179
+     ],
+     "jaw": [
+      -0.07347,
+      0.24996,
+      0.01524
+     ],
+     "handR": [
+      -0.10227,
+      0.12533,
+      0.08924
+     ],
+     "handL": [
+      0.02295,
+      0.18267,
+      0.09993
+     ],
+     "footL": [
+      0.06298,
+      0.03907,
+      0.01474
+     ],
+     "toeR": [
+      0.01405,
+      0.01403,
+      0.03526
+     ],
+     "hips": [
+      0.0,
+      0.15759,
+      0.00172
+     ],
+     "coatL": [
+      -0.01158,
+      0.20584,
+      0.03092
+     ],
+     "belt1": [
+      0.0156,
+      0.17463,
+      0.03415
+     ]
+    },
+    "40": {
+     "root": [
+      0.0,
+      0.0035,
+      0.0
+     ],
+     "head": [
+      -0.10741,
+      0.07657,
+      0.04056
+     ],
+     "jaw": [
+      -0.11168,
+      0.07702,
+      0.03953
+     ],
+     "handR": [
+      -0.0939,
+      0.03787,
+      0.0736
+     ],
+     "handL": [
+      -0.0983,
+      0.04586,
+      0.08512
+     ],
+     "footL": [
+      0.08644,
+      0.09817,
+      0.07189
+     ],
+     "toeR": [
+      0.11942,
+      0.05497,
+      0.06419
+     ],
+     "hips": [
+      0.0,
+      0.07657,
+      0.004
+     ],
+     "coatL": [
+      -0.03785,
+      0.09761,
+      0.03353
+     ],
+     "belt1": [
+      -0.00358,
+      0.09939,
+      0.03643
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.002,
+    "meshMinAt": [
+     39,
+     "jonah_body",
+     [
+      -0.048,
+      -0.002,
+      0.064
+     ],
+     "proxy bone upperArmR"
+    ],
+    "plantedDriftMax": 0.0083,
+    "maxStep": 0.0371,
+    "maxStepAt": [
+     25,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "jonah_wake_startled",
+   "char": "jonah",
+   "clip": "wake_startled",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "jolt": {
+     "frame": 9,
+     "sec": 0.3
+    },
+    "standing": {
+     "frame": 52,
+     "sec": 1.733
+    }
+   },
+   "rootMaxOffset": 0.03346,
+   "props": [],
+   "notes": "starts in the sleep_curl pose; a last snore, then a jolt: eyes snap open, arms fling up, he springs up to sitting (overshoot back on his hands), looks left - right in a panic, scrambles to his feet (hand on the deck, knee up, push), and ends standing, wide-eyed, hands up in front ('Wha-?'), panting",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0035,
+      0.0
+     ],
+     "head": [
+      -0.10741,
+      0.07657,
+      0.04056
+     ],
+     "jaw": [
+      -0.11168,
+      0.07702,
+      0.03953
+     ],
+     "handR": [
+      -0.0939,
+      0.03787,
+      0.0736
+     ],
+     "handL": [
+      -0.0983,
+      0.04586,
+      0.08512
+     ],
+     "footL": [
+      0.08644,
+      0.09817,
+      0.07189
+     ],
+     "toeR": [
+      0.11942,
+      0.05497,
+      0.06419
+     ],
+     "hips": [
+      0.0,
+      0.07657,
+      0.004
+     ],
+     "coatL": [
+      -0.03785,
+      0.09761,
+      0.03353
+     ],
+     "belt1": [
+      -0.00358,
+      0.09939,
+      0.03643
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.02152,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15314,
+      0.00491
+     ],
+     "jaw": [
+      0.00241,
+      0.1562,
+      0.00284
+     ],
+     "handR": [
+      -0.07,
+      0.03352,
+      -0.07
+     ],
+     "handL": [
+      0.07,
+      0.03352,
+      -0.07
+     ],
+     "footL": [
+      0.0316,
+      0.04084,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.02692,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.03871,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08283,
+      0.01742
+     ],
+     "belt1": [
+      0.02282,
+      0.04229,
+      0.02043
+     ]
+    },
+    "72": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30556,
+      -0.00379
+     ],
+     "handR": [
+      -0.044,
+      0.222,
+      0.062
+     ],
+     "handL": [
+      0.044,
+      0.222,
+      0.062
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0024,
+    "plantedDriftMax": 0.0405,
+    "maxStep": 0.0908,
+    "maxStepAt": [
+     18,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_ashamed",
+   "char": "jonah",
+   "clip": "ashamed",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "head hung low, shoulders slumped forward; his right hand rubs the back of his neck (elbow out, so the face stays clear), the left hand hangs and fiddles with the coat; one long sigh; the left toe scuffs the deck; he peeks up at the captain once and drops his eyes again; heavy slow blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.29804,
+      0.01996
+     ],
+     "jaw": [
+      0.00014,
+      0.3024,
+      0.01931
+     ],
+     "handR": [
+      -0.02,
+      0.30203,
+      -0.01094
+     ],
+     "handL": [
+      0.05731,
+      0.15214,
+      0.04809
+     ],
+     "footL": [
+      0.0216,
+      0.01973,
+      0.009
+     ],
+     "toeR": [
+      -0.0216,
+      0.00669,
+      0.02687
+     ],
+     "hips": [
+      0.0,
+      0.18515,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23026,
+      0.02779
+     ],
+     "belt1": [
+      0.02282,
+      0.18873,
+      0.03243
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00403,
+      0.29877,
+      0.0172
+     ],
+     "jaw": [
+      0.00427,
+      0.30307,
+      0.01626
+     ],
+     "handR": [
+      -0.01591,
+      0.30193,
+      -0.01383
+     ],
+     "handL": [
+      0.06839,
+      0.14695,
+      0.03457
+     ],
+     "footL": [
+      0.0216,
+      0.01924,
+      0.009
+     ],
+     "toeR": [
+      -0.0216,
+      0.00633,
+      0.02687
+     ],
+     "hips": [
+      0.00177,
+      0.18515,
+      0.0
+     ],
+     "coatL": [
+      0.02374,
+      0.23134,
+      0.02832
+     ],
+     "belt1": [
+      0.02466,
+      0.18828,
+      0.03243
+     ]
+    },
+    "120": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.29804,
+      0.01996
+     ],
+     "jaw": [
+      0.00014,
+      0.3024,
+      0.01931
+     ],
+     "handR": [
+      -0.02,
+      0.30203,
+      -0.01094
+     ],
+     "handL": [
+      0.05731,
+      0.15214,
+      0.04809
+     ],
+     "footL": [
+      0.0216,
+      0.01973,
+      0.009
+     ],
+     "toeR": [
+      -0.0216,
+      0.00669,
+      0.02687
+     ],
+     "hips": [
+      0.0,
+      0.18515,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23026,
+      0.02779
+     ],
+     "belt1": [
+      0.02282,
+      0.18873,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0005,
+    "plantedDriftMax": 0.0056,
+    "maxStep": 0.0059,
+    "maxStepAt": [
+     49,
+     "thighL"
+    ],
+    "seamStep": 0.0015,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0015
+  },
+  {
+   "action": "jonah_fall_in",
+   "char": "jonah",
+   "clip": "fall_in",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": false,
+   "seated": false,
+   "rootMotion": true,
+   "markers": {
+    "release": {
+     "frame": 23,
+     "sec": 0.767
+    },
+    "splash": {
+     "frame": 42,
+     "sec": 1.4
+    }
+   },
+   "rootMaxOffset": 0.17205,
+   "props": [],
+   "notes": "the captain grabs him under the arms from behind: he is lifted (legs dangle and pedal), pinches his nose, pulls his knees up into a cannonball with the left arm round them, is tipped over the rail backwards (bottom first), falls (eyes shut, cheeks puffed) and hits the water at frame 42 (`splash`)",
+   "rootMotionNote": "root travels +Z 0.10 and down to y -0.14 (frame 42 = splash, lowest point); held to the end",
+   "rootEnd": [
+    0.0,
+    -0.14,
+    0.1
+   ],
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30594,
+      -0.00353
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.0216,
+      0.02012,
+      -0.00283
+     ],
+     "toeR": [
+      -0.0216,
+      -0.00461,
+      0.01612
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "24": {
+     "root": [
+      0.0,
+      0.06593,
+      0.04497
+     ],
+     "head": [
+      0.0,
+      0.35815,
+      0.02364
+     ],
+     "jaw": [
+      0.0,
+      0.36167,
+      0.02099
+     ],
+     "handR": [
+      -0.008,
+      0.33293,
+      0.07463
+     ],
+     "handL": [
+      -0.004,
+      0.31218,
+      0.1199
+     ],
+     "footL": [
+      0.0243,
+      0.21816,
+      0.09359
+     ],
+     "toeR": [
+      -0.02413,
+      0.19212,
+      0.11069
+     ],
+     "hips": [
+      0.0,
+      0.24371,
+      0.02497
+     ],
+     "coatL": [
+      0.02104,
+      0.29095,
+      0.04297
+     ],
+     "belt1": [
+      0.02282,
+      0.256,
+      0.0552
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      -0.14,
+      0.1
+     ],
+     "head": [
+      0.0,
+      0.00742,
+      -0.00349
+     ],
+     "jaw": [
+      0.0,
+      0.00794,
+      -0.00787
+     ],
+     "handR": [
+      -0.008,
+      0.02676,
+      0.05
+     ],
+     "handL": [
+      -0.004,
+      0.04505,
+      0.09632
+     ],
+     "footL": [
+      0.0243,
+      -0.03903,
+      0.14594
+     ],
+     "toeR": [
+      -0.02413,
+      -0.04472,
+      0.17657
+     ],
+     "hips": [
+      0.0,
+      -0.07085,
+      0.08
+     ],
+     "coatL": [
+      0.02104,
+      -0.02516,
+      0.05837
+     ],
+     "belt1": [
+      0.02282,
+      -0.04054,
+      0.09206
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0961,
+    "meshMinAt": [
+     42,
+     "jonah_body",
+     [
+      0.022,
+      -0.096,
+      0.149
+     ],
+     "proxy bone belt1"
+    ],
+    "plantedDriftMax": 0.0221,
+    "maxStep": 0.0595,
+    "maxStepAt": [
+     11,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_sit_hold_nose",
+   "char": "jonah",
+   "clip": "sit_hold_nose",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": true,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "inside the fish: sits with his knees up, the left arm hugging his shins, the right hand pinching his nose; looks round the dark (left, up, right), two disgusted shudders (shoulders up, head shake); blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.13112,
+      0.00751
+     ],
+     "jaw": [
+      -7e-05,
+      0.13443,
+      0.00461
+     ],
+     "handR": [
+      -0.00687,
+      0.10969,
+      0.06037
+     ],
+     "handL": [
+      -0.01,
+      0.088,
+      0.096
+     ],
+     "footL": [
+      0.0316,
+      0.01932,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.0054,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.01719,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.06057,
+      0.01858
+     ],
+     "belt1": [
+      0.02282,
+      0.02077,
+      0.02043
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.13111,
+      0.00754
+     ],
+     "jaw": [
+      0.00043,
+      0.13339,
+      0.0038
+     ],
+     "handR": [
+      -0.0143,
+      0.1267,
+      0.06301
+     ],
+     "handL": [
+      -0.01,
+      0.088,
+      0.096
+     ],
+     "footL": [
+      0.0316,
+      0.01932,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.0054,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.01719,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.06055,
+      0.01858
+     ],
+     "belt1": [
+      0.02282,
+      0.02077,
+      0.02043
+     ]
+    },
+    "96": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.13112,
+      0.00751
+     ],
+     "jaw": [
+      -7e-05,
+      0.13443,
+      0.00461
+     ],
+     "handR": [
+      -0.00687,
+      0.10969,
+      0.06037
+     ],
+     "handL": [
+      -0.01,
+      0.088,
+      0.096
+     ],
+     "footL": [
+      0.0316,
+      0.01932,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.0054,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.01719,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.06057,
+      0.01858
+     ],
+     "belt1": [
+      0.02282,
+      0.02077,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0008,
+    "meshMinAt": [
+     96,
+     "jonah_body",
+     [
+      0.025,
+      0.001,
+      0.097
+     ],
+     "proxy bone footL"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0064,
+    "maxStepAt": [
+     42,
+     "fingersR"
+    ],
+    "seamStep": 0.0004,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0004
+  },
+  {
+   "action": "jonah_kneel_pray",
+   "char": "jonah",
+   "clip": "kneel_pray",
+   "frames": 84,
+   "seconds": 2.8,
+   "loop": false,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {
+    "knees_down": {
+     "frame": 30,
+     "sec": 1.0
+    },
+    "bow": {
+     "frame": 52,
+     "sec": 1.733
+    }
+   },
+   "rootMaxOffset": 0.04426,
+   "props": [],
+   "notes": "starts from sit_hold_nose's pose (the nose hand drops): he rolls forward onto his knees and sits back on his heels (small, so his head stays under the belly dome), puts his hands together in front of his chest, takes a breath, bows his head and shuts his eyes; holds, breathing. Knees on the floor (meshMinY >= -0.008)",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.01658,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.1526,
+      0.00751
+     ],
+     "jaw": [
+      -7e-05,
+      0.15592,
+      0.00461
+     ],
+     "handR": [
+      -0.00687,
+      0.13117,
+      0.06037
+     ],
+     "handL": [
+      -0.01,
+      0.10458,
+      0.096
+     ],
+     "footL": [
+      0.0316,
+      0.0359,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.02198,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.03867,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08205,
+      0.01858
+     ],
+     "belt1": [
+      0.02282,
+      0.04225,
+      0.02043
+     ]
+    },
+    "42": {
+     "root": [
+      0.0,
+      0.02907,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.19342,
+      -0.07514
+     ],
+     "jaw": [
+      0.0,
+      0.1957,
+      -0.07891
+     ],
+     "handR": [
+      -0.013,
+      0.10185,
+      -0.01913
+     ],
+     "handL": [
+      0.013,
+      0.10185,
+      -0.01913
+     ],
+     "footL": [
+      0.0253,
+      0.07289,
+      -0.06288
+     ],
+     "toeR": [
+      -0.0253,
+      0.05104,
+      -0.04067
+     ],
+     "hips": [
+      0.0,
+      0.07747,
+      -0.06832
+     ],
+     "coatL": [
+      0.02104,
+      0.12955,
+      -0.04319
+     ],
+     "belt1": [
+      0.02282,
+      0.08274,
+      -0.03613
+     ]
+    },
+    "84": {
+     "root": [
+      0.0,
+      0.03159,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.19052,
+      -0.04291
+     ],
+     "jaw": [
+      0.0,
+      0.1949,
+      -0.04339
+     ],
+     "handR": [
+      -0.013,
+      0.08787,
+      -0.02949
+     ],
+     "handL": [
+      0.013,
+      0.08787,
+      -0.02949
+     ],
+     "footL": [
+      0.0253,
+      0.0754,
+      -0.06288
+     ],
+     "toeR": [
+      -0.0253,
+      0.05355,
+      -0.04067
+     ],
+     "hips": [
+      0.0,
+      0.07999,
+      -0.06832
+     ],
+     "coatL": [
+      0.02104,
+      0.12229,
+      -0.04221
+     ],
+     "belt1": [
+      0.02282,
+      0.08526,
+      -0.03613
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.002,
+    "meshMinAt": [
+     56,
+     "jonah_body",
+     [
+      -0.007,
+      -0.002,
+      -0.032
+     ],
+     "proxy bone thighR"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0441,
+    "maxStepAt": [
+     28,
+     "thighR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_tumble_out",
+   "char": "jonah",
+   "clip": "tumble_out",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "seated": true,
+   "rootMotion": true,
+   "markers": {
+    "touch": {
+     "frame": 9,
+     "sec": 0.3
+    },
+    "land": {
+     "frame": 40,
+     "sec": 1.333
+    }
+   },
+   "rootMaxOffset": 0.26805,
+   "props": [
+    "seaweed"
+   ],
+   "notes": "shot out of the fish's mouth tucked in a ball: arcs down onto the sand (`touch`, frame 9), bounces, rolls over once along +X, unrolls and plonks down sitting with his legs out (`land`, frame 40), arms flung back on the sand; sways, dazed, seaweed on his head",
+   "rootMotionNote": "root starts 0.16 to the left (-X) and 0.05 up (out of the fish's mouth) and rolls in along +X to the mark, where he ends sitting",
+   "rootEnd": [
+    0.0,
+    0.0011,
+    0.0
+   ],
+   "samples": {
+    "0": {
+     "root": [
+      -0.16,
+      0.04523,
+      0.0
+     ],
+     "head": [
+      -0.16,
+      0.23585,
+      0.04301
+     ],
+     "jaw": [
+      -0.16,
+      0.24024,
+      0.04261
+     ],
+     "handR": [
+      -0.158,
+      0.16638,
+      0.104
+     ],
+     "handL": [
+      -0.162,
+      0.17238,
+      0.1
+     ],
+     "footL": [
+      -0.1384,
+      0.09682,
+      0.058
+     ],
+     "toeR": [
+      -0.1816,
+      0.06745,
+      0.06838
+     ],
+     "hips": [
+      -0.16,
+      0.13238,
+      0.0
+     ],
+     "coatL": [
+      -0.13896,
+      0.16842,
+      0.02925
+     ],
+     "belt1": [
+      -0.13718,
+      0.13596,
+      0.03243
+     ]
+    },
+    "30": {
+     "root": [
+      0.03724,
+      0.05006,
+      0.0
+     ],
+     "head": [
+      -0.14904,
+      0.09051,
+      0.04301
+     ],
+     "jaw": [
+      -0.15333,
+      0.09144,
+      0.04261
+     ],
+     "handR": [
+      -0.08072,
+      0.07772,
+      0.104
+     ],
+     "handL": [
+      -0.08743,
+      0.07508,
+      0.1
+     ],
+     "footL": [
+      -0.00859,
+      0.08211,
+      0.058
+     ],
+     "toeR": [
+      0.01094,
+      0.03366,
+      0.06838
+     ],
+     "hips": [
+      -0.04792,
+      0.06855,
+      0.0
+     ],
+     "coatL": [
+      -0.07868,
+      0.09676,
+      0.02925
+     ],
+     "belt1": [
+      -0.04658,
+      0.09161,
+      0.03243
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.00114,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15418,
+      -0.00775
+     ],
+     "jaw": [
+      -0.00034,
+      0.15745,
+      -0.01069
+     ],
+     "handR": [
+      -0.07,
+      0.01314,
+      -0.07
+     ],
+     "handL": [
+      0.07,
+      0.01314,
+      -0.07
+     ],
+     "footL": [
+      0.0376,
+      0.02976,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.04784,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03818,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08662,
+      0.01537
+     ],
+     "belt1": [
+      0.02282,
+      0.04176,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.002,
+    "meshMinAt": [
+     45,
+     "jonah_body",
+     [
+      -0.001,
+      -0.002,
+      0.087
+     ],
+     "proxy bone shinR"
+    ],
+    "plantedDriftMax": 0.0317,
+    "maxStep": 0.0631,
+    "maxStepAt": [
+     27,
+     "toeR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_sit_dazed",
+   "char": "jonah",
+   "clip": "sit_dazed",
+   "frames": 90,
+   "seconds": 3.0,
+   "loop": true,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [
+    "seaweed"
+   ],
+   "notes": "sits on the sand with his legs out, leaning back on his hands, swaying in a slow dizzy circle (head circles the other way); tilts his head right and thumps the left side of it three times with his left hand to shake the water out of his ear, then a quick head shake; heavy dazed blinks; seaweed flops",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00102,
+      0.15284,
+      -0.00466
+     ],
+     "jaw": [
+      0.00085,
+      0.15591,
+      -0.00782
+     ],
+     "handR": [
+      -0.06999,
+      0.01203,
+      -0.06998
+     ],
+     "handL": [
+      0.07,
+      0.012,
+      -0.07
+     ],
+     "footL": [
+      0.0376,
+      0.02863,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.0467,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03704,
+      -0.012
+     ],
+     "coatL": [
+      0.02096,
+      0.08416,
+      0.01605
+     ],
+     "belt1": [
+      0.02282,
+      0.04062,
+      0.02043
+     ]
+    },
+    "45": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00574,
+      0.15273,
+      -0.01085
+     ],
+     "jaw": [
+      -0.00688,
+      0.15514,
+      -0.01436
+     ],
+     "handR": [
+      -0.07,
+      0.012,
+      -0.07
+     ],
+     "handL": [
+      0.02233,
+      0.20803,
+      -0.00697
+     ],
+     "footL": [
+      0.0376,
+      0.02863,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.0467,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03704,
+      -0.012
+     ],
+     "coatL": [
+      0.02112,
+      0.08677,
+      0.01464
+     ],
+     "belt1": [
+      0.02282,
+      0.04062,
+      0.02043
+     ]
+    },
+    "90": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00102,
+      0.15284,
+      -0.00466
+     ],
+     "jaw": [
+      0.00085,
+      0.15591,
+      -0.00782
+     ],
+     "handR": [
+      -0.06999,
+      0.01203,
+      -0.06998
+     ],
+     "handL": [
+      0.07,
+      0.012,
+      -0.07
+     ],
+     "footL": [
+      0.0376,
+      0.02863,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.0467,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03704,
+      -0.012
+     ],
+     "coatL": [
+      0.02096,
+      0.08416,
+      0.01605
+     ],
+     "belt1": [
+      0.02282,
+      0.04062,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0031,
+    "meshMinAt": [
+     88,
+     "jonah_body",
+     [
+      -0.002,
+      -0.003,
+      0.087
+     ],
+     "proxy bone shinR"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0688,
+    "maxStepAt": [
+     72,
+     "fingersL"
+    ],
+    "seamStep": 0.0023,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0023
+  },
+  {
+   "action": "jonah_stand_up",
+   "char": "jonah",
+   "clip": "stand_up",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "up": {
+     "frame": 40,
+     "sec": 1.333
+    }
+   },
+   "rootMaxOffset": 0.04415,
+   "props": [
+    "seaweed"
+   ],
+   "notes": "from sit_dazed's pose: pulls his feet in, rocks forward with his hands pushing off the sand, rises, brushes the sand off his coat with both hands, a little shake of the head; ends standing",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00114,
+      0.0
+     ],
+     "head": [
+      0.00102,
+      0.15397,
+      -0.00466
+     ],
+     "jaw": [
+      0.00085,
+      0.15704,
+      -0.00782
+     ],
+     "handR": [
+      -0.06999,
+      0.01317,
+      -0.06998
+     ],
+     "handL": [
+      0.07,
+      0.01314,
+      -0.07
+     ],
+     "footL": [
+      0.0376,
+      0.02976,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.04784,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03818,
+      -0.012
+     ],
+     "coatL": [
+      0.02096,
+      0.0853,
+      0.01605
+     ],
+     "belt1": [
+      0.02282,
+      0.04176,
+      0.02043
+     ]
+    },
+    "30": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.2044,
+      0.06241
+     ],
+     "jaw": [
+      0.0,
+      0.20854,
+      0.0609
+     ],
+     "handR": [
+      -0.06852,
+      0.05668,
+      0.01533
+     ],
+     "handL": [
+      0.06852,
+      0.05668,
+      0.01533
+     ],
+     "footL": [
+      0.0276,
+      0.02904,
+      0.03888
+     ],
+     "toeR": [
+      -0.0276,
+      0.01512,
+      0.06675
+     ],
+     "hips": [
+      0.0,
+      0.10281,
+      0.01461
+     ],
+     "coatL": [
+      0.02104,
+      0.13509,
+      0.04521
+     ],
+     "belt1": [
+      0.02282,
+      0.10639,
+      0.04704
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.003,
+    "plantedDriftMax": 0.0074,
+    "maxStep": 0.0201,
+    "maxStepAt": [
+     9,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "jonah_nod_ok",
+   "char": "jonah",
+   "clip": "nod_ok",
+   "frames": 50,
+   "seconds": 1.667,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "nod": {
+     "frame": 30,
+     "sec": 1.0
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "a deep breath in (chest and shoulders rise, chin up), out, then one firm nod; his fists close at his sides; ends standing tall and steady",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "25": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.30328,
+      0.00172
+     ],
+     "jaw": [
+      0.0,
+      0.30585,
+      -0.00186
+     ],
+     "handR": [
+      -0.07077,
+      0.15348,
+      0.03704
+     ],
+     "handL": [
+      0.07077,
+      0.15348,
+      0.03704
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23662,
+      0.0276
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "50": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      -0.00029
+     ],
+     "jaw": [
+      0.0,
+      0.30572,
+      -0.00398
+     ],
+     "handR": [
+      -0.06941,
+      0.16062,
+      0.04736
+     ],
+     "handL": [
+      0.06941,
+      0.16062,
+      0.04736
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0001,
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.009,
+    "maxStepAt": [
+     28,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "jonah_proclaim",
+   "char": "jonah",
+   "clip": "proclaim",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "call1": {
+     "frame": 10,
+     "sec": 0.333
+    },
+    "call2": {
+     "frame": 58,
+     "sec": 1.933
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "calling out to the whole city: hands cupped round his mouth (kept to the sides so the mouth shows), leaning forward from the hips, two big calls per loop, first to his left, then to his right (chest and head turn), each call pumps the body forward; jaw wide on the calls; wide stance",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00094,
+      0.30222,
+      0.01344
+     ],
+     "jaw": [
+      -0.00089,
+      0.30504,
+      0.01059
+     ],
+     "handR": [
+      -0.0016,
+      0.27799,
+      0.06657
+     ],
+     "handL": [
+      0.0504,
+      0.28169,
+      0.03686
+     ],
+     "footL": [
+      0.02951,
+      0.0195,
+      0.01093
+     ],
+     "toeR": [
+      -0.02956,
+      0.00526,
+      0.02293
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.028,
+      0.23347,
+      0.0226
+     ],
+     "belt1": [
+      0.02503,
+      0.19073,
+      0.03076
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00094,
+      0.30222,
+      0.01344
+     ],
+     "jaw": [
+      0.00089,
+      0.30504,
+      0.01059
+     ],
+     "handR": [
+      -0.0504,
+      0.28169,
+      0.03686
+     ],
+     "handL": [
+      0.0016,
+      0.27799,
+      0.06657
+     ],
+     "footL": [
+      0.02952,
+      0.01932,
+      0.01096
+     ],
+     "toeR": [
+      -0.02956,
+      0.00517,
+      0.02291
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.01246,
+      0.23195,
+      0.03406
+     ],
+     "belt1": [
+      0.0205,
+      0.19073,
+      0.03394
+     ]
+    },
+    "96": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00094,
+      0.30222,
+      0.01344
+     ],
+     "jaw": [
+      -0.00089,
+      0.30504,
+      0.01059
+     ],
+     "handR": [
+      -0.0016,
+      0.27799,
+      0.06657
+     ],
+     "handL": [
+      0.0504,
+      0.28169,
+      0.03686
+     ],
+     "footL": [
+      0.02951,
+      0.0195,
+      0.01093
+     ],
+     "toeR": [
+      -0.02956,
+      0.00526,
+      0.02293
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.028,
+      0.23347,
+      0.0226
+     ],
+     "belt1": [
+      0.02503,
+      0.19073,
+      0.03076
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0001,
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0087,
+    "maxStepAt": [
+     41,
+     "upperArmR"
+    ],
+    "seamStep": 0.0016,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0016
+  },
+  {
+   "action": "jonah_surprised",
+   "char": "jonah",
+   "clip": "surprised",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "take": {
+     "frame": 16,
+     "sec": 0.533
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "double-take: a glance at the gate, he looks away (it can't be...), then snaps back with a jolt - head jerks back, shoulders up, hands fly up open at his chest, jaw drops; holds wide-eyed",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "24": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.30343,
+      -0.00425
+     ],
+     "jaw": [
+      0.00011,
+      0.30512,
+      -0.00832
+     ],
+     "handR": [
+      -0.052,
+      0.236,
+      0.066
+     ],
+     "handL": [
+      0.052,
+      0.236,
+      0.066
+     ],
+     "footL": [
+      0.02458,
+      0.01912,
+      -0.00096
+     ],
+     "toeR": [
+      -0.02458,
+      0.00521,
+      0.02691
+     ],
+     "hips": [
+      0.0,
+      0.18743,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23974,
+      0.02804
+     ],
+     "belt1": [
+      0.02282,
+      0.19101,
+      0.03243
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.30315,
+      -0.00425
+     ],
+     "jaw": [
+      -0.0,
+      0.30486,
+      -0.00832
+     ],
+     "handR": [
+      -0.052,
+      0.236,
+      0.066
+     ],
+     "handL": [
+      0.052,
+      0.236,
+      0.066
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23946,
+      0.02804
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0001,
+    "plantedDriftMax": 0.0001,
+    "maxStep": 0.0703,
+    "maxStepAt": [
+     16,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_sit_sulk",
+   "char": "jonah",
+   "clip": "sit_sulk",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": false,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {
+    "plonk": {
+     "frame": 16,
+     "sec": 0.533
+    }
+   },
+   "rootMaxOffset": 0.02341,
+   "props": [],
+   "notes": "plonks down on the hill (a little bounce), folds his arms, chin on his chest, a huff, and taps one foot four times; eyes half shut; holds the sulk",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.30582,
+      -0.00362
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.02152,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.1518,
+      0.00839
+     ],
+     "jaw": [
+      0.00061,
+      0.15598,
+      0.00713
+     ],
+     "handR": [
+      0.026,
+      0.06059,
+      0.01753
+     ],
+     "handL": [
+      -0.024,
+      0.06777,
+      0.02286
+     ],
+     "footL": [
+      0.0316,
+      0.04084,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.02692,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.03871,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08417,
+      0.0174
+     ],
+     "belt1": [
+      0.02282,
+      0.04229,
+      0.02043
+     ]
+    },
+    "72": {
+     "root": [
+      0.0,
+      0.02152,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.1518,
+      0.00839
+     ],
+     "jaw": [
+      0.00061,
+      0.15602,
+      0.00727
+     ],
+     "handR": [
+      0.026,
+      0.06059,
+      0.01753
+     ],
+     "handL": [
+      -0.024,
+      0.06777,
+      0.02286
+     ],
+     "footL": [
+      0.0316,
+      0.04084,
+      0.092
+     ],
+     "toeR": [
+      -0.0316,
+      0.02692,
+      0.11987
+     ],
+     "hips": [
+      0.0,
+      0.03871,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08417,
+      0.0174
+     ],
+     "belt1": [
+      0.02282,
+      0.04229,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0063,
+    "meshMinAt": [
+     8,
+     "jonah_body",
+     [
+      0.029,
+      -0.006,
+      0.059
+     ],
+     "proxy bone belt1"
+    ],
+    "plantedDriftMax": 0.0104,
+    "maxStep": 0.0391,
+    "maxStepAt": [
+     6,
+     "coatR"
+    ]
+   }
+  },
+  {
+   "action": "jonah_relax_happy",
+   "char": "jonah",
+   "clip": "relax_happy",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "bliss in the shade: sits with his legs out, ankles crossed, leaning back on his hands, face up, eyes closed; one long contented sigh, head sways gently, toes wiggle",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.1585,
+      -0.03626
+     ],
+     "jaw": [
+      -0.00033,
+      0.15841,
+      -0.04066
+     ],
+     "handR": [
+      -0.06898,
+      0.01707,
+      -0.0774
+     ],
+     "handL": [
+      0.06898,
+      0.01707,
+      -0.0774
+     ],
+     "footL": [
+      0.0336,
+      0.03079,
+      0.154
+     ],
+     "toeR": [
+      -0.0176,
+      0.05755,
+      0.16537
+     ],
+     "hips": [
+      0.0,
+      0.04638,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.10333,
+      0.01227
+     ],
+     "belt1": [
+      0.02282,
+      0.04996,
+      0.02043
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15787,
+      -0.03795
+     ],
+     "jaw": [
+      0.00033,
+      0.15748,
+      -0.04233
+     ],
+     "handR": [
+      -0.06893,
+      0.0174,
+      -0.0773
+     ],
+     "handL": [
+      0.06893,
+      0.0174,
+      -0.0773
+     ],
+     "footL": [
+      0.0336,
+      0.03079,
+      0.154
+     ],
+     "toeR": [
+      -0.0176,
+      0.05755,
+      0.16537
+     ],
+     "hips": [
+      0.0,
+      0.04638,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.10416,
+      0.0122
+     ],
+     "belt1": [
+      0.02282,
+      0.04996,
+      0.02043
+     ]
+    },
+    "120": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.1585,
+      -0.03626
+     ],
+     "jaw": [
+      -0.00033,
+      0.15841,
+      -0.04066
+     ],
+     "handR": [
+      -0.06898,
+      0.01707,
+      -0.0774
+     ],
+     "handL": [
+      0.06898,
+      0.01707,
+      -0.0774
+     ],
+     "footL": [
+      0.0336,
+      0.03079,
+      0.154
+     ],
+     "toeR": [
+      -0.0176,
+      0.05755,
+      0.16537
+     ],
+     "hips": [
+      0.0,
+      0.04638,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.10333,
+      0.01227
+     ],
+     "belt1": [
+      0.02282,
+      0.04996,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0003,
+    "meshMinAt": [
+     120,
+     "jonah_body",
+     [
+      0.042,
+      0.0,
+      0.093
+     ],
+     "proxy bone shinL"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0013,
+    "maxStepAt": [
+     0,
+     "toeR"
+    ],
+    "seamStep": 0.0013,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0013
+  },
+  {
+   "action": "jonah_wail",
+   "char": "jonah",
+   "clip": "wail",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": true,
+   "seated": true,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "over-the-top wailing at the dead plant: sitting, legs out, both arms thrown up toward it, rocking forward and back (two rocks per loop), head back, mouth wide with sobs, shoulders jerking",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15244,
+      -0.0137
+     ],
+     "jaw": [
+      -0.00026,
+      0.1537,
+      -0.01792
+     ],
+     "handR": [
+      -0.07301,
+      0.19945,
+      0.0658
+     ],
+     "handL": [
+      0.07888,
+      0.19769,
+      0.06556
+     ],
+     "footL": [
+      0.0376,
+      0.02722,
+      0.132
+     ],
+     "toeR": [
+      -0.0376,
+      0.04219,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03651,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08589,
+      0.01655
+     ],
+     "belt1": [
+      0.02282,
+      0.04009,
+      0.02043
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15244,
+      -0.0137
+     ],
+     "jaw": [
+      0.00026,
+      0.1537,
+      -0.01792
+     ],
+     "handR": [
+      -0.07301,
+      0.19945,
+      0.0658
+     ],
+     "handL": [
+      0.07888,
+      0.19769,
+      0.06556
+     ],
+     "footL": [
+      0.0376,
+      0.02722,
+      0.132
+     ],
+     "toeR": [
+      -0.0376,
+      0.04219,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03651,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08589,
+      0.01655
+     ],
+     "belt1": [
+      0.02282,
+      0.04009,
+      0.02043
+     ]
+    },
+    "72": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15244,
+      -0.0137
+     ],
+     "jaw": [
+      -0.00026,
+      0.1537,
+      -0.01792
+     ],
+     "handR": [
+      -0.07301,
+      0.19945,
+      0.0658
+     ],
+     "handL": [
+      0.07888,
+      0.19769,
+      0.06556
+     ],
+     "footL": [
+      0.0376,
+      0.02722,
+      0.132
+     ],
+     "toeR": [
+      -0.0376,
+      0.04219,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03651,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08589,
+      0.01655
+     ],
+     "belt1": [
+      0.02282,
+      0.04009,
+      0.02043
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0022,
+    "meshMinAt": [
+     72,
+     "jonah_body",
+     [
+      -0.002,
+      -0.002,
+      0.081
+     ],
+     "proxy bone shinR"
+    ],
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0131,
+    "maxStepAt": [
+     50,
+     "fingersL"
+    ],
+    "seamStep": 0.0078,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0078
+  },
+  {
+   "action": "jonah_look_city",
+   "char": "jonah",
+   "clip": "look_city",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "stand": {
+     "frame": 70,
+     "sec": 2.333
+    }
+   },
+   "rootMaxOffset": 0.04123,
+   "props": [],
+   "notes": "starts seated (legs out, as in wail / relax_happy): he lowers his arms and looks up, listening (the question sinks in), slowly gets up, sets a hand on his hip, turns his gaze to the city, and the hand slowly drops from the hip as he understands; holds standing, soft",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00114,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.15326,
+      0.00147
+     ],
+     "jaw": [
+      0.0,
+      0.15647,
+      -0.00154
+     ],
+     "handR": [
+      -0.06987,
+      0.01375,
+      -0.06963
+     ],
+     "handL": [
+      0.06987,
+      0.01375,
+      -0.06963
+     ],
+     "footL": [
+      0.0376,
+      0.02976,
+      0.15
+     ],
+     "toeR": [
+      -0.0376,
+      0.04784,
+      0.17537
+     ],
+     "hips": [
+      0.0,
+      0.03818,
+      -0.012
+     ],
+     "coatL": [
+      0.02104,
+      0.08364,
+      0.0174
+     ],
+     "belt1": [
+      0.02282,
+      0.04176,
+      0.02043
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.22109,
+      0.04539
+     ],
+     "jaw": [
+      0.0,
+      0.22494,
+      0.04325
+     ],
+     "handR": [
+      -0.07634,
+      0.08569,
+      0.01796
+     ],
+     "handL": [
+      0.0672,
+      0.06735,
+      0.0204
+     ],
+     "footL": [
+      0.02719,
+      0.02857,
+      0.03346
+     ],
+     "toeR": [
+      -0.02719,
+      0.01465,
+      0.06134
+     ],
+     "hips": [
+      0.0,
+      0.11289,
+      0.00896
+     ],
+     "coatL": [
+      0.02104,
+      0.14979,
+      0.04131
+     ],
+     "belt1": [
+      0.02282,
+      0.11647,
+      0.04139
+     ]
+    },
+    "120": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      -0.00049,
+      0.30606,
+      -0.0034
+     ],
+     "handR": [
+      -0.07077,
+      0.15473,
+      0.03989
+     ],
+     "handL": [
+      0.07077,
+      0.15473,
+      0.03989
+     ],
+     "footL": [
+      0.02459,
+      0.01884,
+      -0.00098
+     ],
+     "toeR": [
+      -0.02459,
+      0.00493,
+      0.02689
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0026,
+    "plantedDriftMax": 0.0096,
+    "maxStep": 0.023,
+    "maxStepAt": [
+     40,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "jonah_wave",
+   "char": "jonah",
+   "clip": "wave",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "a small, slightly shy wave: the right hand only at shoulder height, small fast waggles, shoulders up a little, head tilted, the left hand behind his back; weight rocks from foot to foot",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.00037,
+      0.30604,
+      -0.00344
+     ],
+     "handR": [
+      -0.074,
+      0.262,
+      0.05
+     ],
+     "handL": [
+      0.04,
+      0.165,
+      -0.05
+     ],
+     "footL": [
+      0.02359,
+      0.01882,
+      -0.00099
+     ],
+     "toeR": [
+      -0.02359,
+      0.0049,
+      0.02688
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "24": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.00037,
+      0.30604,
+      -0.00344
+     ],
+     "handR": [
+      -0.074,
+      0.262,
+      0.05
+     ],
+     "handL": [
+      0.04,
+      0.165,
+      -0.05
+     ],
+     "footL": [
+      0.02359,
+      0.01882,
+      -0.00099
+     ],
+     "toeR": [
+      -0.02359,
+      0.0049,
+      0.02688
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.3033,
+      0.0
+     ],
+     "jaw": [
+      0.00037,
+      0.30604,
+      -0.00344
+     ],
+     "handR": [
+      -0.074,
+      0.262,
+      0.05
+     ],
+     "handL": [
+      0.04,
+      0.165,
+      -0.05
+     ],
+     "footL": [
+      0.02359,
+      0.01882,
+      -0.00099
+     ],
+     "toeR": [
+      -0.02359,
+      0.0049,
+      0.02688
+     ],
+     "hips": [
+      0.0,
+      0.18715,
+      0.0
+     ],
+     "coatL": [
+      0.02104,
+      0.23751,
+      0.02777
+     ],
+     "belt1": [
+      0.02282,
+      0.19073,
+      0.03243
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0017,
+    "plantedDriftMax": 0.0016,
+    "maxStep": 0.0039,
+    "maxStepAt": [
+     7,
+     "fingersR"
+    ],
+    "seamStep": 0.0032,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0032
+  },
+  {
+   "action": "captain_idle",
+   "char": "captain",
+   "clip": "idle",
+   "frames": 180,
+   "seconds": 6.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "one 6 s loop = one shipRock period: right hand resting on the steering-oar handle (at his right side), left fist on his hip, legs apart; his body sways against the ship's roll (hips lead, chest late), he looks out to sea and back, a hum (small jaw), belly breathing; blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00149,
+      0.32425,
+      -0.0
+     ],
+     "jaw": [
+      0.00149,
+      0.32664,
+      -0.00383
+     ],
+     "handR": [
+      -0.074,
+      0.172,
+      0.006
+     ],
+     "handL": [
+      0.074,
+      0.19,
+      0.006
+     ],
+     "footL": [
+      0.03497,
+      0.02047,
+      0.00501
+     ],
+     "toeR": [
+      -0.03503,
+      0.00559,
+      0.02467
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00148,
+      0.33609,
+      -0.04004
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "90": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00149,
+      0.32425,
+      0.0
+     ],
+     "jaw": [
+      -0.00203,
+      0.32659,
+      -0.00382
+     ],
+     "handR": [
+      -0.074,
+      0.172,
+      0.006
+     ],
+     "handL": [
+      0.074,
+      0.19,
+      0.006
+     ],
+     "footL": [
+      0.03497,
+      0.02047,
+      0.00501
+     ],
+     "toeR": [
+      -0.03503,
+      0.00559,
+      0.02467
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      -0.00714,
+      0.33562,
+      -0.03977
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "180": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00149,
+      0.32425,
+      -0.0
+     ],
+     "jaw": [
+      0.00149,
+      0.32664,
+      -0.00383
+     ],
+     "handR": [
+      -0.074,
+      0.172,
+      0.006
+     ],
+     "handL": [
+      0.074,
+      0.19,
+      0.006
+     ],
+     "footL": [
+      0.03497,
+      0.02047,
+      0.00501
+     ],
+     "toeR": [
+      -0.03503,
+      0.00559,
+      0.02467
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00148,
+      0.33609,
+      -0.04004
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0014,
+    "plantedDriftMax": 0.0003,
+    "maxStep": 0.0018,
+    "maxStepAt": [
+     90,
+     "wrap1"
+    ],
+    "seamStep": 0.0004,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0004
+  },
+  {
+   "action": "captain_talk",
+   "char": "captain",
+   "clip": "talk",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "big open gestures: both arms swing open wide palms-up on the stressed words (left phrase, right phrase, both), chest out, a belly chuckle (shoulders bounce), nods; jaw in a syllable rhythm",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00491,
+      0.32414,
+      -0.00345
+     ],
+     "jaw": [
+      0.00453,
+      0.32627,
+      -0.00742
+     ],
+     "handR": [
+      -0.10291,
+      0.18623,
+      0.05851
+     ],
+     "handL": [
+      0.11183,
+      0.18842,
+      0.06196
+     ],
+     "footL": [
+      0.03506,
+      0.02023,
+      -0.001
+     ],
+     "toeR": [
+      -0.0349,
+      0.00616,
+      0.02872
+     ],
+     "hips": [
+      0.00235,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00106,
+      0.33326,
+      -0.04402
+     ],
+     "sash1": [
+      -0.02491,
+      0.21173,
+      0.05385
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00491,
+      0.32414,
+      -0.00345
+     ],
+     "jaw": [
+      -0.00435,
+      0.32653,
+      -0.00724
+     ],
+     "handR": [
+      -0.11874,
+      0.25202,
+      0.08677
+     ],
+     "handL": [
+      0.10155,
+      0.18929,
+      0.06605
+     ],
+     "footL": [
+      0.0349,
+      0.02104,
+      -0.00092
+     ],
+     "toeR": [
+      -0.03506,
+      0.00534,
+      0.02864
+     ],
+     "hips": [
+      -0.00235,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00088,
+      0.33599,
+      -0.04307
+     ],
+     "sash1": [
+      -0.03009,
+      0.2106,
+      0.05385
+     ]
+    },
+    "96": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00491,
+      0.32414,
+      -0.00345
+     ],
+     "jaw": [
+      0.00453,
+      0.32627,
+      -0.00742
+     ],
+     "handR": [
+      -0.10291,
+      0.18623,
+      0.05851
+     ],
+     "handL": [
+      0.11183,
+      0.18842,
+      0.06196
+     ],
+     "footL": [
+      0.03506,
+      0.02023,
+      -0.001
+     ],
+     "toeR": [
+      -0.0349,
+      0.00616,
+      0.02872
+     ],
+     "hips": [
+      0.00235,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00106,
+      0.33326,
+      -0.04402
+     ],
+     "sash1": [
+      -0.02491,
+      0.21173,
+      0.05385
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0013,
+    "plantedDriftMax": 0.0002,
+    "maxStep": 0.0124,
+    "maxStepAt": [
+     28,
+     "fingersR"
+    ],
+    "seamStep": 0.0026,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0026
+  },
+  {
+   "action": "captain_walk",
+   "char": "captain",
+   "clip": "walk",
+   "frames": 36,
+   "seconds": 1.2,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "contactL": {
+     "frame": 0,
+     "sec": 0.0
+    },
+    "contactR": {
+     "frame": 18,
+     "sec": 0.6
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "rolling sailor's walk: feet wide apart, the body rolls far over each planted foot (hips and chest roll, head stays level), arms held out from the belly and swinging wide, a bounce per step",
+   "naturalSpeed": 0.1111,
+   "stride": 0.08,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00345,
+      0.32144,
+      -0.00353
+     ],
+     "jaw": [
+      0.00332,
+      0.32361,
+      -0.00748
+     ],
+     "handR": [
+      -0.09945,
+      0.16961,
+      0.04357
+     ],
+     "handL": [
+      0.11822,
+      0.20207,
+      0.0674
+     ],
+     "footL": [
+      0.03701,
+      0.02343,
+      0.03499
+     ],
+     "toeR": [
+      -0.03706,
+      0.01374,
+      0.00198
+     ],
+     "hips": [
+      0.01,
+      0.19701,
+      0.0
+     ],
+     "wrap1": [
+      0.00225,
+      0.33109,
+      -0.04413
+     ],
+     "sash1": [
+      -0.01857,
+      0.20574,
+      0.05385
+     ]
+    },
+    "18": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.00345,
+      0.32144,
+      -0.00353
+     ],
+     "jaw": [
+      -0.00332,
+      0.32361,
+      -0.00748
+     ],
+     "handR": [
+      -0.11822,
+      0.20207,
+      0.0674
+     ],
+     "handL": [
+      0.09945,
+      0.16961,
+      0.04357
+     ],
+     "footL": [
+      0.03706,
+      0.03277,
+      -0.02519
+     ],
+     "toeR": [
+      -0.03701,
+      0.01392,
+      0.06676
+     ],
+     "hips": [
+      -0.01,
+      0.19701,
+      0.0
+     ],
+     "wrap1": [
+      -0.00225,
+      0.33109,
+      -0.04413
+     ],
+     "sash1": [
+      -0.03614,
+      0.21149,
+      0.05385
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.00345,
+      0.32144,
+      -0.00353
+     ],
+     "jaw": [
+      0.00332,
+      0.32361,
+      -0.00748
+     ],
+     "handR": [
+      -0.09945,
+      0.16961,
+      0.04357
+     ],
+     "handL": [
+      0.11822,
+      0.20207,
+      0.0674
+     ],
+     "footL": [
+      0.03701,
+      0.02343,
+      0.03499
+     ],
+     "toeR": [
+      -0.03706,
+      0.01374,
+      0.00198
+     ],
+     "hips": [
+      0.01,
+      0.19701,
+      0.0
+     ],
+     "wrap1": [
+      0.00225,
+      0.33109,
+      -0.04413
+     ],
+     "sash1": [
+      -0.01857,
+      0.20574,
+      0.05385
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0007,
+    "naturalSpeed": 0.1111,
+    "stanceSlipMax": 0.0,
+    "maxStep": 0.0145,
+    "maxStepAt": [
+     16,
+     "thighR"
+    ],
+    "seamStep": 0.0122,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0122
+  },
+  {
+   "action": "captain_greet",
+   "char": "captain",
+   "clip": "greet",
+   "frames": 66,
+   "seconds": 2.2,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "sweep": {
+     "frame": 22,
+     "sec": 0.733
+    },
+    "point": {
+     "frame": 40,
+     "sec": 1.333
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "'Welcome aboard!': a breath and a lean back, then the right arm sweeps wide in a big welcome (palm up), left fist on his hip, a laugh; then the arm swings forward and points ahead out to sea ('we're off!'); holds pointing, chest out",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32426,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.32665,
+      -0.00383
+     ],
+     "handR": [
+      -0.09542,
+      0.16972,
+      0.04253
+     ],
+     "handL": [
+      0.09542,
+      0.16972,
+      0.04253
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.035,
+      0.00552,
+      0.02868
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.0,
+      0.3361,
+      -0.04004
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "33": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.0,
+      0.3241,
+      -0.0046
+     ],
+     "jaw": [
+      0.00104,
+      0.32588,
+      -0.00862
+     ],
+     "handR": [
+      -0.17971,
+      0.28506,
+      -0.00085
+     ],
+     "handL": [
+      0.074,
+      0.19,
+      0.006
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.03506,
+      0.01082,
+      0.03071
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.01078,
+      0.32977,
+      -0.04454
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "66": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.0,
+      0.3241,
+      -0.0046
+     ],
+     "jaw": [
+      0.00094,
+      0.3258,
+      -0.00868
+     ],
+     "handR": [
+      -0.11474,
+      0.30367,
+      0.10211
+     ],
+     "handL": [
+      0.074,
+      0.19,
+      0.006
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.03495,
+      0.00574,
+      0.03861
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.00973,
+      0.32894,
+      -0.04491
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0003,
+    "plantedDriftMax": 0.0034,
+    "maxStep": 0.0345,
+    "maxStepAt": [
+     35,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "captain_steer_hard",
+   "char": "captain",
+   "clip": "steer_hard",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "heaveL": {
+     "frame": 14,
+     "sec": 0.467
+    },
+    "heaveR": {
+     "frame": 50,
+     "sec": 1.667
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "in the storm: both hands on the steering-oar handle at his right, heaving it hard to one side and the other (the whole body throws its weight into it, chest turning, hips pushing), legs braced wide and bent, head ducked against the wind, teeth gritted; the hands slide only +-0.02 along the static oar",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.01384,
+      0.30658,
+      0.0097
+     ],
+     "jaw": [
+      0.01494,
+      0.30972,
+      0.00665
+     ],
+     "handR": [
+      -0.07,
+      0.168,
+      -0.014
+     ],
+     "handL": [
+      -0.04156,
+      0.18557,
+      0.00986
+     ],
+     "footL": [
+      0.04106,
+      0.02708,
+      0.019
+     ],
+     "toeR": [
+      -0.04106,
+      0.01691,
+      0.01493
+     ],
+     "hips": [
+      0.006,
+      0.1835,
+      -0.006
+     ],
+     "wrap1": [
+      0.02462,
+      0.32669,
+      -0.02527
+     ],
+     "sash1": [
+      -0.01704,
+      0.19659,
+      0.04959
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.01269,
+      0.30654,
+      0.01027
+     ],
+     "jaw": [
+      -0.01125,
+      0.30981,
+      0.00751
+     ],
+     "handR": [
+      -0.07,
+      0.168,
+      0.026
+     ],
+     "handL": [
+      -0.044,
+      0.184,
+      0.05
+     ],
+     "footL": [
+      0.04106,
+      0.02576,
+      0.019
+     ],
+     "toeR": [
+      -0.04106,
+      0.01839,
+      0.01493
+     ],
+     "hips": [
+      -0.006,
+      0.1835,
+      -0.006
+     ],
+     "wrap1": [
+      0.00341,
+      0.32799,
+      -0.02173
+     ],
+     "sash1": [
+      -0.03777,
+      0.19371,
+      0.04576
+     ]
+    },
+    "72": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.01384,
+      0.30658,
+      0.0097
+     ],
+     "jaw": [
+      0.01494,
+      0.30972,
+      0.00665
+     ],
+     "handR": [
+      -0.07,
+      0.168,
+      -0.014
+     ],
+     "handL": [
+      -0.04156,
+      0.18557,
+      0.00986
+     ],
+     "footL": [
+      0.04106,
+      0.02708,
+      0.019
+     ],
+     "toeR": [
+      -0.04106,
+      0.01691,
+      0.01493
+     ],
+     "hips": [
+      0.006,
+      0.1835,
+      -0.006
+     ],
+     "wrap1": [
+      0.02462,
+      0.32669,
+      -0.02527
+     ],
+     "sash1": [
+      -0.01704,
+      0.19659,
+      0.04959
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0009,
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0072,
+    "maxStepAt": [
+     12,
+     "head"
+    ],
+    "seamStep": 0.0025,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0025
+  },
+  {
+   "action": "captain_shake_awake",
+   "char": "captain",
+   "clip": "shake_awake",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "shake1": {
+     "frame": 8,
+     "sec": 0.267
+    },
+    "shake2": {
+     "frame": 32,
+     "sec": 1.067
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "bends right over Jonah lying curled at his feet (Jonah's root SHAKE_D = 0.19 in front, head toward the captain), knees bent, both hands on his upper shoulder and arm, shaking him hard in two bursts per loop, shouting (jaw wide on the bursts), eyes wide",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.25135,
+      0.05924
+     ],
+     "jaw": [
+      0.0,
+      0.25566,
+      0.0579
+     ],
+     "handR": [
+      -0.0342,
+      0.12143,
+      0.0997
+     ],
+     "handL": [
+      0.01501,
+      0.13487,
+      0.10881
+     ],
+     "footL": [
+      0.03906,
+      0.02648,
+      0.023
+     ],
+     "toeR": [
+      -0.03906,
+      0.01876,
+      0.01864
+     ],
+     "hips": [
+      0.0,
+      0.1655,
+      -0.026
+     ],
+     "wrap1": [
+      0.0,
+      0.28648,
+      0.03667
+     ],
+     "sash1": [
+      -0.02751,
+      0.15615,
+      0.0283
+     ]
+    },
+    "24": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.25137,
+      0.05923
+     ],
+     "jaw": [
+      0.0,
+      0.25568,
+      0.05789
+     ],
+     "handR": [
+      -0.0342,
+      0.12144,
+      0.09969
+     ],
+     "handL": [
+      0.01501,
+      0.13488,
+      0.10881
+     ],
+     "footL": [
+      0.03906,
+      0.02648,
+      0.023
+     ],
+     "toeR": [
+      -0.03906,
+      0.01876,
+      0.01864
+     ],
+     "hips": [
+      0.0,
+      0.1655,
+      -0.026
+     ],
+     "wrap1": [
+      0.0,
+      0.28649,
+      0.03665
+     ],
+     "sash1": [
+      -0.02751,
+      0.15615,
+      0.0283
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.25135,
+      0.05924
+     ],
+     "jaw": [
+      0.0,
+      0.25566,
+      0.0579
+     ],
+     "handR": [
+      -0.0342,
+      0.12143,
+      0.0997
+     ],
+     "handL": [
+      0.01501,
+      0.13487,
+      0.10881
+     ],
+     "footL": [
+      0.03906,
+      0.02648,
+      0.023
+     ],
+     "toeR": [
+      -0.03906,
+      0.01876,
+      0.01864
+     ],
+     "hips": [
+      0.0,
+      0.1655,
+      -0.026
+     ],
+     "wrap1": [
+      0.0,
+      0.28648,
+      0.03667
+     ],
+     "sash1": [
+      -0.02751,
+      0.15615,
+      0.0283
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0015,
+    "plantedDriftMax": 0.0,
+    "maxStep": 0.0097,
+    "maxStepAt": [
+     12,
+     "fingersR"
+    ],
+    "seamStep": 0.0042,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0042
+  },
+  {
+   "action": "captain_refuse_hands",
+   "char": "captain",
+   "clip": "refuse_hands",
+   "frames": 54,
+   "seconds": 1.8,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "no": {
+     "frame": 14,
+     "sec": 0.467
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "'Throw you in? No, no!': a startled step back, both palms pushed out in front of his chest, head shaking hard twice, then the hands sink a little and the head drops, torn; holds",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32426,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.32678,
+      -0.00375
+     ],
+     "handR": [
+      -0.09542,
+      0.16972,
+      0.04253
+     ],
+     "handL": [
+      0.09542,
+      0.16972,
+      0.04253
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.03498,
+      0.00554,
+      0.03267
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.0,
+      0.33749,
+      -0.0396
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "27": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.0,
+      0.32351,
+      -0.02374
+     ],
+     "jaw": [
+      -0.0008,
+      0.32521,
+      -0.02785
+     ],
+     "handR": [
+      -0.05,
+      0.244,
+      0.096
+     ],
+     "handL": [
+      0.05,
+      0.244,
+      0.096
+     ],
+     "footL": [
+      0.03505,
+      0.02142,
+      -0.03098
+     ],
+     "toeR": [
+      -0.03493,
+      0.00613,
+      0.03254
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      -0.012
+     ],
+     "wrap1": [
+      -0.00844,
+      0.3284,
+      -0.06434
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.04185
+     ]
+    },
+    "54": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.0,
+      0.32416,
+      -0.00989
+     ],
+     "jaw": [
+      -0.0,
+      0.32741,
+      -0.01303
+     ],
+     "handR": [
+      -0.05,
+      0.22,
+      0.084
+     ],
+     "handL": [
+      0.05,
+      0.22,
+      0.084
+     ],
+     "footL": [
+      0.03505,
+      0.02142,
+      -0.03098
+     ],
+     "toeR": [
+      -0.03493,
+      0.00613,
+      0.03254
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      -0.012
+     ],
+     "wrap1": [
+      -1e-05,
+      0.34534,
+      -0.04588
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.04185
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0003,
+    "plantedDriftMax": 0.0012,
+    "maxStep": 0.039,
+    "maxStepAt": [
+     5,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "captain_heave",
+   "char": "captain",
+   "clip": "heave",
+   "frames": 72,
+   "seconds": 2.4,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "grab": {
+     "frame": 21,
+     "sec": 0.7
+    },
+    "release": {
+     "frame": 44,
+     "sec": 1.467
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "eyes shut, 'forgive us!': a deep breath, he bends and takes Jonah (0.10 in front, back to him) under both arms (`grab`, frame 21 = jonah_fall_in frame 0), lifts him with a grunt, rises on his toes and tips him forward over the rail (`release`, frame 44 = jonah_fall_in frame 23), follows through, then pulls both hands to his mouth and peeks with one eye",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32426,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.32678,
+      -0.00375
+     ],
+     "handR": [
+      -0.09542,
+      0.16972,
+      0.04253
+     ],
+     "handL": [
+      0.09542,
+      0.16972,
+      0.04253
+     ],
+     "footL": [
+      0.0369,
+      0.02116,
+      0.01489
+     ],
+     "toeR": [
+      -0.03703,
+      0.00614,
+      0.01668
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.0,
+      0.33749,
+      -0.0396
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "36": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      -0.0,
+      0.32538,
+      -0.00859
+     ],
+     "jaw": [
+      -0.0,
+      0.32793,
+      -0.01232
+     ],
+     "handR": [
+      -0.03309,
+      0.29684,
+      0.09876
+     ],
+     "handL": [
+      0.03309,
+      0.29684,
+      0.09876
+     ],
+     "footL": [
+      0.03675,
+      0.02316,
+      0.01459
+     ],
+     "toeR": [
+      -0.03686,
+      0.00683,
+      0.0168
+     ],
+     "hips": [
+      0.0,
+      0.20063,
+      -0.0086
+     ],
+     "wrap1": [
+      -0.0,
+      0.33891,
+      -0.0481
+     ],
+     "sash1": [
+      -0.02751,
+      0.2123,
+      0.04524
+     ]
+    },
+    "72": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32417,
+      -0.00938
+     ],
+     "jaw": [
+      0.0,
+      0.32741,
+      -0.01252
+     ],
+     "handR": [
+      -0.014,
+      0.27465,
+      0.03121
+     ],
+     "handL": [
+      0.014,
+      0.27465,
+      0.03121
+     ],
+     "footL": [
+      0.0368,
+      0.02251,
+      0.01458
+     ],
+     "toeR": [
+      -0.03697,
+      0.00566,
+      0.01669
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      -0.012
+     ],
+     "wrap1": [
+      0.0,
+      0.34534,
+      -0.04536
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.04185
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": -0.0024,
+    "plantedDriftMax": 0.0032,
+    "maxStep": 0.0489,
+    "maxStepAt": [
+     62,
+     "fingersL"
+    ]
+   }
+  },
+  {
+   "action": "captain_amazed",
+   "char": "captain",
+   "clip": "amazed",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "hands_up": {
+     "frame": 20,
+     "sec": 0.667
+    }
+   },
+   "rootMaxOffset": 0.0,
+   "props": [],
+   "notes": "the sea goes still: his hands drop, then come up onto his head (elbows wide, face clear), jaw drops, he turns slowly to look across the calm water, a little bounce of disbelief; holds",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32426,
+      0.0
+     ],
+     "jaw": [
+      0.0,
+      0.32678,
+      -0.00375
+     ],
+     "handR": [
+      -0.09542,
+      0.16972,
+      0.04253
+     ],
+     "handL": [
+      0.09542,
+      0.16972,
+      0.04253
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.035,
+      0.00552,
+      0.02868
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      0.0,
+      0.33749,
+      -0.0396
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    },
+    "30": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32433,
+      0.0
+     ],
+     "jaw": [
+      0.00119,
+      0.32659,
+      -0.00373
+     ],
+     "handR": [
+      -0.04335,
+      0.36716,
+      -0.02373
+     ],
+     "handL": [
+      0.04786,
+      0.36846,
+      0.00619
+     ],
+     "footL": [
+      0.035,
+      0.02048,
+      -0.00096
+     ],
+     "toeR": [
+      -0.035,
+      0.0056,
+      0.02868
+     ],
+     "hips": [
+      0.0,
+      0.19957,
+      0.0
+     ],
+     "wrap1": [
+      0.01247,
+      0.33478,
+      -0.03846
+     ],
+     "sash1": [
+      -0.02751,
+      0.21124,
+      0.05385
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "head": [
+      0.0,
+      0.32426,
+      0.0
+     ],
+     "jaw": [
+      -0.00076,
+      0.32652,
+      -0.00384
+     ],
+     "handR": [
+      -0.04847,
+      0.36815,
+      0.00063
+     ],
+     "handL": [
+      0.0456,
+      0.36733,
+      -0.01848
+     ],
+     "footL": [
+      0.035,
+      0.02041,
+      -0.00097
+     ],
+     "toeR": [
+      -0.035,
+      0.00552,
+      0.02868
+     ],
+     "hips": [
+      0.0,
+      0.1995,
+      0.0
+     ],
+     "wrap1": [
+      -0.00796,
+      0.33472,
+      -0.03963
+     ],
+     "sash1": [
+      -0.02751,
+      0.21117,
+      0.05385
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0003,
+    "plantedDriftMax": 0.0002,
+    "maxStep": 0.0478,
+    "maxStepAt": [
+     15,
+     "fingersR"
+    ]
+   }
+  },
+  {
+   "action": "fish_idle",
+   "char": "fish",
+   "clip": "idle",
+   "frames": 120,
+   "seconds": 4.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.01031,
+   "props": [],
+   "notes": "hovering in place: gentle bob and pitch, side fins sculling (feathering on the return), a slow lazy tail sweep (body wave at low amplitude), the mouth works softly (breathing water), blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      -0.0014,
+      0.08969,
+      0.14817
+     ],
+     "body1": [
+      -0.00112,
+      0.10096,
+      0.11744
+     ],
+     "body3": [
+      0.00446,
+      0.10555,
+      -0.06699
+     ],
+     "tail": [
+      0.01657,
+      0.11162,
+      -0.15615
+     ],
+     "finR": [
+      -0.06705,
+      0.05968,
+      0.08773
+     ],
+     "dorsal": [
+      -0.00135,
+      0.1745,
+      0.05653
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0014,
+      0.08969,
+      0.14817
+     ],
+     "body1": [
+      0.00112,
+      0.10096,
+      0.11744
+     ],
+     "body3": [
+      -0.00446,
+      0.10555,
+      -0.06699
+     ],
+     "tail": [
+      -0.01657,
+      0.11162,
+      -0.15615
+     ],
+     "finR": [
+      -0.0608,
+      0.05953,
+      0.09375
+     ],
+     "dorsal": [
+      0.00135,
+      0.1745,
+      0.05653
+     ]
+    },
+    "120": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      -0.0014,
+      0.08969,
+      0.14817
+     ],
+     "body1": [
+      -0.00112,
+      0.10096,
+      0.11744
+     ],
+     "body3": [
+      0.00446,
+      0.10555,
+      -0.06699
+     ],
+     "tail": [
+      0.01657,
+      0.11162,
+      -0.15615
+     ],
+     "finR": [
+      -0.06705,
+      0.05968,
+      0.08773
+     ],
+     "dorsal": [
+      -0.00135,
+      0.1745,
+      0.05653
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.002,
+    "maxStep": 0.0022,
+    "maxStepAt": [
+     25,
+     "tail"
+    ],
+    "seamStep": 0.0015,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0015
+  },
+  {
+   "action": "fish_swim",
+   "char": "fish",
+   "clip": "swim",
+   "frames": 48,
+   "seconds": 1.6,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.00967,
+   "props": [],
+   "notes": "a body wave travelling from head to tail (relative yaw per segment, phase lag head -> tail, amplitude growing toward the tail fin), the head held steady along the travel, side fins tucked back with small strokes, dorsal fin trailing, a small bob; natural speed 0.12 units/s",
+   "naturalSpeed": 0.12,
+   "stride": 0.192,
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      -0.0067,
+      0.09041,
+      0.14763
+     ],
+     "body1": [
+      -0.00628,
+      0.10152,
+      0.11684
+     ],
+     "body3": [
+      0.00726,
+      0.10548,
+      -0.06704
+     ],
+     "tail": [
+      0.03426,
+      0.11187,
+      -0.15288
+     ],
+     "finR": [
+      -0.07303,
+      0.05792,
+      0.08283
+     ],
+     "dorsal": [
+      -0.00903,
+      0.17465,
+      0.05541
+     ]
+    },
+    "24": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0067,
+      0.09041,
+      0.14763
+     ],
+     "body1": [
+      0.00628,
+      0.10152,
+      0.11684
+     ],
+     "body3": [
+      -0.00726,
+      0.10548,
+      -0.06704
+     ],
+     "tail": [
+      -0.03426,
+      0.11187,
+      -0.15288
+     ],
+     "finR": [
+      -0.05408,
+      0.06186,
+      0.09735
+     ],
+     "dorsal": [
+      0.00903,
+      0.17465,
+      0.05541
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      -0.0067,
+      0.09041,
+      0.14763
+     ],
+     "body1": [
+      -0.00628,
+      0.10152,
+      0.11684
+     ],
+     "body3": [
+      0.00726,
+      0.10548,
+      -0.06704
+     ],
+     "tail": [
+      0.03426,
+      0.11187,
+      -0.15288
+     ],
+     "finR": [
+      -0.07303,
+      0.05792,
+      0.08283
+     ],
+     "dorsal": [
+      -0.00903,
+      0.17465,
+      0.05541
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0031,
+    "naturalSpeed": 0.12,
+    "maxStep": 0.0107,
+    "maxStepAt": [
+     10,
+     "tail"
+    ],
+    "seamStep": 0.0039,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.0039
+  },
+  {
+   "action": "fish_gulp",
+   "char": "fish",
+   "clip": "gulp",
+   "frames": 96,
+   "seconds": 3.2,
+   "loop": false,
+   "seated": false,
+   "rootMotion": true,
+   "markers": {
+    "open": {
+     "frame": 30,
+     "sec": 1.0
+    },
+    "gulp": {
+     "frame": 38,
+     "sec": 1.267
+    }
+   },
+   "rootMaxOffset": 0.12795,
+   "props": [],
+   "notes": "spots its dinner (eyes wide, tail curls back to wind up), rises 0.10 with the nose up, the jaw opens to 55 deg, lunges 0.08 forward, SNAPS shut (`gulp`, frame 38), cheeks bulge and a swallow lump runs down the body, sinks back down and drifts back to its mark with a satisfied tail wag; holds",
+   "rootMotionNote": "root rises 0.10, lunges 0.08 forward (+Z), sinks back to (0, 0, 0) by the end",
+   "rootEnd": [
+    0.0,
+    0.0044,
+    -0.006
+   ],
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.0935,
+      0.146
+     ],
+     "body1": [
+      0.0,
+      0.104,
+      0.115
+     ],
+     "body3": [
+      -0.0,
+      0.104,
+      -0.0696
+     ],
+     "tail": [
+      -0.0,
+      0.10785,
+      -0.1597
+     ],
+     "finR": [
+      -0.064,
+      0.062,
+      0.0894
+     ],
+     "dorsal": [
+      0.0,
+      0.176,
+      0.0523
+     ]
+    },
+    "48": {
+     "root": [
+      0.0,
+      0.10438,
+      0.074
+     ],
+     "jaw": [
+      0.0,
+      0.19208,
+      0.226
+     ],
+     "body1": [
+      0.0,
+      0.204,
+      0.195
+     ],
+     "body3": [
+      0.0,
+      0.204,
+      0.0104
+     ],
+     "tail": [
+      -0.0,
+      0.21724,
+      -0.0788
+     ],
+     "finR": [
+      -0.064,
+      0.162,
+      0.1694
+     ],
+     "dorsal": [
+      0.0,
+      0.276,
+      0.1323
+     ]
+    },
+    "96": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.0935,
+      0.146
+     ],
+     "body1": [
+      0.0,
+      0.104,
+      0.115
+     ],
+     "body3": [
+      -0.0,
+      0.104,
+      -0.0696
+     ],
+     "tail": [
+      -0.0,
+      0.10785,
+      -0.1597
+     ],
+     "finR": [
+      -0.064,
+      0.062,
+      0.0894
+     ],
+     "dorsal": [
+      0.0,
+      0.176,
+      0.0523
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0047,
+    "maxStep": 0.0476,
+    "maxStepAt": [
+     37,
+     "jaw"
+    ]
+   }
+  },
+  {
+   "action": "fish_burp",
+   "char": "fish",
+   "clip": "burp",
+   "frames": 54,
+   "seconds": 1.8,
+   "loop": false,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {
+    "burp": {
+     "frame": 22,
+     "sec": 0.733
+    }
+   },
+   "rootMaxOffset": 0.04169,
+   "props": [],
+   "notes": "oops: the cheeks puff up, a small hop (tail flick), the jaw pops open 10 deg with the burp (`burp`), the puff goes down, an embarrassed little wiggle; ends in the idle pose",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.01038,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.09798,
+      0.14688
+     ],
+     "body1": [
+      0.0,
+      0.10879,
+      0.11599
+     ],
+     "body3": [
+      -0.0,
+      0.11063,
+      -0.0686
+     ],
+     "tail": [
+      -0.0,
+      0.11537,
+      -0.15866
+     ],
+     "finR": [
+      -0.064,
+      0.06705,
+      0.08997
+     ],
+     "dorsal": [
+      0.0,
+      0.18141,
+      0.05401
+     ]
+    },
+    "27": {
+     "root": [
+      0.0,
+      0.02452,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.10472,
+      0.15061
+     ],
+     "body1": [
+      -0.0,
+      0.11739,
+      0.12026
+     ],
+     "body3": [
+      -0.0,
+      0.12747,
+      -0.06406
+     ],
+     "tail": [
+      -0.0,
+      0.13623,
+      -0.15382
+     ],
+     "finR": [
+      -0.064,
+      0.07685,
+      0.0924
+     ],
+     "dorsal": [
+      0.0,
+      0.1927,
+      0.06159
+     ]
+    },
+    "54": {
+     "root": [
+      0.0,
+      0.01038,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.09798,
+      0.14688
+     ],
+     "body1": [
+      0.0,
+      0.10879,
+      0.11599
+     ],
+     "body3": [
+      -0.0,
+      0.11063,
+      -0.0686
+     ],
+     "tail": [
+      -0.0,
+      0.11537,
+      -0.15866
+     ],
+     "finR": [
+      -0.064,
+      0.06705,
+      0.08997
+     ],
+     "dorsal": [
+      0.0,
+      0.18141,
+      0.05401
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.0007,
+    "maxStep": 0.0123,
+    "maxStepAt": [
+     43,
+     "tail"
+    ]
+   }
+  },
+  {
+   "action": "fish_spit",
+   "char": "fish",
+   "clip": "spit",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": false,
+   "seated": false,
+   "rootMotion": true,
+   "markers": {
+    "spit": {
+     "frame": 24,
+     "sec": 0.8
+    }
+   },
+   "rootMaxOffset": 0.09315,
+   "props": [],
+   "notes": "breathes in (cheeks puff), rears up with the nose high and the tail tucked under, throws its head forward and spits - jaw wide (50 deg) - with the body recoiling 0.05 backward (`spit`, frame 24), then shakes its head, shuts the mouth and settles back on its mark",
+   "rootMotionNote": "root rears up 0.05, recoils 0.05 backward (-Z) at the spit, returns to (0, 0, 0)",
+   "rootEnd": [
+    0.0,
+    0.0044,
+    -0.006
+   ],
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.0935,
+      0.146
+     ],
+     "body1": [
+      0.0,
+      0.104,
+      0.115
+     ],
+     "body3": [
+      -0.0,
+      0.104,
+      -0.0696
+     ],
+     "tail": [
+      -0.0,
+      0.10785,
+      -0.1597
+     ],
+     "finR": [
+      -0.064,
+      0.062,
+      0.0894
+     ],
+     "dorsal": [
+      0.0,
+      0.176,
+      0.0523
+     ]
+    },
+    "30": {
+     "root": [
+      -0.0,
+      0.06915,
+      -0.056
+     ],
+     "jaw": [
+      0.0,
+      0.18331,
+      0.07822
+     ],
+     "body1": [
+      -0.0,
+      0.18827,
+      0.04586
+     ],
+     "body3": [
+      -0.0,
+      0.15621,
+      -0.13593
+     ],
+     "tail": [
+      -0.0,
+      0.13508,
+      -0.2236
+     ],
+     "finR": [
+      -0.064,
+      0.14246,
+      0.02795
+     ],
+     "dorsal": [
+      -0.0,
+      0.24829,
+      -0.02839
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.00438,
+      -0.006
+     ],
+     "jaw": [
+      0.0,
+      0.0935,
+      0.146
+     ],
+     "body1": [
+      0.0,
+      0.104,
+      0.115
+     ],
+     "body3": [
+      -0.0,
+      0.104,
+      -0.0696
+     ],
+     "tail": [
+      -0.0,
+      0.10785,
+      -0.1597
+     ],
+     "finR": [
+      -0.064,
+      0.062,
+      0.0894
+     ],
+     "dorsal": [
+      0.0,
+      0.176,
+      0.0523
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.007,
+    "maxStep": 0.053,
+    "maxStepAt": [
+     22,
+     "jaw"
+    ]
+   }
+  },
+  {
+   "action": "fish_wave_fin",
+   "char": "fish",
+   "clip": "wave_fin",
+   "frames": 60,
+   "seconds": 2.0,
+   "loop": true,
+   "seated": false,
+   "rootMotion": false,
+   "markers": {},
+   "rootMaxOffset": 0.01972,
+   "props": [],
+   "notes": "rolls a little onto its left side (the right fin side comes up) and flaps the right fin up and down in a big friendly wave, the left fin paddles, the tail wags slowly, happy blinks",
+   "samples": {
+    "0": {
+     "root": [
+      0.0,
+      0.01638,
+      -0.006
+     ],
+     "jaw": [
+      0.01774,
+      0.10124,
+      0.1474
+     ],
+     "body1": [
+      0.02013,
+      0.11197,
+      0.11657
+     ],
+     "body3": [
+      0.02379,
+      0.11418,
+      -0.06797
+     ],
+     "tail": [
+      0.03353,
+      0.11749,
+      -0.15756
+     ],
+     "finR": [
+      -0.05252,
+      0.08504,
+      0.08848
+     ],
+     "dorsal": [
+      0.03508,
+      0.18341,
+      0.05501
+     ]
+    },
+    "30": {
+     "root": [
+      0.0,
+      0.01638,
+      -0.006
+     ],
+     "jaw": [
+      0.02535,
+      0.10435,
+      0.14455
+     ],
+     "body1": [
+      0.02804,
+      0.11398,
+      0.11338
+     ],
+     "body3": [
+      0.02445,
+      0.11192,
+      -0.07115
+     ],
+     "tail": [
+      0.01674,
+      0.11662,
+      -0.16088
+     ],
+     "finR": [
+      -0.04373,
+      0.09037,
+      0.09019
+     ],
+     "dorsal": [
+      0.0479,
+      0.18213,
+      0.04953
+     ]
+    },
+    "60": {
+     "root": [
+      0.0,
+      0.01638,
+      -0.006
+     ],
+     "jaw": [
+      0.01774,
+      0.10124,
+      0.1474
+     ],
+     "body1": [
+      0.02013,
+      0.11197,
+      0.11657
+     ],
+     "body3": [
+      0.02379,
+      0.11418,
+      -0.06797
+     ],
+     "tail": [
+      0.03353,
+      0.11749,
+      -0.15756
+     ],
+     "finR": [
+      -0.05252,
+      0.08504,
+      0.08848
+     ],
+     "dorsal": [
+      0.03508,
+      0.18341,
+      0.05501
+     ]
+    }
+   },
+   "checks": {
+    "meshMinY": 0.003,
+    "maxStep": 0.0053,
+    "maxStepAt": [
+     49,
+     "finR"
+    ],
+    "seamStep": 0.005,
+    "seamOK": true
+   },
+   "loopSeamMaxErr": 0.005
+  }
+ ],
+ "timelineMissing": [],
+ "requestedClips": [],
+ "extraClips": {
+  "jonah": [
+   "lie_down"
+  ],
+  "captain": [],
+  "fish": []
+ },
+ "stage": {
+  "heaveDistance": 0.1,
+  "heaveMode": "tandem: Jonah HEAVE_D in front of the captain, both facing the same way (captain behind him)",
+  "heaveToFallInLag": 0.7,
+  "shakeDistance": 0.19,
+  "shakeMode": "Jonah (sleep_curl, facing the viewer) lies with his head toward the captain; the captain stands SHAKE_D from Jonah's root along the line of Jonah's body and faces him",
+  "kneel": {
+   "KY": 0.021,
+   "kz": 0.016,
+   "thigh_back": 12.0,
+   "shin_slope": 24.0
+  }
+ },
+ "travel": [
+  {
+   "t": 25.27,
+   "action": "jonah_tiptoe",
+   "from": [
+    0.28,
+    0.14
+   ],
+   "to": [
+    0.12,
+    0.1
+   ],
+   "dist": 0.165,
+   "time": 1.8,
+   "needSpeed": 0.092,
+   "naturalSpeed": 0.078,
+   "rate": 1.18
+  },
+  {
+   "t": 27.07,
+   "action": "jonah_walk",
+   "from": [
+    0.12,
+    0.1
+   ],
+   "to": [
+    0.08,
+    -0.2
+   ],
+   "dist": 0.303,
+   "time": 2.6,
+   "needSpeed": 0.116,
+   "naturalSpeed": 0.106,
+   "rate": 1.1
+  },
+  {
+   "t": 29.67,
+   "action": "jonah_walk",
+   "from": [
+    0.08,
+    -0.2
+   ],
+   "to": [
+    -0.04,
+    -0.21
+   ],
+   "dist": 0.12,
+   "time": 0.8,
+   "needSpeed": 0.151,
+   "naturalSpeed": 0.106,
+   "rate": 1.43
+  },
+  {
+   "t": 30.47,
+   "action": "jonah_walk",
+   "from": [
+    -0.04,
+    -0.21
+   ],
+   "to": [
+    -0.16,
+    -0.22
+   ],
+   "dist": 0.12,
+   "time": 0.8,
+   "needSpeed": 0.151,
+   "naturalSpeed": 0.106,
+   "rate": 1.43
+  },
+  {
+   "t": 31.27,
+   "action": "jonah_walk",
+   "from": [
+    -0.16,
+    -0.22
+   ],
+   "to": [
+    -0.26,
+    -0.22
+   ],
+   "dist": 0.1,
+   "time": 4.77,
+   "needSpeed": 0.021,
+   "naturalSpeed": 0.106,
+   "rate": 0.2
+  },
+  {
+   "t": 36.04,
+   "action": "jonah_walk",
+   "from": [
+    -0.26,
+    -0.22
+   ],
+   "to": [
+    -0.3,
+    -0.26
+   ],
+   "dist": 0.057,
+   "time": 0.8,
+   "needSpeed": 0.071,
+   "naturalSpeed": 0.106,
+   "rate": 0.67
+  },
+  {
+   "t": 57.38,
+   "action": "captain_walk",
+   "from": [
+    -0.44,
+    -0.22
+   ],
+   "to": [
+    -0.49,
+    -0.26
+   ],
+   "dist": 0.064,
+   "time": 0.8,
+   "needSpeed": 0.08,
+   "naturalSpeed": 0.111,
+   "rate": 0.72
+  },
+  {
+   "t": 66.5,
+   "action": "jonah_walk",
+   "from": [
+    -0.3,
+    -0.26
+   ],
+   "to": [
+    -0.22,
+    -0.16
+   ],
+   "dist": 0.128,
+   "time": 1.3,
+   "needSpeed": 0.099,
+   "naturalSpeed": 0.106,
+   "rate": 0.94
+  },
+  {
+   "t": 82.0,
+   "action": "captain_walk",
+   "from": [
+    -0.49,
+    -0.26
+   ],
+   "to": [
+    -0.22,
+    -0.26
+   ],
+   "dist": 0.27,
+   "time": 1.8,
+   "needSpeed": 0.15,
+   "naturalSpeed": 0.111,
+   "rate": 1.35
+  },
+  {
+   "t": 86.4,
+   "action": "jonah_sit_hold_nose",
+   "from": [
+    -0.22,
+    -0.16
+   ],
+   "to": [
+    -0.06,
+    0.04
+   ],
+   "dist": 0.256,
+   "time": 20.22,
+   "needSpeed": 0.013,
+   "glide": true,
+   "glideSeconds": 2.13
+  },
+  {
+   "t": 100.72,
+   "action": "fish_swim",
+   "from": [
+    -0.62,
+    0.08
+   ],
+   "to": [
+    -0.62,
+    0.04
+   ],
+   "dist": 0.04,
+   "time": 0.1,
+   "needSpeed": 0.4,
+   "naturalSpeed": 0.12,
+   "rate": 3.33
+  },
+  {
+   "t": 100.82,
+   "action": "fish_swim",
+   "from": [
+    -0.62,
+    0.04
+   ],
+   "to": [
+    -0.34,
+    0.04
+   ],
+   "dist": 0.28,
+   "time": 4.5,
+   "needSpeed": 0.062,
+   "naturalSpeed": 0.12,
+   "rate": 0.52
+  },
+  {
+   "t": 106.62,
+   "action": "jonah_sit_hold_nose",
+   "from": [
+    -0.06,
+    0.04
+   ],
+   "to": [
+    -0.2,
+    0.08
+   ],
+   "dist": 0.146,
+   "time": 18.25,
+   "needSpeed": 0.008,
+   "glide": true,
+   "glideSeconds": 1.21
+  },
+  {
+   "t": 112.0,
+   "action": "fish_idle",
+   "from": [
+    -0.34,
+    0.04
+   ],
+   "to": [
+    -0.62,
+    0.08
+   ],
+   "dist": 0.283,
+   "time": 27.08,
+   "needSpeed": 0.01,
+   "glide": true,
+   "glideSeconds": 2.36
+  },
+  {
+   "t": 112.0,
+   "action": "captain_idle",
+   "from": [
+    -0.22,
+    -0.26
+   ],
+   "to": [
+    0.8,
+    0.3
+   ],
+   "dist": 1.164,
+   "time": 143.75,
+   "needSpeed": 0.008,
+   "glide": true,
+   "glideSeconds": 9.7
+  },
+  {
+   "t": 139.08,
+   "action": "jonah_idle",
+   "from": [
+    -0.2,
+    0.08
+   ],
+   "to": [
+    0.12,
+    0.1
+   ],
+   "dist": 0.321,
+   "time": 6.3,
+   "needSpeed": 0.051,
+   "glide": true,
+   "glideSeconds": 2.67
+  },
+  {
+   "t": 139.08,
+   "action": "fish_swim",
+   "from": [
+    -0.62,
+    0.08
+   ],
+   "to": [
+    -0.62,
+    0.1
+   ],
+   "dist": 0.02,
+   "time": 0.1,
+   "needSpeed": 0.2,
+   "naturalSpeed": 0.12,
+   "rate": 1.67
+  },
+  {
+   "t": 139.18,
+   "action": "fish_swim",
+   "from": [
+    -0.62,
+    0.1
+   ],
+   "to": [
+    -0.3,
+    0.1
+   ],
+   "dist": 0.32,
+   "time": 5.5,
+   "needSpeed": 0.058,
+   "naturalSpeed": 0.12,
+   "rate": 0.48
+  },
+  {
+   "t": 151.28,
+   "action": "fish_idle",
+   "from": [
+    -0.3,
+    0.1
+   ],
+   "to": [
+    -0.62,
+    0.08
+   ],
+   "dist": 0.321,
+   "time": 89.19,
+   "needSpeed": 0.004,
+   "glide": true,
+   "glideSeconds": 2.67
+  },
+  {
+   "t": 160.02,
+   "action": "jonah_walk",
+   "from": [
+    0.12,
+    0.1
+   ],
+   "to": [
+    0.32,
+    -0.16
+   ],
+   "dist": 0.328,
+   "time": 3.1,
+   "needSpeed": 0.106,
+   "naturalSpeed": 0.106,
+   "rate": 1.0
+  },
+  {
+   "t": 189.66,
+   "action": "jonah_stomp_walk",
+   "from": [
+    0.32,
+    -0.16
+   ],
+   "to": [
+    0.42,
+    0.08
+   ],
+   "dist": 0.26,
+   "time": 2.6,
+   "needSpeed": 0.1,
+   "naturalSpeed": 0.114,
+   "rate": 0.88
+  },
+  {
+   "t": 240.47,
+   "action": "fish_wave_fin",
+   "from": [
+    -0.62,
+    0.08
+   ],
+   "to": [
+    -0.34,
+    0.08
+   ],
+   "dist": 0.28,
+   "time": 15.28,
+   "needSpeed": 0.018,
+   "glide": true,
+   "glideSeconds": 2.33
+  }
+ ]
+}

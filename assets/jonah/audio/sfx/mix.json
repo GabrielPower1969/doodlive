@@ -1,0 +1,130 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "bubbles",
+   "secs": 5.0,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.4
+  },
+  {
+   "id": "burp",
+   "secs": 1.15,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.4
+  },
+  {
+   "id": "cicadas_heat",
+   "secs": 9.5,
+   "loop": false,
+   "gainDb": -19,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -14.0
+  },
+  {
+   "id": "grow_whoosh",
+   "secs": 2.2,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -16.1
+  },
+  {
+   "id": "gulp",
+   "secs": 0.85,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.3
+  },
+  {
+   "id": "munch",
+   "secs": 2.3,
+   "loop": false,
+   "gainDb": -11,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -23.3
+  },
+  {
+   "id": "rain_loop",
+   "secs": 10.0,
+   "loop": true,
+   "gainDb": -20,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -13.5,
+   "loopStart": 0.0,
+   "loopEnd": 10.0,
+   "stopAtCue": "deep",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "seamRatio": 0.568,
+   "halfDb": -0.22
+  },
+  {
+   "id": "rain_stop",
+   "secs": 4.2,
+   "loop": false,
+   "gainDb": -17,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -19.4
+  },
+  {
+   "id": "seagulls",
+   "secs": 4.6,
+   "loop": false,
+   "gainDb": -15,
+   "samplePeak": -3.0,
+   "truePeak": -2.8,
+   "lufs": -15.7
+  },
+  {
+   "id": "soft_chime",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -15.3
+  },
+  {
+   "id": "spit_pop",
+   "secs": 1.15,
+   "loop": false,
+   "gainDb": -9.5,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -21.6
+  },
+  {
+   "id": "splash_big",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -8,
+   "samplePeak": -3.0,
+   "truePeak": -2.6,
+   "lufs": -21.1
+  },
+  {
+   "id": "thunder",
+   "secs": 5.0,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.6
+  }
+ ]
+}

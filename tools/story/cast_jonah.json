@@ -1,0 +1,1009 @@
+{
+ "_doc": "Jonah voice cast (docs/jonah/VOICE.md). Schema: tools/story/voice.py docstring; reverb/mfccRef from voice_exodus.py, breaths from voice_extras.py. Run through tools/story/voice_jonah.py (adds only the Exodus hall for god).",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "god": {
+   "zh": "上帝",
+   "en": "God"
+  },
+  "jonah": {
+   "zh": "约拿",
+   "en": "Jonah"
+  },
+  "captain": {
+   "zh": "船长",
+   "en": "The captain"
+  },
+  "people": {
+   "zh": "尼尼微的人们",
+   "en": "The people of Nineveh"
+  }
+ },
+ "refZh": {
+  "Jonah ": "约拿书 "
+ },
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "the storyteller of Esther and Ruth (Qwen vivian): the family's narrator across packs"
+   },
+   "god": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 12,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，中年，声音温暖、清亮、圆润柔和，嗓音干净不沙哑、不带气声，非常平静、从容，慈爱亲切，像一位微笑着的好父亲，吐字清楚，绝不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸声，语速正常流畅，不拖沓。声音温暖友好、清澈，带着微笑，让孩子喜欢，不吓人。这一句：",
+    "minPace": 2.4,
+    "maxPause": 1.3,
+    "reverb": {
+     "rt60": 1.4,
+     "wet": 0.14,
+     "predelay": 0.025,
+     "tail": 0.35
+    },
+    "f0Hz": [
+     80,
+     125
+    ],
+    "why": "reused from Exodus: VoiceDesign warm fatherly baritone, pitch and timbre pinned to the Exodus reference, light hall",
+    "hnrMin": 11,
+    "f0Weight": 100
+   },
+   "jonah": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     135,
+     185
+    ],
+    "f0Weight": 150,
+    "fx": "plain",
+    "chain": "expressive",
+    "breathFrom": "zh.god",
+    "design": "男性，三十五岁左右，嗓音温和略带固执的中音，不粗不尖，朴实、诚恳，像一个有点倔强的普通人。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "2026-11-15: was Qwen dylan = Haman in Esther; now a designed voice of his own, pitch pinned 135-185 Hz"
+   },
+   "captain": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 14,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     90,
+     165
+    ],
+    "f0Weight": 150,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，五十多岁的老船长，身材高大魁梧，像一头温柔的大熊，嗓音极其低沉、沙沙的、浑厚，说话慢而稳，胸腔共鸣很强，是最低的男低音，亲切友好。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好、带着笑意，让孩子喜欢，不吓人。这一句：",
+    "why": "2026-11-15: was uncle_fu (the king of Daniel, Esther, Ruth's Boaz) drifting 213-354 Hz; now a designed deep bass, pinned 95-138 Hz, lower than Jonah"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "offstage",
+    "chain": "expressive",
+    "rt60": 0.9,
+    "wet": 0.22,
+    "seed": 11,
+    "instruct": "城墙后面的一个人，满心悔改，真诚地大声喊出来，不整齐，像一大群真人。",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "dylan",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "eric",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男孩，七岁左右，声音清脆稚嫩，普通话标准。",
+      "delay": 0.3,
+      "gainDb": -9,
+      "seed": 6,
+      "instruct": "大声、认真地喊，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "女孩，五岁左右，声音又细又甜，奶声奶气，普通话标准。",
+      "delay": 0.18,
+      "gainDb": -10,
+      "seed": 7,
+      "instruct": "大声、认真地喊，"
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "10 Qwen voices (3 men, 4 women, 2 children, pitch-nudged copies), staggered 0-0.35 s, behind a wall (offstage fx)",
+    "takes": 8
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman storyteller, like a mother at a child's bedside telling a Bible story to a child of four to ten: friendly, lively, natural, at a natural flowing pace, never dragging. This line: ",
+    "why": "the family narrator in English through Qwen vivian (edge Ava is not allowed by R7)"
+   },
+   "god": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 12,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "maxPause": 1.4,
+    "design": "A middle-aged man with a warm, clear, smooth, round voice, clean and never hoarse or breathy, very calm and unhurried, kind and fatherly like a smiling loving dad, crisp diction, never shouting. Clear standard English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, not overacted, with real breaths, at a natural flowing pace. Warm, clear and friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "reverb": {
+     "rt60": 1.4,
+     "wet": 0.14,
+     "predelay": 0.025,
+     "tail": 0.35
+    },
+    "f0Hz": [
+     90,
+     140
+    ],
+    "why": "Exodus' English god was edge-tts (William), not allowed by R7: same description, Qwen VoiceDesign, pitch pinned",
+    "hnrMin": 11,
+    "f0Weight": 100
+   },
+   "jonah": {
+    "engine": "qwen",
+    "voice": "aiden",
+    "takes": 5,
+    "minPace": 2.4,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A middle-aged man, gruff and rough-voiced, stubborn and grumbling but lovable, a comic character in a children's radio play, big expressive pitch swings, never scary. This line: ",
+    "why": "Qwen aiden: lively fixed speaker (Daniel's officer, 161-311 Hz) that takes acting notes and splices into phrases",
+    "breathFrom": "en.god"
+   },
+   "captain": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 14,
+    "minPace": 2.4,
+    "maxPause": 1.2,
+    "f0Hz": [
+     90,
+     165
+    ],
+    "f0Weight": 150,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "Male, in his fifties, a big, tall, bear-like old sea captain, gentle and friendly, with an extremely deep, gravelly, resonant bass voice, speaking slowly and steadily with strong chest resonance, the lowest male voice in the story. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm, friendly, a smile in the voice, lovable to young children, never scary. This line: ",
+    "why": "2026-11-15: was Qwen ryan (Daniel's hero), 227-251 Hz, higher than Jonah; now a designed deep bass pinned 95-145 Hz"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "offstage",
+    "chain": "expressive",
+    "rt60": 0.9,
+    "wet": 0.22,
+    "seed": 11,
+    "instruct": "One person in a big crowd behind a wall, truly sorry, shouting it out heartfelt, ragged, like a real crowd.",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "aiden",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A boy of about seven, bright clear child's voice, standard English.",
+      "delay": 0.3,
+      "gainDb": -9,
+      "seed": 6,
+      "instruct": "Shouting seriously, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A girl of about five, thin sweet little voice, standard English.",
+      "delay": 0.18,
+      "gainDb": -10,
+      "seed": 7,
+      "instruct": "Shouting seriously, "
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "10 Qwen voices (3 men, 4 women, 2 children, pitch-nudged copies), staggered 0-0.35 s, behind a wall (offstage fx)",
+    "takes": 8
+   }
+  }
+ },
+ "lines": {
+  "jn_01": {
+   "m": "讲故事的开头，温暖亲切，一口气说完，不要中间停顿；说到“上帝对一个叫约拿的人说话了”时声音轻轻往上扬",
+   "m_en": "storyteller opening, warm and curious; a little lift on 'God spoke'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_02": {
+   "m": "温暖、平静、浑厚而慈爱，像爱孩子的父亲，绝不严厉，也不要回声吓人",
+   "m_en": "warm, calm, big but kind, a loving father; never stern or scary",
+   "zh": {
+    "takes": 12,
+    "seed": 0,
+    "phrases": [
+     {
+      "text": "约拿，",
+      "gap": 0.3,
+      "instruct": "温暖亲切地呼唤，清楚地呼唤名字，“约”读第一声（yuē），高而平，“拿”读第二声（ná）。"
+     },
+     {
+      "text": "起来！去尼尼微大城，告诉那里的人：不可以再做坏事了。",
+      "instruct": "温暖、平静、浑厚而慈爱，像爱孩子的父亲，绝不严厉。"
+     }
+    ],
+    "nameContour": {
+     "char": "约"
+    },
+    "f0Hz": [
+     100,
+     130
+    ],
+    "f0Weight": 150
+   },
+   "en": {
+    "takes": 12
+   }
+  },
+  "jn_03": {
+   "m": "固执又赌气，抱着胳膊；“我才不去呢”前先哼一下鼻子；好笑，不是真生气",
+   "m_en": "grumpy and stubborn, arms crossed; a snort before 'No way'; funny, not angry",
+   "zh": {
+    "f0Hz": [
+     135,
+     215
+    ]
+   }
+  },
+  "jn_04": {
+   "m": "觉得好笑，有点神秘兮兮；说到“相反方向”时又惊讶",
+   "m_en": "amused, a little conspiratorial; surprise on 'the opposite way'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_05": {
+   "m": "用最低沉的男低音，爽朗热情的老船长，话里带着笑；“开船啦”声音洪亮但始终保持在低音区，不要拔高",
+   "m_en": "in the deepest bass: a jolly, warm old sea captain; big chest voice, a laugh in it; 'we're off' loud but staying low, never shrill",
+   "zh": {
+    "seed": 40,
+    "takes": 14,
+    "f0Hz": [
+     90,
+     140
+    ],
+    "f0Weight": 150
+   }
+  },
+  "jn_06": {
+   "m": "轻轻的，困困的，带着笑；把“呼噜呼噜”拉长，像真的在打呼噜",
+   "m_en": "soft and sleepy, smiling; draw out the snoring",
+   "zh": {
+    "phrases": [
+     {
+      "text": "约拿躲到货物后面，",
+      "gap": 0.3
+     },
+     {
+      "text": "呼噜呼噜——",
+      "instruct": "真的在睡觉打呼噜，长长的、懒洋洋的鼻息声，带点滑稽。",
+      "gap": 0.3
+     },
+     {
+      "text": "睡着了。"
+     }
+    ],
+    "asrIgnore": "呼|噜|鼾"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Jonah hid behind the cargo,",
+      "gap": 0.3
+     },
+     {
+      "text": "and soon he was snoring away.",
+      "instruct": "fading into sleepy, a smile in it, 'snoring' drawn out and drowsy"
+     }
+    ]
+   }
+  },
+  "jn_07": {
+   "m": "紧张刺激，眼睛睁得大大的；“轰隆隆”要大声；刺激但不吓人",
+   "m_en": "exciting, quick, wide-eyed; big on 'Crash! Boom!'; thrilling, never frightening",
+   "zh": {
+    "phrases": [
+     {
+      "text": "忽然，上帝刮起了大风。",
+      "gap": 0.2
+     },
+     {
+      "text": "轰隆隆！",
+      "instruct": "一声又响又滑稽的雷声般的喊叫“轰隆隆！”，像讲故事的人模仿打雷。",
+      "gap": 0.15
+     },
+     {
+      "text": "船摇啊摇，快要散架了！",
+      "instruct": "摇啊摇，越说越急，好玩的紧张。"
+     }
+    ],
+    "asrIgnore": "轰|隆"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Suddenly God sent a great wind.",
+      "gap": 0.2
+     },
+     {
+      "text": "Crash! Boom!",
+      "instruct": "two big comic thunder shouts, a storyteller imitating thunder",
+      "gap": 0.15
+     },
+     {
+      "text": "The ship rocked and nearly broke apart!",
+      "instruct": "quick and thrilling, getting more urgent"
+     }
+    ],
+    "asrIgnore": "crash|boom|bang"
+   }
+  },
+  "jn_08": {
+   "m": "用最低沉的男低音，在风里用力喊，着急又惊讶，声音大但始终低沉，不要尖；不是生他的气，只是急",
+   "m_en": "in the deepest bass: calling over the wind, urgent, amazed, loud but staying low, never shrill; not angry at him, just desperate"
+  },
+  "jn_09": {
+   "m": "安静，羞愧，诚实；“是因为我”之前咽一下口水；最后一句变得勇敢",
+   "m_en": "quiet, ashamed, honest; a swallow before 'because of me'; brave on the last sentence",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_10": {
+   "m": "用最低沉的男低音：吃惊，心软，左右为难；“唉”是一声叹息；最后的祷告是真心恳求",
+   "m_en": "in the deepest bass: shocked, kind-hearted, torn; a groan on the sigh; the prayer is a real plea",
+   "zh": {
+    "phrases": [
+     {
+      "text": "扔下去？不行不行！",
+      "gap": 0.3
+     },
+     {
+      "text": "……唉，",
+      "instruct": "一声长长的、无奈的叹息“唉——”。",
+      "gap": 0.35
+     },
+     {
+      "text": "上帝啊，请原谅我们！",
+      "instruct": "真心恳求，声音发紧。"
+     }
+    ],
+    "asrIgnore": "唉|哎"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Throw you in? No, no, I can't!",
+      "gap": 0.3
+     },
+     {
+      "text": "...Oh,",
+      "instruct": "a long, helpless groan of a sigh",
+      "gap": 0.35
+     },
+     {
+      "text": "God, please forgive us!",
+      "instruct": "a real plea, voice tight"
+     }
+    ],
+    "asrIgnore": "oh|ah",
+    "seed": 20,
+    "takes": 14
+   }
+  },
+  "jn_11": {
+   "m": "“扑通”一声要脆，然后压低声音，惊奇，一切都安静下来",
+   "m_en": "a pop on 'Splash', then hushed and amazed as everything goes still",
+   "zh": {
+    "phrases": [
+     {
+      "text": "扑通！",
+      "instruct": "一声脆脆的、好玩的“扑通！”，像模仿落水声。",
+      "gap": 0.35
+     },
+     {
+      "text": "约拿一掉进海里，风就停了，浪也静了。",
+      "instruct": "压低声音，惊奇，越说越轻、越静。"
+     }
+    ],
+    "asrIgnore": "扑|通",
+    "seed": 10,
+    "takes": 8
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Splash!",
+      "instruct": "a crisp, playful 'Splash!' imitating the sound",
+      "gap": 0.35
+     },
+     {
+      "text": "The moment Jonah hit the water, the wind stopped and the waves went calm.",
+      "instruct": "hushed and amazed, getting softer and calmer"
+     }
+    ],
+    "asrIgnore": "splash"
+   }
+  },
+  "jn_12": {
+   "m": "往下沉的时候轻轻飘飘、拖长；然后充满惊奇，微笑着说“好大好大的鱼”",
+   "m_en": "slow and floaty on the sinking; then wonder and a smile on 'great big fish'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_13": {
+   "m": "夸张、好笑、很开心；“啊呜”是真正张大嘴吞下去的声音",
+   "m_en": "big, comic, delighted; a real 'gulp' sound",
+   "zh": {
+    "phrases": [
+     {
+      "text": "啊呜——",
+      "instruct": "张大嘴一口吞下去的夸张声音“啊呜——”，好玩。",
+      "gap": 0.25
+     },
+     {
+      "text": "一口就把他吞进了肚子里！",
+      "instruct": "又惊讶又好笑，一口气说完。"
+     }
+    ],
+    "asrIgnore": "啊|呜|哇"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "GULP!",
+      "instruct": "a big comic gulp shout, mouth wide open",
+      "gap": 0.25
+     },
+     {
+      "text": "It swallowed him in one bite!",
+      "instruct": "delighted and amazed, in one breath"
+     }
+    ],
+    "asrIgnore": "gulp|golp"
+   }
+  },
+  "jn_14": {
+   "m": "滑稽的嫌弃，捏着鼻子说话（鼻音）；“滑溜溜”时打个哆嗦",
+   "m_en": "comic disgust, holding his nose (nasal voice); a shudder on 'slimy'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "呃……",
+      "instruct": "一声又恶心又无奈的“呃……”，捏着鼻子。",
+      "gap": 0.35
+     },
+     {
+      "text": "这里又黑又臭，还滑溜溜的！",
+      "instruct": "捏着鼻子，鼻音很重，嫌弃得好笑，“滑溜溜”哆嗦一下。"
+     }
+    ],
+    "asrIgnore": "呃|额|呢|嗯|哦"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ugh...",
+      "instruct": "a disgusted, helpless 'ugh', holding his nose",
+      "gap": 0.35
+     },
+     {
+      "text": "it's dark in here, and stinky, and so slimy!",
+      "instruct": "holding his nose, nasal, comically disgusted, a shudder on 'slimy'"
+     }
+    ],
+    "asrIgnore": "ugh|uh|ah|oh|ug"
+   }
+  },
+  "jn_15": {
+   "m": "平静，渐渐安静下来；说到“向上帝祷告”时很轻柔",
+   "m_en": "calm, slowing down; gentle on 'he prayed'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    },
+    "seed": 10,
+    "takes": 8
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_16": {
+   "m": "真正的祷告，轻声，贴近；先是真心抱歉，再是感谢，最后变得坚定；“谢谢你”之前换一口气",
+   "m_en": "a real prayer, soft and close; truly sorry, then thankful, then steady; breath before 'Thank You'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "after": "逃跑",
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "after": "run away",
+     "gain": -4
+    }
+   }
+  },
+  "jn_17": {
+   "m": "在酝酿一个笑话；最后一个词停住，留着悬念",
+   "m_en": "building up to a joke; hold the last word"
+  },
+  "jn_18": {
+   "m": "笑点：真的“呸”一声，然后咯咯笑",
+   "m_en": "the punchline: a real 'pfft', then a chuckle",
+   "zh": {
+    "phrases": [
+     {
+      "text": "呸！",
+      "instruct": "用嘴唇用力吐气的“呸！”，像吐出东西，好玩。",
+      "gap": 0.3
+     },
+     {
+      "text": "把约拿吐在了沙滩上。",
+      "instruct": "边说边忍不住笑。"
+     }
+    ],
+    "asrIgnore": "呸|培|pei"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "PFFT!",
+      "instruct": "a real lips-and-breath spitting 'Pfft!', playful",
+      "gap": 0.3
+     },
+     {
+      "text": "And spat Jonah out onto the sand.",
+      "instruct": "a chuckle in the voice"
+     }
+    ],
+    "asrIgnore": "pfft|pft|put|fft|puh|pff|phht"
+   }
+  },
+  "jn_19": {
+   "m": "还是那个温暖的声音，耐心，带一点笑意：这是第二次机会",
+   "m_en": "the same warm voice as before, patient, a hint of a smile: a second chance",
+   "zh": {
+    "takes": 12,
+    "seed": 0,
+    "phrases": [
+     {
+      "text": "约拿，",
+      "gap": 0.3,
+      "instruct": "温暖耐心地呼唤，清楚地呼唤名字，“约”读第一声（yuē），高而平，“拿”读第二声（ná）。"
+     },
+     {
+      "text": "起来，去尼尼微，把我的话告诉他们。",
+      "instruct": "还是那个温暖的声音，耐心，带一点笑意：这是第二次机会。"
+     }
+    ],
+    "nameContour": {
+     "char": "约"
+    },
+    "f0Hz": [
+     100,
+     130
+    ],
+    "f0Weight": 150
+   },
+   "en": {
+    "takes": 12
+   }
+  },
+  "jn_20": {
+   "m": "谦卑又坚定，很短；先深吸一口气",
+   "m_en": "humble and sure; short; a deep breath first",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_21": {
+   "m": "双手围在嘴边向全城喊话；洪亮、严肃，但不凶",
+   "m_en": "calling out to a whole city, hands cupped; loud and serious but not cruel",
+   "zh": {
+    "f0Hz": [
+     135,
+     215
+    ]
+   }
+  },
+  "jn_22": {
+   "m": "城墙后面的一大群人，男人、女人和孩子，衣衫破旧，发自内心，不整齐",
+   "m_en": "a big crowd behind a wall: men, women and children, heartfelt, not in unison"
+  },
+  "jn_23": {
+   "m": "高兴而温柔；“就原谅了他们”说得又暖又慢",
+   "m_en": "glad and gentle; warm and slow on 'He forgave them'"
+  },
+  "jn_24": {
+   "m": "像输了游戏的孩子一样赌气；“哼”要响；最后一句带哭腔抱怨；好笑",
+   "m_en": "sulky like a child who lost a game; loud 'Hmph'; whiny on the last sentence; funny",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哼！",
+      "instruct": "一声又响又赌气的“哼！”，鼻子里喷出来。",
+      "gap": 0.3
+     },
+     {
+      "text": "我就知道！你太好心了，肯定会原谅他们。",
+      "instruct": "赌气，抱怨，声音往上拐。",
+      "gap": 0.3
+     },
+     {
+      "text": "他们可是坏人哪！",
+      "instruct": "哭腔，委屈，拖长“哪”。"
+     }
+    ],
+    "asrIgnore": "哼|恩|嗯|哈",
+    "f0Hz": [
+     135,
+     230
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmph!",
+      "instruct": "a loud sulky 'Hmph!' snorted through the nose",
+      "gap": 0.3
+     },
+     {
+      "text": "I knew it! You are too kind. I knew You would forgive them.",
+      "instruct": "sulky, complaining, voice swinging up",
+      "gap": 0.3
+     },
+     {
+      "text": "But they're the bad guys!",
+      "instruct": "whiny, almost crying, wronged"
+     }
+    ],
+    "asrIgnore": "hmph|hm+|hmm|humph|huh|mm+|um"
+   }
+  },
+  "jn_25": {
+   "m": "轻快好玩；“啊，真凉快”是满足的叹息",
+   "m_en": "light and playful; a contented sigh on 'lovely and cool'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  },
+  "jn_26": {
+   "m": "说“咔嚓咔嚓”的时候调皮，然后变得又热又蔫",
+   "m_en": "mischievous on the worm, then hot and droopy",
+   "zh": {
+    "phrases": [
+     {
+      "text": "可是第二天，来了一条小虫子。",
+      "gap": 0.2
+     },
+     {
+      "text": "咔嚓咔嚓——",
+      "instruct": "调皮地模仿虫子咬东西的声音“咔嚓咔嚓”，好玩。",
+      "gap": 0.2
+     },
+     {
+      "text": "把树咬坏了。太阳晒得约拿头都晕了。",
+      "instruct": "越说越热、越没精神，慢慢蔫下去。"
+     }
+    ],
+    "asrIgnore": "咔|嚓|卡|擦"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "But the next day, along came a little worm.",
+      "instruct": "mischievous",
+      "gap": 0.2
+     },
+     {
+      "text": "Munch, munch...",
+      "instruct": "playfully imitating a worm chewing, crunchy",
+      "gap": 0.2
+     },
+     {
+      "text": "and the plant dried up. The hot sun beat down on Jonah's head.",
+      "instruct": "getting hot and droopy, slowing, wilting"
+     }
+    ],
+    "asrIgnore": "munch|much|month"
+   }
+  },
+  "jn_27": {
+   "m": "夸张的哭喊，滑稽；声音破掉",
+   "m_en": "over-the-top wailing, comic; voice cracks",
+   "zh": {
+    "phrases": [
+     {
+      "text": "我的树！",
+      "instruct": "夸张地哀嚎“我的树！”",
+      "gap": 0.2
+     },
+     {
+      "text": "我可怜的树啊！",
+      "instruct": "哭到声音破掉，拖长“啊”，滑稽。"
+     }
+    ],
+    "acting": {
+     "kind": "wail"
+    },
+    "f0Hz": [
+     135,
+     230
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "My plant!",
+      "instruct": "a theatrical wail",
+      "gap": 0.2
+     },
+     {
+      "text": "My poor, poor plant!",
+      "instruct": "voice cracking, drawn out, comic"
+     }
+    ],
+    "acting": {
+     "kind": "wail"
+    }
+   }
+  },
+  "jn_28": {
+   "m": "非常温柔，像父亲在讲道理；“还有好多牛羊”带一点笑；这个问题是温柔的，不是责备",
+   "m_en": "very gentle, a father explaining; a small smile on 'animals too'; the question is tender, not scolding",
+   "zh": {
+    "takes": 12,
+    "seed": 0,
+    "phrases": [
+     {
+      "text": "约拿，",
+      "gap": 0.3,
+      "instruct": "非常温柔地呼唤，清楚地呼唤名字，“约”读第一声（yuē），高而平，“拿”读第二声（ná）。"
+     },
+     {
+      "text": "你心疼这棵树。尼尼微有十二万多人，还有好多牛羊，我能不心疼吗？",
+      "instruct": "非常温柔，像父亲在讲道理；“还有好多牛羊”带一点笑；这个问题是温柔的，不是责备。"
+     }
+    ],
+    "nameContour": {
+     "char": "约"
+    },
+    "f0Hz": [
+     100,
+     130
+    ],
+    "f0Weight": 150
+   },
+   "en": {
+    "takes": 12
+   }
+  },
+  "jn_29": {
+   "m": "温暖收尾，像对孩子说最重要的话；“你和我也是这样”轻轻的",
+   "m_en": "warm closing, the most important sentence to a child; soft on 'you and me too'",
+   "zh": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   },
+   "en": {
+    "breath": {
+     "before": true,
+     "gain": -4
+    }
+   }
+  }
+ }
+}

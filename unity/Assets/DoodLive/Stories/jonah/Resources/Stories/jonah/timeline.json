@@ -1,0 +1,2797 @@
+{
+ "version": 1,
+ "story": "jonah",
+ "cast": [
+  "jonah",
+  "captain",
+  "fish"
+ ],
+ "set": "coast",
+ "duration": 232.37,
+ "fps": 30,
+ "shots": [
+  {
+   "id": "S01",
+   "title_zh": "上帝的差事",
+   "title_en": "A job from God",
+   "camera": {
+    "type": "orbit",
+    "target": "beach",
+    "dist": 0.9,
+    "height": 0.42,
+    "yawDeg": -28
+   },
+   "desc": "Short orbit over the page: the sea and a little ship on the left, the great city on the right. Jonah stands on the road. A warm light falls on him: God is speaking.",
+   "t0": 0.0,
+   "t1": 6.38,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "id": "S01b",
+   "title_zh": "上帝的差事",
+   "title_en": "A job from God",
+   "camera": {
+    "type": "fixed",
+    "target": "jonah",
+    "dist": 0.5,
+    "height": 0.18,
+    "yawDeg": 12
+   },
+   "desc": "Close on Jonah on the road, the city behind him. God's light falls on him; he looks up, then refuses.",
+   "t0": 6.38,
+   "t1": 19.45,
+   "anchor": {
+    "line": "jn_01",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "S02",
+   "title_zh": "偷偷上船",
+   "title_en": "Running away",
+   "camera": {
+    "type": "follow",
+    "target": "jonah",
+    "dist": 0.7,
+    "height": 0.2,
+    "yawDeg": -25
+   },
+   "desc": "Jonah tiptoes the wrong way: down to the beach and up the gangplank onto a ship. The captain greets him.",
+   "t0": 19.45,
+   "t1": 38.08,
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "S03",
+   "title_zh": "大风暴",
+   "title_en": "The big storm",
+   "camera": {
+    "type": "fixed",
+    "target": "ship",
+    "dist": 0.66,
+    "height": 0.28,
+    "yawDeg": -12
+   },
+   "desc": "The sky goes dark, rain and lightning, big waves. The captain fights the steering oar, then shakes Jonah awake.",
+   "t0": 38.08,
+   "t1": 55.84,
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S04",
+   "title_zh": "是我的错",
+   "title_en": "It's my fault",
+   "camera": {
+    "type": "fixed",
+    "target": "jonah",
+    "dist": 0.58,
+    "height": 0.2,
+    "yawDeg": 18
+   },
+   "desc": "Jonah stands at the rail, head low. He owns up. The captain does not want to do it, but at last helps him over the side.",
+   "t0": 55.84,
+   "t1": 81.88,
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S05",
+   "title_zh": "大鱼来了",
+   "title_en": "Here comes the fish",
+   "camera": {
+    "type": "fixed",
+    "target": "belly",
+    "dist": 0.56,
+    "height": 0.2,
+    "yawDeg": 30
+   },
+   "desc": "Jonah bobs in the water holding his nose. A huge fish glides in from the left, rises, opens its enormous mouth... GULP. Then a little burp and a bubble.",
+   "t0": 81.88,
+   "t1": 97.2,
+   "anchor": {
+    "line": "jn_11",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S06",
+   "title_zh": "鱼肚子里",
+   "title_en": "Inside the fish",
+   "camera": {
+    "type": "fixed",
+    "target": "jonah",
+    "dist": 0.5,
+    "height": 0.22,
+    "yawDeg": 0
+   },
+   "desc": "Dark teal. Jonah sits inside the ribs of the fish, holds his nose, then sits back on his heels and prays. A soft light grows.",
+   "t0": 97.2,
+   "t1": 123.35,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "S07",
+   "title_zh": "吐到岸上",
+   "title_en": "Pfft! Onto the beach",
+   "camera": {
+    "type": "fixed",
+    "target": "beach",
+    "dist": 0.62,
+    "height": 0.24,
+    "yawDeg": 28
+   },
+   "desc": "Daylight again. The fish swims to the shore and spits Jonah onto the sand. He sits up with seaweed on his head.",
+   "t0": 123.35,
+   "t1": 135.55,
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S08",
+   "title_zh": "这次我去",
+   "title_en": "This time I'll go",
+   "camera": {
+    "type": "follow",
+    "target": "jonah",
+    "dist": 0.7,
+    "height": 0.24,
+    "yawDeg": 25
+   },
+   "desc": "God speaks again. Jonah stands, shakes off the seaweed, and marches to the great gate of Nineveh.",
+   "t0": 135.55,
+   "t1": 155.28,
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "S09",
+   "title_zh": "全城都说对不起",
+   "title_en": "The whole city says sorry",
+   "camera": {
+    "type": "fixed",
+    "target": "gate",
+    "dist": 0.62,
+    "height": 0.26,
+    "yawDeg": -10
+   },
+   "desc": "The people of Nineveh come out in sackcloth and kneel in front of the gate, one after another, the king and the children too. Jonah, in front of them, blinks in surprise.",
+   "t0": 155.28,
+   "t1": 164.35,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S09b",
+   "title_zh": "全城都说对不起",
+   "title_en": "The whole city says sorry",
+   "camera": {
+    "type": "orbit",
+    "target": "gate",
+    "dist": 0.62,
+    "height": 0.3,
+    "yawDeg": -26
+   },
+   "desc": "A slow turn over the kneeling city as God's light breaks over it; Jonah watches, frowning.",
+   "t0": 164.35,
+   "t1": 174.69,
+   "anchor": {
+    "line": "jn_22",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S10",
+   "title_zh": "约拿生气了",
+   "title_en": "Jonah sulks",
+   "camera": {
+    "type": "fixed",
+    "target": "hill",
+    "dist": 0.55,
+    "height": 0.2,
+    "yawDeg": -25
+   },
+   "desc": "Jonah stomps up the little hill, plonks himself down and sulks, arms folded, steam over his head.",
+   "t0": 174.69,
+   "t1": 182.52,
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "S11",
+   "title_zh": "一棵树和一条虫",
+   "title_en": "A plant and a worm",
+   "camera": {
+    "type": "fixed",
+    "target": "hill",
+    "dist": 0.66,
+    "height": 0.3,
+    "yawDeg": 15
+   },
+   "desc": "A leafy plant shoots up beside Jonah and shades him: bliss. Next morning a little worm munches it. The plant droops, the sun beats down, Jonah wails.",
+   "t0": 182.52,
+   "t1": 193.84,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S11b",
+   "title_zh": "一棵树和一条虫",
+   "title_en": "A plant and a worm",
+   "camera": {
+    "type": "fixed",
+    "target": "worm",
+    "dist": 0.32,
+    "height": 0.1,
+    "yawDeg": -25
+   },
+   "desc": "Close on the stem: a little worm pops out and munches, munch, munch. The leaves go limp and dry.",
+   "t0": 193.84,
+   "t1": 205.26,
+   "anchor": {
+    "line": "jn_25",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "S11c",
+   "title_zh": "一棵树和一条虫",
+   "title_en": "A plant and a worm",
+   "camera": {
+    "type": "fixed",
+    "target": "hill",
+    "dist": 0.55,
+    "height": 0.22,
+    "yawDeg": -12
+   },
+   "desc": "Jonah throws up his arms at the dry plant and wails.",
+   "t0": 205.26,
+   "t1": 209.23,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "S12",
+   "title_zh": "上帝的心",
+   "title_en": "God's big heart",
+   "camera": {
+    "type": "fixed",
+    "target": "hill",
+    "dist": 0.58,
+    "height": 0.22,
+    "yawDeg": 22
+   },
+   "desc": "Golden light. Jonah, still sitting under the dry vine, looks up and listens, and slowly understands.",
+   "t0": 209.23,
+   "t1": 220.86,
+   "anchor": {
+    "line": "jn_27",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S12b",
+   "title_zh": "上帝的心",
+   "title_en": "God's big heart",
+   "camera": {
+    "type": "fixed",
+    "target": "beach",
+    "dist": 0.95,
+    "height": 0.5,
+    "yawDeg": 8
+   },
+   "desc": "The whole page from the front: Jonah turns to the child and waves; far out at sea the fish waves a fin.",
+   "t0": 220.86,
+   "t1": 232.37,
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 0.5
+   }
+  }
+ ],
+ "acting": [
+  {
+   "t": 0.0,
+   "who": "jonah",
+   "clip": "idle",
+   "blend": 0.25,
+   "to": [
+    0.28,
+    0.14
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "captain",
+   "clip": "idle",
+   "blend": 0.25,
+   "to": [
+    -0.44,
+    -0.22
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "fish",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.62,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 6.38,
+   "who": "jonah",
+   "clip": "listen_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_01",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 14.28,
+   "who": "jonah",
+   "clip": "refuse",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_02",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 19.45,
+   "who": "jonah",
+   "clip": "tiptoe",
+   "blend": 0.25,
+   "to": [
+    0.12,
+    0.1
+   ],
+   "face": "ship",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 21.25,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.08,
+    -0.2
+   ],
+   "face": "ship",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 23.85,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.04,
+    -0.21
+   ],
+   "y": 0.04,
+   "face": "ship",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 4.6
+   }
+  },
+  {
+   "t": 24.65,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.16,
+    -0.22
+   ],
+   "y": 0.08,
+   "face": "ship",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 5.4
+   }
+  },
+  {
+   "t": 25.45,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.26,
+    -0.22
+   ],
+   "y": 0.1,
+   "face": "captain",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 6.2
+   }
+  },
+  {
+   "t": 26.05,
+   "who": "captain",
+   "clip": "greet",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 6.8
+   }
+  },
+  {
+   "t": 29.93,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.3,
+    -0.26
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": -1.0
+   }
+  },
+  {
+   "t": 30.73,
+   "who": "jonah",
+   "clip": "lie_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 32.08,
+   "who": "jonah",
+   "clip": "sleep_curl",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": 1.15
+   }
+  },
+  {
+   "t": 38.08,
+   "who": "captain",
+   "clip": "steer_hard",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 45.63,
+   "who": "captain",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.49,
+    -0.26
+   ],
+   "y": 0.1,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_07",
+    "edge": "end",
+    "dt": -0.8
+   }
+  },
+  {
+   "t": 46.43,
+   "who": "captain",
+   "clip": "shake_awake",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_07",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 53.44,
+   "who": "jonah",
+   "clip": "wake_startled",
+   "blend": 0.25,
+   "face": "captain",
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": -2.1
+   }
+  },
+  {
+   "t": 55.84,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.22,
+    -0.16
+   ],
+   "y": 0.1,
+   "face": "captain",
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 55.94,
+   "who": "captain",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.44,
+    -0.22
+   ],
+   "y": 0.1,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 56.74,
+   "who": "captain",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 57.14,
+   "who": "jonah",
+   "clip": "ashamed",
+   "blend": 0.25,
+   "face": "captain",
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "t": 67.05,
+   "who": "captain",
+   "clip": "refuse_hands",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_09",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 70.23,
+   "who": "captain",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.22,
+    -0.26
+   ],
+   "y": 0.1,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": -3.4
+   }
+  },
+  {
+   "t": 72.03,
+   "who": "captain",
+   "clip": "heave",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": -1.6
+   }
+  },
+  {
+   "t": 72.73,
+   "who": "jonah",
+   "clip": "fall_in",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": -0.9
+   }
+  },
+  {
+   "t": 74.63,
+   "who": "jonah",
+   "clip": "sit_hold_nose",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.06,
+    0.04
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 79.88,
+   "who": "captain",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_11",
+    "edge": "end",
+    "dt": -1.7
+   }
+  },
+  {
+   "t": 85.92,
+   "who": "fish",
+   "clip": "swim",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.62,
+    0.04
+   ],
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": -4.4
+   }
+  },
+  {
+   "t": 86.02,
+   "who": "fish",
+   "clip": "swim",
+   "blend": 0.25,
+   "to": [
+    -0.34,
+    0.04
+   ],
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": -4.3
+   }
+  },
+  {
+   "t": 90.52,
+   "who": "fish",
+   "clip": "gulp",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 91.82,
+   "who": "jonah",
+   "clip": "sit_hold_nose",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.2,
+    0.08
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 96.4,
+   "who": "fish",
+   "clip": "burp",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 97.2,
+   "who": "fish",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.62,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 97.2,
+   "who": "captain",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 109.14,
+   "who": "jonah",
+   "clip": "kneel_pray",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_15",
+    "edge": "end",
+    "dt": -2.1
+   }
+  },
+  {
+   "t": 123.35,
+   "who": "jonah",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.12,
+    0.1
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 123.35,
+   "who": "fish",
+   "clip": "swim",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.62,
+    0.1
+   ],
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 123.45,
+   "who": "fish",
+   "clip": "swim",
+   "blend": 0.25,
+   "to": [
+    -0.3,
+    0.1
+   ],
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 128.95,
+   "who": "fish",
+   "clip": "spit",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 129.65,
+   "who": "jonah",
+   "clip": "tumble_out",
+   "blend": 0.25,
+   "to": [
+    0.12,
+    0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 134.95,
+   "who": "jonah",
+   "clip": "sit_dazed",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 135.15,
+   "who": "fish",
+   "clip": "wave_fin",
+   "blend": 0.25,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 135.55,
+   "who": "fish",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.62,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 135.55,
+   "who": "jonah",
+   "clip": "stand_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 141.43,
+   "who": "jonah",
+   "clip": "nod_ok",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_19",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 143.63,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.32,
+    -0.16
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_20",
+    "edge": "end",
+    "dt": -1.4
+   }
+  },
+  {
+   "t": 146.73,
+   "who": "jonah",
+   "clip": "proclaim",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_20",
+    "edge": "end",
+    "dt": 1.7
+   }
+  },
+  {
+   "t": 155.28,
+   "who": "jonah",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.16,
+    -0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 157.08,
+   "who": "jonah",
+   "clip": "surprised",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 2.1
+   }
+  },
+  {
+   "t": 161.35,
+   "who": "jonah",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_22",
+    "edge": "end",
+    "dt": -2.7
+   }
+  },
+  {
+   "t": 172.89,
+   "who": "jonah",
+   "clip": "stomp_walk",
+   "blend": 0.25,
+   "to": [
+    0.42,
+    0.08
+   ],
+   "y": 0.03,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": -1.6
+   }
+  },
+  {
+   "t": 175.49,
+   "who": "jonah",
+   "clip": "sit_sulk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 186.52,
+   "who": "jonah",
+   "clip": "relax_happy",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 4.3
+   }
+  },
+  {
+   "t": 202.66,
+   "who": "jonah",
+   "clip": "wail",
+   "blend": 0.25,
+   "face": "plantDry",
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -2.4
+   }
+  },
+  {
+   "t": 209.23,
+   "who": "jonah",
+   "clip": "relax_happy",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_27",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 220.86,
+   "who": "fish",
+   "clip": "wave_fin",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.34,
+    0.08
+   ],
+   "y": -0.05,
+   "face": "jonah",
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 221.26,
+   "who": "jonah",
+   "clip": "stand_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 223.26,
+   "who": "jonah",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 2.9
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "jn_01",
+   "t": 0.55,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.68,
+   "ref": "Jonah 1:1",
+   "zh": "很久以前，上帝对一个叫约拿的人说话了。",
+   "en": "Long ago, God spoke to a man called Jonah.",
+   "dir": "storyteller opening, warm and curious, in one breath; a little lift on 上帝 / 'God spoke'",
+   "dur": 5.63,
+   "pre": 0.25,
+   "post": 0.2,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.55
+   }
+  },
+  {
+   "id": "jn_02",
+   "t": 6.78,
+   "who": "god",
+   "voice": "god",
+   "maxSec": 7.25,
+   "ref": "Jonah 1:2",
+   "zh": "约拿，起来！去尼尼微大城，告诉那里的人：不可以再做坏事了。",
+   "en": "Jonah, get up! Go to the great city of Nineveh, and tell the people there to stop doing wrong.",
+   "dir": "God's voice: warm, calm, big but kind, like a loving father; never stern or echoing-scary",
+   "dur": 7.2,
+   "pre": 0.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_01",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_03",
+   "t": 14.58,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 4.72,
+   "ref": "Jonah 1:3; 4:2",
+   "zh": "尼尼微？那些坏人？我才不去呢！",
+   "en": "Nineveh? Those bad people? No way. I'm not going!",
+   "dir": "grumpy and stubborn, arms crossed; a snort before 我才不去呢 / 'No way'; funny, not angry",
+   "dur": 4.67,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_02",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_04",
+   "t": 19.75,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.97,
+   "ref": "Jonah 1:3",
+   "zh": "约拿没有去尼尼微。他偷偷跑到海边，上了一条往相反方向开的船！",
+   "en": "But Jonah didn't go to Nineveh. He sneaked down to the sea and got on a ship going the opposite way!",
+   "dir": "amused, a little conspiratorial; surprise on 相反方向 / 'the opposite way'",
+   "dur": 6.92,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "jn_05",
+   "t": 27.27,
+   "who": "captain",
+   "voice": "captain",
+   "maxSec": 3.71,
+   "ref": "Jonah 1:3",
+   "zh": "欢迎上船！坐稳喽——开船啦！",
+   "en": "Welcome aboard! Hold on tight... we're off!",
+   "dir": "a jolly, loud sea captain; big chest voice, a laugh in it; calls 开船啦 / 'we're off' like a shout across the deck",
+   "dur": 3.66,
+   "pre": 0.4,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_04",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_06",
+   "t": 31.63,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.1,
+   "ref": "Jonah 1:5",
+   "zh": "约拿躲到货物后面，呼噜呼噜睡着了。",
+   "en": "Jonah hid behind the cargo, and soon he was snoring away.",
+   "dir": "soft and sleepy, smiling; draw out 呼噜呼噜 / 'snoring'",
+   "dur": 6.05,
+   "pre": 0.5,
+   "post": 0.4,
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "jn_07",
+   "t": 38.68,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.8,
+   "ref": "Jonah 1:4",
+   "zh": "忽然，上帝刮起了大风。轰隆隆！船摇啊摇，快要散架了！",
+   "en": "Suddenly God sent a great wind. Crash! Boom! The ship rocked and nearly broke apart!",
+   "dir": "exciting, quick, wide-eyed; big on 轰隆隆 / 'Crash! Boom!'; thrilling, never frightening",
+   "dur": 7.75,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "jn_08",
+   "t": 47.13,
+   "who": "captain",
+   "voice": "captain",
+   "maxSec": 8.46,
+   "ref": "Jonah 1:6",
+   "zh": "喂！醒醒！这么大的风浪，你怎么还睡得着？快向你的上帝祷告啊！",
+   "en": "Hey! Wake up! How can you sleep in a storm like this? Get up and pray to your God!",
+   "dir": "shouting over the wind, urgent, amazed; not angry at him, just desperate",
+   "dur": 8.41,
+   "pre": 0.5,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_07",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "jn_09",
+   "t": 57.24,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 9.46,
+   "ref": "Jonah 1:9-12",
+   "zh": "这风暴……是因为我。我在躲着上帝。把我扔进海里，风浪就会停了。",
+   "en": "This storm... it's because of me. I'm running away from God. Throw me into the sea, and the storm will stop.",
+   "dir": "quiet, ashamed, honest; a swallow before 是因为我 / 'because of me'; brave on the last sentence",
+   "dur": 9.41,
+   "pre": 1.4,
+   "post": 0.4,
+   "anchor": {
+    "line": "jn_08",
+    "edge": "end",
+    "dt": 1.7
+   }
+  },
+  {
+   "id": "jn_10",
+   "t": 67.35,
+   "who": "captain",
+   "voice": "captain",
+   "maxSec": 6.33,
+   "ref": "Jonah 1:13-14",
+   "zh": "扔下去？不行不行！……唉，上帝啊，请原谅我们！",
+   "en": "Throw you in? No, no, I can't! ...Oh, God, please forgive us!",
+   "dir": "shocked, kind-hearted, torn; a groan on 唉; the prayer is a real plea",
+   "dur": 6.28,
+   "pre": 0.3,
+   "post": 0.0,
+   "anchor": {
+    "line": "jn_09",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "jn_11",
+   "t": 74.23,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.4,
+   "ref": "Jonah 1:15",
+   "zh": "扑通！约拿一掉进海里，风就停了，浪也静了。",
+   "en": "Splash! The moment Jonah hit the water, the wind stopped and the waves went calm.",
+   "dir": "a pop on 扑通 / 'Splash', then hushed and amazed as everything goes still",
+   "dur": 7.35,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_12",
+   "t": 82.18,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 8.19,
+   "ref": "Jonah 1:17",
+   "zh": "约拿往下沉啊沉……上帝派来了一条好大好大的鱼！",
+   "en": "Down, down sank Jonah... then God sent a great big fish!",
+   "dir": "slow and floaty on the sinking; then wonder and a smile on 好大好大的鱼 / 'great big fish'",
+   "dur": 8.14,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_11",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_13",
+   "t": 91.52,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 4.83,
+   "ref": "Jonah 1:17",
+   "zh": "啊呜——一口就把他吞进了肚子里！",
+   "en": "GULP! It swallowed him in one bite!",
+   "dir": "big, comic, delighted; a real 啊呜 / 'gulp' sound",
+   "dur": 4.78,
+   "pre": 1.0,
+   "post": 0.1,
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "jn_14",
+   "t": 97.7,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 5.21,
+   "ref": "Jonah 1:17",
+   "zh": "呃……这里又黑又臭，还滑溜溜的！",
+   "en": "Ugh... it's dark in here, and stinky, and so slimy!",
+   "dir": "comic disgust, holding his nose (nasal voice); a shudder on 滑溜溜 / 'slimy'",
+   "dur": 5.16,
+   "pre": 0.5,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "jn_15",
+   "t": 103.46,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.83,
+   "ref": "Jonah 1:17; 2:1",
+   "zh": "约拿在鱼肚子里待了三天三夜。他终于安静下来，向上帝祷告。",
+   "en": "Jonah stayed inside the fish for three days and three nights. At last he grew quiet, and he prayed.",
+   "dir": "calm, slowing down; gentle on 向上帝祷告 / 'he prayed'",
+   "dur": 7.78,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_14",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_16",
+   "t": 112.14,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 10.86,
+   "ref": "Jonah 2:2-9",
+   "zh": "上帝啊，对不起，我不该逃跑。谢谢你没有丢下我。你说什么，我都愿意去做。",
+   "en": "Dear God, I'm sorry. I should not have run away. Thank You for not letting go of me. Whatever You say, I will do.",
+   "dir": "a real prayer, soft and close; truly sorry, then thankful, then steady; breath before 谢谢你",
+   "dur": 10.81,
+   "pre": 0.6,
+   "post": 0.4,
+   "anchor": {
+    "line": "jn_15",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "jn_17",
+   "t": 123.95,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 4.95,
+   "ref": "Jonah 2:10",
+   "zh": "上帝吩咐大鱼，大鱼就游到岸边——",
+   "en": "Then God spoke to the fish, and the fish swam up to the shore...",
+   "dir": "building up to a joke; hold the last word",
+   "dur": 4.9,
+   "pre": 0.6,
+   "post": 0.1,
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "jn_18",
+   "t": 129.55,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.15,
+   "ref": "Jonah 2:10",
+   "zh": "呸！把约拿吐在了沙滩上。",
+   "en": "PFFT! And spat Jonah out onto the sand.",
+   "dir": "the punchline: a real 呸 / 'pfft', then a chuckle",
+   "dur": 5.1,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "jn_19",
+   "t": 136.15,
+   "who": "god",
+   "voice": "god",
+   "maxSec": 5.03,
+   "ref": "Jonah 3:1-2",
+   "zh": "约拿，起来，去尼尼微，把我的话告诉他们。",
+   "en": "Jonah, get up. Go to Nineveh, and give them My message.",
+   "dir": "the same warm voice as before, patient, a hint of a smile: a second chance",
+   "dur": 4.98,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "id": "jn_20",
+   "t": 141.73,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 3.35,
+   "ref": "Jonah 3:3",
+   "zh": "好，上帝。这一次，我去。",
+   "en": "Yes, God. This time, I'll go.",
+   "dir": "humble and sure; short; a deep breath first",
+   "dur": 3.3,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_19",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_21",
+   "t": 147.03,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 8.0,
+   "ref": "Jonah 3:4",
+   "zh": "尼尼微的人哪，听着！你们做了太多坏事。再过四十天，这座城就要完了！",
+   "en": "People of Nineveh, listen! You have done so many wrong things. In forty days, this city will be destroyed!",
+   "dir": "calling out to a whole city, hands cupped; loud and serious but not cruel",
+   "dur": 7.95,
+   "pre": 1.8,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_20",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "id": "jn_22",
+   "t": 155.78,
+   "who": "people",
+   "voice": "people",
+   "maxSec": 8.32,
+   "ref": "Jonah 3:5-9",
+   "zh": "我们错了！上帝啊，求你原谅我们！",
+   "en": "We were wrong! O God, please forgive us!",
+   "dir": "a big crowd behind a wall: men, women and children, ragged, heartfelt, not in unison",
+   "dur": 8.27,
+   "pre": 0.5,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "jn_23",
+   "t": 164.65,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.89,
+   "ref": "Jonah 3:5-10",
+   "zh": "从国王到小孩子，全城的人都不再做坏事了。上帝看见了，就原谅了他们。",
+   "en": "From the king to the smallest child, everyone in the city stopped doing wrong. God saw it, and He forgave them.",
+   "dir": "glad and gentle; warm and slow on 就原谅了他们 / 'He forgave them'",
+   "dur": 9.84,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_22",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_24",
+   "t": 175.99,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 6.28,
+   "ref": "Jonah 4:1-2",
+   "zh": "哼！我就知道！你太好心了，肯定会原谅他们。他们可是坏人哪！",
+   "en": "Hmph! I knew it! You are too kind. I knew You would forgive them. But they're the bad guys!",
+   "dir": "sulky like a child who lost a game; loud 哼; whiny on the last sentence; funny",
+   "dur": 6.23,
+   "pre": 1.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "id": "jn_25",
+   "t": 183.12,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 10.47,
+   "ref": "Jonah 4:6",
+   "zh": "上帝让一棵树长出来，给约拿遮太阳。约拿可高兴了：啊，真凉快！",
+   "en": "God made a leafy plant grow up to shade Jonah from the sun. Jonah was so happy. Ahh, lovely and cool!",
+   "dir": "light and playful; a contented sigh on 啊真凉快 / 'lovely and cool'",
+   "dur": 10.42,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "jn_26",
+   "t": 194.14,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 10.97,
+   "ref": "Jonah 4:7-8",
+   "zh": "可是第二天，来了一条小虫子。咔嚓咔嚓——把树咬坏了。太阳晒得约拿头都晕了。",
+   "en": "But the next day, along came a little worm. Munch, munch... and the plant dried up. The hot sun beat down on Jonah's head.",
+   "dir": "mischievous on the worm (咔嚓咔嚓 / 'munch munch'), then hot and droopy",
+   "dur": 10.92,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "jn_25",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "jn_27",
+   "t": 205.46,
+   "who": "jonah",
+   "voice": "jonah",
+   "maxSec": 3.42,
+   "ref": "Jonah 4:8-9",
+   "zh": "我的树！我可怜的树啊！",
+   "en": "My plant! My poor, poor plant!",
+   "dir": "over-the-top wailing, comic; voice cracks",
+   "dur": 3.37,
+   "pre": 0.2,
+   "post": 0.4,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "jn_28",
+   "t": 209.83,
+   "who": "god",
+   "voice": "god",
+   "maxSec": 10.58,
+   "ref": "Jonah 4:10-11",
+   "zh": "约拿，你心疼这棵树。尼尼微有十二万多人，还有好多牛羊，我能不心疼吗？",
+   "en": "Jonah, you care about this plant. Nineveh has over a hundred and twenty thousand people, and many animals too. Should I not care about them?",
+   "dir": "very gentle, a father explaining; a small smile on 还有好多牛羊 / 'animals too'; the question is tender, not scolding",
+   "dur": 10.53,
+   "pre": 0.6,
+   "post": 0.5,
+   "anchor": {
+    "line": "jn_27",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "jn_29",
+   "t": 221.36,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.66,
+   "ref": "Jonah 4:2, 4:11",
+   "zh": "上帝爱每一个人，做错了事，他也愿意再给一次机会。约拿是这样，你和我也是。",
+   "en": "God loves every person. When we do wrong, He gives another chance. He did for Jonah, and He does for you and me.",
+   "dir": "warm moral, speaking right to the child; smile on the last sentence",
+   "dur": 9.61,
+   "pre": 0.5,
+   "post": 0.4,
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 1.0
+   }
+  }
+ ],
+ "fx": [
+  {
+   "t": 6.38,
+   "id": "golden_rays",
+   "at": "jonah.root",
+   "dur": 6.0,
+   "anchor": {
+    "line": "jn_01",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 31.13,
+   "id": "sea_wind",
+   "at": "stage",
+   "dur": 5.0,
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 32.53,
+   "id": "zzz",
+   "at": "jonah.head",
+   "dur": 6.0,
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "t": 38.08,
+   "id": "storm_rain",
+   "at": "stage",
+   "dur": 14.0,
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 38.08,
+   "id": "tension_dim",
+   "at": "stage",
+   "dur": 14.0,
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 44.63,
+   "id": "storm_rain",
+   "at": "stage",
+   "dur": 28.5,
+   "anchor": {
+    "line": "jn_07",
+    "edge": "end",
+    "dt": -1.8
+   }
+  },
+  {
+   "t": 44.63,
+   "id": "tension_dim",
+   "at": "stage",
+   "dur": 28.5,
+   "anchor": {
+    "line": "jn_07",
+    "edge": "end",
+    "dt": -1.8
+   }
+  },
+  {
+   "t": 74.13,
+   "id": "splash",
+   "at": "coast.sea",
+   "dur": 1.6,
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 74.63,
+   "id": "splash",
+   "at": "jonah.root",
+   "dur": 1.0,
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 74.73,
+   "id": "bubbles",
+   "at": "jonah.root",
+   "dur": 5.0,
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 1.1
+   }
+  },
+  {
+   "t": 87.52,
+   "id": "bubbles",
+   "at": "fish.jaw",
+   "dur": 3.0,
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": -2.8
+   }
+  },
+  {
+   "t": 97.0,
+   "id": "bubbles",
+   "at": "fish.jaw",
+   "dur": 2.0,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 99.16,
+   "id": "deep_glow",
+   "at": "stage",
+   "dur": 22.0,
+   "anchor": {
+    "line": "jn_14",
+    "edge": "end",
+    "dt": -3.7
+   }
+  },
+  {
+   "t": 110.54,
+   "id": "prayer_glow",
+   "at": "jonah.chest",
+   "dur": 10.0,
+   "anchor": {
+    "line": "jn_15",
+    "edge": "end",
+    "dt": -0.7
+   }
+  },
+  {
+   "t": 129.75,
+   "id": "splash",
+   "at": "coast.beach",
+   "dur": 1.2,
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 135.55,
+   "id": "golden_rays",
+   "at": "jonah.root",
+   "dur": 5.0,
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 170.69,
+   "id": "golden_rays",
+   "at": "coast.gate",
+   "dur": 6.0,
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": -3.8
+   }
+  },
+  {
+   "t": 175.99,
+   "id": "steam",
+   "at": "jonah.head",
+   "dur": 1.8,
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 182.72,
+   "id": "plant_grow",
+   "at": "coast.plantSmall",
+   "dur": 1.6,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 184.42,
+   "id": "plant_grow",
+   "at": "coast.plantBig",
+   "dur": 2.6,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 202.46,
+   "id": "sun_scorch",
+   "at": "jonah.head",
+   "dur": 7.0,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -2.6
+   }
+  },
+  {
+   "t": 205.36,
+   "id": "sweat",
+   "at": "jonah.head",
+   "dur": 1.4,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 209.23,
+   "id": "golden_rays",
+   "at": "jonah.root",
+   "dur": 8.0,
+   "anchor": {
+    "line": "jn_27",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 219.36,
+   "id": "heart_glow",
+   "at": "jonah.chest",
+   "dur": 5.0,
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": -1.0
+   }
+  }
+ ],
+ "sfx": [
+  {
+   "t": 6.38,
+   "id": "soft_chime",
+   "anchor": {
+    "line": "jn_01",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 30.13,
+   "id": "seagulls",
+   "anchor": {
+    "line": "jn_05",
+    "edge": "end",
+    "dt": -0.8
+   }
+  },
+  {
+   "t": 38.08,
+   "id": "rain_loop",
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 38.38,
+   "id": "thunder",
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 44.08,
+   "id": "thunder",
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 6.4
+   }
+  },
+  {
+   "t": 74.13,
+   "id": "splash_big",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 74.23,
+   "id": "rain_stop",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 87.52,
+   "id": "bubbles",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": -2.8
+   }
+  },
+  {
+   "t": 91.67,
+   "id": "gulp",
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": 1.35
+   }
+  },
+  {
+   "t": 97.0,
+   "id": "burp",
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 129.65,
+   "id": "spit_pop",
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 135.35,
+   "id": "seagulls",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 170.69,
+   "id": "soft_chime",
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": -3.8
+   }
+  },
+  {
+   "t": 182.72,
+   "id": "grow_whoosh",
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 184.42,
+   "id": "grow_whoosh",
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 197.64,
+   "id": "munch",
+   "anchor": {
+    "line": "jn_25",
+    "edge": "end",
+    "dt": 4.1
+   }
+  },
+  {
+   "t": 202.46,
+   "id": "cicadas_heat",
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -2.6
+   }
+  }
+ ],
+ "music": [
+  {
+   "t": 0.0,
+   "cue": "call",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 19.45,
+   "cue": "runaway",
+   "anchor": {
+    "line": "jn_03",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 38.08,
+   "cue": "storm",
+   "anchor": {
+    "line": "jn_06",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 74.43,
+   "cue": "deep",
+   "anchor": {
+    "line": "jn_10",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 97.2,
+   "cue": "prayer",
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 123.35,
+   "cue": "shore",
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 135.55,
+   "cue": "call",
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 145.23,
+   "cue": "nineveh",
+   "anchor": {
+    "line": "jn_20",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 155.28,
+   "cue": "repent",
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 174.69,
+   "cue": "sulk",
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 182.52,
+   "cue": "plant",
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 209.23,
+   "cue": "mercy",
+   "anchor": {
+    "line": "jn_27",
+    "edge": "end",
+    "dt": 0.4
+   }
+  }
+ ],
+ "props": [
+  {
+   "t": 0.0,
+   "node": "fish",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/belly",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/plantSmall",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/plantBig",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/plantDry",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/worm",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/shelter",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk1",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk2",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk3",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk4",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk5",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk6",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk7",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk8",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "coast/folk9",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "jonah/seaweed",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 85.92,
+   "node": "fish",
+   "show": true,
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": -4.4
+   }
+  },
+  {
+   "t": 91.79,
+   "node": "jonah",
+   "show": false,
+   "anchor": {
+    "line": "jn_12",
+    "edge": "end",
+    "dt": 1.47
+   }
+  },
+  {
+   "t": 97.2,
+   "node": "coast/belly",
+   "show": true,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 97.2,
+   "node": "fish",
+   "show": false,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 97.2,
+   "node": "captain",
+   "show": false,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 97.2,
+   "node": "jonah",
+   "show": true,
+   "anchor": {
+    "line": "jn_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 123.35,
+   "node": "jonah",
+   "show": false,
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 123.35,
+   "node": "coast/belly",
+   "show": false,
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 123.35,
+   "node": "fish",
+   "show": true,
+   "anchor": {
+    "line": "jn_16",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 129.65,
+   "node": "jonah",
+   "show": true,
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 129.65,
+   "node": "jonah/seaweed",
+   "show": true,
+   "anchor": {
+    "line": "jn_17",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 135.55,
+   "node": "fish",
+   "show": false,
+   "anchor": {
+    "line": "jn_18",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 141.43,
+   "node": "jonah/seaweed",
+   "show": false,
+   "anchor": {
+    "line": "jn_19",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 155.48,
+   "node": "coast/folk2",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 155.98,
+   "node": "coast/folk5",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 156.48,
+   "node": "coast/folk8",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 157.08,
+   "node": "coast/folk1",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 2.1
+   }
+  },
+  {
+   "t": 157.68,
+   "node": "coast/folk4",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 2.7
+   }
+  },
+  {
+   "t": 158.28,
+   "node": "coast/folk6",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 3.3
+   }
+  },
+  {
+   "t": 158.88,
+   "node": "coast/folk3",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 3.9
+   }
+  },
+  {
+   "t": 159.58,
+   "node": "coast/folk9",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_21",
+    "edge": "end",
+    "dt": 4.6
+   }
+  },
+  {
+   "t": 165.95,
+   "node": "coast/folk7",
+   "show": true,
+   "grow": 0.5,
+   "anchor": {
+    "line": "jn_22",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "t": 174.69,
+   "node": "coast/shelter",
+   "show": true,
+   "anchor": {
+    "line": "jn_23",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 182.72,
+   "node": "coast/plantSmall",
+   "show": true,
+   "grow": 1.4,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 184.42,
+   "node": "coast/plantSmall",
+   "show": false,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 184.42,
+   "node": "coast/plantBig",
+   "show": true,
+   "grow": 2.6,
+   "anchor": {
+    "line": "jn_24",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 195.44,
+   "node": "coast/worm",
+   "show": true,
+   "grow": 0.4,
+   "anchor": {
+    "line": "jn_25",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "t": 201.06,
+   "node": "coast/plantBig",
+   "show": false,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -4.0
+   }
+  },
+  {
+   "t": 201.06,
+   "node": "coast/plantDry",
+   "show": true,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -4.0
+   }
+  },
+  {
+   "t": 202.26,
+   "node": "coast/worm",
+   "show": false,
+   "anchor": {
+    "line": "jn_26",
+    "edge": "end",
+    "dt": -2.8
+   }
+  },
+  {
+   "t": 220.86,
+   "node": "fish",
+   "show": true,
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 220.86,
+   "node": "coast/plantDry",
+   "show": false,
+   "grow": 1.0,
+   "anchor": {
+    "line": "jn_28",
+    "edge": "end",
+    "dt": 0.5
+   }
+  }
+ ],
+ "requestedClips": [],
+ "timedFrom": "voices",
+ "durationAnchor": {
+  "line": "jn_29",
+  "edge": "end",
+  "dt": 1.4
+ },
+ "retime": 1
+}

@@ -1,0 +1,874 @@
+{
+ "setOverCastPx2x": 0,
+ "mergedIntoSameColourNeighbour": [],
+ "detailParts": 34,
+ "pieces": 121,
+ "slivers(<6px)": [],
+ "regionsBelow6mm(best cell)": [
+  [
+   8.9,
+   "jonah.hair:hair"
+  ],
+  [
+   12.0,
+   "captain.wrap:wrap"
+  ],
+  [
+   12.6,
+   "captain.beard:beard"
+  ],
+  [
+   20.6,
+   "jonah.beard:hair"
+  ],
+  [
+   32.0,
+   "captain.face:skin"
+  ],
+  [
+   32.0,
+   "jonah.belt:belt"
+  ],
+  [
+   34.0,
+   "captain.sash:sash"
+  ],
+  [
+   34.0,
+   "jonah.coat:coat"
+  ],
+  [
+   34.5,
+   "jonah.face:skin"
+  ],
+  [
+   35.4,
+   "fish.dorsal:fins"
+  ]
+ ],
+ "regionsWithoutColourableCell": [],
+ "inkWithin6pxOfArtEdge": {
+  "bottom": 0,
+  "top": 0,
+  "left": 0,
+  "right": 0
+ },
+ "anchorSamples": {
+  "jonah.streaks": {
+   "uv": [
+    0.17975,
+    0.24063
+   ],
+   "region": "jonah:hair",
+   "want": "hair",
+   "inkDistPx": 10.3,
+   "ok": true
+  },
+  "jonah.sandals": {
+   "uv": [
+    0.18025,
+    0.07763
+   ],
+   "region": "jonah:tunic",
+   "want": "tunic",
+   "inkDistPx": 22.2,
+   "ok": true
+  },
+  "jonah.seaweed": {
+   "uv": [
+    0.71925,
+    0.43337
+   ],
+   "region": "fish:fins",
+   "want": "fins",
+   "inkDistPx": 35.4,
+   "ok": true
+  },
+  "jonah.skin@handL": {
+   "uv": [
+    0.16725,
+    0.26141
+   ],
+   "region": "jonah:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "jonah.skin@handR": {
+   "uv": [
+    0.16725,
+    0.26141
+   ],
+   "region": "jonah:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "jonah.skin@legL": {
+   "uv": [
+    0.16725,
+    0.26141
+   ],
+   "region": "jonah:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "jonah.skin@legR": {
+   "uv": [
+    0.16725,
+    0.26141
+   ],
+   "region": "jonah:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "jonah.stripes@cuffs": {
+   "uv": [
+    0.13775,
+    0.10982
+   ],
+   "region": "jonah:stripes",
+   "want": "stripes",
+   "inkDistPx": 20.1,
+   "ok": true
+  },
+  "jonah.coat@coatTrim": {
+   "uv": [
+    0.14725,
+    0.21007
+   ],
+   "region": "jonah:coat",
+   "want": "coat",
+   "inkDistPx": 12.4,
+   "ok": true
+  },
+  "jonah.coat@coatHem": {
+   "uv": [
+    0.14725,
+    0.21007
+   ],
+   "region": "jonah:coat",
+   "want": "coat",
+   "inkDistPx": 12.4,
+   "ok": true
+  },
+  "jonah.belt@headband": {
+   "uv": [
+    0.20325,
+    0.17461
+   ],
+   "region": "jonah:belt",
+   "want": "belt",
+   "inkDistPx": 14.6,
+   "ok": true
+  },
+  "jonah.belt@beltFringe": {
+   "uv": [
+    0.20325,
+    0.17461
+   ],
+   "region": "jonah:belt",
+   "want": "belt",
+   "inkDistPx": 14.6,
+   "ok": true
+  },
+  "captain.sandals": {
+   "uv": [
+    0.83725,
+    0.12042
+   ],
+   "region": "captain:tunic",
+   "want": "tunic",
+   "inkDistPx": 19.3,
+   "ok": true
+  },
+  "captain.rope": {
+   "uv": [
+    0.83725,
+    0.12042
+   ],
+   "region": "captain:tunic",
+   "want": "tunic",
+   "inkDistPx": 19.3,
+   "ok": true
+  },
+  "captain.skin@handL": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@handR": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@legL": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@legR": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@armL": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@armR": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@kneeL": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "captain.skin@kneeR": {
+   "uv": [
+    0.81275,
+    0.25244
+   ],
+   "region": "captain:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "fish.mouth": {
+   "uv": [
+    0.34725,
+    0.36451
+   ],
+   "region": "fish:belly",
+   "want": "belly",
+   "inkDistPx": 42.2,
+   "ok": true
+  },
+  "set.seaFoam/foam": {
+   "uv": [
+    0.5775,
+    0.24246
+   ],
+   "region": "set:foam",
+   "want": "foam",
+   "inkDistPx": 16.5,
+   "ok": true
+  },
+  "set.ship/wood": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.cargo/jar": {
+   "uv": [
+    0.7275,
+    0.94988
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.cargo/sackTie": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.plank/deck": {
+   "uv": [
+    0.2585,
+    0.64344
+   ],
+   "region": "set:deck",
+   "want": "deck",
+   "inkDistPx": 26.0,
+   "ok": true
+  },
+  "set.plank/stone": {
+   "uv": [
+    0.7995,
+    0.75183
+   ],
+   "region": "set:stone",
+   "want": "stone",
+   "inkDistPx": 17.5,
+   "ok": true
+  },
+  "set.beachProps/wood": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.beachProps/foam": {
+   "uv": [
+    0.5775,
+    0.24246
+   ],
+   "region": "set:foam",
+   "want": "foam",
+   "inkDistPx": 16.5,
+   "ok": true
+  },
+  "set.hillProps/stone": {
+   "uv": [
+    0.7995,
+    0.75183
+   ],
+   "region": "set:stone",
+   "want": "stone",
+   "inkDistPx": 17.5,
+   "ok": true
+  },
+  "set.hillProps/dry": {
+   "uv": [
+    0.3585,
+    0.03382
+   ],
+   "region": "set:dry",
+   "want": "dry",
+   "inkDistPx": 16.4,
+   "ok": true
+  },
+  "set.shelter/wood": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.gate/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.nineveh/palmTrunk": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.nineveh/palmLeaf": {
+   "uv": [
+    0.1945,
+    0.38427
+   ],
+   "region": "set:leaf",
+   "want": "leaf",
+   "inkDistPx": 17.2,
+   "ok": true
+  },
+  "set.boat/boatHull": {
+   "uv": [
+    0.4075,
+    0.56112
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 26.2,
+   "ok": true
+  },
+  "set.boat/boatInside": {
+   "uv": [
+    0.2585,
+    0.64344
+   ],
+   "region": "set:deck",
+   "want": "deck",
+   "inkDistPx": 26.0,
+   "ok": true
+  },
+  "set.boat/wood": {
+   "uv": [
+    0.0475,
+    0.54564
+   ],
+   "region": "set:wood",
+   "want": "wood",
+   "inkDistPx": 19.9,
+   "ok": true
+  },
+  "set.plantSmall/leaf": {
+   "uv": [
+    0.3885,
+    0.21638
+   ],
+   "region": "set:leaf",
+   "want": "leaf",
+   "inkDistPx": 24.3,
+   "ok": true
+  },
+  "set.plantBig/leaf": {
+   "uv": [
+    0.1945,
+    0.38427
+   ],
+   "region": "set:leaf",
+   "want": "leaf",
+   "inkDistPx": 17.2,
+   "ok": true
+  },
+  "set.plantDry/dry": {
+   "uv": [
+    0.3585,
+    0.03382
+   ],
+   "region": "set:dry",
+   "want": "dry",
+   "inkDistPx": 16.4,
+   "ok": true
+  },
+  "set.worm/leaf": {
+   "uv": [
+    0.3885,
+    0.21638
+   ],
+   "region": "set:leaf",
+   "want": "leaf",
+   "inkDistPx": 24.3,
+   "ok": true
+  },
+  "set.worm/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk1/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk1/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk1/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk1/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk2/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk2/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk2/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk2/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk3/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk3/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk3/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk3/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk4/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk4/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk4/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk4/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk5/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk5/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk5/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk5/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk6/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk6/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk6/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk6/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk7/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk7/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk7/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk7/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk8/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk8/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk8/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk8/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  },
+  "set.folk9/sack": {
+   "uv": [
+    0.5375,
+    0.55949
+   ],
+   "region": "set:sack",
+   "want": "sack",
+   "inkDistPx": 32.6,
+   "ok": true
+  },
+  "set.folk9/patch": {
+   "uv": [
+    0.5555,
+    0.04197
+   ],
+   "region": "set:patch",
+   "want": "patch",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "set.folk9/bellyFloor": {
+   "uv": [
+    0.8505,
+    0.36308
+   ],
+   "region": "set:bellyFloor",
+   "want": "bellyFloor",
+   "inkDistPx": 21.5,
+   "ok": true
+  },
+  "set.folk9/gold": {
+   "uv": [
+    0.7905,
+    0.82763
+   ],
+   "region": "set:gold",
+   "want": "gold",
+   "inkDistPx": 18.6,
+   "ok": true
+  }
+ },
+ "inkToPageEdgePx(excl. markers)": {
+  "left": 139,
+  "right": 140,
+  "top": 47,
+  "bottom": 64
+ }
+}

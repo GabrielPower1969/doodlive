@@ -1,0 +1,2406 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther and Ruth; faces come from decals"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "约拿与大鱼",
+   "pinyin": "yuē ná yǔ dà yú",
+   "english": "Jonah and the Big Fish",
+   "box": 74,
+   "gap": 28,
+   "cy": 108,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box 74 / gap 28 / cy 108: the most distinct of a grid of candidates that keep the pinyin 6 mm from the top edge (tools/story/sheet_jonah.py title-search; most similar other title: Daniel, NCC 0.35)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "约拿书 · Jonah"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy keeps the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "fish": {
+   "height": 0.2,
+   "sheetX": 0.0,
+   "sheetY": 0.4,
+   "projection": "side (nose to -x), second row"
+  },
+  "jonah": {
+   "height": 0.36,
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "captain": {
+   "height": 0.38,
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/jn_coast.py",
+  "doc": "docs/jonah/SET.md",
+  "contract": "docs/jonah/CONTRACT.md §6",
+  "root": "coast",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "sea": [
+    -0.27,
+    0.0,
+    -0.1888
+   ],
+   "ship": [
+    -0.34,
+    0.1,
+    -0.22
+   ],
+   "cargo": [
+    -0.34,
+    0.1,
+    -0.22
+   ],
+   "plank": [
+    0.08,
+    0.02,
+    -0.2
+   ],
+   "beach": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "boat": [
+    0.128,
+    0.0,
+    -0.405
+   ],
+   "road": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "ground": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "hill": [
+    0.44,
+    0.0,
+    0.06
+   ],
+   "nineveh": [
+    0.4,
+    0.0,
+    -0.4
+   ],
+   "gate": [
+    0.34,
+    0.0,
+    -0.4
+   ],
+   "shelter": [
+    0.52,
+    0.0,
+    0.02
+   ],
+   "plantSmall": [
+    0.34,
+    0.0,
+    0.06
+   ],
+   "plantBig": [
+    0.34,
+    0.0,
+    0.06
+   ],
+   "plantDry": [
+    0.34,
+    0.0,
+    0.06
+   ],
+   "worm": [
+    0.3324,
+    0.2236,
+    0.0689
+   ],
+   "belly": [
+    -0.2,
+    0.0,
+    0.08
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "sea": [
+    -0.6,
+    -0.5875,
+    0.06,
+    0.21
+   ],
+   "fishLane": [
+    -0.6,
+    0.02,
+    -0.06,
+    0.21
+   ],
+   "ship": {
+    "centre": [
+     -0.34,
+     -0.22
+    ],
+    "x": [
+     -0.535,
+     -0.148
+    ],
+    "halfBeam": 0.07,
+    "deck": 0.1,
+    "gunwale": 0.107,
+    "mast": [
+     -0.405,
+     -0.292
+    ]
+   },
+   "cargo": [
+    [
+     "sack",
+     -0.327,
+     -0.176,
+     0.019
+    ],
+    [
+     "sack",
+     -0.504,
+     -0.249,
+     0.017
+    ],
+    [
+     "jar",
+     -0.5,
+     -0.19,
+     0.014
+    ],
+    [
+     "sack",
+     -0.36,
+     -0.172,
+     0.012
+    ],
+    [
+     "jar",
+     -0.515,
+     -0.215,
+     0.01
+    ]
+   ],
+   "beach": [
+    0.03,
+    0.22
+   ],
+   "wall": {
+    "x": [
+     0.2,
+     0.6
+    ],
+    "frontZ": -0.4
+   },
+   "gate": {
+    "centre": [
+     0.34,
+     -0.4
+    ],
+    "opening": 0.1,
+    "height": 0.16,
+    "gatehouse": [
+     0.23,
+     0.45,
+     -0.455,
+     -0.378
+    ]
+   },
+   "hill": {
+    "centre": [
+     0.44,
+     0.06
+    ],
+    "radius": 0.14
+   },
+   "belly": {
+    "centre": [
+     -0.2,
+     0.08
+    ],
+    "innerRadius": 0.13,
+    "height": 0.26
+   },
+   "shelterSticks": [
+    [
+     0.478,
+     0.05
+    ],
+    [
+     0.586,
+     0.048
+    ]
+   ],
+   "posts": [
+    [
+     0.028,
+     -0.272
+    ],
+    [
+     0.026,
+     -0.128
+    ]
+   ]
+  },
+  "heights": {
+   "seaLevel": 0.0045,
+   "deck": 0.1,
+   "gunwale": 0.107,
+   "mastTop": 0.455,
+   "wallTop": 0.22899999999999998,
+   "gateTowers": 0.28900000000000003,
+   "hillTop": 0.028,
+   "groundAtMarks": {
+    "folk folk1": 0.071,
+    "folk folk2": 0.086,
+    "folk folk3": 0.078,
+    "folk folk4": 0.076,
+    "folk folk5": 0.067,
+    "folk folk6": 0.067,
+    "folk folk7": 0.078,
+    "folk folk8": 0.08,
+    "folk folk9": 0.076,
+    "jonah road": 0.005,
+    "jonah beach": 0.0044,
+    "plank foot": 0.0038,
+    "jonah gate": 0.005,
+    "jonah hill": 0.0299,
+    "jonah gate side": 0.005
+   }
+  },
+  "animations": {
+   "seaWave": {
+    "node": "sea",
+    "meshes": [
+     "seaWater",
+     "seaCrests",
+     "seaFoam"
+    ],
+    "length": 4.0,
+    "fps": 24,
+    "loop": true
+   },
+   "shipRock": {
+    "node": "ship",
+    "length": 6.0,
+    "fps": 24,
+    "loop": true,
+    "rollDeg": 3.0,
+    "pitchDeg": 0.6,
+    "pivot": [
+     -0.34,
+     0.1,
+     -0.22
+    ]
+   }
+  },
+  "hiddenAtStart": [
+   "shelter",
+   "plantSmall",
+   "plantBig",
+   "plantDry",
+   "worm",
+   "belly",
+   "folk1",
+   "folk2",
+   "folk3",
+   "folk4",
+   "folk5",
+   "folk6",
+   "folk7",
+   "folk8",
+   "folk9"
+  ],
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227; P = world position, or the template position for the wave crests",
+   "edgeOn": "faces with |n . D| < 0.22 (n in drawing space) take one clean texel of their region",
+   "namedTexels": "no-raster bits (rigging, rails, foam, shells, rocks, grass, sticks, stems, worm) take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.2,
+    "cx": 0.29,
+    "y0": 0.636,
+    "decorOnly": [
+     "sea",
+     "seaFar",
+     "sand"
+    ],
+    "members": [
+     "seaWater",
+     "beach",
+     "road",
+     "ground",
+     "hill"
+    ],
+    "sheetX": 0.29,
+    "sheetY": 0.70162,
+    "bboxSheet": [
+     0.1025,
+     0.636,
+     0.4775,
+     0.8852
+    ]
+   },
+   "ship": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.0,
+     0.5,
+     1
+    ],
+    "scale": 1.03,
+    "cx": -0.255,
+    "y0": 0.638,
+    "decorOnly": [
+     "deck",
+     "hull"
+    ],
+    "members": [
+     "ship"
+    ],
+    "sheetX": 0.08709,
+    "sheetY": 0.5825,
+    "bboxSheet": [
+     -0.4787,
+     0.638,
+     -0.0313,
+     1.1698
+    ]
+   },
+   "city": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.55
+    ],
+    "D": [
+     0.0,
+     0.55,
+     1
+    ],
+    "scale": 1.35,
+    "cx": 0.29,
+    "y0": 0.9,
+    "decorOnly": [
+     "brick",
+     "stone"
+    ],
+    "members": [
+     "nineveh",
+     "gate"
+    ],
+    "sheetX": -0.00778,
+    "sheetY": 0.74844,
+    "bboxSheet": [
+     0.1404,
+     0.9,
+     0.4396,
+     1.1924
+    ]
+   },
+   "plantBig": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.0,
+     0.35,
+     1
+    ],
+    "scale": 1.27,
+    "cx": -0.377,
+    "y0": 0.394,
+    "members": [
+     "plantBig"
+    ],
+    "sheetX": -0.7094,
+    "sheetY": 0.20495,
+    "bboxSheet": [
+     -0.4771,
+     0.394,
+     -0.2769,
+     0.5239
+    ]
+   },
+   "belly": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.45
+    ],
+    "D": [
+     0.0,
+     0.45,
+     1
+    ],
+    "scale": 1.8,
+    "cx": 0.384,
+    "y0": 0.414,
+    "decorOnly": [
+     "bellyFloor"
+    ],
+    "members": [
+     "belly"
+    ],
+    "sheetX": 0.49511,
+    "sheetY": 0.46789,
+    "bboxSheet": [
+     0.3018,
+     0.414,
+     0.4662,
+     0.622
+    ]
+   },
+   "plantDry": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.0,
+     0.35,
+     1
+    ],
+    "scale": 1.46,
+    "cx": -0.077,
+    "y0": 0.012,
+    "members": [
+     "plantDry"
+    ],
+    "sheetX": -0.35656,
+    "sheetY": -0.07135,
+    "bboxSheet": [
+     -0.1635,
+     0.012,
+     0.0095,
+     0.2116
+    ]
+   },
+   "plantSmall": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.62,
+    "cx": -0.084,
+    "y0": 0.232,
+    "members": [
+     "plantSmall"
+    ],
+    "sheetX": -0.62432,
+    "sheetY": 0.15083,
+    "bboxSheet": [
+     -0.1471,
+     0.232,
+     -0.0209,
+     0.3032
+    ]
+   },
+   "shelter": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.8
+    ],
+    "D": [
+     0.0,
+     0.8,
+     1
+    ],
+    "scale": 0.95,
+    "cx": 0.086,
+    "y0": 0.012,
+    "members": [
+     "shelter"
+    ],
+    "sheetX": -0.47295,
+    "sheetY": -0.14471,
+    "bboxSheet": [
+     0.0239,
+     0.012,
+     0.1481,
+     0.0987
+    ]
+   },
+   "wave": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.7,
+    "cx": 0.084,
+    "y0": 0.226,
+    "members": [],
+    "sheetX": 0.084,
+    "sheetY": 0.226,
+    "bboxSheet": [
+     0.0197,
+     0.226,
+     0.1483,
+     0.3192
+    ]
+   },
+   "sack": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.0,
+     0.5,
+     1
+    ],
+    "scale": 0.75,
+    "cx": 0.038,
+    "y0": 0.65,
+    "members": [],
+    "sheetX": 0.03635,
+    "sheetY": 0.65711,
+    "bboxSheet": [
+     -0.0019,
+     0.65,
+     0.0779,
+     0.7595
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "seaWater",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.29,
+     "sheetY": 0.70162
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "sea",
+     "seaFar"
+    ],
+    "heightMax": 0.006,
+    "tris": 7120
+   },
+   {
+    "id": "seaCrests",
+    "drawing": "wave",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.7,
+     "sheetX": 0.084,
+     "sheetY": 0.226
+    },
+    "instanced": true,
+    "namedTexels": null,
+    "regions": [
+     "foam",
+     "wave"
+    ],
+    "heightMax": 0.0414,
+    "tris": 13024
+   },
+   {
+    "id": "seaFoam",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "foam": [
+      "wave",
+      "foam"
+     ]
+    },
+    "regions": [
+     "foam"
+    ],
+    "heightMax": 0.006,
+    "tris": 798
+   },
+   {
+    "id": "ship",
+    "drawing": "ship",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.0,
+      0.5,
+      1
+     ],
+     "scale": 1.03,
+     "sheetX": 0.08709,
+     "sheetY": 0.5825
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "ship",
+      "wood"
+     ]
+    },
+    "regions": [
+     "deck",
+     "hull",
+     "sail",
+     "stripe",
+     "wood"
+    ],
+    "heightMax": 0.4587,
+    "tris": 7732
+   },
+   {
+    "id": "cargo",
+    "drawing": "sack",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.0,
+      0.5,
+      1
+     ],
+     "scale": 0.75,
+     "sheetX": 0.03635,
+     "sheetY": 0.65711
+    },
+    "instanced": true,
+    "namedTexels": {
+     "jar": [
+      "city",
+      "roof"
+     ],
+     "sackTie": [
+      "ship",
+      "wood"
+     ]
+    },
+    "regions": [
+     "jar",
+     "sack",
+     "sackTie"
+    ],
+    "heightMax": 0.1475,
+    "tris": 1640
+   },
+   {
+    "id": "plank",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "deck": [
+      "ship",
+      "deck"
+     ],
+     "stone": [
+      "city",
+      "stone"
+     ]
+    },
+    "regions": [
+     "deck",
+     "stone"
+    ],
+    "heightMax": 0.0995,
+    "tris": 262
+   },
+   {
+    "id": "beach",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.29,
+     "sheetY": 0.70162
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "sand"
+    ],
+    "heightMax": 0.0054,
+    "tris": 1248
+   },
+   {
+    "id": "boat",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "boatHull": [
+      "ship",
+      "hull"
+     ],
+     "boatInside": [
+      "ship",
+      "deck"
+     ],
+     "wood": [
+      "ship",
+      "wood"
+     ]
+    },
+    "regions": [
+     "boatHull",
+     "boatInside"
+    ],
+    "heightMax": 0.0366,
+    "tris": 902
+   },
+   {
+    "id": "beachProps",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "ship",
+      "wood"
+     ],
+     "foam": [
+      "wave",
+      "foam"
+     ]
+    },
+    "regions": [
+     "foam",
+     "wood"
+    ],
+    "heightMax": 0.0984,
+    "tris": 1800
+   },
+   {
+    "id": "road",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.29,
+     "sheetY": 0.70162
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "road"
+    ],
+    "heightMax": 0.0149,
+    "tris": 1117
+   },
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.29,
+     "sheetY": 0.70162
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "earth"
+    ],
+    "heightMax": 0.0054,
+    "tris": 1780
+   },
+   {
+    "id": "hill",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.29,
+     "sheetY": 0.70162
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "hill"
+    ],
+    "heightMax": 0.0316,
+    "tris": 1739
+   },
+   {
+    "id": "hillProps",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "stone": [
+      "city",
+      "stone"
+     ],
+     "dry": [
+      "plantDry",
+      "dry"
+     ]
+    },
+    "regions": [
+     "dry",
+     "stone"
+    ],
+    "heightMax": 0.0447,
+    "tris": 746
+   },
+   {
+    "id": "nineveh",
+    "drawing": "city",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.0,
+      0.55,
+      1
+     ],
+     "scale": 1.35,
+     "sheetX": -0.00778,
+     "sheetY": 0.74844
+    },
+    "instanced": false,
+    "namedTexels": {
+     "palmTrunk": [
+      "ship",
+      "wood"
+     ],
+     "palmLeaf": [
+      "plantBig",
+      "leaf"
+     ]
+    },
+    "regions": [
+     "brick",
+     "door",
+     "house",
+     "palmLeaf",
+     "palmTrunk",
+     "roof",
+     "stone"
+    ],
+    "heightMax": 0.299,
+    "tris": 2260
+   },
+   {
+    "id": "gate",
+    "drawing": "city",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.55
+     ],
+     "D": [
+      0.0,
+      0.55,
+      1
+     ],
+     "scale": 1.35,
+     "sheetX": -0.00778,
+     "sheetY": 0.74844
+    },
+    "instanced": false,
+    "namedTexels": {
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "brick",
+     "door",
+     "gold",
+     "lapis",
+     "stone"
+    ],
+    "heightMax": 0.289,
+    "tris": 823
+   },
+   {
+    "id": "shelter",
+    "drawing": "shelter",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.95,
+     "sheetX": -0.47295,
+     "sheetY": -0.14471
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "ship",
+      "wood"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "patch",
+     "wood"
+    ],
+    "heightMax": 0.279,
+    "tris": 1066
+   },
+   {
+    "id": "plantSmall",
+    "drawing": "plantSmall",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.62,
+     "sheetX": -0.62432,
+     "sheetY": 0.15083
+    },
+    "instanced": false,
+    "namedTexels": {
+     "leaf": [
+      "plantSmall",
+      "leaf"
+     ]
+    },
+    "regions": [
+     "leaf"
+    ],
+    "heightMax": 0.0945,
+    "tris": 240
+   },
+   {
+    "id": "plantBig",
+    "drawing": "plantBig",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.0,
+      0.35,
+      1
+     ],
+     "scale": 1.27,
+     "sheetX": -0.7094,
+     "sheetY": 0.20495
+    },
+    "instanced": false,
+    "namedTexels": {
+     "leaf": [
+      "plantBig",
+      "leaf"
+     ]
+    },
+    "regions": [
+     "gourd",
+     "leaf"
+    ],
+    "heightMax": 0.4324,
+    "tris": 1656
+   },
+   {
+    "id": "plantDry",
+    "drawing": "plantDry",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.0,
+      0.35,
+      1
+     ],
+     "scale": 1.46,
+     "sheetX": -0.35656,
+     "sheetY": -0.07135
+    },
+    "instanced": false,
+    "namedTexels": {
+     "dry": [
+      "plantDry",
+      "dry"
+     ]
+    },
+    "regions": [
+     "dry",
+     "dryGourd"
+    ],
+    "heightMax": 0.4371,
+    "tris": 860
+   },
+   {
+    "id": "worm",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "leaf": [
+      "plantSmall",
+      "leaf"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "leaf"
+    ],
+    "heightMax": 0.2466,
+    "tris": 844
+   },
+   {
+    "id": "belly",
+    "drawing": "belly",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.8,
+     "sheetX": 0.49511,
+     "sheetY": 0.46789
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "bellyFloor",
+     "bellyWall",
+     "ribs"
+    ],
+    "heightMax": 0.284,
+    "tris": 2420
+   },
+   {
+    "id": "folk1",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1847,
+    "tris": 784
+   },
+   {
+    "id": "folk2",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "gold",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.2106,
+    "tris": 994
+   },
+   {
+    "id": "folk3",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1846,
+    "tris": 784
+   },
+   {
+    "id": "folk4",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1793,
+    "tris": 784
+   },
+   {
+    "id": "folk5",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1811,
+    "tris": 784
+   },
+   {
+    "id": "folk6",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1269,
+    "tris": 784
+   },
+   {
+    "id": "folk7",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1309,
+    "tris": 784
+   },
+   {
+    "id": "folk8",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1847,
+    "tris": 784
+   },
+   {
+    "id": "folk9",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "sack": [
+      "sack",
+      "sack"
+     ],
+     "patch": [
+      "shelter",
+      "patch"
+     ],
+     "bellyFloor": [
+      "belly",
+      "bellyFloor"
+     ],
+     "gold": [
+      "city",
+      "gold"
+     ]
+    },
+    "regions": [
+     "bellyFloor",
+     "patch",
+     "sack"
+    ],
+    "heightMax": 0.1774,
+    "tris": 784
+   }
+  ],
+  "constUV": [
+   {
+    "node": "seaFoam/foam",
+    "uv": [
+     0.5775,
+     0.24246
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "ship/wood",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "cargo/jar",
+    "uv": [
+     0.7275,
+     0.94988
+    ],
+    "region": "roof"
+   },
+   {
+    "node": "cargo/sackTie",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "plank/deck",
+    "uv": [
+     0.2585,
+     0.64344
+    ],
+    "region": "deck"
+   },
+   {
+    "node": "plank/stone",
+    "uv": [
+     0.7995,
+     0.75183
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "beachProps/wood",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "beachProps/foam",
+    "uv": [
+     0.5775,
+     0.24246
+    ],
+    "region": "foam"
+   },
+   {
+    "node": "hillProps/stone",
+    "uv": [
+     0.7995,
+     0.75183
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "hillProps/dry",
+    "uv": [
+     0.3585,
+     0.03382
+    ],
+    "region": "dry"
+   },
+   {
+    "node": "shelter/wood",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "gate/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "nineveh/palmTrunk",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "nineveh/palmLeaf",
+    "uv": [
+     0.1945,
+     0.38427
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "boat/boatHull",
+    "uv": [
+     0.4075,
+     0.56112
+    ],
+    "region": "hull"
+   },
+   {
+    "node": "boat/boatInside",
+    "uv": [
+     0.2585,
+     0.64344
+    ],
+    "region": "deck"
+   },
+   {
+    "node": "boat/wood",
+    "uv": [
+     0.0475,
+     0.54564
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "plantSmall/leaf",
+    "uv": [
+     0.3885,
+     0.21638
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "plantBig/leaf",
+    "uv": [
+     0.1945,
+     0.38427
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "plantDry/dry",
+    "uv": [
+     0.3585,
+     0.03382
+    ],
+    "region": "dry"
+   },
+   {
+    "node": "worm/leaf",
+    "uv": [
+     0.3885,
+     0.21638
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "worm/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk1/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk1/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk1/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk1/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk2/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk2/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk2/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk2/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk3/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk3/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk3/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk3/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk4/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk4/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk4/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk4/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk5/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk5/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk5/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk5/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk6/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk6/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk6/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk6/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk7/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk7/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk7/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk7/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk8/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk8/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk8/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk8/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "folk9/sack",
+    "uv": [
+     0.5375,
+     0.55949
+    ],
+    "region": "sack"
+   },
+   {
+    "node": "folk9/patch",
+    "uv": [
+     0.5555,
+     0.04197
+    ],
+    "region": "patch"
+   },
+   {
+    "node": "folk9/bellyFloor",
+    "uv": [
+     0.8505,
+     0.36308
+    ],
+    "region": "bellyFloor"
+   },
+   {
+    "node": "folk9/gold",
+    "uv": [
+     0.7905,
+     0.82763
+    ],
+    "region": "gold"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "timelineMoves": {
+    "timeline jonah -0.04,-0.21>-0.16,-0.22": [
+     [
+      "ship",
+      0.0064,
+      0.107
+     ],
+     [
+      "beachProps",
+      0.0362,
+      0.0984
+     ]
+    ],
+    "timeline captain -0.44,-0.22>-0.49,-0.26": [
+     [
+      "ship",
+      0.0111,
+      0.4509
+     ],
+     [
+      "cargo",
+      0.0011,
+      0.142
+     ]
+    ],
+    "timeline captain -0.49,-0.26>-0.44,-0.22": [
+     [
+      "ship",
+      0.0111,
+      0.4509
+     ],
+     [
+      "cargo",
+      0.0011,
+      0.142
+     ]
+    ],
+    "timeline captain -0.44,-0.22>-0.22,-0.26": [
+     [
+      "ship",
+      0.0183,
+      0.1442
+     ],
+     [
+      "cargo",
+      0.0437,
+      0.1339
+     ]
+    ],
+    "timeline jonah -0.22,-0.16>-0.06,0.04": [
+     [
+      "ship",
+      0.0036,
+      0.1114
+     ]
+    ]
+   },
+   "nearest": {
+    "note": "[low zone (y+0.012..0.17), overhead (y+0.17..0.40)] nearest plan distance; needs >= 0.05 / >= 0.035",
+    "mark jonah road": [
+     0.056,
+     0.514
+    ],
+    "mark jonah beach": [
+     0.196,
+     0.49
+    ],
+    "mark plank foot": [
+     0.078,
+     0.232
+    ],
+    "mark plank top": [
+     0.058,
+     0.187
+    ],
+    "mark jonah deck": [
+     0.062,
+     0.098
+    ],
+    "mark jonah cargo": [
+     0.061,
+     0.042
+    ],
+    "mark jonah rail": [
+     0.068,
+     0.168
+    ],
+    "mark captain deck": [
+     0.052,
+     0.052
+    ],
+    "mark captain deck2": [
+     0.052,
+     0.039
+    ],
+    "mark jonah gate": [
+     0.121,
+     0.214
+    ],
+    "mark jonah hill": [
+     0.056,
+     0.055
+    ],
+    "mark jonah gate side": [
+     0.126,
+     0.286
+    ],
+    "walk jonah road>beach": [
+     0.056,
+     0.49
+    ],
+    "walk jonah beach>plank": [
+     0.053,
+     0.232
+    ],
+    "walk jonah up the plank": [
+     0.058,
+     0.187
+    ],
+    "walk jonah plank>deck": [
+     0.051,
+     0.098
+    ],
+    "walk jonah deck>cargo": [
+     0.055,
+     0.042
+    ],
+    "walk jonah cargo>rail": [
+     0.055,
+     0.042
+    ],
+    "walk captain deck>deck2": [
+     0.051,
+     0.037
+    ],
+    "walk jonah beach>gate": [
+     0.121,
+     0.214
+    ],
+    "walk jonah gate>hill": [
+     0.056,
+     0.053
+    ],
+    "mark belly (S06, sitting back on the heels: head top 0.249, jn_animate KNEEL_PRAY)": [
+     0.109,
+     0.063
+    ],
+    "mark hill seated (S11 plantSmall/plantBig/worm)": [
+     0.056,
+     0.055
+    ],
+    "mark hill standing (S11-S12 plantDry)": [
+     0.056,
+     0.035
+    ],
+    "mark jonah gate, S09 townsfolk shown": [
+     0.08,
+     0.137
+    ],
+    "timeline jonah 0.08,-0.20>-0.04,-0.21": [
+     0.057,
+     0.232
+    ],
+    "timeline jonah -0.04,-0.21>-0.16,-0.22": [
+     0.006,
+     0.187
+    ],
+    "timeline captain -0.44,-0.22>-0.49,-0.26": [
+     0.001,
+     0.02
+    ],
+    "timeline captain -0.49,-0.26>-0.44,-0.22": [
+     0.001,
+     0.02
+    ],
+    "timeline captain -0.44,-0.22>-0.22,-0.26": [
+     0.018,
+     0.04
+    ],
+    "timeline jonah -0.22,-0.16>-0.06,0.04": [
+     0.004,
+     0.168
+    ],
+    "timeline jonah -0.06,0.04>-0.20,0.08": [
+     0.133,
+     0.369
+    ],
+    "timeline jonah -0.20,0.08>0.12,0.10": [
+     0.181,
+     0.369
+    ],
+    "timeline jonah 0.32,-0.16>0.16,-0.10": [
+     0.121,
+     0.214
+    ],
+    "timeline jonah 0.16,-0.10>0.42,0.08": [
+     0.064,
+     0.286
+    ]
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "jonah": {
+     "sheetX": -0.32,
+     "sheetY": 0.015,
+     "height": 0.36,
+     "box": [
+      -0.4543,
+      0.0191,
+      -0.1857,
+      0.3719
+     ]
+    },
+    "captain": {
+     "sheetX": 0.32,
+     "sheetY": 0.015,
+     "height": 0.38,
+     "box": [
+      0.1715,
+      0.0193,
+      0.4685,
+      0.3925
+     ]
+    },
+    "fish": {
+     "sheetX": 0.0,
+     "sheetY": 0.4,
+     "height": 0.2,
+     "box": [
+      -0.2516,
+      0.4028,
+      0.2813,
+      0.6105
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "sea": "#3B8FD0",
+   "seaFar": "#2B6FB0",
+   "foam": "#FFFFFF",
+   "wave": "#2E7CC4",
+   "hull": "#8A5A3B",
+   "deck": "#C9A77A",
+   "wood": "#A47548",
+   "sail": "#F3E9D2",
+   "stripe": "#B8423A",
+   "sack": "#EBDDBF",
+   "sackTie": "#8A5A3B",
+   "jar": "#C8643C",
+   "sand": "#EAD9B0",
+   "road": "#E3CFA3",
+   "earth": "#B9BE7E",
+   "hill": "#D9B77A",
+   "stone": "#9C8A72",
+   "brick": "#D8B07A",
+   "lapis": "#2E5FA8",
+   "gold": "#E8C15A",
+   "roof": "#C9A77A",
+   "door": "#8A5A3B",
+   "house": "#E6C895",
+   "palmTrunk": "#8A6A44",
+   "palmLeaf": "#6E9F4A",
+   "boatHull": "#5E8FA8",
+   "boatInside": "#C9A77A",
+   "leaf": "#5FA844",
+   "gourd": "#B9C85A",
+   "dry": "#8A6A44",
+   "dryGourd": "#B39060",
+   "cloth": "#C98F8F",
+   "patch": "#E3B9A0",
+   "ribs": "#D9A9A6",
+   "bellyWall": "#ECC6C0",
+   "bellyFloor": "#17444A"
+  },
+  "tris": 57343,
+  "budget": 60000
+ }
+}
