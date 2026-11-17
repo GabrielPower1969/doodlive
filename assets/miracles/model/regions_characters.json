@@ -1,0 +1,1175 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/mi_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour, or with a fixed colour, take a constant UV inside a larger region and print as detail lines). The man's mat prints as its own shape (its top, stood up to face the viewer) at matSheet. ID render for the line art: id_characters_2x.png/.json (same scheme as Ruth / Jonah). The four friends are not printed (offSheet).",
+ "sheet": {
+  "man": {
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "jesus": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "peter": {
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "man": {
+   "height": 0.34,
+   "bboxSheet": [
+    -0.4433,
+    0.0165,
+    -0.1967,
+    0.3528
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#D2A07A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4433,
+      0.0165,
+      -0.1967,
+      0.3472
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#9A6B42",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3438,
+      0.284,
+      -0.2961,
+      0.3528
+     ]
+    },
+    "tunic": {
+     "id": 3,
+     "hex": "#A9CF8E",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.4271,
+      0.1193,
+      -0.2129,
+      0.2695
+     ]
+    },
+    "sash": {
+     "id": 4,
+     "hex": "#D9A93A",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash"
+     ],
+     "bboxSheet": [
+      -0.3643,
+      0.1361,
+      -0.2757,
+      0.2256
+     ]
+    },
+    "mat": {
+     "id": 5,
+     "hex": "#F1E3C4",
+     "zh": "褥子",
+     "en": "mat",
+     "parts": [
+      "mat"
+     ],
+     "bboxSheet": [
+      -0.4315,
+      0.41,
+      -0.1285,
+      0.53
+     ]
+    },
+    "stripes": {
+     "id": 6,
+     "hex": "#C2453A",
+     "zh": "褥子条纹",
+     "en": "mat stripes",
+     "parts": [
+      "mat"
+     ],
+     "bboxSheet": [
+      -0.398,
+      0.41,
+      -0.162,
+      0.53
+     ]
+    },
+    "poles": {
+     "id": 7,
+     "hex": "#7A5636",
+     "zh": "抬杆",
+     "en": "carrying poles",
+     "parts": [
+      "mat"
+     ],
+     "bboxSheet": [
+      -0.4836,
+      0.3953,
+      -0.0764,
+      0.5447
+     ],
+     "fixedColour": true,
+     "anchoredTo": "mat",
+     "anchorUV": [
+      0.17125,
+      0.38284
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "ropes": {
+     "id": 8,
+     "hex": "#C8A472",
+     "zh": "绳子",
+     "en": "ropes",
+     "parts": [
+      "matRoll",
+      "ropes"
+     ],
+     "bboxSheet": null,
+     "fixedColour": true,
+     "anchoredTo": "mat",
+     "anchorUV": [
+      0.17125,
+      0.38284
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "roll": {
+     "id": 9,
+     "hex": "#F1E3C4",
+     "zh": "卷起的褥子",
+     "en": "rolled mat",
+     "parts": [
+      "matRoll"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "man.mat",
+     "anchorUV": [
+      0.17125,
+      0.38284
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.man.propUV.roll = [u, v])"
+    },
+    "rollStripes": {
+     "id": 10,
+     "hex": "#C2453A",
+     "zh": "卷起的条纹",
+     "en": "rolled stripes",
+     "parts": [
+      "matRoll"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "man.stripes",
+     "anchorUV": [
+      0.21975,
+      0.38284
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.man.propUV.rollStripes = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02052,
+     0.2781,
+     0.02052,
+     0.31914
+    ],
+    "px": 512,
+    "default": "shy",
+    "projection": "front",
+    "swatches": {
+     "poles": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "ropes": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "shy": "docs/miracles/design/faces/man_shy.png",
+     "talk": "docs/miracles/design/faces/man_talk.png",
+     "nervous": "docs/miracles/design/faces/man_nervous.png",
+     "hope": "docs/miracles/design/faces/man_hope.png",
+     "wonder": "docs/miracles/design/faces/man_wonder.png",
+     "joy": "docs/miracles/design/faces/man_joy.png",
+     "laugh": "docs/miracles/design/faces/man_laugh.png"
+    },
+    "clipExpression": {
+     "lie_mat": "shy",
+     "carried": "nervous",
+     "lowered": "nervous",
+     "sit_up": "wonder",
+     "stand_wobbly": "hope",
+     "jump_joy": "joy",
+     "roll_mat": "joy",
+     "dance_mat": "laugh",
+     "walk_mat": "joy",
+     "talk": "talk",
+     "idle": "joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "mat": {
+     "bone": "mat",
+     "mesh": "man_mat",
+     "node": "man/mat",
+     "shownByDefault": true
+    },
+    "ropes": {
+     "bone": "ropes",
+     "mesh": "man_ropes",
+     "node": "man/ropes",
+     "shownByDefault": false
+    },
+    "matRoll": {
+     "bone": "matRoll",
+     "mesh": "man_matRoll",
+     "node": "man/matRoll",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    },
+    "handR.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    },
+    "legL.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    },
+    "legR.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    },
+    "kneeL.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    },
+    "kneeR.skin": {
+     "target": "man.FACE",
+     "uv": [
+      0.17725,
+      0.22596
+     ],
+     "local": [
+      -0.0027,
+      0.2622
+     ]
+    }
+   },
+   "matSheet": {
+    "centre": [
+     -0.28,
+     0.47
+    ],
+    "bboxSheet": [
+     -0.4836,
+     0.3953,
+     -0.0764,
+     0.5447
+    ],
+    "note": "the mat's printed shape: its top seen from above (long axis along page X, the side toward the viewer at the bottom), poles as detail lines; override the place with design.json characters.man.matSheet = [x, y]",
+    "restPlacement": {
+     "centre": [
+      0.0,
+      0.0,
+      -0.02
+     ],
+     "padSize": [
+      0.3,
+      0.12
+     ],
+     "polesToX": 0.2,
+     "top": 0.025
+    }
+   }
+  },
+  "jesus": {
+   "height": 0.36,
+   "bboxSheet": [
+    -0.1334,
+    0.0191,
+    0.1334,
+    0.3703
+   ],
+   "regions": {
+    "skin": {
+     "id": 11,
+     "hex": "#C99268",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1334,
+      0.0191,
+      0.1334,
+      0.3655
+     ]
+    },
+    "hair": {
+     "id": 12,
+     "hex": "#4A3020",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.0271,
+      0.2879,
+      0.0269,
+      0.3703
+     ]
+    },
+    "tunic": {
+     "id": 13,
+     "hex": "#F2E8D2",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.1285,
+      0.0468,
+      0.1286,
+      0.2825
+     ]
+    },
+    "sandals": {
+     "id": 14,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.0426,
+      0.0152,
+      0.0398,
+      0.0378
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.47375,
+      0.05522
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "mantle": {
+     "id": 15,
+     "hex": "#9A5B34",
+     "zh": "外袍",
+     "en": "mantle",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      -0.0723,
+      0.0862,
+      0.0815,
+      0.2873
+     ]
+    },
+    "belt": {
+     "id": 16,
+     "hex": "#D2AE74",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltFringe"
+     ],
+     "bboxSheet": [
+      -0.0528,
+      0.1313,
+      0.0525,
+      0.2315
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02232,
+     0.29174,
+     0.02232,
+     0.33638
+    ],
+    "px": 512,
+    "default": "kind",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "kind": "docs/miracles/design/faces/jesus_kind.png",
+     "talk": "docs/miracles/design/faces/jesus_talk.png",
+     "smile": "docs/miracles/design/faces/jesus_smile.png",
+     "laugh": "docs/miracles/design/faces/jesus_laugh.png",
+     "sleep": "docs/miracles/design/faces/jesus_sleep.png",
+     "firm": "docs/miracles/design/faces/jesus_firm.png",
+     "gentle": "docs/miracles/design/faces/jesus_gentle.png",
+     "look_up": "docs/miracles/design/faces/jesus_look_up.png"
+    },
+    "clipExpression": {
+     "idle": "kind",
+     "talk": "talk",
+     "walk": "kind",
+     "teach": "talk",
+     "look_up_smile": "look_up",
+     "kneel_kind": "gentle",
+     "stand_talk": "talk",
+     "command_rise": "firm",
+     "lie_sleep": "sleep",
+     "wake_up": "gentle",
+     "calm_storm": "firm",
+     "laugh": "laugh",
+     "wave": "smile"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "handR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "beltFringe.belt": {
+     "target": "jesus.belt",
+     "uv": [
+      0.47875,
+      0.17502
+     ],
+     "local": [
+      -0.0212,
+      0.1997
+     ]
+    }
+   }
+  },
+  "peter": {
+   "height": 0.38,
+   "bboxSheet": [
+    0.1715,
+    0.0193,
+    0.4685,
+    0.396
+   ],
+   "regions": {
+    "skin": {
+     "id": 17,
+     "hex": "#BF8460",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1715,
+      0.0193,
+      0.4685,
+      0.3793
+     ]
+    },
+    "hair": {
+     "id": 18,
+     "hex": "#231A16",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      0.2791,
+      0.3066,
+      0.3609,
+      0.3902
+     ]
+    },
+    "headcloth": {
+     "id": 19,
+     "hex": "#6E8AA6",
+     "zh": "头巾",
+     "en": "head cloth",
+     "parts": [
+      "headcloth"
+     ],
+     "bboxSheet": [
+      0.2858,
+      0.2959,
+      0.3542,
+      0.396
+     ]
+    },
+    "tunic": {
+     "id": 20,
+     "hex": "#B4502F",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2162,
+      0.1293,
+      0.4238,
+      0.3053
+     ]
+    },
+    "sandals": {
+     "id": 21,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      0.27,
+      0.0152,
+      0.3667,
+      0.0391
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.82125,
+      0.14242
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "vest": {
+     "id": 22,
+     "hex": "#D9C29A",
+     "zh": "背心",
+     "en": "vest",
+     "parts": [
+      "vest"
+     ],
+     "bboxSheet": [
+      0.225,
+      0.2471,
+      0.415,
+      0.3025
+     ]
+    },
+    "waistcloth": {
+     "id": 23,
+     "hex": "#5A3A26",
+     "zh": "腰布",
+     "en": "waist cloth",
+     "parts": [
+      "waistcloth"
+     ],
+     "bboxSheet": [
+      0.2613,
+      0.2198,
+      0.3789,
+      0.2578
+     ]
+    },
+    "rope": {
+     "id": 24,
+     "hex": "#C8A472",
+     "zh": "绳腰带",
+     "en": "rope belt",
+     "parts": [
+      "rope"
+     ],
+     "bboxSheet": [
+      0.2572,
+      0.1981,
+      0.3828,
+      0.2421
+     ],
+     "fixedColour": true,
+     "anchoredTo": "waistcloth",
+     "anchorUV": [
+      0.81875,
+      0.20314
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines, not a colouring region"
+    },
+    "bucket": {
+     "id": 25,
+     "hex": "#8A5A3B",
+     "zh": "水桶",
+     "en": "bucket",
+     "parts": [
+      "bucket"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.hull",
+     "anchorUV": [
+      0.90575,
+      0.6302
+     ],
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.peter.propUV.bucket = [u, v])"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.30996,
+     0.02268,
+     0.35532
+    ],
+    "px": 512,
+    "default": "jolly",
+    "projection": "front",
+    "swatches": {
+     "rope": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "jolly": "docs/miracles/design/faces/peter_jolly.png",
+     "talk": "docs/miracles/design/faces/peter_talk.png",
+     "shock": "docs/miracles/design/faces/peter_shock.png",
+     "wail": "docs/miracles/design/faces/peter_wail.png",
+     "laugh": "docs/miracles/design/faces/peter_laugh.png",
+     "scared": "docs/miracles/design/faces/peter_scared.png",
+     "amazed": "docs/miracles/design/faces/peter_amazed.png",
+     "squint": "docs/miracles/design/faces/peter_squint.png"
+    },
+    "clipExpression": {
+     "idle": "jolly",
+     "talk": "talk",
+     "walk": "jolly",
+     "roof_shock": "shock",
+     "dust_off": "squint",
+     "laugh": "laugh",
+     "steer": "jolly",
+     "steer_hard": "squint",
+     "bail": "scared",
+     "shake_awake": "wail",
+     "amazed": "amazed",
+     "cower": "scared",
+     "wave": "jolly"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "bucket": {
+     "bone": "bucket",
+     "mesh": "peter_bucket",
+     "node": "peter/bucket",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "handR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "legL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "legR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "kneeL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "kneeR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "armL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "armR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    }
+   }
+  }
+ },
+ "offSheet": {
+  "friend1": {
+   "height": 0.35,
+   "paint": "assets/miracles/model/friend_paint.png",
+   "uv0": "paint texture",
+   "look": "the leader: slim, orange tunic, short black hair",
+   "blendRigLocation": [
+    0.8,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.28598,
+     0.02146,
+     0.32889
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/miracles/design/faces/friend_happy.png",
+     "talk": "docs/miracles/design/faces/friend_talk.png",
+     "strain": "docs/miracles/design/faces/friend_strain.png",
+     "oof": "docs/miracles/design/faces/friend_oof.png",
+     "think": "docs/miracles/design/faces/friend_think.png",
+     "idea": "docs/miracles/design/faces/friend_idea.png",
+     "cheer": "docs/miracles/design/faces/friend_cheer.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "carry_front": "strain",
+     "carry_back": "strain",
+     "squeeze_bounce": "oof",
+     "think": "think",
+     "idea": "idea",
+     "dig": "strain",
+     "lower_rope": "strain",
+     "peek": "happy",
+     "cheer": "cheer",
+     "wave": "happy"
+    },
+    "note": "one shared drawing per expression for all four friends"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "colours": {
+    "skin": "#C68E64",
+    "hair": "#1E1814",
+    "tunic": "#E8843A",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17436
+  },
+  "friend2": {
+   "height": 0.37,
+   "paint": "assets/miracles/model/friend_paint.png",
+   "uv0": "paint texture",
+   "look": "big and round, teal tunic, bald with a fringe, short beard",
+   "blendRigLocation": [
+    1.0,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.31076,
+     0.02146,
+     0.35367
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/miracles/design/faces/friend_happy.png",
+     "talk": "docs/miracles/design/faces/friend_talk.png",
+     "strain": "docs/miracles/design/faces/friend_strain.png",
+     "oof": "docs/miracles/design/faces/friend_oof.png",
+     "think": "docs/miracles/design/faces/friend_think.png",
+     "idea": "docs/miracles/design/faces/friend_idea.png",
+     "cheer": "docs/miracles/design/faces/friend_cheer.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "carry_front": "strain",
+     "carry_back": "strain",
+     "squeeze_bounce": "oof",
+     "think": "think",
+     "idea": "idea",
+     "dig": "strain",
+     "lower_rope": "strain",
+     "peek": "happy",
+     "cheer": "cheer",
+     "wave": "happy"
+    },
+    "note": "one shared drawing per expression for all four friends"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "colours": {
+    "skin": "#B87C56",
+    "hair": "#3A2A20",
+    "tunic": "#2E9A92",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17792
+  },
+  "friend3": {
+   "height": 0.33,
+   "paint": "assets/miracles/model/friend_paint.png",
+   "uv0": "paint texture",
+   "look": "small and quick, yellow tunic, curly hair, red head band (band1)",
+   "blendRigLocation": [
+    1.2,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.26403,
+     0.02146,
+     0.30694
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/miracles/design/faces/friend_happy.png",
+     "talk": "docs/miracles/design/faces/friend_talk.png",
+     "strain": "docs/miracles/design/faces/friend_strain.png",
+     "oof": "docs/miracles/design/faces/friend_oof.png",
+     "think": "docs/miracles/design/faces/friend_think.png",
+     "idea": "docs/miracles/design/faces/friend_idea.png",
+     "cheer": "docs/miracles/design/faces/friend_cheer.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "carry_front": "strain",
+     "carry_back": "strain",
+     "squeeze_bounce": "oof",
+     "think": "think",
+     "idea": "idea",
+     "dig": "strain",
+     "lower_rope": "strain",
+     "peek": "happy",
+     "cheer": "cheer",
+     "wave": "happy"
+    },
+    "note": "one shared drawing per expression for all four friends"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "colours": {
+    "skin": "#D6A27A",
+    "hair": "#4A3020",
+    "tunic": "#EFC53F",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "band": "#C2453A"
+   },
+   "tris": 18340
+  },
+  "friend4": {
+   "height": 0.36,
+   "paint": "assets/miracles/model/friend_paint.png",
+   "uv0": "paint texture",
+   "look": "lanky, purple-blue tunic, red pointed cap",
+   "blendRigLocation": [
+    1.4,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.26686,
+     0.02146,
+     0.30977
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/miracles/design/faces/friend_happy.png",
+     "talk": "docs/miracles/design/faces/friend_talk.png",
+     "strain": "docs/miracles/design/faces/friend_strain.png",
+     "oof": "docs/miracles/design/faces/friend_oof.png",
+     "think": "docs/miracles/design/faces/friend_think.png",
+     "idea": "docs/miracles/design/faces/friend_idea.png",
+     "cheer": "docs/miracles/design/faces/friend_cheer.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "carry_front": "strain",
+     "carry_back": "strain",
+     "squeeze_bounce": "oof",
+     "think": "think",
+     "idea": "idea",
+     "dig": "strain",
+     "lower_rope": "strain",
+     "peek": "happy",
+     "cheer": "cheer",
+     "wave": "happy"
+    },
+    "note": "one shared drawing per expression for all four friends"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "colours": {
+    "skin": "#C08A62",
+    "hair": "#2A2018",
+    "tunic": "#5A5FB8",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "cap": "#A8433A"
+   },
+   "tris": 18540
+  }
+ },
+ "offSheetNote": "the four friends: not printed; UV0 samples model/friend_paint.png (fixed demo-palette paint, one flat colour per region), face decal on UV1 like the cast"
+}

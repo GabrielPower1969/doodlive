@@ -1,0 +1,1061 @@
+{
+ "_doc": "Real Miracles voice cast (docs/miracles/VOICE.md). Schema: tools/story/voice.py docstring; pitch pinning (f0Hz) from voice_extras.py / voice_exodus.py, crowd takes from voice_jonah.py's wrapper.",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "man": {
+   "zh": "躺褥子的人",
+   "en": "The man on the mat"
+  },
+  "friend1": {
+   "zh": "朋友一",
+   "en": "Friend 1"
+  },
+  "friend2": {
+   "zh": "朋友二",
+   "en": "Friend 2"
+  },
+  "friend3": {
+   "zh": "朋友三",
+   "en": "Friend 3"
+  },
+  "friends": {
+   "zh": "四个朋友",
+   "en": "The four friends"
+  },
+  "people": {
+   "zh": "众人",
+   "en": "The crowd"
+  }
+ },
+ "refZh": {},
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "the family storyteller (Qwen vivian), same as every pack"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，嗓音温暖、清亮、柔和圆润，干净不沙哑，平静从容，亲切又带一点点俏皮的笑意，吐字清楚，像一位温柔的好老师，从不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句："
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，四十多岁，身材高大魁梧的渔夫，嗓音洪亮、豪爽、有点沙，嗓门大，容易大喊大叫，也爱大笑，热心肠，像一只友好的大熊。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。这一句："
+   },
+   "man": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十五岁左右的年轻人，声音轻柔、略带腼腆，清澈明亮，真诚，高兴起来会变得激动欢快。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句："
+   },
+   "friend1": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     140,
+     190
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十多岁，明亮、有活力、充满自信的领队，像一个什么都难不倒的好伙伴，声音清脆有力。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句："
+   },
+   "friend2": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     85,
+     115
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，身材高大的憨厚大个子，嗓音低沉、慢吞吞、软软的，说话爱拖长音，像一头温柔的大熊。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句："
+   },
+   "friend3": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 3.0,
+    "maxPause": 1.2,
+    "f0Hz": [
+     190,
+     250
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，十八九岁的小个子，声音偏高、清脆、说话又快又灵活，有点慌慌张张的可爱。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句："
+   },
+   "friends": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.08,
+    "seed": 31,
+    "takes": 4,
+    "instruct": "四个好朋友一起干活，欢快有节奏地喊。",
+    "members": [
+     {
+      "engine": "qwen_design",
+      "design": "男性，二十多岁，明亮、有活力、充满自信的领队，像一个什么都难不倒的好伙伴，声音清脆有力。普通话标准。",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 20,
+      "instruct": "欢快有节奏地喊，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男性，三十岁左右，身材高大的憨厚大个子，嗓音低沉、慢吞吞、软软的，说话爱拖长音，像一头温柔的大熊。普通话标准。",
+      "delay": 0.05,
+      "gainDb": -2,
+      "seed": 21,
+      "instruct": "欢快有节奏地喊，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男性，十八九岁的小个子，声音偏高、清脆、说话又快又灵活，有点慌慌张张的可爱。普通话标准。",
+      "delay": 0.03,
+      "gainDb": -2,
+      "seed": 22,
+      "instruct": "欢快有节奏地喊，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男性，二十多岁，明亮、有活力、充满自信的领队，像一个什么都难不倒的好伙伴，声音清脆有力。普通话标准。",
+      "delay": 0.08,
+      "gainDb": -4,
+      "seed": 23,
+      "instruct": "欢快有节奏地喊，",
+      "semitones": -2
+     }
+    ],
+    "why": "the four friend voices layered, tight timing (a chant)"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "offstage",
+    "chain": "expressive",
+    "rt60": 0.9,
+    "wet": 0.22,
+    "seed": 41,
+    "instruct": "房子门口的一大群人，七嘴八舌，像真人。",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "dylan",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "eric",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男孩，七岁左右，声音清脆稚嫩，普通话标准。",
+      "delay": 0.3,
+      "gainDb": -9,
+      "seed": 6,
+      "instruct": "大声、认真地喊，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "女孩，五岁左右，声音又细又甜，奶声奶气，普通话标准。",
+      "delay": 0.18,
+      "gainDb": -10,
+      "seed": 7,
+      "instruct": "大声、认真地喊，"
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "Jonah's crowd method: 10 Qwen voices incl. two children, behind a wall",
+    "takes": 6
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman storyteller, like a mother at a child's bedside telling a Bible story to a child of four to ten: friendly, lively, natural, at a natural flowing pace, never dragging. This line: ",
+    "why": "the family storyteller in English (Qwen vivian)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man of about thirty with a warm, clear, soft and round voice, clean and never hoarse, calm and unhurried, kind with a hint of playful smile, crisp diction, like a gentle teacher who never shouts. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: "
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man in his forties, a big burly fisherman with a hearty, booming, slightly rough baritone, loud, quick to shout and quick to laugh, warm-hearted like a friendly bear. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. This line: "
+   },
+   "man": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A young man of about twenty-five, a soft, slightly shy, clear, bright and sincere voice that turns excited and joyful when he is happy. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: "
+   },
+   "friend1": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     140,
+     190
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A man in his twenties, a bright, energetic, confident team leader, a can-do friend, clear and strong voice. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: "
+   },
+   "friend2": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 1.9,
+    "maxPause": 1.2,
+    "f0Hz": [
+     85,
+     115
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man of about thirty, a big, gentle, slow-talking giant with a deep, soft, unhurried voice that drags its words, like a sleepy bear. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: "
+   },
+   "friend3": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     190,
+     250
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A small, quick young man of about eighteen with a higher, bright, fast-talking, slightly flustered voice. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: "
+   },
+   "friends": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "plain",
+    "chain": "expressive",
+    "rt60": 0.5,
+    "wet": 0.08,
+    "seed": 31,
+    "takes": 4,
+    "instruct": "Four friends working together, a cheerful rhythmic chant.",
+    "members": [
+     {
+      "engine": "qwen_design",
+      "design": "A man in his twenties, a bright, energetic, confident team leader, a can-do friend, clear and strong voice. Standard American English.",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 20,
+      "instruct": "A cheerful rhythmic work chant, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A man of about thirty, a big, gentle, slow-talking giant with a deep, soft, unhurried voice that drags its words, like a sleepy bear. Standard American English.",
+      "delay": 0.05,
+      "gainDb": -2,
+      "seed": 21,
+      "instruct": "A cheerful rhythmic work chant, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A small, quick young man of about eighteen with a higher, bright, fast-talking, slightly flustered voice. Standard American English.",
+      "delay": 0.03,
+      "gainDb": -2,
+      "seed": 22,
+      "instruct": "A cheerful rhythmic work chant, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A man in his twenties, a bright, energetic, confident team leader, a can-do friend, clear and strong voice. Standard American English.",
+      "delay": 0.08,
+      "gainDb": -4,
+      "seed": 23,
+      "instruct": "A cheerful rhythmic work chant, ",
+      "semitones": -2
+     }
+    ],
+    "why": "the four friend voices layered, tight timing (a chant)"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "offstage",
+    "chain": "expressive",
+    "rt60": 0.9,
+    "wet": 0.22,
+    "seed": 41,
+    "instruct": "A big crowd at the door, all talking at once, like real people.",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "aiden",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A boy of about seven, bright clear child's voice, standard English.",
+      "delay": 0.3,
+      "gainDb": -9,
+      "seed": 6,
+      "instruct": "Shouting seriously, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A girl of about five, thin sweet little voice, standard English.",
+      "delay": 0.18,
+      "gainDb": -10,
+      "seed": 7,
+      "instruct": "Shouting seriously, "
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "Jonah's crowd method: 10 Qwen voices incl. two children, behind a wall",
+    "takes": 6
+   }
+  }
+ },
+ "lines": {
+  "mi_01": {
+   "m": "讲故事的开头，明亮亲切；“屋里屋外都是人”越说越快、一个叠一个",
+   "m_en": "storyteller opening, bright; speed up and pile on 'people everywhere'"
+  },
+  "mi_02": {
+   "m": "温暖简单，对着众人微笑，不说教",
+   "m_en": "warm and simple, smiling at the people; not preachy"
+  },
+  "mi_03": {
+   "m": "温暖，说到“只能天天躺在褥子上”时有点心疼",
+   "m_en": "warm, a little tender on 'every day he had to lie'"
+  },
+  "mi_04": {
+   "m": "明亮，抬着人喘着气；“一定”说得毫不怀疑",
+   "m_en": "bright, panting a little from carrying; total certainty",
+   "zh": {
+    "asrIgnore": "吧"
+   }
+  },
+  "mi_05": {
+   "m": "小声，害羞，带一点紧张的小笑",
+   "m_en": "small, shy, a nervous little laugh"
+  },
+  "mi_06": {
+   "m": "礼貌又满怀希望，最后一声“哎哟”被挤得滑稽地弹回来",
+   "m_en": "polite and hopeful, then a comic 'oof' as he bounces off the crowd",
+   "zh": {
+    "phrases": [
+     {
+      "text": "请让一让！",
+      "instruct": "礼貌又满怀希望地说。",
+      "gap": 0.12
+     },
+     {
+      "text": "让一让——",
+      "instruct": "更用力地挤，声音拉长。",
+      "gap": 0.12
+     },
+     {
+      "text": "哎哟！",
+      "instruct": "被弹回来，滑稽的一声“哎哟”。"
+     }
+    ],
+    "asrIgnore": "哎哟|唉哟|哎呦|唉呦|哎呀"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Excuse me!",
+      "instruct": "polite and hopeful.",
+      "gap": 0.12
+     },
+     {
+      "text": "Excuse me, please...",
+      "instruct": "pushing harder, stretched out.",
+      "gap": 0.15
+     },
+     {
+      "text": "oof!",
+      "instruct": "bounced back, a comic 'oof'."
+     }
+    ],
+    "asrIgnore": "oof|ouf|woof|uh|ooh"
+   }
+  },
+  "mi_07": {
+   "m": "一群人，七嘴八舌，抱怨但不凶，互相重叠",
+   "m_en": "crowd of 8-10, grumbly but not nasty, overlapping"
+  },
+  "mi_08": {
+   "m": "高大憨厚的朋友，边想边说，“嗯”拖得很长",
+   "m_en": "big slow friend, thinking out loud, long 'hmm'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "嗯……",
+      "instruct": "拖得很长的一声“嗯”，边想边说。",
+      "gap": 0.3
+     },
+     {
+      "text": "门进不去……",
+      "instruct": "慢吞吞，想不明白。"
+     }
+    ],
+    "asrIgnore": "嗯|恩|摁|呃|额|啊"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hmm...",
+      "instruct": "a long thinking 'hmmmm'.",
+      "gap": 0.3
+     },
+     {
+      "text": "we can't get in the door...",
+      "instruct": "slow, puzzled."
+     }
+    ],
+    "asrIgnore": "hmm|hm|mm|um|uh"
+   }
+  },
+  "mi_09": {
+   "m": "突然想到好主意，竖起手指；“有了”前先倒吸一口气",
+   "m_en": "sudden bright idea, finger up; a little gasp before 'I've got it'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "有了！",
+      "instruct": "突然灵光一闪，倒吸一口气后大叫。",
+      "gap": 0.2
+     },
+     {
+      "text": "我们从屋顶下去！",
+      "instruct": "兴奋明亮，满怀信心。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "I've got it!",
+      "instruct": "sudden bright idea, a gasp then a shout.",
+      "gap": 0.2
+     },
+     {
+      "text": "We'll go in through the roof!",
+      "instruct": "excited, bright, sure."
+     }
+    ]
+   }
+  },
+  "mi_10": {
+   "m": "稳稳地，跟着他们一步一步有点喘；后半句讲解，友好",
+   "m_en": "steady, a bit breathless with them on 'step by step'; then explaining, friendly"
+  },
+  "mi_11": {
+   "m": "四个朋友一起，欢快有节奏的干活号子",
+   "m_en": "the four friends together, a cheerful work chant, rhythmic"
+  },
+  "mi_12": {
+   "m": "大喊大叫的滑稽慌张，“哎”一声比一声高；“我的屋顶”几乎是哭腔，好笑",
+   "m_en": "big comic panic; rising 'hey' three times; 'My roof!' almost a wail, funny",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哎！",
+      "instruct": "惊讶地喊。",
+      "gap": 0.15
+     },
+     {
+      "text": "哎哎哎！",
+      "instruct": "一声比一声高，越来越慌。",
+      "gap": 0.2
+     },
+     {
+      "text": "我的屋顶！",
+      "instruct": "几乎哭出来的哀嚎，滑稽。"
+     }
+    ],
+    "asrIgnore": "哎|唉|诶|欸|嗳|哎呀"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hey!",
+      "instruct": "surprised shout.",
+      "gap": 0.15
+     },
+     {
+      "text": "Hey, hey, HEY!",
+      "instruct": "rising each time, more and more panicked.",
+      "gap": 0.2
+     },
+     {
+      "text": "My roof!",
+      "instruct": "almost a wail, comic."
+     }
+    ],
+    "asrIgnore": "hey|hay|hei"
+   }
+  },
+  "mi_13": {
+   "m": "觉得好笑，温暖地笑一声，温和地逗彼得；“有人来了”带着好奇",
+   "m_en": "amused, warm chuckle; gentle teasing to Peter; curious on 'someone's coming'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哈哈，",
+      "instruct": "温暖的一声轻笑。",
+      "gap": 0.25
+     },
+     {
+      "text": "彼得，你看——有人来了。",
+      "instruct": "温和地逗他，最后带着好奇。"
+     }
+    ],
+    "asrIgnore": "哈|呵|嘿"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ha ha!",
+      "instruct": "a warm gentle chuckle.",
+      "gap": 0.25
+     },
+     {
+      "text": "Peter, look... someone's coming.",
+      "instruct": "gently teasing, curious at the end."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "mi_14": {
+   "m": "压低声音，悬念；“慢慢地、慢慢地”拉长；“耶稣面前”轻轻落下",
+   "m_en": "hushed and suspenseful; stretch 'slowly... slowly'; land softly on 'in front of Jesus'"
+  },
+  "mi_15": {
+   "m": "温暖、慢，“真的相信”带一点笑意",
+   "m_en": "warm and slow; a small smile in the voice on 'trusted Him'"
+  },
+  "mi_16": {
+   "m": "非常温柔，贴近，像父亲，不急",
+   "m_en": "very tender, close, like a father; unhurried"
+  },
+  "mi_17": {
+   "m": "“嘀咕”时声音低一点，有点神秘，然后恢复平常",
+   "m_en": "a touch of mystery on the grumble (lower voice), then plain"
+  },
+  "mi_18": {
+   "m": "平静清楚，对着整个屋子；破折号处停一下",
+   "m_en": "calm, clear, to the whole room; a pause at the dash"
+  },
+  "mi_19": {
+   "m": "喜悦的命令，明亮有力，带着笑，不是吼",
+   "m_en": "joyful command, bright and strong, a smile in it; not shouted"
+  },
+  "mi_20": {
+   "m": "从不敢相信到大笑：结巴、倒吸一口气，然后“我能走了”纯粹的喜悦",
+   "m_en": "disbelief to laughter: stammer, a gasp, then pure joy on 'I can walk'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "我……",
+      "instruct": "不敢相信地结巴。",
+      "gap": 0.3
+     },
+     {
+      "text": "我的腿……",
+      "instruct": "低头看着自己的腿，倒吸一口气。",
+      "gap": 0.3
+     },
+     {
+      "text": "我站起来了！",
+      "instruct": "越来越激动。",
+      "gap": 0.2
+     },
+     {
+      "text": "我能走了！",
+      "instruct": "纯粹的喜悦，又笑又喊。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "My...",
+      "instruct": "stammering in disbelief.",
+      "gap": 0.3
+     },
+     {
+      "text": "my legs...",
+      "instruct": "looking down at his legs, a gasp.",
+      "gap": 0.3
+     },
+     {
+      "text": "I'm standing!",
+      "instruct": "more and more excited.",
+      "gap": 0.2
+     },
+     {
+      "text": "I can walk!",
+      "instruct": "pure joy, laughing and shouting."
+     }
+    ]
+   }
+  },
+  "mi_21": {
+   "m": "一群人，惊讶，七嘴八舌的惊叹，夹着小孩子的“哇”",
+   "m_en": "crowd of 8-10, amazed, overlapping gasps and a child's 'wow'"
+  },
+  "mi_22": {
+   "m": "温暖，带着光",
+   "m_en": "warm and glowing"
+  },
+  "mi_23": {
+   "m": "先放声大笑，然后摇着头，开心极了",
+   "m_en": "big hearty laugh first, then shaking his head, delighted",
+   "zh": {
+    "say": "哈哈哈！好吧好吧——这个洞，挖得值！",
+    "phrases": [
+     {
+      "text": "哈哈哈！",
+      "instruct": "豪爽的大笑。",
+      "gap": 0.2
+     },
+     {
+      "text": "好吧好吧——",
+      "instruct": "摇着头，认输了，笑着。",
+      "gap": 0.15
+     },
+     {
+      "text": "这个洞，挖得值！",
+      "instruct": "开心极了。"
+     }
+    ],
+    "asrIgnore": "哈|呵|嘿"
+   },
+   "en": {
+    "say": "Ha ha ha! All right, all right... that hole was worth it!",
+    "phrases": [
+     {
+      "text": "Ha ha ha!",
+      "instruct": "a big hearty laugh.",
+      "gap": 0.2
+     },
+     {
+      "text": "All right, all right...",
+      "instruct": "shaking his head, giving in, laughing.",
+      "gap": 0.15
+     },
+     {
+      "text": "that hole was worth it!",
+      "instruct": "delighted."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "mi_24": {
+   "m": "平静的傍晚，声音像湖水一样轻轻起伏",
+   "m_en": "calm, evening voice, a gentle lilt like the water"
+  },
+  "mi_25": {
+   "m": "轻轻的，困困的，带着笑",
+   "m_en": "soft, sleepy, smiling"
+  },
+  "mi_26": {
+   "m": "紧张刺激，越说越快，有点喘；“大风暴”说得很重",
+   "m_en": "exciting, faster, a little breathless; big on 'huge storm'"
+  },
+  "mi_27": {
+   "m": "滑稽的慌张，顶着风大喊，上气不接下气；“不行啦”声音劈了",
+   "m_en": "comic panic, shouting over the wind, breathless; voice cracks on 'no good'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "舀水！",
+      "instruct": "大喊，使劲舀水。",
+      "gap": 0.1
+     },
+     {
+      "text": "快舀水！",
+      "instruct": "更急更喘。",
+      "gap": 0.2
+     },
+     {
+      "text": "不行啦，",
+      "instruct": "声音劈了，绝望得好笑。",
+      "gap": 0.1
+     },
+     {
+      "text": "水太多啦！",
+      "instruct": "哀嚎。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Bail!",
+      "instruct": "shouting, bailing hard.",
+      "gap": 0.1
+     },
+     {
+      "text": "Bail faster!",
+      "instruct": "more urgent, out of breath.",
+      "gap": 0.2
+     },
+     {
+      "text": "It's no good,",
+      "instruct": "voice cracks, comically hopeless.",
+      "gap": 0.1
+     },
+     {
+      "text": "there's too much water!",
+      "instruct": "a wail."
+     }
+    ]
+   }
+  },
+  "mi_28": {
+   "m": "惊慌，使劲摇醒他；最后一句又委屈又害怕，不是生气",
+   "m_en": "frantic, shaking Him; the last question hurt and scared, not angry",
+   "zh": {
+    "phrases": [
+     {
+      "text": "老师！",
+      "instruct": "惊慌地大喊。",
+      "gap": 0.1
+     },
+     {
+      "text": "老师，快醒醒！",
+      "instruct": "使劲摇他，大喊。",
+      "gap": 0.15
+     },
+     {
+      "text": "我们快要沉下去了，",
+      "instruct": "吓坏了，快哭了。",
+      "gap": 0.15
+     },
+     {
+      "text": "你不管我们吗？",
+      "instruct": "又委屈又害怕，声音发抖，不是生气。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Teacher!",
+      "instruct": "frantic shout.",
+      "gap": 0.1
+     },
+     {
+      "text": "Teacher, wake up!",
+      "instruct": "shaking him hard.",
+      "gap": 0.15
+     },
+     {
+      "text": "We're going to sink!",
+      "instruct": "terrified, nearly crying.",
+      "gap": 0.15
+     },
+     {
+      "text": "Don't you care about us?",
+      "instruct": "hurt and scared, voice trembling, not angry."
+     }
+    ]
+   }
+  },
+  "mi_29": {
+   "m": "坚定有力但不生气；“安静吧”之前稍停一下，然后变轻",
+   "m_en": "firm and strong but not angry; a small pause before 'be still', then soft",
+   "zh": {
+    "phrases": [
+     {
+      "text": "风，停下来！",
+      "instruct": "坚定、有力、有权柄，但不生气，不吼叫。",
+      "gap": 0.3
+     },
+     {
+      "text": "浪，安静吧！",
+      "instruct": "稍停之后，温柔下来，像对孩子说的“嘘”。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Wind, stop!",
+      "instruct": "firm, strong, with authority, but not angry, not shouting.",
+      "gap": 0.3
+     },
+     {
+      "text": "Waves... be still!",
+      "instruct": "after a small pause, softer, calming."
+     }
+    ]
+   }
+  },
+  "mi_30": {
+   "m": "非常温柔，带一点微笑，像朋友，不是责备",
+   "m_en": "very gentle, a small smile, like a friend; not a telling-off"
+  },
+  "mi_31": {
+   "m": "先是敬畏的小声自言自语，然后“连风和浪”带着惊叹放大声",
+   "m_en": "awed whisper to himself, then louder with wonder on 'even the wind'",
+   "zh": {
+    "phrases": [
+     {
+      "text": "他到底是谁？",
+      "instruct": "敬畏地小声自言自语。",
+      "gap": 0.3
+     },
+     {
+      "text": "连风和浪都听他的话！",
+      "instruct": "越来越大声，满是惊叹。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Who is this?",
+      "instruct": "an awed whisper to himself.",
+      "gap": 0.3
+     },
+     {
+      "text": "Even the wind and the waves do what He says!",
+      "instruct": "louder and louder, full of wonder."
+     }
+    ]
+   }
+  },
+  "mi_32": {
+   "m": "温暖的道理，直接对孩子说；最后一句慢而清楚",
+   "m_en": "warm moral, straight to the child; slow and clear on the last sentence"
+  },
+  "mi_33": {
+   "m": "鼓励，带着微笑；“四个好朋友”声音扬起来",
+   "m_en": "encouraging, a smile; lift on 'four good friends'"
+  }
+ }
+}

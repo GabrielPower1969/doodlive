@@ -9,6 +9,7 @@ Production plans for new story packs, written so that a cheaper model can execut
 |---|---|---|
 | Jonah and the Big Fish (`jonah`) | `docs/jonah/` | stage 1 done (story, design, contract); waiting for Gate 1 |
 | Joseph the Dreamer (`joseph`) | `docs/joseph/` | stage 1 done (story, design, contract); waiting for Gate 1 |
+| Real Miracles (`miracles`) | `docs/miracles/` | stage 1 done 2026-11-17; stages 2-7 paused (disk), see PLAN.md |
 
 ## Files in this folder (shared by every pack)
 

@@ -1,0 +1,658 @@
+{
+ "note": "set drawings at 2x of the page (1240 x 1754 @150 dpi): R = id, G = detail line mask; written by pipeline/mi_galilee.py",
+ "size": [
+  2480,
+  3508
+ ],
+ "scale": 2,
+ "ids": [
+  {
+   "id": 1,
+   "char": "set",
+   "part": "house",
+   "region": "walls",
+   "hex": "#E6CFA0",
+   "nodes": [
+    "house",
+    "stair",
+    "roofPatch",
+    "crowd1",
+    "crowd2",
+    "crowd3",
+    "crowd4",
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8"
+   ]
+  },
+  {
+   "id": 2,
+   "char": "set",
+   "part": "house",
+   "region": "roof",
+   "hex": "#B8875A",
+   "nodes": [
+    "house",
+    "stair",
+    "roofPatch",
+    "houseIn",
+    "roofHole",
+    "roofPatch",
+    "rubble"
+   ]
+  },
+  {
+   "id": 3,
+   "char": "set",
+   "part": "house",
+   "region": "door",
+   "hex": "#4E8A86",
+   "nodes": [
+    "house",
+    "stair",
+    "roofPatch",
+    "crowd1",
+    "crowd6",
+    "crowd8"
+   ]
+  },
+  {
+   "id": 4,
+   "char": "set",
+   "part": "room",
+   "region": "wallIn",
+   "hex": "#EBD8B0",
+   "nodes": [
+    "houseIn"
+   ]
+  },
+  {
+   "id": 5,
+   "char": "set",
+   "part": "room",
+   "region": "floor",
+   "hex": "#D9C08A",
+   "nodes": [
+    "houseIn"
+   ]
+  },
+  {
+   "id": 6,
+   "char": "set",
+   "part": "room",
+   "region": "wood",
+   "hex": "#6B4A30",
+   "nodes": [
+    "houseIn",
+    "crowd1",
+    "crowd2",
+    "crowd3",
+    "crowd4",
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8",
+    "houseIn",
+    "olivePress",
+    "roofHole",
+    "rubble"
+   ]
+  },
+  {
+   "id": 7,
+   "char": "set",
+   "part": "ground",
+   "region": "yard",
+   "hex": "#D8BE8E",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater"
+   ]
+  },
+  {
+   "id": 8,
+   "char": "set",
+   "part": "ground",
+   "region": "road",
+   "hex": "#E8D5A8",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater"
+   ]
+  },
+  {
+   "id": 9,
+   "char": "set",
+   "part": "ground",
+   "region": "ground",
+   "hex": "#C9C08A",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater"
+   ]
+  },
+  {
+   "id": 10,
+   "char": "set",
+   "part": "ground",
+   "region": "beach",
+   "hex": "#CDBFA6",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater",
+    "olivePress"
+   ]
+  },
+  {
+   "id": 11,
+   "char": "set",
+   "part": "ground",
+   "region": "lake",
+   "hex": "#4A9AD8",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater"
+   ]
+  },
+  {
+   "id": 12,
+   "char": "set",
+   "part": "ground",
+   "region": "lakeFar",
+   "hex": "#2C6BAE",
+   "nodes": [
+    "yard",
+    "road",
+    "ground",
+    "beach",
+    "lakeWater",
+    "crowd5"
+   ]
+  },
+  {
+   "id": 13,
+   "char": "set",
+   "part": "boat",
+   "region": "hull",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "boat",
+    "cushion",
+    "boat",
+    "crowd4",
+    "crowd6"
+   ]
+  },
+  {
+   "id": 14,
+   "char": "set",
+   "part": "boat",
+   "region": "deck",
+   "hex": "#C9A77A",
+   "nodes": [
+    "boat",
+    "cushion",
+    "crowd2",
+    "crowd7"
+   ]
+  },
+  {
+   "id": 15,
+   "char": "set",
+   "part": "boat",
+   "region": "sail",
+   "hex": "#F3E9D2",
+   "nodes": [
+    "boat",
+    "cushion",
+    "boat",
+    "crowd1",
+    "crowd3",
+    "crowd5"
+   ]
+  },
+  {
+   "id": 16,
+   "char": "set",
+   "part": "boat",
+   "region": "cushion",
+   "hex": "#9C3A3A",
+   "nodes": [
+    "boat",
+    "cushion",
+    "crowd2",
+    "crowd7"
+   ]
+  },
+  {
+   "id": 17,
+   "char": "set",
+   "part": "hills",
+   "region": "hills",
+   "hex": "#8E86A8",
+   "nodes": [
+    "hills",
+    "beach",
+    "crowd3",
+    "crowd8"
+   ]
+  },
+  {
+   "id": 18,
+   "char": "set",
+   "part": "fig",
+   "region": "trunk",
+   "hex": "#7A6650",
+   "nodes": [
+    "figTree"
+   ]
+  },
+  {
+   "id": 19,
+   "char": "set",
+   "part": "fig",
+   "region": "fig",
+   "hex": "#5E9A48",
+   "nodes": [
+    "figTree",
+    "beach",
+    "crowd4",
+    "houseIn"
+   ]
+  }
+ ],
+ "constUV": [
+  {
+   "node": "houseIn/ceiling",
+   "uv": [
+    0.2075,
+    0.88875
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "houseIn/beam",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "houseIn/jar",
+   "uv": [
+    0.2075,
+    0.88875
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "houseIn/flame",
+   "uv": [
+    0.8995,
+    0.52608
+   ],
+   "region": "fig"
+  },
+  {
+   "node": "roofPatch/ceiling",
+   "uv": [
+    0.2075,
+    0.88875
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "roofHole/mud",
+   "uv": [
+    0.2075,
+    0.88875
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "roofHole/twig",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "rubble/mud",
+   "uv": [
+    0.2075,
+    0.88875
+   ],
+   "region": "roof"
+  },
+  {
+   "node": "rubble/twig",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "beach/pebble",
+   "uv": [
+    0.7425,
+    0.92461
+   ],
+   "region": "hills"
+  },
+  {
+   "node": "beach/reed",
+   "uv": [
+    0.8995,
+    0.52608
+   ],
+   "region": "fig"
+  },
+  {
+   "node": "olivePress/stone",
+   "uv": [
+    0.6265,
+    0.41361
+   ],
+   "region": "beach"
+  },
+  {
+   "node": "olivePress/beam",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "boat/wood",
+   "uv": [
+    0.6325,
+    0.66055
+   ],
+   "region": "hull"
+  },
+  {
+   "node": "boat/net",
+   "uv": [
+    0.6245,
+    0.76324
+   ],
+   "region": "sail"
+  },
+  {
+   "node": "crowd1/robe",
+   "uv": [
+    0.4795,
+    0.76243
+   ],
+   "region": "door"
+  },
+  {
+   "node": "crowd1/cloth",
+   "uv": [
+    0.6245,
+    0.76324
+   ],
+   "region": "sail"
+  },
+  {
+   "node": "crowd1/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd1/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd2/robe",
+   "uv": [
+    0.8775,
+    0.65322
+   ],
+   "region": "cushion"
+  },
+  {
+   "node": "crowd2/cloth",
+   "uv": [
+    0.7475,
+    0.64751
+   ],
+   "region": "deck"
+  },
+  {
+   "node": "crowd2/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd2/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd3/robe",
+   "uv": [
+    0.7425,
+    0.92461
+   ],
+   "region": "hills"
+  },
+  {
+   "node": "crowd3/cloth",
+   "uv": [
+    0.6245,
+    0.76324
+   ],
+   "region": "sail"
+  },
+  {
+   "node": "crowd3/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd3/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd4/robe",
+   "uv": [
+    0.8995,
+    0.52608
+   ],
+   "region": "fig"
+  },
+  {
+   "node": "crowd4/cloth",
+   "uv": [
+    0.6325,
+    0.66055
+   ],
+   "region": "hull"
+  },
+  {
+   "node": "crowd4/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd4/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd5/robe",
+   "uv": [
+    0.6815,
+    0.5489
+   ],
+   "region": "lakeFar"
+  },
+  {
+   "node": "crowd5/cloth",
+   "uv": [
+    0.6245,
+    0.76324
+   ],
+   "region": "sail"
+  },
+  {
+   "node": "crowd5/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd5/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd6/robe",
+   "uv": [
+    0.6325,
+    0.66055
+   ],
+   "region": "hull"
+  },
+  {
+   "node": "crowd6/cloth",
+   "uv": [
+    0.4795,
+    0.76243
+   ],
+   "region": "door"
+  },
+  {
+   "node": "crowd6/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd6/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd7/robe",
+   "uv": [
+    0.7475,
+    0.64751
+   ],
+   "region": "deck"
+  },
+  {
+   "node": "crowd7/cloth",
+   "uv": [
+    0.8775,
+    0.65322
+   ],
+   "region": "cushion"
+  },
+  {
+   "node": "crowd7/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd7/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  },
+  {
+   "node": "crowd8/robe",
+   "uv": [
+    0.4795,
+    0.76243
+   ],
+   "region": "door"
+  },
+  {
+   "node": "crowd8/cloth",
+   "uv": [
+    0.7425,
+    0.92461
+   ],
+   "region": "hills"
+  },
+  {
+   "node": "crowd8/face",
+   "uv": [
+    0.2915,
+    0.77384
+   ],
+   "region": "walls"
+  },
+  {
+   "node": "crowd8/hair",
+   "uv": [
+    0.2585,
+    0.40546
+   ],
+   "region": "wood"
+  }
+ ]
+}
