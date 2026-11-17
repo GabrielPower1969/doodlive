@@ -9,7 +9,10 @@ Production plans for new story packs, written so that a cheaper model can execut
 |---|---|---|
 | Jonah and the Big Fish (`jonah`) | `docs/jonah/` | stage 1 done (story, design, contract); waiting for Gate 1 |
 | Joseph the Dreamer (`joseph`) | `docs/joseph/` | stage 1 done (story, design, contract); waiting for Gate 1 |
-| Real Miracles (`miracles`) | `docs/miracles/` | stage 1 done 2026-11-17; stages 2-7 paused (disk), see PLAN.md |
+| Real Miracles (`miracles`) | `docs/miracles/` | stages 1-6 done 2026-11-18 (check.py 0 FAIL); stage 7 device next, see PLAN.md |
+| The King Who Serves (`lastsupper`) | `docs/lastsupper/` | stages 1-6 done 2026-11-18 (check.py 0 FAIL); stage 7 device next, see PLAN.md |
+| He Is Risen! (`risen`) | `docs/risen/` | stages 1-6 done 2026-11-18 (check.py 0 FAIL); stage 7 device next, see PLAN.md |
+| Saul Sees the Light! (`saul`) | `docs/saul/` | stage 1 done 2026-11-18 (story, design, contract; 13 shots, 42 lines, 243 s estimate); waiting for Gate 1 |
 
 ## Files in this folder (shared by every pack)
 

@@ -1,0 +1,124 @@
+{
+ "_doc": "Face decal per clip (docs/miracles/CONTRACT.md §3-4, from regions_characters.json faceDecal). Integration-owned; read by tools/story/pack.py. StorySetup loads docs/miracles/design/faces/<cast id>_<face>.png, so the friends' shared drawings friend_<face>.png are copied to friend1_ ... friend4_.",
+ "jesus": {
+  "default": "kind",
+  "clips": {
+   "idle": "kind",
+   "talk": "talk",
+   "walk": "kind",
+   "teach": "talk",
+   "look_up_smile": "look_up",
+   "kneel_kind": "gentle",
+   "stand_talk": "talk",
+   "command_rise": "firm",
+   "lie_sleep": "sleep",
+   "wake_up": "gentle",
+   "calm_storm": "firm",
+   "laugh": "laugh",
+   "wave": "smile"
+  }
+ },
+ "peter": {
+  "default": "jolly",
+  "clips": {
+   "idle": "jolly",
+   "talk": "talk",
+   "walk": "jolly",
+   "roof_shock": "shock",
+   "dust_off": "squint",
+   "laugh": "laugh",
+   "steer": "jolly",
+   "steer_hard": "squint",
+   "bail": "scared",
+   "shake_awake": "wail",
+   "amazed": "amazed",
+   "cower": "scared",
+   "wave": "jolly"
+  }
+ },
+ "man": {
+  "default": "shy",
+  "clips": {
+   "lie_mat": "shy",
+   "carried": "nervous",
+   "lowered": "nervous",
+   "sit_up": "wonder",
+   "stand_wobbly": "hope",
+   "jump_joy": "joy",
+   "roll_mat": "joy",
+   "dance_mat": "laugh",
+   "walk_mat": "joy",
+   "talk": "talk",
+   "idle": "joy",
+   "wave": "joy"
+  }
+ },
+ "friend1": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "carry_front": "strain",
+   "carry_back": "strain",
+   "squeeze_bounce": "oof",
+   "think": "think",
+   "idea": "idea",
+   "dig": "strain",
+   "lower_rope": "strain",
+   "peek": "happy",
+   "cheer": "cheer",
+   "wave": "happy"
+  }
+ },
+ "friend2": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "carry_front": "strain",
+   "carry_back": "strain",
+   "squeeze_bounce": "oof",
+   "think": "think",
+   "idea": "idea",
+   "dig": "strain",
+   "lower_rope": "strain",
+   "peek": "happy",
+   "cheer": "cheer",
+   "wave": "happy"
+  }
+ },
+ "friend3": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "carry_front": "strain",
+   "carry_back": "strain",
+   "squeeze_bounce": "oof",
+   "think": "think",
+   "idea": "idea",
+   "dig": "strain",
+   "lower_rope": "strain",
+   "peek": "happy",
+   "cheer": "cheer",
+   "wave": "happy"
+  }
+ },
+ "friend4": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "carry_front": "strain",
+   "carry_back": "strain",
+   "squeeze_bounce": "oof",
+   "think": "think",
+   "idea": "idea",
+   "dig": "strain",
+   "lower_rope": "strain",
+   "peek": "happy",
+   "cheer": "cheer",
+   "wave": "happy"
+  }
+ }
+}

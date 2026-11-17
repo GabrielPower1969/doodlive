@@ -1,0 +1,3189 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as David & Goliath, Esther, Ruth, Jonah and Real Miracles; faces come from decals"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "服侍人的王",
+   "pinyin": "fú shì rén de wáng",
+   "english": "The King Who Serves",
+   "box": 86,
+   "gap": 60,
+   "cy": 110,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box / gap / cy from tools/story/sheet_lastsupper.py title-search plus Real Miracles' band (same 5 boxes, not in the registry yet): worst NCC 0.412 (miracles-A4), 0.407 (daniel-A4)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "马太福音 21 · 约翰福音 13 · Matthew 21; John 13"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy keeps the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "donkey": {
+   "height": 0.27,
+   "sheetX": -0.32,
+   "sheetY": 0.015,
+   "view": "side",
+   "note": "drawn in side view, its left side: nose to -X, tail to +X (UV0 = side projection at the slot, the far side mirrors it; CONTRACT §2); height = ear tips"
+  },
+  "jesus": {
+   "height": 0.36,
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "peter": {
+   "height": 0.38,
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/ls_jerusalem.py",
+  "doc": "docs/lastsupper/SET.md",
+  "contract": "docs/lastsupper/CONTRACT.md §6",
+  "root": "jerusalem",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "road": [
+    0.2,
+    0.0,
+    0.1
+   ],
+   "palmsRoad": [
+    0.32,
+    0.0,
+    0.105
+   ],
+   "stones": [
+    0.05,
+    0.0,
+    0.177
+   ],
+   "ground": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "temple": [
+    0.31,
+    0.0,
+    -0.35
+   ],
+   "courtWall": [
+    0.31,
+    0.0,
+    -0.12
+   ],
+   "templeFront": [
+    0.31,
+    0.0,
+    -0.55
+   ],
+   "awnings": [
+    0.31,
+    0.0,
+    -0.5
+   ],
+   "table1": [
+    0.382,
+    0.06,
+    -0.4225
+   ],
+   "cages": [
+    0.382,
+    0.09,
+    -0.4225
+   ],
+   "cagesOpen": [
+    0.382,
+    0.09,
+    -0.4225
+   ],
+   "table2": [
+    0.4585,
+    0.06,
+    -0.28
+   ],
+   "table2Tipped": [
+    0.474,
+    0.0,
+    -0.28
+   ],
+   "coinsFloor": [
+    0.49,
+    0.0,
+    -0.195
+   ],
+   "house": [
+    -0.33,
+    0.1,
+    -0.4
+   ],
+   "houseIn": [
+    -0.33,
+    0.1,
+    -0.4
+   ],
+   "stair": [
+    -0.04,
+    0.0,
+    -0.3775
+   ],
+   "bench": [
+    -0.556,
+    0.1,
+    -0.39
+   ],
+   "lowTable": [
+    -0.2785,
+    0.1,
+    -0.46
+   ],
+   "breadLoaf": [
+    -0.27,
+    0.15,
+    -0.46
+   ],
+   "cupTable": [
+    -0.24,
+    0.15,
+    -0.45
+   ],
+   "lamp2": [
+    -0.203,
+    0.161,
+    -0.484
+   ],
+   "basinStand": [
+    -0.115,
+    0.1,
+    -0.535
+   ],
+   "basinJug": [
+    -0.115,
+    0.18,
+    -0.535
+   ],
+   "lamp1": [
+    -0.445,
+    0.309,
+    -0.57
+   ],
+   "palmTree": [
+    -0.02,
+    0.0,
+    -0.56
+   ],
+   "oliveTree": [
+    0.0,
+    0.0,
+    -0.3
+   ],
+   "hills": [
+    -0.33,
+    0.0,
+    -0.5845
+   ],
+   "crowd1": [
+    0.3,
+    0.0,
+    -0.072
+   ],
+   "crowd2": [
+    0.353,
+    0.0,
+    -0.068
+   ],
+   "crowd3": [
+    0.406,
+    0.0,
+    -0.072
+   ],
+   "crowd4": [
+    0.459,
+    0.0,
+    -0.068
+   ],
+   "crowd5": [
+    0.512,
+    0.0,
+    -0.072
+   ],
+   "crowd6": [
+    0.563,
+    0.0,
+    -0.068
+   ],
+   "crowd7": [
+    -0.3,
+    0.0,
+    0.165
+   ],
+   "crowd8": [
+    -0.355,
+    0.0,
+    0.183
+   ],
+   "crowd": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "house": {
+    "x": [
+     -0.6,
+     -0.06
+    ],
+    "z": [
+     -0.5875,
+     -0.22
+    ],
+    "groundStorey": 0.1,
+    "room": {
+     "x": [
+      -0.58,
+      -0.08
+     ],
+     "z": [
+      -0.578,
+      -0.22
+     ],
+     "floor": 0.1
+    },
+    "walls": {
+     "left": [
+      -0.6,
+      -0.58
+     ],
+     "right": [
+      -0.08,
+      -0.06
+     ],
+     "back": [
+      -0.584,
+      -0.578
+     ],
+     "backTop": 0.46,
+     "sideTop": "0.46 behind z -0.42, sloping to 0.14 at z -0.22"
+    },
+    "sill": {
+     "z": [
+      -0.24,
+      -0.22
+     ],
+     "top": 0.11
+    },
+    "roofEdge": "back strip z -0.584..-0.55 and side strips x 0.03 wide to z -0.42, top 0.475; no ceiling",
+    "door": {
+     "x": [
+      -0.44,
+      -0.35
+     ],
+     "top": 0.092
+    },
+    "window": {
+     "x": [
+      -0.31,
+      -0.21
+     ],
+     "y": [
+      0.24,
+      0.36
+     ]
+    },
+    "stair": {
+     "x": [
+      -0.058,
+      -0.022
+     ],
+     "z": [
+      -0.25,
+      -0.505
+     ],
+     "top": 0.1
+    }
+   },
+   "bench": {
+    "x": [
+     -0.58,
+     -0.532
+    ],
+    "z": [
+     -0.54,
+     -0.24
+    ],
+    "seat": 0.14
+   },
+   "lowTable": {
+    "x": [
+     -0.355,
+     -0.202
+    ],
+    "z": [
+     -0.5,
+     -0.42
+    ],
+    "top": 0.15000000000000002,
+    "breadLoaf": [
+     -0.27,
+     -0.46
+    ],
+    "cupTable": [
+     -0.24,
+     -0.45
+    ],
+    "lamp2": [
+     -0.222,
+     -0.484
+    ],
+    "cushions": {
+     "james": [
+      -0.34,
+      -0.54,
+      0.0115
+     ],
+     "jesus": [
+      -0.27,
+      -0.54,
+      0.0115
+     ],
+     "john": [
+      -0.2,
+      -0.54,
+      0.0115
+     ],
+     "andrew": [
+      -0.41,
+      -0.46,
+      0.0115
+     ],
+     "peter": [
+      -0.41,
+      -0.35,
+      0.0115
+     ]
+    }
+   },
+   "basinStand": {
+    "centre": [
+     -0.115,
+     -0.535
+    ],
+    "top": 0.18,
+    "radius": 0.028,
+    "jug": [
+     -0.097,
+     -0.561
+    ]
+   },
+   "lamp1": {
+    "shelf": [
+     -0.485,
+     -0.435,
+     0.298
+    ],
+    "at": [
+     -0.46,
+     -0.57
+    ]
+   },
+   "court": {
+    "x": [
+     0.02,
+     0.6
+    ],
+    "z": [
+     -0.5875,
+     -0.12
+    ],
+    "wall": {
+     "z": [
+      -0.1285,
+      -0.1115
+     ],
+     "height": 0.035,
+     "gate": [
+      0.08,
+      0.3
+     ]
+    },
+    "columns": {
+     "x": [
+      0.07,
+      0.19,
+      0.48,
+      0.575
+     ],
+     "z": -0.52,
+     "r": 0.02,
+     "top": 0.4
+    },
+    "architrave": [
+     0.05,
+     0.598,
+     0.4,
+     0.425,
+     -0.535,
+     -0.505
+    ],
+    "templeFront": {
+     "x": [
+      0.03,
+      0.6
+     ],
+     "z": [
+      -0.5875,
+      -0.577
+     ],
+     "top": 0.45,
+     "door": [
+      0.29,
+      0.39,
+      0.25
+     ]
+    },
+    "awnings": {
+     "x": [
+      [
+       0.28,
+       0.455
+      ],
+      [
+       0.095,
+       0.165
+      ]
+     ],
+     "z": [
+      -0.505,
+      -0.445
+     ],
+     "y": [
+      0.43,
+      0.39
+     ],
+     "poles": "at both ends, z -0.50"
+    },
+    "table1": [
+     0.35,
+     0.414,
+     -0.447,
+     -0.398,
+     0.06
+    ],
+    "table2": [
+     0.423,
+     0.494,
+     -0.307,
+     -0.253,
+     0.06
+    ]
+   },
+   "road": "front strip z 0.04..0.18 from x 0.60 to -0.26 (house front), branch from the bend to the gate",
+   "stones": [
+    0.05,
+    0.177
+   ],
+   "crowd": {
+    "crowd1": [
+     0.3,
+     -0.072,
+     0.235
+    ],
+    "crowd2": [
+     0.353,
+     -0.068,
+     0.228
+    ],
+    "crowd3": [
+     0.406,
+     -0.072,
+     0.24
+    ],
+    "crowd4": [
+     0.459,
+     -0.068,
+     0.23
+    ],
+    "crowd5": [
+     0.512,
+     -0.072,
+     0.238
+    ],
+    "crowd6": [
+     0.563,
+     -0.068,
+     0.226
+    ],
+    "crowd7": [
+     -0.3,
+     0.165,
+     0.145
+    ],
+    "crowd8": [
+     -0.355,
+     0.183,
+     0.14
+    ]
+   },
+   "palmTree": [
+    -0.02,
+    -0.56
+   ],
+   "oliveTree": {
+    "trunk": [
+     0.0,
+     -0.3
+    ],
+    "crown": [
+     -0.015,
+     -0.3
+    ]
+   },
+   "hills": {
+    "x": [
+     -0.6,
+     -0.06
+    ],
+    "z": [
+     -0.5875,
+     -0.5845
+    ]
+   }
+  },
+  "animations": {
+   "crowdSway": {
+    "node": "crowd",
+    "meshes": [
+     "crowd1",
+     "crowd2",
+     "crowd3",
+     "crowd4",
+     "crowd5",
+     "crowd6",
+     "crowd7",
+     "crowd8"
+    ],
+    "length": 3.0,
+    "fps": 24,
+    "loop": true,
+    "swayDeg": 4.0
+   }
+  },
+  "hiddenAtStart": [
+   "palmsRoad",
+   "table2Tipped",
+   "coinsFloor",
+   "cagesOpen"
+  ],
+  "propAnchors": {
+   "jesus/towel": {
+    "region": [
+     "table",
+     "cloth"
+    ],
+    "uv": [
+     0.1695,
+     0.30114
+    ]
+   },
+   "peter/towel": {
+    "region": [
+     "table",
+     "cloth"
+    ],
+    "uv": [
+     0.1695,
+     0.30114
+    ]
+   },
+   "jesus/basin": {
+    "region": [
+     "supper",
+     "clay"
+    ],
+    "uv": [
+     0.6055,
+     0.51222
+    ]
+   },
+   "peter/jug": {
+    "region": [
+     "supper",
+     "clay"
+    ],
+    "uv": [
+     0.6055,
+     0.51222
+    ]
+   },
+   "jesus/cup": {
+    "region": [
+     "supper",
+     "clay"
+    ],
+    "uv": [
+     0.6055,
+     0.51222
+    ]
+   },
+   "jesus/bread": {
+    "region": [
+     "supper",
+     "bread"
+    ],
+    "uv": [
+     0.5315,
+     0.47311
+    ]
+   },
+   "peter/palm": {
+    "region": [
+     "palms",
+     "palmLeaf"
+    ],
+    "uv": [
+     0.5715,
+     0.40791
+    ]
+   }
+  },
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227",
+   "edgeOn": "faces with |n . D| < 0.22 (n in drawing space) take one clean texel of their region",
+   "namedTexels": "no-raster bits take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "hills": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 2.0,
+    "cx": -0.33,
+    "y0": 1.05,
+    "decorOnly": [
+     "hills"
+    ],
+    "members": [
+     "hills"
+    ],
+    "sheetX": -0.165,
+    "sheetY": 0.84,
+    "bboxSheet": [
+     -0.465,
+     1.05,
+     -0.195,
+     1.1656
+    ]
+   },
+   "house": {
+    "A": [
+     1,
+     0,
+     -0.35
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.35,
+     0.5,
+     1
+    ],
+    "scale": 2.0,
+    "cx": -0.314,
+    "y0": 0.7,
+    "members": [
+     "house",
+     "stair"
+    ],
+    "sheetX": -0.22194,
+    "sheetY": 0.64575,
+    "bboxSheet": [
+     -0.4834,
+     0.7,
+     -0.1446,
+     1.0292
+    ]
+   },
+   "room": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.0,
+     0.35,
+     1
+    ],
+    "scale": 2.3,
+    "cx": -0.375,
+    "y0": 0.47,
+    "decorOnly": [
+     "mats"
+    ],
+    "members": [
+     "houseIn"
+    ],
+    "sheetX": -0.23152,
+    "sheetY": 0.39304,
+    "bboxSheet": [
+     -0.4837,
+     0.47,
+     -0.2663,
+     0.6819
+    ]
+   },
+   "table": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.7
+    ],
+    "D": [
+     0.0,
+     0.7,
+     1
+    ],
+    "scale": 1.2,
+    "cx": -0.33,
+    "y0": 0.32,
+    "members": [
+     "lowTable"
+    ],
+    "sheetX": -0.09792,
+    "sheetY": -0.025,
+    "bboxSheet": [
+     -0.3937,
+     0.32,
+     -0.2663,
+     0.3917
+    ]
+   },
+   "facade": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.8,
+    "cx": 0.03,
+    "y0": 0.957,
+    "decorOnly": [
+     "facade"
+    ],
+    "members": [
+     "templeFront"
+    ],
+    "sheetX": -0.14389,
+    "sheetY": 0.957,
+    "bboxSheet": [
+     -0.1294,
+     0.957,
+     0.1894,
+     1.207
+    ]
+   },
+   "palm": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.9,
+    "cx": 0.29,
+    "y0": 1.112,
+    "decorOnly": [
+     "leaf"
+    ],
+    "members": [
+     "palmTree"
+    ],
+    "sheetX": 0.28333,
+    "sheetY": 0.60644,
+    "bboxSheet": [
+     0.2022,
+     1.112,
+     0.3778,
+     1.2042
+    ]
+   },
+   "olive": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.9,
+    "cx": 0.43,
+    "y0": 1.125,
+    "decorOnly": [
+     "olive"
+    ],
+    "members": [
+     "oliveTree"
+    ],
+    "sheetX": 0.44852,
+    "sheetY": 0.91694,
+    "bboxSheet": [
+     0.3941,
+     1.125,
+     0.4659,
+     1.1917
+    ]
+   },
+   "awnings": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -1.0
+    ],
+    "D": [
+     0.0,
+     1.0,
+     1
+    ],
+    "scale": 1.3,
+    "cx": 0.341,
+    "y0": 0.995,
+    "members": [
+     "awnings"
+    ],
+    "sheetX": 0.12946,
+    "sheetY": 0.365,
+    "bboxSheet": [
+     0.2025,
+     0.995,
+     0.4795,
+     1.0842
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.0,
+    "cx": 0.08,
+    "y0": 0.675,
+    "decorOnly": [
+     "road",
+     "paving",
+     "ground"
+    ],
+    "members": [
+     "road",
+     "temple",
+     "ground"
+    ],
+    "sheetX": 0.08,
+    "sheetY": 0.745,
+    "bboxSheet": [
+     -0.12,
+     0.675,
+     0.28,
+     0.9408
+    ]
+   },
+   "stall1": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.7,
+    "cx": 0.39,
+    "y0": 0.83,
+    "decorOnly": [
+     "wicker"
+    ],
+    "members": [
+     "table1",
+     "cages"
+    ],
+    "sheetX": -0.15571,
+    "sheetY": 0.79857,
+    "bboxSheet": [
+     0.3443,
+     0.83,
+     0.4357,
+     0.9686
+    ]
+   },
+   "stall2": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 0.6,
+    "cx": 0.39,
+    "y0": 0.69,
+    "members": [
+     "table2"
+    ],
+    "sheetX": -0.37417,
+    "sheetY": 0.65333,
+    "bboxSheet": [
+     0.3308,
+     0.69,
+     0.4492,
+     0.7967
+    ]
+   },
+   "palms": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 1.0,
+    "cx": 0.135,
+    "y0": 0.418,
+    "members": [
+     "palmsRoad"
+    ],
+    "sheetX": -0.185,
+    "sheetY": 0.57838,
+    "bboxSheet": [
+     -0.1152,
+     0.418,
+     0.3852,
+     0.5261
+    ]
+   },
+   "supper": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.6
+    ],
+    "D": [
+     0.0,
+     0.6,
+     1
+    ],
+    "scale": 0.4,
+    "cx": 0.06,
+    "y0": 0.54,
+    "members": [
+     "breadLoaf",
+     "cupTable"
+    ],
+    "sheetX": 0.70625,
+    "sheetY": -0.4965,
+    "bboxSheet": [
+     -0.0213,
+     0.54,
+     0.1413,
+     0.6495
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "road",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.0,
+     "sheetX": 0.08,
+     "sheetY": 0.745
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "road"
+    ],
+    "heightMax": 0.0028,
+    "tris": 1029
+   },
+   {
+    "id": "palmsRoad",
+    "drawing": "palms",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 1.0,
+     "sheetX": -0.185,
+     "sheetY": 0.57838
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "coatBlue",
+     "coatRed",
+     "coatYellow",
+     "palmLeaf"
+    ],
+    "heightMax": 0.0062,
+    "tris": 502
+   },
+   {
+    "id": "stones",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "stone": [
+      "ground",
+      "ground"
+     ]
+    },
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.0266,
+    "tris": 500
+   },
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.0,
+     "sheetX": 0.08,
+     "sheetY": 0.745
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "ground"
+    ],
+    "heightMax": 0.0022,
+    "tris": 2054
+   },
+   {
+    "id": "temple",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.0,
+     "sheetX": 0.08,
+     "sheetY": 0.745
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "paving"
+    ],
+    "heightMax": 0.0026,
+    "tris": 1434
+   },
+   {
+    "id": "courtWall",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "facade": [
+      "facade",
+      "facade"
+     ]
+    },
+    "regions": [
+     "facade"
+    ],
+    "heightMax": 0.04,
+    "tris": 40
+   },
+   {
+    "id": "templeFront",
+    "drawing": "facade",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.8,
+     "sheetX": -0.14389,
+     "sheetY": 0.957
+    },
+    "instanced": false,
+    "namedTexels": {
+     "facade": [
+      "facade",
+      "facade"
+     ]
+    },
+    "regions": [
+     "bronze",
+     "facade",
+     "gold"
+    ],
+    "heightMax": 0.45,
+    "tris": 937
+   },
+   {
+    "id": "awnings",
+    "drawing": "awnings",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -1.0
+     ],
+     "D": [
+      0.0,
+      1.0,
+      1
+     ],
+     "scale": 1.3,
+     "sheetX": 0.12946,
+     "sheetY": 0.365
+    },
+    "instanced": false,
+    "namedTexels": {
+     "pole": [
+      "stall1",
+      "wood"
+     ]
+    },
+    "regions": [
+     "cream",
+     "pole",
+     "red"
+    ],
+    "heightMax": 0.4352,
+    "tris": 144
+   },
+   {
+    "id": "table1",
+    "drawing": "stall1",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.7,
+     "sheetX": -0.15571,
+     "sheetY": 0.79857
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "stall1",
+      "wood"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMax": 0.06,
+    "tris": 108
+   },
+   {
+    "id": "cages",
+    "drawing": "stall1",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.7,
+     "sheetX": -0.15571,
+     "sheetY": 0.79857
+    },
+    "instanced": false,
+    "namedTexels": {
+     "dove": [
+      "facade",
+      "facade"
+     ]
+    },
+    "regions": [
+     "dove",
+     "wicker"
+    ],
+    "heightMax": 0.1325,
+    "tris": 720
+   },
+   {
+    "id": "cagesOpen",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wicker": [
+      "stall1",
+      "wicker"
+     ]
+    },
+    "regions": [
+     "wicker"
+    ],
+    "heightMax": 0.119,
+    "tris": 342
+   },
+   {
+    "id": "table2",
+    "drawing": "stall2",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": -0.37417,
+     "sheetY": 0.65333
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "stall2",
+      "wood"
+     ],
+     "coins": [
+      "stall2",
+      "coins"
+     ]
+    },
+    "regions": [
+     "coins",
+     "wood"
+    ],
+    "heightMax": 0.1065,
+    "tris": 368
+   },
+   {
+    "id": "table2Tipped",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "stall2",
+      "wood"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMax": 0.071,
+    "tris": 108
+   },
+   {
+    "id": "coinsFloor",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "coins": [
+      "stall2",
+      "coins"
+     ]
+    },
+    "regions": [
+     "coins"
+    ],
+    "heightMax": 0.0047,
+    "tris": 704
+   },
+   {
+    "id": "house",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.35
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.35,
+      0.5,
+      1
+     ],
+     "scale": 2.0,
+     "sheetX": -0.22194,
+     "sheetY": 0.64575
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "door",
+     "stone"
+    ],
+    "heightMax": 0.475,
+    "tris": 94
+   },
+   {
+    "id": "houseIn",
+    "drawing": "room",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.0,
+      0.35,
+      1
+     ],
+     "scale": 2.3,
+     "sheetX": -0.23152,
+     "sheetY": 0.39304
+    },
+    "instanced": false,
+    "namedTexels": {
+     "plaster": [
+      "room",
+      "plaster"
+     ]
+    },
+    "regions": [
+     "mats",
+     "plaster",
+     "sky"
+    ],
+    "heightMax": 0.46,
+    "tris": 36
+   },
+   {
+    "id": "stair",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.35
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.35,
+      0.5,
+      1
+     ],
+     "scale": 2.0,
+     "sheetX": -0.22194,
+     "sheetY": 0.64575
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.1,
+    "tris": 32
+   },
+   {
+    "id": "bench",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "door"
+     ],
+     "cushion": [
+      "awnings",
+      "red"
+     ]
+    },
+    "regions": [
+     "cushion",
+     "wood"
+    ],
+    "heightMax": 0.14,
+    "tris": 2588
+   },
+   {
+    "id": "lowTable",
+    "drawing": "table",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.7
+     ],
+     "D": [
+      0.0,
+      0.7,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": -0.09792,
+     "sheetY": -0.025
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "door"
+     ],
+     "cushion": [
+      "awnings",
+      "red"
+     ],
+     "clay": [
+      "supper",
+      "clay"
+     ],
+     "herbs": [
+      "palm",
+      "leaf"
+     ],
+     "fruit": [
+      "palms",
+      "coatRed"
+     ]
+    },
+    "regions": [
+     "clay",
+     "cloth",
+     "cushion",
+     "fruit",
+     "herbs",
+     "wood"
+    ],
+    "heightMax": 0.1695,
+    "tris": 3650
+   },
+   {
+    "id": "breadLoaf",
+    "drawing": "supper",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.6
+     ],
+     "D": [
+      0.0,
+      0.6,
+      1
+     ],
+     "scale": 0.4,
+     "sheetX": 0.70625,
+     "sheetY": -0.4965
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "bread"
+    ],
+    "heightMax": 0.163,
+    "tris": 144
+   },
+   {
+    "id": "cupTable",
+    "drawing": "supper",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.6
+     ],
+     "D": [
+      0.0,
+      0.6,
+      1
+     ],
+     "scale": 0.4,
+     "sheetX": 0.70625,
+     "sheetY": -0.4965
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.18,
+    "tris": 224
+   },
+   {
+    "id": "lamp2",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "clay": [
+      "supper",
+      "clay"
+     ]
+    },
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.1607,
+    "tris": 120
+   },
+   {
+    "id": "basinStand",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "door"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMax": 0.18,
+    "tris": 168
+   },
+   {
+    "id": "basinJug",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "clay": [
+      "supper",
+      "clay"
+     ],
+     "water": [
+      "palms",
+      "coatBlue"
+     ]
+    },
+    "regions": [
+     "clay",
+     "water"
+    ],
+    "heightMax": 0.196,
+    "tris": 416
+   },
+   {
+    "id": "lamp1",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "clay": [
+      "supper",
+      "clay"
+     ]
+    },
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.3087,
+    "tris": 120
+   },
+   {
+    "id": "palmTree",
+    "drawing": "palm",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.9,
+     "sheetX": 0.28333,
+     "sheetY": 0.60644
+    },
+    "instanced": false,
+    "namedTexels": {
+     "trunk": [
+      "house",
+      "door"
+     ]
+    },
+    "regions": [
+     "leaf",
+     "trunk"
+    ],
+    "heightMax": 0.538,
+    "tris": 204
+   },
+   {
+    "id": "oliveTree",
+    "drawing": "olive",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 0.9,
+     "sheetX": 0.44852,
+     "sheetY": 0.91694
+    },
+    "instanced": false,
+    "namedTexels": {
+     "trunk": [
+      "house",
+      "door"
+     ]
+    },
+    "regions": [
+     "olive",
+     "trunk"
+    ],
+    "heightMax": 0.2473,
+    "tris": 784
+   },
+   {
+    "id": "hills",
+    "drawing": "hills",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 2.0,
+     "sheetX": -0.165,
+     "sheetY": 0.84
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "hills"
+    ],
+    "heightMax": 0.6513,
+    "tris": 380
+   },
+   {
+    "id": "crowd1",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "palms",
+      "coatBlue"
+     ],
+     "cloth": [
+      "facade",
+      "facade"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.2742,
+    "tris": 664
+   },
+   {
+    "id": "crowd2",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "awnings",
+      "red"
+     ],
+     "cloth": [
+      "room",
+      "mats"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.266,
+    "tris": 664
+   },
+   {
+    "id": "crowd3",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "olive",
+      "olive"
+     ],
+     "cloth": [
+      "facade",
+      "facade"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.28,
+    "tris": 664
+   },
+   {
+    "id": "crowd4",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "palms",
+      "coatYellow"
+     ],
+     "cloth": [
+      "house",
+      "door"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.2683,
+    "tris": 664
+   },
+   {
+    "id": "crowd5",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "facade",
+      "bronze"
+     ],
+     "cloth": [
+      "facade",
+      "facade"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.2777,
+    "tris": 664
+   },
+   {
+    "id": "crowd6",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "palms",
+      "coatRed"
+     ],
+     "cloth": [
+      "room",
+      "mats"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.2637,
+    "tris": 664
+   },
+   {
+    "id": "crowd7",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "room",
+      "sky"
+     ],
+     "cloth": [
+      "house",
+      "door"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.1692,
+    "tris": 640
+   },
+   {
+    "id": "crowd8",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "robe": [
+      "facade",
+      "gold"
+     ],
+     "cloth": [
+      "house",
+      "door"
+     ],
+     "face": [
+      "room",
+      "plaster"
+     ],
+     "eye": [
+      "house",
+      "door"
+     ],
+     "palm": [
+      "palms",
+      "palmLeaf"
+     ]
+    },
+    "regions": [
+     "cloth",
+     "eye",
+     "face",
+     "palm",
+     "robe"
+    ],
+    "heightMax": 0.1633,
+    "tris": 640
+   }
+  ],
+  "constUV": [
+   {
+    "node": "houseIn/plaster",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "bench/wood",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "bench/cushion",
+    "uv": [
+     0.8675,
+     0.85289
+    ],
+    "region": "red"
+   },
+   {
+    "node": "lowTable/wood",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "lowTable/cushion",
+    "uv": [
+     0.8675,
+     0.85289
+    ],
+    "region": "red"
+   },
+   {
+    "node": "lowTable/clay",
+    "uv": [
+     0.6055,
+     0.51222
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "lowTable/herbs",
+    "uv": [
+     0.7655,
+     0.93602
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "lowTable/fruit",
+    "uv": [
+     0.5005,
+     0.36145
+    ],
+    "region": "coatRed"
+   },
+   {
+    "node": "lamp1/clay",
+    "uv": [
+     0.6055,
+     0.51222
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "lamp2/clay",
+    "uv": [
+     0.6055,
+     0.51222
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "basinStand/wood",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "basinJug/clay",
+    "uv": [
+     0.6055,
+     0.51222
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "basinJug/water",
+    "uv": [
+     0.6385,
+     0.36145
+    ],
+    "region": "coatBlue"
+   },
+   {
+    "node": "stones/stone",
+    "uv": [
+     0.4705,
+     0.62225
+    ],
+    "region": "ground"
+   },
+   {
+    "node": "courtWall/facade",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "templeFront/facade",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "awnings/pole",
+    "uv": [
+     0.8895,
+     0.69886
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "table1/wood",
+    "uv": [
+     0.8895,
+     0.69886
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "cages/dove",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "cagesOpen/wicker",
+    "uv": [
+     0.8665,
+     0.73961
+    ],
+    "region": "wicker"
+   },
+   {
+    "node": "table2/wood",
+    "uv": [
+     0.8895,
+     0.58802
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "table2/coins",
+    "uv": [
+     0.9155,
+     0.63203
+    ],
+    "region": "coins"
+   },
+   {
+    "node": "table2Tipped/wood",
+    "uv": [
+     0.8895,
+     0.58802
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "coinsFloor/coins",
+    "uv": [
+     0.9155,
+     0.63203
+    ],
+    "region": "coins"
+   },
+   {
+    "node": "palmTree/trunk",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "oliveTree/trunk",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd1/robe",
+    "uv": [
+     0.6385,
+     0.36145
+    ],
+    "region": "coatBlue"
+   },
+   {
+    "node": "crowd1/cloth",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "crowd1/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd1/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd1/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd2/robe",
+    "uv": [
+     0.8675,
+     0.85289
+    ],
+    "region": "red"
+   },
+   {
+    "node": "crowd2/cloth",
+    "uv": [
+     0.0815,
+     0.40628
+    ],
+    "region": "mats"
+   },
+   {
+    "node": "crowd2/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd2/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd2/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd3/robe",
+    "uv": [
+     0.9295,
+     0.94173
+    ],
+    "region": "olive"
+   },
+   {
+    "node": "crowd3/cloth",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "crowd3/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd3/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd3/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd4/robe",
+    "uv": [
+     0.7605,
+     0.36145
+    ],
+    "region": "coatYellow"
+   },
+   {
+    "node": "crowd4/cloth",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd4/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd4/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd4/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd5/robe",
+    "uv": [
+     0.5445,
+     0.83659
+    ],
+    "region": "bronze"
+   },
+   {
+    "node": "crowd5/cloth",
+    "uv": [
+     0.5085,
+     0.9132
+    ],
+    "region": "facade"
+   },
+   {
+    "node": "crowd5/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd5/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd5/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd6/robe",
+    "uv": [
+     0.5005,
+     0.36145
+    ],
+    "region": "coatRed"
+   },
+   {
+    "node": "crowd6/cloth",
+    "uv": [
+     0.0815,
+     0.40628
+    ],
+    "region": "mats"
+   },
+   {
+    "node": "crowd6/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd6/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd6/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd7/robe",
+    "uv": [
+     0.1555,
+     0.49919
+    ],
+    "region": "sky"
+   },
+   {
+    "node": "crowd7/cloth",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd7/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd7/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd7/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   },
+   {
+    "node": "crowd8/robe",
+    "uv": [
+     0.5445,
+     0.96536
+    ],
+    "region": "gold"
+   },
+   {
+    "node": "crowd8/cloth",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd8/face",
+    "uv": [
+     0.1245,
+     0.45273
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "crowd8/eye",
+    "uv": [
+     0.1185,
+     0.58965
+    ],
+    "region": "door"
+   },
+   {
+    "node": "crowd8/palm",
+    "uv": [
+     0.5715,
+     0.40791
+    ],
+    "region": "palmLeaf"
+   }
+  ],
+  "clearance": {
+   "hard": {
+    "mark ROOM_J": [
+     [
+      "basinStand",
+      0.0215,
+      0.18
+     ],
+     [
+      "basinJug",
+      0.0228,
+      0.196
+     ]
+    ],
+    "walk seller2 SELLER2>SELLER2_SIDE": [
+     [
+      "table2",
+      0.0321,
+      0.091
+     ],
+     [
+      "table2Tipped",
+      0.035,
+      0.071
+     ]
+    ],
+    "walk jesus room STAND>ROUND": [
+     [
+      "lowTable",
+      0.0001,
+      0.1585
+     ],
+     [
+      "breadLoaf",
+      0.0238,
+      0.163
+     ],
+     [
+      "cupTable",
+      0.0101,
+      0.18
+     ],
+     [
+      "lamp2",
+      0.0372,
+      0.1607
+     ]
+    ]
+   },
+   "nearest": {
+    "note": "[low zone (y+0.012..0.17), overhead (y+0.17..head top)] nearest plan distance (needs >= 0.05 / 0.035; seated 0.035); donkey marks: gap to the 0.30 x 0.12 box",
+    "mark DONKEY_START": 0.104,
+    "mark DONKEY_MID": 0.045,
+    "mark donkey 0.18,0.09": 0.012,
+    "mark BEND": 0.032,
+    "mark DONKEY_TIE": 0.008,
+    "mark peter 0.56,0.06": [
+     0.098,
+     0.095
+    ],
+    "mark peter 0.38,0.05": [
+     0.091,
+     0.094
+    ],
+    "mark peter 0.30,0.04": [
+     0.081,
+     0.078
+    ],
+    "mark PETER_STONES": [
+     0.062,
+     0.266
+    ],
+    "mark john 0.56,0.17": [
+     0.207,
+     0.205
+    ],
+    "mark john 0.38,0.17": [
+     0.21,
+     0.213
+    ],
+    "mark john 0.30,0.17": [
+     0.209,
+     0.207
+    ],
+    "mark john 0.24,0.17": [
+     0.173,
+     0.213
+    ],
+    "mark james 0.63,0.05": [
+     0.095,
+     0.1
+    ],
+    "mark james 0.46,0.04": [
+     0.078,
+     0.08
+    ],
+    "mark james 0.40,0.04": [
+     0.081,
+     0.084
+    ],
+    "mark james 0.30,0.03": [
+     0.071,
+     0.068
+    ],
+    "mark andrew 0.63,0.16": [
+     0.2,
+     0.203
+    ],
+    "mark andrew 0.46,0.17": [
+     0.208,
+     0.208
+    ],
+    "mark andrew 0.40,0.17": [
+     0.211,
+     0.214
+    ],
+    "mark andrew 0.34,0.15": [
+     0.189,
+     0.188
+    ],
+    "mark GATE": [
+     0.079,
+     0.119
+    ],
+    "mark J_T2": [
+     0.06,
+     0.153
+    ],
+    "mark J_T1": [
+     0.07,
+     0.076
+    ],
+    "mark P_COURT": [
+     0.092,
+     0.094
+    ],
+    "mark JN_COURT": [
+     0.129,
+     0.124
+    ],
+    "mark JA_COURT": [
+     0.054,
+     0.051
+    ],
+    "mark SELLER1": [
+     0.052,
+     0.052
+    ],
+    "mark SELLER2": [
+     0.054,
+     0.126
+    ],
+    "mark SELLER2_SIDE": [
+     0.066,
+     0.197
+    ],
+    "mark COINS": [
+     0.052,
+     0.078
+    ],
+    "mark ROOM_J": [
+     0.021,
+     0.05
+    ],
+    "mark STAND": [
+     0.052,
+     0.06
+    ],
+    "mark ROUND": [
+     0.075,
+     0.18
+    ],
+    "mark WASH andrew": [
+     0.075,
+     0.062
+    ],
+    "mark wash -0.43,-0.30": [
+     0.102,
+     0.15
+    ],
+    "mark WASH peter": [
+     0.102,
+     0.153
+    ],
+    "mark ARGUE andrew": [
+     0.052,
+     0.1
+    ],
+    "mark ARGUE james": [
+     0.078,
+     0.19
+    ],
+    "mark ARGUE john": [
+     0.09,
+     0.22
+    ],
+    "mark ARGUE peter": [
+     0.06,
+     0.13
+    ],
+    "mark BENCH andrew": [
+     0.04,
+     null
+    ],
+    "mark BENCH james": [
+     0.04,
+     null
+    ],
+    "mark BENCH john": [
+     0.04,
+     null
+    ],
+    "mark BENCH peter": [
+     0.04,
+     null
+    ],
+    "mark SUP james": [
+     0.038,
+     null
+    ],
+    "mark SUP jesus": [
+     0.038,
+     null
+    ],
+    "mark SUP john": [
+     0.038,
+     null
+    ],
+    "mark SUP andrew": [
+     0.055,
+     null
+    ],
+    "mark SUP peter": [
+     0.089,
+     null
+    ],
+    "walk donkey + Jesus DONKEY_START>DONKEY_MID": 0.045,
+    "walk donkey + Jesus DONKEY_MID>donkey 0.18,0.09": 0.01,
+    "walk donkey + Jesus donkey 0.18,0.09>BEND": 0.012,
+    "walk peter road peter 0.56,0.06>peter 0.38,0.05": [
+     0.091,
+     0.093
+    ],
+    "walk peter road peter 0.38,0.05>peter 0.30,0.04": [
+     0.081,
+     0.078
+    ],
+    "walk peter road peter 0.30,0.04>PETER_STONES": [
+     0.062,
+     0.078
+    ],
+    "walk john road john 0.56,0.17>john 0.38,0.17": [
+     0.207,
+     0.205
+    ],
+    "walk john road john 0.38,0.17>john 0.30,0.17": [
+     0.208,
+     0.207
+    ],
+    "walk john road john 0.30,0.17>john 0.24,0.17": [
+     0.173,
+     0.207
+    ],
+    "walk james road james 0.63,0.05>james 0.46,0.04": [
+     0.078,
+     0.079
+    ],
+    "walk james road james 0.46,0.04>james 0.40,0.04": [
+     0.078,
+     0.08
+    ],
+    "walk james road james 0.40,0.04>james 0.30,0.03": [
+     0.071,
+     0.068
+    ],
+    "walk andrew road andrew 0.63,0.16>andrew 0.46,0.17": [
+     0.198,
+     0.197
+    ],
+    "walk andrew road andrew 0.46,0.17>andrew 0.40,0.17": [
+     0.208,
+     0.208
+    ],
+    "walk andrew road andrew 0.40,0.17>andrew 0.34,0.15": [
+     0.189,
+     0.188
+    ],
+    "walk jesus court GATE>J_T2": [
+     0.057,
+     0.064
+    ],
+    "walk jesus court J_T2>J_T1": [
+     0.053,
+     0.076
+    ],
+    "walk seller2 SELLER2>SELLER2_SIDE": [
+     0.032,
+     0.126
+    ],
+    "walk seller2 SELLER2_SIDE>COINS": [
+     0.052,
+     0.078
+    ],
+    "walk jesus room STAND>ROUND": [
+     0.0,
+     0.06
+    ],
+    "walk jesus room ROUND>WASH andrew": [
+     0.057,
+     0.05
+    ],
+    "walk jesus room WASH andrew>wash -0.43,-0.30": [
+     0.075,
+     0.05
+    ],
+    "walk jesus room wash -0.43,-0.30>WASH peter": [
+     0.102,
+     0.15
+    ]
+   },
+   "info": {
+    "PETER_STONES": {
+     "stonesNearest": 0.059,
+     "stonesTop": 0.0266
+    },
+    "kneelingLane": "clear"
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "donkey": {
+     "sheetX": -0.32,
+     "sheetY": 0.015,
+     "height": 0.27,
+     "box": [
+      -0.4854,
+      0.0315,
+      -0.153,
+      0.2879
+     ]
+    },
+    "jesus": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.36,
+     "box": [
+      -0.1334,
+      0.0191,
+      0.1334,
+      0.3703
+     ]
+    },
+    "peter": {
+     "sheetX": 0.32,
+     "sheetY": 0.015,
+     "height": 0.38,
+     "box": [
+      0.1568,
+      0.0193,
+      0.4685,
+      0.396
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "stone": "#E9D6A8",
+   "door": "#8A5A3B",
+   "plaster": "#EBD2A6",
+   "mats": "#D8BE8E",
+   "sky": "#2E4A86",
+   "cloth": "#F5F1E6",
+   "cushion": "#9C3A3A",
+   "bread": "#C98A4A",
+   "clay": "#C46A3E",
+   "water": "#7FB6E0",
+   "facade": "#F4EEDD",
+   "gold": "#D9A93A",
+   "bronze": "#A8743E",
+   "red": "#C2453A",
+   "cream": "#F1E3C4",
+   "wood": "#8A5A3B",
+   "wicker": "#D2AE74",
+   "coins": "#E8C04A",
+   "road": "#E8D5A8",
+   "paving": "#EADFC4",
+   "ground": "#C9C08A",
+   "palmLeaf": "#5E9A48",
+   "coatRed": "#C2453A",
+   "coatBlue": "#4E7FB8",
+   "coatYellow": "#E8C04A",
+   "leaf": "#5E9A48",
+   "olive": "#8AA06A",
+   "hills": "#8E9E62"
+  },
+  "tris": 23214,
+  "budget": 70000
+ }
+}

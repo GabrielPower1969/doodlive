@@ -1,0 +1,686 @@
+{
+ "_doc": "He Is Risen! voice cast (docs/risen/VOICE.md). narrator / jesus / peter / john are copied unchanged from cast_lastsupper.json (jesus and peter carry the timbre pin to Miracles' clips; john gains a timbre pin to lastsupper ls_16). mary / joanna / angel / thomas are new VoiceDesign voices. Run through tools/story/voice_risen.py (runaway guard, f0 / timbre pins).",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "john": {
+   "zh": "约翰",
+   "en": "John"
+  },
+  "mary": {
+   "zh": "马利亚",
+   "en": "Mary"
+  },
+  "joanna": {
+   "zh": "约亚拿",
+   "en": "Joanna"
+  },
+  "angel": {
+   "zh": "天使",
+   "en": "The angel"
+  },
+  "thomas": {
+   "zh": "多马",
+   "en": "Thomas"
+  }
+ },
+ "refZh": {},
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，嗓音温暖、清亮、柔和圆润，干净不沙哑，平静从容，亲切又带一点点俏皮的笑意，吐字清楚，像一位温柔的好老师，从不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "mfccRef": [
+     447.53,
+     -191.85,
+     217.57,
+     -144.0,
+     137.73,
+     -92.19,
+     36.22,
+     25.25,
+     -24.54,
+     10.65,
+     -37.86,
+     36.54
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，四十多岁，身材高大魁梧的渔夫，低沉浑厚的男低音，胸腔共鸣很重，嗓门大但声音低，豪爽爱笑，热心肠，像一只友好的大熊。就算大喊大叫也是低沉的大嗓门，从不尖细。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。大喊时声音也保持低沉。这一句：",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)",
+    "mfccRef": [
+     399.67,
+     -235.13,
+     186.73,
+     -187.79,
+     137.01,
+     -122.44,
+     -2.34,
+     19.14,
+     -8.22,
+     0.22,
+     -64.88,
+     36.46
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "john": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，十八九岁，门徒里最年轻的一个，声音清亮、年轻、有活力，说话快，机灵又有点调皮，后来变得若有所思。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen); plus a timbre pin to The King Who Serves' chosen ls_16",
+    "mfccRef": [
+     461.28,
+     -186.18,
+     245.08,
+     -147.03,
+     93.53,
+     -105.31,
+     14.93,
+     37.95,
+     -39.23,
+     -29.71,
+     -50.81,
+     29.33
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "mary": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     200,
+     280
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "女性，二十多岁，年轻温柔的女声，声音温暖、清甜、柔和，真诚，感情丰富，容易流泪也容易欢喜，说话轻轻的。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "young and warm, quick to tears and quick to joy (STORY.md)"
+   },
+   "joanna": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     160,
+     230
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "女性，四十多岁，成熟稳重的中音女声，比年轻姑娘低一些，说话干脆利落、务实，有点爱操心，热心肠。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "older and brisker than Mary, clearly a different woman (CONTRACT §7)"
+   },
+   "angel": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     135,
+     190
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，年轻，声音明亮、清澈、温暖，坚定而平静，满是笑意，亲切友好，像早晨的阳光。不低沉、不轰鸣、不威严，没有回声。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "bright, strong, kind and calm; never booming, no echo (CONTRACT §7)"
+   },
+   "thomas": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     100,
+     145
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，三十五岁左右，沉稳的男中音，声音平稳、实在、讲道理，说话不紧不慢，有点固执，但心地柔软，从不大喊。和粗犷爱笑的大嗓门渔夫明显不同。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "a steady baritone, sensible; clearly not Peter (CONTRACT §7)"
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman storyteller, like a mother at a child's bedside telling a Bible story to a child of four to ten: friendly, lively, natural, at a natural flowing pace, never dragging. This line: ",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man of about thirty with a warm, clear, soft and round voice, clean and never hoarse, calm and unhurried, kind with a hint of playful smile, crisp diction, like a gentle teacher who never shouts. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "mfccRef": [
+     391.03,
+     -192.24,
+     231.9,
+     -178.53,
+     147.73,
+     -97.43,
+     24.48,
+     -4.5,
+     -25.99,
+     10.75,
+     -44.5,
+     30.48
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man in his forties, a big burly fisherman with a deep, booming bass voice, heavy chest resonance, loud but low, hearty and quick to laugh, warm-hearted like a friendly bear. Even when he shouts his voice stays deep and never turns shrill. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. Keep the voice deep and low even when shouting. This line: ",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)",
+    "mfccRef": [
+     394.25,
+     -257.86,
+     171.33,
+     -197.83,
+     137.03,
+     -104.7,
+     -31.6,
+     -24.74,
+     -16.34,
+     -3.42,
+     -71.62,
+     32.65
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "john": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A young man of about nineteen, the youngest of the friends: a bright, clear, youthful voice, quick and a bit cheeky, later thoughtful. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen); plus a timbre pin to The King Who Serves' chosen ls_16",
+    "mfccRef": [
+     375.46,
+     -187.19,
+     238.22,
+     -201.04,
+     130.73,
+     -100.06,
+     40.02,
+     -14.45,
+     -29.8,
+     9.11,
+     -59.21,
+     35.16
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "mary": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     200,
+     280
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A young woman in her twenties: a warm, sweet, soft and youthful voice, sincere and full of feeling, quick to tears and quick to joy, gently spoken. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "young and warm, quick to tears and quick to joy (STORY.md)"
+   },
+   "joanna": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     160,
+     230
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A woman in her forties: a mature, slightly lower alto voice, brisk, practical and down to earth, a little worried, kind-hearted. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "older and brisker than Mary, clearly a different woman (CONTRACT §7)"
+   },
+   "angel": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     135,
+     190
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A young man with a bright, clear and warm voice, strong yet calm, smiling and friendly, like morning sunshine. Not deep, not booming, not grand, no echo. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "bright, strong, kind and calm; never booming, no echo (CONTRACT §7)"
+   },
+   "thomas": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     100,
+     145
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A man of about thirty-five: a steady, even baritone, sensible and matter-of-fact, unhurried, a bit stubborn but soft-hearted, never loud; clearly different from a booming, laughing fisherman. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "a steady baritone, sensible; clearly not Peter (CONTRACT §7)"
+   }
+  }
+ },
+ "lines": {
+  "rs_01": {
+   "m": "轻轻地、慢慢地、平平淡淡地讲，不渲染，说到十字架不停顿；“好难过”温柔地放轻",
+   "m_en": "soft and slow, plain; no drama, no pause on 'cross'; a gentle hush on 'very sad'",
+   "en": {
+    "seed": 20
+   }
+  },
+  "rs_02": {
+   "m": "安静、温柔；“又大又圆”稍微加重一点",
+   "m_en": "quiet, tender; a small weight on 'big round'"
+  },
+  "rs_03": {
+   "m": "故事的转折：声音亮起来，带着一点小秘密的笑意；“第三天”说得慢一点",
+   "m_en": "the turn of the story: lift and brighten, a little secret smile; slower on 'the third day'"
+  },
+  "rs_04": {
+   "m": "清晨的清新感，带一点盼望，不急不慢",
+   "m_en": "morning-fresh, a hint of hope; unhurried"
+  },
+  "rs_05": {
+   "m": "有点担心但很实际，走路走得有点喘",
+   "m_en": "worried but practical, a little out of breath from walking"
+  },
+  "rs_06": {
+   "m": "轻轻的，有点难过，满怀爱意",
+   "m_en": "soft, a little sad, loving"
+  },
+  "rs_07": {
+   "m": "惊奇，越说越快；不吓人；“滚开了”带着惊喜上扬",
+   "m_en": "wonder, building quickly; not scary; a delighted lift on 'rolled away'"
+  },
+  "rs_08": {
+   "m": "屏住呼吸、惊奇地小声说",
+   "m_en": "a breathless, amazed whisper",
+   "en": {
+    "seed": 30
+   }
+  },
+  "rs_09": {
+   "m": "亲切、有力、平静，声音里满是笑意；“他复活了”慢一点、充满喜乐",
+   "m_en": "kind, strong and calm, a big smile in the voice; slow and joyful on 'He is risen'",
+   "zh": {
+    "takes": 8
+   },
+   "en": {
+    "takes": 8
+   }
+  },
+  "rs_10": {
+   "m": "温和地邀请",
+   "m_en": "a gentle invitation"
+  },
+  "rs_11": {
+   "m": "惊讶，然后越来越开心",
+   "m_en": "amazed, rising to joy"
+  },
+  "rs_12": {
+   "m": "明亮，开心地催促",
+   "m_en": "bright, urgent in a happy way"
+  },
+  "rs_13": {
+   "m": "上气不接下气，话一股脑儿冲出来，开心得要爆炸",
+   "m_en": "breathless, tumbling out fast, bursting with joy"
+  },
+  "rs_14": {
+   "m": "惊呆了，大嗓门但低沉，心里又有一点盼望",
+   "m_en": "stunned, big and blustery but deep; half hoping"
+  },
+  "rs_15": {
+   "m": "年轻、急切，已经要跑了",
+   "m_en": "young, quick, already moving"
+  },
+  "rs_16": {
+   "m": "活泼、轻快；“跑得比彼得快”带着笑",
+   "m_en": "lively, quick; a grin on 'faster than Peter'"
+  },
+  "rs_17": {
+   "m": "调皮地回头喊",
+   "m_en": "cheeky, calling back over his shoulder"
+  },
+  "rs_18": {
+   "m": "边跑边喘，滑稽，带着笑；嗓音低沉",
+   "m_en": "puffing and panting between the words, comic, a laugh in it; voice stays deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "等……等等我！",
+      "instruct": "气喘吁吁地大喊，嗓音低沉浑厚。",
+      "gap": 0.25
+     },
+     {
+      "text": "我的腿……没你的年轻！",
+      "instruct": "边喘边笑，滑稽，嗓音低沉。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Wait... wait for me!",
+      "instruct": "puffing and panting, calling out, deep voice.",
+      "gap": 0.25
+     },
+     {
+      "text": "My legs... aren't as young as yours!",
+      "instruct": "panting and laughing, comic, deep voice."
+     }
+    ]
+   }
+  },
+  "rs_19": {
+   "m": "俏皮的讲故事；“一头钻了进去”滑稽地一顿",
+   "m_en": "playful storyteller; a comic beat on 'went straight inside'"
+  },
+  "rs_20": {
+   "m": "站在门口，疑惑又惊奇；最后几个字压低声音，倒吸一口气",
+   "m_en": "puzzled wonder in the doorway; the last words a hushed gasp"
+  },
+  "rs_21": {
+   "m": "恍然大悟：先慢慢地惊奇，然后开心地加快",
+   "m_en": "the penny drops: slow wonder, then a happy rush"
+  },
+  "rs_22": {
+   "m": "温柔、慢一点；淡淡的心疼，不沉重",
+   "m_en": "tender, slow; a soft ache, not heavy"
+  },
+  "rs_23": {
+   "m": "非常温柔、温暖，藏着笑意（他知道她是谁）",
+   "m_en": "very gentle and warm, a hidden smile (He knows!)"
+  },
+  "rs_24": {
+   "m": "含着眼泪，没有抬头，恳切；“看园子的”带一点天真",
+   "m_en": "tearful, not looking up, earnest; a small innocence on 'the gardener'"
+  },
+  "rs_25": {
+   "m": "轻轻地、温柔地叫她的名字，清清楚楚，充满爱，只说这两个字",
+   "m_en": "say her name once, softly and clearly, full of love; nothing else",
+   "zh": {
+    "takes": 12,
+    "minPace": 1.0,
+    "maxPause": 2.0,
+    "say": "马利亚……",
+    "instruct": "慢慢地、轻轻地叫她的名字，三个字都清清楚楚，声音温柔，充满爱，像终于见到她那样。",
+    "pick": 11
+   },
+   "en": {
+    "takes": 10,
+    "minPace": 0.8,
+    "maxPause": 2.0
+   }
+  },
+  "rs_26": {
+   "m": "先倒吸一口气，然后是满满的喜乐，含着眼泪笑",
+   "m_en": "a gasp, then pure joy, laughing through tears"
+  },
+  "rs_27": {
+   "m": "温暖、开心，灿烂的笑",
+   "m_en": "warm, glad, a bright smile"
+  },
+  "rs_28": {
+   "m": "满脸放光，确定，开心",
+   "m_en": "glowing, sure, happy"
+  },
+  "rs_29": {
+   "m": "先压低声音，“忽然”时神奇地扬起来",
+   "m_en": "hushed, then a magical lift on 'Suddenly'"
+  },
+  "rs_30": {
+   "m": "温暖、平静、微笑",
+   "m_en": "warm, calm, smiling"
+  },
+  "rs_31": {
+   "m": "尖声、牙齿打颤，滑稽，不是真的害怕",
+   "m_en": "squeaky, teeth chattering, comic, not truly scared",
+   "zh": {
+    "takes": 8
+   },
+   "en": {
+    "takes": 8,
+    "asrIgnore": "g"
+   }
+  },
+  "rs_32": {
+   "m": "温暖地笑着，俏皮；问吃的那句轻松、家常",
+   "m_en": "laughing warmly, playful; the food question light and homely",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哈哈，是我呀！",
+      "instruct": "温暖地笑着说。",
+      "gap": 0.2
+     },
+     {
+      "text": "鬼可没有手和脚。你们有吃的吗？",
+      "instruct": "俏皮、轻松、家常。"
+     }
+    ],
+    "asrIgnore": "哈|呵"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ha ha, it's Me!",
+      "instruct": "laughing warmly.",
+      "gap": 0.2
+     },
+     {
+      "text": "A ghost doesn't have hands and feet. Got anything to eat?",
+      "instruct": "playful, light and homely."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "rs_33": {
+   "m": "开心的捧腹大笑，喜极而泣；嗓音低沉",
+   "m_en": "a big delighted belly laugh, tears of joy; voice stays deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哈哈，他在吃我们的鱼！",
+      "instruct": "捧腹大笑着说，嗓音低沉。",
+      "gap": 0.15
+     },
+     {
+      "text": "真的是耶稣！",
+      "instruct": "喜极而泣，低沉的大嗓门。"
+     }
+    ],
+    "asrIgnore": "哈|呵"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ha ha! He's eating our fish!",
+      "instruct": "a big belly laugh, deep voice.",
+      "gap": 0.15
+     },
+     {
+      "text": "It really is Jesus!",
+      "instruct": "tears of joy, deep booming voice."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "rs_34": {
+   "m": "平实的讲故事，带一点会心的笑",
+   "m_en": "plain storyteller, a little knowing smile"
+  },
+  "rs_35": {
+   "m": "固执但不凶，抱着胳膊，微微皱眉",
+   "m_en": "stubborn but not grumpy; arms crossed; a small frown"
+  },
+  "rs_36": {
+   "m": "非常温柔、耐心，充满爱的邀请，没有责备",
+   "m_en": "very gentle and patient, a loving invitation; no reproach"
+  },
+  "rs_37": {
+   "m": "深受感动，带着喜乐的哽咽，发自内心",
+   "m_en": "overwhelmed, a happy sob of faith, from the heart",
+   "zh": {
+    "takes": 8
+   },
+   "en": {
+    "takes": 8
+   }
+  },
+  "rs_38": {
+   "m": "喜乐、笃定，直接对孩子说；慢而清楚",
+   "m_en": "joyful and sure, straight to the child; slow and clear",
+   "zh": {
+    "takes": 6,
+    "f0Hz": [
+     200,
+     320
+    ],
+    "f0Weight": 120
+   }
+  },
+  "rs_39": {
+   "m": "温暖，带着笑；最后的应许轻轻地说",
+   "m_en": "warm, a smile, a hush on the promise at the end"
+  }
+ }
+}

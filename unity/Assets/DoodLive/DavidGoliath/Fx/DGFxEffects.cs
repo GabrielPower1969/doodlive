@@ -69,6 +69,11 @@ namespace DoodLive.DavidGoliath
                     foreach (var d in JonahFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Jonah (StoryFxJonah.cs)
                     foreach (var d in new FxDef[] { new StoryFxAlias("plant_grow", "sparkle") }) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // jonah: aliases
                     foreach (var d in JosephFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Joseph (StoryFxJoseph.cs)
+                    foreach (var d in MiraclesFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Real Miracles (StoryFxMiracles.cs)
+                    foreach (var d in new FxDef[] { new StoryFxAlias("wave_splash", "splash") }) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // miracles: aliases
+                    foreach (var d in LastSupperFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // The King Who Serves (StoryFxLastSupper.cs: palm_toss, doves_fly, water_pour; CONTRACT §8)
+                    foreach (var d in RisenFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // He Is Risen! (StoryFxRisen.cs: tomb_glow, butterflies; CONTRACT §8)
+                    foreach (var d in SaulFx.Defs) if (!map.ContainsKey(d.Id)) map[d.Id] = d;   // Saul Sees the Light! (StoryFxSaul.cs: road_light, scales_fall; CONTRACT §8)
                     // story-fx:end
                 }
                 return map;

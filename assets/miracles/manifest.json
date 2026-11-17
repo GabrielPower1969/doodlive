@@ -1,28 +1,95 @@
 {
  "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
  "id": "miracles",
+ "registry": {
+  "id": "miracles",
+  "engine": "story",
+  "order": 9,
+  "title_zh": "真正的神迹",
+  "title_en": "Real Miracles",
+  "sheets": [
+   "miracles-A4",
+   "miracles-A4-demo"
+  ],
+  "cast": [
+   "jesus",
+   "peter",
+   "man",
+   "friend1",
+   "friend2",
+   "friend3",
+   "friend4"
+  ],
+  "paint": {
+   "friend1": "friend_paint.png",
+   "friend2": "friend_paint.png",
+   "friend3": "friend_paint.png",
+   "friend4": "friend_paint.png"
+  },
+  "set": "galilee",
+  "version": 1,
+  "status": "beta"
+ },
  "library": {
   "id": "miracles",
   "pinyin": "zhēn zhèng de shén jì",
   "blurb_zh": "四个好朋友拆开屋顶，把瘫痪的朋友放到耶稣面前；晚上湖上起了大风暴，耶稣一句话，风和浪都停了。",
   "blurb_en": "Four friends dig through a roof to bring their friend to Jesus; in a storm on the lake, Jesus tells the wind and waves to be still.",
   "minutes": 4,
-  "after": "joseph"
+  "after": "joseph",
+  "cover": {
+   "video": "demo-miracles-f040dc5-dirty.20261117-1238.mp4",
+   "t": 222,
+   "box": [
+    1215,
+    250,
+    1160
+   ]
+  }
  },
  "strings": {
-  "dg_jesus": {"zh": "耶稣", "en": "Jesus"},
-  "dg_peter": {"zh": "彼得", "en": "Peter"},
-  "dg_miracles_man": {"zh": "躺褥子的人", "en": "The man on the mat"},
-  "dg_friend1": {"zh": "朋友", "en": "Friend"},
-  "dg_friend2": {"zh": "朋友", "en": "Friend"},
-  "dg_friend3": {"zh": "朋友", "en": "Friend"},
-  "dg_friend4": {"zh": "朋友", "en": "Friend"},
-  "dg_miracles_friends": {"zh": "四个朋友", "en": "The four friends"},
-  "dg_miracles_people": {"zh": "众人", "en": "The crowd"}
+  "dg_jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "dg_peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "dg_miracles_man": {
+   "zh": "躺褥子的人",
+   "en": "The man on the mat"
+  },
+  "dg_friend1": {
+   "zh": "朋友",
+   "en": "Friend"
+  },
+  "dg_friend2": {
+   "zh": "朋友",
+   "en": "Friend"
+  },
+  "dg_friend3": {
+   "zh": "朋友",
+   "en": "Friend"
+  },
+  "dg_friend4": {
+   "zh": "朋友",
+   "en": "Friend"
+  },
+  "dg_miracles_friends": {
+   "zh": "四个朋友",
+   "en": "The four friends"
+  },
+  "dg_miracles_people": {
+   "zh": "众人",
+   "en": "The crowd"
+  }
  },
  "fx": {
   "class": "MiraclesFx",
   "note": "Real Miracles (StoryFxMiracles.cs)",
-  "aliases": {"wave_splash": "splash"}
+  "aliases": {
+   "wave_splash": "splash"
+  }
  }
 }

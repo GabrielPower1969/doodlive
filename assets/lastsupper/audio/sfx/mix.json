@@ -1,0 +1,119 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec). crowd_far stops at hosanna; market_bustle stops at argue (= shot S06, CONTRACT 7).",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "coins_clink",
+   "secs": 1.1,
+   "loop": false,
+   "gainDb": -14,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -14.6
+  },
+  {
+   "id": "coins_scatter",
+   "secs": 2.8,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.3
+  },
+  {
+   "id": "crowd_cheer",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -15,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.4
+  },
+  {
+   "id": "crowd_far",
+   "secs": 8.0,
+   "loop": true,
+   "gainDb": -20,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.7,
+   "loopStart": 0.0,
+   "loopEnd": 8.0,
+   "stopAtCue": "hosanna",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "seamRatio": 0.275,
+   "halfDb": 1.05
+  },
+  {
+   "id": "ding",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -16,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -11.7
+  },
+  {
+   "id": "dove_flutter",
+   "secs": 2.4,
+   "loop": false,
+   "gainDb": -14,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -22.4
+  },
+  {
+   "id": "hee_haw",
+   "secs": 1.1,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -13.9
+  },
+  {
+   "id": "market_bustle",
+   "secs": 10.0,
+   "loop": true,
+   "gainDb": -21,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -18.6,
+   "loopStart": 0.0,
+   "loopEnd": 10.0,
+   "stopAtCue": "argue",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "seamRatio": 0.289,
+   "halfDb": 0.75
+  },
+  {
+   "id": "splash_small",
+   "secs": 0.9,
+   "loop": false,
+   "gainDb": -14,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -23.8
+  },
+  {
+   "id": "table_tip",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.0
+  },
+  {
+   "id": "water_pour",
+   "secs": 3.0,
+   "loop": false,
+   "gainDb": -17,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -15.7
+  }
+ ]
+}

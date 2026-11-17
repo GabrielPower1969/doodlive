@@ -81,6 +81,10 @@ From the Daniel, Gabriel, Exodus and Esther packs. Read your role's list before 
 - **I2 Silent recording.** The first screen recordings after an install had a silent audio track once; measure
   loudness before using a demo.
 - **I3 Covers.** Pick a frame where the faces are visible; crop by hand (`box`).
+- **I3a No cover = no book on the shelf.** The home screen reads `unity/Assets/DoodLive/Resources/library.json`,
+  which only `make_covers.py` writes. `record-demo.sh` starts the story directly, so a demo can play end to end while
+  the shelf still ends at the previous book (happened to miracles / lastsupper / risen, 2026-11-18). After the first
+  demo: cover step (stage 7.5), rebuild, then open the app by hand and scroll the shelf to the new book.
 - **I4 Shared cast ids.** `king`, `pharaoh`, `people` exist in other packs. If the name differs in this story,
   add a per-story string `dg_<id>_<who>`.
 - **I5 Generated files.** `L10n.cs`, fonts, `sheet_signatures.json`, `Resources/library.json` are regenerated;

@@ -401,3 +401,12 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - Fix: set `kb.value = 0.0` right after `shape_key_add` (body and lines meshes).
 - Prevention: after any build with shape keys, read the GLB: every mesh `weights` entry must be 0 and
   `extras.targetNames` must list the shape names (the runtime binds blend shapes by name).
+
+## 2026-11-18 — Three new books played on the phone but were missing from the shelf
+- Cause: the home screen reads `unity/Assets/DoodLive/Resources/library.json`, which only `tools/story/make_covers.py`
+  writes; `scripts/record-demo.sh` starts a story directly, so the demo played end to end while the shelf still ended
+  at the previous book.
+- Fix: cover step for miracles / lastsupper / risen (`library.cover` in each manifest, `merge_packs.py`,
+  `make_covers.py`), rebuild, install.
+- Prevention: `docs/pack-plans/04-PITFALLS.md` I3a — after the first demo, cover, rebuild, then open the app by hand
+  and scroll the shelf to the new book before calling the pack done.

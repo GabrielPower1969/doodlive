@@ -81,8 +81,9 @@
     "f0Weight": 120,
     "fx": "warm",
     "chain": "expressive",
-    "design": "男性，四十多岁，身材高大魁梧的渔夫，嗓音洪亮、豪爽、有点沙，嗓门大，容易大喊大叫，也爱大笑，热心肠，像一只友好的大熊。普通话标准。",
-    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。这一句："
+    "design": "男性，四十多岁，身材高大魁梧的渔夫，低沉浑厚的男低音，胸腔共鸣很重，嗓门大但声音低，豪爽爱笑，热心肠，像一只友好的大熊。就算大喊大叫也是低沉的大嗓门，从不尖细。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。大喊时声音也保持低沉。这一句：",
+    "why": "2026-11-18: designed bass, pinned 95-135 Hz; first design ('loud, quick to shout') came out 240-360 Hz when shouting, re-described as a low booming bass (Jonah captain lesson)"
    },
    "man": {
     "engine": "qwen_design",
@@ -156,7 +157,7 @@
     "rt60": 0.5,
     "wet": 0.08,
     "seed": 31,
-    "takes": 4,
+    "takes": 8,
     "instruct": "四个好朋友一起干活，欢快有节奏地喊。",
     "members": [
      {
@@ -327,8 +328,9 @@
     "f0Weight": 120,
     "fx": "warm",
     "chain": "expressive",
-    "design": "A man in his forties, a big burly fisherman with a hearty, booming, slightly rough baritone, loud, quick to shout and quick to laugh, warm-hearted like a friendly bear. Standard American English.",
-    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. This line: "
+    "design": "A man in his forties, a big burly fisherman with a deep, booming bass voice, heavy chest resonance, loud but low, hearty and quick to laugh, warm-hearted like a friendly bear. Even when he shouts his voice stays deep and never turns shrill. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. Keep the voice deep and low even when shouting. This line: ",
+    "why": "2026-11-18: designed bass, pinned 95-135 Hz; first design ('loud, quick to shout') came out 240-360 Hz when shouting, re-described as a low booming bass (Jonah captain lesson)"
    },
    "man": {
     "engine": "qwen_design",
@@ -402,7 +404,7 @@
     "rt60": 0.5,
     "wet": 0.08,
     "seed": 31,
-    "takes": 4,
+    "takes": 8,
     "instruct": "Four friends working together, a cheerful rhythmic chant.",
     "members": [
      {
@@ -679,13 +681,8 @@
    "zh": {
     "phrases": [
      {
-      "text": "哎！",
-      "instruct": "惊讶地喊。",
-      "gap": 0.15
-     },
-     {
-      "text": "哎哎哎！",
-      "instruct": "一声比一声高，越来越慌。",
+      "text": "哎！哎哎哎！",
+      "instruct": "惊讶地大喊，一声比一声高，越来越慌，但嗓音低沉。",
       "gap": 0.2
      },
      {
@@ -886,8 +883,8 @@
    "m_en": "exciting, faster, a little breathless; big on 'huge storm'"
   },
   "mi_27": {
-   "m": "滑稽的慌张，顶着风大喊，上气不接下气；“不行啦”声音劈了",
-   "m_en": "comic panic, shouting over the wind, breathless; voice cracks on 'no good'",
+   "m": "滑稽的慌张，顶着风大喊，上气不接下气；“不行啦”声音发抖",
+   "m_en": "comic panic, shouting over the wind, breathless; voice wobbles on 'no good'",
    "zh": {
     "phrases": [
      {
@@ -902,7 +899,7 @@
      },
      {
       "text": "不行啦，",
-      "instruct": "声音劈了，绝望得好笑。",
+      "instruct": "声音发抖，绝望得好笑。",
       "gap": 0.1
      },
      {
@@ -925,7 +922,7 @@
      },
      {
       "text": "It's no good,",
-      "instruct": "voice cracks, comically hopeless.",
+      "instruct": "voice wobbles, comically hopeless.",
       "gap": 0.1
      },
      {

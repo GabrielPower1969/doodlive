@@ -181,8 +181,8 @@ Voice −16 LUFS, music −20 LUFS, SFX peak −3 dBFS, 44.1 kHz mono WAV + 96 k
   Chinese: Qwen3-TTS only (Apache-2.0). Do not use `edge-tts`** (R7).
 - **Music cues**: `capernaum friends no_way roof lowering heal joy evening storm calm finale` (+ `cues.json` loops).
 - **SFX**: `crowd_murmur boing ding dig_loop crumble rope_creak sparkle cheer lake_lap thunder wind_loop wind_stop`
-  (+ `mix.json`). `wind_loop` and `dig_loop` are seamless loops; `wind_stop` ends `wind_loop` (and the rain); stop
-  `dig_loop` at shot S05.
+  (+ `mix.json`). `wind_loop` is a seamless loop; `wind_stop` ends `wind_loop` (and the rain). `dig_loop` ends at shot
+  S05: since 2026-11-18 a one-shot sized to its scene (the engine stops loops only at a music cue; PLAN.md).
 
 ## 8. Effects
 

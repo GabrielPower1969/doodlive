@@ -1,0 +1,106 @@
+{
+ "_doc": "Face decal per clip (docs/risen/CONTRACT.md §3-4, from pipeline/rs_characters.py CLIP_EXPRESSION). Integration-owned; read by tools/story/pack.py. StorySetup loads docs/risen/design/faces/<cast id>_<face>.png.",
+ "jesus": {
+  "default": "kind",
+  "clips": {
+   "idle": "kind",
+   "talk": "talk",
+   "walk": "kind",
+   "wave": "smile",
+   "appear": "joy",
+   "call_name": "gentle",
+   "hold_hands": "joy",
+   "peace": "joy",
+   "show_hands": "smile",
+   "eat_fish": "chew"
+  }
+ },
+ "mary": {
+  "default": "gentle",
+  "clips": {
+   "idle": "gentle",
+   "walk": "gentle",
+   "talk": "talk",
+   "idle_jar": "gentle",
+   "walk_jar": "gentle",
+   "sad": "sad",
+   "gasp": "gasp",
+   "peek": "amazed",
+   "run": "joy",
+   "tell": "talk",
+   "cry": "cry",
+   "talk_down": "sad",
+   "turn_joy": "joy",
+   "hold_hands": "joy",
+   "cheer": "joy"
+  }
+ },
+ "angel": {
+  "default": "smile",
+  "clips": {
+   "idle": "smile",
+   "sit_stone": "smile",
+   "wings_open": "joy",
+   "sit_talk": "talk",
+   "sit_point": "kind",
+   "sit_wave": "joy"
+  }
+ },
+ "peter": {
+  "default": "jolly",
+  "clips": {
+   "idle": "jolly",
+   "talk": "talk",
+   "walk": "jolly",
+   "laugh": "laugh",
+   "amazed": "amazed",
+   "shock": "shock",
+   "sit_sad": "sad",
+   "jump_up": "puzzled",
+   "run_puff": "puff",
+   "puff": "puff",
+   "stoop_look": "puzzled",
+   "cheer": "laugh"
+  }
+ },
+ "john": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "talk": "talk",
+   "laugh": "laugh",
+   "amazed": "amazed",
+   "sit_sad": "sad",
+   "jump_up": "amazed",
+   "run": "happy",
+   "wave_hurry": "talk",
+   "peek": "amazed",
+   "shock": "shock",
+   "cheer": "laugh"
+  }
+ },
+ "thomas": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "doubt": "doubt",
+   "shock": "shock",
+   "reach": "amazed",
+   "kneel_worship": "awe",
+   "cheer": "happy"
+  }
+ },
+ "joanna": {
+  "default": "gentle",
+  "clips": {
+   "idle": "gentle",
+   "walk": "gentle",
+   "idle_jar": "gentle",
+   "walk_jar": "gentle",
+   "sad": "sad",
+   "gasp": "gasp",
+   "peek": "gentle",
+   "run": "joy"
+  }
+ }
+}

@@ -1,0 +1,537 @@
+{
+ "_doc": "Saul Sees the Light! voice cast (docs/saul/VOICE.md). narrator / jesus / peter copied unchanged from cast_risen.json (= cast_miracles.json entries plus the timbre pin to Miracles' clips). saul / ananias / barnabas / priest / tallguard / shortguard are new VoiceDesign voices. judas has no lines. Run through tools/story/voice_saul.py (runaway guard, f0 / timbre pins).",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "saul": {
+   "zh": "扫罗",
+   "en": "Saul"
+  },
+  "ananias": {
+   "zh": "亚拿尼亚",
+   "en": "Ananias"
+  },
+  "barnabas": {
+   "zh": "巴拿巴",
+   "en": "Barnabas"
+  },
+  "priest": {
+   "zh": "大祭司",
+   "en": "The high priest"
+  },
+  "tallguard": {
+   "zh": "高个子卫兵",
+   "en": "The tall guard"
+  },
+  "shortguard": {
+   "zh": "矮个子卫兵",
+   "en": "The short guard"
+  }
+ },
+ "refZh": {},
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，嗓音温暖、清亮、柔和圆润，干净不沙哑，平静从容，亲切又带一点点俏皮的笑意，吐字清楚，像一位温柔的好老师，从不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "mfccRef": [
+     447.53,
+     -191.85,
+     217.57,
+     -144.0,
+     137.73,
+     -92.19,
+     36.22,
+     25.25,
+     -24.54,
+     10.65,
+     -37.86,
+     36.54
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，四十多岁，身材高大魁梧的渔夫，低沉浑厚的男低音，胸腔共鸣很重，嗓门大但声音低，豪爽爱笑，热心肠，像一只友好的大熊。就算大喊大叫也是低沉的大嗓门，从不尖细。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。大喊时声音也保持低沉。这一句：",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)",
+    "mfccRef": [
+     399.67,
+     -235.13,
+     186.73,
+     -187.79,
+     137.01,
+     -122.44,
+     -2.34,
+     19.14,
+     -8.22,
+     0.22,
+     -64.88,
+     36.46
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "saul": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     215
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十八岁左右的年轻人，嗓音清亮有力，偏男高音，聪明、干脆、自信，吐字清楚；生气时尖锐急促，温暖时明亮开朗，同一个人。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "young, clear, sharp-or-warm with one voice (CONTRACT §7); pinned above Jesus (120-160) so the two never blur"
+   },
+   "ananias": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     130,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，六十岁左右的老人，嗓音柔软、温和、略带沙哑和颤抖，有点絮叨，胆子小，心地善良，说话快的时候会拔高，比大个子巴拿巴年老、轻柔。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "older, softer and fussier than Barnabas; allowed to squeak in sa_18"
+   },
+   "barnabas": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，四十多岁，身材高大的男中低音，宽厚圆润、温暖的大嗓门，像一位亲切的大哥哥，慷慨、鼓励人，说话稳，从不尖细，也不粗哑，不像渔夫那样吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "big warm smooth baritone, clearly not Peter (Peter is the booming fisherman bass, 95-135)"
+   },
+   "priest": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     115,
+     165
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，七十岁左右的老祭司，嗓音干燥、平稳、缓慢，不冷也不暖，不阴险，平静克制。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "old, dry, calm, never sinister"
+   },
+   "tallguard": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     175,
+     260
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，二十多岁的瘦高个儿，声音又细又高，爱好奇，反应有点慢，滑稽，紧张时压低声音耳语。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "thin and high, the comic pair's tall half"
+   },
+   "shortguard": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     140
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "男性，四十岁左右的矮胖子，嗓音圆滚滚、粗声粗气，爱发牢骚、爱吹牛、喘着气，滑稽可笑。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音让孩子喜欢，不吓人。这一句：",
+    "why": "round and gruff, the comic pair's short half"
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman storyteller, like a mother at a child's bedside telling a Bible story to a child of four to ten: friendly, lively, natural, at a natural flowing pace, never dragging. This line: ",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man of about thirty with a warm, clear, soft and round voice, clean and never hoarse, calm and unhurried, kind with a hint of playful smile, crisp diction, like a gentle teacher who never shouts. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "mfccRef": [
+     391.03,
+     -192.24,
+     231.9,
+     -178.53,
+     147.73,
+     -97.43,
+     24.48,
+     -4.5,
+     -25.99,
+     10.75,
+     -44.5,
+     30.48
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man in his forties, a big burly fisherman with a deep, booming bass voice, heavy chest resonance, loud but low, hearty and quick to laugh, warm-hearted like a friendly bear. Even when he shouts his voice stays deep and never turns shrill. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. Keep the voice deep and low even when shouting. This line: ",
+    "why": "copied unchanged from cast_lastsupper.json (one voice across Miracles, The King Who Serves and He Is Risen)",
+    "mfccRef": [
+     394.25,
+     -257.86,
+     171.33,
+     -197.83,
+     137.03,
+     -104.7,
+     -31.6,
+     -24.74,
+     -16.34,
+     -3.42,
+     -71.62,
+     32.65
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "saul": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     215
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A young man of about twenty-eight with a clear, strong, bright tenor voice: clever, quick and sure of himself, crisp diction; sharp and clipped when angry, warm and open when happy, always the same man. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "young, clear, sharp-or-warm with one voice (CONTRACT §7); pinned above Jesus (120-160) so the two never blur"
+   },
+   "ananias": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     130,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "An elderly man of about sixty with a soft, gentle, slightly husky and quavery voice, a little fussy and timid but kind-hearted, voice squeaking higher when he is alarmed; older and lighter than a big baritone. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "older, softer and fussier than Barnabas; allowed to squeak in sa_18"
+   },
+   "barnabas": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A big man in his forties with a full, warm, round baritone, generous and encouraging like a kind older brother, steady, never shrill and never gravelly, not a shouting fisherman. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "big warm smooth baritone, clearly not Peter (Peter is the booming fisherman bass, 95-135)"
+   },
+   "priest": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     115,
+     165
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "An old priest of about seventy with a dry, level, unhurried voice, neither warm nor cold, never sinister, calm and restrained. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "old, dry, calm, never sinister"
+   },
+   "tallguard": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     175,
+     260
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A tall, thin young man in his twenties with a thin, high voice, curious and a little slow, comic, dropping to a wide-eyed whisper when nervous. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "thin and high, the comic pair's tall half"
+   },
+   "shortguard": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     140
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "design": "A short, round man of about forty with a round, gruff, puffing voice, always grumbling and boasting, comic. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Lovable to young children, never scary. This line: ",
+    "why": "round and gruff, the comic pair's short half"
+   }
+  }
+ },
+ "lines": {
+  "sa_01": {
+   "m_en": "storyteller, clear and lively; plain and calm on 抓 / 'arrest' (the only sentence about it), a small frown on 生气 / 'angry'"
+  },
+  "sa_02": {
+   "m_en": "young, hot-headed, sure of himself; loud but not shouting; a stamp on 都 / 'all'"
+  },
+  "sa_03": {
+   "m_en": "an old, dry, calm voice; neither kind nor cruel; unhurried"
+  },
+  "sa_04": {
+   "m_en": "brisk, a marching rhythm in the words"
+  },
+  "sa_05": {
+   "m_en": "a round, puffing comic voice; out of breath; whiny, funny"
+  },
+  "sa_06": {
+   "m_en": "impatient, bossy, clipped"
+  },
+  "sa_07": {
+   "m_en": "wonder, building fast; bright and amazed, never scary; a soft drop on the fall"
+  },
+  "sa_08": {
+   "m_en": "calm, warm, very clear; sad and loving, not angry; the same Jesus as in Real Miracles"
+  },
+  "sa_09": {
+   "m_en": "small and shaken, all the anger gone; almost a whisper"
+  },
+  "sa_10": {
+   "m_en": "gentle and firm; the heart of the scene; slow on 我就是耶稣 / 'I am Jesus'"
+  },
+  "sa_11": {
+   "m_en": "kind, a fresh start in the voice"
+  },
+  "sa_12": {
+   "m_en": "whispered, wide-eyed, comic"
+  },
+  "sa_13": {
+   "m_en": "quiet, puzzled, not afraid; slow"
+  },
+  "sa_14": {
+   "m_en": "tender, slow, walking pace"
+  },
+  "sa_15": {
+   "m_en": "gentle, unhurried; no sadness on 不吃也不喝 / 'did not eat'"
+  },
+  "sa_16": {
+   "m_en": "a quiet, honest prayer; humble, eyes closed; no tears"
+  },
+  "sa_17": {
+   "m_en": "calm, kind, calling a friend"
+  },
+  "sa_18": {
+   "m_en": "the comic beat: an older, fussy voice squeaking in alarm, words tumbling out; frightened in a funny way"
+  },
+  "sa_19": {
+   "m_en": "patient, warm, a smile in it; no scolding"
+  },
+  "sa_20": {
+   "m_en": "a big gulp, then brave; a little laugh at himself at the end"
+  },
+  "sa_21": {
+   "m_en": "playful storyteller, a twinkle"
+  },
+  "sa_22": {
+   "m_en": "gentle and brave; a warm weight on 弟兄 / 'Brother'"
+  },
+  "sa_23": {
+   "m_en": "a delighted lift, wonder"
+  },
+  "sa_24": {
+   "m_en": "joy bursting out; then quiet, moved, amazed at 弟兄 / 'brother'"
+  },
+  "sa_25": {
+   "m_en": "warm, glad, a happy chuckle inside the words"
+  },
+  "sa_26": {
+   "m_en": "bright and happy"
+  },
+  "sa_27": {
+   "m_en": "mouth half full, laughing, a big grin; the old anger quite gone"
+  },
+  "sa_28": {
+   "m_en": "glad, warm, strong; the same voice as the angry Saul, now full of joy"
+  },
+  "sa_29": {
+   "m_en": "thin, puzzled, comic"
+  },
+  "sa_30": {
+   "m_en": "gruff, baffled, comic"
+  },
+  "sa_31": {
+   "m_en": "a little hush, mock-suspense; not scary"
+  },
+  "sa_32": {
+   "m_en": "puffed-up, boastful, comic; a yawn creeping into the end"
+  },
+  "sa_33": {
+   "m_en": "tiptoe storytelling, quiet and twinkly"
+  },
+  "sa_34": {
+   "m_en": "from up in the window, a loud whisper, fussy and kind"
+  },
+  "sa_35": {
+   "m_en": "a happy whisper up to the window"
+  },
+  "sa_36": {
+   "m_en": "gentle, a small worry in it",
+   "zh": {
+    "seed": 21
+   }
+  },
+  "sa_37": {
+   "m_en": "big Peter, small voice; worried, comic"
+  },
+  "sa_38": {
+   "m_en": "big, warm, encouraging; a friend's arm in the voice"
+  },
+  "sa_39": {
+   "m_en": "a slow smile, then a big glad welcome"
+  },
+  "sa_40": {
+   "m_en": "joyful and sure; a happy surprise on 保罗 / 'Paul'"
+  },
+  "sa_41": {
+   "m_en": "straight to the child, warm, amazed and glad"
+  },
+  "sa_42": {
+   "m_en": "warm, slow, a hush on the last words"
+  }
+ }
+}

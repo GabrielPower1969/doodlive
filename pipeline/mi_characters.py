@@ -845,7 +845,7 @@ def compose():
         det = [("head", "face 3/4"), ("headfront", "face front"), ("handL", "left hand"), ("handR", "right hand"),
                ("props", "props shown")]
         if ch == "man":
-            det += [("mat", "the mat in the rest pose (flat on the page)"), ("matsheet", "the mat as printed")]
+            det += [("mat", "the mat in the rest pose (flat on the page)")]
         bot = grid([os.path.join(WORK, f"pv_{ch}_{v}.png") for v, _ in det], [lb for _, lb in det], 5, (384, 384),
                    "close-ups")
         ex = grid([os.path.join(WORK, f"pv_{ch}_expr_{e}.png") for e in EXPRESSIONS[ch]], EXPRESSIONS[ch], 6,
@@ -909,11 +909,11 @@ if not IN_BLENDER:
             import subprocess
             me = os.path.abspath(__file__)
             draw_faces()
-            subprocess.run([blender_bin(), "-b", "--factory-startup", "--python", me, "--", "build"], check=True,
+            subprocess.run([blender_bin(), "-b", "--factory-startup", "--python-exit-code", "1", "--python", me, "--", "build"], check=True,
                            stdout=subprocess.DEVNULL)
             proof()
             for m in ("preview", "uvcheck", "posetest", "verify"):
-                subprocess.run([blender_bin(), "-b", "--factory-startup", "--python", me, "--", m], check=True,
+                subprocess.run([blender_bin(), "-b", "--factory-startup", "--python-exit-code", "1", "--python", me, "--", m], check=True,
                                stdout=subprocess.DEVNULL)
             compose()
             v = json.load(open(os.path.join(WORK, "verify.json")))
@@ -2408,7 +2408,8 @@ def mode_build():
     print("BUILD_REPORT", json.dumps({ch: {k: v for k, v in r.items() if k != "bones"} for ch, r in report["chars"].items()}))
     if os.environ.get("MI_NO_FRIENDS") != "1":
         import subprocess
-        subprocess.run([bpy.app.binary_path, "-b", "--factory-startup", "--python", os.path.abspath(__file__), "--",
+        subprocess.run([bpy.app.binary_path, "-b", "--factory-startup", "--python-exit-code", "1", "--python",
+                        os.path.abspath(__file__), "--",
                         "friends"], check=True)
 
 
@@ -2767,6 +2768,21 @@ def design_rot_to_bl(cols):
     return (P @ Md @ P.inverted()).to_4x4()
 
 
+LIE_ARM = tuple(float(x) for x in os.environ.get("MI_LIE_ARM", "-22,22,100,70").split(","))
+
+
+def pose_rot(rig, bone, steps):
+    """Rotate a pose bone about design-space axes (applied in order) through its head, on its rest frame."""
+    pb = rig.pose.bones[bone]
+    R = Matrix.Identity(4)
+    for ax, deg in steps:
+        R = Matrix.Rotation(math.radians(deg), 4, to_bl(ax).normalized()) @ R
+    rest = pb.bone.matrix_local; h = rest.translation.copy()
+    pb.rotation_mode = 'QUATERNION'
+    pb.matrix_basis = rest.inverted() @ Matrix.Translation(h) @ R @ Matrix.Translation(-h) @ rest
+    bpy.context.view_layer.update()
+
+
 def pose_lie(rig, lift=0.0):
     """The man lying on his back on the mat (a lie_mat test, not the clip): head toward -X, face up, head a little
     raised, hands on the chest; the mat bone stays at rest. The hips are settled so the lowest body point is 1 mm
@@ -2782,18 +2798,12 @@ def pose_lie(rig, lift=0.0):
     def apply(tgt):
         pb.matrix = Matrix.Translation(tgt) @ R @ Matrix.Translation(-head) @ rest
         bpy.context.view_layer.update()
-        for side, sg in (("L", 1), ("R", -1)):          # arms down, forward, elbows bent: hands on the chest
-            pbu = rig.pose.bones["upperArm" + side]
-            restu = pbu.bone.matrix_local; hu = restu.translation.copy()
-            Ra = Matrix.Rotation(math.radians(-40), 4, to_bl(V(1, 0, 0)).normalized()) @ \
-                Matrix.Rotation(math.radians(-38 * sg), 4, to_bl(V(0, 0, 1)).normalized())
-            pbu.matrix_basis = restu.inverted() @ Matrix.Translation(hu) @ Ra @ Matrix.Translation(-hu) @ restu
+        for side, sg in (("L", 1), ("R", -1)):          # arms in to the sides, elbows bent forward: hands on the chest
+            h, t = B["upperArm" + side]; du = (t - h).normalized()
+            pose_rot(rig, "upperArm" + side, [(V(0, 0, 1), LIE_ARM[0] * sg), (V(1, 0, 0), -LIE_ARM[1])])
             h, t = B["forearm" + side]; d = (t - h).normalized()
-            pbf = rig.pose.bones["forearm" + side]
-            restf = pbf.bone.matrix_local; hf = restf.translation.copy()
-            ax = to_bl(d.cross(V(0, 0, 1)) * sg * -1).normalized()
-            pbf.matrix_basis = restf.inverted() @ Matrix.Translation(hf) @ Matrix.Rotation(math.radians(110), 4, ax) @ \
-                Matrix.Translation(-hf) @ restf
+            pose_rot(rig, "forearm" + side, [(d.cross(V(0, 0, 1)), LIE_ARM[2]), (V(0, 1, 0), -LIE_ARM[3] * sg)])
+        bend(rig, "sash1", V(1, 0, 0), 12)              # the sash end rests on the thigh
         bend(rig, "neck", V(1, 0, 0), 14)
         bpy.context.view_layer.update()
         body = bpy.data.objects["man_body"]
@@ -2856,6 +2866,20 @@ def mode_posetest():
     print("POSETEST done", json.dumps(out))
 
 
+def mode_lie():
+    """Only the lying test (pose_lie): $MI_WORK/pose_man_lie*.png (quick look while tuning LIE_ARM)."""
+    preview_setup()
+    cam = camera(); rig = bpy.data.objects["man_rig"]
+    show(["man"], mat=True)
+    info = pose_lie(rig)
+    x = rig.location.x; zb = rig.location.z
+    sc().render.resolution_x, sc().render.resolution_y = 960, 720
+    for nm, yaw, dist, h in (("lie", 0, 0.95, 0.30), ("lieq", 40, 0.85, 0.35), ("liephone", 15, 1.0, 0.80)):
+        turntable(cam, Vector((x, MAT["cz"] * -1, zb + 0.04)), yaw, dist, h, 50)
+        render(os.path.join(WORK, f"pose_man_{nm}.png"))
+    print("LIE", json.dumps(info))
+
+
 def mode_uvcheck():
     """Models wearing $MI_WORK/uvproof.png (or $MI_UV_TEXTURE) through UV0: front ortho with the mat stood up as
     printed (must equal the sheet), 3/4 + back perspective, the mat lying flat from above and 3/4."""
@@ -2876,7 +2900,9 @@ def mode_uvcheck():
     sc().view_settings.view_transform = 'Standard'
     cam = front_ortho_camera()
     mat_sheet_pose(True)
-    bpy.data.objects["backdrop"].hide_render = True; bpy.data.objects["floor"].hide_render = True
+    for nm_ in ("backdrop", "floor"):                      # made by the kit's turntable(); may not exist yet
+        if bpy.data.objects.get(nm_):
+            bpy.data.objects[nm_].hide_render = True
     sc().world.node_tree.nodes["Background"].inputs[1].default_value = 1.6
     for L in ("key", "rim", "fill"):
         bpy.data.objects[L].hide_render = True
@@ -2884,7 +2910,9 @@ def mode_uvcheck():
     mat_sheet_pose(False)
     for L in ("key", "rim", "fill"):
         bpy.data.objects[L].hide_render = False
-    bpy.data.objects["backdrop"].hide_render = False; bpy.data.objects["floor"].hide_render = False
+    for nm_ in ("backdrop", "floor"):
+        if bpy.data.objects.get(nm_):
+            bpy.data.objects[nm_].hide_render = False
     sc().world.node_tree.nodes["Background"].inputs[1].default_value = 0.55
     sc().render.resolution_x, sc().render.resolution_y = 1600, 900
     mo = bpy.data.objects["man_mat"]
@@ -2933,7 +2961,10 @@ def mode_verify():
             u0 = [uvl[0].data[i].uv for i in range(0, n0, max(1, n0 // 2000))]
             u1 = [uvl[1].data[i].uv for i in range(0, n0, max(1, n0 // 2000))] if len(uvl) > 1 else []
             layer0_page = all(-0.01 <= a.x <= 1.01 and -0.01 <= a.y <= 1.01 for a in u0)
-            layer1_decal = (len(u1) > 0 and any(a.x < -0.5 for a in u1))
+            # UV1 = decal layer: decal faces in the decal square, the rest parked at x < -0.5; a mesh that is fixed
+            # colour only (the man's ropes) points every corner at a swatch inside 0-1, which is also valid
+            layer1_decal = (len(u1) > 0 and (any(a.x < -0.5 for a in u1) or
+                                             all(0.0 <= a.x <= 1.0 and 0.0 <= a.y <= 1.0 for a in u1)))
             info.setdefault("uvOrderOK", True)
             info["uvOrderOK"] &= layer0_page and layer1_decal
             info["meshes"][o.name] = {"skinned": any(m.type == 'ARMATURE' for m in o.modifiers),
@@ -2961,6 +2992,6 @@ def mode_verify():
 
 if __name__ == "__main__":
     {"build": mode_build, "friends": mode_friends, "preview": mode_preview, "posetest": mode_posetest,
-     "verify": mode_verify, "uvcheck": mode_uvcheck,
+     "verify": mode_verify, "uvcheck": mode_uvcheck, "lie": mode_lie,
      "all": lambda: __import__("subprocess").run([os.environ.get("PYTHON3", "python3"), os.path.abspath(__file__), "all"],
                                                  check=True)}[MODE]()

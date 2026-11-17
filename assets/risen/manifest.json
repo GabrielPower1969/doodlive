@@ -1,0 +1,80 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "risen",
+ "registry": {
+  "id": "risen",
+  "engine": "story",
+  "order": 11,
+  "title_zh": "他复活了！",
+  "title_en": "He Is Risen!",
+  "sheets": [
+   "risen-A4",
+   "risen-A4-demo"
+  ],
+  "cast": [
+   "jesus",
+   "mary",
+   "angel",
+   "peter",
+   "john",
+   "thomas",
+   "joanna"
+  ],
+  "paint": {
+   "peter": "extras_paint.png",
+   "john": "extras_paint.png",
+   "thomas": "extras_paint.png",
+   "joanna": "extras_paint.png"
+  },
+  "set": "garden",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "risen",
+  "pinyin": "tā fù huó le",
+  "blurb_zh": "清早，大石头滚开了，天使说：“他不在这里，他复活了！”马利亚在花园里听见耶稣叫她的名字，彼得和约翰赛跑去看空坟墓——耶稣活着，他说到做到！",
+  "blurb_en": "Early in the morning the big stone is rolled away and an angel says: “He is not here, He is risen!” Mary hears Jesus say her name in the garden, Peter and John race to the empty tomb: Jesus is alive, and He keeps His promises!",
+  "minutes": 4,
+  "after": "lastsupper",
+  "cover": {
+   "video": "demo-risen-f040dc5-dirty.20261117-1609.mp4",
+   "t": 62
+  }
+ },
+ "strings": {
+  "dg_jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "dg_peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "dg_john": {
+   "zh": "约翰",
+   "en": "John"
+  },
+  "dg_risen_mary": {
+   "zh": "马利亚",
+   "en": "Mary"
+  },
+  "dg_risen_angel": {
+   "zh": "天使",
+   "en": "The angel"
+  },
+  "dg_thomas": {
+   "zh": "多马",
+   "en": "Thomas"
+  },
+  "dg_joanna": {
+   "zh": "约亚拿",
+   "en": "Joanna"
+  }
+ },
+ "fx": {
+  "class": "RisenFx",
+  "note": "He Is Risen! (StoryFxRisen.cs: tomb_glow, butterflies; CONTRACT §8)",
+  "aliases": {}
+ }
+}

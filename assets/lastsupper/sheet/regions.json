@@ -1,0 +1,1035 @@
+{
+ "note": "regions.png pixel value = id (0 = paper), same pixels as lineart.png. Cast: rest pose, front orthographic (UV0 front projection at characters.<id>.sheetX/sheetY). char 'set': drawings of the set (design.json set.drawings; 'part' = drawing, 'nodes' = the set nodes that sample it). Parts with detailOf are printed as detail lines and take that region's colour (anchorUV).",
+ "ids": [
+  {
+   "id": 1,
+   "char": "donkey",
+   "part": "body",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 2,
+   "char": "donkey",
+   "part": "haunchL",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 3,
+   "char": "donkey",
+   "part": "shoulderL",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 4,
+   "char": "donkey",
+   "part": "haunchR",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 5,
+   "char": "donkey",
+   "part": "shoulderR",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 6,
+   "char": "donkey",
+   "part": "legFL",
+   "piece": 0,
+   "region": "coat@legFL",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 7,
+   "char": "donkey",
+   "part": "legFL",
+   "piece": 0,
+   "region": "hooves",
+   "hex": "#3A3230",
+   "detailOf": "coat"
+  },
+  {
+   "id": 8,
+   "char": "donkey",
+   "part": "legBL",
+   "piece": 0,
+   "region": "coat@legBL",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 9,
+   "char": "donkey",
+   "part": "legBL",
+   "piece": 0,
+   "region": "hooves",
+   "hex": "#3A3230",
+   "detailOf": "coat"
+  },
+  {
+   "id": 10,
+   "char": "donkey",
+   "part": "legFR",
+   "piece": 0,
+   "region": "coat@legFR",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 11,
+   "char": "donkey",
+   "part": "legFR",
+   "piece": 0,
+   "region": "hooves",
+   "hex": "#3A3230",
+   "detailOf": "coat"
+  },
+  {
+   "id": 12,
+   "char": "donkey",
+   "part": "legBR",
+   "piece": 0,
+   "region": "coat@legBR",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 13,
+   "char": "donkey",
+   "part": "legBR",
+   "piece": 0,
+   "region": "hooves",
+   "hex": "#3A3230",
+   "detailOf": "coat"
+  },
+  {
+   "id": 14,
+   "char": "donkey",
+   "part": "neck",
+   "piece": 0,
+   "region": "coat@neck",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 15,
+   "char": "donkey",
+   "part": "face",
+   "piece": 0,
+   "region": "coat",
+   "hex": "#9C9A96"
+  },
+  {
+   "id": 16,
+   "char": "donkey",
+   "part": "muzzle",
+   "piece": 0,
+   "region": "muzzle",
+   "hex": "#EFE6D2"
+  },
+  {
+   "id": 17,
+   "char": "donkey",
+   "part": "earL",
+   "piece": 0,
+   "region": "coat@earL",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 18,
+   "char": "donkey",
+   "part": "earL",
+   "piece": 0,
+   "region": "muzzle@earL",
+   "hex": "#EFE6D2",
+   "detailOf": "muzzle"
+  },
+  {
+   "id": 19,
+   "char": "donkey",
+   "part": "earL",
+   "piece": 0,
+   "region": "mane@earL",
+   "hex": "#3E3A38",
+   "detailOf": "mane"
+  },
+  {
+   "id": 20,
+   "char": "donkey",
+   "part": "earR",
+   "piece": 0,
+   "region": "coat@earR",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 21,
+   "char": "donkey",
+   "part": "earR",
+   "piece": 0,
+   "region": "muzzle@earR",
+   "hex": "#EFE6D2",
+   "detailOf": "muzzle"
+  },
+  {
+   "id": 22,
+   "char": "donkey",
+   "part": "earR",
+   "piece": 0,
+   "region": "mane@earR",
+   "hex": "#3E3A38",
+   "detailOf": "mane"
+  },
+  {
+   "id": 23,
+   "char": "donkey",
+   "part": "mane",
+   "piece": 0,
+   "region": "mane",
+   "hex": "#3E3A38"
+  },
+  {
+   "id": 24,
+   "char": "donkey",
+   "part": "tail",
+   "piece": 0,
+   "region": "coat@tail",
+   "hex": "#9C9A96",
+   "detailOf": "coat"
+  },
+  {
+   "id": 25,
+   "char": "donkey",
+   "part": "tail",
+   "piece": 0,
+   "region": "mane",
+   "hex": "#3E3A38"
+  },
+  {
+   "id": 26,
+   "char": "donkey",
+   "part": "blanket",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#D9A93A",
+   "detailOf": "blanket"
+  },
+  {
+   "id": 27,
+   "char": "donkey",
+   "part": "blanket",
+   "piece": 0,
+   "region": "blanket",
+   "hex": "#C2453A"
+  },
+  {
+   "id": 28,
+   "char": "jesus",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#C99268"
+  },
+  {
+   "id": 29,
+   "char": "jesus",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#4A3020"
+  },
+  {
+   "id": 30,
+   "char": "jesus",
+   "part": "beard",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#4A3020"
+  },
+  {
+   "id": 31,
+   "char": "jesus",
+   "part": "tunic",
+   "piece": 0,
+   "region": "tunic",
+   "hex": "#F2E8D2"
+  },
+  {
+   "id": 32,
+   "char": "jesus",
+   "part": "tunic",
+   "piece": 1,
+   "region": "tunic",
+   "hex": "#F2E8D2"
+  },
+  {
+   "id": 33,
+   "char": "jesus",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin@handL",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 34,
+   "char": "jesus",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin@legL",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 35,
+   "char": "jesus",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin@legL",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 36,
+   "char": "jesus",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 37,
+   "char": "jesus",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin@handR",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 38,
+   "char": "jesus",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin@legR",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 39,
+   "char": "jesus",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin@legR",
+   "hex": "#C99268",
+   "detailOf": "skin"
+  },
+  {
+   "id": 40,
+   "char": "jesus",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 41,
+   "char": "jesus",
+   "part": "mantle",
+   "piece": 0,
+   "region": "mantle",
+   "hex": "#9A5B34"
+  },
+  {
+   "id": 42,
+   "char": "jesus",
+   "part": "mantle",
+   "piece": 1,
+   "region": "mantle",
+   "hex": "#9A5B34"
+  },
+  {
+   "id": 43,
+   "char": "jesus",
+   "part": "belt",
+   "piece": 0,
+   "region": "belt",
+   "hex": "#D2AE74"
+  },
+  {
+   "id": 44,
+   "char": "jesus",
+   "part": "beltFringe",
+   "piece": 0,
+   "region": "belt@beltFringe",
+   "hex": "#D2AE74",
+   "detailOf": "belt"
+  },
+  {
+   "id": 45,
+   "char": "jesus",
+   "part": "sandalL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 46,
+   "char": "jesus",
+   "part": "sandalR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 47,
+   "char": "jesus",
+   "part": "towel",
+   "piece": 0,
+   "region": "towel",
+   "hex": "#F5F1E6",
+   "detailOf": "set.cloth"
+  },
+  {
+   "id": 48,
+   "char": "jesus",
+   "part": "basin",
+   "piece": 0,
+   "region": "basin",
+   "hex": "#C46A3E",
+   "detailOf": "set.clay"
+  },
+  {
+   "id": 49,
+   "char": "jesus",
+   "part": "bread",
+   "piece": 0,
+   "region": "bread",
+   "hex": "#C98A4A",
+   "detailOf": "set.bread"
+  },
+  {
+   "id": 50,
+   "char": "jesus",
+   "part": "cup",
+   "piece": 0,
+   "region": "cup",
+   "hex": "#C46A3E",
+   "detailOf": "set.clay"
+  },
+  {
+   "id": 51,
+   "char": "peter",
+   "part": "face",
+   "piece": 0,
+   "region": "skin",
+   "hex": "#BF8460"
+  },
+  {
+   "id": 52,
+   "char": "peter",
+   "part": "hair",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#231A16"
+  },
+  {
+   "id": 53,
+   "char": "peter",
+   "part": "headcloth",
+   "piece": 0,
+   "region": "headcloth",
+   "hex": "#6E8AA6"
+  },
+  {
+   "id": 54,
+   "char": "peter",
+   "part": "beard",
+   "piece": 0,
+   "region": "hair",
+   "hex": "#231A16"
+  },
+  {
+   "id": 55,
+   "char": "peter",
+   "part": "tunic",
+   "piece": 0,
+   "region": "tunic",
+   "hex": "#B4502F"
+  },
+  {
+   "id": 56,
+   "char": "peter",
+   "part": "tunic",
+   "piece": 1,
+   "region": "tunic",
+   "hex": "#B4502F"
+  },
+  {
+   "id": 57,
+   "char": "peter",
+   "part": "armL",
+   "piece": 0,
+   "region": "skin@armL",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 58,
+   "char": "peter",
+   "part": "handL",
+   "piece": 0,
+   "region": "skin@handL",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 59,
+   "char": "peter",
+   "part": "armR",
+   "piece": 0,
+   "region": "skin@armR",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 60,
+   "char": "peter",
+   "part": "handR",
+   "piece": 0,
+   "region": "skin@handR",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 61,
+   "char": "peter",
+   "part": "kneeL",
+   "piece": 0,
+   "region": "skin@kneeL",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 62,
+   "char": "peter",
+   "part": "legL",
+   "piece": 1,
+   "region": "skin@legL",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 63,
+   "char": "peter",
+   "part": "legL",
+   "piece": 0,
+   "region": "skin@legL",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 64,
+   "char": "peter",
+   "part": "legL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 65,
+   "char": "peter",
+   "part": "sandalL",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 66,
+   "char": "peter",
+   "part": "kneeR",
+   "piece": 0,
+   "region": "skin@kneeR",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 67,
+   "char": "peter",
+   "part": "legR",
+   "piece": 1,
+   "region": "skin@legR",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 68,
+   "char": "peter",
+   "part": "legR",
+   "piece": 0,
+   "region": "skin@legR",
+   "hex": "#BF8460",
+   "detailOf": "skin"
+  },
+  {
+   "id": 69,
+   "char": "peter",
+   "part": "legR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 70,
+   "char": "peter",
+   "part": "sandalR",
+   "piece": 0,
+   "region": "sandals",
+   "hex": "#7A4E2E",
+   "detailOf": "tunic"
+  },
+  {
+   "id": 71,
+   "char": "peter",
+   "part": "vest",
+   "piece": 0,
+   "region": "vest",
+   "hex": "#D9C29A"
+  },
+  {
+   "id": 72,
+   "char": "peter",
+   "part": "waistcloth",
+   "piece": 0,
+   "region": "waistcloth",
+   "hex": "#5A3A26"
+  },
+  {
+   "id": 73,
+   "char": "peter",
+   "part": "rope",
+   "piece": 0,
+   "region": "rope",
+   "hex": "#C8A472",
+   "detailOf": "waistcloth"
+  },
+  {
+   "id": 74,
+   "char": "peter",
+   "part": "palm",
+   "piece": 0,
+   "region": "palm",
+   "hex": "#5E9A48",
+   "detailOf": "set.palmLeaf"
+  },
+  {
+   "id": 75,
+   "char": "peter",
+   "part": "towel",
+   "piece": 0,
+   "region": "towel",
+   "hex": "#F5F1E6",
+   "detailOf": "set.cloth"
+  },
+  {
+   "id": 76,
+   "char": "peter",
+   "part": "jug",
+   "piece": 0,
+   "region": "jug",
+   "hex": "#C46A3E",
+   "detailOf": "set.clay"
+  },
+  {
+   "id": 77,
+   "char": "set",
+   "part": "hills",
+   "piece": 0,
+   "region": "hills",
+   "hex": "#8E9E62",
+   "nodes": [
+    "hills"
+   ]
+  },
+  {
+   "id": 78,
+   "char": "set",
+   "part": "house",
+   "piece": 0,
+   "region": "stone",
+   "hex": "#E9D6A8",
+   "nodes": [
+    "house",
+    "stair"
+   ]
+  },
+  {
+   "id": 79,
+   "char": "set",
+   "part": "house",
+   "piece": 0,
+   "region": "door",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "house",
+    "stair",
+    "basinStand",
+    "bench",
+    "crowd1",
+    "crowd2",
+    "crowd3",
+    "crowd4",
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8",
+    "lowTable",
+    "oliveTree",
+    "palmTree"
+   ]
+  },
+  {
+   "id": 80,
+   "char": "set",
+   "part": "room",
+   "piece": 0,
+   "region": "plaster",
+   "hex": "#EBD2A6",
+   "nodes": [
+    "houseIn",
+    "crowd1",
+    "crowd2",
+    "crowd3",
+    "crowd4",
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8",
+    "houseIn"
+   ]
+  },
+  {
+   "id": 81,
+   "char": "set",
+   "part": "room",
+   "piece": 0,
+   "region": "sky",
+   "hex": "#2E4A86",
+   "nodes": [
+    "houseIn",
+    "crowd7"
+   ]
+  },
+  {
+   "id": 82,
+   "char": "set",
+   "part": "room",
+   "piece": 0,
+   "region": "mats",
+   "hex": "#D8BE8E",
+   "nodes": [
+    "houseIn",
+    "crowd2",
+    "crowd6"
+   ]
+  },
+  {
+   "id": 83,
+   "char": "set",
+   "part": "table",
+   "piece": 0,
+   "region": "cloth",
+   "hex": "#F5F1E6",
+   "nodes": [
+    "lowTable"
+   ]
+  },
+  {
+   "id": 84,
+   "char": "set",
+   "part": "facade",
+   "piece": 0,
+   "region": "facade",
+   "hex": "#F4EEDD",
+   "nodes": [
+    "templeFront",
+    "cages",
+    "courtWall",
+    "crowd1",
+    "crowd3",
+    "crowd5",
+    "templeFront"
+   ]
+  },
+  {
+   "id": 85,
+   "char": "set",
+   "part": "facade",
+   "piece": 0,
+   "region": "gold",
+   "hex": "#D9A93A",
+   "nodes": [
+    "templeFront",
+    "crowd8"
+   ]
+  },
+  {
+   "id": 86,
+   "char": "set",
+   "part": "facade",
+   "piece": 0,
+   "region": "bronze",
+   "hex": "#A8743E",
+   "nodes": [
+    "templeFront",
+    "crowd5"
+   ]
+  },
+  {
+   "id": 87,
+   "char": "set",
+   "part": "palm",
+   "piece": 0,
+   "region": "leaf",
+   "hex": "#5E9A48",
+   "nodes": [
+    "palmTree",
+    "lowTable"
+   ]
+  },
+  {
+   "id": 88,
+   "char": "set",
+   "part": "olive",
+   "piece": 0,
+   "region": "olive",
+   "hex": "#8AA06A",
+   "nodes": [
+    "oliveTree",
+    "crowd3"
+   ]
+  },
+  {
+   "id": 89,
+   "char": "set",
+   "part": "awnings",
+   "piece": 0,
+   "region": "red",
+   "hex": "#C2453A",
+   "nodes": [
+    "awnings",
+    "bench",
+    "crowd2",
+    "lowTable"
+   ]
+  },
+  {
+   "id": 90,
+   "char": "set",
+   "part": "awnings",
+   "piece": 0,
+   "region": "cream",
+   "hex": "#F1E3C4",
+   "nodes": [
+    "awnings"
+   ]
+  },
+  {
+   "id": 91,
+   "char": "set",
+   "part": "ground",
+   "piece": 0,
+   "region": "road",
+   "hex": "#E8D5A8",
+   "nodes": [
+    "road",
+    "temple",
+    "ground"
+   ]
+  },
+  {
+   "id": 92,
+   "char": "set",
+   "part": "ground",
+   "piece": 0,
+   "region": "paving",
+   "hex": "#EADFC4",
+   "nodes": [
+    "road",
+    "temple",
+    "ground"
+   ]
+  },
+  {
+   "id": 93,
+   "char": "set",
+   "part": "ground",
+   "piece": 0,
+   "region": "ground",
+   "hex": "#C9C08A",
+   "nodes": [
+    "road",
+    "temple",
+    "ground",
+    "stones"
+   ]
+  },
+  {
+   "id": 94,
+   "char": "set",
+   "part": "stall1",
+   "piece": 0,
+   "region": "wood",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "table1",
+    "cages",
+    "awnings",
+    "table1"
+   ]
+  },
+  {
+   "id": 95,
+   "char": "set",
+   "part": "stall1",
+   "piece": 0,
+   "region": "wicker",
+   "hex": "#D2AE74",
+   "nodes": [
+    "table1",
+    "cages",
+    "cagesOpen"
+   ]
+  },
+  {
+   "id": 96,
+   "char": "set",
+   "part": "stall2",
+   "piece": 0,
+   "region": "wood",
+   "hex": "#8A5A3B",
+   "nodes": [
+    "table2",
+    "table2",
+    "table2Tipped"
+   ]
+  },
+  {
+   "id": 97,
+   "char": "set",
+   "part": "stall2",
+   "piece": 0,
+   "region": "coins",
+   "hex": "#E8C04A",
+   "nodes": [
+    "table2",
+    "coinsFloor",
+    "table2"
+   ]
+  },
+  {
+   "id": 98,
+   "char": "set",
+   "part": "palms",
+   "piece": 0,
+   "region": "palmLeaf",
+   "hex": "#5E9A48",
+   "nodes": [
+    "palmsRoad",
+    "crowd1",
+    "crowd2",
+    "crowd3",
+    "crowd4",
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8"
+   ]
+  },
+  {
+   "id": 99,
+   "char": "set",
+   "part": "palms",
+   "piece": 0,
+   "region": "coatRed",
+   "hex": "#C2453A",
+   "nodes": [
+    "palmsRoad",
+    "crowd6",
+    "lowTable"
+   ]
+  },
+  {
+   "id": 100,
+   "char": "set",
+   "part": "palms",
+   "piece": 0,
+   "region": "coatBlue",
+   "hex": "#4E7FB8",
+   "nodes": [
+    "palmsRoad",
+    "basinJug",
+    "crowd1"
+   ]
+  },
+  {
+   "id": 101,
+   "char": "set",
+   "part": "palms",
+   "piece": 0,
+   "region": "coatYellow",
+   "hex": "#E8C04A",
+   "nodes": [
+    "palmsRoad",
+    "crowd4"
+   ]
+  },
+  {
+   "id": 102,
+   "char": "set",
+   "part": "supper",
+   "piece": 0,
+   "region": "bread",
+   "hex": "#C98A4A",
+   "nodes": [
+    "breadLoaf",
+    "cupTable"
+   ]
+  },
+  {
+   "id": 103,
+   "char": "set",
+   "part": "supper",
+   "piece": 0,
+   "region": "clay",
+   "hex": "#C46A3E",
+   "nodes": [
+    "breadLoaf",
+    "cupTable",
+    "basinJug",
+    "lamp1",
+    "lamp2",
+    "lowTable"
+   ]
+  }
+ ]
+}

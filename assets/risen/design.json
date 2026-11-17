@@ -1,0 +1,2104 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as every story pack; faces come from decals"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "他复活了",
+   "pinyin": "tā fù huó le",
+   "english": "He Is Risen!",
+   "box": 76,
+   "gap": 40,
+   "cy": 110,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box / gap / cy from tools/story/sheet_risen.py title-search: worst NCC 0.402 (daniel-A4) against every other registered sheet (incl. The King Who Serves and Real Miracles)"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "马太福音 28 · 约翰福音 20 · Matthew 28; John 20"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy keeps the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "angel": {
+   "height": 0.4,
+   "sheetX": -0.32,
+   "sheetY": 0.015,
+   "note": "height = head top 0.40; wing tops 0.46; wings spread <= +-0.14 from sheetX (CONTRACT §2), so they clear Jesus's A-pose hands (~ -0.12) and the page edge"
+  },
+  "jesus": {
+   "height": 0.36,
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "mary": {
+   "height": 0.34,
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/rs_garden.py",
+  "doc": "docs/risen/SET.md",
+  "contract": "docs/risen/CONTRACT.md §6",
+  "root": "garden",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "ground": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "path": [
+    0.0,
+    0.0,
+    0.08
+   ],
+   "flowers": [
+    -0.42,
+    0.0,
+    0.11
+   ],
+   "gardenWall": [
+    -0.04,
+    0.0,
+    -0.0
+   ],
+   "tombHill": [
+    -0.28,
+    0.04,
+    -0.24
+   ],
+   "tombDoor": [
+    -0.33,
+    0.15,
+    -0.3
+   ],
+   "cloths": [
+    -0.356,
+    0.0,
+    -0.454
+   ],
+   "groove": [
+    -0.295,
+    0.0,
+    -0.285
+   ],
+   "tombStone": [
+    -0.33,
+    0.19,
+    -0.285
+   ],
+   "tombStoneAside": [
+    -0.1126,
+    0.19,
+    -0.4103
+   ],
+   "gardenTools": [
+    -0.575,
+    0.0,
+    -0.25
+   ],
+   "olive1": [
+    0.0,
+    0.0,
+    -0.565
+   ],
+   "olive2": [
+    -0.57,
+    0.0,
+    -0.05
+   ],
+   "house": [
+    0.33,
+    0.1,
+    -0.38
+   ],
+   "houseIn": [
+    0.33,
+    0.1,
+    -0.38
+   ],
+   "stair": [
+    0.04,
+    0.0,
+    -0.25
+   ],
+   "roomDoor": [
+    0.06,
+    0.1,
+    -0.3
+   ],
+   "bench": [
+    0.32,
+    0.1,
+    -0.535
+   ],
+   "lowTable": [
+    0.511,
+    0.1,
+    -0.31
+   ],
+   "fishPlate": [
+    0.5,
+    0.15,
+    -0.31
+   ],
+   "fishOnPlate": [
+    0.5,
+    0.153,
+    -0.31
+   ],
+   "lamp2": [
+    0.523,
+    0.161,
+    -0.344
+   ],
+   "waterJar": [
+    0.12,
+    0.1,
+    -0.53
+   ],
+   "lamp1": [
+    0.335,
+    0.331,
+    -0.57
+   ],
+   "hills": [
+    -0.27,
+    0.0,
+    -0.5845
+   ],
+   "cityWall": [
+    0.33,
+    0.0,
+    -0.5845
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "tombHill": {
+    "x": [
+     -0.6,
+     -0.04
+    ],
+    "faceZ": "-0.312 along the door and the groove (x <= -0.235), receding to -0.467 at x -0.17 and -0.577 at the right end",
+    "top": 0.4099
+   },
+   "tombDoor": {
+    "x": [
+     -0.395,
+     -0.265
+    ],
+    "top": 0.34,
+    "anchor": [
+     -0.33,
+     0.15,
+     -0.3
+    ],
+    "chamber": {
+     "x": [
+      -0.42,
+      -0.24
+     ],
+     "z": [
+      -0.48,
+      -0.32
+     ],
+     "ceiling": 0.36
+    }
+   },
+   "cloths": {
+    "ledge": {
+     "x": [
+      -0.412,
+      -0.3
+     ],
+     "z": [
+      -0.478,
+      -0.43
+     ],
+     "top": 0.075
+    }
+   },
+   "tombStone": {
+    "centre": [
+     -0.33,
+     0.19,
+     -0.285
+    ],
+    "radius": 0.195,
+    "thickness": 0.05
+   },
+   "tombStoneAside": {
+    "centre": [
+     -0.1126,
+     0.19,
+     -0.4103
+    ],
+    "top": 0.38,
+    "yawDeg": 40.0,
+    "angelY": 0.345
+   },
+   "groove": {
+    "x": [
+     -0.54,
+     -0.05
+    ],
+    "z": [
+     -0.31,
+     -0.26
+    ],
+    "top": 0.006
+   },
+   "gardenTools": [
+    -0.575,
+    -0.25
+   ],
+   "gardenWall": {
+    "x": [
+     -0.048,
+     -0.032
+    ],
+    "z": [
+     -0.28,
+     0.21
+    ],
+    "h": 0.026,
+    "gate": [
+     -0.008,
+     0.128
+    ]
+   },
+   "flowers": {
+    "front": [
+     -0.6,
+     -0.3,
+     0.04,
+     0.2
+    ],
+    "hillFoot": [
+     -0.6,
+     -0.46,
+     -0.29,
+     -0.2
+    ],
+    "bloomTop": 0.038
+   },
+   "olive1": {
+    "trunk": [
+     0.0,
+     -0.565
+    ],
+    "crownUnderside": 0.24
+   },
+   "olive2": {
+    "trunk": [
+     -0.57,
+     -0.05
+    ],
+    "crownUnderside": 0.21
+   },
+   "house": {
+    "x": [
+     0.06,
+     0.6
+    ],
+    "z": [
+     -0.5875,
+     -0.22
+    ],
+    "groundStorey": 0.1,
+    "room": {
+     "x": [
+      0.08,
+      0.58
+     ],
+     "z": [
+      -0.58,
+      -0.22
+     ],
+     "floor": 0.1
+    },
+    "walls": {
+     "left": [
+      0.06,
+      0.08
+     ],
+     "right": [
+      0.58,
+      0.6
+     ],
+     "back": [
+      -0.584,
+      -0.58
+     ],
+     "backTop": 0.46,
+     "leftTop": "0.46 behind z -0.40, 0.40 over the door part, down to the sill at the front",
+     "rightTop": "0.46 behind z -0.42, sloping to 0.14 at z -0.22"
+    },
+    "sill": {
+     "z": [
+      -0.24,
+      -0.22
+     ],
+     "top": 0.11
+    },
+    "door": {
+     "x": [
+      0.25,
+      0.35
+     ],
+     "top": 0.096
+    },
+    "window": [
+     0.44,
+     0.53,
+     0.035,
+     0.082
+    ],
+    "stair": {
+     "x": [
+      0.022,
+      0.058
+     ],
+     "z": [
+      -0.155,
+      -0.345
+     ],
+     "top": 0.1
+    }
+   },
+   "roomDoor": {
+    "z": [
+     -0.34,
+     -0.26
+    ],
+    "top": 0.37,
+    "x": [
+     0.06,
+     0.068
+    ]
+   },
+   "bench": {
+    "x": [
+     0.14,
+     0.5
+    ],
+    "z": [
+     -0.56,
+     -0.51
+    ],
+    "seat": 0.14
+   },
+   "lowTable": {
+    "x": [
+     0.462,
+     0.56
+    ],
+    "z": [
+     -0.36,
+     -0.26
+    ],
+    "top": 0.15000000000000002,
+    "fishPlate": [
+     0.5,
+     -0.31
+    ],
+    "basket": [
+     0.537,
+     -0.279
+    ],
+    "lamp2": [
+     0.542,
+     -0.344
+    ]
+   },
+   "waterJar": {
+    "at": [
+     0.12,
+     -0.53
+    ],
+    "top": 0.22
+   },
+   "lamp1": {
+    "shelf": [
+     0.3,
+     0.34,
+     0.32
+    ],
+    "at": [
+     0.32,
+     -0.57
+    ]
+   },
+   "hills": {
+    "x": [
+     -0.6,
+     0.06
+    ],
+    "z": [
+     -0.5875,
+     -0.5845
+    ]
+   },
+   "cityWall": {
+    "x": [
+     0.06,
+     0.6
+    ],
+    "z": [
+     -0.5875,
+     -0.5845
+    ],
+    "top": 0.64
+   }
+  },
+  "hiddenAtStart": [
+   "tombStoneAside"
+  ],
+  "propAnchors": {
+   "jesus/fish": {
+    "region": [
+     "props",
+     "fish"
+    ],
+    "uv": [
+     0.4955,
+     0.70864
+    ]
+   },
+   "mary/jar": {
+    "region": [
+     "props",
+     "clay"
+    ],
+    "uv": [
+     0.3905,
+     0.64996
+    ]
+   },
+   "joanna/jar": {
+    "region": [
+     "props",
+     "clay"
+    ],
+    "uv": [
+     0.3905,
+     0.64996
+    ]
+   }
+  },
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227",
+   "drawingModel": "P = the vertex, except props (moved / scaled into one still life), olive2 (beside olive1) and the blooms (template instances)",
+   "edgeOn": "faces with |n . D| < 0.22 (n in drawing space) take one clean texel of their region",
+   "namedTexels": "no-raster bits take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "skyline": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 2.2,
+    "cx": -0.2025,
+    "y0": 1.08,
+    "decorOnly": [
+     "hills",
+     "cityStone"
+    ],
+    "members": [
+     "hills",
+     "cityWall"
+    ],
+    "sheetX": -0.2025,
+    "sheetY": 0.90727,
+    "bboxSheet": [
+     -0.4752,
+     1.08,
+     0.0702,
+     1.2045
+    ]
+   },
+   "tomb": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.45
+    ],
+    "D": [
+     0.0,
+     0.45,
+     1
+    ],
+    "scale": 1.9,
+    "cx": -0.33,
+    "y0": 0.75,
+    "decorOnly": [
+     "rock"
+    ],
+    "members": [
+     "tombHill",
+     "tombDoor"
+    ],
+    "sheetX": -0.16158,
+    "sheetY": 0.67611,
+    "bboxSheet": [
+     -0.4774,
+     0.75,
+     -0.1826,
+     1.007
+    ]
+   },
+   "house": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.5
+    ],
+    "D": [
+     0.0,
+     0.5,
+     1
+    ],
+    "scale": 2.25,
+    "cx": 0.34,
+    "y0": 0.62,
+    "members": [
+     "house",
+     "stair"
+    ],
+    "sheetX": 0.20178,
+    "sheetY": 0.58556,
+    "bboxSheet": [
+     0.2116,
+     0.62,
+     0.4684,
+     0.9264
+    ]
+   },
+   "room": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.35
+    ],
+    "D": [
+     0.0,
+     0.35,
+     1
+    ],
+    "scale": 2.3,
+    "cx": 0.358,
+    "y0": 0.385,
+    "decorOnly": [
+     "mats"
+    ],
+    "members": [
+     "houseIn"
+    ],
+    "sheetX": 0.21452,
+    "sheetY": 0.30804,
+    "bboxSheet": [
+     0.2493,
+     0.385,
+     0.4667,
+     0.5969
+    ]
+   },
+   "props": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.8
+    ],
+    "D": [
+     0.0,
+     0.8,
+     1
+    ],
+    "scale": 0.6,
+    "cx": 0.028,
+    "y0": 0.556,
+    "members": [
+     "lowTable",
+     "fishPlate",
+     "fishOnPlate",
+     "waterJar",
+     "cloths",
+     "tombStone",
+     "tombStoneAside"
+    ],
+    "sheetX": 0.04116,
+    "sheetY": 0.84652,
+    "bboxSheet": [
+     -0.1415,
+     0.556,
+     0.1975,
+     0.9265
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.8,
+    "cx": -0.315,
+    "y0": 0.495,
+    "decorOnly": [
+     "path",
+     "grass"
+    ],
+    "members": [
+     "path",
+     "ground"
+    ],
+    "sheetX": -0.315,
+    "sheetY": 0.55026,
+    "bboxSheet": [
+     -0.4729,
+     0.495,
+     -0.1571,
+     0.7049
+    ]
+   },
+   "olives": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 1.2,
+    "cx": 0.35,
+    "y0": 1.08,
+    "decorOnly": [
+     "olive"
+    ],
+    "members": [
+     "olive1",
+     "olive2"
+    ],
+    "sheetX": 0.29357,
+    "sheetY": 0.89842,
+    "bboxSheet": [
+     0.2421,
+     1.08,
+     0.4579,
+     1.1961
+    ]
+   },
+   "flowers": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 0.36,
+    "cx": 0.0,
+    "y0": 0.396,
+    "members": [],
+    "sheetX": -13.97836,
+    "sheetY": 14.396,
+    "bboxSheet": [
+     -0.123,
+     0.396,
+     0.123,
+     0.5418
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.8,
+     "sheetX": -0.315,
+     "sheetY": 0.55026
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "grass"
+    ],
+    "heightMax": 0.0022,
+    "tris": 3328
+   },
+   {
+    "id": "path",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.8,
+     "sheetX": -0.315,
+     "sheetY": 0.55026
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "path"
+    ],
+    "heightMax": 0.0028,
+    "tris": 1376
+   },
+   {
+    "id": "flowers",
+    "drawing": "flowers",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 0.36,
+     "sheetX": -13.97836,
+     "sheetY": 14.396
+    },
+    "instanced": true,
+    "namedTexels": {
+     "leaf": [
+      "flowers",
+      "leaf"
+     ]
+    },
+    "regions": [
+     "daisy",
+     "leaf",
+     "lily",
+     "poppy"
+    ],
+    "heightMax": 0.0376,
+    "tris": 2808
+   },
+   {
+    "id": "gardenWall",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "stone": [
+      "props",
+      "stone"
+     ]
+    },
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.026,
+    "tris": 80
+   },
+   {
+    "id": "tombHill",
+    "drawing": "tomb",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.9,
+     "sheetX": -0.16158,
+     "sheetY": 0.67611
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "leaf",
+     "rock"
+    ],
+    "heightMax": 0.4099,
+    "tris": 3687
+   },
+   {
+    "id": "tombDoor",
+    "drawing": "tomb",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.9,
+     "sheetX": -0.16158,
+     "sheetY": 0.67611
+    },
+    "instanced": false,
+    "namedTexels": {
+     "door": [
+      "tomb",
+      "door"
+     ]
+    },
+    "regions": [
+     "door"
+    ],
+    "heightMax": 0.36,
+    "tris": 55
+   },
+   {
+    "id": "cloths",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": {
+     "ledge": [
+      "tomb",
+      "door"
+     ]
+    },
+    "regions": [
+     "ledge",
+     "linen"
+    ],
+    "heightMax": 0.096,
+    "tris": 1412
+   },
+   {
+    "id": "groove",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "stone": [
+      "props",
+      "stone"
+     ]
+    },
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.006,
+    "tris": 30
+   },
+   {
+    "id": "tombStone",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.38,
+    "tris": 576
+   },
+   {
+    "id": "tombStoneAside",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "stone"
+    ],
+    "heightMax": 0.38,
+    "tris": 576
+   },
+   {
+    "id": "gardenTools",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "wood"
+     ],
+     "metal": [
+      "props",
+      "stone"
+     ],
+     "clay": [
+      "props",
+      "clay"
+     ]
+    },
+    "regions": [
+     "clay",
+     "metal",
+     "wood"
+    ],
+    "heightMax": 0.1575,
+    "tris": 230
+   },
+   {
+    "id": "olive1",
+    "drawing": "olives",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.29357,
+     "sheetY": 0.89842
+    },
+    "instanced": false,
+    "namedTexels": {
+     "trunk": [
+      "house",
+      "wood"
+     ]
+    },
+    "regions": [
+     "olive",
+     "trunk"
+    ],
+    "heightMax": 0.3572,
+    "tris": 784
+   },
+   {
+    "id": "olive2",
+    "drawing": "olives",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 1.2,
+     "sheetX": 0.29357,
+     "sheetY": 0.89842
+    },
+    "instanced": false,
+    "namedTexels": {
+     "trunk": [
+      "house",
+      "wood"
+     ]
+    },
+    "regions": [
+     "olive",
+     "trunk"
+    ],
+    "heightMax": 0.3088,
+    "tris": 640
+   },
+   {
+    "id": "house",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.0,
+      0.5,
+      1
+     ],
+     "scale": 2.25,
+     "sheetX": 0.20178,
+     "sheetY": 0.58556
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "limestone",
+     "wood"
+    ],
+    "heightMax": 0.475,
+    "tris": 112
+   },
+   {
+    "id": "houseIn",
+    "drawing": "room",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.35
+     ],
+     "D": [
+      0.0,
+      0.35,
+      1
+     ],
+     "scale": 2.3,
+     "sheetX": 0.21452,
+     "sheetY": 0.30804
+    },
+    "instanced": false,
+    "namedTexels": {
+     "plaster": [
+      "room",
+      "plaster"
+     ]
+    },
+    "regions": [
+     "mats",
+     "plaster"
+    ],
+    "heightMax": 0.46,
+    "tris": 28
+   },
+   {
+    "id": "stair",
+    "drawing": "house",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.5
+     ],
+     "D": [
+      0.0,
+      0.5,
+      1
+     ],
+     "scale": 2.25,
+     "sheetX": 0.20178,
+     "sheetY": 0.58556
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "limestone"
+    ],
+    "heightMax": 0.1,
+    "tris": 40
+   },
+   {
+    "id": "roomDoor",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "wood"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMax": 0.37,
+    "tris": 22
+   },
+   {
+    "id": "bench",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "house",
+      "wood"
+     ],
+     "cushion": [
+      "flowers",
+      "poppy"
+     ]
+    },
+    "regions": [
+     "cushion",
+     "wood"
+    ],
+    "heightMax": 0.14,
+    "tris": 3224
+   },
+   {
+    "id": "lowTable",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "props",
+      "wood"
+     ]
+    },
+    "regions": [
+     "bread",
+     "wood"
+    ],
+    "heightMax": 0.1675,
+    "tris": 250
+   },
+   {
+    "id": "fishPlate",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.1562,
+    "tris": 240
+   },
+   {
+    "id": "fishOnPlate",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "fish"
+    ],
+    "heightMax": 0.1568,
+    "tris": 142
+   },
+   {
+    "id": "lamp2",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "clay": [
+      "props",
+      "clay"
+     ]
+    },
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.1607,
+    "tris": 120
+   },
+   {
+    "id": "waterJar",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 0.6,
+     "sheetX": 0.04116,
+     "sheetY": 0.84652
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.22,
+    "tris": 360
+   },
+   {
+    "id": "lamp1",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "clay": [
+      "props",
+      "clay"
+     ]
+    },
+    "regions": [
+     "clay"
+    ],
+    "heightMax": 0.3307,
+    "tris": 120
+   },
+   {
+    "id": "hills",
+    "drawing": "skyline",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 2.2,
+     "sheetX": -0.2025,
+     "sheetY": 0.90727
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "hills"
+    ],
+    "heightMax": 0.5417,
+    "tris": 348
+   },
+   {
+    "id": "cityWall",
+    "drawing": "skyline",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 2.2,
+     "sheetX": -0.2025,
+     "sheetY": 0.90727
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "cityStone"
+    ],
+    "heightMax": 0.654,
+    "tris": 252
+   }
+  ],
+  "constUV": [
+   {
+    "node": "tombDoor/door",
+    "uv": [
+     0.1645,
+     0.68419
+    ],
+    "region": "door"
+   },
+   {
+    "node": "cloths/ledge",
+    "uv": [
+     0.1645,
+     0.68419
+    ],
+    "region": "door"
+   },
+   {
+    "node": "groove/stone",
+    "uv": [
+     0.6175,
+     0.51548
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "gardenWall/stone",
+    "uv": [
+     0.6175,
+     0.51548
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "gardenTools/wood",
+    "uv": [
+     0.8345,
+     0.53423
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "gardenTools/metal",
+    "uv": [
+     0.6175,
+     0.51548
+    ],
+    "region": "stone"
+   },
+   {
+    "node": "gardenTools/clay",
+    "uv": [
+     0.3905,
+     0.64996
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "flowers/leaf",
+    "uv": [
+     0.4995,
+     0.34597
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "olive1/trunk",
+    "uv": [
+     0.8345,
+     0.53423
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "olive2/trunk",
+    "uv": [
+     0.8345,
+     0.53423
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "houseIn/plaster",
+    "uv": [
+     0.8575,
+     0.42258
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "roomDoor/wood",
+    "uv": [
+     0.8345,
+     0.53423
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "bench/wood",
+    "uv": [
+     0.8345,
+     0.53423
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "bench/cushion",
+    "uv": [
+     0.4995,
+     0.41361
+    ],
+    "region": "poppy"
+   },
+   {
+    "node": "lowTable/wood",
+    "uv": [
+     0.6015,
+     0.72494
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "lamp1/clay",
+    "uv": [
+     0.3905,
+     0.64996
+    ],
+    "region": "clay"
+   },
+   {
+    "node": "lamp2/clay",
+    "uv": [
+     0.3905,
+     0.64996
+    ],
+    "region": "clay"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "nearest": {
+    "note": "[low zone (y+0.012..0.17), overhead (y+0.17..head top)] nearest plan distance (needs >= 0.05 / 0.035; seated 0.035; STONE_ASIDE 0.08 above the seat)",
+    "mark MARY_T": [
+     0.13,
+     0.13
+    ],
+    "mark JOANNA_T": [
+     0.124,
+     0.122
+    ],
+    "mark NEAR_TOMB": [
+     0.16,
+     0.16
+    ],
+    "mark MARY_DOOR": [
+     0.077,
+     0.075
+    ],
+    "mark JOANNA_DOOR": [
+     0.083,
+     0.101
+    ],
+    "mark TOMB_DOOR": [
+     0.083,
+     0.071
+    ],
+    "mark john -0.40,-0.22": [
+     0.08,
+     0.091
+    ],
+    "mark peter -0.22,-0.14": [
+     0.14,
+     0.139
+    ],
+    "mark MARY_CRY": [
+     0.146,
+     0.227
+    ],
+    "mark JESUS_G": [
+     0.052,
+     0.19
+    ],
+    "mark MARY_MEET": [
+     0.157,
+     0.206
+    ],
+    "mark mary -0.10,0.02": [
+     0.059,
+     0.288
+    ],
+    "mark joanna -0.18,0.06": [
+     0.138,
+     0.32
+    ],
+    "mark joanna -0.18,0.08": [
+     0.133,
+     0.363
+    ],
+    "mark S12 jesus -0.12,-0.04": [
+     0.072,
+     0.256
+    ],
+    "mark S12 mary -0.24,0.02": [
+     0.102,
+     0.297
+    ],
+    "mark S12 peter 0.04,0.04": [
+     0.087,
+     0.263
+    ],
+    "mark S12 john 0.14,0.08": [
+     0.179,
+     0.308
+    ],
+    "mark S12 thomas 0.06,-0.10": [
+     0.055,
+     0.122
+    ],
+    "mark STONE_ASIDE": [
+     0.173,
+     null
+    ],
+    "mark WOMEN_START mary": [
+     0.317,
+     0.405
+    ],
+    "mark WOMEN_START joanna": [
+     0.337,
+     0.386
+    ],
+    "mark PATH_R": [
+     0.257,
+     0.333
+    ],
+    "mark joanna 0.30,0.11": [
+     0.327,
+     0.399
+    ],
+    "mark PATH_L": [
+     0.087,
+     0.303
+    ],
+    "mark joanna 0.06,0.11": [
+     0.094,
+     0.332
+    ],
+    "mark GATE": [
+     0.07,
+     0.307
+    ],
+    "mark HOUSE_DOOR": [
+     0.067,
+     0.232
+    ],
+    "mark PETER_DOOR": [
+     0.09,
+     0.228
+    ],
+    "mark mary -0.10,0.04": [
+     0.071,
+     0.307
+    ],
+    "mark mary 0.30,0.10": [
+     0.317,
+     0.39
+    ],
+    "mark ROOM_DOOR": [
+     0.052,
+     0.04
+    ],
+    "mark MARY_ROOM": [
+     0.061,
+     0.06
+    ],
+    "mark BENCH thomas": [
+     0.059,
+     null
+    ],
+    "mark BENCH john": [
+     0.071,
+     null
+    ],
+    "mark BENCH peter": [
+     0.09,
+     null
+    ],
+    "mark STAND john": [
+     0.06,
+     0.12
+    ],
+    "mark STAND peter": [
+     0.06,
+     0.1
+    ],
+    "mark ROOM_J": [
+     0.162,
+     0.22
+    ],
+    "mark TABLE_J": [
+     0.052,
+     0.17
+    ],
+    "mark THOMAS_TOUCH": [
+     0.117,
+     0.11
+    ],
+    "walk S01 mary MARY_T>mary -0.10,0.02": [
+     0.059,
+     0.13
+    ],
+    "walk S01 joanna JOANNA_T>joanna -0.18,0.06": [
+     0.094,
+     0.122
+    ],
+    "walk S02 mary WOMEN_START mary>PATH_R": [
+     0.257,
+     0.333
+    ],
+    "walk S02 mary PATH_R>PATH_L": [
+     0.087,
+     0.302
+    ],
+    "walk S02 mary PATH_L>GATE": [
+     0.062,
+     0.3
+    ],
+    "walk S02 mary GATE>NEAR_TOMB": [
+     0.061,
+     0.16
+    ],
+    "walk S02 joanna WOMEN_START joanna>joanna 0.30,0.11": [
+     0.327,
+     0.386
+    ],
+    "walk S02 joanna joanna 0.30,0.11>joanna 0.06,0.11": [
+     0.094,
+     0.332
+    ],
+    "walk S02 joanna joanna 0.06,0.11>GATE": [
+     0.053,
+     0.307
+    ],
+    "walk S02 joanna GATE>JOANNA_T": [
+     0.067,
+     0.122
+    ],
+    "walk S04 mary MARY_T>MARY_DOOR": [
+     0.077,
+     0.075
+    ],
+    "walk S04 mary MARY_DOOR>mary -0.10,0.02": [
+     0.059,
+     0.075
+    ],
+    "walk S04 joanna JOANNA_T>JOANNA_DOOR": [
+     0.083,
+     0.101
+    ],
+    "walk S04 joanna JOANNA_DOOR>joanna -0.18,0.08": [
+     0.083,
+     0.101
+    ],
+    "walk S05 mary ROOM_DOOR>MARY_ROOM": [
+     0.052,
+     0.04
+    ],
+    "walk S06 john HOUSE_DOOR>PATH_R": [
+     0.067,
+     0.232
+    ],
+    "walk S06 john PATH_R>PATH_L": [
+     0.087,
+     0.302
+    ],
+    "walk S06 john PATH_L>GATE": [
+     0.062,
+     0.3
+    ],
+    "walk S06 john GATE>TOMB_DOOR": [
+     0.055,
+     0.071
+    ],
+    "walk S06 peter PETER_DOOR>PATH_R": [
+     0.09,
+     0.228
+    ],
+    "walk S06 peter PATH_R>PATH_L": [
+     0.087,
+     0.302
+    ],
+    "walk S06 peter PATH_L>GATE": [
+     0.062,
+     0.3
+    ],
+    "walk S06 peter GATE>peter -0.22,-0.14": [
+     0.052,
+     0.139
+    ],
+    "walk S07 john TOMB_DOOR>john -0.40,-0.22": [
+     0.08,
+     0.071
+    ],
+    "walk S07 peter peter -0.22,-0.14>TOMB_DOOR": [
+     0.08,
+     0.071
+    ],
+    "walk S09 mary MARY_CRY>MARY_MEET": [
+     0.146,
+     0.206
+    ],
+    "walk S09 mary MARY_MEET>mary -0.10,0.04": [
+     0.071,
+     0.206
+    ],
+    "walk S09 mary mary -0.10,0.04>PATH_L": [
+     0.061,
+     0.296
+    ],
+    "walk S09 mary PATH_L>mary 0.30,0.10": [
+     0.087,
+     0.303
+    ],
+    "walk S10 jesus ROOM_J>TABLE_J": [
+     0.052,
+     0.17
+    ]
+   },
+   "info": {
+    "STONE_ASIDE": {
+     "stoneTop": 0.38,
+     "flatTop": "the rim's crown: 0.092 wide within 0.004 of the top"
+    },
+    "tombStone": {
+     "x": [
+      -0.525,
+      -0.135
+     ],
+     "top": 0.38,
+     "door": [
+      -0.395,
+      -0.265
+     ]
+    },
+    "tombHillTop": 0.4099
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "angel": {
+     "sheetX": -0.32,
+     "sheetY": 0.015,
+     "height": 0.4,
+     "box": [
+      -0.464,
+      0.0168,
+      -0.176,
+      0.475
+     ]
+    },
+    "jesus": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.36,
+     "box": [
+      -0.1334,
+      0.0191,
+      0.1334,
+      0.3703
+     ]
+    },
+    "mary": {
+     "sheetX": 0.32,
+     "sheetY": 0.015,
+     "height": 0.34,
+     "box": [
+      0.2097,
+      0.0189,
+      0.4303,
+      0.3546
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "rock": "#C9946A",
+   "door": "#4A3440",
+   "leaf": "#5E9A48",
+   "stone": "#B9AFA2",
+   "linen": "#F5F1E6",
+   "grass": "#8DBB5A",
+   "path": "#E8D5A8",
+   "lily": "#FFFFFF",
+   "poppy": "#D9483A",
+   "daisy": "#F2C94C",
+   "olive": "#8AA06A",
+   "trunk": "#7A6650",
+   "limestone": "#E9D6A8",
+   "plaster": "#EBD2A6",
+   "cushion": "#9C3A3A",
+   "mats": "#D8BE8E",
+   "wood": "#8A5A3B",
+   "clay": "#C46A3E",
+   "fish": "#C98A4A",
+   "bread": "#D9A95E",
+   "cityStone": "#C9B285",
+   "hills": "#8E9E62",
+   "metal": "#9A9590"
+  },
+  "tris": 20840,
+  "budget": 70000
+ }
+}

@@ -1,0 +1,1257 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/sa_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour, or with a fixed colour, take a constant UV inside a larger region and print as detail lines). ID render for the line art: id_characters_2x.png/.json. All three printed men are the Real Miracles friend body (pipeline/mi_characters.py build_friend, unchanged) with this pack's costume. The five extras are not printed (offSheet).",
+ "sheet": {
+  "ananias": {
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "saul": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "barnabas": {
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "ananias": {
+   "height": 0.33,
+   "bboxSheet": [
+    -0.4499,
+    0.0188,
+    -0.1901,
+    0.3455
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#E0AE8A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.4499,
+      0.0188,
+      -0.1901,
+      0.3297
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#A8A8A0",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3482,
+      0.2606,
+      -0.2918,
+      0.3254
+     ]
+    },
+    "tunic": {
+     "id": 3,
+     "hex": "#6E8F4E",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.4071,
+      0.0404,
+      -0.2329,
+      0.2611
+     ]
+    },
+    "sandals": {
+     "id": 4,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.3638,
+      0.0152,
+      -0.2788,
+      0.0359
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.17925,
+      0.08415
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "cap": {
+     "id": 5,
+     "hex": "#7A5532",
+     "zh": "帽子",
+     "en": "cap",
+     "parts": [
+      "cap"
+     ],
+     "bboxSheet": [
+      -0.3416,
+      0.3152,
+      -0.2984,
+      0.3455
+     ]
+    },
+    "shawl": {
+     "id": 6,
+     "hex": "#D9A93A",
+     "zh": "披肩",
+     "en": "shawl",
+     "parts": [
+      "shawl"
+     ],
+     "bboxSheet": [
+      -0.3845,
+      0.1847,
+      -0.2555,
+      0.2563
+     ]
+    },
+    "jug": {
+     "id": 7,
+     "hex": "#C46A3E",
+     "zh": "水罐",
+     "en": "jug",
+     "parts": [
+      "jug"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.jar",
+     "anchorUV": [
+      0.1645,
+      0.43073
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.ananias.propUV.jug)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.25695,
+     0.02146,
+     0.29986
+    ],
+    "px": 512,
+    "default": "gentle",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "gentle": "docs/saul/design/faces/ananias_gentle.png",
+     "talk": "docs/saul/design/faces/ananias_talk.png",
+     "look_up": "docs/saul/design/faces/ananias_look_up.png",
+     "fright": "docs/saul/design/faces/ananias_fright.png",
+     "gulp": "docs/saul/design/faces/ananias_gulp.png",
+     "brave": "docs/saul/design/faces/ananias_brave.png",
+     "joy": "docs/saul/design/faces/ananias_joy.png",
+     "whisper": "docs/saul/design/faces/ananias_whisper.png"
+    },
+    "clipExpression": {
+     "idle": "gentle",
+     "walk": "gentle",
+     "talk": "talk",
+     "kneel_pray": "gentle",
+     "kneel_look_up": "look_up",
+     "startle": "fright",
+     "nervous": "gulp",
+     "tiptoe": "gulp",
+     "knock": "gulp",
+     "hands_on": "brave",
+     "pour": "joy",
+     "listen": "joy",
+     "cheer": "joy",
+     "wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "jug": {
+     "bone": "jug",
+     "mesh": "ananias_jug",
+     "node": "ananias/jug",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "handR.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "legL.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "legR.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "kneeL.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "kneeR.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "armL.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    },
+    "armR.skin": {
+     "target": "ananias.FACE",
+     "uv": [
+      0.17975,
+      0.26059
+     ],
+     "local": [
+      -0.0003,
+      0.3048
+     ]
+    }
+   }
+  },
+  "saul": {
+   "height": 0.37,
+   "bboxSheet": [
+    -0.1364,
+    0.0192,
+    0.1364,
+    0.3859
+   ],
+   "regions": {
+    "skin": {
+     "id": 8,
+     "hex": "#D2A07A",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1364,
+      0.0192,
+      0.1364,
+      0.38
+     ]
+    },
+    "hair": {
+     "id": 9,
+     "hex": "#3E2A1E",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.0277,
+      0.3142,
+      0.0277,
+      0.3859
+     ]
+    },
+    "tunic": {
+     "id": 10,
+     "hex": "#B23A3A",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.0833,
+      0.0797,
+      0.0833,
+      0.3012
+     ]
+    },
+    "sandals": {
+     "id": 11,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.0436,
+      0.0152,
+      0.0407,
+      0.0384
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.49925,
+      0.10941
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "belt": {
+     "id": 12,
+     "hex": "#8A5A32",
+     "zh": "腰带",
+     "en": "belt / sash",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      -0.0547,
+      0.1894,
+      0.048,
+      0.2443
+     ]
+    },
+    "cloak": {
+     "id": 13,
+     "hex": "#2F4A7A",
+     "zh": "披风",
+     "en": "travel cloak",
+     "parts": [
+      "cloak"
+     ],
+     "bboxSheet": [
+      -0.0621,
+      0.0977,
+      0.0621,
+      0.2962
+     ]
+    },
+    "letters": {
+     "id": 14,
+     "hex": "#F1E3C4",
+     "zh": "书信",
+     "en": "letters",
+     "parts": [
+      "letters"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.column",
+     "anchorUV": [
+      0.2295,
+      0.78769
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.saul.propUV.letters)"
+    },
+    "bread": {
+     "id": 15,
+     "hex": "#C98A4A",
+     "zh": "饼",
+     "en": "bread",
+     "parts": [
+      "bread"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.bread",
+     "anchorUV": [
+      0.0685,
+      0.45436
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.saul.propUV.bread)"
+    },
+    "basket": {
+     "id": 16,
+     "hex": "#D8B26E",
+     "zh": "筐子和绳子",
+     "en": "basket and ropes",
+     "parts": [
+      "basket",
+      "ropes"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.straw",
+     "anchorUV": [
+      0.0755,
+      0.4128
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.saul.propUV.basket)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.30828,
+     0.02146,
+     0.35119
+    ],
+    "px": 512,
+    "default": "angry",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "angry": "docs/saul/design/faces/saul_angry.png",
+     "shout": "docs/saul/design/faces/saul_shout.png",
+     "shock": "docs/saul/design/faces/saul_shock.png",
+     "look_up": "docs/saul/design/faces/saul_look_up.png",
+     "blind": "docs/saul/design/faces/saul_blind.png",
+     "pray": "docs/saul/design/faces/saul_pray.png",
+     "see": "docs/saul/design/faces/saul_see.png",
+     "kind": "docs/saul/design/faces/saul_kind.png",
+     "talk": "docs/saul/design/faces/saul_talk.png",
+     "laugh": "docs/saul/design/faces/saul_laugh.png",
+     "chew": "docs/saul/design/faces/saul_chew.png",
+     "whisper": "docs/saul/design/faces/saul_whisper.png"
+    },
+    "clipExpression": {
+     "idle": "angry",
+     "walk": "kind",
+     "march": "angry",
+     "angry_talk": "shout",
+     "take_letters": "angry",
+     "fall_down": "shock",
+     "sit_look_up": "look_up",
+     "get_up_blind": "blind",
+     "walk_blind": "blind",
+     "sit_pray": "pray",
+     "see_again": "see",
+     "kneel": "pray",
+     "eat_bread": "chew",
+     "preach": "talk",
+     "talk": "talk",
+     "basket_wait": "whisper",
+     "basket_down": "whisper",
+     "basket_out": "whisper",
+     "tiptoe": "whisper",
+     "hug": "laugh",
+     "wave": "kind",
+     "cheer": "laugh"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "letters": {
+     "bone": "letters",
+     "mesh": "saul_letters",
+     "node": "saul/letters",
+     "shownByDefault": false
+    },
+    "bread": {
+     "bone": "bread",
+     "mesh": "saul_bread",
+     "node": "saul/bread",
+     "shownByDefault": false
+    },
+    "basket": {
+     "bone": "basket",
+     "mesh": "saul_basket",
+     "node": "saul/basket",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "handR.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "legL.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "legR.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "kneeL.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "kneeR.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "armL.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    },
+    "armR.skin": {
+     "target": "saul.FACE",
+     "uv": [
+      0.49925,
+      0.25081
+     ],
+     "local": [
+      -0.0007,
+      0.2928
+     ]
+    }
+   },
+   "basketRig": {
+    "bones": {
+     "basket": "hips",
+     "ropeTop": "root"
+    },
+    "meshes": {
+     "saul_basket": "rigid on basket",
+     "saul_ropes": "skinned: basket + ropeTop"
+    },
+    "basketFloorBelowHips": 0.05,
+    "basketDiameter": 0.1,
+    "basketHeight": 0.08,
+    "ropeTop": [
+     -0.065,
+     0.235,
+     0.0
+    ],
+    "note": "prop saul/basket shows and hides both (the GLB node saul_ropes sits under the basket joint); the ropes take the basket colour (anchor of region basket)"
+   }
+  },
+  "barnabas": {
+   "height": 0.39,
+   "bboxSheet": [
+    0.1788,
+    0.0194,
+    0.4612,
+    0.405
+   ],
+   "regions": {
+    "skin": {
+     "id": 17,
+     "hex": "#B87C56",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1788,
+      0.0194,
+      0.4612,
+      0.3968
+     ]
+    },
+    "hair": {
+     "id": 18,
+     "hex": "#2A2420",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      0.2911,
+      0.3298,
+      0.3489,
+      0.405
+     ]
+    },
+    "tunic": {
+     "id": 19,
+     "hex": "#D9773A",
+     "zh": "长袍",
+     "en": "robe",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2268,
+      0.0851,
+      0.4132,
+      0.3153
+     ]
+    },
+    "sandals": {
+     "id": 20,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      0.2721,
+      0.0152,
+      0.365,
+      0.0397
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.81925,
+      0.11919
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "belt": {
+     "id": 21,
+     "hex": "#3E6B4A",
+     "zh": "腰带",
+     "en": "belt / sash",
+     "parts": [
+      "belt"
+     ],
+     "bboxSheet": [
+      0.2652,
+      0.2179,
+      0.3748,
+      0.2543
+     ]
+    },
+    "mantle": {
+     "id": 22,
+     "hex": "#F1E3C4",
+     "zh": "外披",
+     "en": "mantle",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      0.267,
+      0.1615,
+      0.3873,
+      0.3095
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.32633,
+     0.02146,
+     0.36925
+    ],
+    "px": 512,
+    "default": "happy",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "happy": "docs/saul/design/faces/barnabas_happy.png",
+     "talk": "docs/saul/design/faces/barnabas_talk.png",
+     "laugh": "docs/saul/design/faces/barnabas_laugh.png",
+     "kind": "docs/saul/design/faces/barnabas_kind.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "talk": "talk",
+     "laugh": "laugh",
+     "wave": "happy",
+     "arm_round": "kind"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "handR.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "legL.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "legR.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "kneeL.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "kneeR.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "armL.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    },
+    "armR.skin": {
+     "target": "barnabas.FACE",
+     "uv": [
+      0.81975,
+      0.26304
+     ],
+     "local": [
+      -0.0003,
+      0.3078
+     ]
+    }
+   }
+  }
+ },
+ "offSheet": {
+  "judas": {
+   "height": 0.35,
+   "paint": "assets/saul/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "short brown beard, striped blue-and-white head cloth, sand tunic, brown apron-sash; bread (handR, hidden)",
+   "blendRigLocation": [
+    0.8,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.27111,
+     0.02146,
+     0.31402
+    ],
+    "px": 512,
+    "default": "happy",
+    "swatches": {},
+    "files": {
+     "happy": "docs/saul/design/faces/judas_happy.png",
+     "talk": "docs/saul/design/faces/judas_talk.png",
+     "amazed": "docs/saul/design/faces/judas_amazed.png",
+     "laugh": "docs/saul/design/faces/judas_laugh.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "listen": "happy",
+     "laugh": "laugh",
+     "wave": "happy",
+     "offer_bread": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "bread": "handR"
+   },
+   "props": {
+    "bread": {
+     "bone": "bread",
+     "mesh": "judas_bread",
+     "node": "judas/bread",
+     "shownByDefault": false
+    }
+   },
+   "colours": {
+    "skin": "#C8946C",
+    "hair": "#5A3A26",
+    "tunic": "#E2C89A",
+    "cloth": "#4A78B0",
+    "stripes": "#FFFFFF",
+    "belt": "#8A6A4A",
+    "apron": "#8A6A4A",
+    "sandals": "#7A4E2E",
+    "bread": "#C98A4A"
+   },
+   "tris": 17892
+  },
+  "priest": {
+   "height": 0.36,
+   "paint": "assets/saul/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "long white beard, white turban, white robe to the ankles, blue over-robe with a gold hem band",
+   "blendRigLocation": [
+    1.0,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.27819,
+     0.02146,
+     0.3211
+    ],
+    "px": 512,
+    "default": "grave",
+    "swatches": {},
+    "files": {
+     "grave": "docs/saul/design/faces/priest_grave.png",
+     "talk": "docs/saul/design/faces/priest_talk.png"
+    },
+    "clipExpression": {
+     "idle": "grave",
+     "give_letters": "talk"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {},
+   "props": {},
+   "colours": {
+    "skin": "#D6A27A",
+    "hair": "#ECEAE2",
+    "tunic": "#F4F2EA",
+    "overrobe": "#3D5FA0",
+    "hem": "#E2B44A",
+    "turban": "#F4F2EA",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17950
+  },
+  "tallguard": {
+   "height": 0.41,
+   "paint": "assets/saul/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "long and thin, tall mustard pointed cap, thin moustache, grey-blue tunic, rust sash, travel bags on the back; lantern (handR, hidden)",
+   "blendRigLocation": [
+    1.2,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.31536,
+     0.02146,
+     0.35827
+    ],
+    "px": 512,
+    "default": "happy",
+    "swatches": {},
+    "files": {
+     "happy": "docs/saul/design/faces/tallguard_happy.png",
+     "talk": "docs/saul/design/faces/tallguard_talk.png",
+     "amazed": "docs/saul/design/faces/tallguard_amazed.png",
+     "shock": "docs/saul/design/faces/tallguard_shock.png",
+     "puff": "docs/saul/design/faces/tallguard_puff.png",
+     "sleepy": "docs/saul/design/faces/tallguard_sleepy.png",
+     "asleep": "docs/saul/design/faces/tallguard_asleep.png",
+     "puzzled": "docs/saul/design/faces/tallguard_puzzled.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "walk_puff": "puff",
+     "puff": "puff",
+     "shrug": "puzzled",
+     "duck": "shock",
+     "amazed": "amazed",
+     "lead_hand": "happy",
+     "listen": "happy",
+     "scratch_head": "puzzled",
+     "lantern_peer": "puzzled",
+     "wave": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "lantern": "handR"
+   },
+   "props": {
+    "lantern": {
+     "bone": "lantern",
+     "mesh": "tallguard_lantern",
+     "node": "tallguard/lantern",
+     "shownByDefault": false
+    }
+   },
+   "colours": {
+    "skin": "#C99268",
+    "hair": "#2A2018",
+    "tunic": "#7F93A8",
+    "belt": "#B4502F",
+    "cap": "#D9A93A",
+    "bags": "#8A6A4A",
+    "sandals": "#7A4E2E",
+    "lantern": "#C46A3E"
+   },
+   "tris": 17978
+  },
+  "shortguard": {
+   "height": 0.3,
+   "paint": "assets/saul/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "short and round, flat brown cap, bushy black beard, grey-blue tunic, rust sash, a bag",
+   "blendRigLocation": [
+    1.4,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.23819,
+     0.02146,
+     0.2811
+    ],
+    "px": 512,
+    "default": "happy",
+    "swatches": {},
+    "files": {
+     "happy": "docs/saul/design/faces/shortguard_happy.png",
+     "talk": "docs/saul/design/faces/shortguard_talk.png",
+     "amazed": "docs/saul/design/faces/shortguard_amazed.png",
+     "shock": "docs/saul/design/faces/shortguard_shock.png",
+     "puff": "docs/saul/design/faces/shortguard_puff.png",
+     "sleepy": "docs/saul/design/faces/shortguard_sleepy.png",
+     "asleep": "docs/saul/design/faces/shortguard_asleep.png",
+     "puzzled": "docs/saul/design/faces/shortguard_puzzled.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "talk": "talk",
+     "listen": "happy",
+     "amazed": "amazed",
+     "walk_puff": "puff",
+     "puff": "puff",
+     "duck": "shock",
+     "boast": "happy",
+     "doze": "asleep",
+     "wave": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {},
+   "props": {},
+   "colours": {
+    "skin": "#C08A62",
+    "hair": "#1E1814",
+    "tunic": "#7F93A8",
+    "belt": "#B4502F",
+    "cap": "#7A5532",
+    "bags": "#8A6A4A",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17574
+  },
+  "peter": {
+   "height": 0.38,
+   "paint": "assets/saul/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "the Real Miracles Peter, unchanged (rust-red tunic, sand vest, dark-brown waist cloth, blue-grey head cloth, curly black hair and beard); bucket bone kept, no mesh",
+   "blendRigLocation": [
+    1.6,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.30996,
+     0.02268,
+     0.35532
+    ],
+    "px": 512,
+    "default": "jolly",
+    "swatches": {
+     "rope": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "jolly": "docs/saul/design/faces/peter_jolly.png",
+     "talk": "docs/saul/design/faces/peter_talk.png",
+     "shock": "docs/saul/design/faces/peter_shock.png",
+     "laugh": "docs/saul/design/faces/peter_laugh.png",
+     "sad": "docs/saul/design/faces/peter_sad.png",
+     "afraid": "docs/saul/design/faces/peter_afraid.png"
+    },
+    "clipExpression": {
+     "idle": "jolly",
+     "peek_afraid": "afraid",
+     "hug": "laugh",
+     "wave": "jolly"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "cloth1": "head",
+    "bucket": "handR"
+   },
+   "props": {},
+   "colours": {
+    "skin": "#BF8460",
+    "hair": "#231A16",
+    "tunic": "#B4502F",
+    "vest": "#D9C29A",
+    "waistcloth": "#5A3A26",
+    "headcloth": "#6E8AA6",
+    "rope": "#C8A472",
+    "sandals": "#7A4E2E",
+    "bucket": "#8A5A3B"
+   },
+   "tris": 24248
+  }
+ },
+ "offSheetNote": "the five extras: not printed; UV0 samples model/extras_paint.png (fixed demo-palette paint, one flat colour per region), face decal on UV1 like the cast"
+}

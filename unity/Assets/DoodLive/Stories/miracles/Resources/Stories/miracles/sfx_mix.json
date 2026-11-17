@@ -1,0 +1,121 @@
+{
+ "rule": "Files peak at -3 dBFS (CONTRACT section 7). Play each one-shot at its timeline t with gainDb (recommended mix level). Entries with loop: true are ambience beds: the whole file is a seamless loop (loopStart 0, loopEnd = secs); start it at its t with a fadeInSec fade-in and loop it until the music cue named in stopAtCue starts (fade out over fadeOutSec). dig_loop is a one-shot whose length ends it at shot S05.",
+ "peakDbfs": -3.0,
+ "sfx": [
+  {
+   "id": "boing",
+   "secs": 0.9,
+   "loop": false,
+   "gainDb": -10,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.6
+  },
+  {
+   "id": "cheer",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.2
+  },
+  {
+   "id": "crowd_murmur",
+   "secs": 6.0,
+   "loop": false,
+   "gainDb": -16,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -17.3
+  },
+  {
+   "id": "crumble",
+   "secs": 2.6,
+   "loop": false,
+   "gainDb": -12,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -22.8
+  },
+  {
+   "id": "dig_loop",
+   "secs": 5.31,
+   "loop": false,
+   "gainDb": -17,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.8
+  },
+  {
+   "id": "ding",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -16,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -12.0
+  },
+  {
+   "id": "lake_lap",
+   "secs": 7.0,
+   "loop": false,
+   "gainDb": -17,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -21.3
+  },
+  {
+   "id": "rope_creak",
+   "secs": 3.4,
+   "loop": false,
+   "gainDb": -14,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -19.1
+  },
+  {
+   "id": "sparkle",
+   "secs": 1.8,
+   "loop": false,
+   "gainDb": -13,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -13.6
+  },
+  {
+   "id": "thunder",
+   "secs": 5.0,
+   "loop": false,
+   "gainDb": -9,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -20.7
+  },
+  {
+   "id": "wind_loop",
+   "secs": 10.0,
+   "loop": true,
+   "gainDb": -18,
+   "samplePeak": -3.0,
+   "truePeak": -2.9,
+   "lufs": -17.5,
+   "loopStart": 0.0,
+   "loopEnd": 10.0,
+   "stopAtCue": "calm",
+   "fadeInSec": 1.0,
+   "fadeOutSec": 1.5,
+   "seamRatio": 0.129,
+   "halfDb": -0.39
+  },
+  {
+   "id": "wind_stop",
+   "secs": 4.0,
+   "loop": false,
+   "gainDb": -15,
+   "samplePeak": -3.0,
+   "truePeak": -3.0,
+   "lufs": -25.1
+  }
+ ]
+}

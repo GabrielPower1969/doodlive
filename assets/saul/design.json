@@ -1,0 +1,2428 @@
+{
+ "version": 1,
+ "artHeightUnits": 1.227,
+ "lines": {
+  "outerPx": 4.5,
+  "detailPx": 3.0,
+  "note": "same weights as every story pack; faces come from decals"
+ },
+ "sheet": {
+  "page": [
+   1240,
+   1754
+  ],
+  "dpi": 150,
+  "art": [
+   120,
+   283,
+   1000,
+   1227
+  ],
+  "markers": [
+   [
+    62,
+    225
+   ],
+   [
+    1178,
+    225
+   ],
+   [
+    1178,
+    1568
+   ],
+   [
+    62,
+    1568
+   ]
+  ],
+  "markerSize": 64,
+  "title": {
+   "hanzi": "扫罗变了",
+   "pinyin": "sǎo luó biàn le",
+   "english": "Saul Sees the Light!",
+   "box": 80,
+   "gap": 16,
+   "cy": 110,
+   "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+   "note": "box / gap / cy from tools/story/sheet_saul.py title-search: worst NCC 0.459 (risen-A4) against every other registered sheet"
+  },
+  "footer": {
+   "rect": [
+    210,
+    1604,
+    820,
+    110
+   ],
+   "lines": [
+    "四个黑方块要完整拍进画面 · 不要涂到黑方块上",
+    "使徒行传 9 · Acts 9"
+   ],
+   "note": "centred on the page (x 620); line 1 at rect y + 40, line 2 at y + 76"
+  },
+  "edgeRule": "all ink except the four markers (fixed by the template) >= 6 mm (35.4 px) from every page edge; title cy keeps the pinyin >= 6 mm from the top"
+ },
+ "characters": {
+  "ananias": {
+   "height": 0.33,
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "saul": {
+   "height": 0.37,
+   "sheetX": 0.0,
+   "sheetY": 0.015,
+   "note": "cloak inside +-0.10 of his centre (CONTRACT §2)"
+  },
+  "barnabas": {
+   "height": 0.39,
+   "sheetX": 0.32,
+   "sheetY": 0.015,
+   "note": "the widest figure (mantle): A-pose hands inside +0.32 +- 0.14 (CONTRACT §2)"
+  }
+ },
+ "set": {
+  "generatedBy": "pipeline/sa_damascus.py",
+  "doc": "docs/saul/SET.md",
+  "contract": "docs/saul/CONTRACT.md §6",
+  "root": "damascus",
+  "units": "art-width units; glTF (x, h, z): page = XZ plane at h 0, +z toward the viewer, z 0 = art rect bottom",
+  "nodes": {
+   "ground": [
+    0.0,
+    0.0,
+    -0.0
+   ],
+   "straightStreet": [
+    -0.3,
+    0.0,
+    -0.18
+   ],
+   "road": [
+    0.4,
+    0.0,
+    0.08
+   ],
+   "cityWall": [
+    0.0,
+    0.34,
+    -0.04
+   ],
+   "cityGate": [
+    0.0,
+    0.0,
+    -0.16
+   ],
+   "torch1": [
+    0.0618,
+    0.222,
+    -0.25
+   ],
+   "torch2": [
+    0.056,
+    0.222,
+    -0.07
+   ],
+   "wallWindow": [
+    0.027,
+    0.235,
+    -0.46
+   ],
+   "ananiasHouse": [
+    -0.465,
+    0.3,
+    0.07
+   ],
+   "synagogue": [
+    -0.37,
+    0.04,
+    -0.412
+   ],
+   "judasHouse": [
+    -0.155,
+    0.0,
+    -0.44
+   ],
+   "judasDoor": [
+    -0.2,
+    0.0,
+    -0.305
+   ],
+   "prayerMat": [
+    -0.15,
+    0.0,
+    -0.46
+   ],
+   "breadBasket": [
+    -0.07,
+    0.04,
+    -0.525
+   ],
+   "waterJar": [
+    -0.23,
+    0.0,
+    -0.53
+   ],
+   "well": [
+    -0.51,
+    0.0,
+    -0.44
+   ],
+   "rocks": [
+    0.18,
+    0.0,
+    -0.2
+   ],
+   "milestone": [
+    0.24,
+    0.0,
+    0.19
+   ],
+   "palm": [
+    0.58,
+    0.0,
+    0.16
+   ],
+   "priestPorch": [
+    0.48,
+    0.04,
+    -0.47
+   ],
+   "jerusalemHouse": [
+    0.24,
+    0.0,
+    -0.5035
+   ],
+   "jerusalemDoor": [
+    0.24,
+    0.1,
+    -0.423
+   ],
+   "jerusalemWall": [
+    0.31,
+    0.0,
+    -0.5845
+   ],
+   "hills": [
+    -0.31,
+    0.0,
+    -0.5845
+   ]
+  },
+  "footprints": {
+   "floor": [
+    -0.6,
+    -0.5875,
+    0.6,
+    0.21
+   ],
+   "cityWall": {
+    "x": [
+     -0.027,
+     0.027
+    ],
+    "z": [
+     -0.5875,
+     -0.02
+    ],
+    "body": 0.282,
+    "top": 0.3,
+    "towers": {
+     "centres": [
+      [
+       0.0,
+       -0.04
+      ],
+      [
+       0.0,
+       -0.27
+      ]
+     ],
+     "r": 0.05,
+     "top": 0.34
+    },
+    "anchor": [
+     0.0,
+     0.34,
+     -0.04
+    ]
+   },
+   "cityGate": {
+    "opening": [
+     -0.22,
+     -0.1
+    ],
+    "top": "open (between the two towers)",
+    "doors": "standing in the gateway's edges, 0.004 thick, 0.24 high"
+   },
+   "torch1": [
+    0.06182575694955841,
+    0.222,
+    -0.25
+   ],
+   "torch2": [
+    0.056,
+    0.222,
+    -0.07
+   ],
+   "wallWindow": {
+    "z": [
+     -0.495,
+     -0.425
+    ],
+    "y": [
+     0.2,
+     0.27
+    ],
+    "faceX": 0.027,
+    "recessBackX": 0.01,
+    "shutterZ": [
+     -0.571,
+     -0.501
+    ]
+   },
+   "straightStreet": {
+    "x": [
+     -0.6,
+     0.027
+    ],
+    "z": [
+     -0.28,
+     -0.08
+    ]
+   },
+   "ananiasHouse": {
+    "x": [
+     -0.6,
+     -0.33
+    ],
+    "z": [
+     -0.064,
+     0.2
+    ],
+    "walls": 0.015,
+    "h": 0.26,
+    "room": {
+     "x": [
+      -0.585,
+      -0.34500000000000003
+     ],
+     "z": [
+      -0.049,
+      0.2
+     ]
+    },
+    "roofOver": [
+     -0.064,
+     0.0
+    ],
+    "anchor": [
+     -0.465,
+     0.3,
+     0.07
+    ]
+   },
+   "synagogue": {
+    "x": [
+     -0.44,
+     -0.3
+    ],
+    "facadeZ": -0.412,
+    "h": 0.32,
+    "steps": [
+     [
+      -0.412,
+      -0.34,
+      0.04
+     ],
+     [
+      -0.34,
+      -0.32,
+      0.0267
+     ],
+     [
+      -0.32,
+      -0.3,
+      0.0133
+     ]
+    ],
+    "topStepY": 0.04,
+    "columns": [
+     -0.425,
+     -0.315
+    ],
+    "door": [
+     -0.402,
+     -0.338,
+     0.04,
+     0.215
+    ]
+   },
+   "judasHouse": {
+    "x": [
+     -0.29,
+     -0.027
+    ],
+    "z": [
+     -0.5875,
+     -0.3
+    ],
+    "leftWall": [
+     -0.29,
+     -0.275
+    ],
+    "h": 0.26,
+    "roofOver": [
+     -0.584,
+     -0.52
+    ],
+    "threshold": [
+     -0.31,
+     -0.3,
+     0.004
+    ],
+    "table": {
+     "at": [
+      -0.07,
+      -0.525
+     ],
+     "r": 0.04,
+     "top": 0.04
+    }
+   },
+   "judasDoor": {
+    "posts": [
+     -0.2
+    ],
+    "z": -0.305,
+    "top": 0.268,
+    "otherJamb": "the back gate tower (centre [0.0, -0.27], r 0.05)"
+   },
+   "prayerMat": {
+    "at": [
+     -0.15,
+     -0.46
+    ],
+    "size": [
+     0.14,
+     0.095
+    ],
+    "top": 0.0065
+   },
+   "breadBasket": {
+    "at": [
+     -0.07,
+     -0.525
+    ],
+    "r": 0.022,
+    "top": 0.071
+   },
+   "waterJar": {
+    "at": [
+     -0.23,
+     -0.53
+    ],
+    "r": 0.035,
+    "top": 0.1
+   },
+   "well": {
+    "at": [
+     -0.51,
+     -0.44
+    ],
+    "r": 0.04,
+    "h": 0.05
+   },
+   "road": "porch steps (0.485, -0.30) -> right side x ~0.43..0.55 -> front z ~0.04..0.17 -> (0.135, 0.06) -> the gate (0.02, -0.16), 0.12 wide",
+   "rocks": {
+    "at": [
+     0.18,
+     -0.2
+    ],
+    "r": 0.035,
+    "bushes": [
+     [
+      0.225,
+      -0.25
+     ],
+     [
+      0.195,
+      -0.272
+     ]
+    ]
+   },
+   "milestone": {
+    "at": [
+     0.24,
+     0.19
+    ],
+    "h": 0.075
+   },
+   "palm": {
+    "trunk": [
+     0.58,
+     0.16
+    ],
+    "crownUnderside": ">= 0.31",
+    "crownX": ">= 0.505"
+   },
+   "priestPorch": {
+    "x": [
+     0.375,
+     0.6
+    ],
+    "z": [
+     -0.5875,
+     -0.36
+    ],
+    "floor": 0.04,
+    "steps": [
+     [
+      0.42,
+      0.54,
+      -0.36,
+      -0.33,
+      0.03
+     ],
+     [
+      0.42,
+      0.54,
+      -0.33,
+      -0.3,
+      0.02
+     ]
+    ],
+    "columns": [
+     [
+      0.39,
+      -0.37
+     ],
+     [
+      0.58,
+      -0.37
+     ],
+     [
+      0.39,
+      -0.565
+     ],
+     [
+      0.58,
+      -0.565
+     ]
+    ],
+    "roof": [
+     0.43,
+     0.45
+    ]
+   },
+   "jerusalemHouse": {
+    "x": [
+     0.16,
+     0.32
+    ],
+    "z": [
+     -0.5875,
+     -0.423
+    ],
+    "h": 0.24
+   },
+   "jerusalemDoor": {
+    "x": [
+     0.195,
+     0.285
+    ],
+    "top": 0.2,
+    "darkRoomTo": -0.52
+   },
+   "hills": {
+    "x": [
+     -0.6,
+     -0.027
+    ],
+    "z": [
+     -0.5875,
+     -0.5845
+    ]
+   },
+   "jerusalemWall": {
+    "x": [
+     0.027,
+     0.6
+    ],
+    "z": [
+     -0.5875,
+     -0.5845
+    ],
+    "top": 0.355,
+    "towers": [
+     [
+      0.07,
+      0.13,
+      0.415
+     ],
+     [
+      0.26,
+      0.31,
+      0.405
+     ]
+    ]
+   }
+  },
+  "hiddenAtStart": [],
+  "propAnchors": {
+   "saul/letters": {
+    "region": [
+     "street",
+     "column"
+    ],
+    "uv": [
+     0.2295,
+     0.78769
+    ]
+   },
+   "saul/bread": {
+    "region": [
+     "props",
+     "bread"
+    ],
+    "uv": [
+     0.0685,
+     0.45436
+    ]
+   },
+   "judas/bread": {
+    "region": [
+     "props",
+     "bread"
+    ],
+    "uv": [
+     0.0685,
+     0.45436
+    ]
+   },
+   "saul/basket": {
+    "region": [
+     "props",
+     "straw"
+    ],
+    "uv": [
+     0.0755,
+     0.4128
+    ]
+   },
+   "ananias/jug": {
+    "region": [
+     "props",
+     "jar"
+    ],
+    "uv": [
+     0.1645,
+     0.43073
+    ]
+   },
+   "tallguard/lantern": {
+    "region": [
+     "props",
+     "jar"
+    ],
+    "uv": [
+     0.1645,
+     0.43073
+    ]
+   }
+  },
+  "uvRule": {
+   "linear": "a = A.P, b = B.P: u = a / scale + sheetX + 0.5, v = (b / scale + sheetY) / 1.227",
+   "drawingModel": "P = the vertex, except the props (moved / scaled into one still life)",
+   "edgeOn": "faces with |n . D| < 0.22 (n in drawing space) take one clean texel of their region",
+   "namedTexels": "no-raster bits take one texel of a named (drawing, region); constUV in model/set_id_2x.json"
+  },
+  "drawings": {
+   "skyline": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     1,
+     0
+    ],
+    "D": [
+     0,
+     0,
+     1
+    ],
+    "scale": 2.65,
+    "cx": -0.255,
+    "y0": 1.05,
+    "decorOnly": [
+     "hills",
+     "jwall"
+    ],
+    "members": [
+     "hills",
+     "jerusalemWall"
+    ],
+    "sheetX": -0.255,
+    "sheetY": 1.05,
+    "bboxSheet": [
+     -0.4814,
+     1.05,
+     -0.0286,
+     1.2115
+    ]
+   },
+   "wall": {
+    "A": [
+     0,
+     0,
+     -1
+    ],
+    "B": [
+     -0.3,
+     1,
+     0
+    ],
+    "D": [
+     1,
+     0.3,
+     0
+    ],
+    "scale": 1.45,
+    "cx": 0.275,
+    "y0": 0.86,
+    "decorOnly": [
+     "wallStone"
+    ],
+    "members": [
+     "cityWall",
+     "cityGate",
+     "wallWindow"
+    ],
+    "sheetX": 0.07586,
+    "sheetY": 0.87034,
+    "bboxSheet": [
+     0.069,
+     0.86,
+     0.481,
+     1.1127
+    ]
+   },
+   "street": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.4
+    ],
+    "D": [
+     0.0,
+     0.4,
+     1
+    ],
+    "scale": 1.56,
+    "cx": -0.267,
+    "y0": 0.712,
+    "members": [
+     "ananiasHouse",
+     "synagogue",
+     "judasHouse"
+    ],
+    "sheetX": -0.03303,
+    "sheetY": 0.63508,
+    "bboxSheet": [
+     -0.4837,
+     0.712,
+     -0.0503,
+     0.9899
+    ]
+   },
+   "jerusalem": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.45
+    ],
+    "D": [
+     0.0,
+     0.45,
+     1
+    ],
+    "scale": 1.85,
+    "cx": 0.362,
+    "y0": 0.45,
+    "members": [
+     "priestPorch",
+     "jerusalemHouse",
+     "jerusalemDoor"
+    ],
+    "sheetX": 0.15659,
+    "sheetY": 0.37703,
+    "bboxSheet": [
+     0.2431,
+     0.45,
+     0.4809,
+     0.7623
+    ]
+   },
+   "ground": {
+    "A": [
+     1,
+     0,
+     0
+    ],
+    "B": [
+     0,
+     0,
+     -1
+    ],
+    "D": [
+     0,
+     1,
+     0
+    ],
+    "scale": 3.2,
+    "cx": 0.0,
+    "y0": 0.45,
+    "decorOnly": [
+     "ground",
+     "road",
+     "street"
+    ],
+    "members": [
+     "ground",
+     "road",
+     "straightStreet"
+    ],
+    "sheetX": 0.0,
+    "sheetY": 0.51562,
+    "bboxSheet": [
+     -0.1875,
+     0.45,
+     0.1875,
+     0.6992
+    ]
+   },
+   "props": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.8
+    ],
+    "D": [
+     0.0,
+     0.8,
+     1
+    ],
+    "scale": 1.62,
+    "cx": -0.342,
+    "y0": 0.47,
+    "decorOnly": [
+     "straw",
+     "bread"
+    ],
+    "members": [
+     "breadBasket",
+     "waterJar",
+     "prayerMat"
+    ],
+    "sheetX": -0.42771,
+    "sheetY": 0.50069,
+    "bboxSheet": [
+     -0.4825,
+     0.47,
+     -0.2015,
+     0.5994
+    ]
+   },
+   "yard": {
+    "A": [
+     1,
+     0,
+     -0.0
+    ],
+    "B": [
+     0,
+     1,
+     -0.8
+    ],
+    "D": [
+     0.0,
+     0.8,
+     1
+    ],
+    "scale": 1.62,
+    "cx": 0.095,
+    "y0": 0.716,
+    "decorOnly": [
+     "leaf"
+    ],
+    "members": [
+     "well",
+     "rocks"
+    ],
+    "sheetX": 0.00211,
+    "sheetY": 0.74728,
+    "bboxSheet": [
+     -0.0374,
+     0.716,
+     0.2274,
+     0.8256
+    ]
+   }
+  },
+  "pieces": [
+   {
+    "id": "ground",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.0,
+     "sheetY": 0.51562
+    },
+    "instanced": false,
+    "namedTexels": {
+     "ground": [
+      "ground",
+      "ground"
+     ]
+    },
+    "regions": [
+     "ground"
+    ],
+    "heightMax": 0.0022,
+    "tris": 2531
+   },
+   {
+    "id": "straightStreet",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.0,
+     "sheetY": 0.51562
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "street"
+    ],
+    "heightMax": 0.0032,
+    "tris": 710
+   },
+   {
+    "id": "road",
+    "drawing": "ground",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      0,
+      -1
+     ],
+     "D": [
+      0,
+      1,
+      0
+     ],
+     "scale": 3.2,
+     "sheetX": 0.0,
+     "sheetY": 0.51562
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "road"
+    ],
+    "heightMax": 0.0028,
+    "tris": 932
+   },
+   {
+    "id": "cityWall",
+    "drawing": "wall",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      -1
+     ],
+     "B": [
+      -0.3,
+      1,
+      0
+     ],
+     "D": [
+      1,
+      0.3,
+      0
+     ],
+     "scale": 1.45,
+     "sheetX": 0.07586,
+     "sheetY": 0.87034
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wallStone": [
+      "wall",
+      "wallStone"
+     ]
+    },
+    "regions": [
+     "wallStone"
+    ],
+    "heightMax": 0.34,
+    "tris": 1516
+   },
+   {
+    "id": "cityGate",
+    "drawing": "wall",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      -1
+     ],
+     "B": [
+      -0.3,
+      1,
+      0
+     ],
+     "D": [
+      1,
+      0.3,
+      0
+     ],
+     "scale": 1.45,
+     "sheetX": 0.07586,
+     "sheetY": 0.87034
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "iron": [
+      "wall",
+      "window"
+     ]
+    },
+    "regions": [
+     "iron",
+     "wood"
+    ],
+    "heightMax": 0.24,
+    "tris": 60
+   },
+   {
+    "id": "torch1",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "iron": [
+      "wall",
+      "window"
+     ],
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "straw": [
+      "props",
+      "straw"
+     ]
+    },
+    "regions": [
+     "iron",
+     "straw",
+     "wood"
+    ],
+    "heightMax": 0.222,
+    "tris": 140
+   },
+   {
+    "id": "torch2",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "iron": [
+      "wall",
+      "window"
+     ],
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "straw": [
+      "props",
+      "straw"
+     ]
+    },
+    "regions": [
+     "iron",
+     "straw",
+     "wood"
+    ],
+    "heightMax": 0.222,
+    "tris": 140
+   },
+   {
+    "id": "wallWindow",
+    "drawing": "wall",
+    "frontUV": {
+     "A": [
+      0,
+      0,
+      -1
+     ],
+     "B": [
+      -0.3,
+      1,
+      0
+     ],
+     "D": [
+      1,
+      0.3,
+      0
+     ],
+     "scale": 1.45,
+     "sheetX": 0.07586,
+     "sheetY": 0.87034
+    },
+    "instanced": false,
+    "namedTexels": {
+     "window": [
+      "wall",
+      "window"
+     ]
+    },
+    "regions": [
+     "window",
+     "wood"
+    ],
+    "heightMax": 0.272,
+    "tris": 20
+   },
+   {
+    "id": "ananiasHouse",
+    "drawing": "street",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.4
+     ],
+     "D": [
+      0.0,
+      0.4,
+      1
+     ],
+     "scale": 1.56,
+     "sheetX": -0.03303,
+     "sheetY": 0.63508
+    },
+    "instanced": false,
+    "namedTexels": {
+     "limestone": [
+      "jerusalem",
+      "limestone"
+     ],
+     "plaster": [
+      "street",
+      "plaster"
+     ],
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "jar": [
+      "props",
+      "jar"
+     ],
+     "mat": [
+      "props",
+      "mat"
+     ],
+     "roof": [
+      "jerusalem",
+      "roof"
+     ]
+    },
+    "regions": [
+     "floor",
+     "jar",
+     "limestone",
+     "mat",
+     "plaster",
+     "roof",
+     "window",
+     "wood"
+    ],
+    "heightMax": 0.275,
+    "tris": 306
+   },
+   {
+    "id": "synagogue",
+    "drawing": "street",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.4
+     ],
+     "D": [
+      0.0,
+      0.4,
+      1
+     ],
+     "scale": 1.56,
+     "sheetX": -0.03303,
+     "sheetY": 0.63508
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "column",
+     "synDoor"
+    ],
+    "heightMax": 0.32,
+    "tris": 624
+   },
+   {
+    "id": "judasHouse",
+    "drawing": "street",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.4
+     ],
+     "D": [
+      0.0,
+      0.4,
+      1
+     ],
+     "scale": 1.56,
+     "sheetX": -0.03303,
+     "sheetY": 0.63508
+    },
+    "instanced": false,
+    "namedTexels": {
+     "limestone": [
+      "jerusalem",
+      "limestone"
+     ],
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "roof": [
+      "jerusalem",
+      "roof"
+     ]
+    },
+    "regions": [
+     "floor",
+     "limestone",
+     "plaster",
+     "roof",
+     "window",
+     "wood"
+    ],
+    "heightMax": 0.275,
+    "tris": 194
+   },
+   {
+    "id": "judasDoor",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "wall",
+      "wood"
+     ]
+    },
+    "regions": [
+     "wood"
+    ],
+    "heightMax": 0.268,
+    "tris": 22
+   },
+   {
+    "id": "prayerMat",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.42771,
+     "sheetY": 0.50069
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "mat"
+    ],
+    "heightMax": 0.0065,
+    "tris": 10
+   },
+   {
+    "id": "breadBasket",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.42771,
+     "sheetY": 0.50069
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "bread",
+     "straw"
+    ],
+    "heightMax": 0.0681,
+    "tris": 500
+   },
+   {
+    "id": "waterJar",
+    "drawing": "props",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": -0.42771,
+     "sheetY": 0.50069
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "jar"
+    ],
+    "heightMax": 0.1,
+    "tris": 360
+   },
+   {
+    "id": "well",
+    "drawing": "yard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": 0.00211,
+     "sheetY": 0.74728
+    },
+    "instanced": false,
+    "namedTexels": {
+     "jar": [
+      "props",
+      "jar"
+     ],
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "window": [
+      "wall",
+      "window"
+     ]
+    },
+    "regions": [
+     "jar",
+     "wellStone",
+     "window",
+     "wood"
+    ],
+    "heightMax": 0.067,
+    "tris": 618
+   },
+   {
+    "id": "rocks",
+    "drawing": "yard",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.8
+     ],
+     "D": [
+      0.0,
+      0.8,
+      1
+     ],
+     "scale": 1.62,
+     "sheetX": 0.00211,
+     "sheetY": 0.74728
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "leaf",
+     "rock"
+    ],
+    "heightMax": 0.0487,
+    "tris": 532
+   },
+   {
+    "id": "milestone",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "rock": [
+      "yard",
+      "rock"
+     ]
+    },
+    "regions": [
+     "rock"
+    ],
+    "heightMax": 0.075,
+    "tris": 112
+   },
+   {
+    "id": "palm",
+    "drawing": null,
+    "frontUV": null,
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "leaf": [
+      "yard",
+      "leaf"
+     ]
+    },
+    "regions": [
+     "leaf",
+     "wood"
+    ],
+    "heightMax": 0.377,
+    "tris": 520
+   },
+   {
+    "id": "priestPorch",
+    "drawing": "jerusalem",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.85,
+     "sheetX": 0.15659,
+     "sheetY": 0.37703
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "limestone",
+     "roof"
+    ],
+    "heightMax": 0.45,
+    "tris": 600
+   },
+   {
+    "id": "jerusalemHouse",
+    "drawing": "jerusalem",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.85,
+     "sheetX": 0.15659,
+     "sheetY": 0.37703
+    },
+    "instanced": false,
+    "namedTexels": {
+     "doorway": [
+      "jerusalem",
+      "doorway"
+     ]
+    },
+    "regions": [
+     "doorway",
+     "limestone",
+     "roof"
+    ],
+    "heightMax": 0.252,
+    "tris": 58
+   },
+   {
+    "id": "jerusalemDoor",
+    "drawing": "jerusalem",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      -0.0
+     ],
+     "B": [
+      0,
+      1,
+      -0.45
+     ],
+     "D": [
+      0.0,
+      0.45,
+      1
+     ],
+     "scale": 1.85,
+     "sheetX": 0.15659,
+     "sheetY": 0.37703
+    },
+    "instanced": false,
+    "namedTexels": {
+     "wood": [
+      "wall",
+      "wood"
+     ],
+     "doorway": [
+      "jerusalem",
+      "doorway"
+     ]
+    },
+    "regions": [
+     "doorway",
+     "wood"
+    ],
+    "heightMax": 0.2,
+    "tris": 22
+   },
+   {
+    "id": "jerusalemWall",
+    "drawing": "skyline",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 2.65,
+     "sheetX": -0.255,
+     "sheetY": 1.05
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "jwall"
+    ],
+    "heightMax": 0.428,
+    "tris": 288
+   },
+   {
+    "id": "hills",
+    "drawing": "skyline",
+    "frontUV": {
+     "A": [
+      1,
+      0,
+      0
+     ],
+     "B": [
+      0,
+      1,
+      0
+     ],
+     "D": [
+      0,
+      0,
+      1
+     ],
+     "scale": 2.65,
+     "sheetX": -0.255,
+     "sheetY": 1.05
+    },
+    "instanced": false,
+    "namedTexels": null,
+    "regions": [
+     "hills"
+    ],
+    "heightMax": 0.4194,
+    "tris": 316
+   }
+  ],
+  "constUV": [
+   {
+    "node": "ananiasHouse/limestone",
+    "uv": [
+     0.9185,
+     0.50244
+    ],
+    "region": "limestone"
+   },
+   {
+    "node": "ananiasHouse/plaster",
+    "uv": [
+     0.3695,
+     0.70538
+    ],
+    "region": "plaster"
+   },
+   {
+    "node": "ananiasHouse/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "ananiasHouse/jar",
+    "uv": [
+     0.1645,
+     0.43073
+    ],
+    "region": "jar"
+   },
+   {
+    "node": "ananiasHouse/mat",
+    "uv": [
+     0.2565,
+     0.40302
+    ],
+    "region": "mat"
+   },
+   {
+    "node": "ananiasHouse/roof",
+    "uv": [
+     0.9185,
+     0.59861
+    ],
+    "region": "roof"
+   },
+   {
+    "node": "ground/ground",
+    "uv": [
+     0.4625,
+     0.40628
+    ],
+    "region": "ground"
+   },
+   {
+    "node": "judasHouse/limestone",
+    "uv": [
+     0.9185,
+     0.50244
+    ],
+    "region": "limestone"
+   },
+   {
+    "node": "judasHouse/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "judasHouse/roof",
+    "uv": [
+     0.9185,
+     0.59861
+    ],
+    "region": "roof"
+   },
+   {
+    "node": "judasDoor/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "cityWall/wallStone",
+    "uv": [
+     0.6065,
+     0.86675
+    ],
+    "region": "wallStone"
+   },
+   {
+    "node": "cityGate/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "cityGate/iron",
+    "uv": [
+     0.8925,
+     0.83822
+    ],
+    "region": "window"
+   },
+   {
+    "node": "wallWindow/window",
+    "uv": [
+     0.8925,
+     0.83822
+    ],
+    "region": "window"
+   },
+   {
+    "node": "torch1/iron",
+    "uv": [
+     0.8925,
+     0.83822
+    ],
+    "region": "window"
+   },
+   {
+    "node": "torch1/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "torch1/straw",
+    "uv": [
+     0.0755,
+     0.4128
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "torch2/iron",
+    "uv": [
+     0.8925,
+     0.83822
+    ],
+    "region": "window"
+   },
+   {
+    "node": "torch2/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "torch2/straw",
+    "uv": [
+     0.0755,
+     0.4128
+    ],
+    "region": "straw"
+   },
+   {
+    "node": "well/jar",
+    "uv": [
+     0.1645,
+     0.43073
+    ],
+    "region": "jar"
+   },
+   {
+    "node": "well/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "well/window",
+    "uv": [
+     0.8925,
+     0.83822
+    ],
+    "region": "window"
+   },
+   {
+    "node": "milestone/rock",
+    "uv": [
+     0.5955,
+     0.62225
+    ],
+    "region": "rock"
+   },
+   {
+    "node": "palm/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "palm/leaf",
+    "uv": [
+     0.6955,
+     0.6198
+    ],
+    "region": "leaf"
+   },
+   {
+    "node": "jerusalemHouse/doorway",
+    "uv": [
+     0.7855,
+     0.4454
+    ],
+    "region": "doorway"
+   },
+   {
+    "node": "jerusalemDoor/wood",
+    "uv": [
+     0.9445,
+     0.83659
+    ],
+    "region": "wood"
+   },
+   {
+    "node": "jerusalemDoor/doorway",
+    "uv": [
+     0.7855,
+     0.4454
+    ],
+    "region": "doorway"
+   }
+  ],
+  "clearance": {
+   "hard": "OK",
+   "proposedMarks": {
+    "marks": {},
+    "hard": "OK"
+   },
+   "nearest": {
+    "note": "[low zone (y+0.012..0.17), overhead (y+0.17..head top)] nearest plan distance (needs >= 0.05 / 0.035)",
+    "mark S01 saul 0.44,-0.10": [
+     0.2,
+     0.225
+    ],
+    "mark SAUL_PORCH": [
+     0.06,
+     0.121
+    ],
+    "mark S01 saul 0.46,-0.12": [
+     0.18,
+     0.229
+    ],
+    "mark PRIEST": [
+     0.077,
+     0.082
+    ],
+    "mark ROAD_A": [
+     0.08,
+     0.154
+    ],
+    "mark ROAD_B": [
+     0.188,
+     0.14
+    ],
+    "mark ROAD_C": [
+     0.16,
+     0.139
+    ],
+    "mark ROAD_STOP": [
+     0.072,
+     0.239
+    ],
+    "mark LIGHT": [
+     0.114,
+     0.167
+    ],
+    "mark S02 short 0.38,-0.26": [
+     0.057,
+     0.099
+    ],
+    "mark short 0.44,-0.04": [
+     0.227,
+     0.223
+    ],
+    "mark short 0.44,0.08": [
+     0.143,
+     0.14
+    ],
+    "mark S02 tall 0.56,-0.25": [
+     0.054,
+     0.11
+    ],
+    "mark tall 0.53,-0.02": [
+     0.169,
+     0.106
+    ],
+    "mark tall 0.53,0.03": [
+     0.121,
+     0.069
+    ],
+    "mark S01 PACE_B": [
+     0.13,
+     0.197
+    ],
+    "mark S03 saul 0.27,0.10": [
+     0.085,
+     0.254
+    ],
+    "mark S03 short 0.40,0.05": [
+     0.193,
+     0.19
+    ],
+    "mark S03 short 0.33,0.03": [
+     0.172,
+     0.261
+    ],
+    "mark S03 tall 0.45,0.13": [
+     0.116,
+     0.089
+    ],
+    "mark S03 tall 0.38,0.12": [
+     0.142,
+     0.159
+    ],
+    "mark S05 tall 0.27,-0.05": [
+     0.143,
+     0.206
+    ],
+    "mark ROAD_D": [
+     0.083,
+     0.083
+    ],
+    "mark ROAD_E": [
+     0.067,
+     0.045
+    ],
+    "mark GATE_OUT": [
+     0.062,
+     0.086
+    ],
+    "mark GATE_IN": [
+     0.087,
+     0.087
+    ],
+    "mark S05 saul in the gate 0.05,-0.16": [
+     0.062,
+     0.062
+    ],
+    "mark short LIGHT": [
+     0.114,
+     0.167
+    ],
+    "mark SAUL_MAT": [
+     0.063,
+     0.06
+    ],
+    "mark JUDAS_IN": [
+     0.059,
+     0.056
+    ],
+    "mark ANANIAS_HOME": [
+     0.112,
+     0.08
+    ],
+    "mark S08 ananias -0.30,-0.20": [
+     0.1,
+     0.1
+    ],
+    "mark ananias -0.20,-0.23": [
+     0.069,
+     0.066
+    ],
+    "mark JUDAS_DOOR": [
+     0.07,
+     0.066
+    ],
+    "mark ANANIAS_TOUCH": [
+     0.053,
+     0.053
+    ],
+    "mark ANANIAS_POUR": [
+     0.055,
+     0.055
+    ],
+    "mark judas -0.08,-0.43": [
+     0.053,
+     0.052
+    ],
+    "mark JUDAS_SIDE": [
+     0.055,
+     0.055
+    ],
+    "mark SYN_STEP": [
+     0.059,
+     0.044
+    ],
+    "mark S10 tall -0.165,-0.20": [
+     0.103,
+     0.099
+    ],
+    "mark S10 short -0.07,-0.19": [
+     0.053,
+     0.053
+    ],
+    "mark BASKET_DOWN": [
+     0.065,
+     0.065
+    ],
+    "mark SAUL_BASKET": [
+     0.068,
+     0.068
+    ],
+    "mark TALL_GATE": [
+     0.07,
+     0.062
+    ],
+    "mark SHORT_GATE": [
+     0.06,
+     0.132
+    ],
+    "mark S11 saul 0.13,-0.33": [
+     0.071,
+     0.093
+    ],
+    "mark S12 saul 0.40,-0.06": [
+     0.224,
+     0.219
+    ],
+    "mark S12 saul 0.40,-0.24": [
+     0.063,
+     0.119
+    ],
+    "mark S12 saul 0.335,-0.30": [
+     0.072,
+     0.077
+    ],
+    "mark JHOUSE_DOOR": [
+     0.057,
+     0.093
+    ],
+    "mark S12 barnabas 0.14,0.02": [
+     0.102,
+     0.102
+    ],
+    "mark S12 barnabas 0.30,-0.22": [
+     0.062,
+     0.163
+    ],
+    "mark S13 ananias": [
+     0.06,
+     0.06
+    ],
+    "mark S13 judas": [
+     0.16,
+     0.16
+    ],
+    "mark S13 saul": [
+     0.107,
+     0.107
+    ],
+    "mark S13 barnabas": [
+     0.102,
+     0.102
+    ],
+    "mark S13 peter": [
+     0.096,
+     0.178
+    ],
+    "mark S13 tall": [
+     0.108,
+     0.22
+    ],
+    "mark S13 short": [
+     0.135,
+     0.132
+    ],
+    "walk S01 saul S01 saul 0.44,-0.10>SAUL_PORCH": [
+     0.06,
+     0.121
+    ],
+    "walk S01 saul SAUL_PORCH>S01 PACE_B": [
+     0.06,
+     0.121
+    ],
+    "walk S01 saul S01 PACE_B>SAUL_PORCH": [
+     0.06,
+     0.121
+    ],
+    "walk S01 saul SAUL_PORCH>S01 saul 0.46,-0.12": [
+     0.06,
+     0.121
+    ],
+    "walk S03 saul S03 saul 0.27,0.10>LIGHT": [
+     0.084,
+     0.167
+    ],
+    "walk S03 short S03 short 0.40,0.05>S03 short 0.33,0.03": [
+     0.172,
+     0.19
+    ],
+    "walk S03 tall S03 tall 0.45,0.13>S03 tall 0.38,0.12": [
+     0.116,
+     0.089
+    ],
+    "walk S02 saul ROAD_A>ROAD_B": [
+     0.08,
+     0.14
+    ],
+    "walk S02 saul ROAD_B>ROAD_C": [
+     0.158,
+     0.117
+    ],
+    "walk S02 saul ROAD_C>ROAD_STOP": [
+     0.072,
+     0.139
+    ],
+    "walk S02 saul ROAD_STOP>LIGHT": [
+     0.067,
+     0.167
+    ],
+    "walk S02 short S02 short 0.38,-0.26>short 0.44,-0.04": [
+     0.057,
+     0.099
+    ],
+    "walk S02 short short 0.44,-0.04>short 0.44,0.08": [
+     0.143,
+     0.14
+    ],
+    "walk S02 tall S02 tall 0.56,-0.25>tall 0.53,-0.02": [
+     0.054,
+     0.106
+    ],
+    "walk S02 tall tall 0.53,-0.02>tall 0.53,0.03": [
+     0.121,
+     0.069
+    ],
+    "walk S05 tall S05 tall 0.27,-0.05>ROAD_D": [
+     0.083,
+     0.083
+    ],
+    "walk S05 tall ROAD_D>ROAD_E": [
+     0.064,
+     0.043
+    ],
+    "walk S05 tall ROAD_E>GATE_OUT": [
+     0.062,
+     0.045
+    ],
+    "walk S05 tall GATE_OUT>GATE_IN": [
+     0.054,
+     0.054
+    ],
+    "walk S05 saul LIGHT>ROAD_D": [
+     0.083,
+     0.083
+    ],
+    "walk S05 saul ROAD_D>ROAD_E": [
+     0.064,
+     0.043
+    ],
+    "walk S05 saul ROAD_E>GATE_OUT": [
+     0.062,
+     0.045
+    ],
+    "walk S05 saul GATE_OUT>S05 saul in the gate 0.05,-0.16": [
+     0.062,
+     0.062
+    ],
+    "walk S05 short S03 short 0.33,0.03>short LIGHT": [
+     0.113,
+     0.167
+    ],
+    "walk S05 short short LIGHT>ROAD_D": [
+     0.083,
+     0.083
+    ],
+    "walk S08 ananias S08 ananias -0.30,-0.20>ananias -0.20,-0.23": [
+     0.069,
+     0.066
+    ],
+    "walk S08 ananias ananias -0.20,-0.23>JUDAS_DOOR": [
+     0.057,
+     0.053
+    ],
+    "walk S08 ananias JUDAS_DOOR>ANANIAS_TOUCH": [
+     0.053,
+     0.053
+    ],
+    "walk S11 saul SAUL_BASKET>S11 saul 0.13,-0.33": [
+     0.068,
+     0.068
+    ],
+    "walk S12 saul S12 saul 0.40,-0.06>S12 saul 0.40,-0.24": [
+     0.063,
+     0.119
+    ],
+    "walk S12 saul S12 saul 0.40,-0.24>S12 saul 0.335,-0.30": [
+     0.058,
+     0.077
+    ],
+    "walk S12 barnabas S12 barnabas 0.14,0.02>S12 barnabas 0.30,-0.22": [
+     0.052,
+     0.102
+    ]
+   },
+   "info": {
+    "basket": {
+     "wallFaceX": 0.027,
+     "basketCentreX": 0.095,
+     "basketHalf": 0.05,
+     "gapToWallFace": 0.018,
+     "nearestSetPointPlan(<0.45 high)": {
+      "jerusalemHouse": 0.065,
+      "cityWall": 0.068,
+      "wallWindow": 0.068,
+      "jerusalemDoor": 0.1
+     },
+     "ropeTop": [
+      0.03,
+      0.235,
+      -0.46
+     ],
+     "ropeTopInWindow": true,
+     "window": {
+      "z": [
+       -0.495,
+       -0.425
+      ],
+      "y": [
+       0.2,
+       0.27
+      ],
+      "recessBackX": 0.01
+     }
+    },
+    "gate": {
+     "opening": [
+      -0.22,
+      -0.1
+     ],
+     "top": "open",
+     "doorFaces": [
+      -0.216,
+      -0.10400000000000001
+     ]
+    }
+   }
+  },
+  "sheetLayout": {
+   "characters": {
+    "ananias": {
+     "sheetX": -0.32,
+     "sheetY": 0.015,
+     "height": 0.33,
+     "box": [
+      -0.4499,
+      0.0188,
+      -0.1901,
+      0.3455
+     ]
+    },
+    "saul": {
+     "sheetX": 0.0,
+     "sheetY": 0.015,
+     "height": 0.37,
+     "box": [
+      -0.1364,
+      0.0192,
+      0.1364,
+      0.3859
+     ]
+    },
+    "barnabas": {
+     "sheetX": 0.32,
+     "sheetY": 0.015,
+     "height": 0.39,
+     "box": [
+      0.1788,
+      0.0194,
+      0.4612,
+      0.405
+     ]
+    }
+   },
+   "charactersFrom": "model/regions_characters.json"
+  },
+  "demoColours": {
+   "wallStone": "#D9C08A",
+   "window": "#3A2E2A",
+   "wood": "#8A5A32",
+   "plaster": "#F3E6C9",
+   "floor": "#C9A97A",
+   "roof": "#EBD2A6",
+   "column": "#EFE4C8",
+   "synDoor": "#3E8E86",
+   "limestone": "#E9D6A8",
+   "doorway": "#3A2E2A",
+   "ground": "#DCC79A",
+   "road": "#E8C98A",
+   "street": "#E8DCC0",
+   "straw": "#D8B26E",
+   "bread": "#C98A4A",
+   "jar": "#C46A3E",
+   "mat": "#8E5A8C",
+   "wellStone": "#C9C0B0",
+   "rock": "#B9AFA2",
+   "leaf": "#6E9A48",
+   "hills": "#B9A86E",
+   "jwall": "#E6D2A2",
+   "iron": "#4A4A4A"
+  },
+  "tris": 11131,
+  "budget": 70000
+ }
+}

@@ -1,7 +1,7 @@
 #!/bin/sh
 # Off-Unity preview of the D&G effects: runs the real DGFxPaint/DGFxCore/DGFxEffects code under .NET 8
 # (referencing Unity's UnityEngine.CoreModule.dll for Vector3/Color), dumps the exact triangles, renders PNGs.
-# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther|ruth|daniel|exodus|prodigal|gabriel|jonah|joseph|miracles]   (needs dotnet 8, python3 + numpy + Pillow)
+# Usage: unity/Assets/DoodLive/DavidGoliath/Fx/Preview~/run.sh [esther|ruth|daniel|exodus|prodigal|gabriel|jonah|joseph|miracles|lastsupper|risen]   (needs dotnet 8, python3 + numpy + Pillow)
 #   no argument: David & Goliath ids -> fx_contact.png;  "esther": Esther ids -> fx_contact_esther.png;
 #   "ruth": Ruth ids over a stand-in Bethlehem set (tints applied) -> fx_contact_ruth.png
 #   "daniel": Daniel ids (+ reused night / lamp / aliases) over a stand-in Babylon set -> fx_contact_daniel.png
@@ -11,6 +11,8 @@
 #   "jonah": Jonah ids (+ alias plant_grow, reused ids) over a stand-in coast / belly -> fx_contact_jonah.png
 #   "joseph": Joseph dream_cloud over a stand-in twolands and dream panel -> fx_contact_joseph.png
 #   "miracles": Miracles dust_fall / calm_wave (+ dust_puff check) over a stand-in yard and lake -> fx_contact_miracles.png
+#   "lastsupper": palm_toss / doves_fly / water_pour over stand-in yard, cream heaven floor and night -> fx_contact_lastsupper.png
+#   "risen": tomb_glow / butterflies over a stand-in garden (tomb door, beds) drawn by RisenPreview.cs -> fx_contact_risen.png
 #   FXPREVIEW_WORK=<dir> overrides the build / output dir (default $TMPDIR/dgfx-preview).
 # Unity ignores this folder (name ends in ~); the build project is generated in a temp dir.
 set -e
@@ -49,6 +51,8 @@ cat > "$WORK/fxpreview.csproj" <<XML
     <Compile Include="$FX/StoryFxJonah.cs" />
     <Compile Include="$FX/StoryFxJoseph.cs" />
     <Compile Include="$FX/StoryFxMiracles.cs" />
+    <Compile Include="$FX/StoryFxLastSupper.cs" />
+    <Compile Include="$FX/StoryFxRisen.cs" />
     <Compile Include="$HERE/RuthPreview.cs" />
     <Compile Include="$HERE/DanielPreview.cs" />
     <Compile Include="$HERE/ExodusPreview.cs" />
@@ -57,6 +61,8 @@ cat > "$WORK/fxpreview.csproj" <<XML
     <Compile Include="$HERE/JonahPreview.cs" />
     <Compile Include="$HERE/JosephPreview.cs" />
     <Compile Include="$HERE/MiraclesPreview.cs" />
+    <Compile Include="$HERE/LastSupperPreview.cs" />
+    <Compile Include="$HERE/RisenPreview.cs" />
     <Reference Include="UnityEngine.CoreModule"><HintPath>$CORE</HintPath></Reference>
   </ItemGroup>
 </Project>
@@ -66,6 +72,10 @@ dotnet "$WORK/bin/fxpreview.dll" "$WORK/out" "$SET"
 python3 -I "$HERE/render.py" "$WORK/out"
 if [ "$SET" = jonah ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_jonah.png"; echo "wrote $HERE/fx_contact_jonah.png"
+elif [ "$SET" = risen ]; then
+  cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_risen.png"; echo "wrote $HERE/fx_contact_risen.png"
+elif [ "$SET" = lastsupper ]; then
+  cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_lastsupper.png"; echo "wrote $HERE/fx_contact_lastsupper.png"
 elif [ "$SET" = miracles ]; then
   cp "$WORK/out/fx_contact.png" "$HERE/fx_contact_miracles.png"; echo "wrote $HERE/fx_contact_miracles.png"
 elif [ "$SET" = joseph ]; then

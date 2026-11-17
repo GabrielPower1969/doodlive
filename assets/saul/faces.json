@@ -1,0 +1,119 @@
+{
+ "_doc": "Face decal per clip (docs/saul/CONTRACT.md §3-4, from pipeline/sa_characters.py CLIP_EXPRESSION). Integration-owned; read by tools/story/pack.py. StorySetup loads docs/saul/design/faces/<cast id>_<face>.png. Lead decision at staging: Saul's idle (and default) is 'kind', not 'angry': he idles only after he has changed (S05-S13); before that the timeline keeps him marching, fuming or falling.",
+ "saul": {
+  "default": "kind",
+  "clips": {
+   "idle": "kind",
+   "walk": "kind",
+   "march": "angry",
+   "angry_talk": "shout",
+   "take_letters": "angry",
+   "fall_down": "shock",
+   "sit_look_up": "look_up",
+   "get_up_blind": "blind",
+   "walk_blind": "blind",
+   "sit_pray": "pray",
+   "see_again": "see",
+   "kneel": "pray",
+   "eat_bread": "chew",
+   "preach": "talk",
+   "talk": "talk",
+   "basket_wait": "whisper",
+   "basket_down": "whisper",
+   "basket_out": "whisper",
+   "tiptoe": "whisper",
+   "hug": "laugh",
+   "wave": "kind",
+   "cheer": "laugh"
+  }
+ },
+ "ananias": {
+  "default": "gentle",
+  "clips": {
+   "idle": "gentle",
+   "walk": "gentle",
+   "talk": "talk",
+   "kneel_pray": "gentle",
+   "kneel_look_up": "look_up",
+   "startle": "fright",
+   "nervous": "gulp",
+   "tiptoe": "gulp",
+   "knock": "gulp",
+   "hands_on": "brave",
+   "pour": "joy",
+   "listen": "joy",
+   "cheer": "joy",
+   "wave": "joy"
+  }
+ },
+ "barnabas": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "talk": "talk",
+   "laugh": "laugh",
+   "wave": "happy",
+   "arm_round": "kind"
+  }
+ },
+ "judas": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "listen": "happy",
+   "laugh": "laugh",
+   "wave": "happy",
+   "offer_bread": "happy"
+  }
+ },
+ "priest": {
+  "default": "grave",
+  "clips": {
+   "idle": "grave",
+   "give_letters": "talk"
+  }
+ },
+ "tallguard": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "walk_puff": "puff",
+   "puff": "puff",
+   "shrug": "puzzled",
+   "duck": "shock",
+   "amazed": "amazed",
+   "lead_hand": "happy",
+   "listen": "happy",
+   "scratch_head": "puzzled",
+   "lantern_peer": "puzzled",
+   "wave": "happy"
+  }
+ },
+ "shortguard": {
+  "default": "happy",
+  "clips": {
+   "idle": "happy",
+   "walk": "happy",
+   "talk": "talk",
+   "listen": "happy",
+   "amazed": "amazed",
+   "walk_puff": "puff",
+   "puff": "puff",
+   "duck": "shock",
+   "boast": "happy",
+   "doze": "asleep",
+   "wave": "happy"
+  }
+ },
+ "peter": {
+  "default": "jolly",
+  "clips": {
+   "idle": "jolly",
+   "peek_afraid": "afraid",
+   "hug": "laugh",
+   "wave": "jolly"
+  }
+ }
+}

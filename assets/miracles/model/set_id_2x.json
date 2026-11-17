@@ -80,28 +80,6 @@
   {
    "id": 6,
    "char": "set",
-   "part": "room",
-   "region": "wood",
-   "hex": "#6B4A30",
-   "nodes": [
-    "houseIn",
-    "crowd1",
-    "crowd2",
-    "crowd3",
-    "crowd4",
-    "crowd5",
-    "crowd6",
-    "crowd7",
-    "crowd8",
-    "houseIn",
-    "olivePress",
-    "roofHole",
-    "rubble"
-   ]
-  },
-  {
-   "id": 7,
-   "char": "set",
    "part": "ground",
    "region": "yard",
    "hex": "#D8BE8E",
@@ -114,7 +92,7 @@
    ]
   },
   {
-   "id": 8,
+   "id": 7,
    "char": "set",
    "part": "ground",
    "region": "road",
@@ -128,7 +106,7 @@
    ]
   },
   {
-   "id": 9,
+   "id": 8,
    "char": "set",
    "part": "ground",
    "region": "ground",
@@ -142,7 +120,7 @@
    ]
   },
   {
-   "id": 10,
+   "id": 9,
    "char": "set",
    "part": "ground",
    "region": "beach",
@@ -157,7 +135,7 @@
    ]
   },
   {
-   "id": 11,
+   "id": 10,
    "char": "set",
    "part": "ground",
    "region": "lake",
@@ -171,7 +149,7 @@
    ]
   },
   {
-   "id": 12,
+   "id": 11,
    "char": "set",
    "part": "ground",
    "region": "lakeFar",
@@ -186,7 +164,7 @@
    ]
   },
   {
-   "id": 13,
+   "id": 12,
    "char": "set",
    "part": "boat",
    "region": "hull",
@@ -195,12 +173,23 @@
     "boat",
     "cushion",
     "boat",
+    "crowd1",
+    "crowd2",
+    "crowd3",
     "crowd4",
-    "crowd6"
+    "crowd5",
+    "crowd6",
+    "crowd7",
+    "crowd8",
+    "figTree",
+    "houseIn",
+    "olivePress",
+    "roofHole",
+    "rubble"
    ]
   },
   {
-   "id": 14,
+   "id": 13,
    "char": "set",
    "part": "boat",
    "region": "deck",
@@ -213,7 +202,7 @@
    ]
   },
   {
-   "id": 15,
+   "id": 14,
    "char": "set",
    "part": "boat",
    "region": "sail",
@@ -228,7 +217,7 @@
    ]
   },
   {
-   "id": 16,
+   "id": 15,
    "char": "set",
    "part": "boat",
    "region": "cushion",
@@ -241,7 +230,7 @@
    ]
   },
   {
-   "id": 17,
+   "id": 16,
    "char": "set",
    "part": "hills",
    "region": "hills",
@@ -254,17 +243,7 @@
    ]
   },
   {
-   "id": 18,
-   "char": "set",
-   "part": "fig",
-   "region": "trunk",
-   "hex": "#7A6650",
-   "nodes": [
-    "figTree"
-   ]
-  },
-  {
-   "id": 19,
+   "id": 17,
    "char": "set",
    "part": "fig",
    "region": "fig",
@@ -282,31 +261,39 @@
    "node": "houseIn/ceiling",
    "uv": [
     0.2075,
-    0.88875
+    0.9295
    ],
    "region": "roof"
   },
   {
    "node": "houseIn/beam",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "houseIn/jar",
    "uv": [
     0.2075,
-    0.88875
+    0.9295
    ],
    "region": "roof"
   },
   {
+   "node": "houseIn/wood",
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "hull"
+  },
+  {
    "node": "houseIn/flame",
    "uv": [
-    0.8995,
-    0.52608
+    0.3245,
+    0.5546
    ],
    "region": "fig"
   },
@@ -314,87 +301,95 @@
    "node": "roofPatch/ceiling",
    "uv": [
     0.2075,
-    0.88875
+    0.9295
    ],
    "region": "roof"
+  },
+  {
+   "node": "figTree/trunk",
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "hull"
   },
   {
    "node": "roofHole/mud",
    "uv": [
     0.2075,
-    0.88875
+    0.9295
    ],
    "region": "roof"
   },
   {
    "node": "roofHole/twig",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "rubble/mud",
    "uv": [
     0.2075,
-    0.88875
+    0.9295
    ],
    "region": "roof"
   },
   {
    "node": "rubble/twig",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "beach/pebble",
    "uv": [
     0.7425,
-    0.92461
+    0.93602
    ],
    "region": "hills"
   },
   {
    "node": "beach/reed",
    "uv": [
-    0.8995,
-    0.52608
+    0.3245,
+    0.5546
    ],
    "region": "fig"
   },
   {
    "node": "olivePress/stone",
    "uv": [
-    0.6265,
-    0.41361
+    0.7505,
+    0.42339
    ],
    "region": "beach"
   },
   {
    "node": "olivePress/beam",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "boat/wood",
    "uv": [
-    0.6325,
-    0.66055
+    0.9195,
+    0.62795
    ],
    "region": "hull"
   },
   {
    "node": "boat/net",
    "uv": [
-    0.6245,
-    0.76324
+    0.5845,
+    0.78932
    ],
    "region": "sail"
   },
@@ -402,15 +397,15 @@
    "node": "crowd1/robe",
    "uv": [
     0.4795,
-    0.76243
+    0.80318
    ],
    "region": "door"
   },
   {
    "node": "crowd1/cloth",
    "uv": [
-    0.6245,
-    0.76324
+    0.5845,
+    0.78932
    ],
    "region": "sail"
   },
@@ -418,31 +413,31 @@
    "node": "crowd1/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd1/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd2/robe",
    "uv": [
-    0.8775,
-    0.65322
+    0.8865,
+    0.65648
    ],
    "region": "cushion"
   },
   {
    "node": "crowd2/cloth",
    "uv": [
-    0.7475,
-    0.64751
+    0.7345,
+    0.64425
    ],
    "region": "deck"
   },
@@ -450,31 +445,31 @@
    "node": "crowd2/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd2/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd3/robe",
    "uv": [
     0.7425,
-    0.92461
+    0.93602
    ],
    "region": "hills"
   },
   {
    "node": "crowd3/cloth",
    "uv": [
-    0.6245,
-    0.76324
+    0.5845,
+    0.78932
    ],
    "region": "sail"
   },
@@ -482,31 +477,31 @@
    "node": "crowd3/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd3/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd4/robe",
    "uv": [
-    0.8995,
-    0.52608
+    0.3245,
+    0.5546
    ],
    "region": "fig"
   },
   {
    "node": "crowd4/cloth",
    "uv": [
-    0.6325,
-    0.66055
+    0.9195,
+    0.62795
    ],
    "region": "hull"
   },
@@ -514,31 +509,31 @@
    "node": "crowd4/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd4/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd5/robe",
    "uv": [
-    0.6815,
-    0.5489
+    0.8085,
+    0.54727
    ],
    "region": "lakeFar"
   },
   {
    "node": "crowd5/cloth",
    "uv": [
-    0.6245,
-    0.76324
+    0.5845,
+    0.78932
    ],
    "region": "sail"
   },
@@ -546,23 +541,23 @@
    "node": "crowd5/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd5/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd6/robe",
    "uv": [
-    0.6325,
-    0.66055
+    0.9195,
+    0.62795
    ],
    "region": "hull"
   },
@@ -570,7 +565,7 @@
    "node": "crowd6/cloth",
    "uv": [
     0.4795,
-    0.76243
+    0.80318
    ],
    "region": "door"
   },
@@ -578,31 +573,31 @@
    "node": "crowd6/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd6/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd7/robe",
    "uv": [
-    0.7475,
-    0.64751
+    0.7345,
+    0.64425
    ],
    "region": "deck"
   },
   {
    "node": "crowd7/cloth",
    "uv": [
-    0.8775,
-    0.65322
+    0.8865,
+    0.65648
    ],
    "region": "cushion"
   },
@@ -610,23 +605,23 @@
    "node": "crowd7/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd7/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   },
   {
    "node": "crowd8/robe",
    "uv": [
     0.4795,
-    0.76243
+    0.80318
    ],
    "region": "door"
   },
@@ -634,7 +629,7 @@
    "node": "crowd8/cloth",
    "uv": [
     0.7425,
-    0.92461
+    0.93602
    ],
    "region": "hills"
   },
@@ -642,17 +637,17 @@
    "node": "crowd8/face",
    "uv": [
     0.2915,
-    0.77384
+    0.81459
    ],
    "region": "walls"
   },
   {
    "node": "crowd8/hair",
    "uv": [
-    0.2585,
-    0.40546
+    0.9195,
+    0.62795
    ],
-   "region": "wood"
+   "region": "hull"
   }
  ]
 }

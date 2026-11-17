@@ -1,0 +1,1037 @@
+{
+ "_doc": "The King Who Serves voice cast (docs/lastsupper/VOICE.md). narrator / jesus / peter are copied from cast_miracles.json (one Jesus and one Peter across both packs) plus a timbre pin (mfccRef = mean MFCC of Miracles' chosen clips). Run through tools/story/voice_lastsupper.py (runaway guard, crowd takes with a repetition check, f0 / timbre pins from voice_exodus.py).",
+ "names": {
+  "narrator": {
+   "zh": "讲故事的人",
+   "en": "Narrator"
+  },
+  "jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "john": {
+   "zh": "约翰",
+   "en": "John"
+  },
+  "james": {
+   "zh": "雅各",
+   "en": "James"
+  },
+  "andrew": {
+   "zh": "安得烈",
+   "en": "Andrew"
+  },
+  "seller1": {
+   "zh": "卖鸽子的",
+   "en": "The dove seller"
+  },
+  "seller2": {
+   "zh": "换钱的",
+   "en": "The money changer"
+  },
+  "people": {
+   "zh": "众人",
+   "en": "The crowd"
+  }
+ },
+ "refZh": {},
+ "sayMap": {},
+ "cast": {
+  "zh": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 3.3,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "一位温暖的女讲故事人，像妈妈在床边给四到十岁的孩子讲圣经故事，声音亲切、生动、自然，语速正常流畅，不拖沓。这一句：",
+    "why": "same settings as cast_miracles.json (the two packs share one narrator)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，三十岁左右，嗓音温暖、清亮、柔和圆润，干净不沙哑，平静从容，亲切又带一点点俏皮的笑意，吐字清楚，像一位温柔的好老师，从不吼叫。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "mfccRef": [
+     447.53,
+     -191.85,
+     217.57,
+     -144.0,
+     137.73,
+     -92.19,
+     36.22,
+     25.25,
+     -24.54,
+     10.65,
+     -37.86,
+     36.54
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "same settings as cast_miracles.json (the two packs share one jesus); plus a timbre pin to Miracles' chosen clips"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "男性，四十多岁，身材高大魁梧的渔夫，低沉浑厚的男低音，胸腔共鸣很重，嗓门大但声音低，豪爽爱笑，热心肠，像一只友好的大熊。就算大喊大叫也是低沉的大嗓门，从不尖细。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，夸张好笑，但是不吓人，有真实的呼吸。大喊时声音也保持低沉。这一句：",
+    "why": "same settings as cast_miracles.json (the two packs share one peter); plus a timbre pin to Miracles' chosen clips",
+    "mfccRef": [
+     399.67,
+     -235.13,
+     186.73,
+     -187.79,
+     137.01,
+     -122.44,
+     -2.34,
+     19.14,
+     -8.22,
+     0.22,
+     -64.88,
+     36.46
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "john": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，十八九岁，门徒里最年轻的一个，声音清亮、年轻、有活力，说话快，机灵又有点调皮，后来变得若有所思。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "clearly the youngest: bright, quick (STORY.md)"
+   },
+   "james": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     125,
+     175
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，二十七八岁，约翰的哥哥，自信的男中高音，声音洪亮饱满，有点自以为了不起，爱显摆，但不讨厌。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "confident tenor, puffed up (STORY.md)"
+   },
+   "andrew": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，三十多岁，彼得的弟弟，声音温和、轻柔、低调，说话慢条斯理，平静、淡定，有一点冷幽默，有点害羞，从不大声。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "softer and lower-key than Peter (CONTRACT §7); deadpan"
+   },
+   "seller1": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     110,
+     170
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，五十岁左右，圆滚滚的胖商贩，嗓门大，声音圆润响亮，乐呵呵的市场叫卖腔，滑稽可爱，不凶。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "jolly market voice (STORY.md)"
+   },
+   "seller2": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     230
+    ],
+    "f0Weight": 120,
+    "fx": "nasal",
+    "chain": "expressive",
+    "minPace": 2.6,
+    "design": "男性，四十岁左右，瘦瘦的换钱商人，声音尖细、带鼻音，说话又快又急，像连珠炮，滑稽。普通话标准。",
+    "instruct": "像真人在给四到十岁的孩子演圣经故事广播剧，自然不做作，有真实的呼吸，语速正常流畅，不拖沓。声音温暖友好，让孩子喜欢，不吓人。这一句：",
+    "why": "nasal, fast patter (STORY.md)"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "field",
+    "chain": "expressive",
+    "rt60": 0.8,
+    "wet": 0.18,
+    "seed": 41,
+    "instruct": "路边一大群欢迎国王的人，又唱又喊，非常开心，七嘴八舌，像真人。",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "dylan",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "eric",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "男孩，七岁左右，声音清脆稚嫩，普通话标准。",
+      "delay": 0.3,
+      "gainDb": -3,
+      "seed": 6,
+      "instruct": "开心地大声欢呼，"
+     },
+     {
+      "engine": "qwen_design",
+      "design": "女孩，五岁左右，声音又细又甜，奶声奶气，普通话标准。",
+      "delay": 0.18,
+      "gainDb": -4,
+      "seed": 7,
+      "instruct": "开心地大声欢呼，"
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "Jonah / Miracles crowd (10 Qwen voices incl. a boy of 7 and a girl of 5), children raised to -3/-4 dB for 'a child's voice on top'; outdoors (field fx), 8 mixes, runaway + repetition guard in voice_lastsupper.py",
+    "takes": 8
+   }
+  },
+  "en": {
+   "narrator": {
+    "engine": "qwen",
+    "voice": "vivian",
+    "takes": 4,
+    "minPace": 2.6,
+    "maxPause": 1.2,
+    "fx": "plain",
+    "chain": "expressive",
+    "instruct": "A warm woman storyteller, like a mother at a child's bedside telling a Bible story to a child of four to ten: friendly, lively, natural, at a natural flowing pace, never dragging. This line: ",
+    "why": "same settings as cast_miracles.json (the two packs share one narrator)"
+   },
+   "jesus": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     120,
+     160
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man of about thirty with a warm, clear, soft and round voice, clean and never hoarse, calm and unhurried, kind with a hint of playful smile, crisp diction, like a gentle teacher who never shouts. Clear standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "mfccRef": [
+     391.03,
+     -192.24,
+     231.9,
+     -178.53,
+     147.73,
+     -97.43,
+     24.48,
+     -4.5,
+     -25.99,
+     10.75,
+     -44.5,
+     30.48
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1,
+    "why": "same settings as cast_miracles.json (the two packs share one jesus); plus a timbre pin to Miracles' chosen clips"
+   },
+   "peter": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 8,
+    "minPace": 2.2,
+    "maxPause": 1.2,
+    "f0Hz": [
+     95,
+     135
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "design": "A man in his forties, a big burly fisherman with a deep, booming bass voice, heavy chest resonance, loud but low, hearty and quick to laugh, warm-hearted like a friendly bear. Even when he shouts his voice stays deep and never turns shrill. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: comic and big, never scary, with real breaths. Keep the voice deep and low even when shouting. This line: ",
+    "why": "same settings as cast_miracles.json (the two packs share one peter); plus a timbre pin to Miracles' chosen clips",
+    "mfccRef": [
+     394.25,
+     -257.86,
+     171.33,
+     -197.83,
+     137.03,
+     -104.7,
+     -31.6,
+     -24.74,
+     -16.34,
+     -3.42,
+     -71.62,
+     32.65
+    ],
+    "mfccTol": 65,
+    "mfccWeight": 0.1
+   },
+   "john": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     210
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A young man of about nineteen, the youngest of the friends: a bright, clear, youthful voice, quick and a bit cheeky, later thoughtful. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "clearly the youngest: bright, quick (STORY.md)"
+   },
+   "james": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     125,
+     175
+    ],
+    "f0Weight": 120,
+    "fx": "plain",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A man of about twenty-seven, John's big brother: a confident, full tenor voice, a little puffed up and pleased with himself, but likeable. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "confident tenor, puffed up (STORY.md)"
+   },
+   "andrew": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     105,
+     150
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A man in his thirties, Peter's younger brother: a mild, soft-spoken, low-key voice, calm and unhurried, dry and deadpan, a little shy, never loud. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "softer and lower-key than Peter (CONTRACT §7); deadpan"
+   },
+   "seller1": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     110,
+     170
+    ],
+    "f0Weight": 120,
+    "fx": "warm",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A man of about fifty, a round, jolly market trader: a big, round, booming market-crier voice, comic and cheerful, never nasty. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "jolly market voice (STORY.md)"
+   },
+   "seller2": {
+    "engine": "qwen_design",
+    "voice": "",
+    "takes": 6,
+    "maxPause": 1.2,
+    "f0Hz": [
+     150,
+     230
+    ],
+    "f0Weight": 120,
+    "fx": "nasal",
+    "chain": "expressive",
+    "minPace": 2.2,
+    "design": "A thin man of about forty, a money changer: a thin, nasal, fast-talking voice, quick patter, comic and fussy. Standard American English.",
+    "instruct": "Like a real actor in a children's Bible radio play for ages 4 to 10: natural, with real breaths, at a natural flowing pace. Warm and friendly, lovable to young children, never scary. This line: ",
+    "why": "nasal, fast patter (STORY.md)"
+   },
+   "people": {
+    "engine": "crowd",
+    "voice": "",
+    "fx": "field",
+    "chain": "expressive",
+    "rt60": 0.8,
+    "wet": 0.18,
+    "seed": 41,
+    "instruct": "A big happy crowd by the road welcoming their king, cheering and calling out, all at once, like real people.",
+    "members": [
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.0,
+      "gainDb": 0,
+      "seed": 1
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.12,
+      "gainDb": -6,
+      "seed": 2
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.07,
+      "gainDb": -8,
+      "semitones": 2,
+      "seed": 3
+     },
+     {
+      "engine": "qwen",
+      "voice": "aiden",
+      "delay": 0.22,
+      "gainDb": -9,
+      "seed": 4
+     },
+     {
+      "engine": "qwen",
+      "voice": "uncle_fu",
+      "delay": 0.16,
+      "gainDb": -10,
+      "seed": 5
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A boy of about seven, bright clear child's voice, standard English.",
+      "delay": 0.3,
+      "gainDb": -3,
+      "seed": 6,
+      "instruct": "Cheering happily and loudly, "
+     },
+     {
+      "engine": "qwen_design",
+      "design": "A girl of about five, thin sweet little voice, standard English.",
+      "delay": 0.18,
+      "gainDb": -4,
+      "seed": 7,
+      "instruct": "Cheering happily and loudly, "
+     },
+     {
+      "engine": "qwen",
+      "voice": "serena",
+      "delay": 0.27,
+      "gainDb": -10,
+      "semitones": -3,
+      "seed": 8
+     },
+     {
+      "engine": "qwen",
+      "voice": "ryan",
+      "delay": 0.35,
+      "gainDb": -11,
+      "semitones": 2.5,
+      "seed": 9
+     },
+     {
+      "engine": "qwen",
+      "voice": "vivian",
+      "delay": 0.04,
+      "gainDb": -11,
+      "semitones": -3,
+      "seed": 10
+     }
+    ],
+    "why": "Jonah / Miracles crowd (10 Qwen voices incl. a boy of 7 and a girl of 5), children raised to -3/-4 dB for 'a child's voice on top'; outdoors (field fx), 8 mixes, runaway + repetition guard in voice_lastsupper.py",
+    "takes": 8
+   }
+  }
+ },
+ "lines": {
+  "ls_01": {
+   "m": "故事开场，明亮愉快；说到“小驴”时带着笑意和一点小惊喜",
+   "m_en": "storyteller opening, bright; a smile and a little surprise on 'a little donkey'"
+  },
+  "ls_02": {
+   "m": "热闹、越说越起劲，后半句快一点",
+   "m_en": "lively, building; quicker on the second half"
+  },
+  "ls_03": {
+   "m": "一大群人一起欢呼，开心，声音此起彼伏，孩子的声音在最上面",
+   "m_en": "crowd, joyful, overlapping; a child's voice on top",
+   "zh": {
+    "takes": 8
+   },
+   "en": {
+    "takes": 8
+   }
+  },
+  "ls_04": {
+   "m": "得意得不得了，挥着棕树枝；说“大人物”时咧嘴大笑，但嗓音低沉",
+   "m_en": "bursting with pride, waving the palm; big grin on 'important'; voice stays deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哈哈，大家都知道他是王啦！",
+      "instruct": "得意地笑着喊，嗓音低沉。",
+      "gap": 0.15
+     },
+     {
+      "text": "我们也要当大人物了！",
+      "instruct": "咧嘴大笑，美滋滋的。"
+     }
+    ],
+    "asrIgnore": "哈|呵"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ha ha! Everyone knows He's the King!",
+      "instruct": "laughing proudly, deep voice.",
+      "gap": 0.15
+     },
+     {
+      "text": "Soon we'll be important too!",
+      "instruct": "big grin, delighted with himself."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "ls_05": {
+   "m": "宗教领袖的抱怨用低一点、拘谨的腔调，不吓人",
+   "m_en": "the grumble in a lower, prim voice; not scary"
+  },
+  "ls_06": {
+   "m": "平静笃定，带一点俏皮的笑意，不生气",
+   "m_en": "calm and sure, a twinkle in it; not cross"
+  },
+  "ls_07": {
+   "m": "先是疑惑，然后弯下腰对石头小声说话，非常滑稽",
+   "m_en": "puzzled, then leaning in and whispering to the stone, very comic",
+   "zh": {
+    "phrases": [
+     {
+      "text": "石头……会喊？",
+      "instruct": "一脸疑惑，慢慢地自言自语。",
+      "gap": 0.35
+     },
+     {
+      "text": "喂，石头，你说句话呀？",
+      "instruct": "弯下腰对着石头小声说，非常滑稽。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "The stones... would shout?",
+      "instruct": "puzzled, slowly, to himself.",
+      "gap": 0.35
+     },
+     {
+      "text": "Hey, stone! Say something!",
+      "instruct": "leaning in, a loud comic whisper to the stone."
+     }
+    ]
+   }
+  },
+  "ls_08": {
+   "m": "响亮的市场叫卖，然后小声对自己嘀咕一句；滑稽，不坏",
+   "m_en": "loud market cry, then a sly aside to himself; comic, not nasty",
+   "zh": {
+    "phrases": [
+     {
+      "text": "卖鸽子咯！便宜卖啦——",
+      "instruct": "响亮的市场叫卖，乐呵呵的。",
+      "gap": 0.3
+     },
+     {
+      "text": "嗯，其实也不太便宜！",
+      "instruct": "压低声音对自己嘀咕，狡猾又好笑。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Doves! Doves for sale! Cheap, cheap!",
+      "instruct": "a loud, jolly market cry.",
+      "gap": 0.3
+     },
+     {
+      "text": "...Well, not that cheap!",
+      "instruct": "a sly aside to himself, quieter, comic."
+     }
+    ]
+   }
+  },
+  "ls_09": {
+   "m": "安静一点，有点难过；“祷告的地方”说得慢",
+   "m_en": "quieter, a little sad; slow on 'God's house'"
+  },
+  "ls_10": {
+   "m": "坚定有力、清楚；底下是难过，绝不是暴怒大吼",
+   "m_en": "firm and strong, clear; sad underneath, never shouting in rage"
+  },
+  "ls_11": {
+   "m": "滑稽的慌张，弯着腰追硬币",
+   "m_en": "comic panic, bent double chasing coins",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哎呀，我的钱！",
+      "instruct": "滑稽地慌张大叫。",
+      "gap": 0.2
+     },
+     {
+      "text": "别滚，别滚啦！",
+      "instruct": "弯着腰追硬币，又急又好笑。"
+     }
+    ],
+    "asrIgnore": "哎|哎呀|呀|唉|诶"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Oh no, my money!",
+      "instruct": "comic panic.",
+      "gap": 0.2
+     },
+     {
+      "text": "Stop rolling! Stop rolling!",
+      "instruct": "bent double chasing coins, flustered and funny."
+     }
+    ]
+   }
+  },
+  "ls_12": {
+   "m": "滑稽地哀嚎，像鸟一样拍着手臂",
+   "m_en": "wailing, comic, flapping his arms like a bird",
+   "zh": {
+    "phrases": [
+     {
+      "text": "我的鸽子……",
+      "instruct": "难以置信，拖着哭腔，滑稽。",
+      "gap": 0.25
+     },
+     {
+      "text": "都飞走啦！",
+      "instruct": "滑稽地哀嚎。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "My doves...",
+      "instruct": "disbelief, a comic whimper.",
+      "gap": 0.25
+     },
+     {
+      "text": "they've all flown away!",
+      "instruct": "a comic wail."
+     }
+    ]
+   }
+  },
+  "ls_13": {
+   "m": "温暖；耶稣不只是生气，他爱上帝的家；最后孩子们的“和散那”扬起来",
+   "m_en": "warm; Jesus was not just angry, He loved God's house; lift into the children's 'Hosanna' at the end"
+  },
+  "ls_14": {
+   "m": "温馨的晚上的语气，最后意味深长地停一下",
+   "m_en": "cosy evening voice, then a knowing little pause at the end"
+  },
+  "ls_15": {
+   "m": "神气十足，很得意",
+   "m_en": "puffed up, pleased with himself"
+  },
+  "ls_16": {
+   "m": "最小的那个，又快又调皮",
+   "m_en": "the youngest, quick and cheeky"
+  },
+  "ls_17": {
+   "m": "又大又响，拍着胸脯，嗓音低沉",
+   "m_en": "big and loud, thumbs at his chest; voice stays deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "喂喂喂！我是第一个跟耶稣的，",
+      "instruct": "大嗓门打断，低沉洪亮。",
+      "gap": 0.15
+     },
+     {
+      "text": "我才是最大的！",
+      "instruct": "拍着胸脯，得意洋洋。"
+     }
+    ],
+    "asrIgnore": "喂"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Hey, hey, hey! I was the first one to follow Jesus.",
+      "instruct": "a big, loud, deep interruption.",
+      "gap": 0.15
+     },
+     {
+      "text": "I'm the greatest!",
+      "instruct": "thumbs at his chest, proud."
+     }
+    ]
+   }
+  },
+  "ls_18": {
+   "m": "温和，有点害羞，一本正经；笑点在于他特别平静",
+   "m_en": "mild, a little shy, deadpan; the joke is in how calm he is",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哥，其实……",
+      "instruct": "温和、有点害羞，慢慢地。",
+      "gap": 0.3
+     },
+     {
+      "text": "是我先带你去见耶稣的。",
+      "instruct": "平静、一本正经，淡淡地说。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Um, brother... actually,",
+      "instruct": "mild and a little shy, slowly.",
+      "gap": 0.3
+     },
+     {
+      "text": "I'm the one who took you to meet Jesus.",
+      "instruct": "calm and deadpan."
+     }
+    ]
+   }
+  },
+  "ls_19": {
+   "m": "被说中了，慌张结巴，滑稽",
+   "m_en": "caught out, flustered, comic",
+   "zh": {
+    "asrIgnore": "呃|额|嗯"
+   },
+   "en": {
+    "asrIgnore": "er|err|erm|uh|um",
+    "pick": 5,
+    "pickWhy": "take 7 (only err-0 take) measured 425 Hz median, a squeak; take 5 says every word ('Err' was not in asrIgnore) and is lower"
+   }
+  },
+  "ls_20": {
+   "m": "朴素温和；“谁也不愿意”轻轻叹口气",
+   "m_en": "plain and gentle; a small sigh on 'nobody wanted'"
+  },
+  "ls_21": {
+   "m": "轻声、慢慢地，带着惊奇；省略号处停久一点",
+   "m_en": "hushed, slow, with wonder; long pause at the dots",
+   "zh": {
+    "phrases": [
+     {
+      "text": "耶稣在腰上束了一条毛巾，把水倒进盆里……",
+      "instruct": "轻声、慢慢地，带着惊奇。",
+      "gap": 0.5
+     },
+     {
+      "text": "然后跪下来，给门徒洗脚。",
+      "instruct": "更轻，满是惊奇。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Jesus tied a towel round His waist, poured water into a bowl...",
+      "instruct": "hushed and slow, with wonder.",
+      "gap": 0.5
+     },
+     {
+      "text": "then knelt down and began to wash their feet.",
+      "instruct": "softer still, full of wonder."
+     }
+    ]
+   }
+  },
+  "ls_22": {
+   "m": "惊呆了的小声耳语",
+   "m_en": "a stunned whisper"
+  },
+  "ls_23": {
+   "m": "震惊又不好意思，举起双手把脚缩回去；大声但嗓音低沉",
+   "m_en": "shocked and embarrassed, hands up, pulling his feet back; loud but deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "主啊，你要给我洗脚？",
+      "instruct": "震惊又不好意思，嗓音低沉。",
+      "gap": 0.2
+     },
+     {
+      "text": "不行！永远不行！",
+      "instruct": "大声拒绝，摆着手，嗓音保持低沉。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Lord, You're going to wash MY feet?",
+      "instruct": "shocked and embarrassed, deep voice.",
+      "gap": 0.2
+     },
+     {
+      "text": "No! Never, ever!",
+      "instruct": "a loud refusal, waving his hands, still deep."
+     }
+    ]
+   }
+  },
+  "ls_24": {
+   "m": "非常温柔、有耐心，抬头看着他",
+   "m_en": "very gentle, patient, looking up at him"
+  },
+  "ls_25": {
+   "m": "一下子全豁出去了，滑稽地过分热情，声音越来越高但仍然低沉",
+   "m_en": "all in at once, comic over-eagerness, rising but still deep",
+   "zh": {
+    "phrases": [
+     {
+      "text": "啊？那不光洗脚！",
+      "instruct": "一愣，马上急了。",
+      "gap": 0.15
+     },
+     {
+      "text": "手也洗，头也洗，全身都洗吧！",
+      "instruct": "滑稽地过分热情，越说越快。"
+     }
+    ],
+    "asrIgnore": "啊"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "What? Then not just my feet!",
+      "instruct": "startled, then eager.",
+      "gap": 0.15
+     },
+     {
+      "text": "My hands and my head too! Wash all of me!",
+      "instruct": "comic over-eagerness, faster and faster."
+     }
+    ]
+   }
+  },
+  "ls_26": {
+   "m": "先温暖地真笑两声，很疼爱他",
+   "m_en": "a warm, real laugh first; fond",
+   "zh": {
+    "asrIgnore": "哈|呵"
+   },
+   "en": {
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "ls_27": {
+   "m": "安静朴素，不夸张；“还是”轻轻加重",
+   "m_en": "quiet and plain, no drama; a soft weight on 'as well'"
+  },
+  "ls_28": {
+   "m": "温暖、清楚、不慌不忙，对四个人说",
+   "m_en": "warm, clear, unhurried; to all four"
+  },
+  "ls_29": {
+   "m": "简单温柔，这是故事的核心；慢",
+   "m_en": "simple and gentle, the heart of the story; slow"
+  },
+  "ls_30": {
+   "m": "敬虔朴素；慢，每个动作一拍",
+   "m_en": "reverent and simple; slow, each action its own beat"
+  },
+  "ls_31": {
+   "m": "安静、温柔、郑重，看着每一个人",
+   "m_en": "quiet, tender, deliberate; looking at each of them"
+  },
+  "ls_32": {
+   "m": "非常温柔平静；不悲伤，满是爱",
+   "m_en": "very gentle and calm; not sad, full of love"
+  },
+  "ls_33": {
+   "m": "先慢慢地若有所思，然后温暖、开心地下定决心；嗓音低沉",
+   "m_en": "first slow and thoughtful, then a warm, cheerful decision; deep voice",
+   "zh": {
+    "phrases": [
+     {
+      "text": "王都给我洗脚了……",
+      "instruct": "慢慢地、若有所思，轻声，嗓音低沉。",
+      "gap": 0.4
+     },
+     {
+      "text": "安得烈，来，把脚伸出来——这回轮到我了！",
+      "instruct": "温暖开心地下定决心。"
+     }
+    ]
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "The King washed my feet...",
+      "instruct": "slow and thoughtful, quiet, deep.",
+      "gap": 0.4
+     },
+     {
+      "text": "Andrew, come on, feet out! It's my turn now!",
+      "instruct": "a warm, cheerful decision."
+     }
+    ]
+   }
+  },
+  "ls_34": {
+   "m": "咯咯笑，逗他哥哥",
+   "m_en": "giggling, teasing his big brother",
+   "zh": {
+    "phrases": [
+     {
+      "text": "哈哈，好痒！",
+      "instruct": "忍不住咯咯地笑。",
+      "gap": 0.2
+     },
+     {
+      "text": "哥，你洗得比耶稣还慢！",
+      "instruct": "笑着逗哥哥。"
+     }
+    ],
+    "asrIgnore": "哈|呵"
+   },
+   "en": {
+    "phrases": [
+     {
+      "text": "Ha ha, that tickles!",
+      "instruct": "giggling helplessly.",
+      "gap": 0.2
+     },
+     {
+      "text": "Brother, you're even slower than Jesus!",
+      "instruct": "teasing his big brother, laughing."
+     }
+    ],
+    "asrIgnore": "ha|haha|hah"
+   }
+  },
+  "ls_35": {
+   "m": "温暖地讲道理，直接对孩子说；慢而清楚",
+   "m_en": "warm moral, straight to the child; slow and clear"
+  },
+  "ls_36": {
+   "m": "鼓励、带着微笑；“真正的大人物”扬起来",
+   "m_en": "encouraging, a smile; lift on 'truly great'"
+  }
+ }
+}

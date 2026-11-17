@@ -1,0 +1,1378 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/ls_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom; the donkey's in side view, nose to -X), and anchors (regions too small to colour, or with a fixed colour, take a constant UV inside a larger region and print as detail lines). ID render for the line art: id_characters_2x.png/.json. Jesus and Peter are the Real Miracles designs (pipeline/mi_characters.py builders, unchanged) plus this pack's props. The five extras are not printed (offSheet).",
+ "sheet": {
+  "donkey": {
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "jesus": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "peter": {
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "donkey": {
+   "size": {
+    "withers": 0.15,
+    "earTips": 0.27,
+    "noseToRump": 0.28,
+    "tail": 0.06,
+    "seat": 0.155
+   },
+   "bboxSheet": [
+    -0.4854,
+    0.0315,
+    -0.153,
+    0.2879
+   ],
+   "regions": {
+    "coat": {
+     "id": 1,
+     "hex": "#9C9A96",
+     "zh": "毛",
+     "en": "coat",
+     "parts": [
+      "body",
+      "earL",
+      "earR",
+      "face",
+      "haunchL",
+      "haunchR",
+      "legBL",
+      "legBR",
+      "legFL",
+      "legFR",
+      "neck",
+      "shoulderL",
+      "shoulderR",
+      "tail"
+     ],
+     "bboxSheet": [
+      -0.4694,
+      0.0315,
+      -0.162,
+      0.2879
+     ]
+    },
+    "hooves": {
+     "id": 2,
+     "hex": "#3A3230",
+     "zh": "蹄",
+     "en": "hooves",
+     "parts": [
+      "legBL",
+      "legBR",
+      "legFL",
+      "legFR"
+     ],
+     "bboxSheet": [
+      -0.3876,
+      0.0154,
+      -0.2294,
+      0.0284
+     ],
+     "fixedColour": true,
+     "anchoredTo": "coat",
+     "anchorUV": [
+      0.26825,
+      0.09434
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "muzzle": {
+     "id": 3,
+     "hex": "#EFE6D2",
+     "zh": "嘴鼻和肚皮",
+     "en": "muzzle and belly",
+     "parts": [
+      "earL",
+      "earR",
+      "muzzle"
+     ],
+     "bboxSheet": [
+      -0.4854,
+      0.1604,
+      -0.4205,
+      0.2783
+     ]
+    },
+    "mane": {
+     "id": 4,
+     "hex": "#3E3A38",
+     "zh": "鬃毛",
+     "en": "mane",
+     "parts": [
+      "earL",
+      "earR",
+      "mane",
+      "tail"
+     ],
+     "bboxSheet": [
+      -0.4383,
+      0.0664,
+      -0.153,
+      0.2875
+     ]
+    },
+    "gold": {
+     "id": 5,
+     "hex": "#D9A93A",
+     "zh": "金边",
+     "en": "gold stripe",
+     "parts": [
+      "blanket"
+     ],
+     "bboxSheet": [
+      -0.37,
+      0.1092,
+      -0.268,
+      0.1312
+     ],
+     "fixedColour": true,
+     "anchoredTo": "blanket",
+     "anchorUV": [
+      0.18975,
+      0.12042
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "blanket": {
+     "id": 6,
+     "hex": "#C2453A",
+     "zh": "鞍毯",
+     "en": "saddle blanket",
+     "parts": [
+      "blanket"
+     ],
+     "bboxSheet": [
+      -0.3701,
+      0.125,
+      -0.268,
+      0.1725
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.04,
+     0.148,
+     0.04,
+     0.228
+    ],
+    "px": 512,
+    "default": "calm",
+    "projection": "front",
+    "swatches": {
+     "hooves": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "gold": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "calm": "docs/lastsupper/design/faces/donkey_calm.png",
+     "happy": "docs/lastsupper/design/faces/donkey_happy.png",
+     "heehaw": "docs/lastsupper/design/faces/donkey_heehaw.png",
+     "chew": "docs/lastsupper/design/faces/donkey_chew.png",
+     "sleepy": "docs/lastsupper/design/faces/donkey_sleepy.png"
+    },
+    "clipExpression": {
+     "idle": "calm",
+     "walk": "calm",
+     "hee_haw": "heehaw",
+     "graze": "chew",
+     "sleepy": "sleepy",
+     "happy": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "pose": "standing on all fours",
+    "facing": "+Z (nose toward the viewer)",
+    "root": "on the ground under the belly centre (= under the seat)",
+    "seatY": 0.1552
+   },
+   "props": {},
+   "partAnchors": {
+    "legFL.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "legFR.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "legBL.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "legBR.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "earL.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "earR.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "tail.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "neck.coat": {
+     "target": "donkey.coat",
+     "uv": [
+      0.26825,
+      0.09434
+     ],
+     "local": [
+      0.0882,
+      0.1008
+     ]
+    },
+    "earL.mane": {
+     "target": "donkey.mane",
+     "uv": [
+      0.11275,
+      0.16606
+     ],
+     "local": [
+      -0.0672,
+      0.1888
+     ]
+    },
+    "earR.mane": {
+     "target": "donkey.mane",
+     "uv": [
+      0.11275,
+      0.16606
+     ],
+     "local": [
+      -0.0672,
+      0.1888
+     ]
+    },
+    "earL.muzzle": {
+     "target": "donkey.muzzle",
+     "uv": [
+      0.03775,
+      0.14976
+     ],
+     "local": [
+      -0.1422,
+      0.1688
+     ]
+    },
+    "earR.muzzle": {
+     "target": "donkey.muzzle",
+     "uv": [
+      0.03775,
+      0.14976
+     ],
+     "local": [
+      -0.1422,
+      0.1688
+     ]
+    }
+   },
+   "projection": {
+    "kind": "side",
+    "note": "UV0 = the donkey's left side seen from +X: u = -z + sheetX + 0.5, v = (y + sheetY) / artH (x mirrored to |x|, so both sides share the drawing); faces not seen from the side take one clean texel of their own region"
+   }
+  },
+  "jesus": {
+   "height": 0.36,
+   "bboxSheet": [
+    -0.1334,
+    0.0191,
+    0.1334,
+    0.3703
+   ],
+   "regions": {
+    "skin": {
+     "id": 7,
+     "hex": "#C99268",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1334,
+      0.0191,
+      0.1334,
+      0.3655
+     ]
+    },
+    "hair": {
+     "id": 8,
+     "hex": "#4A3020",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.0271,
+      0.2879,
+      0.0269,
+      0.3703
+     ]
+    },
+    "tunic": {
+     "id": 9,
+     "hex": "#F2E8D2",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.1285,
+      0.0468,
+      0.1286,
+      0.2825
+     ]
+    },
+    "sandals": {
+     "id": 10,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.0431,
+      0.0152,
+      0.0404,
+      0.0378
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.47375,
+      0.05522
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "mantle": {
+     "id": 11,
+     "hex": "#9A5B34",
+     "zh": "外袍",
+     "en": "mantle",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      -0.0723,
+      0.0862,
+      0.0815,
+      0.2873
+     ]
+    },
+    "belt": {
+     "id": 12,
+     "hex": "#D2AE74",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltFringe"
+     ],
+     "bboxSheet": [
+      -0.0528,
+      0.1313,
+      0.0525,
+      0.2315
+     ]
+    },
+    "towel": {
+     "id": 13,
+     "hex": "#F5F1E6",
+     "zh": "毛巾",
+     "en": "towel",
+     "parts": [
+      "towel"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.cloth",
+     "anchorUV": [
+      0.1695,
+      0.30114
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jesus.propUV.towel)"
+    },
+    "basin": {
+     "id": 14,
+     "hex": "#C46A3E",
+     "zh": "水盆",
+     "en": "basin",
+     "parts": [
+      "basin"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.clay",
+     "anchorUV": [
+      0.6055,
+      0.51222
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jesus.propUV.basin)"
+    },
+    "bread": {
+     "id": 15,
+     "hex": "#C98A4A",
+     "zh": "饼",
+     "en": "bread",
+     "parts": [
+      "bread"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.bread",
+     "anchorUV": [
+      0.5315,
+      0.47311
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jesus.propUV.bread)"
+    },
+    "cup": {
+     "id": 16,
+     "hex": "#C46A3E",
+     "zh": "杯",
+     "en": "cup",
+     "parts": [
+      "cup"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.clay",
+     "anchorUV": [
+      0.6055,
+      0.51222
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jesus.propUV.cup)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02232,
+     0.29174,
+     0.02232,
+     0.33638
+    ],
+    "px": 512,
+    "default": "kind",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "kind": "docs/lastsupper/design/faces/jesus_kind.png",
+     "talk": "docs/lastsupper/design/faces/jesus_talk.png",
+     "smile": "docs/lastsupper/design/faces/jesus_smile.png",
+     "laugh": "docs/lastsupper/design/faces/jesus_laugh.png",
+     "firm": "docs/lastsupper/design/faces/jesus_firm.png",
+     "gentle": "docs/lastsupper/design/faces/jesus_gentle.png",
+     "look_up": "docs/lastsupper/design/faces/jesus_look_up.png",
+     "sad": "docs/lastsupper/design/faces/jesus_sad.png"
+    },
+    "clipExpression": {
+     "idle": "kind",
+     "talk": "talk",
+     "walk": "kind",
+     "stand_talk": "talk",
+     "ride": "kind",
+     "ride_wave": "smile",
+     "ride_talk": "talk",
+     "sad_look": "sad",
+     "tip_table": "firm",
+     "firm_talk": "firm",
+     "open_cage": "firm",
+     "rise_towel": "gentle",
+     "kneel_wash": "gentle",
+     "kneel_talk": "talk",
+     "kneel_laugh": "laugh",
+     "sit_supper": "kind",
+     "bless_bread": "look_up",
+     "lift_cup": "gentle",
+     "smile": "smile",
+     "laugh": "laugh",
+     "wave": "smile"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "towel": {
+     "bone": "towel",
+     "mesh": "jesus_towel",
+     "node": "jesus/towel",
+     "shownByDefault": false
+    },
+    "basin": {
+     "bone": "basin",
+     "mesh": "jesus_basin",
+     "node": "jesus/basin",
+     "shownByDefault": false
+    },
+    "bread": {
+     "bone": "bread",
+     "mesh": "jesus_bread",
+     "node": "jesus/bread",
+     "shownByDefault": false
+    },
+    "cup": {
+     "bone": "cup",
+     "mesh": "jesus_cup",
+     "node": "jesus/cup",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "handR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "beltFringe.belt": {
+     "target": "jesus.belt",
+     "uv": [
+      0.47875,
+      0.17502
+     ],
+     "local": [
+      -0.0212,
+      0.1997
+     ]
+    }
+   }
+  },
+  "peter": {
+   "height": 0.38,
+   "bboxSheet": [
+    0.1568,
+    0.0193,
+    0.4685,
+    0.396
+   ],
+   "regions": {
+    "skin": {
+     "id": 17,
+     "hex": "#BF8460",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "armL",
+      "armR",
+      "face",
+      "handL",
+      "handR",
+      "kneeL",
+      "kneeR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.1715,
+      0.0193,
+      0.4685,
+      0.3793
+     ]
+    },
+    "hair": {
+     "id": 18,
+     "hex": "#231A16",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      0.2791,
+      0.3066,
+      0.3609,
+      0.3901
+     ]
+    },
+    "headcloth": {
+     "id": 19,
+     "hex": "#6E8AA6",
+     "zh": "头巾",
+     "en": "head cloth",
+     "parts": [
+      "headcloth"
+     ],
+     "bboxSheet": [
+      0.2858,
+      0.2959,
+      0.3543,
+      0.396
+     ]
+    },
+    "tunic": {
+     "id": 20,
+     "hex": "#B4502F",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      0.2162,
+      0.1293,
+      0.4238,
+      0.3053
+     ]
+    },
+    "sandals": {
+     "id": 21,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      0.2693,
+      0.0152,
+      0.3674,
+      0.0391
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.82125,
+      0.14242
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "vest": {
+     "id": 22,
+     "hex": "#D9C29A",
+     "zh": "背心",
+     "en": "vest",
+     "parts": [
+      "vest"
+     ],
+     "bboxSheet": [
+      0.225,
+      0.2471,
+      0.415,
+      0.3025
+     ]
+    },
+    "waistcloth": {
+     "id": 23,
+     "hex": "#5A3A26",
+     "zh": "腰布",
+     "en": "waist cloth",
+     "parts": [
+      "waistcloth"
+     ],
+     "bboxSheet": [
+      0.2613,
+      0.2198,
+      0.3789,
+      0.2578
+     ]
+    },
+    "rope": {
+     "id": 24,
+     "hex": "#C8A472",
+     "zh": "绳腰带",
+     "en": "rope belt",
+     "parts": [
+      "rope"
+     ],
+     "bboxSheet": [
+      0.2572,
+      0.1981,
+      0.3828,
+      0.2421
+     ],
+     "fixedColour": true,
+     "anchoredTo": "waistcloth",
+     "anchorUV": [
+      0.81875,
+      0.20314
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "palm": {
+     "id": 25,
+     "hex": "#5E9A48",
+     "zh": "棕树枝",
+     "en": "palm frond",
+     "parts": [
+      "palm"
+     ],
+     "bboxSheet": [
+      0.1568,
+      0.1534,
+      0.233,
+      0.3217
+     ],
+     "anchoredTo": "set.palmLeaf",
+     "anchorUV": [
+      0.5715,
+      0.40791
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "printed with the figure as line art; coloured from the set region at anchorUV (design.json set.propAnchors)"
+    },
+    "towel": {
+     "id": 26,
+     "hex": "#F5F1E6",
+     "zh": "毛巾",
+     "en": "towel",
+     "parts": [
+      "towel"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.cloth",
+     "anchorUV": [
+      0.1695,
+      0.30114
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.peter.propUV.towel)"
+    },
+    "jug": {
+     "id": 27,
+     "hex": "#C46A3E",
+     "zh": "水罐",
+     "en": "jug",
+     "parts": [
+      "jug"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.clay",
+     "anchorUV": [
+      0.6055,
+      0.51222
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.peter.propUV.jug)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.30996,
+     0.02268,
+     0.35532
+    ],
+    "px": 512,
+    "default": "jolly",
+    "projection": "front",
+    "swatches": {
+     "rope": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "jolly": "docs/lastsupper/design/faces/peter_jolly.png",
+     "talk": "docs/lastsupper/design/faces/peter_talk.png",
+     "shock": "docs/lastsupper/design/faces/peter_shock.png",
+     "laugh": "docs/lastsupper/design/faces/peter_laugh.png",
+     "amazed": "docs/lastsupper/design/faces/peter_amazed.png",
+     "proud": "docs/lastsupper/design/faces/peter_proud.png",
+     "sheepish": "docs/lastsupper/design/faces/peter_sheepish.png",
+     "puzzled": "docs/lastsupper/design/faces/peter_puzzled.png"
+    },
+    "clipExpression": {
+     "idle": "jolly",
+     "talk": "talk",
+     "walk": "jolly",
+     "laugh": "laugh",
+     "amazed": "amazed",
+     "cheer": "laugh",
+     "listen_stone": "puzzled",
+     "boast": "proud",
+     "argue": "talk",
+     "sit_bench": "jolly",
+     "refuse": "shock",
+     "offer_all": "laugh",
+     "sit_wash": "jolly",
+     "ashamed": "sheepish",
+     "sit_supper": "jolly",
+     "serve_rise": "jolly",
+     "kneel_serve": "jolly",
+     "wave": "jolly"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "palm": {
+     "bone": "palm",
+     "mesh": "peter_palm",
+     "node": "peter/palm",
+     "shownByDefault": true
+    },
+    "towel": {
+     "bone": "towel",
+     "mesh": "peter_towel",
+     "node": "peter/towel",
+     "shownByDefault": false
+    },
+    "jug": {
+     "bone": "jug",
+     "mesh": "peter_jug",
+     "node": "peter/jug",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "handR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "legL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "legR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "kneeL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "kneeR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "armL.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    },
+    "armR.skin": {
+     "target": "peter.FACE",
+     "uv": [
+      0.81975,
+      0.3042
+     ],
+     "local": [
+      -0.0003,
+      0.3582
+     ]
+    }
+   }
+  }
+ },
+ "offSheet": {
+  "john": {
+   "height": 0.33,
+   "paint": "assets/lastsupper/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "the youngest: beardless, short wavy light-brown hair, sky-blue tunic, white sash (sash1)",
+   "blendRigLocation": [
+    0.8,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.2704,
+     0.02146,
+     0.31331
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/lastsupper/design/faces/john_happy.png",
+     "talk": "docs/lastsupper/design/faces/john_talk.png",
+     "proud": "docs/lastsupper/design/faces/john_proud.png",
+     "amazed": "docs/lastsupper/design/faces/john_amazed.png",
+     "sheepish": "docs/lastsupper/design/faces/john_sheepish.png",
+     "laugh": "docs/lastsupper/design/faces/john_laugh.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "talk": "talk",
+     "cheer": "laugh",
+     "boast": "proud",
+     "argue": "talk",
+     "laugh": "laugh",
+     "sit_bench": "happy",
+     "sit_wash": "happy",
+     "sit_supper": "happy",
+     "amazed": "amazed",
+     "ashamed": "sheepish",
+     "nudge": "laugh",
+     "wave": "happy"
+    },
+    "note": "one drawing per expression for the group (disciples / sellers), brows re-coloured per person"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "sash1": "hips"
+   },
+   "colours": {
+    "skin": "#D6A27A",
+    "hair": "#9A6B42",
+    "tunic": "#7FB6E0",
+    "belt": "#F5F1E6",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17168
+  },
+  "james": {
+   "height": 0.36,
+   "paint": "assets/lastsupper/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "John's big brother: broad, short black hair and beard, leaf-green tunic, brown cloak over the left shoulder (cloak1)",
+   "blendRigLocation": [
+    1.0,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.29589,
+     0.02146,
+     0.3388
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/lastsupper/design/faces/james_happy.png",
+     "talk": "docs/lastsupper/design/faces/james_talk.png",
+     "proud": "docs/lastsupper/design/faces/james_proud.png",
+     "amazed": "docs/lastsupper/design/faces/james_amazed.png",
+     "sheepish": "docs/lastsupper/design/faces/james_sheepish.png",
+     "laugh": "docs/lastsupper/design/faces/james_laugh.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "talk": "talk",
+     "cheer": "laugh",
+     "boast": "proud",
+     "argue": "talk",
+     "laugh": "laugh",
+     "sit_bench": "happy",
+     "sit_wash": "happy",
+     "sit_supper": "happy",
+     "amazed": "amazed",
+     "ashamed": "sheepish",
+     "nudge": "laugh",
+     "wave": "happy"
+    },
+    "note": "one drawing per expression for the group (disciples / sellers), brows re-coloured per person"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "cloak1": "chest"
+   },
+   "colours": {
+    "skin": "#C08A62",
+    "hair": "#1E1814",
+    "tunic": "#6FA552",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "cloak": "#7A5236"
+   },
+   "tris": 18000
+  },
+  "andrew": {
+   "height": 0.37,
+   "paint": "assets/lastsupper/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "Peter's little brother: lanky, curly black hair, neat beard, mustard tunic, Peter's blue-grey head cloth (cloth1 = its tail)",
+   "blendRigLocation": [
+    1.2,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.30368,
+     0.02146,
+     0.34659
+    ],
+    "px": 512,
+    "default": "happy",
+    "files": {
+     "happy": "docs/lastsupper/design/faces/andrew_happy.png",
+     "talk": "docs/lastsupper/design/faces/andrew_talk.png",
+     "proud": "docs/lastsupper/design/faces/andrew_proud.png",
+     "amazed": "docs/lastsupper/design/faces/andrew_amazed.png",
+     "sheepish": "docs/lastsupper/design/faces/andrew_sheepish.png",
+     "laugh": "docs/lastsupper/design/faces/andrew_laugh.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "walk": "happy",
+     "talk": "talk",
+     "cheer": "laugh",
+     "boast": "proud",
+     "argue": "talk",
+     "laugh": "laugh",
+     "sit_bench": "happy",
+     "sit_wash": "happy",
+     "sit_supper": "happy",
+     "amazed": "amazed",
+     "ashamed": "sheepish",
+     "nudge": "laugh",
+     "wave": "happy"
+    },
+    "note": "one drawing per expression for the group (disciples / sellers), brows re-coloured per person"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "cloth1": "head"
+   },
+   "colours": {
+    "skin": "#BF8460",
+    "hair": "#231A16",
+    "tunic": "#D9A93A",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "band": "#6E8AA6"
+   },
+   "tris": 17860
+  },
+  "seller1": {
+   "height": 0.33,
+   "paint": "assets/lastsupper/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "the dove seller: round, bald with a black fringe, rosy cheeks, orange tunic, cream-and-brown striped apron (apron1)",
+   "blendRigLocation": [
+    1.4,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.27111,
+     0.02146,
+     0.31402
+    ],
+    "px": 512,
+    "default": "hawk",
+    "files": {
+     "hawk": "docs/lastsupper/design/faces/seller1_hawk.png",
+     "talk": "docs/lastsupper/design/faces/seller1_talk.png",
+     "shock": "docs/lastsupper/design/faces/seller1_shock.png",
+     "wail": "docs/lastsupper/design/faces/seller1_wail.png",
+     "fluster": "docs/lastsupper/design/faces/seller1_fluster.png"
+    },
+    "clipExpression": {
+     "idle": "hawk",
+     "shout": "talk",
+     "walk": "hawk",
+     "shock": "shock",
+     "chase_coins": "fluster",
+     "flap": "wail"
+    },
+    "note": "one drawing per expression for the group (disciples / sellers), brows re-coloured per person"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "apron1": "hips"
+   },
+   "colours": {
+    "skin": "#D69A78",
+    "hair": "#1E1814",
+    "tunic": "#E8843A",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "apron": "#F1E3C4",
+    "stripes": "#8A5A3B"
+   },
+   "tris": 17100
+  },
+  "seller2": {
+   "height": 0.35,
+   "paint": "assets/lastsupper/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "the money changer: thin, long nose, little pointed beard, tall dark-red felt cap, plum robe, fat money pouch (pouch)",
+   "blendRigLocation": [
+    1.6,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.25341,
+     0.02146,
+     0.29632
+    ],
+    "px": 512,
+    "default": "hawk",
+    "files": {
+     "hawk": "docs/lastsupper/design/faces/seller2_hawk.png",
+     "talk": "docs/lastsupper/design/faces/seller2_talk.png",
+     "shock": "docs/lastsupper/design/faces/seller2_shock.png",
+     "wail": "docs/lastsupper/design/faces/seller2_wail.png",
+     "fluster": "docs/lastsupper/design/faces/seller2_fluster.png"
+    },
+    "clipExpression": {
+     "idle": "hawk",
+     "shout": "talk",
+     "walk": "hawk",
+     "shock": "shock",
+     "chase_coins": "fluster",
+     "flap": "wail"
+    },
+    "note": "one drawing per expression for the group (disciples / sellers), brows re-coloured per person"
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "pouch": "hips"
+   },
+   "colours": {
+    "skin": "#C8946C",
+    "hair": "#2A2018",
+    "tunic": "#7E4A86",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "cap": "#9C3A3A",
+    "pouch": "#8A5A3B"
+   },
+   "tris": 17980
+  }
+ },
+ "offSheetNote": "the five extras: not printed; UV0 samples model/extras_paint.png (fixed demo-palette paint, one flat colour per region), face decal on UV1 like the cast"
+}

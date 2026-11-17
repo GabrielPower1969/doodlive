@@ -307,14 +307,11 @@ def build_house(root):
     # floor: reed mat (printed weave)
     quad(inn, [(IN_X[0], 0.003, IN_Z[0]), (IN_X[1], 0.003, IN_Z[0]), (IN_X[1], 0.003, zf), (IN_X[0], 0.003, zf)],
          "floor", UP)
-    rd = DECOR.setdefault("room", [])
-    for k in range(1, 14):
-        x = IN_X[0] + (IN_X[1] - IN_X[0]) * k / 14
-        rd.append(((x, 0.0032, IN_Z[0]), (x, 0.0032, zf)))
-    for z in np.linspace(IN_Z[0] + 0.05, zf - 0.02, 4):
-        rd.append(((IN_X[0], 0.0032, z), (IN_X[1], 0.0032, z)))
+    DECOR.setdefault("room", [])                                 # no printed weave: the floor strip is small
+    inn.nr = True                                                # benches: named texel (under 6 mm on the sheet)
     for x0, x1 in BENCHES:                                       # benches in the back corners
         box(inn, x0, x1, 0.0, BENCH_H, BENCH_Z[0], BENCH_Z[1], "wood", skip=("bottom", "back"))
+    inn.nr = False
     lx0, lx1, ly = LEDGE                                         # ledge (niche shelf) with an oil lamp
     box(inn, lx0, lx1, ly - 0.008, ly, IN_Z[0], IN_Z[0] + 0.014, "wallIn", skip=("back",))
     inn.nr = True
@@ -433,7 +430,8 @@ def build_stair(root):
     d = (STAIR_Z[0] - STAIR_Z[1]) / STAIR_N
     for i in range(STAIR_N):
         zf = STAIR_Z[0] - i * d; zb = zf - d
-        box(mb, x0, x1, 0.0, stair_top(i), zb, zf, "walls", skip=("bottom", "right", "back"))
+        sk = ("bottom", "right", "back") if zf <= IN_Z[1] + 1e-6 else ("bottom", "back")   # in front of the house the
+        box(mb, x0, x1, 0.0, stair_top(i), zb, zf, "walls", skip=sk)                       # right side is open air
     box(mb, x0, x1, 0.0, ROOF, LANDING_Z[0], LANDING_Z[1], "walls", skip=("bottom", "right"))
     dec = DECOR.setdefault("house", [])
     rng = random.Random(3)
@@ -600,6 +598,8 @@ def build_ground(root):
     rng = random.Random(21)
     for k in range(70):
         x = rng.uniform(0.16, 0.59); z = rng.uniform(BEACH_Z[0] + 0.008, beach_front(x) - 0.008)
+        if k % 3 or z > BEACH_Z[0] + 0.035:                      # a few, along the water's edge: keep a 6 mm cell
+            continue
         r = rng.uniform(0.004, 0.007)
         pts = [(x + r * math.cos(a), z + r * 0.8 * math.sin(a)) for a in np.linspace(0, TAU, 7)]
         for (a, b_), (c, d) in zip(pts[:-1], pts[1:]):
@@ -640,13 +640,14 @@ def build_ground(root):
 
 def build_fig(yard):
     """figTree: a short trunk forking into three limbs under a crown of broad leaf clumps (crown bottom >= 0.20)"""
-    mb = MB()
+    mb = MB(); mb.nr = True                                      # trunk + limbs: named texel (under 6 mm printed)
     fx, fz = FIG
     tube(mb, [(fx, 0.0, fz), (fx - 0.004, 0.08, fz + 0.002), (fx + 0.003, 0.16, fz), (fx, 0.215, fz)],
          [0.021, 0.017, 0.014, 0.011], "trunk", seg=10)
     for dx, dz, h in ((-0.050, 0.010, 0.255), (0.050, 0.008, 0.250), (0.004, -0.030, 0.270)):
         tube(mb, [(fx + 0.002, 0.17, fz), (fx + dx * 0.6, 0.215, fz + dz * 0.6), (fx + dx, h, fz + dz)],
              [0.010, 0.008, 0.006], "trunk", seg=8)
+    mb.nr = False
     blobs = [(-0.050, 0.262, 0.012, 0.050), (0.052, 0.258, 0.010, 0.050), (0.000, 0.300, -0.012, 0.058),
              (-0.028, 0.250, 0.040, 0.040), (0.030, 0.252, 0.040, 0.040), (0.000, 0.262, 0.030, 0.046),
              (-0.075, 0.288, -0.020, 0.036), (0.078, 0.282, -0.020, 0.036)]
@@ -740,7 +741,7 @@ def build_lake(root):
     dec = DECOR.setdefault("ground", [])
     for k in range(46):
         x = rng.uniform(0.17, 0.57); z = rng.uniform(FLOOR[2] + 0.02, BEACH_Z[0] - 0.015)
-        if x < shore_x(z) + 0.02 or (BOAT_X[0] - 0.01 < x < BOAT_X[1] + 0.01 and abs(z - BOAT_C[1]) < BOAT_HB + 0.012):
+        if z < -0.43 or x < shore_x(z) + 0.02 or (BOAT_X[0] - 0.01 < x < BOAT_X[1] + 0.01 and abs(z - BOAT_C[1]) < BOAT_HB + 0.012):
             continue
         L = rng.uniform(0.020, 0.030)
         pts = [(x + L * u, z - 0.006 * math.sin(math.pi * u * 2) * (1 if u < 0.5 else 0.6)) for u in np.linspace(0, 1, 7)]
@@ -828,7 +829,7 @@ def build_boat(root):
             mb.fo([inner[0], inner[1], inner[3], inner[2]], "hull", (o, 0, 0))
     # printed: hull planks and deck boards
     dec = DECOR.setdefault("boat", [])
-    for th in (0.30, 0.55, 0.80):
+    for th in ():                                                 # no hull strakes: they cut the hull under 6 mm
         pts = []
         for x in np.linspace(BOAT_X[0] + 0.01, BOAT_X[1] - 0.01, 30):
             w = boat_w(x); g = boat_gun(x); k = boat_keel(x)
@@ -836,7 +837,7 @@ def build_boat(root):
             pts.append((x, g - (g - k) * math.sin(t) ** 0.85, zc - w * math.cos(t) + 0.0004))
         for a, b in zip(pts[:-1], pts[1:]):
             dec.append((a, b))
-    for x in np.arange(0.20, 0.53, 0.035):
+    for x in np.arange(0.22, 0.53, 0.07):
         wi = boat_w(x) - T
         if wi > 0.01:
             dec.append(((x, DECK + 0.0003, zc - wi), (x, DECK + 0.0003, zc + wi)))
@@ -954,32 +955,41 @@ def _chars():
                   "box": v["bboxSheet"]}
     for c, v in prop.items():
         got.setdefault(c, v)
+    ms = rc["characters"].get("man", {}).get("matSheet")       # the man's mat is printed apart from him (CONTRACT §2)
+    if ms and "bboxSheet" in ms:
+        got["man_mat"] = {"sheetX": ms["centre"][0], "sheetY": ms["centre"][1], "height": None, "box": ms["bboxSheet"]}
     return got, all(c in rc.get("sheet", {}) for c in prop)
 
 
 CHAR_PROPOSAL, CHARS_FROM_FILE = _chars()
+MAT_SHEET = (-0.28, 0.47)        # the mat's printed centre (= the Characters role's default); the middle band is laid
+                                 # out round its box (-0.484..-0.076 x 0.395..0.545)
 DRAWINGS = {
-    "house":  dict(P_OBL(0.35, 0.5), scale=1.62, cx=-0.236, y0=0.735, members=["house", "stair", "roofPatch"]),
-    "room":   dict(P_OBL(0.0, 0.35), scale=1.62, cx=-0.337, y0=0.415, decorOnly=["floor"], members=["houseIn"]),
-    "ground": dict(P_PLAN(), scale=3.00, cx=0.020, y0=0.425, decorOnly=["lake", "lakeFar", "beach", "yard", "road",
+    # middle band: the man's mat (Characters role, matSheet bbox -0.484..-0.076 x 0.395..0.545) sits under the room
+    # and the fig tree on the left; the ground plan is right of the mat; the house is raised to make room
+    "house":  dict(P_OBL(0.35, 0.5), scale=1.62, cx=-0.236, y0=0.785, members=["house", "stair", "roofPatch"]),
+    "room":   dict(P_OBL(0.0, 0.35), scale=2.36, cx=-0.382, y0=0.565, decorOnly=["floor"], members=["houseIn"]),
+    "ground": dict(P_PLAN(), scale=3.00, cx=0.146, y0=0.430, decorOnly=["lake", "lakeFar", "beach", "yard", "road",
                                                                          "ground"],
                    members=["yard", "road", "ground", "beach", "lakeWater"]),
-    "boat":   dict(P_OBL(0.35, 0.5), scale=1.32, cx=0.262, y0=0.735, decorOnly=["hull", "deck"],
+    "boat":   dict(P_OBL(0.35, 0.5), scale=1.10, cx=0.249, y0=0.726, decorOnly=["hull", "deck"],
                    members=["boat", "cushion"]),
-    "hills":  dict(P_FRONT(), scale=1.62, cx=0.262, y0=1.082, decorOnly=["hills"], members=["hills"]),
-    "fig":    dict(P_FRONT(), scale=1.45, cx=0.395, y0=0.430, members=["figTree"]),
+    "hills":  dict(P_FRONT(), scale=1.62, cx=0.262, y0=1.096, decorOnly=["hills"], members=["hills"]),
+    "fig":    dict(P_FRONT(), scale=1.45, cx=-0.180, y0=0.620, members=["figTree"]),
 }
 TEMPLATES = {}
 CONSTS = {"house": {},
-          "houseIn": {"ceiling": ("house", "roof"), "beam": ("room", "wood"), "jar": ("house", "roof"),
+          "houseIn": {"ceiling": ("house", "roof"), "beam": ("boat", "hull"), "jar": ("house", "roof"),
+                      "wood": ("boat", "hull"),
                       "flame": ("fig", "fig")},
           "roofPatch": {"ceiling": ("house", "roof")},
-          "roofHole": {"mud": ("house", "roof"), "twig": ("room", "wood")},
-          "rubble": {"mud": ("house", "roof"), "twig": ("room", "wood")},
+          "figTree": {"trunk": ("boat", "hull")},
+          "roofHole": {"mud": ("house", "roof"), "twig": ("boat", "hull")},
+          "rubble": {"mud": ("house", "roof"), "twig": ("boat", "hull")},
           "beach": {"pebble": ("hills", "hills"), "reed": ("fig", "fig")},
-          "olivePress": {"stone": ("ground", "beach"), "beam": ("room", "wood")},
+          "olivePress": {"stone": ("ground", "beach"), "beam": ("boat", "hull")},
           "boat": {"wood": ("boat", "hull"), "net": ("boat", "sail")},
-          **{c[0]: {"robe": ROBE[c[6]], "cloth": ROBE[c[7]], "face": ("house", "walls"), "hair": ("room", "wood")}
+          **{c[0]: {"robe": ROBE[c[6]], "cloth": ROBE[c[7]], "face": ("house", "walls"), "hair": ("boat", "hull")}
              for c in CROWD}}
 RS = [1]
 ORDER = ["house", "houseIn", "roofPatch", "roofHole", "rubble", "stair"] + [c[0] for c in CROWD] + \
@@ -1279,8 +1289,9 @@ def mode_build():
     print("BUILD_OK", GLB, total, "MISSING" if missing else "")
 
 
-TITLE = {"hanzi": "真正的神迹", "pinyin": "zhēn zhèng de shén jì", "english": "Real Miracles", "box": 74, "gap": 28,
-         "cy": 108, "label": "DoodLive · 涂上颜色，再用手机扫一扫", "note": "placeholder until title-search"}
+TITLE = {"hanzi": "真正的神迹", "pinyin": "zhēn zhèng de shén jì", "english": "Real Miracles", "box": 88, "gap": 32,
+         "cy": 110, "label": "DoodLive · 涂上颜色，再用手机扫一扫",
+         "note": "box / gap / cy from tools/story/sheet_miracles.py title-search (worst NCC 0.359, daniel-A4)"}
 
 
 def write_design(objs, tris, total, hmax, const, hard, info):
@@ -1301,11 +1312,15 @@ def write_design(objs, tris, total, hmax, const, hard, info):
     if d["sheet"]["title"].get("note", "").startswith("placeholder"):
         d["sheet"]["title"] = dict(TITLE)
     ch = d.get("characters", {})
+    ch.pop("man_mat", None)
     for c, v in CHAR_PROPOSAL.items():
+        if c == "man_mat":                                       # the mat's printed place, pinned where the layout
+            continue                                             # leaves room for it (mi_characters.py reads it)
         e = ch.get(c, {})
         e.update({"height": v["height"], "sheetX": v["sheetX"], "sheetY": v["sheetY"]})
         if c == "man":
-            e["note"] = "drawn standing; the mat is a separate shape beside / below him (CONTRACT §2)"
+            e["note"] = "drawn standing; the mat is a separate shape below-left of him (matSheet = its centre)"
+            e["matSheet"] = list(MAT_SHEET)
         ch[c] = e
     d["characters"] = ch
     pieces = []

@@ -1,0 +1,3785 @@
+{
+ "version": 1,
+ "story": "risen",
+ "cast": [
+  "jesus",
+  "mary",
+  "angel",
+  "peter",
+  "john",
+  "thomas",
+  "joanna"
+ ],
+ "set": "garden",
+ "duration": 247.42,
+ "fps": 30,
+ "shots": [
+  {
+   "id": "S01",
+   "title_zh": "最难过的一天",
+   "title_en": "The saddest day",
+   "camera": {
+    "type": "fixed",
+    "target": "garden",
+    "dist": 0.95,
+    "height": 0.45,
+    "yawDeg": -10
+   },
+   "desc": "Over the page at dusk, the sky darkening: a quiet garden with a tomb in a rock and a big round stone across its door, a path, a house with an upstairs room. Two women stand by the closed tomb, heads bowed; upstairs, Peter and John sit very still on the bench. No cross is shown anywhere.",
+   "t0": 0.0,
+   "t1": 28.62,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "id": "S02",
+   "title_zh": "天刚亮",
+   "title_en": "Very early in the morning",
+   "camera": {
+    "type": "follow",
+    "target": "mary",
+    "dist": 0.6,
+    "height": 0.2,
+    "yawDeg": -30
+   },
+   "desc": "Dawn: pink and gold sky, birds. Mary Magdalene and her friend Joanna walk along the path from the town to the garden, each carrying a small jar of sweet spices, wondering about the stone.",
+   "t0": 28.62,
+   "t1": 49.62,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "S03",
+   "title_zh": "石头滚开了！",
+   "title_en": "The stone rolls away!",
+   "camera": {
+    "type": "fixed",
+    "target": "tombHill",
+    "dist": 0.6,
+    "height": 0.22,
+    "yawDeg": 40
+   },
+   "desc": "In front of the tomb the ground rumbles gently; a flash of white light; when it clears, the big stone has rolled to one side and a shining angel sits on top of it, legs dangling, smiling. The women gasp.",
+   "t0": 49.62,
+   "t1": 65.62,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.15
+   }
+  },
+  {
+   "id": "S04",
+   "title_zh": "他不在这里",
+   "title_en": "He is not here!",
+   "camera": {
+    "type": "fixed",
+    "target": "angel",
+    "dist": 0.55,
+    "height": 0.2,
+    "yawDeg": -25
+   },
+   "desc": "The angel, seated on the stone, speaks kindly to the women and points to the open door. They step up and peek in: a soft light inside, only the folded linen cloths on the stone ledge. The tomb is empty.",
+   "t0": 65.62,
+   "t1": 83.79,
+   "anchor": {
+    "line": "rs_08",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "S05",
+   "title_zh": "他活了！",
+   "title_en": "He's alive!",
+   "camera": {
+    "type": "fixed",
+    "target": "house",
+    "dist": 0.55,
+    "height": 0.22,
+    "yawDeg": -10
+   },
+   "desc": "The upstairs room, morning light. Peter and John sit sadly on the bench along the back wall. Mary bursts in through the side door, breathless, and tells them; they jump up.",
+   "t0": 83.79,
+   "t1": 100.18,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "id": "S06",
+   "title_zh": "赛跑",
+   "title_en": "The race",
+   "camera": {
+    "type": "follow",
+    "target": "john",
+    "dist": 0.65,
+    "height": 0.2,
+    "yawDeg": -35
+   },
+   "desc": "Peter and John run along the path to the garden, dust puffing at their feet. Young John is quicker and pulls ahead, waving Peter on; Peter puffs along behind, red-faced.",
+   "t0": 100.18,
+   "t1": 115.74,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S07",
+   "title_zh": "空空的坟墓",
+   "title_en": "The empty tomb",
+   "camera": {
+    "type": "fixed",
+    "target": "tombDoor",
+    "dist": 0.5,
+    "height": 0.18,
+    "yawDeg": 20
+   },
+   "desc": "John reaches the tomb first and stops at the door, peeking in. Peter puffs up behind him and goes straight in, bending under the low doorway. Light inside; the linen cloths lie folded on the ledge.",
+   "t0": 115.74,
+   "t1": 135.02,
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S08",
+   "title_zh": "你为什么哭？",
+   "title_en": "Why are you crying?",
+   "camera": {
+    "type": "fixed",
+    "target": "mary",
+    "dist": 0.5,
+    "height": 0.17,
+    "yawDeg": 0
+   },
+   "desc": "Later. Mary stands alone in the garden by the flowers, crying, her eyes so full of tears she cannot see clearly. A man stands quietly behind her: it is Jesus, but she thinks He is the gardener.",
+   "t0": 135.02,
+   "t1": 156.4,
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S09",
+   "title_zh": "马利亚！",
+   "title_en": "Mary!",
+   "camera": {
+    "type": "fixed",
+    "target": "jesus",
+    "dist": 0.5,
+    "height": 0.17,
+    "yawDeg": 25
+   },
+   "desc": "Jesus says her name. Mary looks up and knows Him at once; she runs to Him and takes His hands, laughing and crying together. Butterflies rise from the flowers; warm sunlight. Then she runs off to tell.",
+   "t0": 156.4,
+   "t1": 170.45,
+   "anchor": {
+    "line": "rs_24",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S10",
+   "title_zh": "愿你们平安",
+   "title_en": "Peace be with you",
+   "camera": {
+    "type": "fixed",
+    "target": "house",
+    "dist": 0.55,
+    "height": 0.24,
+    "yawDeg": -15
+   },
+   "desc": "Evening in the upstairs room, lamps lit, the door locked. Mary tells Peter and John that she has seen Jesus. Suddenly Jesus is standing right there with them. They jump; John thinks He is a ghost. Jesus laughs, holds out His hands, and eats a piece of fish to show He is real.",
+   "t0": 170.45,
+   "t1": 202.32,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "id": "S11",
+   "title_zh": "多马",
+   "title_en": "Thomas",
+   "camera": {
+    "type": "fixed",
+    "target": "thomas",
+    "dist": 0.5,
+    "height": 0.2,
+    "yawDeg": -20
+   },
+   "desc": "A week later, the same room. Thomas, who was not there, stands with his arms crossed, shaking his head. Jesus appears again, turns to him and holds out His hands; Thomas gently touches them and kneels with joy.",
+   "t0": 202.32,
+   "t1": 228.94,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S12",
+   "title_zh": "他活着！",
+   "title_en": "He is alive!",
+   "camera": {
+    "type": "fixed",
+    "target": "garden",
+    "dist": 0.95,
+    "height": 0.48,
+    "yawDeg": 6
+   },
+   "desc": "The whole page in bright morning sun: the open, empty tomb glowing softly, butterflies over the flowers. Jesus stands in the garden with His friends round Him, all smiling and waving to the child.",
+   "t0": 228.94,
+   "t1": 247.42,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "acting": [
+  {
+   "t": 0.0,
+   "who": "mary",
+   "clip": "sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.3,
+    -0.13
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "joanna",
+   "clip": "sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.42,
+    -0.12
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "peter",
+   "clip": "sit_sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    -0.49
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "john",
+   "clip": "sit_sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.3,
+    -0.49
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "angel",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "thomas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 17.96,
+   "who": "mary",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.1,
+    0.02
+   ],
+   "anchor": {
+    "line": "rs_02",
+    "edge": "end",
+    "dt": -1.4
+   }
+  },
+  {
+   "t": 17.96,
+   "who": "joanna",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.18,
+    0.06
+   ],
+   "anchor": {
+    "line": "rs_02",
+    "edge": "end",
+    "dt": -1.4
+   }
+  },
+  {
+   "t": 28.62,
+   "who": "mary",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.36,
+    0.1
+   ],
+   "face": "house",
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "who": "joanna",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.44,
+    0.12
+   ],
+   "face": "house",
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 32.58,
+   "who": "mary",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    0.22,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -5.8
+   }
+  },
+  {
+   "t": 32.98,
+   "who": "joanna",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    0.3,
+    0.11
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -5.4
+   }
+  },
+  {
+   "t": 34.15,
+   "who": "mary",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    0.04,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -4.229
+   }
+  },
+  {
+   "t": 34.54,
+   "who": "joanna",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    0.06,
+    0.11
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -3.84
+   }
+  },
+  {
+   "t": 36.15,
+   "who": "mary",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.06,
+    0.06
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -2.229
+   }
+  },
+  {
+   "t": 37.21,
+   "who": "joanna",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.06,
+    0.06
+   ],
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -1.174
+   }
+  },
+  {
+   "t": 37.28,
+   "who": "mary",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.26,
+    -0.1
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": -1.096
+   }
+  },
+  {
+   "t": 38.65,
+   "who": "joanna",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.42,
+    -0.12
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": 0.271
+   }
+  },
+  {
+   "t": 49.62,
+   "who": "mary",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.3,
+    -0.13
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.15
+   }
+  },
+  {
+   "t": 49.62,
+   "who": "joanna",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.42,
+    -0.12
+   ],
+   "face": "tombStone",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.15
+   }
+  },
+  {
+   "t": 50.82,
+   "who": "mary",
+   "clip": "gasp",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 3.35
+   }
+  },
+  {
+   "t": 51.02,
+   "who": "joanna",
+   "clip": "gasp",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 3.55
+   }
+  },
+  {
+   "t": 51.62,
+   "who": "angel",
+   "clip": "sit_stone",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.113,
+    -0.41
+   ],
+   "y": 0.311,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.15
+   }
+  },
+  {
+   "t": 52.12,
+   "who": "angel",
+   "clip": "wings_open",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.65
+   }
+  },
+  {
+   "t": 52.22,
+   "who": "mary",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.75
+   }
+  },
+  {
+   "t": 52.42,
+   "who": "joanna",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.95
+   }
+  },
+  {
+   "t": 53.72,
+   "who": "angel",
+   "clip": "sit_stone",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 6.25
+   }
+  },
+  {
+   "t": 65.62,
+   "who": "angel",
+   "clip": "sit_talk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_08",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 71.01,
+   "who": "angel",
+   "clip": "sit_point",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_09",
+    "edge": "end",
+    "dt": -0.1
+   }
+  },
+  {
+   "t": 73.79,
+   "who": "mary",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.3,
+    -0.22
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 73.89,
+   "who": "joanna",
+   "clip": "walk_jar",
+   "blend": 0.25,
+   "to": [
+    -0.4,
+    -0.21
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 74.99,
+   "who": "mary",
+   "clip": "peek",
+   "blend": 0.25,
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 75.09,
+   "who": "joanna",
+   "clip": "peek",
+   "blend": 0.25,
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 78.67,
+   "who": "angel",
+   "clip": "sit_talk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_11",
+    "edge": "end",
+    "dt": -0.1
+   }
+  },
+  {
+   "t": 78.87,
+   "who": "mary",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_11",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 78.97,
+   "who": "joanna",
+   "clip": "idle_jar",
+   "blend": 0.25,
+   "face": "angel",
+   "anchor": {
+    "line": "rs_11",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 82.09,
+   "who": "mary",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.1,
+    0.02
+   ],
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 82.19,
+   "who": "angel",
+   "clip": "sit_wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": -0.1
+   }
+  },
+  {
+   "t": 82.24,
+   "who": "joanna",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.18,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": -0.05
+   }
+  },
+  {
+   "t": 83.79,
+   "who": "angel",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "who": "joanna",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "who": "peter",
+   "clip": "sit_sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    -0.49
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "who": "john",
+   "clip": "sit_sad",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.3,
+    -0.49
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "who": "mary",
+   "clip": "run",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.12,
+    -0.3
+   ],
+   "y": 0.1,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 84.09,
+   "who": "mary",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    0.14,
+    -0.33
+   ],
+   "face": "peter",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 84.69,
+   "who": "mary",
+   "clip": "tell",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 2.4
+   }
+  },
+  {
+   "t": 90.27,
+   "who": "peter",
+   "clip": "jump_up",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_13",
+    "edge": "end",
+    "dt": -0.7
+   }
+  },
+  {
+   "t": 90.47,
+   "who": "john",
+   "clip": "jump_up",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_13",
+    "edge": "end",
+    "dt": -0.5
+   }
+  },
+  {
+   "t": 91.67,
+   "who": "peter",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_13",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 91.87,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 96.08,
+   "who": "john",
+   "clip": "wave_hurry",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_14",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 100.18,
+   "who": "mary",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 100.18,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.3,
+    -0.15
+   ],
+   "y": 0.0,
+   "face": "house",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 100.18,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.38,
+    -0.13
+   ],
+   "y": 0.0,
+   "face": "house",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 101.18,
+   "who": "john",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    0.22,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 101.78,
+   "who": "peter",
+   "clip": "run_puff",
+   "blend": 0.25,
+   "to": [
+    0.22,
+    0.08
+   ],
+   "face": "john",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 102.19,
+   "who": "john",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    0.04,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 2.41
+   }
+  },
+  {
+   "t": 102.94,
+   "who": "john",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.06,
+    0.06
+   ],
+   "face": "peter",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 3.157
+   }
+  },
+  {
+   "t": 103.37,
+   "who": "peter",
+   "clip": "puff",
+   "blend": 0.25,
+   "face": "john",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 3.59
+   }
+  },
+  {
+   "t": 107.38,
+   "who": "john",
+   "clip": "wave_hurry",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 7.6
+   }
+  },
+  {
+   "t": 109.08,
+   "who": "john",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.33,
+    -0.24
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 9.3
+   }
+  },
+  {
+   "t": 109.78,
+   "who": "peter",
+   "clip": "run_puff",
+   "blend": 0.25,
+   "to": [
+    0.04,
+    0.08
+   ],
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 10.0
+   }
+  },
+  {
+   "t": 110.86,
+   "who": "peter",
+   "clip": "run_puff",
+   "blend": 0.25,
+   "to": [
+    -0.06,
+    0.06
+   ],
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 11.084
+   }
+  },
+  {
+   "t": 111.48,
+   "who": "peter",
+   "clip": "run_puff",
+   "blend": 0.25,
+   "to": [
+    -0.22,
+    -0.14
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 11.699
+   }
+  },
+  {
+   "t": 113.02,
+   "who": "peter",
+   "clip": "puff",
+   "blend": 0.25,
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 13.24
+   }
+  },
+  {
+   "t": 115.74,
+   "who": "john",
+   "clip": "peek",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.33,
+    -0.24
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 115.74,
+   "who": "peter",
+   "clip": "puff",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.22,
+    -0.14
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 120.84,
+   "who": "john",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.42,
+    -0.15
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_19",
+    "edge": "end",
+    "dt": -2.3
+   }
+  },
+  {
+   "t": 121.04,
+   "who": "peter",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.33,
+    -0.24
+   ],
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_19",
+    "edge": "end",
+    "dt": -2.1
+   }
+  },
+  {
+   "t": 122.24,
+   "who": "peter",
+   "clip": "stoop_look",
+   "blend": 0.25,
+   "face": "tombDoor",
+   "anchor": {
+    "line": "rs_19",
+    "edge": "end",
+    "dt": -0.9
+   }
+  },
+  {
+   "t": 130.98,
+   "who": "peter",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "john",
+   "anchor": {
+    "line": "rs_20",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 131.08,
+   "who": "john",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_20",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 135.02,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 135.02,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 135.02,
+   "who": "mary",
+   "clip": "cry",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.24,
+    -0.05
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 142.86,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.1,
+    -0.12
+   ],
+   "y": 0.0,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": -1.9
+   }
+  },
+  {
+   "t": 145.26,
+   "who": "jesus",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 149.62,
+   "who": "mary",
+   "clip": "talk_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_23",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 156.4,
+   "who": "jesus",
+   "clip": "call_name",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_24",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 158.0,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_24",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 158.22,
+   "who": "mary",
+   "clip": "turn_joy",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_25",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 159.52,
+   "who": "mary",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_25",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "t": 163.08,
+   "who": "mary",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.205,
+    -0.075
+   ],
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 164.08,
+   "who": "mary",
+   "clip": "hold_hands",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 164.08,
+   "who": "jesus",
+   "clip": "hold_hands",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 165.88,
+   "who": "jesus",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 165.88,
+   "who": "mary",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 167.85,
+   "who": "mary",
+   "clip": "cheer",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": -1.3
+   }
+  },
+  {
+   "t": 169.45,
+   "who": "mary",
+   "clip": "run",
+   "blend": 0.25,
+   "to": [
+    -0.1,
+    0.04
+   ],
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 169.55,
+   "who": "jesus",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 170.45,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "who": "mary",
+   "clip": "tell",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.14,
+    -0.33
+   ],
+   "y": 0.1,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    -0.45
+   ],
+   "y": 0.1,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.2,
+    -0.45
+   ],
+   "y": 0.1,
+   "face": "mary",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 179.59,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.3,
+    -0.3
+   ],
+   "y": 0.1,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": -2.3
+   }
+  },
+  {
+   "t": 180.59,
+   "who": "jesus",
+   "clip": "appear",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": -1.3
+   }
+  },
+  {
+   "t": 182.09,
+   "who": "jesus",
+   "clip": "peace",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 183.33,
+   "who": "john",
+   "clip": "shock",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_30",
+    "edge": "end",
+    "dt": -0.6
+   }
+  },
+  {
+   "t": 183.53,
+   "who": "peter",
+   "clip": "shock",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_30",
+    "edge": "end",
+    "dt": -0.4
+   }
+  },
+  {
+   "t": 183.73,
+   "who": "mary",
+   "clip": "cheer",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_30",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 186.51,
+   "who": "jesus",
+   "clip": "show_hands",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_31",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 186.71,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_31",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 186.91,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_31",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 187.11,
+   "who": "mary",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_31",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 192.87,
+   "who": "jesus",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.41,
+    -0.3
+   ],
+   "face": "lowTable",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 193.87,
+   "who": "jesus",
+   "clip": "eat_fish",
+   "blend": 0.25,
+   "face": "lowTable",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 195.67,
+   "who": "peter",
+   "clip": "laugh",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 3.1
+   }
+  },
+  {
+   "t": 195.87,
+   "who": "john",
+   "clip": "laugh",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 3.3
+   }
+  },
+  {
+   "t": 197.97,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 5.4
+   }
+  },
+  {
+   "t": 202.32,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "who": "mary",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "who": "thomas",
+   "clip": "doubt",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.19,
+    -0.3
+   ],
+   "y": 0.1,
+   "face": "peter",
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "who": "peter",
+   "clip": "talk",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    -0.45
+   ],
+   "y": 0.1,
+   "face": "thomas",
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "who": "john",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.51,
+    -0.45
+   ],
+   "y": 0.1,
+   "face": "thomas",
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 212.34,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "thomas",
+   "anchor": {
+    "line": "rs_34",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 216.14,
+   "who": "jesus",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.3,
+    -0.3
+   ],
+   "y": 0.1,
+   "face": "thomas",
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": -0.4
+   }
+  },
+  {
+   "t": 217.94,
+   "who": "thomas",
+   "clip": "shock",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 218.34,
+   "who": "jesus",
+   "clip": "show_hands",
+   "blend": 0.25,
+   "face": "thomas",
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 219.34,
+   "who": "thomas",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 2.8
+   }
+  },
+  {
+   "t": 224.34,
+   "who": "thomas",
+   "clip": "reach",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_36",
+    "edge": "end",
+    "dt": -0.7
+   }
+  },
+  {
+   "t": 226.14,
+   "who": "thomas",
+   "clip": "kneel_worship",
+   "blend": 0.25,
+   "face": "jesus",
+   "anchor": {
+    "line": "rs_36",
+    "edge": "end",
+    "dt": 1.1
+   }
+  },
+  {
+   "t": 228.94,
+   "who": "jesus",
+   "clip": "wave",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.12,
+    -0.04
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "who": "mary",
+   "clip": "cheer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.24,
+    0.02
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "who": "peter",
+   "clip": "cheer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.06,
+    0.02
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "who": "john",
+   "clip": "cheer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.2,
+    0.06
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "who": "thomas",
+   "clip": "cheer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.36,
+    -0.08
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 246.02,
+   "who": "jesus",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "rs_39",
+    "edge": "end",
+    "dt": 0.2
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "rs_01",
+   "t": 0.85,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 10.48,
+   "ref": "Luke 23:33, 44-49; Matthew 27:45",
+   "zh": "有人把耶稣抓走了，耶稣死在了十字架上。天黑了下来，他的朋友们好难过。",
+   "en": "Some men took Jesus away, and He died on a cross. The sky went dark, and His friends were very sad.",
+   "dir": "soft and slow, plain; no drama, no pause on the cross; a gentle hush on 好难过 / 'very, very sad'",
+   "dur": 10.43,
+   "pre": 0.25,
+   "post": 0.5,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.85
+   }
+  },
+  {
+   "id": "rs_02",
+   "t": 12.08,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.33,
+   "ref": "John 19:41-42; Matthew 27:59-60",
+   "zh": "朋友们把耶稣安放在花园里的坟墓里，一块又大又圆的石头挡住了门。",
+   "en": "His friends laid Him in a tomb in a garden, and a big round stone was rolled across the door.",
+   "dir": "quiet, tender; a small weight on 又大又圆 / 'big round'",
+   "dur": 7.28,
+   "pre": 0.3,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_01",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "rs_03",
+   "t": 20.56,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.11,
+   "ref": "Matthew 16:21; Luke 24:6-7",
+   "zh": "可是，耶稣说过：“第三天，我要复活！”",
+   "en": "But Jesus had made a promise: 'On the third day, I will rise again!'",
+   "dir": "the turn of the story: lift and brighten, a little secret smile; slower on 第三天 / 'the third day'",
+   "dur": 7.06,
+   "pre": 0.6,
+   "post": 1.0,
+   "anchor": {
+    "line": "rs_02",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "rs_04",
+   "t": 29.42,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.01,
+   "ref": "Mark 16:1-2; Luke 24:1, 10",
+   "zh": "第三天一大早，马利亚和她的朋友约亚拿带着香膏，往花园走去。",
+   "en": "Very early on the third day, Mary Magdalene and her friend Joanna carried sweet spices to the garden.",
+   "dir": "morning-fresh, a hint of hope; unhurried",
+   "dur": 8.96,
+   "pre": 0.8,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "id": "rs_05",
+   "t": 38.98,
+   "who": "joanna",
+   "voice": "joanna",
+   "maxSec": 4.12,
+   "ref": "Mark 16:3",
+   "zh": "那块石头那么大，谁能帮我们滚开呢？",
+   "en": "That stone is so big! Who will roll it away for us?",
+   "dir": "worried but practical, a little out of breath from walking",
+   "dur": 4.07,
+   "pre": 0.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_04",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "rs_06",
+   "t": 43.55,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 3.97,
+   "ref": "John 20:1",
+   "zh": "我也不知道……我只是想离耶稣近一点。",
+   "en": "I don't know... I just want to be near Jesus.",
+   "dir": "soft, a little sad, loving",
+   "dur": 3.92,
+   "pre": 0.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_05",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "rs_07",
+   "t": 53.02,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 8.83,
+   "ref": "Matthew 28:2-3",
+   "zh": "忽然，地动了一下，大石头滚开了！一位天使坐在上面，全身发亮，像闪电一样！",
+   "en": "Suddenly the ground shook, and the big stone rolled away! An angel sat on it, shining like lightning!",
+   "dir": "wonder, building quickly; not scary; a delighted lift on 滚开了 / 'rolled away'",
+   "dur": 8.78,
+   "pre": 3.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 5.55
+   }
+  },
+  {
+   "id": "rs_08",
+   "t": 62.3,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 2.87,
+   "ref": "Mark 16:4",
+   "zh": "石头……滚开了！",
+   "en": "The stone... it's rolled away!",
+   "dir": "a breathless, amazed whisper",
+   "dur": 2.82,
+   "pre": 0.2,
+   "post": 0.5,
+   "anchor": {
+    "line": "rs_07",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "rs_09",
+   "t": 66.02,
+   "who": "angel",
+   "voice": "angel",
+   "maxSec": 5.14,
+   "ref": "Matthew 28:5-6; Luke 24:6",
+   "zh": "不要害怕！耶稣不在这里，他复活了，就像他说过的！",
+   "en": "Don't be afraid! Jesus is not here. He is risen, just as He said!",
+   "dir": "kind, strong and calm, a big smile in the voice; the heart of the story: slow and joyful on 他复活了 / 'He is risen'",
+   "dur": 5.09,
+   "pre": 0.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_08",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "rs_10",
+   "t": 71.51,
+   "who": "angel",
+   "voice": "angel",
+   "maxSec": 2.13,
+   "ref": "Matthew 28:6",
+   "zh": "来，看看安放他的地方。",
+   "en": "Come and see the place where He lay.",
+   "dir": "gentle invitation",
+   "dur": 2.08,
+   "pre": 0.1,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_09",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "rs_11",
+   "t": 75.79,
+   "who": "joanna",
+   "voice": "joanna",
+   "maxSec": 3.03,
+   "ref": "Luke 24:3; John 20:6-7",
+   "zh": "真的空了！只有叠好的细麻布！",
+   "en": "It's empty! There's only the cloth, folded up!",
+   "dir": "amazed, rising to joy",
+   "dur": 2.98,
+   "pre": 2.0,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "id": "rs_12",
+   "t": 79.37,
+   "who": "angel",
+   "voice": "angel",
+   "maxSec": 2.97,
+   "ref": "Matthew 28:7; Mark 16:7",
+   "zh": "快去告诉他的朋友们：耶稣活了！",
+   "en": "Hurry! Go and tell His friends: Jesus is alive!",
+   "dir": "bright, urgent in a happy way",
+   "dur": 2.92,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_11",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "rs_13",
+   "t": 84.79,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 6.23,
+   "ref": "Luke 24:9-10; John 20:2",
+   "zh": "彼得！约翰！坟墓空了！天使说，耶稣复活了！",
+   "en": "Peter! John! The tomb is empty! An angel said Jesus is alive!",
+   "dir": "breathless, tumbling out fast, bursting with joy",
+   "dur": 6.18,
+   "pre": 1.0,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 2.5
+   }
+  },
+  {
+   "id": "rs_14",
+   "t": 91.87,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 4.06,
+   "ref": "Luke 24:11",
+   "zh": "复活了？这……这怎么可能？",
+   "en": "Alive? That... that can't be true!",
+   "dir": "stunned, big and blustery; half hoping",
+   "dur": 4.01,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "rs_15",
+   "t": 96.18,
+   "who": "john",
+   "voice": "john",
+   "maxSec": 3.65,
+   "ref": "John 20:3",
+   "zh": "彼得，别站着了，快去看看！",
+   "en": "Peter, don't just stand there! Let's go and see!",
+   "dir": "young, quick, already moving",
+   "dur": 3.6,
+   "pre": 0.1,
+   "post": 0.4,
+   "anchor": {
+    "line": "rs_14",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "rs_16",
+   "t": 100.78,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.63,
+   "ref": "John 20:3-4",
+   "zh": "彼得和约翰拼命地跑。可是约翰年轻，跑得比彼得快！",
+   "en": "Peter and John ran as fast as they could. But John was younger, and he ran faster than Peter!",
+   "dir": "lively, quick; a grin on 跑得比彼得快 / 'faster than Peter'",
+   "dur": 6.58,
+   "pre": 0.6,
+   "post": 0.1,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "rs_17",
+   "t": 107.56,
+   "who": "john",
+   "voice": "john",
+   "maxSec": 1.54,
+   "ref": "John 20:4",
+   "zh": "快点儿，彼得！",
+   "en": "Hurry up, Peter!",
+   "dir": "cheeky, calling back over his shoulder",
+   "dur": 1.49,
+   "pre": 0.1,
+   "post": 0.1,
+   "anchor": {
+    "line": "rs_16",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "rs_18",
+   "t": 109.25,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 6.14,
+   "ref": "John 20:4",
+   "zh": "等……等等我！我的腿……没你的年轻！",
+   "en": "Wait... wait for me! My legs... aren't as young as yours!",
+   "dir": "puffing and panting between the words, comic; a laugh in it",
+   "dur": 6.09,
+   "pre": 0.1,
+   "post": 0.4,
+   "anchor": {
+    "line": "rs_17",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "id": "rs_19",
+   "t": 116.34,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.85,
+   "ref": "John 20:5-6",
+   "zh": "约翰先到，往里看。彼得呼哧呼哧赶到，一头钻了进去！",
+   "en": "John got there first and looked in. Then Peter came puffing up and went straight inside!",
+   "dir": "playful storyteller; a comic beat on 一头钻了进去 / 'went straight inside'",
+   "dur": 6.8,
+   "pre": 0.6,
+   "post": 0.1,
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "id": "rs_20",
+   "t": 124.24,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 6.49,
+   "ref": "John 20:6-7",
+   "zh": "细麻布还在这儿，叠得整整齐齐……可是耶稣不在！",
+   "en": "The cloths are here, folded up neatly... but Jesus isn't!",
+   "dir": "half inside the doorway, puzzled wonder; the last words a hushed gasp",
+   "dur": 6.44,
+   "pre": 1.0,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_19",
+    "edge": "end",
+    "dt": 1.1
+   }
+  },
+  {
+   "id": "rs_21",
+   "t": 131.38,
+   "who": "john",
+   "voice": "john",
+   "maxSec": 3.09,
+   "ref": "John 20:8-9",
+   "zh": "他说过他会复活……他真的做到了！",
+   "en": "He said He would rise again... and He did!",
+   "dir": "the penny drops: slow wonder, then a happy rush",
+   "dur": 3.04,
+   "pre": 0.4,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_20",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "rs_22",
+   "t": 135.62,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.19,
+   "ref": "John 20:11",
+   "zh": "后来，马利亚回到花园。她太想耶稣了，一直在哭。",
+   "en": "Later, Mary came back to the garden. She missed Jesus so much, she cried and cried.",
+   "dir": "tender, slow; a soft ache, not heavy",
+   "dur": 9.14,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "rs_23",
+   "t": 145.66,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 3.81,
+   "ref": "John 20:15",
+   "zh": "你为什么哭？你在找谁呢？",
+   "en": "Why are you crying? Who are you looking for?",
+   "dir": "very gentle, warm, a hidden smile (He knows!)",
+   "dur": 3.76,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "rs_24",
+   "t": 149.92,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 5.93,
+   "ref": "John 20:15",
+   "zh": "先生，你是看园子的吧？要是你把他搬走了，请告诉我放在哪里！",
+   "en": "Sir, are you the gardener? If you took Him away, please tell me where He is!",
+   "dir": "tearful, not looking up, earnest; a small comic innocence in 看园子的 / 'the gardener'",
+   "dur": 5.88,
+   "pre": 0.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_23",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "rs_25",
+   "t": 157.0,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 0.97,
+   "ref": "John 20:16",
+   "zh": "马利亚。",
+   "en": "Mary.",
+   "dir": "one word, soft and full of love, the way only He says it",
+   "dur": 0.92,
+   "pre": 0.6,
+   "post": 0.5,
+   "anchor": {
+    "line": "rs_24",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "rs_26",
+   "t": 158.72,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 4.61,
+   "ref": "John 20:16",
+   "zh": "老师！是你！真的是你！",
+   "en": "Teacher! It's You! It's really You!",
+   "dir": "a gasp, then pure joy, laughing through tears",
+   "dur": 4.56,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_25",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "rs_27",
+   "t": 166.08,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 3.12,
+   "ref": "John 20:17; Matthew 28:10",
+   "zh": "去告诉我的朋友们：我活着！",
+   "en": "Go and tell My friends: I am alive!",
+   "dir": "warm, glad, a bright smile",
+   "dur": 3.07,
+   "pre": 2.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 2.8
+   }
+  },
+  {
+   "id": "rs_28",
+   "t": 171.05,
+   "who": "mary",
+   "voice": "mary",
+   "maxSec": 4.74,
+   "ref": "John 20:18",
+   "zh": "我真的看见耶稣了！他活着！他叫了我的名字！",
+   "en": "I really saw Jesus! He's alive! He said my name!",
+   "dir": "glowing, sure, happy",
+   "dur": 4.69,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "id": "rs_29",
+   "t": 176.34,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.6,
+   "ref": "John 20:19",
+   "zh": "门关得紧紧的，可是忽然，耶稣就站在他们中间！",
+   "en": "The door was locked tight. But suddenly, Jesus was standing right there!",
+   "dir": "hushed, then a magical lift on 忽然 / 'Suddenly'",
+   "dur": 5.55,
+   "pre": 0.3,
+   "post": 0.1,
+   "anchor": {
+    "line": "rs_28",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "rs_30",
+   "t": 182.29,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 1.69,
+   "ref": "John 20:19; Luke 24:36",
+   "zh": "愿你们平安！",
+   "en": "Peace be with you!",
+   "dir": "warm, calm, smiling, arms open",
+   "dur": 1.64,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "rs_31",
+   "t": 184.43,
+   "who": "john",
+   "voice": "john",
+   "maxSec": 1.93,
+   "ref": "Luke 24:37",
+   "zh": "鬼……鬼啊？",
+   "en": "A g-g-ghost?",
+   "dir": "squeaky, teeth chattering, comic, not truly scared",
+   "dur": 1.88,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_30",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "rs_32",
+   "t": 186.81,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 5.81,
+   "ref": "Luke 24:38-41",
+   "zh": "哈哈，是我呀！鬼可没有手和脚。你们有吃的吗？",
+   "en": "Ha ha, it's Me! A ghost doesn't have hands and feet. Got anything to eat?",
+   "dir": "laughing warmly, playful; the food question light and homely",
+   "dur": 5.76,
+   "pre": 0.2,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_31",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "rs_33",
+   "t": 196.07,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 5.7,
+   "ref": "Luke 24:42-43",
+   "zh": "哈哈！他在吃我们的鱼！真的是耶稣！",
+   "en": "Ha ha! He's eating our fish! It really is Jesus!",
+   "dir": "a big delighted belly laugh, tears of joy",
+   "dur": 5.65,
+   "pre": 3.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 3.5
+   }
+  },
+  {
+   "id": "rs_34",
+   "t": 202.92,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.47,
+   "ref": "John 20:24-26",
+   "zh": "一个星期以后。那天晚上多马不在，大家告诉他，他直摇头。",
+   "en": "A week later. Thomas had not been there that night, and when they told him, he shook his head.",
+   "dir": "plain storyteller, a little knowing smile",
+   "dur": 9.42,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "rs_35",
+   "t": 212.74,
+   "who": "thomas",
+   "voice": "thomas",
+   "maxSec": 3.85,
+   "ref": "John 20:25",
+   "zh": "除非我亲眼看见他的手，我才信！",
+   "en": "Unless I see His hands myself, I won't believe it!",
+   "dir": "stubborn but not grumpy; arms crossed; a small frown",
+   "dur": 3.8,
+   "pre": 0.2,
+   "post": 0.4,
+   "anchor": {
+    "line": "rs_34",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "rs_36",
+   "t": 218.94,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 6.15,
+   "ref": "John 20:27",
+   "zh": "多马，来看看我的手，摸一摸。不要疑惑，要信！",
+   "en": "Thomas, look at My hands. Touch them. Don't doubt: believe!",
+   "dir": "very gentle, patient, a loving invitation; no reproach",
+   "dur": 6.1,
+   "pre": 2.0,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 2.4
+   }
+  },
+  {
+   "id": "rs_37",
+   "t": 226.54,
+   "who": "thomas",
+   "voice": "thomas",
+   "maxSec": 1.85,
+   "ref": "John 20:28",
+   "zh": "我的主！我的上帝！",
+   "en": "My Lord and my God!",
+   "dir": "overwhelmed, a happy sob of faith; from the heart",
+   "dur": 1.8,
+   "pre": 1.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "rs_36",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "id": "rs_38",
+   "t": 229.74,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 10.06,
+   "ref": "Matthew 28:6; Luke 24:5-6",
+   "zh": "耶稣死了，可是死亡留不住他。他复活了，今天还活着！",
+   "en": "Jesus died, but death could not keep Him. He rose again, and He is alive today!",
+   "dir": "joyful and sure, straight to the child; slow and clear",
+   "dur": 10.01,
+   "pre": 0.8,
+   "post": 0.3,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "rs_39",
+   "t": 240.35,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.52,
+   "ref": "Matthew 28:20; John 20:29",
+   "zh": "耶稣说到做到。他还说：“我天天和你们在一起。”",
+   "en": "Jesus always keeps His promises. And He said: 'I am with you always.'",
+   "dir": "warm, a smile, a hush on the promise at the end",
+   "dur": 5.47,
+   "pre": 0.3,
+   "post": 0.4,
+   "anchor": {
+    "line": "rs_38",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "fx": [
+  {
+   "t": 0.0,
+   "id": "tension_dim",
+   "at": "stage",
+   "dur": 26.0,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 28.62,
+   "id": "dawn_glow",
+   "at": "stage",
+   "dur": 55.2,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 50.42,
+   "id": "dust_burst",
+   "at": "garden.tombStone",
+   "dur": 1.6,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.95
+   }
+  },
+  {
+   "t": 50.42,
+   "id": "angel_light",
+   "at": "garden.tombStone",
+   "dur": 3.0,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.95
+   }
+  },
+  {
+   "t": 50.82,
+   "id": "angel_light",
+   "at": "garden.tombStoneAside",
+   "dur": 4.0,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 3.35
+   }
+  },
+  {
+   "t": 74.79,
+   "id": "tomb_glow",
+   "at": "garden.tombDoor",
+   "dur": 9.0,
+   "anchor": {
+    "line": "rs_10",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 101.18,
+   "id": "run_dust",
+   "at": "john.root",
+   "dur": 2.2,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 101.78,
+   "id": "run_dust",
+   "at": "peter.root",
+   "dur": 1.6,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 109.08,
+   "id": "run_dust",
+   "at": "john.root",
+   "dur": 1.7,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 9.3
+   }
+  },
+  {
+   "t": 109.78,
+   "id": "run_dust",
+   "at": "peter.root",
+   "dur": 3.2,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 10.0
+   }
+  },
+  {
+   "t": 115.74,
+   "id": "tomb_glow",
+   "at": "garden.tombDoor",
+   "dur": 19.3,
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 142.96,
+   "id": "angel_light",
+   "at": "jesus.root",
+   "dur": 3.5,
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": -1.8
+   }
+  },
+  {
+   "t": 163.88,
+   "id": "butterflies",
+   "at": "mary.root",
+   "dur": 6.5,
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 164.08,
+   "id": "golden_rays",
+   "at": "jesus.root",
+   "dur": 6.3,
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 170.45,
+   "id": "sunset_glow",
+   "at": "stage",
+   "dur": 31.9,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "id": "lamp_flame",
+   "at": "garden.lamp1",
+   "dur": 31.9,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "id": "lamp_flame",
+   "at": "garden.lamp2",
+   "dur": 31.9,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 179.69,
+   "id": "angel_light",
+   "at": "jesus.root",
+   "dur": 3.5,
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": -2.2
+   }
+  },
+  {
+   "t": 202.32,
+   "id": "sunset_glow",
+   "at": "stage",
+   "dur": 26.6,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "id": "lamp_flame",
+   "at": "garden.lamp1",
+   "dur": 26.6,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "id": "lamp_flame",
+   "at": "garden.lamp2",
+   "dur": 26.6,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 216.24,
+   "id": "angel_light",
+   "at": "jesus.root",
+   "dur": 3.5,
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": -0.3
+   }
+  },
+  {
+   "t": 226.34,
+   "id": "heart_glow",
+   "at": "thomas.chest",
+   "dur": 2.6,
+   "anchor": {
+    "line": "rs_36",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 229.24,
+   "id": "golden_rays",
+   "at": "garden.tombDoor",
+   "dur": 14.0,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 229.44,
+   "id": "butterflies",
+   "at": "garden.flowers",
+   "dur": 14.0,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 1.1
+   }
+  }
+ ],
+ "sfx": [
+  {
+   "t": 29.12,
+   "id": "birds_dawn",
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 50.22,
+   "id": "rumble",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.75
+   }
+  },
+  {
+   "t": 51.02,
+   "id": "stone_roll",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 3.55
+   }
+  },
+  {
+   "t": 101.18,
+   "id": "run_steps",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 143.96,
+   "id": "appear_chime",
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": -0.8
+   }
+  },
+  {
+   "t": 164.08,
+   "id": "sparkle_up",
+   "anchor": {
+    "line": "rs_26",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 180.69,
+   "id": "appear_chime",
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": -1.2
+   }
+  },
+  {
+   "t": 195.47,
+   "id": "munch",
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 2.9
+   }
+  },
+  {
+   "t": 217.24,
+   "id": "appear_chime",
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 246.22,
+   "id": "sparkle_up",
+   "anchor": {
+    "line": "rs_39",
+    "edge": "end",
+    "dt": 0.4
+   }
+  }
+ ],
+ "music": [
+  {
+   "t": 0.0,
+   "cue": "sad_day",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 28.62,
+   "cue": "dawn",
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 49.62,
+   "cue": "stone",
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 2.15
+   }
+  },
+  {
+   "t": 65.62,
+   "cue": "risen",
+   "anchor": {
+    "line": "rs_08",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 83.79,
+   "cue": "news",
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 100.18,
+   "cue": "race",
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 115.74,
+   "cue": "empty",
+   "anchor": {
+    "line": "rs_18",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 135.02,
+   "cue": "garden_tears",
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 156.4,
+   "cue": "mary",
+   "anchor": {
+    "line": "rs_24",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 170.45,
+   "cue": "peace",
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 202.32,
+   "cue": "thomas",
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "cue": "finale",
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "props": [
+  {
+   "t": 0.0,
+   "node": "jesus",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "angel",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "thomas",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "garden/tombStoneAside",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "garden/fishOnPlate",
+   "show": true,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "mary/jar",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "joanna/jar",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "jesus/fish",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 28.62,
+   "node": "mary/jar",
+   "show": true,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "node": "joanna/jar",
+   "show": true,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "node": "peter",
+   "show": false,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 28.62,
+   "node": "john",
+   "show": false,
+   "anchor": {
+    "line": "rs_03",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 51.62,
+   "node": "garden/tombStone",
+   "show": false,
+   "grow": 0.3,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.15
+   }
+  },
+  {
+   "t": 51.82,
+   "node": "garden/tombStoneAside",
+   "show": true,
+   "grow": 0.4,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.35
+   }
+  },
+  {
+   "t": 52.02,
+   "node": "angel",
+   "show": true,
+   "grow": 0.6,
+   "anchor": {
+    "line": "rs_06",
+    "edge": "end",
+    "dt": 4.55
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "angel",
+   "show": false,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "joanna",
+   "show": false,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "mary/jar",
+   "show": false,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "joanna/jar",
+   "show": false,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "peter",
+   "show": true,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 83.79,
+   "node": "john",
+   "show": true,
+   "anchor": {
+    "line": "rs_12",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 100.18,
+   "node": "mary",
+   "show": false,
+   "anchor": {
+    "line": "rs_15",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 135.02,
+   "node": "peter",
+   "show": false,
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 135.02,
+   "node": "john",
+   "show": false,
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 135.02,
+   "node": "mary",
+   "show": true,
+   "anchor": {
+    "line": "rs_21",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 143.96,
+   "node": "jesus",
+   "show": true,
+   "grow": 1.0,
+   "anchor": {
+    "line": "rs_22",
+    "edge": "end",
+    "dt": -0.8
+   }
+  },
+  {
+   "t": 170.45,
+   "node": "jesus",
+   "show": false,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "node": "peter",
+   "show": true,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 170.45,
+   "node": "john",
+   "show": true,
+   "anchor": {
+    "line": "rs_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 180.69,
+   "node": "jesus",
+   "show": true,
+   "grow": 1.0,
+   "anchor": {
+    "line": "rs_29",
+    "edge": "end",
+    "dt": -1.2
+   }
+  },
+  {
+   "t": 194.47,
+   "node": "garden/fishOnPlate",
+   "show": false,
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "t": 194.47,
+   "node": "jesus/fish",
+   "show": true,
+   "anchor": {
+    "line": "rs_32",
+    "edge": "end",
+    "dt": 1.9
+   }
+  },
+  {
+   "t": 202.32,
+   "node": "jesus",
+   "show": false,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "node": "mary",
+   "show": false,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "node": "jesus/fish",
+   "show": false,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "node": "garden/fishOnPlate",
+   "show": true,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 202.32,
+   "node": "thomas",
+   "show": true,
+   "anchor": {
+    "line": "rs_33",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 217.24,
+   "node": "jesus",
+   "show": true,
+   "grow": 1.0,
+   "anchor": {
+    "line": "rs_35",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 228.94,
+   "node": "jesus",
+   "show": true,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 228.94,
+   "node": "mary",
+   "show": true,
+   "anchor": {
+    "line": "rs_37",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "requestedClips": [],
+ "timedFrom": "voices",
+ "durationAnchor": {
+  "line": "rs_39",
+  "edge": "end",
+  "dt": 1.6
+ },
+ "retime": 1
+}

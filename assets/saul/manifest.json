@@ -1,0 +1,90 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "saul",
+ "registry": {
+  "id": "saul",
+  "engine": "story",
+  "order": 12,
+  "title_zh": "扫罗变了！",
+  "title_en": "Saul Sees the Light!",
+  "sheets": [
+   "saul-A4",
+   "saul-A4-demo"
+  ],
+  "cast": [
+   "saul",
+   "ananias",
+   "barnabas",
+   "judas",
+   "priest",
+   "tallguard",
+   "shortguard",
+   "peter"
+  ],
+  "paint": {
+   "judas": "extras_paint.png",
+   "priest": "extras_paint.png",
+   "tallguard": "extras_paint.png",
+   "shortguard": "extras_paint.png",
+   "peter": "extras_paint.png"
+  },
+  "set": "damascus",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "saul",
+  "pinyin": "sǎo luó biàn le",
+  "blurb_zh": "扫罗气冲冲地去大马士革抓跟随耶稣的人，路上一道天上的光照下来——耶稣改变了他的心！胆小的亚拿尼亚叫他“弟兄”，朋友们用大筐子把他从城墙上放下去。",
+  "blurb_en": "Angry Saul marches to Damascus to arrest Jesus's followers, until a light from heaven stops him on the road and Jesus changes his heart! Nervous Ananias calls him “brother”, and his new friends let him down the city wall in a big basket.",
+  "minutes": 4,
+  "after": "risen",
+  "cover": {
+   "video": "demo-saul-f040dc5-dirty.20261117-2126.mp4",
+   "t": 60
+  }
+ },
+ "fx": {
+  "class": "SaulFx",
+  "note": "Saul Sees the Light! (StoryFxSaul.cs: road_light, scales_fall; CONTRACT §8)",
+  "aliases": {}
+ },
+ "strings": {
+  "dg_jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "dg_peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "dg_saul_saul": {
+   "zh": "扫罗",
+   "en": "Saul"
+  },
+  "dg_ananias": {
+   "zh": "亚拿尼亚",
+   "en": "Ananias"
+  },
+  "dg_barnabas": {
+   "zh": "巴拿巴",
+   "en": "Barnabas"
+  },
+  "dg_saul_judas": {
+   "zh": "犹大",
+   "en": "Judas"
+  },
+  "dg_saul_priest": {
+   "zh": "大祭司",
+   "en": "The high priest"
+  },
+  "dg_saul_tallguard": {
+   "zh": "高个子卫兵",
+   "en": "Tall guard"
+  },
+  "dg_saul_shortguard": {
+   "zh": "矮个子卫兵",
+   "en": "Short guard"
+  }
+ }
+}

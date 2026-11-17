@@ -1,0 +1,836 @@
+{
+ "setOverCastPx2x": 0,
+ "mergedIntoSameColourNeighbour": [],
+ "detailParts": 40,
+ "pieces": 89,
+ "slivers(<6px)": [],
+ "regionsBelow6mm(best cell)": [
+  [
+   7.2,
+   "man.hair:hair"
+  ],
+  [
+   7.2,
+   "peter.hair:hair"
+  ],
+  [
+   8.2,
+   "man.beard:hair"
+  ],
+  [
+   10.0,
+   "jesus.hair:hair"
+  ],
+  [
+   16.0,
+   "peter.headcloth:headcloth"
+  ],
+  [
+   16.0,
+   "peter.waistcloth:waistcloth"
+  ],
+  [
+   17.9,
+   "jesus.beard:hair"
+  ],
+  [
+   18.1,
+   "peter.beard:hair"
+  ],
+  [
+   27.9,
+   "jesus.belt:belt"
+  ],
+  [
+   30.3,
+   "peter.face:skin"
+  ],
+  [
+   32.0,
+   "man.face:skin"
+  ],
+  [
+   32.6,
+   "jesus.face:skin"
+  ],
+  [
+   34.0,
+   "man.sash:sash"
+  ]
+ ],
+ "regionsWithoutColourableCell": [],
+ "inkWithin6pxOfArtEdge": {
+  "bottom": 0,
+  "top": 0,
+  "left": 0,
+  "right": 0
+ },
+ "anchorSamples": {
+  "man.poles": {
+   "uv": [
+    0.17125,
+    0.38284
+   ],
+   "region": "man:mat",
+   "want": "mat",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "man.ropes": {
+   "uv": [
+    0.17125,
+    0.38284
+   ],
+   "region": "man:mat",
+   "want": "mat",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "man.roll": {
+   "uv": [
+    0.17125,
+    0.38284
+   ],
+   "region": "man:mat",
+   "want": "mat",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "man.rollStripes": {
+   "uv": [
+    0.21975,
+    0.38284
+   ],
+   "region": "man:stripes",
+   "want": "stripes",
+   "inkDistPx": 18.0,
+   "ok": true
+  },
+  "man.skin@handL": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "man.skin@handR": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "man.skin@legL": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "man.skin@legR": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "man.skin@kneeL": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "man.skin@kneeR": {
+   "uv": [
+    0.17725,
+    0.22596
+   ],
+   "region": "man:skin",
+   "want": "skin",
+   "inkDistPx": 5.1,
+   "ok": true
+  },
+  "jesus.sandals": {
+   "uv": [
+    0.47375,
+    0.05522
+   ],
+   "region": "jesus:tunic",
+   "want": "tunic",
+   "inkDistPx": 18.2,
+   "ok": true
+  },
+  "jesus.skin@handL": {
+   "uv": [
+    0.49325,
+    0.23411
+   ],
+   "region": "jesus:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "jesus.skin@handR": {
+   "uv": [
+    0.49325,
+    0.23411
+   ],
+   "region": "jesus:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "jesus.skin@legL": {
+   "uv": [
+    0.49325,
+    0.23411
+   ],
+   "region": "jesus:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "jesus.skin@legR": {
+   "uv": [
+    0.49325,
+    0.23411
+   ],
+   "region": "jesus:skin",
+   "want": "skin",
+   "inkDistPx": 2.8,
+   "ok": false
+  },
+  "jesus.belt@beltFringe": {
+   "uv": [
+    0.47875,
+    0.17502
+   ],
+   "region": "jesus:belt",
+   "want": "belt",
+   "inkDistPx": 12.1,
+   "ok": true
+  },
+  "peter.sandals": {
+   "uv": [
+    0.82125,
+    0.14242
+   ],
+   "region": "peter:tunic",
+   "want": "tunic",
+   "inkDistPx": 41.4,
+   "ok": true
+  },
+  "peter.rope": {
+   "uv": [
+    0.81875,
+    0.20314
+   ],
+   "region": "peter:waistcloth",
+   "want": "waistcloth",
+   "inkDistPx": 7.0,
+   "ok": true
+  },
+  "peter.bucket": {
+   "uv": [
+    0.92175,
+    0.62897
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 14.1,
+   "ok": true
+  },
+  "peter.skin@handL": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@handR": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@legL": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@legR": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@kneeL": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@kneeR": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@armL": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "peter.skin@armR": {
+   "uv": [
+    0.81975,
+    0.3042
+   ],
+   "region": "peter:skin",
+   "want": "skin",
+   "inkDistPx": 2.0,
+   "ok": false
+  },
+  "set.houseIn/ceiling": {
+   "uv": [
+    0.2075,
+    0.9295
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 40.8,
+   "ok": true
+  },
+  "set.houseIn/beam": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.houseIn/jar": {
+   "uv": [
+    0.2075,
+    0.9295
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 40.8,
+   "ok": true
+  },
+  "set.houseIn/wood": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.houseIn/flame": {
+   "uv": [
+    0.3245,
+    0.5546
+   ],
+   "region": "set:fig",
+   "want": "fig",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.roofPatch/ceiling": {
+   "uv": [
+    0.2075,
+    0.9295
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 40.8,
+   "ok": true
+  },
+  "set.figTree/trunk": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.roofHole/mud": {
+   "uv": [
+    0.2075,
+    0.9295
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 40.8,
+   "ok": true
+  },
+  "set.roofHole/twig": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.rubble/mud": {
+   "uv": [
+    0.2075,
+    0.9295
+   ],
+   "region": "set:roof",
+   "want": "roof",
+   "inkDistPx": 40.8,
+   "ok": true
+  },
+  "set.rubble/twig": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.beach/pebble": {
+   "uv": [
+    0.7425,
+    0.93602
+   ],
+   "region": "set:hills",
+   "want": "hills",
+   "inkDistPx": 41.6,
+   "ok": true
+  },
+  "set.beach/reed": {
+   "uv": [
+    0.3245,
+    0.5546
+   ],
+   "region": "set:fig",
+   "want": "fig",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.olivePress/stone": {
+   "uv": [
+    0.7505,
+    0.42339
+   ],
+   "region": "set:beach",
+   "want": "beach",
+   "inkDistPx": 19.0,
+   "ok": true
+  },
+  "set.olivePress/beam": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.boat/wood": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.boat/net": {
+   "uv": [
+    0.5845,
+    0.78932
+   ],
+   "region": "set:sail",
+   "want": "sail",
+   "inkDistPx": 20.9,
+   "ok": true
+  },
+  "set.crowd1/robe": {
+   "uv": [
+    0.4795,
+    0.80318
+   ],
+   "region": "set:door",
+   "want": "door",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "set.crowd1/cloth": {
+   "uv": [
+    0.5845,
+    0.78932
+   ],
+   "region": "set:sail",
+   "want": "sail",
+   "inkDistPx": 20.9,
+   "ok": true
+  },
+  "set.crowd1/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd1/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd2/robe": {
+   "uv": [
+    0.8865,
+    0.65648
+   ],
+   "region": "set:cushion",
+   "want": "cushion",
+   "inkDistPx": 22.6,
+   "ok": true
+  },
+  "set.crowd2/cloth": {
+   "uv": [
+    0.7345,
+    0.64425
+   ],
+   "region": "set:deck",
+   "want": "deck",
+   "inkDistPx": 20.2,
+   "ok": true
+  },
+  "set.crowd2/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd2/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd3/robe": {
+   "uv": [
+    0.7425,
+    0.93602
+   ],
+   "region": "set:hills",
+   "want": "hills",
+   "inkDistPx": 41.6,
+   "ok": true
+  },
+  "set.crowd3/cloth": {
+   "uv": [
+    0.5845,
+    0.78932
+   ],
+   "region": "set:sail",
+   "want": "sail",
+   "inkDistPx": 20.9,
+   "ok": true
+  },
+  "set.crowd3/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd3/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd4/robe": {
+   "uv": [
+    0.3245,
+    0.5546
+   ],
+   "region": "set:fig",
+   "want": "fig",
+   "inkDistPx": 18.4,
+   "ok": true
+  },
+  "set.crowd4/cloth": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd4/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd4/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd5/robe": {
+   "uv": [
+    0.8085,
+    0.54727
+   ],
+   "region": "set:lakeFar",
+   "want": "lakeFar",
+   "inkDistPx": 23.0,
+   "ok": true
+  },
+  "set.crowd5/cloth": {
+   "uv": [
+    0.5845,
+    0.78932
+   ],
+   "region": "set:sail",
+   "want": "sail",
+   "inkDistPx": 20.9,
+   "ok": true
+  },
+  "set.crowd5/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd5/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd6/robe": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd6/cloth": {
+   "uv": [
+    0.4795,
+    0.80318
+   ],
+   "region": "set:door",
+   "want": "door",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "set.crowd6/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd6/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd7/robe": {
+   "uv": [
+    0.7345,
+    0.64425
+   ],
+   "region": "set:deck",
+   "want": "deck",
+   "inkDistPx": 20.2,
+   "ok": true
+  },
+  "set.crowd7/cloth": {
+   "uv": [
+    0.8865,
+    0.65648
+   ],
+   "region": "set:cushion",
+   "want": "cushion",
+   "inkDistPx": 22.6,
+   "ok": true
+  },
+  "set.crowd7/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd7/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  },
+  "set.crowd8/robe": {
+   "uv": [
+    0.4795,
+    0.80318
+   ],
+   "region": "set:door",
+   "want": "door",
+   "inkDistPx": 27.0,
+   "ok": true
+  },
+  "set.crowd8/cloth": {
+   "uv": [
+    0.7425,
+    0.93602
+   ],
+   "region": "set:hills",
+   "want": "hills",
+   "inkDistPx": 41.6,
+   "ok": true
+  },
+  "set.crowd8/face": {
+   "uv": [
+    0.2915,
+    0.81459
+   ],
+   "region": "set:walls",
+   "want": "walls",
+   "inkDistPx": 51.0,
+   "ok": true
+  },
+  "set.crowd8/hair": {
+   "uv": [
+    0.9195,
+    0.62795
+   ],
+   "region": "set:hull",
+   "want": "hull",
+   "inkDistPx": 13.5,
+   "ok": true
+  }
+ },
+ "inkToPageEdgePx(excl. markers)": {
+  "left": 134,
+  "right": 149,
+  "top": 42,
+  "bottom": 64
+ }
+}

@@ -1,0 +1,980 @@
+{
+ "version": 1,
+ "generatedBy": "pipeline/rs_characters.py",
+ "note": "Per character: colourable regions (face attribute st_region), the mesh parts that carry them, demo colour, bbox on the sheet (x, y in art units, y up from the art rect bottom), and anchors (regions too small to colour, or with a fixed colour, take a constant UV inside a larger region and print as detail lines). ID render for the line art: id_characters_2x.png/.json. Jesus is the Real Miracles design (pipeline/mi_characters.py build_jesus, unchanged) plus the fish. The angel's height is the top of the head (wing tops: wingTop). The four extras are not printed (offSheet).",
+ "sheet": {
+  "angel": {
+   "sheetX": -0.32,
+   "sheetY": 0.015
+  },
+  "jesus": {
+   "sheetX": 0.0,
+   "sheetY": 0.015
+  },
+  "mary": {
+   "sheetX": 0.32,
+   "sheetY": 0.015
+  }
+ },
+ "sheetSource": "design.json",
+ "artHeightUnits": 1.227,
+ "characters": {
+  "angel": {
+   "height": 0.4,
+   "bboxSheet": [
+    -0.464,
+    0.0168,
+    -0.176,
+    0.475
+   ],
+   "regions": {
+    "skin": {
+     "id": 1,
+     "hex": "#EBC29E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.464,
+      0.0168,
+      -0.176,
+      0.4046
+     ]
+    },
+    "hair": {
+     "id": 2,
+     "hex": "#E2B85A",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.3503,
+      0.3435,
+      -0.2897,
+      0.4132
+     ]
+    },
+    "robe": {
+     "id": 3,
+     "hex": "#F4F7FB",
+     "zh": "白袍",
+     "en": "robe",
+     "parts": [
+      "robe"
+     ],
+     "bboxSheet": [
+      -0.4539,
+      0.031,
+      -0.186,
+      0.3205
+     ]
+    },
+    "sash": {
+     "id": 4,
+     "hex": "#E6B23E",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sashA"
+     ],
+     "bboxSheet": [
+      -0.3697,
+      0.1399,
+      -0.2702,
+      0.2682
+     ]
+    },
+    "wings": {
+     "id": 5,
+     "hex": "#FFF6DE",
+     "zh": "翅膀",
+     "en": "wings",
+     "parts": [
+      "wingL",
+      "wingR"
+     ],
+     "bboxSheet": [
+      -0.4591,
+      0.1488,
+      -0.1809,
+      0.475
+     ]
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02387,
+     0.32646,
+     0.02387,
+     0.3742
+    ],
+    "px": 512,
+    "default": "smile",
+    "projection": "front",
+    "swatches": {},
+    "files": {
+     "smile": "docs/risen/design/faces/angel_smile.png",
+     "talk": "docs/risen/design/faces/angel_talk.png",
+     "joy": "docs/risen/design/faces/angel_joy.png",
+     "kind": "docs/risen/design/faces/angel_kind.png"
+    },
+    "clipExpression": {
+     "idle": "smile",
+     "sit_stone": "smile",
+     "wings_open": "joy",
+     "sit_talk": "talk",
+     "sit_point": "kind",
+     "sit_wave": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {},
+   "partAnchors": {
+    "handL.skin": {
+     "target": "angel.FACE",
+     "uv": [
+      0.17975,
+      0.26997
+     ],
+     "local": [
+      -0.0003,
+      0.3163
+     ]
+    },
+    "handR.skin": {
+     "target": "angel.FACE",
+     "uv": [
+      0.17975,
+      0.26997
+     ],
+     "local": [
+      -0.0003,
+      0.3163
+     ]
+    },
+    "legL.skin": {
+     "target": "angel.FACE",
+     "uv": [
+      0.17975,
+      0.26997
+     ],
+     "local": [
+      -0.0003,
+      0.3163
+     ]
+    },
+    "legR.skin": {
+     "target": "angel.FACE",
+     "uv": [
+      0.17975,
+      0.26997
+     ],
+     "local": [
+      -0.0003,
+      0.3163
+     ]
+    }
+   },
+   "wingTop": 0.46,
+   "wings": {
+    "bones": {
+     "wingL1": "chest",
+     "wingL2": "wingL1",
+     "wingR1": "chest",
+     "wingR2": "wingR1"
+    },
+    "note": "wing*1 = inner half (from chest), wing*2 = outer half; rest = folded half-open (sheet pose); rotate wing*2 about its head to fold the outer half behind the inner one"
+   }
+  },
+  "jesus": {
+   "height": 0.36,
+   "bboxSheet": [
+    -0.1334,
+    0.0191,
+    0.1334,
+    0.3703
+   ],
+   "regions": {
+    "skin": {
+     "id": 6,
+     "hex": "#C99268",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      -0.1334,
+      0.0191,
+      0.1334,
+      0.3655
+     ]
+    },
+    "hair": {
+     "id": 7,
+     "hex": "#4A3020",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "beard",
+      "hair"
+     ],
+     "bboxSheet": [
+      -0.0271,
+      0.2879,
+      0.0269,
+      0.3703
+     ]
+    },
+    "tunic": {
+     "id": 8,
+     "hex": "#F2E8D2",
+     "zh": "长衣",
+     "en": "tunic",
+     "parts": [
+      "tunic"
+     ],
+     "bboxSheet": [
+      -0.1285,
+      0.0468,
+      0.1286,
+      0.2825
+     ]
+    },
+    "sandals": {
+     "id": 9,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR",
+      "sandalL",
+      "sandalR"
+     ],
+     "bboxSheet": [
+      -0.0431,
+      0.0152,
+      0.0404,
+      0.0378
+     ],
+     "fixedColour": true,
+     "anchoredTo": "tunic",
+     "anchorUV": [
+      0.47375,
+      0.05522
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "mantle": {
+     "id": 10,
+     "hex": "#9A5B34",
+     "zh": "外袍",
+     "en": "mantle",
+     "parts": [
+      "mantle"
+     ],
+     "bboxSheet": [
+      -0.0723,
+      0.0862,
+      0.0815,
+      0.2873
+     ]
+    },
+    "belt": {
+     "id": 11,
+     "hex": "#D2AE74",
+     "zh": "腰带",
+     "en": "belt",
+     "parts": [
+      "belt",
+      "beltFringe"
+     ],
+     "bboxSheet": [
+      -0.0528,
+      0.1313,
+      0.0525,
+      0.2315
+     ]
+    },
+    "fish": {
+     "id": 12,
+     "hex": "#C98A4A",
+     "zh": "烤鱼",
+     "en": "grilled fish",
+     "parts": [
+      "fish"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.fish",
+     "anchorUV": [
+      0.4955,
+      0.70864
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.jesus.propUV.fish)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02232,
+     0.29174,
+     0.02232,
+     0.33638
+    ],
+    "px": 512,
+    "default": "kind",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "kind": "docs/risen/design/faces/jesus_kind.png",
+     "talk": "docs/risen/design/faces/jesus_talk.png",
+     "smile": "docs/risen/design/faces/jesus_smile.png",
+     "laugh": "docs/risen/design/faces/jesus_laugh.png",
+     "gentle": "docs/risen/design/faces/jesus_gentle.png",
+     "look_up": "docs/risen/design/faces/jesus_look_up.png",
+     "joy": "docs/risen/design/faces/jesus_joy.png",
+     "chew": "docs/risen/design/faces/jesus_chew.png"
+    },
+    "clipExpression": {
+     "idle": "kind",
+     "talk": "talk",
+     "walk": "kind",
+     "wave": "smile",
+     "appear": "joy",
+     "call_name": "gentle",
+     "hold_hands": "joy",
+     "peace": "joy",
+     "show_hands": "smile",
+     "eat_fish": "chew"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "fish": {
+     "bone": "fish",
+     "mesh": "jesus_fish",
+     "node": "jesus/fish",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "handR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legL.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "legR.skin": {
+     "target": "jesus.FACE",
+     "uv": [
+      0.49325,
+      0.23411
+     ],
+     "local": [
+      -0.0067,
+      0.2723
+     ]
+    },
+    "beltFringe.belt": {
+     "target": "jesus.belt",
+     "uv": [
+      0.47875,
+      0.17502
+     ],
+     "local": [
+      -0.0212,
+      0.1997
+     ]
+    }
+   }
+  },
+  "mary": {
+   "height": 0.34,
+   "bboxSheet": [
+    0.2097,
+    0.0189,
+    0.4303,
+    0.3546
+   ],
+   "regions": {
+    "skin": {
+     "id": 13,
+     "hex": "#E6B48E",
+     "zh": "皮肤",
+     "en": "skin",
+     "parts": [
+      "face",
+      "handL",
+      "handR",
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2097,
+      0.0189,
+      0.4303,
+      0.3447
+     ]
+    },
+    "hair": {
+     "id": 14,
+     "hex": "#4A3020",
+     "zh": "头发和胡子",
+     "en": "hair and beard",
+     "parts": [
+      "hair"
+     ],
+     "bboxSheet": [
+      0.2941,
+      0.2839,
+      0.3459,
+      0.35
+     ]
+    },
+    "dress": {
+     "id": 15,
+     "hex": "#D9775F",
+     "zh": "长裙",
+     "en": "dress",
+     "parts": [
+      "dress"
+     ],
+     "bboxSheet": [
+      0.215,
+      0.0239,
+      0.425,
+      0.2755
+     ]
+    },
+    "sandals": {
+     "id": 16,
+     "hex": "#7A4E2E",
+     "zh": "凉鞋",
+     "en": "sandals",
+     "parts": [
+      "legL",
+      "legR"
+     ],
+     "bboxSheet": [
+      0.2891,
+      0.0165,
+      0.3509,
+      0.0365
+     ],
+     "fixedColour": true,
+     "anchoredTo": "dress",
+     "anchorUV": [
+      0.81925,
+      0.06418
+     ],
+     "printNote": "fixed colour from the face decal (UV1 swatch); print as detail lines"
+    },
+    "sash": {
+     "id": 17,
+     "hex": "#F1E3C4",
+     "zh": "腰带",
+     "en": "sash",
+     "parts": [
+      "sash"
+     ],
+     "bboxSheet": [
+      0.2888,
+      0.1463,
+      0.3512,
+      0.227
+     ],
+     "anchoredTo": "dress",
+     "anchorUV": [
+      0.81925,
+      0.06418
+     ],
+     "printNote": "printed with the figure; takes the colour at anchorUV"
+    },
+    "veil": {
+     "id": 18,
+     "hex": "#8DB5D8",
+     "zh": "头纱",
+     "en": "veil",
+     "parts": [
+      "veil"
+     ],
+     "bboxSheet": [
+      0.2751,
+      0.2212,
+      0.3647,
+      0.3546
+     ]
+    },
+    "jar": {
+     "id": 19,
+     "hex": "#C46A3E",
+     "zh": "香料罐",
+     "en": "spice jar",
+     "parts": [
+      "jar"
+     ],
+     "bboxSheet": null,
+     "anchoredTo": "set.clay",
+     "anchorUV": [
+      0.3905,
+      0.64996
+     ],
+     "anchorSource": "design.json set.propAnchors",
+     "printNote": "hidden-by-default prop, not printed with the figure; takes the colour at anchorUV (override: design.json characters.mary.propUV.jar)"
+    }
+   },
+   "faceDecal": {
+    "rectLocal": [
+     -0.02088,
+     0.27316,
+     0.02088,
+     0.31492
+    ],
+    "px": 512,
+    "default": "gentle",
+    "projection": "front",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "gentle": "docs/risen/design/faces/mary_gentle.png",
+     "talk": "docs/risen/design/faces/mary_talk.png",
+     "sad": "docs/risen/design/faces/mary_sad.png",
+     "cry": "docs/risen/design/faces/mary_cry.png",
+     "gasp": "docs/risen/design/faces/mary_gasp.png",
+     "joy": "docs/risen/design/faces/mary_joy.png",
+     "amazed": "docs/risen/design/faces/mary_amazed.png"
+    },
+    "clipExpression": {
+     "idle": "gentle",
+     "walk": "gentle",
+     "talk": "talk",
+     "idle_jar": "gentle",
+     "walk_jar": "gentle",
+     "sad": "sad",
+     "gasp": "gasp",
+     "peek": "amazed",
+     "run": "joy",
+     "tell": "talk",
+     "cry": "cry",
+     "talk_down": "sad",
+     "turn_joy": "joy",
+     "hold_hands": "joy",
+     "cheer": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78,
+    "note": "scale the bone's Y; X/Z stay 1"
+   },
+   "restPose": {
+    "armDegBelowHorizontal": 55.0,
+    "facing": "+Z"
+   },
+   "props": {
+    "jar": {
+     "bone": "jar",
+     "mesh": "mary_jar",
+     "node": "mary/jar",
+     "shownByDefault": false
+    }
+   },
+   "partAnchors": {
+    "handL.skin": {
+     "target": "mary.FACE",
+     "uv": [
+      0.81975,
+      0.22963
+     ],
+     "local": [
+      -0.0003,
+      0.2668
+     ]
+    },
+    "handR.skin": {
+     "target": "mary.FACE",
+     "uv": [
+      0.81975,
+      0.22963
+     ],
+     "local": [
+      -0.0003,
+      0.2668
+     ]
+    },
+    "legL.skin": {
+     "target": "mary.FACE",
+     "uv": [
+      0.81975,
+      0.22963
+     ],
+     "local": [
+      -0.0003,
+      0.2668
+     ]
+    },
+    "legR.skin": {
+     "target": "mary.FACE",
+     "uv": [
+      0.81975,
+      0.22963
+     ],
+     "local": [
+      -0.0003,
+      0.2668
+     ]
+    }
+   }
+  }
+ },
+ "offSheet": {
+  "peter": {
+   "height": 0.38,
+   "paint": "assets/risen/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "the Real Miracles Peter, unchanged (rust-red tunic, sand vest, dark-brown waist cloth, blue-grey head cloth, curly black hair and beard); bucket bone kept, no mesh",
+   "blendRigLocation": [
+    0.8,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02268,
+     0.30996,
+     0.02268,
+     0.35532
+    ],
+    "px": 512,
+    "default": "jolly",
+    "swatches": {
+     "rope": [
+      0.905,
+      0.925,
+      0.95,
+      0.995
+     ],
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "jolly": "docs/risen/design/faces/peter_jolly.png",
+     "talk": "docs/risen/design/faces/peter_talk.png",
+     "shock": "docs/risen/design/faces/peter_shock.png",
+     "laugh": "docs/risen/design/faces/peter_laugh.png",
+     "amazed": "docs/risen/design/faces/peter_amazed.png",
+     "puzzled": "docs/risen/design/faces/peter_puzzled.png",
+     "sad": "docs/risen/design/faces/peter_sad.png",
+     "puff": "docs/risen/design/faces/peter_puff.png"
+    },
+    "clipExpression": {
+     "idle": "jolly",
+     "talk": "talk",
+     "walk": "jolly",
+     "laugh": "laugh",
+     "amazed": "amazed",
+     "shock": "shock",
+     "sit_sad": "sad",
+     "jump_up": "puzzled",
+     "run_puff": "puff",
+     "puff": "puff",
+     "stoop_look": "puzzled",
+     "cheer": "laugh"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "cloth1": "head",
+    "bucket": "handR"
+   },
+   "props": {},
+   "colours": {
+    "skin": "#BF8460",
+    "hair": "#231A16",
+    "tunic": "#B4502F",
+    "vest": "#D9C29A",
+    "waistcloth": "#5A3A26",
+    "headcloth": "#6E8AA6",
+    "rope": "#C8A472",
+    "sandals": "#7A4E2E",
+    "bucket": "#8A5A3B"
+   },
+   "tris": 24248
+  },
+  "john": {
+   "height": 0.33,
+   "paint": "assets/risen/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "The King Who Serves John, unchanged: beardless, short wavy light-brown hair, sky-blue tunic, white sash (sash1)",
+   "blendRigLocation": [
+    1.0,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.2704,
+     0.02146,
+     0.31331
+    ],
+    "px": 512,
+    "default": "happy",
+    "swatches": {},
+    "files": {
+     "happy": "docs/risen/design/faces/john_happy.png",
+     "talk": "docs/risen/design/faces/john_talk.png",
+     "amazed": "docs/risen/design/faces/john_amazed.png",
+     "laugh": "docs/risen/design/faces/john_laugh.png",
+     "sad": "docs/risen/design/faces/john_sad.png",
+     "shock": "docs/risen/design/faces/john_shock.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "talk": "talk",
+     "laugh": "laugh",
+     "amazed": "amazed",
+     "sit_sad": "sad",
+     "jump_up": "amazed",
+     "run": "happy",
+     "wave_hurry": "talk",
+     "peek": "amazed",
+     "shock": "shock",
+     "cheer": "laugh"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "sash1": "hips"
+   },
+   "props": {},
+   "colours": {
+    "skin": "#D6A27A",
+    "hair": "#9A6B42",
+    "tunic": "#7FB6E0",
+    "belt": "#F5F1E6",
+    "sandals": "#7A4E2E"
+   },
+   "tris": 17168
+  },
+  "thomas": {
+   "height": 0.36,
+   "paint": "assets/risen/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "square beard, straight dark hair, rust head band, teal tunic, tan belt, short grey-brown cloak over both shoulders (cloak1)",
+   "blendRigLocation": [
+    1.2,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02146,
+     0.29589,
+     0.02146,
+     0.3388
+    ],
+    "px": 512,
+    "default": "happy",
+    "swatches": {},
+    "files": {
+     "happy": "docs/risen/design/faces/thomas_happy.png",
+     "talk": "docs/risen/design/faces/thomas_talk.png",
+     "amazed": "docs/risen/design/faces/thomas_amazed.png",
+     "shock": "docs/risen/design/faces/thomas_shock.png",
+     "doubt": "docs/risen/design/faces/thomas_doubt.png",
+     "awe": "docs/risen/design/faces/thomas_awe.png"
+    },
+    "clipExpression": {
+     "idle": "happy",
+     "doubt": "doubt",
+     "shock": "shock",
+     "reach": "amazed",
+     "kneel_worship": "awe",
+     "cheer": "happy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "cloak1": "chest"
+   },
+   "props": {},
+   "colours": {
+    "skin": "#C48C64",
+    "hair": "#2A2018",
+    "tunic": "#3E8E86",
+    "belt": "#D2AE74",
+    "sandals": "#7A4E2E",
+    "cloak": "#8A7A68",
+    "band": "#B4502F"
+   },
+   "tris": 17976
+  },
+  "joanna": {
+   "height": 0.33,
+   "paint": "assets/risen/model/extras_paint.png",
+   "uv0": "paint texture",
+   "look": "Mary's body (build_woman), rounder: mustard dress, brick-red veil (veil1), cream apron-sash (sash1), grey-streaked hair; jar (handL, hidden)",
+   "blendRigLocation": [
+    1.4,
+    0.0
+   ],
+   "faceDecal": {
+    "rectLocal": [
+     -0.02021,
+     0.26442,
+     0.02021,
+     0.30484
+    ],
+    "px": 512,
+    "default": "gentle",
+    "swatches": {
+     "sandals": [
+      0.955,
+      0.925,
+      0.995,
+      0.995
+     ]
+    },
+    "files": {
+     "gentle": "docs/risen/design/faces/joanna_gentle.png",
+     "talk": "docs/risen/design/faces/joanna_talk.png",
+     "sad": "docs/risen/design/faces/joanna_sad.png",
+     "gasp": "docs/risen/design/faces/joanna_gasp.png",
+     "joy": "docs/risen/design/faces/joanna_joy.png"
+    },
+    "clipExpression": {
+     "idle": "gentle",
+     "walk": "gentle",
+     "idle_jar": "gentle",
+     "walk_jar": "gentle",
+     "sad": "sad",
+     "gasp": "gasp",
+     "peek": "gentle",
+     "run": "joy"
+    }
+   },
+   "blink": {
+    "bone": "eyelids",
+    "axis": "local Y (along the bone, pointing down)",
+    "open": 1.0,
+    "closed": 12.78
+   },
+   "extraBones": {
+    "veil1": "head",
+    "sash1": "hips",
+    "jar": "handL"
+   },
+   "props": {
+    "jar": {
+     "bone": "jar",
+     "mesh": "joanna_jar",
+     "node": "joanna/jar",
+     "shownByDefault": false
+    }
+   },
+   "colours": {
+    "skin": "#D9A27A",
+    "hair": "#7D6E62",
+    "veil": "#A84A3A",
+    "dress": "#D9A93A",
+    "sash": "#F1E3C4",
+    "sandals": "#7A4E2E",
+    "jar": "#C46A3E"
+   },
+   "tris": 17286
+  }
+ },
+ "offSheetNote": "the four extras: not printed; UV0 samples model/extras_paint.png (fixed demo-palette paint, one flat colour per region), face decal on UV1 like the cast"
+}

@@ -1,0 +1,4002 @@
+{
+ "version": 1,
+ "story": "saul",
+ "cast": [
+  "saul",
+  "ananias",
+  "barnabas",
+  "judas",
+  "priest",
+  "tallguard",
+  "shortguard",
+  "peter"
+ ],
+ "set": "damascus",
+ "duration": 252.52,
+ "fps": 30,
+ "shots": [
+  {
+   "id": "S01",
+   "title_zh": "生气的扫罗",
+   "title_en": "Angry Saul",
+   "camera": {
+    "type": "fixed",
+    "target": "priestPorch",
+    "dist": 0.6,
+    "height": 0.24,
+    "yawDeg": 25
+   },
+   "desc": "Jerusalem, a bright morning. Saul, a young man with a dark beard and a frown, stomps up to the high priest's porch, fists tight. The old high priest, calm and unsmiling, hands him a rolled-up letter. Saul holds it up and marches off.",
+   "t0": 0.0,
+   "t1": 22.48,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "id": "S02",
+   "title_zh": "去大马士革",
+   "title_en": "The road to Damascus",
+   "camera": {
+    "type": "follow",
+    "target": "saul",
+    "dist": 0.6,
+    "height": 0.2,
+    "yawDeg": 30
+   },
+   "desc": "The hot desert road: sand, rocks, one palm. Saul marches ahead with the letter in his belt; two temple guards, one tall and thin, one short and round, puff along behind him. He stops and scolds them.",
+   "t0": 22.48,
+   "t1": 38.22,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "S03",
+   "title_zh": "天上的光",
+   "title_en": "A light from heaven",
+   "camera": {
+    "type": "fixed",
+    "target": "saul",
+    "dist": 0.7,
+    "height": 0.34,
+    "yawDeg": 15
+   },
+   "desc": "Near the city, at noon. Suddenly a great light, brighter than the sun, pours down from the sky all round Saul: warm white and gold, wonderful, not frightening. Saul shields his eyes and sits down hard in the road; the two guards duck and cover their heads.",
+   "t0": 38.22,
+   "t1": 48.92,
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "id": "S04",
+   "title_zh": "扫罗，扫罗",
+   "title_en": "Saul, Saul",
+   "camera": {
+    "type": "fixed",
+    "target": "saul",
+    "dist": 0.5,
+    "height": 0.22,
+    "yawDeg": -20
+   },
+   "desc": "Saul sits in the road inside the light, one arm up against the brightness, looking up. A voice speaks from the light: it is Jesus. Behind him the guards peep out from under their arms: they hear a sound but see no one.",
+   "t0": 48.92,
+   "t1": 70.71,
+   "anchor": {
+    "line": "sa_07",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "S05",
+   "title_zh": "看不见了",
+   "title_en": "I can't see",
+   "camera": {
+    "type": "follow",
+    "target": "saul",
+    "dist": 0.6,
+    "height": 0.2,
+    "yawDeg": 25
+   },
+   "desc": "The light is gone. Saul stands up with his eyes open but sees nothing; he holds his hands out. The tall guard takes his hand and leads him slowly to the city gate; the short guard walks behind.",
+   "t0": 70.71,
+   "t1": 84.95,
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "S06",
+   "title_zh": "直街上的房子",
+   "title_en": "The house on Straight Street",
+   "camera": {
+    "type": "fixed",
+    "target": "judasHouse",
+    "dist": 0.5,
+    "height": 0.22,
+    "yawDeg": 0
+   },
+   "desc": "Inside Judas's house on Straight Street. Saul sits on a mat with his eyes closed, praying, a soft glow round him. Kind Judas offers him bread; Saul gently shakes his head and goes on praying.",
+   "t0": 84.95,
+   "t1": 97.37,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "S07",
+   "title_zh": "亚拿尼亚",
+   "title_en": "Ananias",
+   "camera": {
+    "type": "fixed",
+    "target": "ananiasHouse",
+    "dist": 0.5,
+    "height": 0.2,
+    "yawDeg": 10
+   },
+   "desc": "Ananias's little house down the street. Ananias, a small round man with a grey beard, kneels to pray. A soft light fills the room and the Lord speaks to him. When he hears the name Saul he jumps up, knees knocking; then he swallows hard and goes.",
+   "t0": 97.37,
+   "t1": 122.69,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "id": "S08",
+   "title_zh": "扫罗弟兄",
+   "title_en": "Brother Saul",
+   "camera": {
+    "type": "fixed",
+    "target": "judasHouse",
+    "dist": 0.55,
+    "height": 0.22,
+    "yawDeg": 0
+   },
+   "desc": "Ananias tiptoes along Straight Street to Judas's door and knocks. Inside, he puts his hands gently on Saul's head. Something like little scales falls from Saul's eyes, sparkling; Saul blinks and sees. His face lights up.",
+   "t0": 122.69,
+   "t1": 151.68,
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S09",
+   "title_zh": "受洗",
+   "title_en": "Baptised",
+   "camera": {
+    "type": "fixed",
+    "target": "saul",
+    "dist": 0.5,
+    "height": 0.2,
+    "yawDeg": 0
+   },
+   "desc": "Saul kneels and Ananias pours water over his head from a jug: he is baptised, and he laughs. Then Judas brings bread, and Saul eats hungrily and happily.",
+   "t0": 151.68,
+   "t1": 161.98,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "S10",
+   "title_zh": "耶稣是神的儿子",
+   "title_en": "Jesus is God's Son",
+   "camera": {
+    "type": "fixed",
+    "target": "synagogue",
+    "dist": 0.6,
+    "height": 0.22,
+    "yawDeg": 10
+   },
+   "desc": "The synagogue steps on Straight Street. Saul stands on the top step, arms open, telling everyone about Jesus. The two temple guards stand at the side, scratching their heads: is this the same Saul?",
+   "t0": 161.98,
+   "t1": 177.54,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "S11",
+   "title_zh": "大筐子",
+   "title_en": "The big basket",
+   "camera": {
+    "type": "fixed",
+    "target": "wallWindow",
+    "dist": 0.6,
+    "height": 0.26,
+    "yawDeg": 25
+   },
+   "desc": "Night outside the city wall, torches by the gate. The short guard boasts, then dozes on his feet; the tall guard holds up a lantern and peers down the road. Behind their backs a big basket comes down the wall on two ropes from a high window. Saul climbs out, waves up to the window and tiptoes away.",
+   "t0": 177.54,
+   "t1": 208.14,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "S12",
+   "title_zh": "巴拿巴",
+   "title_en": "Barnabas",
+   "camera": {
+    "type": "fixed",
+    "target": "jerusalemDoor",
+    "dist": 0.55,
+    "height": 0.2,
+    "yawDeg": -25
+   },
+   "desc": "Back in Jerusalem, at the door of the believers' house. Peter peeks out and shrinks back, afraid of Saul. Big, kind Barnabas comes up and speaks up for Saul. Peter smiles and hugs him.",
+   "t0": 208.14,
+   "t1": 230.91,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "id": "S13",
+   "title_zh": "心变了",
+   "title_en": "A changed heart",
+   "camera": {
+    "type": "fixed",
+    "target": "cityWall",
+    "dist": 0.95,
+    "height": 0.46,
+    "yawDeg": 0
+   },
+   "desc": "The whole page in warm sunshine: Damascus, the road, Jerusalem. Everyone stands in a row along the front and waves to the child: Ananias, Judas, Saul, Barnabas, Peter, and even the two guards, who have stopped frowning.",
+   "t0": 230.91,
+   "t1": 252.52,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  }
+ ],
+ "acting": [
+  {
+   "t": 0.0,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.44,
+    -0.1
+   ],
+   "face": "priest",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "priest",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.47,
+    -0.42
+   ],
+   "y": 0.04,
+   "face": "saul",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "ananias",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "barnabas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.4,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.42,
+    -0.24
+   ],
+   "face": "priest",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 1.69,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.52,
+    -0.17
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 1.686
+   }
+  },
+  {
+   "t": 2.79,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.42,
+    -0.24
+   ],
+   "face": "priest",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 2.795
+   }
+  },
+  {
+   "t": 3.9,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.52,
+    -0.17
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 3.905
+   }
+  },
+  {
+   "t": 5.01,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.42,
+    -0.24
+   ],
+   "face": "priest",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 5.015
+   }
+  },
+  {
+   "t": 6.12,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.52,
+    -0.17
+   ],
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 6.124
+   }
+  },
+  {
+   "t": 7.23,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.42,
+    -0.24
+   ],
+   "face": "priest",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 7.234
+   }
+  },
+  {
+   "t": 8.38,
+   "who": "saul",
+   "clip": "angry_talk",
+   "blend": 0.25,
+   "face": "priest",
+   "anchor": {
+    "line": "sa_01",
+    "edge": "end",
+    "dt": -2.1
+   }
+  },
+  {
+   "t": 16.36,
+   "who": "priest",
+   "clip": "give_letters",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_02",
+    "edge": "end",
+    "dt": -0.1
+   }
+  },
+  {
+   "t": 17.46,
+   "who": "saul",
+   "clip": "take_letters",
+   "blend": 0.25,
+   "face": "priest",
+   "anchor": {
+    "line": "sa_02",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 21.68,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.46,
+    -0.12
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 22.48,
+   "who": "priest",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.46,
+    -0.22
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.38,
+    -0.26
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.56,
+    -0.25
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.48,
+    -0.02
+   ],
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 23.48,
+   "who": "tallguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.53,
+    -0.02
+   ],
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 23.88,
+   "who": "shortguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.44,
+    -0.04
+   ],
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 24.31,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.4,
+    0.12
+   ],
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 2.627
+   }
+  },
+  {
+   "t": 25.77,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.3,
+    0.13
+   ],
+   "face": "shortguard",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 4.093
+   }
+  },
+  {
+   "t": 26.21,
+   "who": "tallguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.53,
+    0.03
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 4.529
+   }
+  },
+  {
+   "t": 26.56,
+   "who": "shortguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.44,
+    0.08
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 4.883
+   }
+  },
+  {
+   "t": 26.69,
+   "who": "saul",
+   "clip": "angry_talk",
+   "blend": 0.25,
+   "face": "shortguard",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 5.01
+   }
+  },
+  {
+   "t": 26.8,
+   "who": "tallguard",
+   "clip": "puff",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 5.12
+   }
+  },
+  {
+   "t": 27.97,
+   "who": "shortguard",
+   "clip": "puff",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 6.29
+   }
+  },
+  {
+   "t": 28.11,
+   "who": "shortguard",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_04",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 36.72,
+   "who": "tallguard",
+   "clip": "shrug",
+   "blend": 0.25,
+   "face": "shortguard",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 36.92,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "tallguard",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 37.17,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.18,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 0.75
+   }
+  },
+  {
+   "t": 38.22,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.27,
+    0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 38.22,
+   "who": "shortguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    0.05
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 38.22,
+   "who": "tallguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.45,
+    0.13
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 38.62,
+   "who": "saul",
+   "clip": "march",
+   "blend": 0.25,
+   "to": [
+    0.18,
+    0.08
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 38.62,
+   "who": "shortguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.33,
+    0.03
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "t": 38.82,
+   "who": "tallguard",
+   "clip": "walk_puff",
+   "blend": 0.25,
+   "to": [
+    0.38,
+    0.12
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 2.4
+   }
+  },
+  {
+   "t": 39.52,
+   "who": "saul",
+   "clip": "fall_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 3.1
+   }
+  },
+  {
+   "t": 39.72,
+   "who": "shortguard",
+   "clip": "duck",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 3.3
+   }
+  },
+  {
+   "t": 39.92,
+   "who": "tallguard",
+   "clip": "duck",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 3.5
+   }
+  },
+  {
+   "t": 48.92,
+   "who": "saul",
+   "clip": "sit_look_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_07",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 66.8,
+   "who": "tallguard",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "shortguard",
+   "anchor": {
+    "line": "sa_11",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 67.0,
+   "who": "shortguard",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "tallguard",
+   "anchor": {
+    "line": "sa_11",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 70.71,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.27,
+    -0.05
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 70.91,
+   "who": "saul",
+   "clip": "get_up_blind",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 71.31,
+   "who": "tallguard",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.13,
+    -0.01
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 74.31,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 4.0
+   }
+  },
+  {
+   "t": 77.52,
+   "who": "tallguard",
+   "clip": "lead_hand",
+   "blend": 0.25,
+   "to": [
+    0.1,
+    -0.1
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 78.28,
+   "who": "saul",
+   "clip": "walk_blind",
+   "blend": 0.25,
+   "to": [
+    0.13,
+    -0.01
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 1.06
+   }
+  },
+  {
+   "t": 79.42,
+   "who": "tallguard",
+   "clip": "lead_hand",
+   "blend": 0.25,
+   "to": [
+    0.09,
+    -0.16
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 2.197
+   }
+  },
+  {
+   "t": 80.12,
+   "who": "shortguard",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.18,
+    0.08
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 2.9
+   }
+  },
+  {
+   "t": 80.34,
+   "who": "saul",
+   "clip": "walk_blind",
+   "blend": 0.25,
+   "to": [
+    0.1,
+    -0.1
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 3.119
+   }
+  },
+  {
+   "t": 80.63,
+   "who": "tallguard",
+   "clip": "lead_hand",
+   "blend": 0.25,
+   "to": [
+    -0.09,
+    -0.16
+   ],
+   "face": "cityGate",
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 3.414
+   }
+  },
+  {
+   "t": 81.88,
+   "who": "shortguard",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.13,
+    -0.01
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 4.657
+   }
+  },
+  {
+   "t": 82.24,
+   "who": "saul",
+   "clip": "walk_blind",
+   "blend": 0.25,
+   "to": [
+    0.09,
+    -0.16
+   ],
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 5.016
+   }
+  },
+  {
+   "t": 83.45,
+   "who": "saul",
+   "clip": "walk_blind",
+   "blend": 0.25,
+   "to": [
+    0.05,
+    -0.16
+   ],
+   "face": "tallguard",
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 6.233
+   }
+  },
+  {
+   "t": 84.95,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "who": "saul",
+   "clip": "sit_pray",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.15,
+    -0.46
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.22,
+    -0.42
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 87.95,
+   "who": "judas",
+   "clip": "offer_bread",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 4.2
+   }
+  },
+  {
+   "t": 91.95,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 8.2
+   }
+  },
+  {
+   "t": 97.37,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 97.37,
+   "who": "ananias",
+   "clip": "kneel_pray",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.465,
+    0.08
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 98.37,
+   "who": "ananias",
+   "clip": "kneel_look_up",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 105.31,
+   "who": "ananias",
+   "clip": "startle",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_17",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 113.28,
+   "who": "ananias",
+   "clip": "nervous",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_18",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 122.69,
+   "who": "ananias",
+   "clip": "tiptoe",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.3,
+    -0.2
+   ],
+   "face": "judasHouse",
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 122.69,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.22,
+    -0.42
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 122.69,
+   "who": "saul",
+   "clip": "sit_pray",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.15,
+    -0.46
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 122.89,
+   "who": "ananias",
+   "clip": "tiptoe",
+   "blend": 0.25,
+   "to": [
+    -0.2,
+    -0.23
+   ],
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 124.63,
+   "who": "ananias",
+   "clip": "tiptoe",
+   "blend": 0.25,
+   "to": [
+    -0.13,
+    -0.27
+   ],
+   "face": "judasHouse",
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 2.54
+   }
+  },
+  {
+   "t": 127.43,
+   "who": "ananias",
+   "clip": "knock",
+   "blend": 0.25,
+   "face": "judasHouse",
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 128.23,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "ananias",
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 128.63,
+   "who": "ananias",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    -0.08,
+    -0.42
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 130.43,
+   "who": "ananias",
+   "clip": "hands_on",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 3.2
+   }
+  },
+  {
+   "t": 138.61,
+   "who": "saul",
+   "clip": "see_again",
+   "blend": 0.25,
+   "face": "ananias",
+   "anchor": {
+    "line": "sa_22",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 147.22,
+   "who": "ananias",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_24",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 151.68,
+   "who": "saul",
+   "clip": "kneel",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.15,
+    -0.46
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 151.68,
+   "who": "ananias",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.22,
+    -0.42
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 151.68,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.08,
+    -0.43
+   ],
+   "face": "saul",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 152.08,
+   "who": "ananias",
+   "clip": "pour",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 155.03,
+   "who": "judas",
+   "clip": "offer_bread",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": -1.4
+   }
+  },
+  {
+   "t": 155.83,
+   "who": "ananias",
+   "clip": "cheer",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": -0.6
+   }
+  },
+  {
+   "t": 156.53,
+   "who": "saul",
+   "clip": "eat_bread",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 157.43,
+   "who": "judas",
+   "clip": "laugh",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 161.98,
+   "who": "saul",
+   "clip": "preach",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.37,
+    -0.36
+   ],
+   "y": 0.04,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "who": "tallguard",
+   "clip": "listen",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.165,
+    -0.2
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "who": "shortguard",
+   "clip": "listen",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.07,
+    -0.19
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "who": "ananias",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 167.29,
+   "who": "tallguard",
+   "clip": "scratch_head",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_28",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 172.19,
+   "who": "shortguard",
+   "clip": "amazed",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_29",
+    "edge": "end",
+    "dt": -0.1
+   }
+  },
+  {
+   "t": 177.54,
+   "who": "judas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "who": "ananias",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "who": "saul",
+   "clip": "basket_wait",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.095,
+    -0.38
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "who": "tallguard",
+   "clip": "lantern_peer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.12,
+    -0.04
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "who": "shortguard",
+   "clip": "boast",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.19,
+    -0.11
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 188.85,
+   "who": "shortguard",
+   "clip": "doze",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_32",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 197.09,
+   "who": "saul",
+   "clip": "basket_down",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": -5.8
+   }
+  },
+  {
+   "t": 203.09,
+   "who": "saul",
+   "clip": "basket_out",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 204.49,
+   "who": "saul",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "t": 207.29,
+   "who": "saul",
+   "clip": "tiptoe",
+   "blend": 0.25,
+   "to": [
+    0.13,
+    -0.33
+   ],
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 1.75
+   }
+  },
+  {
+   "t": 208.14,
+   "who": "tallguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.8,
+    0.3
+   ],
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "who": "saul",
+   "clip": "walk",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.4,
+    -0.06
+   ],
+   "y": 0.0,
+   "face": "jerusalemDoor",
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.24,
+    -0.33
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "who": "barnabas",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.14,
+    0.02
+   ],
+   "y": 0.0,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.34,
+   "who": "saul",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.4,
+    -0.24
+   ],
+   "face": "jerusalemDoor",
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.8
+   }
+  },
+  {
+   "t": 212.4,
+   "who": "peter",
+   "clip": "peek_afraid",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_36",
+    "edge": "end",
+    "dt": -1.4
+   }
+  },
+  {
+   "t": 212.8,
+   "who": "barnabas",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.3,
+    -0.22
+   ],
+   "face": "peter",
+   "anchor": {
+    "line": "sa_36",
+    "edge": "end",
+    "dt": -1.0
+   }
+  },
+  {
+   "t": 219.4,
+   "who": "barnabas",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "sa_37",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 219.4,
+   "who": "saul",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "sa_37",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "t": 221.4,
+   "who": "barnabas",
+   "clip": "arm_round",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "sa_37",
+    "edge": "end",
+    "dt": 2.7
+   }
+  },
+  {
+   "t": 225.39,
+   "who": "peter",
+   "clip": "idle",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_38",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 225.79,
+   "who": "barnabas",
+   "clip": "laugh",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_38",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "t": 225.89,
+   "who": "saul",
+   "clip": "walk",
+   "blend": 0.25,
+   "to": [
+    0.335,
+    -0.3
+   ],
+   "face": "peter",
+   "anchor": {
+    "line": "sa_38",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 229.11,
+   "who": "peter",
+   "clip": "hug",
+   "blend": 0.25,
+   "face": "saul",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 229.11,
+   "who": "saul",
+   "clip": "hug",
+   "blend": 0.25,
+   "face": "peter",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 0.2
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "ananias",
+   "clip": "wave",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.27,
+    0.08
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "judas",
+   "clip": "wave",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.17,
+    0.1
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "saul",
+   "clip": "cheer",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    -0.07,
+    0.1
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "barnabas",
+   "clip": "wave",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.06,
+    0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "peter",
+   "clip": "wave",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.18,
+    0.1
+   ],
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "tallguard",
+   "clip": "scratch_head",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.32,
+    0.1
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "who": "shortguard",
+   "clip": "idle",
+   "blend": 0.25,
+   "snap": true,
+   "to": [
+    0.44,
+    0.1
+   ],
+   "y": 0.0,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 238.08,
+   "who": "saul",
+   "clip": "talk",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_40",
+    "edge": "end",
+    "dt": 0.1
+   }
+  },
+  {
+   "t": 241.92,
+   "who": "tallguard",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_41",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "t": 242.12,
+   "who": "saul",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_41",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 242.22,
+   "who": "shortguard",
+   "clip": "wave",
+   "blend": 0.25,
+   "face": "viewer",
+   "anchor": {
+    "line": "sa_41",
+    "edge": "end",
+    "dt": 0.6
+   }
+  }
+ ],
+ "lines": [
+  {
+   "id": "sa_01",
+   "t": 0.85,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 9.68,
+   "ref": "Acts 22:3; 8:3; 9:1-2",
+   "zh": "耶路撒冷有个年轻人叫扫罗。他很生气，想把跟随耶稣的人都抓起来。",
+   "en": "In Jerusalem lived a young man called Saul. He was angry, and wanted to arrest everyone who followed Jesus.",
+   "dir": "storyteller, clear and lively; plain and calm on 抓 / 'arrest' (the only sentence about it), a small frown on 生气 / 'angry'",
+   "dur": 9.63,
+   "pre": 0.25,
+   "post": 0.3,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.85
+   }
+  },
+  {
+   "id": "sa_02",
+   "t": 10.98,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 5.53,
+   "ref": "Acts 9:1-2; 22:5",
+   "zh": "大祭司，给我写几封信吧！我要去大马士革，把他们都带回来！",
+   "en": "High priest, give me letters! I'll go to Damascus and bring them all back!",
+   "dir": "young, hot-headed, sure of himself; loud but not shouting; a stamp on 都 / 'all'",
+   "dur": 5.48,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_01",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "sa_03",
+   "t": 17.86,
+   "who": "priest",
+   "voice": "priest",
+   "maxSec": 3.87,
+   "ref": "Acts 9:2; 26:12",
+   "zh": "好吧，信在这里。去吧。",
+   "en": "Very well. Here are your letters. Go.",
+   "dir": "an old, dry, calm voice; neither kind nor cruel; unhurried",
+   "dur": 3.82,
+   "pre": 1.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_02",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "sa_04",
+   "t": 23.08,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 4.88,
+   "ref": "Acts 9:3, 7; 26:12",
+   "zh": "扫罗带着两个卫兵出发了。路又长又热。",
+   "en": "Saul set off with two guards. The road was long and hot.",
+   "dir": "brisk, a marching rhythm in the words",
+   "dur": 4.83,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "sa_05",
+   "t": 28.31,
+   "who": "shortguard",
+   "voice": "shortguard",
+   "maxSec": 4.98,
+   "ref": "Acts 9:3",
+   "zh": "扫罗大人，歇一会儿吧！我的脚都走扁了！",
+   "en": "Master Saul, can we rest? My feet are flat as pancakes!",
+   "dir": "a round, puffing comic voice; out of breath; whiny, funny",
+   "dur": 4.93,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_04",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_06",
+   "t": 33.54,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 2.93,
+   "ref": "Acts 9:3",
+   "zh": "不歇！大马士革就在前面。走！",
+   "en": "No rest! Damascus is just ahead. March!",
+   "dir": "impatient, bossy, clipped",
+   "dur": 2.88,
+   "pre": 0.1,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_05",
+    "edge": "end",
+    "dt": 0.3
+   }
+  },
+  {
+   "id": "sa_07",
+   "t": 40.82,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.65,
+   "ref": "Acts 9:3-4; 26:13",
+   "zh": "忽然，一道比太阳还亮的光从天上照下来！扫罗一下子坐倒在地上。",
+   "en": "Suddenly a light brighter than the sun shone from heaven, and Saul fell to the ground.",
+   "dir": "wonder, building fast; bright and amazed, never scary; a soft drop on the fall",
+   "dur": 7.6,
+   "pre": 2.6,
+   "post": 0.5,
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 4.4
+   }
+  },
+  {
+   "id": "sa_08",
+   "t": 49.52,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 3.42,
+   "ref": "Acts 9:4",
+   "zh": "扫罗，扫罗，你为什么跟我作对？",
+   "en": "Saul, Saul, why are you against Me?",
+   "dir": "calm, warm, very clear; sad and loving, not angry; the same Jesus as in Real Miracles",
+   "dur": 3.37,
+   "pre": 0.6,
+   "post": 0.4,
+   "anchor": {
+    "line": "sa_07",
+    "edge": "end",
+    "dt": 1.1
+   }
+  },
+  {
+   "id": "sa_09",
+   "t": 53.49,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 1.74,
+   "ref": "Acts 9:5",
+   "zh": "主啊，你是谁？",
+   "en": "Lord... who are You?",
+   "dir": "small and shaken, all the anger gone; almost a whisper",
+   "dur": 1.69,
+   "pre": 0.2,
+   "post": 0.4,
+   "anchor": {
+    "line": "sa_08",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_10",
+   "t": 55.88,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 6.1,
+   "ref": "Acts 9:5; 22:8",
+   "zh": "我就是耶稣。你跟我的朋友作对，就是跟我作对。",
+   "en": "I am Jesus. When you are against My friends, you are against Me.",
+   "dir": "gentle and firm; the heart of the scene; slow on 我就是耶稣 / 'I am Jesus'",
+   "dur": 6.05,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_09",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "sa_11",
+   "t": 62.43,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 4.12,
+   "ref": "Acts 9:6; 22:10",
+   "zh": "起来，进城去，会有人告诉你该做什么。",
+   "en": "Get up and go into the city. You will be told what to do.",
+   "dir": "kind, a fresh start in the voice",
+   "dur": 4.07,
+   "pre": 0.2,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_10",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "id": "sa_12",
+   "t": 67.2,
+   "who": "tallguard",
+   "voice": "tallguard",
+   "maxSec": 3.16,
+   "ref": "Acts 9:7",
+   "zh": "有声音……可是一个人也没有！",
+   "en": "I heard a voice... but there's nobody here!",
+   "dir": "whispered, wide-eyed, comic",
+   "dur": 3.11,
+   "pre": 0.4,
+   "post": 0.4,
+   "anchor": {
+    "line": "sa_11",
+    "edge": "end",
+    "dt": 0.7
+   }
+  },
+  {
+   "id": "sa_13",
+   "t": 72.31,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 4.96,
+   "ref": "Acts 9:8",
+   "zh": "我睁着眼睛，可是……什么也看不见。",
+   "en": "My eyes are open... but I can't see anything.",
+   "dir": "quiet, puzzled, not afraid; slow",
+   "dur": 4.91,
+   "pre": 1.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "id": "sa_14",
+   "t": 78.12,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.68,
+   "ref": "Acts 9:8; 22:11",
+   "zh": "卫兵拉着扫罗的手，慢慢把他领进了大马士革。",
+   "en": "So the guards took Saul by the hand and led him into Damascus.",
+   "dir": "tender, slow, walking pace",
+   "dur": 5.63,
+   "pre": 0.6,
+   "post": 1.2,
+   "anchor": {
+    "line": "sa_13",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "sa_15",
+   "t": 85.75,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.75,
+   "ref": "Acts 9:9, 11",
+   "zh": "在犹大家里，扫罗三天看不见，不吃也不喝，一直祷告。",
+   "en": "At Judas's house, Saul could not see for three days. He did not eat; he prayed.",
+   "dir": "gentle, unhurried; no sadness on 不吃也不喝 / 'did not eat'",
+   "dur": 6.7,
+   "pre": 0.8,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "id": "sa_16",
+   "t": 93.05,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 3.57,
+   "ref": "Acts 9:11; 22:10",
+   "zh": "主耶稣，我错了。你要我做什么？",
+   "en": "Lord Jesus, I was wrong. What do You want me to do?",
+   "dir": "a quiet, honest prayer; humble, eyes closed; no tears",
+   "dur": 3.52,
+   "pre": 0.3,
+   "post": 0.8,
+   "anchor": {
+    "line": "sa_15",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_17",
+   "t": 98.77,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 6.49,
+   "ref": "Acts 9:10-12",
+   "zh": "亚拿尼亚，去直街犹大的家，找一个叫扫罗的人。他正在祷告。",
+   "en": "Ananias, go to Judas's house on Straight Street. Saul is there, praying.",
+   "dir": "calm, kind, calling a friend",
+   "dur": 6.44,
+   "pre": 1.4,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 2.2
+   }
+  },
+  {
+   "id": "sa_18",
+   "t": 106.11,
+   "who": "ananias",
+   "voice": "ananias",
+   "maxSec": 6.72,
+   "ref": "Acts 9:13-14",
+   "zh": "扫罗？是那个扫罗？！主啊，他是来抓你的人的呀！",
+   "en": "Saul? THAT Saul?! But Lord, he came to arrest Your people!",
+   "dir": "the comic beat: an older, fussy voice squeaking in alarm, words tumbling out; frightened in a funny way",
+   "dur": 6.67,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_17",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "sa_19",
+   "t": 113.38,
+   "who": "jesus",
+   "voice": "jesus",
+   "maxSec": 4.24,
+   "ref": "Acts 9:15",
+   "zh": "去吧！我拣选了他，要他把我告诉全世界。",
+   "en": "Go! I have chosen him to tell the whole world about Me.",
+   "dir": "patient, warm, a smile in it; no scolding",
+   "dur": 4.19,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_18",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_20",
+   "t": 118.17,
+   "who": "ananias",
+   "voice": "ananias",
+   "maxSec": 3.97,
+   "ref": "Acts 9:17",
+   "zh": "好……好吧，主，我去。",
+   "en": "All... all right, Lord. I'll go.",
+   "dir": "a big gulp, then brave; a little laugh at himself at the end",
+   "dur": 3.92,
+   "pre": 0.3,
+   "post": 0.6,
+   "anchor": {
+    "line": "sa_19",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_21",
+   "t": 123.29,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 3.99,
+   "ref": "Acts 9:17",
+   "zh": "亚拿尼亚有点害怕，可他还是去了。",
+   "en": "Ananias was a bit scared, but he went.",
+   "dir": "playful storyteller, a twinkle",
+   "dur": 3.94,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "sa_22",
+   "t": 130.83,
+   "who": "ananias",
+   "voice": "ananias",
+   "maxSec": 7.23,
+   "ref": "Acts 9:17",
+   "zh": "扫罗弟兄，主耶稣差我来，叫你能再看见，被圣灵充满。",
+   "en": "Brother Saul, Jesus sent me, so you can see again and be filled with the Holy Spirit.",
+   "dir": "gentle and brave; a warm weight on 弟兄 / 'Brother'",
+   "dur": 7.18,
+   "pre": 3.4,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 3.6
+   }
+  },
+  {
+   "id": "sa_23",
+   "t": 138.41,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.09,
+   "ref": "Acts 9:18",
+   "zh": "立刻，好像有鳞片从扫罗的眼睛上掉了下来！",
+   "en": "At once, something like scales fell from Saul's eyes!",
+   "dir": "a delighted lift, wonder",
+   "dur": 5.04,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_22",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_24",
+   "t": 143.85,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 3.22,
+   "ref": "Acts 9:18; 9:17",
+   "zh": "我看见了！你……你叫我弟兄？",
+   "en": "I can see! You... you called me brother?",
+   "dir": "joy bursting out; then quiet, moved, amazed at 弟兄 / 'brother'",
+   "dur": 3.17,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_23",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_25",
+   "t": 147.42,
+   "who": "ananias",
+   "voice": "ananias",
+   "maxSec": 3.81,
+   "ref": "Acts 9:17",
+   "zh": "是啊，现在你是我们的弟兄了！",
+   "en": "Yes! Now you are our brother!",
+   "dir": "warm, glad, a happy chuckle inside the words",
+   "dur": 3.76,
+   "pre": 0.2,
+   "post": 0.5,
+   "anchor": {
+    "line": "sa_24",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_26",
+   "t": 152.48,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 4.0,
+   "ref": "Acts 9:18-19",
+   "zh": "扫罗受了洗，又吃了饭，力气也回来了。",
+   "en": "Saul was baptised. Then he ate, and his strength came back.",
+   "dir": "bright and happy",
+   "dur": 3.95,
+   "pre": 0.8,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "id": "sa_27",
+   "t": 158.03,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 3.5,
+   "ref": "Acts 9:19",
+   "zh": "这饼真香！三天没吃了！",
+   "en": "This bread is so good! Three days with nothing!",
+   "dir": "mouth half full, laughing, a big grin; the old anger quite gone",
+   "dur": 3.45,
+   "pre": 1.4,
+   "post": 0.5,
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "id": "sa_28",
+   "t": 162.78,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 4.46,
+   "ref": "Acts 9:20, 22",
+   "zh": "耶稣是神的儿子！他救了我，他也爱你们！",
+   "en": "Jesus is the Son of God! He saved me, and He loves you too!",
+   "dir": "glad, warm, strong; the same voice as the angry Saul, now full of joy",
+   "dur": 4.41,
+   "pre": 0.8,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "id": "sa_29",
+   "t": 167.79,
+   "who": "tallguard",
+   "voice": "tallguard",
+   "maxSec": 4.55,
+   "ref": "Acts 9:21",
+   "zh": "咦，这不是那个来抓人的扫罗吗？",
+   "en": "Hey, isn't that the Saul who came to arrest people?",
+   "dir": "thin, puzzled, comic",
+   "dur": 4.5,
+   "pre": 0.3,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_28",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_30",
+   "t": 172.69,
+   "who": "shortguard",
+   "voice": "shortguard",
+   "maxSec": 4.3,
+   "ref": "Acts 9:21-22",
+   "zh": "他……他完全变了！",
+   "en": "He's... he's completely changed!",
+   "dir": "gruff, baffled, comic",
+   "dur": 4.25,
+   "pre": 0.2,
+   "post": 0.6,
+   "anchor": {
+    "line": "sa_29",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_31",
+   "t": 178.34,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.0,
+   "ref": "Acts 9:23-24",
+   "zh": "有些人很生气，日夜守着城门，要抓扫罗。",
+   "en": "Now some angry men watched the gate day and night, to catch Saul.",
+   "dir": "a little hush, mock-suspense; not scary",
+   "dur": 5.95,
+   "pre": 0.8,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "id": "sa_32",
+   "t": 184.69,
+   "who": "shortguard",
+   "voice": "shortguard",
+   "maxSec": 3.81,
+   "ref": "Acts 9:24",
+   "zh": "有我们守着，连一只老鼠也跑不掉！",
+   "en": "Nobody gets past us. Not even a mouse!",
+   "dir": "puffed-up, boastful, comic; a yawn creeping into the end",
+   "dur": 3.76,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_31",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_33",
+   "t": 189.65,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 7.64,
+   "ref": "Acts 9:25; 2 Corinthians 11:32-33",
+   "zh": "可是夜里，朋友们让扫罗坐进大筐子，从城墙的窗户里放了下去！",
+   "en": "But at night, his friends let Saul down from a window in the wall, in a big basket!",
+   "dir": "tiptoe storytelling, quiet and twinkly",
+   "dur": 7.59,
+   "pre": 1.0,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_32",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "sa_34",
+   "t": 197.64,
+   "who": "ananias",
+   "voice": "ananias",
+   "maxSec": 5.3,
+   "ref": "Acts 9:25",
+   "zh": "慢一点……慢一点……好，到地了！",
+   "en": "Slowly... slowly... there, he's down!",
+   "dir": "from up in the window, a loud whisper, fussy and kind",
+   "dur": 5.25,
+   "pre": 0.2,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_33",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_35",
+   "t": 204.09,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 1.5,
+   "ref": "Acts 9:25",
+   "zh": "谢谢你们，弟兄们！",
+   "en": "Thank you, brothers!",
+   "dir": "a happy whisper up to the window",
+   "dur": 1.45,
+   "pre": 1.0,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "id": "sa_36",
+   "t": 208.74,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 5.11,
+   "ref": "Acts 9:26",
+   "zh": "扫罗回到耶路撒冷，可是大家都很怕他。",
+   "en": "Back in Jerusalem, Jesus's friends were afraid of Saul.",
+   "dir": "gentle, a small worry in it",
+   "dur": 5.06,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 3.2
+   }
+  },
+  {
+   "id": "sa_37",
+   "t": 214.2,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 4.55,
+   "ref": "Acts 9:26",
+   "zh": "扫罗？他……他是来抓我们的吧？",
+   "en": "Saul? Has he... has he come to arrest us?",
+   "dir": "big Peter, small voice; worried, comic",
+   "dur": 4.5,
+   "pre": 0.2,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_36",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "id": "sa_38",
+   "t": 219.6,
+   "who": "barnabas",
+   "voice": "barnabas",
+   "maxSec": 5.34,
+   "ref": "Acts 9:27",
+   "zh": "彼得，别怕！他遇见了耶稣，耶稣改变了他的心。",
+   "en": "Don't be afraid, Peter! He met Jesus, and Jesus changed his heart.",
+   "dir": "big, warm, encouraging; a friend's arm in the voice",
+   "dur": 5.29,
+   "pre": 0.6,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_37",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "sa_39",
+   "t": 225.79,
+   "who": "peter",
+   "voice": "peter",
+   "maxSec": 3.17,
+   "ref": "Acts 9:27-28",
+   "zh": "那……欢迎你，扫罗弟兄！",
+   "en": "Then... welcome, brother Saul!",
+   "dir": "a slow smile, then a big glad welcome",
+   "dur": 3.12,
+   "pre": 0.6,
+   "post": 0.2,
+   "anchor": {
+    "line": "sa_38",
+    "edge": "end",
+    "dt": 0.9
+   }
+  },
+  {
+   "id": "sa_40",
+   "t": 231.71,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 6.32,
+   "ref": "Acts 9:28; 13:9",
+   "zh": "耶稣把扫罗的心从生气变成了爱。后来，他叫保罗。",
+   "en": "Jesus turned Saul's heart from anger to love. Later, he was called Paul.",
+   "dir": "joyful and sure; a happy surprise on 保罗 / 'Paul'",
+   "dur": 6.27,
+   "pre": 0.8,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.8
+   }
+  },
+  {
+   "id": "sa_41",
+   "t": 238.58,
+   "who": "saul",
+   "voice": "saul",
+   "maxSec": 3.09,
+   "ref": "1 Timothy 1:13-16",
+   "zh": "耶稣原谅了我。他能改变任何人的心！",
+   "en": "Jesus forgave me. He can change anyone's heart!",
+   "dir": "straight to the child, warm, amazed and glad",
+   "dur": 3.04,
+   "pre": 0.3,
+   "post": 0.3,
+   "anchor": {
+    "line": "sa_40",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "id": "sa_42",
+   "t": 242.32,
+   "who": "narrator",
+   "voice": "narrator",
+   "maxSec": 8.65,
+   "ref": "2 Corinthians 5:17; Ephesians 4:32",
+   "zh": "上帝能改变每一个人的心。被原谅的心，也会原谅别人。",
+   "en": "God can change anyone's heart. And a forgiven heart learns to forgive.",
+   "dir": "warm, slow, a hush on the last words",
+   "dur": 8.6,
+   "pre": 0.4,
+   "post": 0.4,
+   "anchor": {
+    "line": "sa_41",
+    "edge": "end",
+    "dt": 0.7
+   }
+  }
+ ],
+ "fx": [
+  {
+   "t": 22.48,
+   "id": "dust_road",
+   "at": "saul.root",
+   "dur": 4.2,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 39.12,
+   "id": "road_light",
+   "at": "saul.root",
+   "dur": 31.59,
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 2.7
+   }
+  },
+  {
+   "t": 85.55,
+   "id": "prayer_glow",
+   "at": "saul.root",
+   "dur": 11.82,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 97.77,
+   "id": "angel_light",
+   "at": "damascus.ananiasHouse",
+   "dur": 24.92,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 138.41,
+   "id": "scales_fall",
+   "at": "saul.head",
+   "dur": 1.6,
+   "anchor": {
+    "line": "sa_22",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 147.62,
+   "id": "heart_glow",
+   "at": "saul.chest",
+   "dur": 4.06,
+   "anchor": {
+    "line": "sa_24",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 152.68,
+   "id": "water_pour",
+   "at": "ananias.jug",
+   "dur": 2.0,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 1.5
+   }
+  },
+  {
+   "t": 153.68,
+   "id": "sparkle",
+   "at": "saul.head",
+   "dur": 1.6,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 2.5
+   }
+  },
+  {
+   "t": 177.54,
+   "id": "night",
+   "at": "stage",
+   "dur": 30.6,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "id": "lamp_flame",
+   "at": "damascus.torch1",
+   "dur": 30.6,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "id": "lamp_flame",
+   "at": "damascus.torch2",
+   "dur": 30.6,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "id": "lamp_flame",
+   "at": "tallguard.lantern",
+   "dur": 30.6,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 189.45,
+   "id": "zzz",
+   "at": "shortguard.head",
+   "dur": 18.69,
+   "anchor": {
+    "line": "sa_32",
+    "edge": "end",
+    "dt": 1.0
+   }
+  },
+  {
+   "t": 231.21,
+   "id": "golden_rays",
+   "at": "damascus.cityWall",
+   "dur": 21.31,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.3
+   }
+  },
+  {
+   "t": 231.51,
+   "id": "heart_glow",
+   "at": "saul.chest",
+   "dur": 3.0,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.6
+   }
+  }
+ ],
+ "sfx": [
+  {
+   "t": 22.48,
+   "id": "march_steps",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 39.12,
+   "id": "light_whoosh",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 2.7
+   }
+  },
+  {
+   "t": 40.22,
+   "id": "sit_thud",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 3.8
+   }
+  },
+  {
+   "t": 97.97,
+   "id": "appear_chime",
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 1.4
+   }
+  },
+  {
+   "t": 127.63,
+   "id": "knock",
+   "anchor": {
+    "line": "sa_21",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 138.41,
+   "id": "sparkle_up",
+   "anchor": {
+    "line": "sa_22",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 152.88,
+   "id": "water_splash",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 1.7
+   }
+  },
+  {
+   "t": 157.73,
+   "id": "munch",
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 1.3
+   }
+  },
+  {
+   "t": 189.65,
+   "id": "snore",
+   "anchor": {
+    "line": "sa_32",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 197.29,
+   "id": "rope_creak",
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": -5.6
+   }
+  },
+  {
+   "t": 202.69,
+   "id": "basket_land",
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": -0.2
+   }
+  },
+  {
+   "t": 251.32,
+   "id": "sparkle_up",
+   "anchor": {
+    "line": "sa_42",
+    "edge": "end",
+    "dt": 0.4
+   }
+  }
+ ],
+ "music": [
+  {
+   "t": 0.0,
+   "cue": "angry_march",
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 22.48,
+   "cue": "road",
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 38.22,
+   "cue": "light",
+   "anchor": {
+    "line": "sa_06",
+    "edge": "end",
+    "dt": 1.8
+   }
+  },
+  {
+   "t": 70.71,
+   "cue": "dark_walk",
+   "anchor": {
+    "line": "sa_12",
+    "edge": "end",
+    "dt": 0.4
+   }
+  },
+  {
+   "t": 84.95,
+   "cue": "three_days",
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 97.37,
+   "cue": "ananias",
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 122.69,
+   "cue": "brother",
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 151.68,
+   "cue": "baptism",
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "cue": "new_saul",
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 177.54,
+   "cue": "basket",
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 208.14,
+   "cue": "barnabas",
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 230.91,
+   "cue": "finale",
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  }
+ ],
+ "props": [
+  {
+   "t": 0.0,
+   "node": "ananias",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "barnabas",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "judas",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "peter",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "tallguard",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "shortguard",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "saul/letters",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "saul/basket",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "saul/bread",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "ananias/jug",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "judas/bread",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 0.0,
+   "node": "tallguard/lantern",
+   "show": false,
+   "anchor": {
+    "line": "",
+    "edge": "origin",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 17.79,
+   "node": "saul/letters",
+   "show": true,
+   "anchor": {
+    "line": "sa_02",
+    "edge": "end",
+    "dt": 1.33
+   }
+  },
+  {
+   "t": 22.48,
+   "node": "priest",
+   "show": false,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "node": "shortguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 22.48,
+   "node": "tallguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_03",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 84.95,
+   "node": "tallguard",
+   "show": false,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "node": "shortguard",
+   "show": false,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "node": "judas",
+   "show": true,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "node": "judas/bread",
+   "show": true,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 84.95,
+   "node": "saul/letters",
+   "show": false,
+   "anchor": {
+    "line": "sa_14",
+    "edge": "end",
+    "dt": 1.2
+   }
+  },
+  {
+   "t": 97.37,
+   "node": "judas",
+   "show": false,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 97.37,
+   "node": "judas/bread",
+   "show": false,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 97.37,
+   "node": "ananias",
+   "show": true,
+   "anchor": {
+    "line": "sa_16",
+    "edge": "end",
+    "dt": 0.8
+   }
+  },
+  {
+   "t": 122.69,
+   "node": "judas",
+   "show": true,
+   "anchor": {
+    "line": "sa_20",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 151.68,
+   "node": "ananias/jug",
+   "show": true,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 151.68,
+   "node": "judas/bread",
+   "show": true,
+   "anchor": {
+    "line": "sa_25",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 155.63,
+   "node": "ananias/jug",
+   "show": false,
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": -0.8
+   }
+  },
+  {
+   "t": 156.43,
+   "node": "judas/bread",
+   "show": false,
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 156.43,
+   "node": "saul/bread",
+   "show": true,
+   "anchor": {
+    "line": "sa_26",
+    "edge": "end",
+    "dt": 0.0
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "saul/bread",
+   "show": false,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "judas/bread",
+   "show": false,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "tallguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "shortguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "judas",
+   "show": false,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "ananias",
+   "show": false,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 161.98,
+   "node": "ananias/jug",
+   "show": false,
+   "anchor": {
+    "line": "sa_27",
+    "edge": "end",
+    "dt": 0.5
+   }
+  },
+  {
+   "t": 177.54,
+   "node": "judas",
+   "show": false,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "node": "ananias",
+   "show": false,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "node": "saul/basket",
+   "show": true,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 177.54,
+   "node": "tallguard/lantern",
+   "show": true,
+   "anchor": {
+    "line": "sa_30",
+    "edge": "end",
+    "dt": 0.6
+   }
+  },
+  {
+   "t": 204.49,
+   "node": "saul/basket",
+   "show": false,
+   "grow": 0.4,
+   "anchor": {
+    "line": "sa_34",
+    "edge": "end",
+    "dt": 1.6
+   }
+  },
+  {
+   "t": 208.14,
+   "node": "tallguard",
+   "show": false,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "node": "shortguard",
+   "show": false,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "node": "tallguard/lantern",
+   "show": false,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "node": "peter",
+   "show": true,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 208.14,
+   "node": "barnabas",
+   "show": true,
+   "anchor": {
+    "line": "sa_35",
+    "edge": "end",
+    "dt": 2.6
+   }
+  },
+  {
+   "t": 230.91,
+   "node": "ananias",
+   "show": true,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "node": "judas",
+   "show": true,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "node": "tallguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  },
+  {
+   "t": 230.91,
+   "node": "shortguard",
+   "show": true,
+   "anchor": {
+    "line": "sa_39",
+    "edge": "end",
+    "dt": 2.0
+   }
+  }
+ ],
+ "requestedClips": [],
+ "timedFrom": "voices",
+ "durationAnchor": {
+  "line": "sa_42",
+  "edge": "end",
+  "dt": 1.6
+ },
+ "retime": 1
+}

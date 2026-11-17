@@ -1,0 +1,90 @@
+{
+ "_doc": "This pack's entries in the shared files; tools/story/merge_packs.py merges them (docs/STORY-KIT.md).",
+ "id": "lastsupper",
+ "registry": {
+  "id": "lastsupper",
+  "engine": "story",
+  "order": 10,
+  "title_zh": "服侍人的王",
+  "title_en": "The King Who Serves",
+  "sheets": [
+   "lastsupper-A4",
+   "lastsupper-A4-demo"
+  ],
+  "cast": [
+   "jesus",
+   "peter",
+   "donkey",
+   "john",
+   "james",
+   "andrew",
+   "seller1",
+   "seller2"
+  ],
+  "paint": {
+   "john": "extras_paint.png",
+   "james": "extras_paint.png",
+   "andrew": "extras_paint.png",
+   "seller1": "extras_paint.png",
+   "seller2": "extras_paint.png"
+  },
+  "set": "jerusalem",
+  "version": 1,
+  "status": "beta"
+ },
+ "library": {
+  "id": "lastsupper",
+  "pinyin": "fú shì rén de wáng",
+  "blurb_zh": "耶稣骑着小驴进耶路撒冷，大家喊“和散那”；晚饭前，他弯下腰给门徒洗脚，告诉他们：最大的人，要服侍大家。",
+  "blurb_en": "Jesus rides into Jerusalem on a little donkey to shouts of “Hosanna!”; at supper He kneels to wash His friends' feet and shows them that the greatest is the one who serves.",
+  "minutes": 4,
+  "after": "miracles",
+  "cover": {
+   "video": "demo-lastsupper-f040dc5-dirty.20261117-1401.mp4",
+   "t": 31
+  }
+ },
+ "strings": {
+  "dg_jesus": {
+   "zh": "耶稣",
+   "en": "Jesus"
+  },
+  "dg_peter": {
+   "zh": "彼得",
+   "en": "Peter"
+  },
+  "dg_lastsupper_donkey": {
+   "zh": "小驴",
+   "en": "The donkey"
+  },
+  "dg_john": {
+   "zh": "约翰",
+   "en": "John"
+  },
+  "dg_james": {
+   "zh": "雅各",
+   "en": "James"
+  },
+  "dg_andrew": {
+   "zh": "安得烈",
+   "en": "Andrew"
+  },
+  "dg_lastsupper_seller1": {
+   "zh": "卖鸽子的",
+   "en": "The dove seller"
+  },
+  "dg_lastsupper_seller2": {
+   "zh": "兑换银钱的",
+   "en": "The money changer"
+  },
+  "dg_lastsupper_people": {
+   "zh": "众人",
+   "en": "The crowd"
+  }
+ },
+ "fx": {
+  "class": "LastSupperFx",
+  "note": "The King Who Serves (StoryFxLastSupper.cs: palm_toss, doves_fly, water_pour; CONTRACT §8)",
+  "aliases": {}
+ }
+}
