@@ -124,7 +124,12 @@ namespace DoodLive
                 using (var up = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
                 using (var act = up.GetStatic<AndroidJavaObject>("currentActivity"))
                 using (var intent = act.Call<AndroidJavaObject>("getIntent"))
+                {
                     autoDemo = intent.Call<string>("getStringExtra", "demo");
+                    // diagnostics: `am start ... --ez noimages true` runs the marker path alone (frame-rate A/B on a device)
+                    if (intent.Call<bool>("getBooleanExtra", "noimages", false) && trackedImages)
+                    { trackedImages.enabled = false; Debug.Log("DoodLive: image tracking off (noimages)"); }
+                }
             }
             catch (System.Exception e) { Debug.LogWarning("DoodLive: intent read failed " + e.Message); }
 #endif
@@ -178,10 +183,13 @@ namespace DoodLive
             Go(State.ScanSearch);
         }
 
-        // A sheet seen now: ARCore image tracking first (when it has a coloured page to work with), else the markers.
+        // A sheet seen now: the markers first (their title-band read tells the sheets apart), else ARCore image tracking.
+        // ARCore matches the whole page, and every sheet shares the same frame and corner markers, so a coloured page
+        // was read as the most detailed reference (the coloured Gabriel sample) - LESSONS 2026-11-18.
         SheetTarget imageSheet;
         SheetTarget Sheet()
         {
+            if (finder && finder.Current != null && finder.Current.Tracking) return finder.Current;
             if (trackedImages)
                 foreach (var t in trackedImages.trackables)
                     if (t.trackingState == TrackingState.Tracking)
@@ -189,7 +197,6 @@ namespace DoodLive
                         if (imageSheet == null || imageSheet.Image != t) imageSheet = new SheetTarget(t);
                         return imageSheet;
                     }
-            if (finder && finder.Current != null && finder.Current.Tracking) return finder.Current;
             return null;
         }
 

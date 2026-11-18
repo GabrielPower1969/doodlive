@@ -36,6 +36,11 @@ FX = {
     "bright":    "highpass=f=90,equalizer=f=4000:t=q:w=1.2:g=2",
     # Pitch (and formants) down to 0.84 with tempo kept, a little chest, a short hall. Big, not monstrous.
     "giant":     "rubberband=pitch=0.84,equalizer=f=120:t=q:w=1.0:g=3,aecho=0.8:0.55:40|75:0.22|0.12",
+    # For a person's own Goliath recording (no rubberband needed): pitch + formants down to 0.88 via resampling with
+    # tempo restored, chest boost, then a dark echo (150 / 300 / 450 ms) so he sounds big, far-reaching and "bad guy",
+    # with every word still clear. Gabriel, 2026-11-18: "回声 echo 一样的，有坏人感的效果器".
+    "villain":   "asetrate=44100*0.88,aresample=44100,atempo=1/0.88,highpass=f=60,equalizer=f=140:t=q:w=1.0:g=4,"
+                 "equalizer=f=2500:t=q:w=1.2:g=1.5,aecho=0.85:0.7:150|300|450:0.38|0.22|0.12",
     "offscreen": "highpass=f=120,lowpass=f=7500,aecho=0.8:0.5:22|48:0.18|0.1",
     # Crowd: shorter room than Saul's and the decayed tail cut at -50 dB, so three staggered voices fit dg_04's 2.6 s.
     "crowd":     "highpass=f=120,lowpass=f=7000,aecho=0.8:0.5:20|40:0.2|0.1,"
@@ -183,9 +188,10 @@ def cmd_import(a):
             if (only and lid not in only) or not os.path.exists(f):
                 continue
             pre = os.path.join(tmp, f"{lid}.wav")       # trim again: a recorded take may carry room tone at the ends
-            ffmpeg("-i", f, "-af", f"{TRIM},{PAD}", "-ac", "1", pre)
+            fx = f"{FX[a.fx]}," if a.fx else ""                # e.g. --fx villain for a home-recorded Goliath
+            ffmpeg("-i", f, "-af", f"aresample=44100,{TRIM},{fx}{PAD}", "-ac", "1", pre)
             normalise(pre, os.path.join(OUT, a.lang, f"{lid}.wav"), os.path.join(OUT, a.lang, f"{lid}.mp3"), chain="natural")
-            src.setdefault(a.lang, {})[lid] = f"own:{os.path.basename(os.path.abspath(a.dir))}"
+            src.setdefault(a.lang, {})[lid] = f"own:{os.path.basename(os.path.abspath(a.dir))}" + (f"+fx:{a.fx}" if a.fx else "")
             n += 1
             print(f"{a.lang} {lid}: imported {f}")
     print(f"{n} clip(s) imported")
@@ -276,6 +282,7 @@ def main():
     g = sub.add_parser("gen"); g.add_argument("--lang", default="all", choices=("zh", "en", "all"))
     g.add_argument("--only"); g.add_argument("--force", action="store_true")
     i = sub.add_parser("import"); i.add_argument("dir"); i.add_argument("--lang", required=True, choices=LANGS); i.add_argument("--only")
+    i.add_argument("--fx", choices=sorted(FX), help="voice effect for these clips (default none; `villain` for Goliath)")
     sub.add_parser("check"); sub.add_parser("session")
     a = ap.parse_args()
     sys.exit({"gen": cmd_gen, "import": cmd_import, "check": cmd_check, "session": cmd_session}[a.cmd](a))

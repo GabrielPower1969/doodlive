@@ -34,6 +34,7 @@ namespace DoodLive
         static readonly Vector2 A4 = new Vector2(0.210f, 0.297f);
         List<SheetSignature> sigs;
         RenderTexture small; Texture2D smallTex; byte[] smallLum;
+        RenderTexture fullRt; Texture2D fullTex; byte[] fullLum;
         Transform anchorGo, poseGo; float nextAt; bool busy;
         readonly List<float> scaleHist = new List<float>();
 
@@ -88,9 +89,9 @@ namespace DoodLive
             }
 
             // new sheet: identify on a full-resolution frame
-            byte[] full = null; Texture2D fullTex = null; RenderTexture fullRt = null;
-            Grab(ref fullRt, ref fullTex, ref full, W, H);
-            Destroy(fullTex); fullRt.Release(); Destroy(fullRt);
+            // full-res buffers are kept between reads: a new 10 MB texture + array every 0.15 s means GC pauses on mid-range phones
+            Grab(ref fullRt, ref fullTex, ref fullLum, W, H);
+            var full = fullLum;
             SheetMatch best = null;
             foreach (var c in cands)
             {
@@ -216,15 +217,17 @@ namespace DoodLive
             var prev = RenderTexture.active; RenderTexture.active = rt;
             tex.ReadPixels(new Rect(0, 0, w, h), 0, 0, false);
             RenderTexture.active = prev;
-            var px = tex.GetPixels32();
+            var px = tex.GetRawTextureData<Color32>();                 // no managed copy (GetPixels32 allocated w*h*4 bytes)
             if (lum == null || lum.Length != w * h) lum = new byte[w * h];
-            for (int i = 0; i < px.Length; i++) lum[i] = (byte)((px[i].r * 77 + px[i].g * 150 + px[i].b * 29) >> 8);
+            for (int i = 0; i < lum.Length; i++) { var c = px[i]; lum[i] = (byte)((c.r * 77 + c.g * 150 + c.b * 29) >> 8); }
         }
 
         void OnDestroy()
         {
             if (small) { small.Release(); Destroy(small); }
             if (smallTex) Destroy(smallTex);
+            if (fullRt) { fullRt.Release(); Destroy(fullRt); }
+            if (fullTex) Destroy(fullTex);
         }
     }
 }

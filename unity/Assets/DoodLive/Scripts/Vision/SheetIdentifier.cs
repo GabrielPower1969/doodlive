@@ -47,9 +47,11 @@ namespace DoodLive.Vision
                 if (!MarkerDetector.FacesCamera(p, yDown)) continue;      // a mirror image = the page seen from behind
                 var H = Homography.Solve(MarkerDetector.TemplateMarkers, p);
                 if (H == null) continue;
+                // every sheet shares one title band: warp it once per way up, not once per sheet (20x less work)
+                double[] g = null; SheetSignature gFor = null;
                 foreach (var s in sheets)
                 {
-                    var g = Warp(lum, w, h, H, s.Region, s.W, s.H);
+                    if (gFor == null || !SameBand(gFor, s)) { g = Warp(lum, w, h, H, s.Region, s.W, s.H); gFor = s; }
                     if (g == null) continue;
                     double ncc = Ncc(g, s.Lum);
                     orientBest[rot] = Math.Max(orientBest[rot], ncc);
@@ -66,6 +68,13 @@ namespace DoodLive.Vision
             bool strong = best.Ncc >= minNcc;
             bool clear = best.Ncc >= minNcc - 0.1 && best.OrientMargin >= 0.15 && best.Margin >= 0.1;   // 0.5: random quads on clutter reach ~0.45
             return strong || clear ? best : null;
+        }
+
+        static bool SameBand(SheetSignature a, SheetSignature b)
+        {
+            if (a.W != b.W || a.H != b.H || a.Region.Length != b.Region.Length) return false;
+            for (int i = 0; i < a.Region.Length; i++) if (a.Region[i] != b.Region[i]) return false;
+            return true;
         }
 
         /// <summary>Box-filtered warp of a template region into a gw x gh grid (row 0 = top), or null if off-image.</summary>

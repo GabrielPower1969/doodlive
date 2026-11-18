@@ -410,3 +410,14 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
   `make_covers.py`), rebuild, install.
 - Prevention: `docs/pack-plans/04-PITFALLS.md` I3a — after the first demo, cover, rebuild, then open the app by hand
   and scroll the shelf to the new book before calling the pack done.
+
+## 2026-11-18 — A scanned sheet opened Gabriel instead of its own story
+- Symptom: on the Samsung A53, pointing the camera at a sheet opened the Gabriel scene.
+- Cause: `ARColoringController.Sheet()` took ARCore image tracking first and trusted its reference name. The library
+  holds 35 pages (blank + coloured samples) that all share the same frame and corner markers, so ARCore's whole-page
+  match drifts to the most detailed reference (the coloured Gabriel sample). The marker path, which reads the title
+  band (`sheet_signatures.json`, cross-story NCC <= 0.73, Gabriel <= 0.40), was only the fallback — the opposite of
+  PLATFORM-ARCHITECTURE D3.
+- Fix: markers first; ARCore image tracking only when no marker sheet is being tracked.
+- Prevention: a new detection path never overrides the title-band read; test every new pack by scanning its printed
+  sheet with the camera, not only with `record-demo.sh` (which skips detection).

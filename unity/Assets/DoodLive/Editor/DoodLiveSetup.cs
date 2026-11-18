@@ -123,11 +123,18 @@ namespace DoodLive.EditorTools
             ti.isReadable = readable;
             ti.mipmapEnabled = false;
             ti.npotScale = TextureImporterNPOTScale.None;
-            ti.textureCompression = TextureImporterCompression.Uncompressed;
             ti.wrapMode = TextureWrapMode.Clamp;
             ti.maxTextureSize = maxSize;
             ti.sRGBTexture = true;
             ti.alphaIsTransparency = true;
+            // Readable textures stay RGBA32 (code reads their pixels). Everything else is ASTC 4x4 on Android: with every
+            // story in the scene, uncompressed textures took ~900 MB of GPU memory on the A53 and froze the camera
+            // (LESSONS 2026-11-18); ASTC 4x4 is 8 bits per pixel instead of 32 and keeps faces and line art sharp.
+            ti.textureCompression = readable ? TextureImporterCompression.Uncompressed : TextureImporterCompression.CompressedHQ;
+            var an = ti.GetPlatformTextureSettings("Android");
+            an.overridden = !readable; an.maxTextureSize = maxSize;
+            if (!readable) { an.format = TextureImporterFormat.ASTC_4x4; an.textureCompression = TextureImporterCompression.CompressedHQ; }
+            ti.SetPlatformTextureSettings(an);
             ti.SaveAndReimport();
             return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
