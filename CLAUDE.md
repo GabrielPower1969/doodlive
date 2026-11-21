@@ -10,6 +10,7 @@ Colour-in AR angel prototype. Static web app (three.js 0.170 vendored in `web/ve
 | Device state | `~/Library/Android/sdk/platform-tools/adb devices -l` |
 | Rebuild sheet / line art / template.json | `python3 tools/make_template.py` |
 | UI strings (both apps) | edit `tools/i18n/strings.json` → `python3 tools/gen_i18n.py` → `python3 tools/make_fonts.py` (font subsets follow the strings and `assets/david-goliath/timeline.json`) |
+| Languages (8: zh en fr de ja es ar pt) | translations → `tools/i18n/staging/<lang>.json` → `python3 tools/i18n/merge.py` → `gen_i18n.py` → `make_fonts.py`; voices `python3 tools/story/voice_i18n.py` (hours; resumable). Rules: `docs/I18N.md` |
 | D&G editor preview (no phone) | `Unity -batchmode -quit -projectPath unity -executeMethod DoodLive.EditorTools.DGPreview.Render` → `unity/Builds/dg-preview/*.png`; then `git checkout unity/ProjectSettings/GraphicsSettings.asset` (L44) |
 | D&G assets (models, desert, sheet, checks) | `pipeline/dg_make_all.sh` (Blender headless; `$DG_WORK` defaults to `/tmp/dg_work`) |
 | Design tokens (both apps) | edit `tools/design/tokens.json` → `python3 tools/gen_tokens.py` (→ `web/tokens.css`, `DesignTokens.cs`) |
@@ -41,6 +42,9 @@ docs/DESIGN-DIRECTION.md  approved design (Figma link, 10 screens, sources); doc
 unity/Assets/DoodLive/Scripts/ARColoringController.Library.cs  home screen = library (covers, keep reading, chapters); docs/LIBRARY.md
 unity/Assets/DoodLive/Scripts/ARColoringController.Howto.cs   home "how to play" card / "?" chip + fullscreen VideoPlayer (StreamingAssets/howto/howto[_en].mp4)
 unity/Assets/DoodLive/Scripts/ARColoringController.SheetActions.cs  book page save PDF / share / print (2 s hold); Java in unity/Assets/Plugins/Android/
+unity/Assets/DoodLive/Scripts/Platform/  the platform layer: the ONLY place for Android / iOS code (Native.cs + Android/Ios/EditorPlatform.cs;
+                       iOS native side unity/Assets/Plugins/iOS/DoodLivePlatform.mm). docs/PLATFORM-ARCHITECTURE.md v2
+unity/Assets/DoodLive/Scripts/L10n.cs (generated), StoryText.cs (story text in fr de ja es ar pt), ArabicText.cs (shaping + RTL for IMGUI)
 unity/Assets/DoodLive/Editor/SheetPdfSetup.cs  print/<sheet>.pdf -> StreamingAssets/sheets/ + Resources/sheet_pdfs.json (generated, run by Setup)
 web/test.html          synthetic scan-pipeline test (PASS/FAIL)
 docs/UPGRADE.md        path to Unity + AR Foundation + OpenCV
@@ -71,6 +75,10 @@ unity/, tools/make_audio.py   Unity port, owned by a separate session while in p
 9. **The angel is the button** (DESIGN-DIRECTION): in Live there is no button bar. Tap the 3D title = read it, tap
    anywhere else = trumpet. Only two chips stay on screen (new sheet, grown-up lock); settings live behind the 2 s hold.
 10. No hard-coded colours or fonts in UI code: web uses `var(--c-*)`, Unity uses `DesignTokens.*` and `Resources/Fonts`.
+11. **System-specific code only in `Scripts/Platform/`** (and `Editor/`): no `UNITY_ANDROID`, `UNITY_IOS`, `AndroidJava*`,
+    `UnityEngine.Android` or `DllImport` anywhere else; `scripts/build-apk.sh` refuses the build otherwise.
+12. **Text on screen goes through the language layer**: `L10n.T` for UI strings, `StoryText` for story text, and
+    `ArabicText.Wrap` before drawing a paragraph in Arabic. Chinese and English keep their two-line look (docs/I18N.md).
 
 ## Verify
 Desktop: open the demo (看演示), confirm the angel renders and `window.__doodlive.action()` animates.

@@ -21,9 +21,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-#if UNITY_ANDROID
-using UnityEngine.Android;
-#endif
 
 namespace DoodLive
 {
@@ -117,22 +114,16 @@ namespace DoodLive
             MakeCues();
             Go(State.Home);
             // QA / demo recording: `adb shell am start -n <pkg>/com.unity3d.player.UnityPlayerActivity --es demo esther`
-            string autoDemo = null;
-#if UNITY_ANDROID && !UNITY_EDITOR
-            try
-            {
-                using (var up = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                using (var act = up.GetStatic<AndroidJavaObject>("currentActivity"))
-                using (var intent = act.Call<AndroidJavaObject>("getIntent"))
-                {
-                    autoDemo = intent.Call<string>("getStringExtra", "demo");
-                    // diagnostics: `am start ... --ez noimages true` runs the marker path alone (frame-rate A/B on a device)
-                    if (intent.Call<bool>("getBooleanExtra", "noimages", false) && trackedImages)
-                    { noImages = true; trackedImages.enabled = false; Debug.Log("DoodLive: image tracking off (noimages)"); }
-                }
-            }
-            catch (System.Exception e) { Debug.LogWarning("DoodLive: intent read failed " + e.Message); }
-#endif
+            Platform.Native.Audio.ConfigureForStory();   // iOS: stories are heard with the silent switch on
+            string autoDemo = Platform.Native.Args.Get("demo");
+            // diagnostics: `am start ... --ez noimages true` runs the marker path alone (frame-rate A/B on a device)
+            if (Platform.Native.Args.GetBool("noimages") && trackedImages)
+            { noImages = true; trackedImages.enabled = false; Debug.Log("DoodLive: image tracking off (noimages)"); }
+            // QA: `--es lang fr` starts in that language (screenshots of every language without tapping the picker)
+            var argLang = Platform.Native.Args.Get("lang"); if (!string.IsNullOrEmpty(argLang)) L10n.Lang = argLang;
+            // QA / demo videos: `--es film 1` plays shelf books as a film (no camera), `--es film 0` back to AR on the table
+            var argFilm = Platform.Native.Args.Get("film"); if (!string.IsNullOrEmpty(argFilm)) PreferFilm = argFilm == "1" || argFilm == "true";
+            Debug.Log($"DoodLive platform {Platform.Native.Name}, language {L10n.Lang}");
             if (!string.IsNullOrEmpty(autoDemo)) StartCoroutine(AutoDemo(autoDemo));
         }
 
@@ -171,17 +162,9 @@ namespace DoodLive
         IEnumerator EnsureAr()
         {
             arFail = null;
-#if UNITY_ANDROID && !UNITY_EDITOR
-            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-            {
-                bool answered = false;
-                var cb = new PermissionCallbacks();
-                cb.PermissionGranted += _ => answered = true; cb.PermissionDenied += _ => answered = true; cb.PermissionDeniedAndDontAskAgain += _ => answered = true;
-                Permission.RequestUserPermission(Permission.Camera, cb);
-                while (!answered) yield return null;
-            }
-            if (!Permission.HasUserAuthorizedPermission(Permission.Camera)) { arFail = "noPerm"; yield break; }
-#endif
+            bool granted = false;
+            yield return Platform.Native.Camera.Request(g => granted = g);
+            if (!granted) { arFail = "noPerm"; yield break; }
             if (ARSession.state == ARSessionState.None || ARSession.state == ARSessionState.CheckingAvailability) yield return ARSession.CheckAvailability();
             if (ARSession.state == ARSessionState.NeedsInstall) yield return ARSession.Install();
             if (ARSession.state == ARSessionState.Unsupported || ARSession.state == ARSessionState.NeedsInstall) { arUnsupported = true; arFail = "noAR"; }

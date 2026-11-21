@@ -1,0 +1,49 @@
+{
+  "_doc": "Voices for the extra story languages (fr de ja es pt), read by tools/story/voice_i18n.py. Every role is a Qwen3-TTS VoiceDesign voice: `design` says who is speaking, in English, without any accent words (the script adds 'native <language> speaker'). Lookup order for a role: stories.<story>.<role>, then the role's English design in tools/story/cast_<story>.json (accent sentences stripped), then roles.<role>, then roles._crowd for crowd roles. `fx` names a voice.py FX chain (plain, warm, nasal, offstage, field). Arabic has no voice: Qwen3-TTS has no Arabic (talker_config.codec_language_id of the model, checked 2026-11-22), so Arabic plays with subtitles only.",
+  "langs": {"fr": "french", "de": "german", "ja": "japanese", "es": "spanish", "pt": "portuguese"},
+  "accent": {
+    "fr": "A native French speaker with clear, standard French pronunciation.",
+    "de": "A native German speaker with clear, standard German pronunciation.",
+    "ja": "A native Japanese speaker with clear, standard Japanese pronunciation.",
+    "es": "A native Spanish speaker with clear, neutral Latin American Spanish pronunciation.",
+    "pt": "A native Brazilian Portuguese speaker with clear, standard Brazilian pronunciation."
+  },
+  "roles": {
+    "narrator": {"design": "A warm female storyteller in her thirties reading a picture book aloud to a six-year-old: gentle, bright, clear, unhurried, smiling, a little mysterious at the exciting parts.", "fx": "plain"},
+    "_crowd": {"design": "A cheerful man in his thirties calling out loudly as one voice in an excited crowd, energetic and lively.", "fx": "offstage"}
+  },
+  "stories": {
+    "daniel": {
+      "king": {"design": "Male, about sixty, a mighty old king who is kind at heart: a deep, warm, slightly worried baritone, slow and royal.", "fx": "warm"},
+      "daniel": {"design": "Male, about thirty-five, a warm, calm, gentle baritone, soft and clean with a little resonance, unhurried, kind and dependable like a gentle big brother.", "fx": "plain"},
+      "officer": {"design": "Male, about forty, a tall thin court official: a thin, nasal, whiny tenor, sly and sarcastic, always complaining, like a comic little villain in a children's cartoon.", "fx": "nasal"}
+    },
+    "esther": {
+      "king": {"design": "Male, about forty, a grand Persian king: a rich, deep, warm baritone, proud and royal but kind.", "fx": "warm"},
+      "haman": {"design": "Male, about forty-five, a comic cartoon villain in a children's radio play: pompous, vain and cowardly, a nasal voice with big exaggerated pitch swings.", "fx": "nasal"},
+      "mordecai": {"design": "Male, about sixty, a wise, calm old man with a low, steady, kind voice.", "fx": "offstage"},
+      "esther": {"design": "Female, about twenty, a young queen: a clear, sweet, warm voice, brave and sincere, gently spoken.", "fx": "plain"}
+    },
+    "exodus": {
+      "miriam": {"design": "Female, about thirty, a big sister: a bright, crisp, warm and lively voice, quick and energetic.", "fx": "plain"},
+      "god": {"design": "Male, middle-aged, a low, full, warm voice, very calm and unhurried, loving and weighty like a kind father, never shouting.", "fx": "warm"}
+    },
+    "jonah": {
+      "jonah": {"design": "Male, about thirty-five, a mild, slightly stubborn middle voice, neither rough nor sharp, plain and sincere, like an ordinary, rather obstinate man.", "fx": "plain"}
+    },
+    "prodigal": {
+      "son": {"design": "Male, about twenty, a big boy: a young, bright, clear voice, medium-high, light and nimble, a bit cheeky, very expressive.", "fx": "plain"},
+      "brother": {"design": "Male, about twenty-eight, a big farm worker: a low, heavy, slightly rough voice, sulky, slow and stiff, always grumbling.", "fx": "plain"}
+    },
+    "ruth": {
+      "ruth": {"design": "Female, about twenty-five, a young widow: a soft, clear, gentle and loyal voice, warm and sincere.", "fx": "plain"},
+      "boaz": {"design": "Male, about fifty, a kind, generous landowner: a warm, steady, friendly baritone.", "fx": "field"}
+    },
+    "david-goliath": {
+      "david": {"design": "A boy of about twelve, a young shepherd: a clear, light, bright boyish voice, brave and cheerful.", "fx": "plain"},
+      "goliath": {"design": "Male, a huge cartoon giant: an extremely deep, booming, rumbling bass, slow and boastful, scary in a funny way for children.", "fx": "warm"},
+      "saul": {"design": "Male, about fifty-five, an older king, kind but worried: a low, tired, gentle voice.", "fx": "offstage"},
+      "soldiers": {"design": "A young soldier in his twenties shouting loudly in a battle cry, excited, as one voice of many.", "fx": "offstage"}
+    }
+  }
+}

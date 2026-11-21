@@ -53,11 +53,16 @@ namespace DoodLive.Story.EditorTools
             return results;
         }
 
+        static readonly string[] VoiceLangs = { "zh", "en", "fr", "de", "ja", "es", "pt" };   // Arabic: subtitles only (no Qwen3-TTS voice)
+
         static Result Setup(Entry e, Func<string, bool, int, Texture2D> importTexture)
         {
             string id = e.id, dir = Dir(id), res = Res(id), src = Path.Combine(RepoRoot, "assets", id);
             foreach (var d in new[] { "Models", "Faces", "Tracking", "Textures", "Materials", "Data" }) Directory.CreateDirectory(Path.Combine(dir, d));
-            foreach (var d in new[] { "voice/zh", "voice/en", "music", "sfx" }) Directory.CreateDirectory(Path.Combine(res, d));
+            foreach (var d in new[] { "music", "sfx" }) Directory.CreateDirectory(Path.Combine(res, d));
+            // voices: every language that has clips in assets/<id>/audio/voice/<lang> (zh, en, then the extra ones, docs/I18N.md)
+            var voiceLangs = VoiceLangs.Where(l => Directory.Exists(Path.Combine(src, "audio/voice", l)) && Directory.GetFiles(Path.Combine(src, "audio/voice", l), "*.wav").Length > 0).ToArray();
+            foreach (var l in voiceLangs) Directory.CreateDirectory(Path.Combine(res, "voice", l));
             var pack = JsonUtility.FromJson<Pack>(File.ReadAllText(Path.Combine(src, "pack.json")));
             var need = new List<(string from, string to)>();
             foreach (var c in pack.cast) need.Add((Path.Combine(src, "anim", c.id + ".glb"), $"{dir}/Models/{c.id}.glb"));
@@ -80,7 +85,7 @@ namespace DoodLive.Story.EditorTools
                 foreach (var f in list) need.Add((f, $"{dst}/{Path.GetFileName(f)}"));
                 foreach (var old in Directory.GetFiles(dst, "*.wav")) if (!list.Any(x => Path.GetFileName(x) == Path.GetFileName(old))) AssetDatabase.DeleteAsset(old.Replace('\\', '/'));
             }
-            Wavs("audio/voice/zh", $"{res}/voice/zh"); Wavs("audio/voice/en", $"{res}/voice/en");
+            foreach (var l in voiceLangs) Wavs($"audio/voice/{l}", $"{res}/voice/{l}");
             Wavs("audio/music", $"{res}/music"); Wavs("audio/sfx", $"{res}/sfx");
             bool ok = true;
             foreach (var (from, to) in need)
@@ -124,8 +129,7 @@ namespace DoodLive.Story.EditorTools
                     ai.defaultSampleSettings = s; ai.forceToMono = true; ai.SaveAndReimport();
                 }
             }
-            Audio($"{res}/voice/zh", AudioClipLoadType.CompressedInMemory, 0.7f);
-            Audio($"{res}/voice/en", AudioClipLoadType.CompressedInMemory, 0.7f);
+            foreach (var l in voiceLangs) Audio($"{res}/voice/{l}", AudioClipLoadType.CompressedInMemory, l == "zh" || l == "en" ? 0.7f : 0.5f);
             Audio($"{res}/sfx", AudioClipLoadType.DecompressOnLoad, 0.6f);
             Audio($"{res}/music", AudioClipLoadType.CompressedInMemory, 0.55f);
             foreach (var c in pack.cast) AssetDatabase.ImportAsset($"{dir}/Models/{c.id}.glb", ImportAssetOptions.ForceUpdate);

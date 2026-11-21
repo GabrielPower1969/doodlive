@@ -13,10 +13,12 @@ namespace DoodLive
         readonly Dictionary<string, float> fade = new Dictionary<string, float>();   // element -> 0..1 visibility
         string shownStatus = "", prevStatus = ""; float statusT = 1; float flashT = -9, titleBounce = -9;
         GUIStyle txtUi, txtZh, txtSmall, txtSmallZh, txtLogo, txtTitle, txtTag, fpStyle;
+        GUIStyle txtLoc, txtSmallLoc;   // the current language's own face (docs/I18N.md): ZCOOL, Noto Sans JP, Noto Sans Arabic or Fredoka
+        bool langPickerOpen; float langPickerT; string stylesLang;
         GUIStyle boxPaper, boxShade, boxSun, boxInk, boxOk, boxLeaf, boxDeep;
         Texture2D white, dot, disc, ring;
         readonly Dictionary<string, Texture2D> icons = new Dictionary<string, Texture2D>();
-        Font fUi, fZh, fDisplay;
+        Font fUi, fZh, fDisplay, fJa, fAr;
         float u, lip, gateHeld; bool gateJustOpened;   // the finger that opened the gate must not also close it on release
 
         float Fade(string key, bool visible, float speed = 4f)
@@ -73,16 +75,7 @@ namespace DoodLive
         void Buzz(long ms)
         {
             if (!haptics) return;
-#if UNITY_ANDROID && !UNITY_EDITOR
-            try
-            {
-                using var player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-                using var activity = player.GetStatic<AndroidJavaObject>("currentActivity");
-                using var vib = activity.Call<AndroidJavaObject>("getSystemService", "vibrator");
-                vib.Call("vibrate", ms);
-            }
-            catch { Handheld.Vibrate(); }   // also makes Unity add the VIBRATE permission
-#endif
+            Platform.Native.Haptics.Buzz(ms);
         }
 
         // ---------------- textures and styles ----------------
@@ -108,6 +101,8 @@ namespace DoodLive
         {
             u = Mathf.Min(Screen.width, Screen.height) / 12.5f; lip = Mathf.Max(3, u * 0.12f);
             fUi = Resources.Load<Font>("Fonts/Fredoka-SemiBold"); fZh = Resources.Load<Font>("Fonts/ZCOOLKuaiLe-Regular"); fDisplay = Resources.Load<Font>("Fonts/Grandstander-Black");
+            fJa = Resources.Load<Font>("Fonts/NotoSansJP-Bold"); fAr = Resources.Load<Font>("Fonts/NotoSansArabic-Bold");
+            stylesLang = L10n.Lang; libStyles.Clear();
             float fs = u * 0.52f, stroke = 3.5f;
             white = Texture2D.whiteTexture;
             boxPaper = Box(RoundRect(64, 24, DesignTokens.Paper, DesignTokens.Ink, stroke), 28);
@@ -124,11 +119,19 @@ namespace DoodLive
             txtSmall = Text(fUi, fs * 0.72f, DesignTokens.InkSoft); txtSmallZh = Text(fZh, fs * 0.78f, DesignTokens.InkSoft);
             txtLogo = Text(fDisplay, u * 1.25f, DesignTokens.Ink, TextAnchor.MiddleCenter, false);
             txtTitle = Text(fDisplay, fs * 1.05f, DesignTokens.Ink, TextAnchor.MiddleLeft, false);
-            txtTag = Text(fZh, fs * 0.8f, DesignTokens.Ink);
+            txtTag = Text(TagFont(L10n.Lang), fs * 0.8f, DesignTokens.Ink);
+            var fl = FontOf(L10n.Lang); float k = fl == fZh ? 1.05f : fl == fUi ? 1f : 0.92f;
+            txtLoc = Text(fl, fs * k, DesignTokens.Ink); txtSmallLoc = Text(fl, fs * (fl == fZh ? 0.78f : 0.72f), DesignTokens.InkSoft);
+            if (L10n.IsRtl) { txtLoc.alignment = TextAnchor.UpperRight; txtSmallLoc.alignment = TextAnchor.UpperRight; }
             fpStyle = Text(null, u * 0.26f, new Color(1, 1, 1, 0.5f), TextAnchor.LowerRight, false);
         }
-        GUIStyle T(bool big = true) => L10n.IsZh ? (big ? txtZh : txtSmallZh) : (big ? txtUi : txtSmall);
-        GUIStyle TOther(bool big = false) => L10n.IsZh ? (big ? txtUi : txtSmall) : (big ? txtZh : txtSmallZh);
+        // the face of each language: Chinese ZCOOL KuaiLe, Japanese Noto Sans JP, Arabic Noto Sans Arabic, Latin Fredoka
+        Font FontOf(string lang) { switch (L10n.Script(lang)) { case "han": return fZh; case "kana": return fJa ? fJa : fUi; case "arabic": return fAr ? fAr : fUi; default: return fUi; } }
+        // buttons: Chinese and English keep ZCOOL KuaiLe (its Latin is playful); French, German, Spanish and Portuguese need
+        // accents ZCOOL does not have, so they use Fredoka
+        Font TagFont(string lang) => lang == "zh" || lang == "en" ? fZh : FontOf(lang);
+        GUIStyle T(bool big = true) => L10n.IsZh ? (big ? txtZh : txtSmallZh) : L10n.Lang == "en" ? (big ? txtUi : txtSmall) : (big ? txtLoc : txtSmallLoc);
+        GUIStyle TOther(bool big = false) => L10n.Second == "en" ? (big ? txtUi : txtSmall) : (big ? txtZh : txtSmallZh);
 
         // ---------------- drawing helpers ----------------
         void Card(Rect r, GUIStyle fill, float l)
@@ -225,8 +228,9 @@ namespace DoodLive
         // =====================================================================================================
         void OnGUI()
         {
-            if (boxPaper == null || Mathf.Abs(u - Mathf.Min(Screen.width, Screen.height) / 12.5f) > 0.5f) InitStyles();
+            if (boxPaper == null || stylesLang != L10n.Lang || Mathf.Abs(u - Mathf.Min(Screen.width, Screen.height) / 12.5f) > 0.5f) InitStyles();
             uiRects.Clear();
+            GUI.enabled = !langPickerOpen;   // the picker is modal: nothing underneath takes a tap
             float w = Screen.width, h = Screen.height, top = h - Screen.safeArea.yMax, bottom = Screen.safeArea.yMin;
             bool land = w > h, live = state >= State.LiveIdle, scanning = state == State.ScanSearch || state == State.ScanLocked || state == State.ScanHelp;
             float chip = u * 1.15f, edge = u * 0.35f;
@@ -406,6 +410,9 @@ namespace DoodLive
             float panelA = Fade("panel", moreOpen && (live || state == State.Home), 5f);
             if (panelA > 0) GrownUps(panelA, w, top + edge + chip + u * 0.35f, edge);
 
+            GUI.enabled = true;
+            if (langPickerOpen) { uiRects.Add(new Rect(0, 0, w, h)); LangPickerGUI(w, h, top, bottom); }
+
             // -- build fingerprint
             fpStyle.normal.textColor = state == State.Home ? new Color(0.17f, 0.13f, 0.09f, 0.45f) : new Color(1, 1, 1, 0.5f);
             GUI.Label(new Rect(0, h - bottom - u * 0.4f, w - u * 0.2f, u * 0.4f), Fingerprint, fpStyle);
@@ -449,7 +456,7 @@ namespace DoodLive
                 foreach (var p in packs)
                 {
                     if (!p) continue;
-                    string label = (L10n.IsZh ? p.titleZh : p.titleEn) + (L10n.IsZh ? " · 看演示" : " · demo");
+                    string label = L10n.Show(StoryText.Title(p.StoryId, p.titleZh, p.titleEn) + L10n.Raw("demoSuffix"));
                     if (PaperButton(new Rect(cx - bw / 2, y + s + u * (4.4f + 1.25f * k), bw, u * 1.05f), label, boxSun, txtTag)) ShowDemoStory(p);
                     k++;
                 }
@@ -467,7 +474,7 @@ namespace DoodLive
             float shotA = shot != null ? Mathf.Clamp01(Mathf.Min(story.ShotAge / 0.25f, (2.6f - story.ShotAge) / 0.4f)) : 0;
             if (shotA > 0 && !story.Finished)
             {
-                string title = L10n.IsZh ? shot.title_zh : shot.title_en;
+                string title = L10n.Show(StoryText.Shot(story.StoryId, shot.id, shot.title_zh, shot.title_en));
                 var st = new GUIStyle(T()) { wordWrap = false };
                 float pw = Mathf.Min(w - chip * 2 - edge * 4, st.CalcSize(new GUIContent(title)).x + u * 1.0f), ph = u * 0.95f;
                 var r = new Rect(w / 2 - pw / 2, top + edge + u * 0.2f * (1 - EaseOut(shotA)), pw, ph);
@@ -480,13 +487,17 @@ namespace DoodLive
             var shown = line ?? FindLine(lastLineId);
             if (lineFade > 0 && shown != null)
             {
-                string main = L10n.IsZh ? shown.zh : shown.en, other = L10n.IsZh ? shown.en : shown.zh;
+                // Chinese / English: the original pair (current language big, the other small). Other languages: one line
+                // in that language (StoryText); Arabic is broken into lines first, then shaped right to left
+                string main = L10n.IsZh ? shown.zh : L10n.Lang == "en" ? shown.en : StoryText.Line(story.StoryId, shown.id, shown.zh, shown.en);
+                string other = L10n.Second == "en" ? shown.en : L10n.Second == "zh" ? shown.zh : "";
                 var area = land ? new Rect(w * 0.12f, top, w * 0.76f - chip, h - bottom - edge - u * 0.2f - top)
                                 : new Rect(edge, top, w - edge * 3 - chip, h - bottom - edge - chip - lip - u * 0.35f - top);
                 var c = GUI.color; GUI.color = new Color(1, 1, 1, lineFade);
                 var sMain = T(); var sOther = TOther();
-                float bw = Mathf.Min(area.width, Mathf.Max(sMain.CalcSize(new GUIContent(main)).x, sOther.CalcSize(new GUIContent(other)).x) + u * 0.9f);
-                float h1 = sMain.CalcHeight(new GUIContent(main), bw - u * 0.7f), h2 = sOther.CalcHeight(new GUIContent(other), bw - u * 0.7f);
+                float bw = Mathf.Min(area.width, Mathf.Max(sMain.CalcSize(new GUIContent(L10n.Show(main))).x, other == "" ? 0 : sOther.CalcSize(new GUIContent(other)).x) + u * 0.9f);
+                main = L10n.IsRtl ? ArabicText.Wrap(main, sMain, bw - u * 0.75f) : main;
+                float h1 = sMain.CalcHeight(new GUIContent(main), bw - u * 0.7f), h2 = other == "" ? 0 : sOther.CalcHeight(new GUIContent(other), bw - u * 0.7f);
                 float bh = h1 + h2 + u * 0.45f, by = area.yMax - bh + u * 0.15f * (1 - EaseOut(lineFade));
                 var r = new Rect(area.center.x - bw / 2, by, bw, bh);
                 string who = shown.who == "narrator" ? null : L10n.T("dg_" + shown.who);
@@ -501,7 +512,7 @@ namespace DoodLive
                 }
                 Card(r, boxPaper, lip * 0.8f);
                 GUI.Label(new Rect(r.x + u * 0.35f, r.y + u * 0.2f, bw - u * 0.7f, h1), main, sMain);
-                GUI.Label(new Rect(r.x + u * 0.35f, r.y + u * 0.2f + h1, bw - u * 0.7f, h2), other, sOther);
+                if (other != "") GUI.Label(new Rect(r.x + u * 0.35f, r.y + u * 0.2f + h1, bw - u * 0.7f, h2), other, sOther);
                 GUI.color = c;
             }
 
@@ -526,7 +537,7 @@ namespace DoodLive
                 float bw = Mathf.Min(w - edge * 4 - chip * 2, u * 5.4f), bh = u * 1.15f;
                 var r = new Rect(w / 2 - bw / 2, h - bottom - edge - bh - lip - u * 0.3f * (1 - EaseOut(endA)), bw, bh);
                 var tr = new Rect(w / 2 - u * 2, r.y - u * 1.25f, u * 4, u * 1.0f);
-                var ts = new GUIStyle(txtTitle) { alignment = TextAnchor.MiddleCenter }; if (L10n.IsZh) ts = new GUIStyle(txtZh) { fontSize = Mathf.RoundToInt(u * 0.8f) };
+                var ts = new GUIStyle(txtTitle) { alignment = TextAnchor.MiddleCenter }; if (L10n.Script() != "latin") ts = new GUIStyle(txtLoc) { fontSize = Mathf.RoundToInt(u * 0.8f), alignment = TextAnchor.MiddleCenter };
                 GUI.Label(tr, L10n.T("dgTheEnd"), ts);
                 if (PaperButton(r, L10n.T("dgReplay"), boxSun, txtTag) && endA > 0.5f) { Cue(cueClick); story.Replay(); }
                 GUI.color = Color.white;
@@ -538,6 +549,36 @@ namespace DoodLive
             var tl = active.Timeline; if (tl == null) return null;
             foreach (var l in tl.lines) if (l.id == id) return l;
             return null;
+        }
+
+        // ---------------- language picker: eight languages, each written in itself ----------------
+        static string LangName(string l) { int i = System.Array.IndexOf(L10n.Langs, l); return i >= 0 ? (l == "ar" ? ArabicText.Visual(L10n.Names[i]) : L10n.Names[i]) : l; }
+        readonly Dictionary<string, GUIStyle> langStyles = new Dictionary<string, GUIStyle>();
+        GUIStyle LangStyle(string l, float size)
+        {
+            string k = l + size.ToString("0");
+            if (!langStyles.TryGetValue(k, out var s)) langStyles[k] = s = Text(FontOf(l), size, DesignTokens.Ink, TextAnchor.MiddleCenter, false);
+            return s;
+        }
+        void LangPickerGUI(float w, float h, float top, float bottom)
+        {
+            Tinted(white, new Rect(0, 0, w, h), DesignTokens.Ink, 0.35f);
+            int n = L10n.Langs.Length, cols = 2, rows = (n + cols - 1) / cols;
+            float bw = Mathf.Min(w * 0.4f, u * 4.2f), bh = u * 1.05f, gap = u * 0.3f;
+            float cw = bw * cols + gap * (cols + 1), ch = u * 1.3f + rows * (bh + gap) + gap;
+            var card = new Rect(w / 2 - cw / 2, Mathf.Max(top + u * 0.4f, h / 2 - ch / 2), cw, ch);
+            Card(card, boxPaper, lip); uiRects.Add(card);
+            GUI.Label(new Rect(card.x, card.y + u * 0.2f, card.width, u * 0.9f), L10n.T("langPick"), new GUIStyle(T()) { alignment = TextAnchor.MiddleCenter });
+            for (int i = 0; i < n; i++)
+            {
+                string l = L10n.Langs[i];
+                var r = new Rect(card.x + gap + (i % cols) * (bw + gap), card.y + u * 1.2f + (i / cols) * (bh + gap), bw, bh);
+                if (PaperButton(r, LangName(l), l == L10n.Lang ? boxSun : boxShade, LangStyle(l, bh * 0.4f), lip * 0.6f))
+                { Cue(cueClick); L10n.Lang = l; langPickerOpen = false; ShowTitle(null); }
+            }
+            // a tap outside the card closes it (checked after the buttons: an earlier full-screen button would eat their taps)
+            var ev = Event.current;
+            if (langPickerOpen && ev.type == EventType.MouseUp && Time.unscaledTime - langPickerT > 0.3f && !card.Contains(ev.mousePosition)) { langPickerOpen = false; ev.Use(); }
         }
 
         void GrownUps(float a, float w, float y, float edge)
@@ -553,7 +594,7 @@ namespace DoodLive
             ph = Mathf.Min(ph, Screen.height - y - edge);
             var r = new Rect(x, y - u * 0.25f * (1 - EaseOut(a)), pw, ph); Card(r, boxPaper, lip); uiRects.Add(r);
             float ix = r.x + u * 0.45f, iw = pw - u * 0.9f, cy = r.y + u * 0.3f;
-            GUI.Label(new Rect(ix, cy, iw, u * 0.8f), L10n.T("grownups"), L10n.IsZh ? new GUIStyle(txtZh) { alignment = TextAnchor.MiddleLeft } : txtTitle); cy += u * 1.0f;
+            GUI.Label(new Rect(ix, cy, iw, u * 0.8f), L10n.T("grownups"), L10n.Script() != "latin" ? new GUIStyle(txtLoc) { alignment = TextAnchor.MiddleLeft } : txtTitle); cy += u * 1.0f;
             GUIStyle left = new GUIStyle(T(false)) { alignment = TextAnchor.MiddleLeft }; left.normal.textColor = DesignTokens.Ink;
             void Seg(string label, string a1, string a2, bool firstOn, System.Action<bool> pick)
             {
@@ -575,7 +616,12 @@ namespace DoodLive
                 if (GUI.Button(tr, GUIContent.none, GUIStyle.none)) { Cue(cueClick); flip(); }
                 cy += row;
             }
-            Seg(L10n.T("language"), "中文", "EN", L10n.IsZh, zh => { if (zh != L10n.IsZh) { L10n.Toggle(); Cue(cueClick); } });
+            {   // language: eight of them now, so a button that opens the picker (LangPickerGUI)
+                GUI.Label(new Rect(ix, cy, iw * 0.45f, row * 0.8f), L10n.T("language"), left);
+                float sw = iw * 0.52f; var lr = new Rect(ix + iw - sw, cy + row * 0.05f, sw, row * 0.72f); uiRects.Add(lr);
+                if (PaperButton(lr, LangName(L10n.Lang), boxSun, LangStyle(L10n.Lang, row * 0.32f), lip * 0.5f)) { Cue(cueClick); langPickerOpen = true; langPickerT = Time.unscaledTime; }
+                cy += row;
+            }
             Seg(L10n.T("wordCard"), L10n.T("pinyin"), "ABC", pinyinMode, py => { Cue(cueClick); pinyinMode = py; ShowTitle(null); });
             Toggle(L10n.T("sound"), !muted, () => { muted = !muted; PlayerPrefs.SetInt("muted", muted ? 1 : 0); AudioListener.volume = muted ? 0 : 1; });
             Toggle(L10n.T("haptics"), haptics, () => { haptics = !haptics; PlayerPrefs.SetInt("haptics", haptics ? 1 : 0); Buzz(20); });

@@ -342,8 +342,7 @@ namespace DoodLive.DavidGoliath
         void Say(DGLine l)
         {
             if (seeking) return;
-            bool zh = L10n.IsZh;
-            var c = Clip($"voice/{(zh ? "zh" : "en")}/{l.id}");
+            var c = Clip($"voice/{L10n.Lang}/{l.id}");   // no clip (Arabic, or a line not voiced yet): subtitles only
             voice.Stop();
             if (c) { voice.clip = c; voice.volume = 1; voice.Play(); }
             Line = l;

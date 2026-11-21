@@ -1,619 +1,1743 @@
 {
- "_comment": "Single source of UI strings. tools/gen_i18n.py writes web/i18n.js and unity/Assets/DoodLive/Scripts/L10n.cs. {e} = runtime value.",
- "appTitle": {
-  "zh": "DoodLive · 涂色天使 AR",
-  "en": "DoodLive · Colour-in Angel AR"
- },
- "tagline": {
-  "zh": "给天使涂上颜色，用手机一扫——她会活过来",
-  "en": "Colour the angel, scan it with your phone — and she comes to life"
- },
- "scan": {
-  "zh": "扫一扫",
-  "en": "Scan"
- },
- "scanLong": {
-  "zh": "开始扫描涂色纸",
-  "en": "Scan my colouring sheet"
- },
- "demo": {
-  "zh": "没有纸？看演示",
-  "en": "No sheet? Watch the demo"
- },
- "print": {
-  "zh": "打印涂色纸",
-  "en": "Print a colouring sheet"
- },
- "battle": {
-  "zh": "⚔️ 大卫 vs 歌利亚（战斗剧场）",
-  "en": "⚔️ David vs Goliath (battle theatre)"
- },
- "shoot": {
-  "zh": "拍下识别",
-  "en": "Capture"
- },
- "rescan": {
-  "zh": "再来一张",
-  "en": "Another sheet"
- },
- "blow": {
-  "zh": "吹号角",
-  "en": "Trumpet"
- },
- "read": {
-  "zh": "读一读",
-  "en": "Read it"
- },
- "more": {
-  "zh": "更多",
-  "en": "More"
- },
- "close": {
-  "zh": "收起",
-  "en": "Close"
- },
- "modeShow": {
-  "zh": "展示模式",
-  "en": "Showcase"
- },
- "modePaper": {
-  "zh": "纸上模式",
-  "en": "On the page"
- },
- "linesOn": {
-  "zh": "线条：显示",
-  "en": "Lines: shown"
- },
- "linesOff": {
-  "zh": "线条：隐藏",
-  "en": "Lines: hidden"
- },
- "pinyin": {
-  "zh": "拼音",
-  "en": "Pinyin"
- },
- "abc": {
-  "zh": "ABC",
-  "en": "ABC"
- },
- "xr": {
-  "zh": "放到桌上（AR）",
-  "en": "Place on the table (AR)"
- },
- "exitXR": {
-  "zh": "退出 AR",
-  "en": "Exit AR"
- },
- "mute": {
-  "zh": "静音",
-  "en": "Mute"
- },
- "unmute": {
-  "zh": "有声",
-  "en": "Sound"
- },
- "openingCam": {
-  "zh": "正在打开相机…",
-  "en": "Opening the camera…"
- },
- "camFail": {
-  "zh": "打不开相机：{e}。可以先看演示",
-  "en": "Camera unavailable: {e}. Try the demo"
- },
- "noPerm": {
-  "zh": "需要相机才能看到你的画。在系统设置里允许相机后再试，或先看演示",
-  "en": "The camera is needed to see your drawing. Allow it in Settings and try again, or watch the demo"
- },
- "noAR": {
-  "zh": "这台设备暂不支持空间定位，先用纸上模式",
-  "en": "This device cannot track the room yet; using on-the-page mode"
- },
- "fit": {
-  "zh": "把整张涂色纸放进框里，四个黑方块对准四个角",
-  "en": "Fit the whole sheet in the frame, the four black squares in the corners"
- },
- "found": {
-  "zh": "找到了！拿稳别动…",
-  "en": "Found it! Hold still…"
- },
- "recognised": {
-  "zh": "识别成功",
-  "en": "Recognised"
- },
- "tap": {
-  "zh": "点一下天使，听她吹响号角",
-  "en": "Tap the angel to hear her trumpet"
- },
- "tapXR": {
-  "zh": "点天使听号角 · 点“放到桌上”让她站进真实空间",
-  "en": "Tap her for the trumpet · \"Place on the table\" puts her in your room"
- },
- "xrFind": {
-  "zh": "慢慢移动手机找到桌面或地面，出现金色光圈后点一下屏幕",
-  "en": "Move the phone slowly over a table or floor; tap when the gold ring appears"
- },
- "xrNoPlane": {
-  "zh": "还没找到平面，先慢慢移动手机，等金色光圈出现再点",
-  "en": "No surface yet — move the phone slowly until the gold ring appears"
- },
- "xrPlaced": {
-  "zh": "点天使听号角 · 点别处的地面可以挪动她",
-  "en": "Tap her for the trumpet · tap elsewhere on the floor to move her"
- },
- "xrExit": {
-  "zh": "已退出 AR · 点“再来一张”可以再拍一张",
-  "en": "Left AR · \"Another sheet\" to take another shot"
- },
- "needMarkers": {
-  "zh": "先让四个黑方块进入画面",
-  "en": "Get the four black squares into view first"
- },
- "xrFail": {
-  "zh": "进入 AR 失败：{e}",
-  "en": "Could not start AR: {e}"
- },
- "notrack": {
-  "zh": "AR 还没开始追踪：对着明亮、有花纹的桌面或地面，左右慢慢平移手机",
-  "en": "AR is not tracking yet: aim at a bright, textured table or floor and pan slowly"
- },
- "nosurface": {
-  "zh": "在找平面…对准桌面或地面，稍微移动一下",
-  "en": "Looking for a surface… aim at the table or floor and move a little"
- },
- "ok": {
-  "zh": "找到了！点一下屏幕，把天使放在金色光圈上",
-  "en": "Found one! Tap the screen to place the angel on the gold ring"
- },
- "lost": {
-  "zh": "把纸拿回画面里，她就回来",
-  "en": "Bring the sheet back into view and she returns"
- },
- "helpTitle": {
-  "zh": "帮我找到你的画",
-  "en": "Help me find your drawing"
- },
- "help1": {
-  "zh": "把手机抬高一点，让整张纸都在画面里",
-  "en": "Lift the phone so the whole sheet is in view"
- },
- "help2": {
-  "zh": "对着亮一点的地方，别背光",
-  "en": "Face the light, not away from it"
- },
- "help3": {
-  "zh": "四个黑方块都要看得见，不要被手挡住",
-  "en": "All four black squares must be visible — mind your fingers"
- },
- "helpDemo": {
-  "zh": "先看演示",
-  "en": "Watch the demo instead"
- },
- "readHanzi": {
-  "zh": "汉字",
-  "en": "Characters"
- },
- "readPinyin": {
-  "zh": "拼音",
-  "en": "Pinyin"
- },
- "readEnglish": {
-  "zh": "英文",
-  "en": "English"
- },
- "hello": {
-  "zh": "哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！",
-  "en": "Wow! I'm alive! Thank you for colouring me so beautifully!"
- },
- "line0": {
-  "zh": "听！天堂的号角为你吹响！",
-  "en": "Listen! The trumpet of heaven sounds for you!"
- },
- "line1": {
-  "zh": "你画得真好看，我好喜欢这些颜色！",
-  "en": "Your drawing is lovely, I adore these colours!"
- },
- "line2": {
-  "zh": "愿你今天平安、快乐！",
-  "en": "May your day be safe and happy!"
- },
- "line3": {
-  "zh": "再给我画一件新衣服吧！",
-  "en": "Draw me a new dress next time!"
- },
- "greet0": {
-  "zh": "我飞起来啦！",
-  "en": "I'm flying!"
- },
- "greet1": {
-  "zh": "哇——！",
-  "en": "Wow!"
- },
- "greet2": {
-  "zh": "哈哈哈！",
-  "en": "Ha ha ha!"
- },
- "grownups": {
-  "zh": "大人专区",
-  "en": "Grown-ups"
- },
- "holdGate": {
-  "zh": "大人按住 2 秒",
-  "en": "Grown-ups: hold for 2 s"
- },
- "language": {
-  "zh": "界面语言",
-  "en": "Language"
- },
- "tapHer": {
-  "zh": "点点我！",
-  "en": "Tap me!"
- },
- "newSheet": {
-  "zh": "换一张纸",
-  "en": "New sheet"
- },
- "helpLift": {
-  "zh": "抬高一点",
-  "en": "Lift up"
- },
- "helpLight": {
-  "zh": "对着亮处",
-  "en": "Find light"
- },
- "helpSquares": {
-  "zh": "四个方块",
-  "en": "4 squares"
- },
- "sound": {
-  "zh": "声音",
-  "en": "Sound"
- },
- "haptics": {
-  "zh": "震动",
-  "en": "Haptics"
- },
- "music": {
-  "zh": "音乐音量",
-  "en": "Music"
- },
- "wordCard": {
-  "zh": "学习卡",
-  "en": "Word card"
- },
- "done": {
-  "zh": "好了",
-  "en": "Done"
- },
- "dgDemo": {
-  "zh": "大卫和歌利亚 · 看演示",
-  "en": "David & Goliath · demo"
- },
- "dgPaused": {
-  "zh": "暂停了，点一下继续",
-  "en": "Paused — tap to go on"
- },
- "dgReplay": {
-  "zh": "再看一遍",
-  "en": "Watch again"
- },
- "dgTheEnd": {
-  "zh": "完",
-  "en": "The End"
- },
- "dg_david": {
-  "zh": "大卫",
-  "en": "David"
- },
- "dg_goliath": {
-  "zh": "歌利亚",
-  "en": "Goliath"
- },
- "dg_saul": {
-  "zh": "扫罗王",
-  "en": "King Saul"
- },
- "dg_soldiers": {
-  "zh": "以色列士兵",
-  "en": "Soldiers"
- },
- "dg_esther": {
-  "zh": "以斯帖",
-  "en": "Esther"
- },
- "dg_king": {
-  "zh": "亚哈随鲁王",
-  "en": "King Xerxes"
- },
- "dg_haman": {
-  "zh": "哈曼",
-  "en": "Haman"
- },
- "dg_mordecai": {
-  "zh": "末底改",
-  "en": "Mordecai"
- },
- "dg_herald": {
-  "zh": "传令官",
-  "en": "Herald"
- },
- "dg_crowd": {
-  "zh": "众人",
-  "en": "Crowd"
- },
- "dg_ruth": {
-  "zh": "路得",
-  "en": "Ruth"
- },
- "dg_naomi": {
-  "zh": "拿俄米",
-  "en": "Naomi"
- },
- "dg_boaz": {
-  "zh": "波阿斯",
-  "en": "Boaz"
- },
- "dg_reapers": {
-  "zh": "收割的人",
-  "en": "Reapers"
- },
- "dg_moses": {
-  "zh": "摩西",
-  "en": "Moses"
- },
- "dg_pharaoh": {
-  "zh": "法老",
-  "en": "Pharaoh"
- },
- "dg_miriam": {
-  "zh": "米利暗",
-  "en": "Miriam"
- },
- "dg_god": {
-  "zh": "上帝",
-  "en": "God"
- },
- "dg_people": {
-  "zh": "以色列人",
-  "en": "The Israelites"
- },
- "dg_daniel": {
-  "zh": "但以理",
-  "en": "Daniel"
- },
- "dg_officer": {
-  "zh": "大臣",
-  "en": "Official"
- },
- "dg_daniel_king": {
-  "zh": "大流士王",
-  "en": "King Darius"
- },
- "sheetSave": {
-  "zh": "保存 PDF",
-  "en": "Save PDF"
- },
- "sheetShare": {
-  "zh": "分享",
-  "en": "Share"
- },
- "sheetPrint": {
-  "zh": "打印",
-  "en": "Print"
- },
- "sheetGrownups": {
-  "zh": "给大人：涂色纸（按住 2 秒）",
-  "en": "For grown-ups: the colouring sheet (hold 2 s)"
- },
- "sheetHoldHint": {
-  "zh": "请大人按住按钮 2 秒",
-  "en": "Grown-ups: press and hold for 2 seconds"
- },
- "sheetSaved": {
-  "zh": "已保存到“下载”",
-  "en": "Saved to Downloads"
- },
- "sheetFailed": {
-  "zh": "没有成功，请再试一次",
-  "en": "That didn't work. Please try again."
- },
- "sheetDesktop": {
-  "zh": "已在电脑上打开 PDF",
-  "en": "Opened the PDF on this computer"
- },
- "sheetShareTitle": {
-  "zh": "分享涂色纸",
-  "en": "Share the colouring sheet"
- },
- "sheetBlank": {
-  "zh": "空白",
-  "en": "Blank"
- },
- "sheetColored": {
-  "zh": "涂好的示范",
-  "en": "Coloured sample"
- },
- "howtoTitle": {
-  "zh": "怎么玩",
-  "en": "How to play"
- },
- "howtoLead": {
-  "zh": "看一段小视频就会啦",
-  "en": "Watch a short video to see how"
- },
- "howtoStep1": {
-  "zh": "打印白纸",
-  "en": "Print the sheet"
- },
- "howtoStep2": {
-  "zh": "涂上颜色",
-  "en": "Colour it in"
- },
- "howtoStep3": {
-  "zh": "手机扫一扫",
-  "en": "Scan with the phone"
- },
- "howtoStep4": {
-  "zh": "变成 3D，转着看",
-  "en": "It comes alive in 3D"
- },
- "howtoSoon": {
-  "zh": "演示视频马上就来！",
-  "en": "The how-to video is coming soon!"
- },
- "howtoPaused": {
-  "zh": "点一下继续",
-  "en": "Tap to keep watching"
- },
- "dg_son": {
-  "zh": "小儿子",
-  "en": "Little brother"
- },
- "dg_father": {
-  "zh": "爸爸",
-  "en": "Father"
- },
- "dg_brother": {
-  "zh": "哥哥",
-  "en": "Big brother"
- },
- "dg_friends": {
-  "zh": "朋友们",
-  "en": "Friends"
- },
- "dg_servants": {
-  "zh": "仆人",
-  "en": "Servants"
- },
- "dg_gabriel": {
-  "zh": "加百列",
-  "en": "Gabriel"
- },
- "dg_jonah": {
-  "zh": "约拿",
-  "en": "Jonah"
- },
- "dg_captain": {
-  "zh": "船长",
-  "en": "Captain"
- },
- "dg_jonah_people": {
-  "zh": "尼尼微人",
-  "en": "People of Nineveh"
- },
- "dg_joseph": {
-  "zh": "约瑟",
-  "en": "Joseph"
- },
- "dg_jacob": {
-  "zh": "雅各",
-  "en": "Jacob"
- },
- "dg_jesus": {
-  "zh": "耶稣",
-  "en": "Jesus"
- },
- "dg_peter": {
-  "zh": "彼得",
-  "en": "Peter"
- },
- "dg_lastsupper_donkey": {
-  "zh": "小驴",
-  "en": "The donkey"
- },
- "dg_john": {
-  "zh": "约翰",
-  "en": "John"
- },
- "dg_james": {
-  "zh": "雅各",
-  "en": "James"
- },
- "dg_andrew": {
-  "zh": "安得烈",
-  "en": "Andrew"
- },
- "dg_lastsupper_seller1": {
-  "zh": "卖鸽子的",
-  "en": "The dove seller"
- },
- "dg_lastsupper_seller2": {
-  "zh": "兑换银钱的",
-  "en": "The money changer"
- },
- "dg_lastsupper_people": {
-  "zh": "众人",
-  "en": "The crowd"
- },
- "dg_miracles_man": {
-  "zh": "躺褥子的人",
-  "en": "The man on the mat"
- },
- "dg_friend1": {
-  "zh": "朋友",
-  "en": "Friend"
- },
- "dg_friend2": {
-  "zh": "朋友",
-  "en": "Friend"
- },
- "dg_friend3": {
-  "zh": "朋友",
-  "en": "Friend"
- },
- "dg_friend4": {
-  "zh": "朋友",
-  "en": "Friend"
- },
- "dg_miracles_friends": {
-  "zh": "四个朋友",
-  "en": "The four friends"
- },
- "dg_miracles_people": {
-  "zh": "众人",
-  "en": "The crowd"
- },
- "dg_risen_mary": {
-  "zh": "马利亚",
-  "en": "Mary"
- },
- "dg_risen_angel": {
-  "zh": "天使",
-  "en": "The angel"
- },
- "dg_thomas": {
-  "zh": "多马",
-  "en": "Thomas"
- },
- "dg_joanna": {
-  "zh": "约亚拿",
-  "en": "Joanna"
- },
- "dg_saul_saul": {
-  "zh": "扫罗",
-  "en": "Saul"
- },
- "dg_ananias": {
-  "zh": "亚拿尼亚",
-  "en": "Ananias"
- },
- "dg_barnabas": {
-  "zh": "巴拿巴",
-  "en": "Barnabas"
- },
- "dg_saul_judas": {
-  "zh": "犹大",
-  "en": "Judas"
- },
- "dg_saul_priest": {
-  "zh": "大祭司",
-  "en": "The high priest"
- },
- "dg_saul_tallguard": {
-  "zh": "高个子卫兵",
-  "en": "Tall guard"
- },
- "dg_saul_shortguard": {
-  "zh": "矮个子卫兵",
-  "en": "Short guard"
- }
+  "_comment": "Single source of UI strings. tools/gen_i18n.py writes web/i18n.js and unity/Assets/DoodLive/Scripts/L10n.cs. {e} = runtime value.",
+  "appTitle": {
+    "zh": "DoodLive · 涂色天使 AR",
+    "en": "DoodLive · Colour-in Angel AR",
+    "fr": "DoodLive · Ange AR à colorier",
+    "de": "DoodLive · Ausmal-Engel AR",
+    "es": "DoodLive · Ángel para colorear AR",
+    "pt": "DoodLive · Anjo de Colorir em RA",
+    "ja": "DoodLive · ぬりえ天使 AR",
+    "ar": "DoodLive · ملاك التلوين AR"
+  },
+  "tagline": {
+    "zh": "给天使涂上颜色，用手机一扫——她会活过来",
+    "en": "Colour the angel, scan it with your phone — and she comes to life",
+    "fr": "Colorie l'ange, scanne-le avec ton téléphone — et il prend vie",
+    "de": "Mal den Engel aus, scann ihn mit dem Handy – und er wird lebendig",
+    "es": "Colorea al ángel, escanéalo con el teléfono — y cobra vida",
+    "pt": "Pinte o anjo, escaneie com o celular — e ele ganha vida",
+    "ja": "天使に色をぬって、スマホでスキャン — 天使が動きだすよ",
+    "ar": "لوّن الملاك، وامسحه بهاتفك — فيصير حيا!"
+  },
+  "scan": {
+    "zh": "扫一扫",
+    "en": "Scan",
+    "fr": "Scanner",
+    "de": "Scannen",
+    "es": "Escanear",
+    "pt": "Escanear",
+    "ja": "スキャン",
+    "ar": "امسح"
+  },
+  "scanLong": {
+    "zh": "开始扫描涂色纸",
+    "en": "Scan my colouring sheet",
+    "fr": "Scanner mon coloriage",
+    "de": "Mein Malblatt scannen",
+    "es": "Escanear mi hoja para colorear",
+    "pt": "Escanear meu desenho",
+    "ja": "ぬりえをスキャンする",
+    "ar": "امسح ورقة التلوين"
+  },
+  "demo": {
+    "zh": "没有纸？看演示",
+    "en": "No sheet? Watch the demo",
+    "fr": "Pas de feuille ? Regarde la démo",
+    "de": "Kein Blatt? Demo ansehen",
+    "es": "¿No tienes hoja? Mira la demo",
+    "pt": "Sem folha? Veja a demonstração",
+    "ja": "紙がない？デモを見る",
+    "ar": "ليس عندك ورقة؟ شاهد العرض"
+  },
+  "print": {
+    "zh": "打印涂色纸",
+    "en": "Print a colouring sheet",
+    "fr": "Imprimer un coloriage",
+    "de": "Malblatt drucken",
+    "es": "Imprimir una hoja para colorear",
+    "pt": "Imprimir folha de colorir",
+    "ja": "ぬりえをプリントする",
+    "ar": "اطبع ورقة تلوين"
+  },
+  "battle": {
+    "zh": "⚔️ 大卫 vs 歌利亚（战斗剧场）",
+    "en": "⚔️ David vs Goliath (battle theatre)",
+    "fr": "⚔️ David contre Goliath (théâtre de combat)",
+    "de": "⚔️ David gegen Goliat (Kampftheater)",
+    "es": "⚔️ David contra Goliat (teatro de batalla)",
+    "pt": "⚔️ Davi vs. Golias (teatro de batalha)",
+    "ja": "⚔️ ダビデとゴリアト（たたかいの劇場）",
+    "ar": "⚔️ داود وجليات (مسرح المعركة)"
+  },
+  "shoot": {
+    "zh": "拍下识别",
+    "en": "Capture",
+    "fr": "Capturer",
+    "de": "Aufnehmen",
+    "es": "Capturar",
+    "pt": "Capturar",
+    "ja": "さつえい",
+    "ar": "التقط"
+  },
+  "rescan": {
+    "zh": "再来一张",
+    "en": "Another sheet",
+    "fr": "Une autre feuille",
+    "de": "Neues Blatt",
+    "es": "Otra hoja",
+    "pt": "Outra folha",
+    "ja": "もう1まい",
+    "ar": "ورقة أخرى"
+  },
+  "blow": {
+    "zh": "吹号角",
+    "en": "Trumpet",
+    "fr": "Trompette",
+    "de": "Trompete",
+    "es": "Trompeta",
+    "pt": "Trombeta",
+    "ja": "ラッパをふく",
+    "ar": "البوق"
+  },
+  "read": {
+    "zh": "读一读",
+    "en": "Read it",
+    "fr": "Lire",
+    "de": "Lesen",
+    "es": "Leer",
+    "pt": "Ler",
+    "ja": "よんでみる",
+    "ar": "اقرأ"
+  },
+  "more": {
+    "zh": "更多",
+    "en": "More",
+    "fr": "Plus",
+    "de": "Mehr",
+    "es": "Más",
+    "pt": "Mais",
+    "ja": "もっと",
+    "ar": "المزيد"
+  },
+  "close": {
+    "zh": "收起",
+    "en": "Close",
+    "fr": "Fermer",
+    "de": "Schließen",
+    "es": "Cerrar",
+    "pt": "Fechar",
+    "ja": "とじる",
+    "ar": "إغلاق"
+  },
+  "modeShow": {
+    "zh": "展示模式",
+    "en": "Showcase",
+    "fr": "Spectacle",
+    "de": "Bühne",
+    "es": "Exhibición",
+    "pt": "Exibição",
+    "ja": "見せるモード",
+    "ar": "وضع العرض"
+  },
+  "modePaper": {
+    "zh": "纸上模式",
+    "en": "On the page",
+    "fr": "Sur la feuille",
+    "de": "Auf dem Blatt",
+    "es": "En la hoja",
+    "pt": "Na folha",
+    "ja": "紙の上モード",
+    "ar": "على الورقة"
+  },
+  "linesOn": {
+    "zh": "线条：显示",
+    "en": "Lines: shown",
+    "fr": "Traits : visibles",
+    "de": "Linien: an",
+    "es": "Líneas: visibles",
+    "pt": "Linhas: visíveis",
+    "ja": "線：見える",
+    "ar": "الخطوط: ظاهرة"
+  },
+  "linesOff": {
+    "zh": "线条：隐藏",
+    "en": "Lines: hidden",
+    "fr": "Traits : cachés",
+    "de": "Linien: aus",
+    "es": "Líneas: ocultas",
+    "pt": "Linhas: ocultas",
+    "ja": "線：見えない",
+    "ar": "الخطوط: مخفية"
+  },
+  "pinyin": {
+    "zh": "拼音",
+    "en": "Pinyin",
+    "fr": "Pinyin",
+    "de": "Pinyin",
+    "es": "Pinyin",
+    "pt": "Pinyin",
+    "ja": "ピンイン",
+    "ar": "بينيين"
+  },
+  "abc": {
+    "zh": "ABC",
+    "en": "ABC",
+    "fr": "ABC",
+    "de": "ABC",
+    "es": "ABC",
+    "pt": "ABC",
+    "ja": "ABC",
+    "ar": "ABC"
+  },
+  "xr": {
+    "zh": "放到桌上（AR）",
+    "en": "Place on the table (AR)",
+    "fr": "Poser sur la table (AR)",
+    "de": "Auf den Tisch stellen (AR)",
+    "es": "Poner en la mesa (AR)",
+    "pt": "Colocar na mesa (RA)",
+    "ja": "テーブルにおく（AR）",
+    "ar": "ضعه على الطاولة (AR)"
+  },
+  "exitXR": {
+    "zh": "退出 AR",
+    "en": "Exit AR",
+    "fr": "Quitter l'AR",
+    "de": "AR beenden",
+    "es": "Salir de AR",
+    "pt": "Sair da RA",
+    "ja": "ARをおわる",
+    "ar": "الخروج من AR"
+  },
+  "mute": {
+    "zh": "静音",
+    "en": "Mute",
+    "fr": "Muet",
+    "de": "Ton aus",
+    "es": "Silenciar",
+    "pt": "Sem som",
+    "ja": "音をけす",
+    "ar": "كتم الصوت"
+  },
+  "unmute": {
+    "zh": "有声",
+    "en": "Sound",
+    "fr": "Son",
+    "de": "Ton an",
+    "es": "Sonido",
+    "pt": "Som",
+    "ja": "音を出す",
+    "ar": "الصوت"
+  },
+  "openingCam": {
+    "zh": "正在打开相机…",
+    "en": "Opening the camera…",
+    "fr": "Ouverture de la caméra…",
+    "de": "Kamera wird geöffnet…",
+    "es": "Abriendo la cámara…",
+    "pt": "Abrindo a câmera…",
+    "ja": "カメラをひらいています…",
+    "ar": "جار فتح الكاميرا…"
+  },
+  "camFail": {
+    "zh": "打不开相机：{e}。可以先看演示",
+    "en": "Camera unavailable: {e}. Try the demo",
+    "fr": "Caméra indisponible : {e}. Essaie la démo",
+    "de": "Kamera nicht verfügbar: {e}. Probier die Demo",
+    "es": "Cámara no disponible: {e}. Prueba la demo",
+    "pt": "Câmera indisponível: {e}. Experimente a demonstração",
+    "ja": "カメラが使えません：{e}。デモを見てみてね",
+    "ar": "الكاميرا لا تعمل: {e}. جرب العرض"
+  },
+  "noPerm": {
+    "zh": "需要相机才能看到你的画。在系统设置里允许相机后再试，或先看演示",
+    "en": "The camera is needed to see your drawing. Allow it in Settings and try again, or watch the demo",
+    "fr": "Il faut la caméra pour voir ton dessin. Autorise-la dans les Réglages et réessaie, ou regarde la démo",
+    "de": "Ohne Kamera sehe ich dein Bild nicht. Erlaube sie in den Einstellungen und versuch es nochmal – oder schau die Demo",
+    "es": "Se necesita la cámara para ver tu dibujo. Permítela en Ajustes y vuelve a intentarlo, o mira la demo",
+    "pt": "Precisamos da câmera para ver seu desenho. Permita nos Ajustes e tente de novo, ou veja a demonstração",
+    "ja": "きみの絵を見るには、カメラが必要です。設定でカメラをゆるしてから、もう一度ためすか、デモを見てね",
+    "ar": "نحتاج الكاميرا لنرى رسمتك. اسمح بها في الإعدادات وحاول مرة أخرى، أو شاهد العرض"
+  },
+  "noAR": {
+    "zh": "这台设备暂不支持空间定位，先用纸上模式",
+    "en": "This device cannot track the room yet; using on-the-page mode",
+    "fr": "Cet appareil ne sait pas encore suivre la pièce ; on passe en mode « sur la feuille »",
+    "de": "Dieses Gerät kann den Raum noch nicht erfassen; wir nutzen den Blatt-Modus",
+    "es": "Este dispositivo aún no puede rastrear la habitación; usaremos el modo en la hoja",
+    "pt": "Este aparelho ainda não consegue mapear o ambiente; usando o modo na folha",
+    "ja": "このきかいは、まだへやの中を読みとれません。紙の上モードにします",
+    "ar": "هذا الجهاز لا يستطيع تتبع الغرفة بعد؛ سنستخدم وضع «على الورقة»"
+  },
+  "fit": {
+    "zh": "把整张涂色纸放进框里，四个黑方块对准四个角",
+    "en": "Fit the whole sheet in the frame, the four black squares in the corners",
+    "fr": "Mets toute la feuille dans le cadre, les quatre carrés noirs dans les coins",
+    "de": "Das ganze Blatt muss ins Bild, mit den vier schwarzen Quadraten in den Ecken",
+    "es": "Pon toda la hoja dentro del marco, con los cuatro cuadrados negros en las esquinas",
+    "pt": "Coloque a folha inteira no quadro, com os quatro quadrados pretos nos cantos",
+    "ja": "ぬりえ全体をわくに入れて、四すみの黒い四角をあわせてね",
+    "ar": "اجعل الورقة كلها داخل الإطار، والمربعات السوداء الأربعة في الزوايا"
+  },
+  "found": {
+    "zh": "找到了！拿稳别动…",
+    "en": "Found it! Hold still…",
+    "fr": "Trouvé ! Ne bouge plus…",
+    "de": "Gefunden! Ganz still halten…",
+    "es": "¡La encontré! No te muevas…",
+    "pt": "Achei! Fique paradinho…",
+    "ja": "見つけた！そのまま動かさないで…",
+    "ar": "وجدتها! لا تتحرك…"
+  },
+  "recognised": {
+    "zh": "识别成功",
+    "en": "Recognised",
+    "fr": "Reconnu",
+    "de": "Erkannt",
+    "es": "Reconocido",
+    "pt": "Reconhecido",
+    "ja": "読みとれたよ",
+    "ar": "تم التعرف عليها"
+  },
+  "tap": {
+    "zh": "点一下天使，听她吹响号角",
+    "en": "Tap the angel to hear her trumpet",
+    "fr": "Touche l'ange pour entendre sa trompette",
+    "de": "Tipp auf den Engel und hör die Trompete",
+    "es": "Toca al ángel para oír su trompeta",
+    "pt": "Toque no anjo para ouvir a trombeta",
+    "ja": "天使をタップして、ラッパを聞こう",
+    "ar": "اضغط على الملاك لتسمع البوق"
+  },
+  "tapXR": {
+    "zh": "点天使听号角 · 点“放到桌上”让她站进真实空间",
+    "en": "Tap her for the trumpet · \"Place on the table\" puts her in your room",
+    "fr": "Touche-le pour la trompette · « Poser sur la table » le met dans ta pièce",
+    "de": "Tipp auf den Engel für die Trompete · „Auf den Tisch stellen“ holt ihn in dein Zimmer",
+    "es": "Tócala para oír la trompeta · \"Poner en la mesa\" la lleva a tu cuarto",
+    "pt": "Toque no anjo para ouvir a trombeta · \"Colocar na mesa\" traz o anjo para perto de você",
+    "ja": "タップでラッパ · 「テーブルにおく」で、天使がへやにやってくるよ",
+    "ar": "اضغط على الملاك لتسمع البوق · «ضعه على الطاولة» يضعه في غرفتك"
+  },
+  "xrFind": {
+    "zh": "慢慢移动手机找到桌面或地面，出现金色光圈后点一下屏幕",
+    "en": "Move the phone slowly over a table or floor; tap when the gold ring appears",
+    "fr": "Bouge doucement le téléphone au-dessus d'une table ou du sol ; touche quand l'anneau doré apparaît",
+    "de": "Beweg das Handy langsam über Tisch oder Boden; tipp, wenn der goldene Ring erscheint",
+    "es": "Mueve el teléfono despacio sobre una mesa o el suelo; toca cuando aparezca el anillo dorado",
+    "pt": "Mova o celular devagar sobre uma mesa ou o chão; toque quando aparecer o anel dourado",
+    "ja": "テーブルやゆかの上で、スマホをゆっくり動かしてね。金色の輪が出たらタップ",
+    "ar": "حرك الهاتف ببطء فوق طاولة أو أرض، واضغط عندما تظهر الحلقة الذهبية"
+  },
+  "xrNoPlane": {
+    "zh": "还没找到平面，先慢慢移动手机，等金色光圈出现再点",
+    "en": "No surface yet — move the phone slowly until the gold ring appears",
+    "fr": "Pas encore de surface — bouge doucement le téléphone jusqu'à voir l'anneau doré",
+    "de": "Noch keine Fläche – beweg das Handy langsam, bis der goldene Ring erscheint",
+    "es": "Aún no hay superficie — mueve el teléfono despacio hasta que aparezca el anillo dorado",
+    "pt": "Nenhuma superfície ainda — mova o celular devagar até aparecer o anel dourado",
+    "ja": "まだ平らな所が見つかりません — 金色の輪が出るまで、スマホをゆっくり動かしてね",
+    "ar": "لم نجد سطحا بعد — حرك الهاتف ببطء حتى تظهر الحلقة الذهبية"
+  },
+  "xrPlaced": {
+    "zh": "点天使听号角 · 点别处的地面可以挪动她",
+    "en": "Tap her for the trumpet · tap elsewhere on the floor to move her",
+    "fr": "Touche-le pour la trompette · touche ailleurs sur le sol pour le déplacer",
+    "de": "Tipp auf den Engel für die Trompete · tipp woanders auf den Boden, um ihn zu versetzen",
+    "es": "Tócala para oír la trompeta · toca otro punto del suelo para moverla",
+    "pt": "Toque no anjo para ouvir a trombeta · toque em outro ponto do chão para mudá-lo de lugar",
+    "ja": "天使をタップでラッパ · ほかのゆかをタップすると、天使が動くよ",
+    "ar": "اضغط على الملاك لتسمع البوق · اضغط على مكان آخر في الأرض لتنقله"
+  },
+  "xrExit": {
+    "zh": "已退出 AR · 点“再来一张”可以再拍一张",
+    "en": "Left AR · \"Another sheet\" to take another shot",
+    "fr": "AR quittée · « Une autre feuille » pour reprendre une photo",
+    "de": "AR beendet · „Neues Blatt“ für ein neues Foto",
+    "es": "Saliste de AR · \"Otra hoja\" para tomar otra foto",
+    "pt": "Você saiu da RA · \"Outra folha\" para tirar outra foto",
+    "ja": "ARをおわりました · 「もう1まい」で、もう一度とれます",
+    "ar": "خرجت من AR · اضغط «ورقة أخرى» لتلتقط صورة جديدة"
+  },
+  "needMarkers": {
+    "zh": "先让四个黑方块进入画面",
+    "en": "Get the four black squares into view first",
+    "fr": "Fais d'abord entrer les quatre carrés noirs dans l'image",
+    "de": "Bring zuerst die vier schwarzen Quadrate ins Bild",
+    "es": "Primero haz que se vean los cuatro cuadrados negros",
+    "pt": "Primeiro, deixe os quatro quadrados pretos aparecerem na tela",
+    "ja": "まず四つの黒い四角を、画面に入れてね",
+    "ar": "أدخل المربعات السوداء الأربعة في الصورة أولا"
+  },
+  "xrFail": {
+    "zh": "进入 AR 失败：{e}",
+    "en": "Could not start AR: {e}",
+    "fr": "Impossible de lancer l'AR : {e}",
+    "de": "AR konnte nicht starten: {e}",
+    "es": "No se pudo iniciar AR: {e}",
+    "pt": "Não foi possível iniciar a RA: {e}",
+    "ja": "ARを始められませんでした：{e}",
+    "ar": "تعذر تشغيل AR: {e}"
+  },
+  "notrack": {
+    "zh": "AR 还没开始追踪：对着明亮、有花纹的桌面或地面，左右慢慢平移手机",
+    "en": "AR is not tracking yet: aim at a bright, textured table or floor and pan slowly",
+    "fr": "L'AR ne suit pas encore : vise une table ou un sol clair et texturé, et bouge doucement",
+    "de": "AR erkennt noch nichts: Zeig auf einen hellen, gemusterten Tisch oder Boden und schwenk langsam",
+    "es": "AR aún no está rastreando: apunta a una mesa o suelo con luz y con dibujos, y mueve el teléfono despacio",
+    "pt": "A RA ainda não está rastreando: aponte para uma mesa ou chão bem iluminado e com textura, e mova devagar",
+    "ja": "ARがまだ動いていません：明るくて、もようのあるテーブルやゆかにむけて、ゆっくり動かしてね",
+    "ar": "لم يبدأ التتبع بعد: وجه الهاتف إلى طاولة أو أرض مضيئة فيها نقوش، وحركه ببطء"
+  },
+  "nosurface": {
+    "zh": "在找平面…对准桌面或地面，稍微移动一下",
+    "en": "Looking for a surface… aim at the table or floor and move a little",
+    "fr": "Recherche d'une surface… vise la table ou le sol et bouge un peu",
+    "de": "Suche eine Fläche… zeig auf Tisch oder Boden und beweg das Handy ein bisschen",
+    "es": "Buscando una superficie… apunta a la mesa o al suelo y muévete un poco",
+    "pt": "Procurando uma superfície… aponte para a mesa ou o chão e mexa um pouco",
+    "ja": "平らな所をさがしています…テーブルやゆかにむけて、少し動かしてね",
+    "ar": "نبحث عن سطح… وجه الهاتف إلى الطاولة أو الأرض وحركه قليلا"
+  },
+  "ok": {
+    "zh": "找到了！点一下屏幕，把天使放在金色光圈上",
+    "en": "Found one! Tap the screen to place the angel on the gold ring",
+    "fr": "Trouvé ! Touche l'écran pour poser l'ange sur l'anneau doré",
+    "de": "Gefunden! Tipp auf den Bildschirm, um den Engel auf den goldenen Ring zu stellen",
+    "es": "¡Encontré una! Toca la pantalla para poner al ángel en el anillo dorado",
+    "pt": "Achei uma! Toque na tela para colocar o anjo no anel dourado",
+    "ja": "見つけた！画面をタップして、金色の輪の上に天使をおこう",
+    "ar": "وجدنا سطحا! اضغط على الشاشة لتضع الملاك على الحلقة الذهبية"
+  },
+  "lost": {
+    "zh": "把纸拿回画面里，她就回来",
+    "en": "Bring the sheet back into view and she returns",
+    "fr": "Remets la feuille dans l'image et il revient",
+    "de": "Hol das Blatt zurück ins Bild, dann kommt der Engel wieder",
+    "es": "Vuelve a mostrar la hoja y ella regresará",
+    "pt": "Traga a folha de volta para a tela e o anjo volta",
+    "ja": "紙を画面にもどすと、天使ももどってくるよ",
+    "ar": "أعد الورقة إلى الصورة فيعود الملاك"
+  },
+  "helpTitle": {
+    "zh": "帮我找到你的画",
+    "en": "Help me find your drawing",
+    "fr": "Aide-moi à trouver ton dessin",
+    "de": "Hilf mir, dein Bild zu finden",
+    "es": "Ayúdame a encontrar tu dibujo",
+    "pt": "Me ajude a achar seu desenho",
+    "ja": "きみの絵をさがすのを、手つだってね",
+    "ar": "ساعدني لأجد رسمتك"
+  },
+  "help1": {
+    "zh": "把手机抬高一点，让整张纸都在画面里",
+    "en": "Lift the phone so the whole sheet is in view",
+    "fr": "Lève le téléphone pour voir toute la feuille",
+    "de": "Halte das Handy höher, damit das ganze Blatt zu sehen ist",
+    "es": "Sube el teléfono para que se vea toda la hoja",
+    "pt": "Levante o celular para a folha inteira aparecer",
+    "ja": "スマホを少し高く上げて、紙ぜんぶが見えるようにしてね",
+    "ar": "ارفع الهاتف لتظهر الورقة كلها"
+  },
+  "help2": {
+    "zh": "对着亮一点的地方，别背光",
+    "en": "Face the light, not away from it",
+    "fr": "Tourne-toi vers la lumière, pas dos à elle",
+    "de": "Dreh dich zum Licht hin, nicht davon weg",
+    "es": "Ponte de frente a la luz, no de espaldas",
+    "pt": "Fique de frente para a luz, não de costas",
+    "ja": "明るいほうにむけてね。光をせなかにしないで",
+    "ar": "اتجه نحو الضوء، ولا تجعله خلفك"
+  },
+  "help3": {
+    "zh": "四个黑方块都要看得见，不要被手挡住",
+    "en": "All four black squares must be visible — mind your fingers",
+    "fr": "Les quatre carrés noirs doivent se voir — attention aux doigts",
+    "de": "Alle vier schwarzen Quadrate müssen zu sehen sein – Finger weg davon",
+    "es": "Deben verse los cuatro cuadrados negros — cuidado con los dedos",
+    "pt": "Os quatro quadrados pretos precisam aparecer — cuidado com os dedos",
+    "ja": "黒い四角が四つとも見えるように。指でかくさないでね",
+    "ar": "يجب أن تظهر المربعات السوداء الأربعة كلها — انتبه لأصابعك"
+  },
+  "helpDemo": {
+    "zh": "先看演示",
+    "en": "Watch the demo instead",
+    "fr": "Regarder plutôt la démo",
+    "de": "Lieber die Demo ansehen",
+    "es": "Mejor mira la demo",
+    "pt": "Ver a demonstração",
+    "ja": "かわりにデモを見る",
+    "ar": "شاهد العرض بدلا من ذلك"
+  },
+  "readHanzi": {
+    "zh": "汉字",
+    "en": "Characters",
+    "fr": "Caractères",
+    "de": "Schriftzeichen",
+    "es": "Caracteres",
+    "pt": "Caracteres",
+    "ja": "漢字",
+    "ar": "الحروف الصينية"
+  },
+  "readPinyin": {
+    "zh": "拼音",
+    "en": "Pinyin",
+    "fr": "Pinyin",
+    "de": "Pinyin",
+    "es": "Pinyin",
+    "pt": "Pinyin",
+    "ja": "ピンイン",
+    "ar": "بينيين"
+  },
+  "readEnglish": {
+    "zh": "英文",
+    "en": "English",
+    "fr": "Anglais",
+    "de": "Englisch",
+    "es": "Inglés",
+    "pt": "Inglês",
+    "ja": "えいご",
+    "ar": "الإنجليزية"
+  },
+  "hello": {
+    "zh": "哇！我活过来啦！谢谢你给我涂上这么漂亮的颜色！",
+    "en": "Wow! I'm alive! Thank you for colouring me so beautifully!",
+    "fr": "Waouh ! Je prends vie ! Merci pour ces si jolies couleurs !",
+    "de": "Wow! Ich lebe! Danke, dass du mich so schön angemalt hast!",
+    "es": "¡Guau! ¡Estoy viva! ¡Gracias por colorearme tan bonito!",
+    "pt": "Uau! Estou viva! Obrigada por me colorir com cores tão lindas!",
+    "ja": "わあ！わたし、動けるようになったよ！こんなにきれいにぬってくれて、ありがとう！",
+    "ar": "واو! لقد استيقظت! شكرا لأنك لونتني بألوان جميلة جدا!"
+  },
+  "line0": {
+    "zh": "听！天堂的号角为你吹响！",
+    "en": "Listen! The trumpet of heaven sounds for you!",
+    "fr": "Écoute ! La trompette du ciel sonne pour toi !",
+    "de": "Hör mal! Die Trompete des Himmels erklingt für dich!",
+    "es": "¡Escucha! ¡La trompeta del cielo suena para ti!",
+    "pt": "Escute! A trombeta do céu está tocando para você!",
+    "ja": "聞いて！天国のラッパが、きみのためになっているよ！",
+    "ar": "اسمع! بوق السماء يعزف لك!"
+  },
+  "line1": {
+    "zh": "你画得真好看，我好喜欢这些颜色！",
+    "en": "Your drawing is lovely, I adore these colours!",
+    "fr": "Ton dessin est superbe, j'adore ces couleurs !",
+    "de": "Du hast so schön gemalt, ich liebe diese Farben!",
+    "es": "¡Tu dibujo es precioso, me encantan estos colores!",
+    "pt": "Seu desenho ficou lindo, eu adoro essas cores!",
+    "ja": "きみの絵、とってもすてき！この色、大すき！",
+    "ar": "رسمك جميل، أحب هذه الألوان كثيرا!"
+  },
+  "line2": {
+    "zh": "愿你今天平安、快乐！",
+    "en": "May your day be safe and happy!",
+    "fr": "Que ta journée soit douce et joyeuse !",
+    "de": "Ich wünsch dir einen frohen, behüteten Tag!",
+    "es": "¡Que tengas un día feliz y en paz!",
+    "pt": "Que o seu dia seja cheio de paz e alegria!",
+    "ja": "きょうも一日、あんしんで楽しくすごせますように！",
+    "ar": "أتمنى لك يوما آمنا وسعيدا!"
+  },
+  "line3": {
+    "zh": "再给我画一件新衣服吧！",
+    "en": "Draw me a new dress next time!",
+    "fr": "La prochaine fois, dessine-moi une nouvelle robe !",
+    "de": "Mal mir nächstes Mal ein neues Kleid!",
+    "es": "¡La próxima vez, píntame un vestido nuevo!",
+    "pt": "Da próxima vez, desenhe um vestido novo para mim!",
+    "ja": "こんどは、新しいドレスをかいてね！",
+    "ar": "ارسم لي فستانا جديدا في المرة القادمة!"
+  },
+  "greet0": {
+    "zh": "我飞起来啦！",
+    "en": "I'm flying!",
+    "fr": "Je vole !",
+    "de": "Ich fliege!",
+    "es": "¡Estoy volando!",
+    "pt": "Estou voando!",
+    "ja": "とんでるよ！",
+    "ar": "أنا أطير!"
+  },
+  "greet1": {
+    "zh": "哇——！",
+    "en": "Wow!",
+    "fr": "Waouh !",
+    "de": "Wow!",
+    "es": "¡Guau!",
+    "pt": "Uau!",
+    "ja": "わあ！",
+    "ar": "واو!"
+  },
+  "greet2": {
+    "zh": "哈哈哈！",
+    "en": "Ha ha ha!",
+    "fr": "Ha ha ha !",
+    "de": "Ha ha ha!",
+    "es": "¡Ja, ja, ja!",
+    "pt": "Ha ha ha!",
+    "ja": "あはは！",
+    "ar": "ها ها ها!"
+  },
+  "grownups": {
+    "zh": "大人专区",
+    "en": "Grown-ups",
+    "fr": "Adultes",
+    "de": "Erwachsene",
+    "es": "Adultos",
+    "pt": "Adultos",
+    "ja": "大人の方へ",
+    "ar": "للكبار"
+  },
+  "holdGate": {
+    "zh": "大人按住 2 秒",
+    "en": "Grown-ups: hold for 2 s",
+    "fr": "Adultes : maintenez 2 s",
+    "de": "Erwachsene: 2 Sek. halten",
+    "es": "Adultos: mantén presionado 2 s",
+    "pt": "Adultos: segurem por 2 s",
+    "ja": "大人の方：2秒長おし",
+    "ar": "للكبار: اضغط مطولا ثانيتين"
+  },
+  "language": {
+    "zh": "界面语言",
+    "en": "Language",
+    "fr": "Langue",
+    "de": "Sprache",
+    "es": "Idioma",
+    "pt": "Idioma",
+    "ja": "ことば",
+    "ar": "اللغة"
+  },
+  "tapHer": {
+    "zh": "点点我！",
+    "en": "Tap me!",
+    "fr": "Touche-moi !",
+    "de": "Tipp mich an!",
+    "es": "¡Tócame!",
+    "pt": "Toque em mim!",
+    "ja": "タップしてね！",
+    "ar": "المسني!"
+  },
+  "newSheet": {
+    "zh": "换一张纸",
+    "en": "New sheet",
+    "fr": "Nouvelle feuille",
+    "de": "Neues Blatt",
+    "es": "Hoja nueva",
+    "pt": "Nova folha",
+    "ja": "新しい紙",
+    "ar": "ورقة جديدة"
+  },
+  "helpLift": {
+    "zh": "抬高一点",
+    "en": "Lift up",
+    "fr": "Plus haut",
+    "de": "Höher halten",
+    "es": "Más arriba",
+    "pt": "Levante",
+    "ja": "高く上げて",
+    "ar": "ارفع الهاتف"
+  },
+  "helpLight": {
+    "zh": "对着亮处",
+    "en": "Find light",
+    "fr": "Vers la lumière",
+    "de": "Mehr Licht",
+    "es": "Busca luz",
+    "pt": "Busque a luz",
+    "ja": "明るい所へ",
+    "ar": "اتجه للضوء"
+  },
+  "helpSquares": {
+    "zh": "四个方块",
+    "en": "4 squares",
+    "fr": "4 carrés",
+    "de": "4 Quadrate",
+    "es": "4 cuadrados",
+    "pt": "4 quadrados",
+    "ja": "四角が4つ",
+    "ar": "4 مربعات"
+  },
+  "sound": {
+    "zh": "声音",
+    "en": "Sound",
+    "fr": "Son",
+    "de": "Ton",
+    "es": "Sonido",
+    "pt": "Som",
+    "ja": "音",
+    "ar": "الصوت"
+  },
+  "haptics": {
+    "zh": "震动",
+    "en": "Haptics",
+    "fr": "Vibrations",
+    "de": "Vibration",
+    "es": "Vibración",
+    "pt": "Vibração",
+    "ja": "しんどう",
+    "ar": "الاهتزاز"
+  },
+  "music": {
+    "zh": "音乐音量",
+    "en": "Music",
+    "fr": "Musique",
+    "de": "Musik",
+    "es": "Música",
+    "pt": "Música",
+    "ja": "音楽",
+    "ar": "الموسيقى"
+  },
+  "wordCard": {
+    "zh": "学习卡",
+    "en": "Word card",
+    "fr": "Carte de mots",
+    "de": "Wortkarte",
+    "es": "Tarjeta de palabras",
+    "pt": "Cartão de palavras",
+    "ja": "ことばカード",
+    "ar": "بطاقة الكلمات"
+  },
+  "done": {
+    "zh": "好了",
+    "en": "Done",
+    "fr": "Terminé",
+    "de": "Fertig",
+    "es": "Listo",
+    "pt": "Pronto",
+    "ja": "できた",
+    "ar": "تم"
+  },
+  "dgDemo": {
+    "zh": "大卫和歌利亚 · 看演示",
+    "en": "David & Goliath · demo",
+    "fr": "David et Goliath · démo",
+    "de": "David & Goliat · Demo",
+    "es": "David y Goliat · demo",
+    "pt": "Davi e Golias · demonstração",
+    "ja": "ダビデとゴリアト · デモ",
+    "ar": "داود وجليات · عرض"
+  },
+  "dgPaused": {
+    "zh": "暂停了，点一下继续",
+    "en": "Paused — tap to go on",
+    "fr": "En pause — touche pour continuer",
+    "de": "Pause – tippen zum Weiterschauen",
+    "es": "En pausa — toca para seguir",
+    "pt": "Pausado — toque para continuar",
+    "ja": "とまっているよ — タップでつづき",
+    "ar": "توقف مؤقتا — اضغط للمتابعة"
+  },
+  "dgReplay": {
+    "zh": "再看一遍",
+    "en": "Watch again",
+    "fr": "Revoir",
+    "de": "Nochmal ansehen",
+    "es": "Ver otra vez",
+    "pt": "Ver de novo",
+    "ja": "もう一度見る",
+    "ar": "شاهد مرة أخرى"
+  },
+  "dgTheEnd": {
+    "zh": "完",
+    "en": "The End",
+    "fr": "Fin",
+    "de": "Ende",
+    "es": "Fin",
+    "pt": "Fim",
+    "ja": "おしまい",
+    "ar": "النهاية"
+  },
+  "dg_david": {
+    "zh": "大卫",
+    "en": "David",
+    "fr": "David",
+    "de": "David",
+    "es": "David",
+    "pt": "Davi",
+    "ja": "ダビデ",
+    "ar": "داود"
+  },
+  "dg_goliath": {
+    "zh": "歌利亚",
+    "en": "Goliath",
+    "fr": "Goliath",
+    "de": "Goliat",
+    "es": "Goliat",
+    "pt": "Golias",
+    "ja": "ゴリアト",
+    "ar": "جليات"
+  },
+  "dg_saul": {
+    "zh": "扫罗王",
+    "en": "King Saul",
+    "fr": "Le roi Saül",
+    "de": "König Saul",
+    "es": "Rey Saúl",
+    "pt": "Rei Saul",
+    "ja": "サウル王",
+    "ar": "الملك شاول"
+  },
+  "dg_soldiers": {
+    "zh": "以色列士兵",
+    "en": "Soldiers",
+    "fr": "Les soldats",
+    "de": "Soldaten",
+    "es": "Soldados",
+    "pt": "Soldados",
+    "ja": "へいたいたち",
+    "ar": "الجنود"
+  },
+  "dg_esther": {
+    "zh": "以斯帖",
+    "en": "Esther",
+    "fr": "Esther",
+    "de": "Ester",
+    "es": "Ester",
+    "pt": "Ester",
+    "ja": "エステル",
+    "ar": "أستير"
+  },
+  "dg_king": {
+    "zh": "亚哈随鲁王",
+    "en": "King Xerxes",
+    "fr": "Le roi Assuérus",
+    "de": "König Xerxes",
+    "es": "Rey Asuero",
+    "pt": "Rei Xerxes",
+    "ja": "クセルクセス王",
+    "ar": "الملك أحشويروش"
+  },
+  "dg_haman": {
+    "zh": "哈曼",
+    "en": "Haman",
+    "fr": "Haman",
+    "de": "Haman",
+    "es": "Amán",
+    "pt": "Hamã",
+    "ja": "ハマン",
+    "ar": "هامان"
+  },
+  "dg_mordecai": {
+    "zh": "末底改",
+    "en": "Mordecai",
+    "fr": "Mardochée",
+    "de": "Mordechai",
+    "es": "Mardoqueo",
+    "pt": "Mordecai",
+    "ja": "モルデカイ",
+    "ar": "مردخاي"
+  },
+  "dg_herald": {
+    "zh": "传令官",
+    "en": "Herald",
+    "fr": "Le héraut",
+    "de": "Herold",
+    "es": "Pregonero",
+    "pt": "Arauto",
+    "ja": "おふれ役",
+    "ar": "المنادي"
+  },
+  "dg_crowd": {
+    "zh": "众人",
+    "en": "Crowd",
+    "fr": "La foule",
+    "de": "Die Leute",
+    "es": "La gente",
+    "pt": "Multidão",
+    "ja": "人びと",
+    "ar": "الجموع"
+  },
+  "dg_ruth": {
+    "zh": "路得",
+    "en": "Ruth",
+    "fr": "Ruth",
+    "de": "Rut",
+    "es": "Rut",
+    "pt": "Rute",
+    "ja": "ルツ",
+    "ar": "راعوث"
+  },
+  "dg_naomi": {
+    "zh": "拿俄米",
+    "en": "Naomi",
+    "fr": "Noémi",
+    "de": "Noomi",
+    "es": "Noemí",
+    "pt": "Noemi",
+    "ja": "ナオミ",
+    "ar": "نعمي"
+  },
+  "dg_boaz": {
+    "zh": "波阿斯",
+    "en": "Boaz",
+    "fr": "Booz",
+    "de": "Boas",
+    "es": "Booz",
+    "pt": "Boaz",
+    "ja": "ボアズ",
+    "ar": "بوعز"
+  },
+  "dg_reapers": {
+    "zh": "收割的人",
+    "en": "Reapers",
+    "fr": "Les moissonneurs",
+    "de": "Erntehelfer",
+    "es": "Segadores",
+    "pt": "Ceifeiros",
+    "ja": "麦をかる人たち",
+    "ar": "الحصادون"
+  },
+  "dg_moses": {
+    "zh": "摩西",
+    "en": "Moses",
+    "fr": "Moïse",
+    "de": "Mose",
+    "es": "Moisés",
+    "pt": "Moisés",
+    "ja": "モーセ",
+    "ar": "موسى"
+  },
+  "dg_pharaoh": {
+    "zh": "法老",
+    "en": "Pharaoh",
+    "fr": "Pharaon",
+    "de": "Pharao",
+    "es": "Faraón",
+    "pt": "Faraó",
+    "ja": "ファラオ",
+    "ar": "فرعون"
+  },
+  "dg_miriam": {
+    "zh": "米利暗",
+    "en": "Miriam",
+    "fr": "Miriam",
+    "de": "Mirjam",
+    "es": "Miriam",
+    "pt": "Miriã",
+    "ja": "ミリアム",
+    "ar": "مريم"
+  },
+  "dg_god": {
+    "zh": "上帝",
+    "en": "God",
+    "fr": "Dieu",
+    "de": "Gott",
+    "es": "Dios",
+    "pt": "Deus",
+    "ja": "神さま",
+    "ar": "الله"
+  },
+  "dg_people": {
+    "zh": "以色列人",
+    "en": "The Israelites",
+    "fr": "Les Israélites",
+    "de": "Die Israeliten",
+    "es": "Los israelitas",
+    "pt": "Os israelitas",
+    "ja": "イスラエルの人びと",
+    "ar": "بنو إسرائيل"
+  },
+  "dg_daniel": {
+    "zh": "但以理",
+    "en": "Daniel",
+    "fr": "Daniel",
+    "de": "Daniel",
+    "es": "Daniel",
+    "pt": "Daniel",
+    "ja": "ダニエル",
+    "ar": "دانيال"
+  },
+  "dg_officer": {
+    "zh": "大臣",
+    "en": "Official",
+    "fr": "Le ministre",
+    "de": "Beamter",
+    "es": "Ministro",
+    "pt": "Oficial",
+    "ja": "大臣",
+    "ar": "الوزير"
+  },
+  "dg_daniel_king": {
+    "zh": "大流士王",
+    "en": "King Darius",
+    "fr": "Le roi Darius",
+    "de": "König Darius",
+    "es": "Rey Darío",
+    "pt": "Rei Dario",
+    "ja": "ダレイオス王",
+    "ar": "الملك داريوس"
+  },
+  "sheetSave": {
+    "zh": "保存 PDF",
+    "en": "Save PDF",
+    "fr": "Enregistrer le PDF",
+    "de": "PDF sichern",
+    "es": "Guardar PDF",
+    "pt": "Salvar PDF",
+    "ja": "PDFをほぞん",
+    "ar": "حفظ PDF"
+  },
+  "sheetShare": {
+    "zh": "分享",
+    "en": "Share",
+    "fr": "Partager",
+    "de": "Teilen",
+    "es": "Compartir",
+    "pt": "Compartilhar",
+    "ja": "シェア",
+    "ar": "مشاركة"
+  },
+  "sheetPrint": {
+    "zh": "打印",
+    "en": "Print",
+    "fr": "Imprimer",
+    "de": "Drucken",
+    "es": "Imprimir",
+    "pt": "Imprimir",
+    "ja": "プリント",
+    "ar": "طباعة"
+  },
+  "sheetGrownups": {
+    "zh": "给大人：涂色纸（按住 2 秒）",
+    "en": "For grown-ups: the colouring sheet (hold 2 s)",
+    "fr": "Pour les adultes : le coloriage (maintenez 2 s)",
+    "de": "Für Erwachsene: das Malblatt (2 Sek. halten)",
+    "es": "Para adultos: la hoja para colorear (mantén 2 s)",
+    "pt": "Para adultos: a folha de colorir (segure 2 s)",
+    "ja": "大人の方へ：ぬりえ（2秒長おし）",
+    "ar": "للكبار: ورقة التلوين (اضغط مطولا ثانيتين)"
+  },
+  "sheetHoldHint": {
+    "zh": "请大人按住按钮 2 秒",
+    "en": "Grown-ups: press and hold for 2 seconds",
+    "fr": "Adultes : maintenez le bouton 2 secondes",
+    "de": "Erwachsene: 2 Sekunden gedrückt halten",
+    "es": "Adultos: mantén presionado 2 segundos",
+    "pt": "Adultos: pressionem e segurem por 2 segundos",
+    "ja": "大人の方：ボタンを2秒長おししてください",
+    "ar": "للكبار: اضغطوا على الزر مطولا لمدة ثانيتين"
+  },
+  "sheetSaved": {
+    "zh": "已保存到“下载”",
+    "en": "Saved to Downloads",
+    "fr": "Enregistré dans Téléchargements",
+    "de": "In „Downloads“ gespeichert",
+    "es": "Guardado en Descargas",
+    "pt": "Salvo em Downloads",
+    "ja": "「ダウンロード」にほぞんしました",
+    "ar": "تم الحفظ في «التنزيلات»"
+  },
+  "sheetFailed": {
+    "zh": "没有成功，请再试一次",
+    "en": "That didn't work. Please try again.",
+    "fr": "Ça n'a pas marché. Veuillez réessayer.",
+    "de": "Das hat nicht geklappt. Bitte nochmal versuchen.",
+    "es": "No funcionó. Inténtalo de nuevo.",
+    "pt": "Não deu certo. Tente de novo.",
+    "ja": "うまくいきませんでした。もう一度ためしてください。",
+    "ar": "لم ينجح ذلك. حاول مرة أخرى من فضلك."
+  },
+  "sheetDesktop": {
+    "zh": "已在电脑上打开 PDF",
+    "en": "Opened the PDF on this computer",
+    "fr": "PDF ouvert sur cet ordinateur",
+    "de": "PDF auf diesem Computer geöffnet",
+    "es": "Se abrió el PDF en este equipo",
+    "pt": "PDF aberto neste computador",
+    "ja": "このパソコンでPDFをひらきました",
+    "ar": "تم فتح ملف PDF على هذا الحاسوب"
+  },
+  "sheetShareTitle": {
+    "zh": "分享涂色纸",
+    "en": "Share the colouring sheet",
+    "fr": "Partager le coloriage",
+    "de": "Malblatt teilen",
+    "es": "Compartir la hoja para colorear",
+    "pt": "Compartilhar a folha de colorir",
+    "ja": "ぬりえをシェアする",
+    "ar": "مشاركة ورقة التلوين"
+  },
+  "sheetBlank": {
+    "zh": "空白",
+    "en": "Blank",
+    "fr": "Vierge",
+    "de": "Leer",
+    "es": "En blanco",
+    "pt": "Em branco",
+    "ja": "まっ白",
+    "ar": "فارغة"
+  },
+  "sheetColored": {
+    "zh": "涂好的示范",
+    "en": "Coloured sample",
+    "fr": "Exemple colorié",
+    "de": "Ausgemaltes Beispiel",
+    "es": "Ejemplo coloreado",
+    "pt": "Exemplo colorido",
+    "ja": "色をぬった見本",
+    "ar": "نموذج ملون"
+  },
+  "howtoTitle": {
+    "zh": "怎么玩",
+    "en": "How to play",
+    "fr": "Comment jouer",
+    "de": "So geht's",
+    "es": "Cómo jugar",
+    "pt": "Como brincar",
+    "ja": "あそびかた",
+    "ar": "كيف نلعب"
+  },
+  "howtoLead": {
+    "zh": "看一段小视频就会啦",
+    "en": "Watch a short video to see how",
+    "fr": "Regarde une petite vidéo pour voir comment faire",
+    "de": "Ein kurzes Video zeigt dir, wie's geht",
+    "es": "Mira un video corto para ver cómo",
+    "pt": "Veja um vídeo curtinho e aprenda",
+    "ja": "みじかいビデオを見れば、すぐわかるよ",
+    "ar": "شاهد فيديو قصيرا لتعرف كيف"
+  },
+  "howtoStep1": {
+    "zh": "打印白纸",
+    "en": "Print the sheet",
+    "fr": "Imprime la feuille",
+    "de": "Blatt drucken",
+    "es": "Imprime la hoja",
+    "pt": "Imprima a folha",
+    "ja": "紙をプリント",
+    "ar": "اطبع الورقة"
+  },
+  "howtoStep2": {
+    "zh": "涂上颜色",
+    "en": "Colour it in",
+    "fr": "Colorie-la",
+    "de": "Ausmalen",
+    "es": "Coloréala",
+    "pt": "Pinte com cores",
+    "ja": "色をぬる",
+    "ar": "لونها"
+  },
+  "howtoStep3": {
+    "zh": "手机扫一扫",
+    "en": "Scan with the phone",
+    "fr": "Scanne avec le téléphone",
+    "de": "Mit dem Handy scannen",
+    "es": "Escanéala con el teléfono",
+    "pt": "Escaneie com o celular",
+    "ja": "スマホでスキャン",
+    "ar": "امسحها بالهاتف"
+  },
+  "howtoStep4": {
+    "zh": "变成 3D，转着看",
+    "en": "It comes alive in 3D",
+    "fr": "Il prend vie en 3D",
+    "de": "Lebendig in 3D",
+    "es": "Cobra vida en 3D",
+    "pt": "Ganha vida em 3D",
+    "ja": "3Dになって動きだす",
+    "ar": "تصير حية ومجسمة"
+  },
+  "howtoSoon": {
+    "zh": "演示视频马上就来！",
+    "en": "The how-to video is coming soon!",
+    "fr": "La vidéo explicative arrive bientôt !",
+    "de": "Das Anleitungsvideo kommt bald!",
+    "es": "¡El video de cómo jugar llega pronto!",
+    "pt": "O vídeo de como brincar chega logo!",
+    "ja": "あそびかたビデオは、もうすぐ来るよ！",
+    "ar": "فيديو الشرح قادم قريبا!"
+  },
+  "howtoPaused": {
+    "zh": "点一下继续",
+    "en": "Tap to keep watching",
+    "fr": "Touche pour continuer à regarder",
+    "de": "Tippen zum Weiterschauen",
+    "es": "Toca para seguir viendo",
+    "pt": "Toque para continuar assistindo",
+    "ja": "タップでつづきを見る",
+    "ar": "اضغط لتكمل المشاهدة"
+  },
+  "dg_son": {
+    "zh": "小儿子",
+    "en": "Little brother",
+    "fr": "Le petit frère",
+    "de": "Kleiner Bruder",
+    "es": "Hermano menor",
+    "pt": "Irmão mais novo",
+    "ja": "弟",
+    "ar": "الأخ الصغير"
+  },
+  "dg_father": {
+    "zh": "爸爸",
+    "en": "Father",
+    "fr": "Le papa",
+    "de": "Vater",
+    "es": "Papá",
+    "pt": "Pai",
+    "ja": "お父さん",
+    "ar": "الأب"
+  },
+  "dg_brother": {
+    "zh": "哥哥",
+    "en": "Big brother",
+    "fr": "Le grand frère",
+    "de": "Großer Bruder",
+    "es": "Hermano mayor",
+    "pt": "Irmão mais velho",
+    "ja": "お兄さん",
+    "ar": "الأخ الكبير"
+  },
+  "dg_friends": {
+    "zh": "朋友们",
+    "en": "Friends",
+    "fr": "Les amis",
+    "de": "Freunde",
+    "es": "Amigos",
+    "pt": "Amigos",
+    "ja": "友だち",
+    "ar": "الأصدقاء"
+  },
+  "dg_servants": {
+    "zh": "仆人",
+    "en": "Servants",
+    "fr": "Les serviteurs",
+    "de": "Diener",
+    "es": "Sirvientes",
+    "pt": "Servos",
+    "ja": "めしつかい",
+    "ar": "الخدم"
+  },
+  "dg_gabriel": {
+    "zh": "加百列",
+    "en": "Gabriel",
+    "fr": "Gabriel",
+    "de": "Gabriel",
+    "es": "Gabriel",
+    "pt": "Gabriel",
+    "ja": "ガブリエル",
+    "ar": "جبرائيل"
+  },
+  "dg_jonah": {
+    "zh": "约拿",
+    "en": "Jonah",
+    "fr": "Jonas",
+    "de": "Jona",
+    "es": "Jonás",
+    "pt": "Jonas",
+    "ja": "ヨナ",
+    "ar": "يونان"
+  },
+  "dg_captain": {
+    "zh": "船长",
+    "en": "Captain",
+    "fr": "Le capitaine",
+    "de": "Kapitän",
+    "es": "Capitán",
+    "pt": "Capitão",
+    "ja": "船長",
+    "ar": "القبطان"
+  },
+  "dg_jonah_people": {
+    "zh": "尼尼微人",
+    "en": "People of Nineveh",
+    "fr": "Les habitants de Ninive",
+    "de": "Leute von Ninive",
+    "es": "Gente de Nínive",
+    "pt": "Povo de Nínive",
+    "ja": "ニネベの人びと",
+    "ar": "أهل نينوى"
+  },
+  "dg_joseph": {
+    "zh": "约瑟",
+    "en": "Joseph",
+    "fr": "Joseph",
+    "de": "Josef",
+    "es": "José",
+    "pt": "José",
+    "ja": "ヨセフ",
+    "ar": "يوسف"
+  },
+  "dg_jacob": {
+    "zh": "雅各",
+    "en": "Jacob",
+    "fr": "Jacob",
+    "de": "Jakob",
+    "es": "Jacob",
+    "pt": "Jacó",
+    "ja": "ヤコブ",
+    "ar": "يعقوب"
+  },
+  "dg_jesus": {
+    "zh": "耶稣",
+    "en": "Jesus",
+    "fr": "Jésus",
+    "de": "Jesus",
+    "es": "Jesús",
+    "pt": "Jesus",
+    "ja": "イエスさま",
+    "ar": "يسوع"
+  },
+  "dg_peter": {
+    "zh": "彼得",
+    "en": "Peter",
+    "fr": "Pierre",
+    "de": "Petrus",
+    "es": "Pedro",
+    "pt": "Pedro",
+    "ja": "ペトロ",
+    "ar": "بطرس"
+  },
+  "dg_lastsupper_donkey": {
+    "zh": "小驴",
+    "en": "The donkey",
+    "fr": "Le petit âne",
+    "de": "Der Esel",
+    "es": "El burrito",
+    "pt": "O jumentinho",
+    "ja": "子ロバ",
+    "ar": "الجحش"
+  },
+  "dg_john": {
+    "zh": "约翰",
+    "en": "John",
+    "fr": "Jean",
+    "de": "Johannes",
+    "es": "Juan",
+    "pt": "João",
+    "ja": "ヨハネ",
+    "ar": "يوحنا"
+  },
+  "dg_james": {
+    "zh": "雅各",
+    "en": "James",
+    "fr": "Jacques",
+    "de": "Jakobus",
+    "es": "Santiago",
+    "pt": "Tiago",
+    "ja": "ヤコブ",
+    "ar": "يعقوب"
+  },
+  "dg_andrew": {
+    "zh": "安得烈",
+    "en": "Andrew",
+    "fr": "André",
+    "de": "Andreas",
+    "es": "Andrés",
+    "pt": "André",
+    "ja": "アンデレ",
+    "ar": "أندراوس"
+  },
+  "dg_lastsupper_seller1": {
+    "zh": "卖鸽子的",
+    "en": "The dove seller",
+    "fr": "Le vendeur de colombes",
+    "de": "Der Taubenhändler",
+    "es": "El vendedor de palomas",
+    "pt": "O vendedor de pombas",
+    "ja": "ハトを売る人",
+    "ar": "بائع الحمام"
+  },
+  "dg_lastsupper_seller2": {
+    "zh": "兑换银钱的",
+    "en": "The money changer",
+    "fr": "Le changeur d'argent",
+    "de": "Der Geldwechsler",
+    "es": "El cambista",
+    "pt": "O cambista",
+    "ja": "お金をとりかえる人",
+    "ar": "الصراف"
+  },
+  "dg_lastsupper_people": {
+    "zh": "众人",
+    "en": "The crowd",
+    "fr": "La foule",
+    "de": "Die Leute",
+    "es": "La gente",
+    "pt": "A multidão",
+    "ja": "人びと",
+    "ar": "الجموع"
+  },
+  "dg_miracles_man": {
+    "zh": "躺褥子的人",
+    "en": "The man on the mat",
+    "fr": "L'homme sur la natte",
+    "de": "Der Mann auf der Matte",
+    "es": "El hombre de la camilla",
+    "pt": "O homem na maca",
+    "ja": "ねどこにねている人",
+    "ar": "الرجل على الفراش"
+  },
+  "dg_friend1": {
+    "zh": "朋友",
+    "en": "Friend",
+    "fr": "Un ami",
+    "de": "Freund",
+    "es": "Amigo",
+    "pt": "Amigo",
+    "ja": "友だち",
+    "ar": "صديق"
+  },
+  "dg_friend2": {
+    "zh": "朋友",
+    "en": "Friend",
+    "fr": "Un ami",
+    "de": "Freund",
+    "es": "Amigo",
+    "pt": "Amigo",
+    "ja": "友だち",
+    "ar": "صديق"
+  },
+  "dg_friend3": {
+    "zh": "朋友",
+    "en": "Friend",
+    "fr": "Un ami",
+    "de": "Freund",
+    "es": "Amigo",
+    "pt": "Amigo",
+    "ja": "友だち",
+    "ar": "صديق"
+  },
+  "dg_friend4": {
+    "zh": "朋友",
+    "en": "Friend",
+    "fr": "Un ami",
+    "de": "Freund",
+    "es": "Amigo",
+    "pt": "Amigo",
+    "ja": "友だち",
+    "ar": "صديق"
+  },
+  "dg_miracles_friends": {
+    "zh": "四个朋友",
+    "en": "The four friends",
+    "fr": "Les quatre amis",
+    "de": "Die vier Freunde",
+    "es": "Los cuatro amigos",
+    "pt": "Os quatro amigos",
+    "ja": "四人の友だち",
+    "ar": "الأصدقاء الأربعة"
+  },
+  "dg_miracles_people": {
+    "zh": "众人",
+    "en": "The crowd",
+    "fr": "La foule",
+    "de": "Die Leute",
+    "es": "La gente",
+    "pt": "A multidão",
+    "ja": "人びと",
+    "ar": "الجموع"
+  },
+  "dg_risen_mary": {
+    "zh": "马利亚",
+    "en": "Mary",
+    "fr": "Marie",
+    "de": "Maria",
+    "es": "María",
+    "pt": "Maria",
+    "ja": "マリア",
+    "ar": "مريم"
+  },
+  "dg_risen_angel": {
+    "zh": "天使",
+    "en": "The angel",
+    "fr": "L'ange",
+    "de": "Der Engel",
+    "es": "El ángel",
+    "pt": "O anjo",
+    "ja": "天使",
+    "ar": "الملاك"
+  },
+  "dg_thomas": {
+    "zh": "多马",
+    "en": "Thomas",
+    "fr": "Thomas",
+    "de": "Thomas",
+    "es": "Tomás",
+    "pt": "Tomé",
+    "ja": "トマス",
+    "ar": "توما"
+  },
+  "dg_joanna": {
+    "zh": "约亚拿",
+    "en": "Joanna",
+    "fr": "Jeanne",
+    "de": "Johanna",
+    "es": "Juana",
+    "pt": "Joana",
+    "ja": "ヨハナ",
+    "ar": "يونا"
+  },
+  "dg_saul_saul": {
+    "zh": "扫罗",
+    "en": "Saul",
+    "fr": "Saul",
+    "de": "Saulus",
+    "es": "Saulo",
+    "pt": "Saulo",
+    "ja": "サウロ",
+    "ar": "شاول"
+  },
+  "dg_ananias": {
+    "zh": "亚拿尼亚",
+    "en": "Ananias",
+    "fr": "Ananias",
+    "de": "Hananias",
+    "es": "Ananías",
+    "pt": "Ananias",
+    "ja": "アナニア",
+    "ar": "حنانيا"
+  },
+  "dg_barnabas": {
+    "zh": "巴拿巴",
+    "en": "Barnabas",
+    "fr": "Barnabas",
+    "de": "Barnabas",
+    "es": "Bernabé",
+    "pt": "Barnabé",
+    "ja": "バルナバ",
+    "ar": "برنابا"
+  },
+  "dg_saul_judas": {
+    "zh": "犹大",
+    "en": "Judas",
+    "fr": "Judas",
+    "de": "Judas",
+    "es": "Judas",
+    "pt": "Judas",
+    "ja": "ユダ",
+    "ar": "يهوذا"
+  },
+  "dg_saul_priest": {
+    "zh": "大祭司",
+    "en": "The high priest",
+    "fr": "Le grand prêtre",
+    "de": "Der Hohepriester",
+    "es": "El sumo sacerdote",
+    "pt": "O sumo sacerdote",
+    "ja": "だいさいし",
+    "ar": "رئيس الكهنة"
+  },
+  "dg_saul_tallguard": {
+    "zh": "高个子卫兵",
+    "en": "Tall guard",
+    "fr": "Le grand garde",
+    "de": "Großer Wächter",
+    "es": "Guardia alto",
+    "pt": "Guarda alto",
+    "ja": "せの高いへいし",
+    "ar": "الحارس الطويل"
+  },
+  "dg_saul_shortguard": {
+    "zh": "矮个子卫兵",
+    "en": "Short guard",
+    "fr": "Le petit garde",
+    "de": "Kleiner Wächter",
+    "es": "Guardia bajito",
+    "pt": "Guarda baixinho",
+    "ja": "せのひくいへいし",
+    "ar": "الحارس القصير"
+  },
+  "libGreeting": {
+    "zh": "今天想读哪个故事？",
+    "en": "Which story shall we read today?",
+    "fr": "Quelle histoire lisons-nous aujourd'hui ?",
+    "de": "Welche Geschichte lesen wir heute?",
+    "ja": "きょうは どの おはなしを よむ？",
+    "es": "¿Qué historia leemos hoy?",
+    "ar": "أي قصة نقرأ اليوم؟",
+    "pt": "Qual história vamos ler hoje?"
+  },
+  "libShelf": {
+    "zh": "我的书架",
+    "en": "My bookshelf",
+    "fr": "Ma bibliothèque",
+    "de": "Mein Bücherregal",
+    "ja": "わたしの ほんだな",
+    "es": "Mi estante",
+    "ar": "مكتبتي",
+    "pt": "Minha estante"
+  },
+  "libChapters": {
+    "zh": "章节",
+    "en": "Chapters",
+    "fr": "Chapitres",
+    "de": "Kapitel",
+    "ja": "ばめん",
+    "es": "Capítulos",
+    "ar": "الفصول",
+    "pt": "Capítulos"
+  },
+  "libReadAgain": {
+    "zh": "再读一遍",
+    "en": "Read it again",
+    "fr": "Relire",
+    "de": "Noch einmal lesen",
+    "ja": "もういちど よむ",
+    "es": "Leer otra vez",
+    "ar": "اقرأها مرة أخرى",
+    "pt": "Ler de novo"
+  },
+  "libKeepReading": {
+    "zh": "接着读",
+    "en": "Keep reading",
+    "fr": "Continuer",
+    "de": "Weiterlesen",
+    "ja": "つづきを よむ",
+    "es": "Seguir leyendo",
+    "ar": "تابع القراءة",
+    "pt": "Continuar lendo"
+  },
+  "libNew": {
+    "zh": "新",
+    "en": "NEW",
+    "fr": "NEUF",
+    "de": "NEU",
+    "ja": "NEW",
+    "es": "NUEVO",
+    "ar": "جديد",
+    "pt": "NOVO"
+  },
+  "libPartOf": {
+    "zh": "第 {e} 幕",
+    "en": "Part {e}",
+    "fr": "Partie {e}",
+    "de": "Teil {e}",
+    "ja": "ばめん {e}",
+    "es": "Parte {e}",
+    "ar": "الجزء {e}",
+    "pt": "Parte {e}"
+  },
+  "libContinue": {
+    "zh": "▶  接着看第 {e} 幕",
+    "en": "▶  Continue from part {e}",
+    "fr": "▶  Reprendre à la partie {e}",
+    "de": "▶  Weiter ab Teil {e}",
+    "ja": "▶  ばめん {e} から つづける",
+    "es": "▶  Seguir desde la parte {e}",
+    "ar": "▶  تابع من الجزء {e}",
+    "pt": "▶  Continuar da parte {e}"
+  },
+  "libFromStart": {
+    "zh": "从头看",
+    "en": "Start from the beginning",
+    "fr": "Recommencer depuis le début",
+    "de": "Von vorn anfangen",
+    "ja": "はじめから みる",
+    "es": "Empezar desde el principio",
+    "ar": "ابدأ من البداية",
+    "pt": "Começar do início"
+  },
+  "libWatch": {
+    "zh": "▶  看故事",
+    "en": "▶  Watch the story",
+    "fr": "▶  Regarder l'histoire",
+    "de": "▶  Geschichte ansehen",
+    "ja": "▶  おはなしを みる",
+    "es": "▶  Ver la historia",
+    "ar": "▶  شاهد القصة",
+    "pt": "▶  Assistir à história"
+  },
+  "libScanSheet": {
+    "zh": "扫我画的这张",
+    "en": "Scan my sheet",
+    "fr": "Scanner mon dessin",
+    "de": "Mein Bild scannen",
+    "ja": "わたしの えを よみとる",
+    "es": "Escanear mi dibujo",
+    "ar": "امسح رسمتي",
+    "pt": "Escanear meu desenho"
+  },
+  "libScan": {
+    "zh": "扫一扫我的画",
+    "en": "Scan my colouring",
+    "fr": "Scanner mon coloriage",
+    "de": "Mein Ausmalbild scannen",
+    "ja": "ぬりえを よみとる",
+    "es": "Escanear mi dibujo",
+    "ar": "امسح تلويني",
+    "pt": "Escanear minha pintura"
+  },
+  "libAbout": {
+    "zh": "约 {e} 分钟",
+    "en": "about {e} min",
+    "fr": "environ {e} min",
+    "de": "etwa {e} Min.",
+    "ja": "やく {e} ふん",
+    "es": "unos {e} min",
+    "ar": "حوالي {e} دقيقة",
+    "pt": "cerca de {e} min"
+  },
+  "demoSuffix": {
+    "zh": " · 看演示",
+    "en": " · demo",
+    "fr": " · démo",
+    "de": " · Demo",
+    "ja": " · デモ",
+    "es": " · demo",
+    "ar": " · عرض",
+    "pt": " · demo"
+  },
+  "langPick": {
+    "zh": "选择语言",
+    "en": "Choose a language",
+    "fr": "Choisis une langue",
+    "de": "Sprache wählen",
+    "ja": "ことばを えらぶ",
+    "es": "Elige un idioma",
+    "ar": "اختر لغة",
+    "pt": "Escolha um idioma"
+  },
+  "findBack": {
+    "zh": "故事在这边",
+    "en": "The story is this way",
+    "fr": "L'histoire est par ici",
+    "de": "Die Geschichte ist hier",
+    "ja": "おはなしは こっちだよ",
+    "es": "La historia está por aquí",
+    "ar": "القصة من هنا",
+    "pt": "A história está aqui"
+  },
+  "bringBack": {
+    "zh": "把故事拉到眼前",
+    "en": "Bring the story here",
+    "fr": "Ramène l'histoire ici",
+    "de": "Geschichte herholen",
+    "ja": "おはなしを ちかくに よぶ",
+    "es": "Trae la historia aquí",
+    "ar": "أحضر القصة إلى هنا",
+    "pt": "Trazer a história para cá"
+  },
+  "slowDown": {
+    "zh": "慢慢移动手机，让它看清桌面",
+    "en": "Move the phone slowly so it can see the table",
+    "fr": "Bouge le téléphone doucement pour qu'il voie la table",
+    "de": "Bewege das Handy langsam, damit es den Tisch sieht",
+    "ja": "スマホを ゆっくり うごかして、つくえを みせてね",
+    "es": "Mueve el teléfono despacio para que vea la mesa",
+    "ar": "حرك الهاتف ببطء ليرى الطاولة",
+    "pt": "Mova o celular devagar para ele ver a mesa"
+  },
+  "watchFilm": {
+    "zh": "看动画片（不用相机）",
+    "en": "Watch as a film (no camera)",
+    "fr": "Regarder en dessin animé (sans caméra)",
+    "de": "Als Film ansehen (ohne Kamera)",
+    "ja": "アニメで みる（カメラなし）",
+    "es": "Ver como película (sin cámara)",
+    "ar": "شاهد كفيلم (بدون كاميرا)",
+    "pt": "Ver como desenho (sem câmera)"
+  },
+  "watchAR": {
+    "zh": "放到我的桌子上（AR）",
+    "en": "Put it on my table (AR)",
+    "fr": "Le mettre sur ma table (AR)",
+    "de": "Auf meinen Tisch stellen (AR)",
+    "ja": "つくえの うえに だす（AR）",
+    "es": "Ponerla en mi mesa (AR)",
+    "ar": "ضعها على طاولتي (AR)",
+    "pt": "Colocar na minha mesa (RA)"
+  }
 }
