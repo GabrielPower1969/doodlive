@@ -31,7 +31,7 @@ import tts_lock           # noqa: E402
 CFG = json.load(open(os.path.join(HERE, "voice_i18n.json"), encoding="utf-8"))
 CROWDS = {"crowd", "people", "friends", "servants", "reapers"}
 ACCENT_RE = re.compile(r"\s*(Clear\s+)?(clear\s+)?[Ss]tandard (American|British) English\.?|\s*Standard American English[^.]*\.|\s*普通话标准。?")
-OK_ERR = {"ja": 0.45}       # whisper writes kana as kanji and back: the character rate is noisy for Japanese
+OK_ERR = {"ja": 0.6}        # whisper writes kana as kanji and back: the character rate is noisy for Japanese
 OK_ERR_DEFAULT = 0.22
 
 
@@ -118,6 +118,8 @@ def main():
     ap.add_argument("--stories", default="")
     ap.add_argument("--langs", default=",".join(CFG["langs"]))
     ap.add_argument("--takes", type=int, default=3)
+    ap.add_argument("--max-try", type=int, default=0, help="stop after this many takes (0 = --takes); not part of the "
+                    "line's signature, so lowering it to save time does not redo finished lines")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--progress", default="")
     a = ap.parse_args()
@@ -160,7 +162,7 @@ def main():
                     if not a.force and sources.get(lid, {}).get("sig") == sig and os.path.exists(wav):
                         continue
                     progress("running", f"{story} {lang} {lid}")
-                    best = render(story, line, lang, text, design, fx, a.takes, tmp)
+                    best = render(story, line, lang, text, design, fx, min(a.takes, a.max_try or a.takes), tmp)
                     V.normalise(best["file"], wav, mp3, "expressive")
                     sources[lid] = {"sig": sig, "source": f"tts:qwen_design:{role}", "take": best["take"]}
                     report[lid] = {k: best[k] for k in ("take", "sec", "err", "asr", "tooLong")}
