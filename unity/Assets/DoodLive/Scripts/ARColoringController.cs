@@ -128,7 +128,7 @@ namespace DoodLive
                     autoDemo = intent.Call<string>("getStringExtra", "demo");
                     // diagnostics: `am start ... --ez noimages true` runs the marker path alone (frame-rate A/B on a device)
                     if (intent.Call<bool>("getBooleanExtra", "noimages", false) && trackedImages)
-                    { trackedImages.enabled = false; Debug.Log("DoodLive: image tracking off (noimages)"); }
+                    { noImages = true; trackedImages.enabled = false; Debug.Log("DoodLive: image tracking off (noimages)"); }
                 }
             }
             catch (System.Exception e) { Debug.LogWarning("DoodLive: intent read failed " + e.Message); }
@@ -151,9 +151,13 @@ namespace DoodLive
             state = s; stateT = 0;
             switch (s)
             {
-                case State.Home: statusKey = ""; angel.gameObject.SetActive(false); StopStory(); lastSavedShotKey = null; break;
+                case State.Home:
+                    statusKey = ""; angel.gameObject.SetActive(false); StopStory(); lastSavedShotKey = null;
+                    DetachStage(); if (finder) finder.Forget();
+                    if (session && arReady) { session.enabled = false; arReady = false; }   // the shelf needs no camera (battery, heat)
+                    break;
                 case State.Permission: statusKey = "openingCam"; StartCoroutine(Boot()); break;
-                case State.ScanSearch: showMode = false; lockedFor = 0; angel.gameObject.SetActive(false); StopStory(); statusKey = "fit"; break;
+                case State.ScanSearch: showMode = false; lockedFor = 0; angel.gameObject.SetActive(false); StopStory(); DetachStage(); statusKey = "fit"; break;
                 case State.ScanLocked: statusKey = "found"; Cue(cueLock); break;
                 case State.ScanHelp: statusKey = ""; break;
                 case State.Reveal: StartReveal(); break;
@@ -162,8 +166,11 @@ namespace DoodLive
             }
         }
 
-        IEnumerator Boot()
+        // Camera permission and ARCore availability. arFail: null when AR can run, else the status key to show.
+        string arFail;
+        IEnumerator EnsureAr()
         {
+            arFail = null;
 #if UNITY_ANDROID && !UNITY_EDITOR
             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
             {
@@ -173,13 +180,28 @@ namespace DoodLive
                 Permission.RequestUserPermission(Permission.Camera, cb);
                 while (!answered) yield return null;
             }
-            if (!Permission.HasUserAuthorizedPermission(Permission.Camera)) { statusKey = "noPerm"; Go(State.Home); statusKey = "noPerm"; yield break; }
+            if (!Permission.HasUserAuthorizedPermission(Permission.Camera)) { arFail = "noPerm"; yield break; }
 #endif
             if (ARSession.state == ARSessionState.None || ARSession.state == ARSessionState.CheckingAvailability) yield return ARSession.CheckAvailability();
             if (ARSession.state == ARSessionState.NeedsInstall) yield return ARSession.Install();
-            if (ARSession.state == ARSessionState.Unsupported || ARSession.state == ARSessionState.NeedsInstall)
-            { arUnsupported = true; statusKey = "noAR"; Go(State.Home); statusKey = "noAR"; yield break; }
+            if (ARSession.state == ARSessionState.Unsupported || ARSession.state == ARSessionState.NeedsInstall) { arUnsupported = true; arFail = "noAR"; }
+        }
+
+        // A demo waiting for the camera: called with true when AR runs, false to play it as a film instead.
+        System.Action<bool> pendingDemo;
+
+        IEnumerator Boot()
+        {
+            yield return EnsureAr();
+            var demo = pendingDemo; pendingDemo = null;
+            if (arFail != null)
+            {
+                if (demo != null) { demo(false); yield break; }   // no camera: the book still plays, as a film
+                var key = arFail; statusKey = key; Go(State.Home); statusKey = key; yield break;
+            }
+            RestoreArCamera();
             session.enabled = true; arReady = true;
+            if (demo != null) { demo(true); yield break; }
             Go(State.ScanSearch);
         }
 
@@ -187,6 +209,7 @@ namespace DoodLive
         // ARCore matches the whole page, and every sheet shares the same frame and corner markers, so a coloured page
         // was read as the most detailed reference (the coloured Gabriel sample) - LESSONS 2026-11-18.
         SheetTarget imageSheet;
+        bool noImages;   // diagnostics flag: image tracking stays off
         SheetTarget Sheet()
         {
             if (finder && finder.Current != null && finder.Current.Tracking) return finder.Current;
@@ -209,8 +232,19 @@ namespace DoodLive
                 active.Hold = paused || state == State.LiveLost || moreOpen;
                 active.MusicGain = Mathf.Clamp(musicBed / 0.22f, 0, 2);
             }
-            if (finder) finder.Active = arReady && !paused && !showMode && state >= State.ScanSearch && state != State.Reveal;
+            if (finder)
+            {
+                finder.Active = arReady && !paused && !showMode && state >= State.ScanSearch && state != State.Reveal;
+                finder.Interval = state >= State.Reveal ? 0.35f : 0.15f;   // live: only refines the anchor, so a slower pace
+            }
+            // image tracking costs a lot on mid-range phones: only while scanning, or when the stage follows an image
+            if (trackedImages && !noImages && arReady)
+            {
+                bool want = !showMode && (state < State.Reveal || (anchoredSheet != null && anchoredSheet.Image));
+                if (trackedImages.enabled != want) trackedImages.enabled = want;
+            }
             if (paused) return;
+            StageGestures();
             switch (state)
             {
                 case State.ScanSearch:
@@ -229,7 +263,6 @@ namespace DoodLive
                     if (stateT >= RevealSeconds) Go(State.LiveIdle);
                     break;
                 case State.LiveIdle:
-                    if (TrackingLost()) { untracked += dt; if (untracked > LostAfter) Go(State.LiveLost); } else untracked = 0;
                     if (!dgMode && Time.time - idleSince > GreetAfter && greetCount < GreetMax && Time.time - lastGreet > GreetEvery && !voice.isPlaying) Greet();
                     var tap = TapOutsideUI();
                     if (tap.HasValue && dgMode)
@@ -249,20 +282,19 @@ namespace DoodLive
                 case State.LiveGreet:
                     if (!voice.isPlaying && stateT > 0.5f) Go(State.LiveIdle);
                     break;
-                case State.LiveLost:
-                    if (!TrackingLost()) { untracked = 0; statusKey = "tap"; Go(State.LiveIdle); }
+                case State.LiveLost:   // no longer entered: the stage stays anchored in the room (docs/ANCHORING-DESIGN.md)
+                    statusKey = "tap"; Go(State.LiveIdle);
                     break;
             }
             LibraryInput(); TrackProgress();
             if (Input.GetKeyDown(KeyCode.Escape)) Back();   // Android back button
         }
 
-        bool TrackingLost() => !showMode && anchoredSheet != null && !anchoredSheet.Tracking;
 
         void Back()
         {
             if (howtoOpen) { CloseHowto(); return; }   // the how-to video (ARColoringController.Howto.cs)
-            if (state >= State.LiveIdle) Rescan();
+            if (state >= State.LiveIdle) { if (showMode) BackToLibrary(); else Rescan(); }
             else if (state >= State.ScanSearch && state != State.Reveal) Go(State.Home);
             else if (state == State.Home && libOpen != null) libOpen = null;
             else if (state == State.Home) Application.Quit();
@@ -271,8 +303,9 @@ namespace DoodLive
         void Rescan()
         {
             StopVoice(); greetCount = 0; moreOpen = false;
+            DetachStage();
             if (finder) finder.Forget();
-            if (arReady) Go(State.ScanSearch); else Go(State.Home);
+            if (arReady) Go(State.ScanSearch); else Go(State.Permission);
         }
 
         // ---------------- capture / bake ----------------
@@ -353,65 +386,23 @@ namespace DoodLive
             var pageBottom = Vector3.ProjectOnPlane(-st.forward, Vector3.up);
             var facing = dgMode && placeFlat >= 0.5f && pageBottom.sqrMagnitude > 0.05f ? pageBottom : toViewer;
             placeYaw = Quaternion.LookRotation(facing.normalized, Vector3.up).eulerAngles.y;
-            var holder = Holder;
-            var oldAnchor = holder.parent && holder.parent.GetComponent<ARAnchor>() ? holder.parent.gameObject : null;
-            holder.SetParent(st, false);
-            if (oldAnchor) Destroy(oldAnchor);
-            anchoredSheet = sheet;
-            FitToSheet(1f);
+            placeOnFlat = placeFlat >= 0.5f;
+            sheetHeading0 = SheetHeading(st);
+            // the stage gets its own anchor in the room; the sheet only refines it (ARColoringController.Stage.cs)
+            DetachStage();
+            anchoredSheet = sheet; stageMode = StageMode.Sheet;
+            SheetStagePose(sheet, out var p, out var y, out var s);
+            MoveStage(p, y, s, false);
         }
 
-        void FitToSheet(float k)
-        {
-            var sheet = anchoredSheet; if (sheet == null || !sheet.IsAlive) return;
-            var st = sheet.transform;
-            var pos = st.TransformPoint(PageToLocal(sheet, placePage)) + st.up * (0.03f * (1 - placeFlat) * sheet.size.x);
-            float artW = tpl.art.width / tpl.page.x * sheet.size.x;
-            float scale = dgMode ? artW : artW * Mathf.Lerp(1f, scaleOnSheet, placeFlat);   // D&G: 1 unit = the drawn art width
-            if (dgMode) pos += Quaternion.Euler(0, placeYaw, 0) * Vector3.forward * (0.3f * artW * (1 - placeFlat));   // upright sheet: Goliath in front of it
-            var holder = Holder;
-            holder.position = Vector3.Lerp(holder.position, pos, k);
-            holder.rotation = Quaternion.Euler(0, placeYaw, 0);
-            var ls = holder.parent ? holder.parent.lossyScale : Vector3.one;
-            holder.localScale = Vector3.Lerp(holder.localScale, Vector3.one * scale / Mathf.Max(1e-4f, ls.x), k);
-        }
-
-        void LateUpdate()
-        {
-            if (state >= State.LiveIdle && !showMode && anchoredSheet != null && anchoredSheet.IsAlive && anchoredSheet.Tracking)
-                FitToSheet(Mathf.Clamp01(Time.deltaTime * 8f));
-        }
-
-        void AnchorHere()
-        {
-            var holder = Holder;
-            if (!arReady) { holder.SetParent(null, true); return; }
-            var go = new GameObject("AngelAnchor");
-            go.transform.SetPositionAndRotation(holder.position, holder.rotation); go.AddComponent<ARAnchor>();
-            var old = holder.parent; holder.SetParent(go.transform, true);
-            if (old && old.GetComponent<ARAnchor>()) Destroy(old.gameObject);
-            anchoredSheet = null;
-        }
+        void LateUpdate() => StageLateUpdate();
 
         void OnEnable() { if (trackedImages) trackedImages.trackablesChanged.AddListener(OnImagesChanged); }
         void OnDisable() { if (trackedImages) trackedImages.trackablesChanged.RemoveListener(OnImagesChanged); }
         void OnImagesChanged(ARTrackablesChangedEventArgs<ARTrackedImage> e)
-        {
+        {   // the tracked image is gone: the stage stays where it is, it just stops refining
             if (anchoredSheet == null || !anchoredSheet.Image) return;
-            foreach (var r in e.removed) if (r.Key == anchoredSheet.Image.trackableId) { AnchorHere(); return; }
-        }
-
-        void PlaceInFront()
-        {
-            var cam = arCamera.transform;
-            var fwd = Vector3.ProjectOnPlane(cam.forward, Vector3.up); if (fwd.sqrMagnitude < 1e-4f) fwd = Vector3.forward; fwd.Normalize();
-            var holder = Holder;
-            holder.SetParent(null, false);
-            // D&G: a 0.3 m wide stage a little below eye level (the page lies flat, so it must sit lower than the angel)
-            holder.position = dgMode ? cam.position + fwd * 0.75f - Vector3.up * 0.3f : cam.position + cam.forward * 1.0f - Vector3.up * 0.1f;
-            holder.rotation = Quaternion.LookRotation(-fwd, Vector3.up);
-            holder.localScale = Vector3.one * 0.3f;
-            AnchorHere();
+            foreach (var r in e.removed) if (r.Key == anchoredSheet.Image.trackableId) { anchoredSheet = null; return; }
         }
 
         void ApplyPage()
@@ -520,25 +511,57 @@ namespace DoodLive
             t.localScale = s0;
         }
 
+        // Demo (a book from the shelf, or the angel): in AR when the phone can (the stage stands in the room, on the
+        // table once one is found); as a film when it cannot or the grown-ups chose film (docs/ANCHORING-DESIGN.md).
         void ShowDemo()
         {
             Cue(cueClick);
-            StopStory();
-            showMode = true;
-            NoArCamera();
-            UseDemoTexture(); PlaceInFront(); ShowTitle("angel");
-            Go(State.Reveal);
+            if (!arReady && !arUnsupported && !PreferFilm) { pendingDemo = StartDemoAngel; Go(State.Permission); return; }
+            StartDemoAngel(arReady && !PreferFilm);
         }
 
+        void StartDemoAngel(bool ar)
+        {
+            StopStory(); DetachStage();
+            showMode = true;
+            if (!ar) { if (arReady) { session.enabled = false; arReady = false; } NoArCamera(); }
+            UseDemoTexture(); ShowTitle("angel");
+            if (ar) StartCoroutine(StartArStage(0.3f, true));
+            else { PlaceInFrontFixed(); Go(State.Reveal); }
+        }
+
+        // NoArCamera's changes, kept so the scan can undo them: without this, watching a book from the shelf before the
+        // first scan left the camera feed and pose driver off, and "Scan my colouring" showed a brown screen (2026-11-21)
+        bool noArSaved; CameraClearFlags arClear; Color arBg; float arFov; Vector3 arPos; Quaternion arRot;
         void NoArCamera()
         {
             if (arReady) return;
+            if (!noArSaved)
+            {
+                noArSaved = true; arClear = arCamera.clearFlags; arBg = arCamera.backgroundColor; arFov = arCamera.fieldOfView;
+                arPos = arCamera.transform.position; arRot = arCamera.transform.rotation;
+            }
             // no AR session: stop the pose driver (it would snap the camera back to the origin), sky backdrop, fixed camera
             var tpd = arCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>(); if (tpd) tpd.enabled = false;
             if (cameraBackground) cameraBackground.enabled = false;
             arCamera.clearFlags = CameraClearFlags.SolidColor; arCamera.backgroundColor = new Color32(0x9C, 0x6B, 0x45, 0xFF);   // warm table (Paper & Crayon mocks)
             arCamera.transform.SetPositionAndRotation(new Vector3(0, 1.2f, 0), Quaternion.identity);
             arCamera.fieldOfView = 60;
+        }
+
+        void RestoreArCamera(bool stopStory = true)
+        {
+            if (stopStory)
+            {
+                StopStory();                                // a demo's cinematic must not keep driving the camera
+                foreach (var p in Players()) p.Cinematic = null;
+            }
+            var tpd = arCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>(); if (tpd) tpd.enabled = true;
+            if (cameraBackground) cameraBackground.enabled = true;
+            if (!noArSaved) return;
+            noArSaved = false;
+            arCamera.clearFlags = arClear; arCamera.backgroundColor = arBg; arCamera.fieldOfView = arFov;
+            arCamera.transform.SetPositionAndRotation(arPos, arRot);
         }
 
         // Home screen's David & Goliath entry: the play with the sample colouring (assets/david-goliath/sheet/demo-colored.png)
@@ -551,16 +574,21 @@ namespace DoodLive
         {
             if (p == null || (p is UnityEngine.Object o && !o)) return;
             Cue(cueClick);
-            StopStory();
+            if (!arReady && !arUnsupported && !PreferFilm) { pendingDemo = ar => StartDemoStory(p, ar); Go(State.Permission); return; }
+            StartDemoStory(p, arReady && !PreferFilm);
+        }
+
+        void StartDemoStory(IStoryPlayer p, bool ar)
+        {
+            StopStory(); DetachStage();
             showMode = true; active = p; dgMode = true;
-            NoArCamera();
+            if (!ar) { if (arReady) { session.enabled = false; arReady = false; } NoArCamera(); }
             rawPx = cleanPx = null;
             if (p == (IStoryPlayer)story) { if (dgMaterials != null) foreach (var m in dgMaterials) if (m) m.SetTexture("_BaseMap", LineFree(dgDemoTexture)); }
             else if (p is Story.StoryDirector sd && sd.pageMaterials != null) foreach (var m in sd.pageMaterials) if (m) m.SetTexture("_BaseMap", LineFree(sd.demoTexture));
-            PlaceInFront();
             p.ShowDemoPage(true);
-            p.Cinematic = arReady ? null : arCamera;
-            Go(State.Reveal);
+            if (ar) { p.Cinematic = null; StartCoroutine(StartArStage(0.3f, true)); }
+            else { PlaceInFrontFixed(); p.Cinematic = arCamera; Go(State.Reveal); }
         }
 
         // The sample colouring still carries the printed ink lines. A real scan has them erased (EraseLines in the

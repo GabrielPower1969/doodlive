@@ -29,7 +29,8 @@ namespace DoodLive
         /// <summary>The identified sheet, or null. Its Tracking turns false a second after the markers leave view.</summary>
         public SheetTarget Current { get; private set; }
 
-        const float Interval = 0.15f;
+        /// <summary>Seconds between detections: 0.15 while scanning, slower once the stage only needs refining.</summary>
+        public float Interval = 0.15f;
         const int ShortSide = 360;
         static readonly Vector2 A4 = new Vector2(0.210f, 0.297f);
         List<SheetSignature> sigs;

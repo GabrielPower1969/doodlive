@@ -421,3 +421,25 @@ Mark how sure we are: **confirmed** (reproduced/fixed here) or **suspected** (li
 - Fix: markers first; ARCore image tracking only when no marker sheet is being tracked.
 - Prevention: a new detection path never overrides the title-band read; test every new pack by scanning its printed
   sheet with the camera, not only with `record-demo.sh` (which skips detection).
+
+## 2026-11-21 — Moving the phone close froze the story
+- Symptom: after a scan, moving the phone close to the sheet froze the play; moving back resumed it.
+- Cause: the design itself. The play held in `Live.Lost` whenever the 4 corner markers were out of the picture for
+  2 s, and moving close always pushes them out. The stage was also parented to the sheet pose, so every pose read
+  (noisy, sometimes from a half-seen marker) moved it: creep and shake.
+- Fix: `ARColoringController.Stage.cs` — the stage has its own ARAnchor in the room; the sheet only refines it when
+  3 of the last 5 sightings agree and differ by more than a dead band; never hold the play for tracking; pinch/twist,
+  find-it-back arrow and bring-it-here button; demos stand on the table in AR (docs/ANCHORING-DESIGN.md).
+- Prevention: tracking signals never stop a story; a new placement path must not parent the stage to a tracked pose.
+
+## 2026-11-21 — "Scan my colouring" showed a brown screen
+- Cause: `NoArCamera` (film demo) turned off the camera background and pose driver; the first scan after a shelf demo
+  never turned them back on.
+- Fix: `RestoreArCamera` restores what `NoArCamera` changed; `Boot` calls it before starting the session.
+- Prevention: every switch of camera mode has its inverse, and the test is "shelf demo first, then scan".
+
+## 2026-11-20 — The Samsung A53 froze on the scan screen
+- Cause: uncompressed RGBA textures (GPU memory 905 MB, swapping) and a full-frame copy allocated every detection.
+- Fix: ASTC 4x4 on Android for non-readable textures (`DoodLiveSetup.ImportTexture`), reused finder buffers;
+  GPU memory 411 MB.
+- Prevention: check `dumpsys meminfo` GL mtrack on the 5.5 GB Samsung after adding large art.

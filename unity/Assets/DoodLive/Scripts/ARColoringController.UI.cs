@@ -28,11 +28,21 @@ namespace DoodLive
         static float EaseOut(float x) => 1 - (1 - x) * (1 - x);
         static float BackOut(float x) { const float c = 1.7f; x -= 1; return 1 + (c + 1) * x * x * x + c * x * x; }
 
+        // A tap is a short single-finger touch, read on release: a pinch or twist (two fingers) or a drag is never a tap,
+        // so pinching a story does not also pause it.
+        Vector2 tapStart; float tapAt; bool tapCandidate;
         Vector2? TapOutsideUI()
         {
             Vector2? p = null;
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) p = Input.GetTouch(0).position;
-            else if (Input.GetMouseButtonDown(0)) p = Input.mousePosition;
+            if (Input.touchCount > 0)
+            {
+                var t = Input.GetTouch(0);
+                if (Input.touchCount > 1 || multiTouch) tapCandidate = false;
+                else if (t.phase == TouchPhase.Began) { tapCandidate = true; tapStart = t.position; tapAt = Time.time; }
+                else if (t.phase == TouchPhase.Moved && (t.position - tapStart).magnitude > Mathf.Min(Screen.width, Screen.height) * 0.04f) tapCandidate = false;
+                else if (t.phase == TouchPhase.Ended && tapCandidate) { tapCandidate = false; if (Time.time - tapAt < 0.5f) p = tapStart; }
+            }
+            else if (!Application.isMobilePlatform && Input.GetMouseButtonDown(0)) p = Input.mousePosition;
             if (p == null) return null;
             var gp = new Vector2(p.Value.x, Screen.height - p.Value.y);
             foreach (var r in uiRects) if (r.Contains(gp)) return null;
@@ -356,6 +366,9 @@ namespace DoodLive
             // -- David & Goliath: chapter title, subtitles, pause card, replay button
             if (dgMode && active != null && active.Running && (live || state == State.Reveal)) StoryGUI(w, h, top, bottom, edge, chip, land);
 
+            // -- the stage in the room: find-it-back arrow, bring-it-here, reset after a pinch (ARColoringController.Stage.cs)
+            StageGUI(w, h, top, bottom, edge, chip);
+
             // -- 08 Lost: a drawn sheet + arrow shows where the paper goes
             if (dim > 0)
             {
@@ -533,7 +546,9 @@ namespace DoodLive
             float pw = Mathf.Min(w - edge * 2, u * 8.6f), row = u * 1.12f, x = w - edge - pw;
             var extras = new List<(string, System.Action)>();
             if (rawPx != null) extras.Add((L10n.T(showLines ? "linesOn" : "linesOff"), () => { showLines = !showLines; ApplyPage(); }));
-            if (arReady && !showMode && state >= State.LiveIdle) extras.Add((L10n.T("modeShow"), () => { showMode = true; PlaceInFront(); }));
+            if (arReady && stageRoot && state >= State.LiveIdle) extras.Add((L10n.T("bringBack"), () => { moreOpen = false; BringBack(); }));
+            if (showMode && arReady && state >= State.LiveIdle) extras.Add((L10n.T("watchFilm"), () => { moreOpen = false; SwitchToFilm(); }));
+            if (showMode && !arReady && !arUnsupported && state >= State.LiveIdle) extras.Add((L10n.T("watchAR"), () => { moreOpen = false; SwitchToAr(); }));
             float ph = u * 1.1f + row * 5 + extras.Count * (row * 0.95f) + u * 1.6f;
             ph = Mathf.Min(ph, Screen.height - y - edge);
             var r = new Rect(x, y - u * 0.25f * (1 - EaseOut(a)), pw, ph); Card(r, boxPaper, lip); uiRects.Add(r);
