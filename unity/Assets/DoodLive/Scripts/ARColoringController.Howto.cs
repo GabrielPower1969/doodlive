@@ -22,8 +22,6 @@ namespace DoodLive
 
         static bool HowtoSeen => PlayerPrefs.GetInt(HowtoSeenKey, 0) == 1;
         static void MarkHowtoSeen() { PlayerPrefs.SetInt(HowtoSeenKey, 1); PlayerPrefs.Save(); }
-        static string ZhOf(string key) => L10n.IsZh ? L10n.T(key) : L10n.Other(key);
-        static string EnOf(string key) => L10n.IsZh ? L10n.Other(key) : L10n.T(key);
 
         void OpenHowto()
         {
@@ -42,9 +40,7 @@ namespace DoodLive
             {
                 string url = Path.Combine(Application.streamingAssetsPath, "howto", howtoQueue[0]);
                 howtoQueue.RemoveAt(0);
-#if !UNITY_ANDROID || UNITY_EDITOR
-                if (!File.Exists(url)) continue;   // on Android the file sits inside the APK: errorReceived / the timeout tell
-#endif
+                if (!Platform.Native.Storage.StreamingFileMayExist(url)) continue;   // Android: inside the APK, errorReceived / the timeout tell
                 EnsureHowtoPlayer();
                 howtoVp.url = url; howtoVp.Prepare(); howtoPrepT = Time.unscaledTime;
                 Debug.Log("DoodLive howto: " + url);
@@ -117,7 +113,7 @@ namespace DoodLive
                 }
                 if (captions)
                     GUI.Label(new Rect(x - gapW * 0.4f, r.y + ih + u * 0.05f, cell + gapW * 0.8f, r.height - ih), L10n.T("howtoStep" + (i + 1)),
-                              LS(L10n.IsZh, u * (L10n.IsZh ? 0.3f : 0.26f), capColor, TextAnchor.UpperCenter));
+                              LSL(L10n.Lang, u * (L10n.IsZh ? 0.3f : 0.26f), capColor, TextAnchor.UpperCenter));
             }
         }
 
@@ -132,8 +128,8 @@ namespace DoodLive
             // the small x dismisses (counts as seen); the play chip or the card itself plays the video
             if (Tap(Chip(close, Icon("close"), DesignTokens.Paper, 0.5f))) { Cue(cueClick); MarkHowtoSeen(); return cy; }
             bool go = Tap(Chip(play, Icon("play"), DesignTokens.Sun, 0.5f));
-            Bi(new Rect(card.x + u * 0.4f, card.y + u * 0.25f, card.width - xs - u * 1.0f, u * 0.6f), ZhOf("howtoTitle"), EnOf("howtoTitle"), u * 0.48f, DesignTokens.Ink);
-            GUI.Label(new Rect(card.x + u * 0.4f, card.y + u * 0.85f, card.width - xs - u * 1.0f, u * 0.5f), L10n.T("howtoLead"), LS(L10n.IsZh, u * 0.32f, DesignTokens.InkSoft));
+            BiKey(new Rect(card.x + u * 0.4f, card.y + u * 0.25f, card.width - xs - u * 1.0f, u * 0.6f), "howtoTitle", u * 0.48f, DesignTokens.Ink);
+            GUI.Label(new Rect(card.x + u * 0.4f, card.y + u * 0.85f, card.width - xs - u * 1.0f, u * 0.5f), L10n.T("howtoLead"), LSL(L10n.Lang, u * 0.32f, DesignTokens.InkSoft));
             HowtoSteps(new Rect(card.x + u * 0.4f, card.y + u * 1.45f, card.width - ps - u * 1.1f, ch - u * 1.65f), true, DesignTokens.Ink);
             go |= Tap(GUI.Button(card, GUIContent.none, GUIStyle.none));
             if (go) OpenHowto();
@@ -164,9 +160,9 @@ namespace DoodLive
                 float cw = Mathf.Min(w - edge * 4, u * 11f), ch = u * 5.4f;
                 var card = new Rect(w / 2 - cw / 2, h / 2 - ch / 2, cw, ch);
                 Card(card, boxPaper, lip);
-                Bi(new Rect(card.x + u * 0.5f, card.y + u * 0.3f, cw - u, u * 0.7f), ZhOf("howtoTitle"), EnOf("howtoTitle"), u * 0.55f, DesignTokens.Ink);
+                BiKey(new Rect(card.x + u * 0.5f, card.y + u * 0.3f, cw - u, u * 0.7f), "howtoTitle", u * 0.55f, DesignTokens.Ink);
                 HowtoSteps(new Rect(card.x + u * 0.5f, card.y + u * 1.25f, cw - u, u * 2.8f), true, DesignTokens.Ink);
-                GUI.Label(new Rect(card.x, card.yMax - u * 1.0f, cw, u * 0.7f), L10n.T("howtoSoon"), LS(L10n.IsZh, u * 0.36f, DesignTokens.InkSoft, TextAnchor.MiddleCenter));
+                GUI.Label(new Rect(card.x, card.yMax - u * 1.0f, cw, u * 0.7f), L10n.T("howtoSoon"), LSL(L10n.Lang, u * 0.36f, DesignTokens.InkSoft, TextAnchor.MiddleCenter));
             }
             else
             {   // preparing: three crayon dots

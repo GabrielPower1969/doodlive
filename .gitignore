@@ -24,3 +24,26 @@ unity/.utmp/
 
 # Raw voice recordings (family originals): never in git; archived by hours/scripts/backup-workspace.sh (媒体归档)
 assets/voice-raw/
+tools/i18n/staging/
+# extra-language voices: the Unity copies are made by StorySetup / DGSetup from assets/<id>/audio/voice/<lang> (docs/I18N.md)
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/fr/
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/de/
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/ja/
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/es/
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/pt/
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/fr.meta
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/de.meta
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/ja.meta
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/es.meta
+unity/Assets/DoodLive/Stories/*/Resources/Stories/*/voice/pt.meta
+unity/Assets/DoodLive/DavidGoliath/Resources/DG/voice/fr*
+unity/Assets/DoodLive/DavidGoliath/Resources/DG/voice/de*
+unity/Assets/DoodLive/DavidGoliath/Resources/DG/voice/ja*
+unity/Assets/DoodLive/DavidGoliath/Resources/DG/voice/es*
+unity/Assets/DoodLive/DavidGoliath/Resources/DG/voice/pt*
+# extra-language voice WAVs (~1 GB): git keeps the MP3s; tools/story/voice_wavs.sh rebuilds the WAVs (docs/I18N.md)
+assets/*/audio/voice/fr/*.wav
+assets/*/audio/voice/de/*.wav
+assets/*/audio/voice/ja/*.wav
+assets/*/audio/voice/es/*.wav
+assets/*/audio/voice/pt/*.wav

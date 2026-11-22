@@ -80,7 +80,8 @@ namespace DoodLive.Story
         PlayableGraph setGraph; AnimationClipPlayable[] setPlayables;
         [System.NonSerialized] public bool fxEnabled = true;
 
-        void Awake() { Init(); if (Application.isPlaying) VoiceBank.Prepare(storyId, L10n.Lang); }
+        void Awake() { Init(); if (Application.isPlaying) { VoiceBank.Prepare(storyId, L10n.Lang); L10n.Changed += OnLang; } }
+        void OnLang() => VoiceBank.Prepare(storyId, L10n.Lang);   // the picker changed the language: get its voices ready
 
         void Init()
         {
@@ -432,13 +433,13 @@ namespace DoodLive.Story
             setGraph.Evaluate();
         }
 
-        void OnDestroy() { if (setGraph.IsValid()) setGraph.Destroy(); }
+        void OnDestroy() { L10n.Changed -= OnLang; if (setGraph.IsValid()) setGraph.Destroy(); }
 
         // ---------------- lines ----------------
         void Say(DGLine l)
         {
             if (seeking) return;
-            var c = cast != null ? cast.Clip(l.id) : Clip($"voice/{(L10n.IsZh ? "zh" : "en")}/{l.id}");
+            var c = cast != null ? cast.Clip(l.id) : Clip($"voice/{L10n.Lang}/{l.id}");
             voice.Stop();
             if (c) { voice.clip = c; voice.volume = 1; voice.Play(); }
             Line = l;

@@ -326,7 +326,7 @@ namespace DoodLive
                 string txt = L10n.T("slowDown"); var st = T(false);
                 float pw = Mathf.Min(w - chip * 2 - edge * 4, st.CalcSize(new GUIContent(txt)).x + u * 0.9f);
                 float ph = st.CalcHeight(new GUIContent(txt), pw - u * 0.6f) + u * 0.35f;
-                var r = new Rect(w / 2 - pw / 2, top + edge, pw, ph);
+                var r = new Rect(w / 2 - pw / 2, top + edge + u * 1.35f, pw, ph);   // under the chapter title, never on it
                 Card(r, boxPaper, lip * 0.6f); GUI.Label(new Rect(r.x + u * 0.3f, r.y, pw - u * 0.6f, ph), txt, st);
                 GUI.color = Color.white;
             }

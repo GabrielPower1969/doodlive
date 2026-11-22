@@ -11,6 +11,10 @@ UNITY="${UNITY:-/Applications/Unity/Hub/Editor/6000.3.27f1/Unity.app/Contents/Ma
 if pgrep -f "projectPath $PWD" >/dev/null; then echo "Another Unity has this project open; close it first"; exit 1; fi
 rm -f Temp/UnityLockfile   # left behind by a crashed editor; safe when no editor is running (checked above)
 mkdir -p Logs Builds
+# platform layer rule (docs/PLATFORM-ARCHITECTURE.md §1.1): system-specific code lives only in Scripts/Platform/ and Editor/
+leak=$(grep -rnE "UNITY_ANDROID|UNITY_IOS|AndroidJava|UnityEngine\.Android|DllImport" --include='*.cs' Assets/DoodLive | grep -v "/Platform/" | grep -v "/Editor/" || true)
+[ -z "$leak" ] || { echo "Platform code outside Assets/DoodLive/Scripts/Platform:"; echo "$leak"; exit 1; }
+python3 ../tools/i18n/check_keys.py || exit 1   # every L10n.T("key") exists in strings.json
 run() {
   local method=$1 log="Logs/$1-$(date +%Y%m%d-%H%M%S).log"
   echo "== $method (log: unity/$log)"

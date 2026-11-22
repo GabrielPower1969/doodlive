@@ -73,7 +73,7 @@ namespace DoodLive
             if (clicked) { bool pick = Event.current.mousePosition.x >= r.x + half; if (pick != sheetColored) { sheetColored = pick; Cue(cueClick); } }
             Tinted(dot, new Rect(r.x + (sheetColored ? half : 0) + r.height * 0.12f, r.y + off + r.height * 0.14f, half - r.height * 0.24f, r.height * 0.72f), DesignTokens.Sun);
             for (int i = 0; i < 2; i++)
-                GUI.Label(new Rect(r.x + i * half, r.y + off, half, r.height), L10n.T(SheetKindKeys[i]), LS(L10n.IsZh, u * (L10n.IsZh ? 0.32f : 0.28f), DesignTokens.Ink, TextAnchor.MiddleCenter));
+                GUI.Label(new Rect(r.x + i * half, r.y + off, half, r.height), L10n.T(SheetKindKeys[i]), LSL(L10n.Lang, u * (L10n.IsZh ? 0.32f : 0.28f), DesignTokens.Ink, TextAnchor.MiddleCenter));
         }
 
         void SheetActionsRow(LibBook b, Rect area)
@@ -82,7 +82,7 @@ namespace DoodLive
             // caption: lock + "for grown-ups", small and soft so children read past it
             float cap = u * 0.42f;
             var lk = Icon("lock"); if (lk) { var o = GUI.color; GUI.color = new Color(1, 1, 1, 0.6f * o.a); GUI.DrawTexture(new Rect(area.x, area.y + cap * 0.1f, cap * 0.8f, cap * 0.8f), lk, ScaleMode.ScaleToFit); GUI.color = o; }
-            GUI.Label(new Rect(area.x + cap, area.y, area.width - cap, cap), L10n.T("sheetGrownups"), LS(L10n.IsZh, u * 0.27f, DesignTokens.InkSoft));
+            GUI.Label(new Rect(area.x + cap, area.y, area.width - cap, cap), L10n.T("sheetGrownups"), LSL(L10n.Lang, u * 0.27f, DesignTokens.InkSoft));
             float gap = u * 0.25f, bh = u * 0.9f, bw = (area.width - gap * 2) / 3, by = area.y + cap + u * 0.1f;
             // which sheet: blank (default, again each time a book page opens) or the coloured sample
             string coloredFile = SheetColoredPdfFor(b.id);
@@ -100,7 +100,7 @@ namespace DoodLive
                 float off = down ? lip * 0.6f * 0.7f : 0, ic = bh * 0.62f;
                 var icr = new Rect(r.x + u * 0.22f, r.y + off + (bh - ic) / 2, ic, ic);
                 GUI.DrawTexture(icr, Icon(SheetIcons[i]), ScaleMode.ScaleToFit);
-                GUI.Label(new Rect(icr.xMax + u * 0.15f, r.y + off, r.xMax - icr.xMax - u * 0.2f, bh), L10n.T(SheetKeys[i]), LS(L10n.IsZh, u * (L10n.IsZh ? 0.36f : 0.32f), DesignTokens.Ink));
+                GUI.Label(new Rect(icr.xMax + u * 0.15f, r.y + off, r.xMax - icr.xMax - u * 0.2f, bh), L10n.T(SheetKeys[i]), LSL(L10n.Lang, u * (L10n.IsZh ? 0.36f : 0.32f), DesignTokens.Ink));
                 if (repaint)
                 {
                     if (down && !moreOpen && sheetFired != i)
@@ -127,24 +127,12 @@ namespace DoodLive
         {
             bool colored = file != SheetPdfFor(b.id);   // the coloured sample was chosen
             string name = SheetFileName(b, colored), title = "DoodLive – " + BookTitle(b) + (colored ? " · " + L10n.T("sheetColored") : "");
-#if UNITY_ANDROID && !UNITY_EDITOR
-            try
-            {
-                using var up = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-                using var act = up.GetStatic<AndroidJavaObject>("currentActivity");
-                using var share = new AndroidJavaClass("today.onemorething.doodlive.share.DoodLiveShare");
-                string r = share.CallStatic<string>("run", act, action, "sheets/" + file, name, action == "print" ? title : L10n.T("sheetShareTitle"));
-                Debug.Log($"DoodLive sheet {action} {b.id}: {r}");
-                if (r != null && r.StartsWith("saved")) SheetNote(L10n.T("sheetSaved"));
-                else if (r == null || r.StartsWith("error")) SheetNote(L10n.T("sheetFailed"));
-            }
-            catch (Exception e) { Debug.LogWarning($"DoodLive sheet {action} {b.id} failed: {e.Message}"); SheetNote(L10n.T("sheetFailed")); }
-#else
-            string path = Path.Combine(Application.streamingAssetsPath, "sheets", file);
-            Debug.Log($"DoodLive sheet {action} {b.id} ({name}): native {action} is Android only; opening {path}");
-            if (File.Exists(path)) { Application.OpenURL(new Uri(path).AbsoluteUri); SheetNote(L10n.T("sheetDesktop")); }
-            else SheetNote(L10n.T("sheetFailed"));
-#endif
+            // the system's own save / share / print screens (Platform/: Android DoodLiveShare.java, iOS DoodLivePlatform.mm)
+            string r = Platform.Native.Sheets.Run(action, "sheets/" + file, name, action == "print" ? title : L10n.Raw("sheetShareTitle"));
+            Debug.Log($"DoodLive sheet {action} {b.id}: {r}");
+            if (r != null && r.StartsWith("saved")) SheetNote(L10n.T("sheetSaved"));
+            else if (r == "desktop") SheetNote(L10n.T("sheetDesktop"));
+            else if (r == null || r.StartsWith("error")) SheetNote(L10n.T("sheetFailed"));
         }
 
         void SheetNote(string text) { sheetNote = text; sheetNoteT = Time.unscaledTime; }

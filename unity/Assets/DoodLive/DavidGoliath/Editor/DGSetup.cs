@@ -68,7 +68,8 @@ namespace DoodLive.EditorTools
                 foreach (var old in Directory.GetFiles(dstDir, "*.wav"))
                     if (!src.Any(s => Path.GetFileName(s) == Path.GetFileName(old))) AssetDatabase.DeleteAsset(old.Replace('\\', '/'));
             }
-            Wavs("audio/voice/zh", $"{Res}/voice/zh"); Wavs("audio/voice/en", $"{Res}/voice/en");
+            foreach (var l in new[] { "zh", "en", "fr", "de", "ja", "es", "pt" })   // the extra languages only when their clips exist (docs/I18N.md)
+                if (l == "zh" || l == "en" || Directory.Exists(A($"audio/voice/{l}"))) { Directory.CreateDirectory($"{Res}/voice/{l}"); Wavs($"audio/voice/{l}", $"{Res}/voice/{l}"); }
             Wavs("audio/music", $"{Res}/music"); Wavs("audio/sfx", $"{Res}/sfx");
             bool ok = true;
             foreach (var (src, dst) in need)
@@ -129,8 +130,8 @@ namespace DoodLive.EditorTools
                     ai.SaveAndReimport();
                 }
             }
-            Audio($"{Res}/voice/zh", AudioClipLoadType.CompressedInMemory, 0.6f);
-            Audio($"{Res}/voice/en", AudioClipLoadType.CompressedInMemory, 0.6f);
+            foreach (var l in new[] { "zh", "en", "fr", "de", "ja", "es", "pt" })
+                if (Directory.Exists($"{Res}/voice/{l}")) Audio($"{Res}/voice/{l}", AudioClipLoadType.CompressedInMemory, l == "zh" || l == "en" ? 0.6f : 0.5f);
             Audio($"{Res}/sfx", AudioClipLoadType.DecompressOnLoad, 0.6f);     // short; must start sample-exact on hits
             Audio($"{Res}/music", AudioClipLoadType.CompressedInMemory, 0.5f);
             foreach (var g in new[] { "david", "goliath", "desert" }) AssetDatabase.ImportAsset($"{Dir}/Models/{g}.glb", ImportAssetOptions.ForceUpdate);

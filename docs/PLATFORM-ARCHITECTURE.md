@@ -1,6 +1,24 @@
 # Platform architecture — one Unity app, many stores
 
-Status: proposal v1, 2026-11-14. Owner of this file: platform architect role.
+Status: **v2, 2026-11-22** — reviewed by the owner (Chinese review page in Hours: `30-项目/doodlive-跨平台架构/`) and
+partly built. v1 was the 2026-11-14 proposal. Owner of this file: platform architect role.
+
+### What changed in v2 (2026-11-22)
+
+| Item | v1 (2026-11-14) | v2 (2026-11-22) |
+|---|---|---|
+| Platform layer | 6 interfaces, proposed | **built**: 7 interfaces in `unity/Assets/DoodLive/Scripts/Platform/` (`Native.cs`): camera permission, haptics, sheet actions (save / share / print), audio session, launch arguments, external actions, storage. `AndroidPlatform.cs` (the old JNI code, moved), `IosPlatform.cs` + `Plugins/iOS/DoodLivePlatform.mm` (written, not yet run on a device), `EditorPlatform.cs`. `scripts/build-apk.sh` refuses a build when system-specific code appears outside `Platform/` or `Editor/` |
+| Android-only calls in the engine | rows 2, 3, 6 of §3.1 (3 places) | 4 places (sheet actions added 2026-11-18); **all 4 moved**, none left |
+| Languages | zh, en | **zh, en, fr, de, ja, es, ar, pt** — `docs/I18N.md` |
+| Unity iOS Build Support | not installed | **installed** (`PlaybackEngines/iOSSupport`, 2026-11-22) |
+| ARKit package, iOS player settings, iOS build script | phase 1 | still phase 1 (not started) |
+| Stories / APK | 3 stories, 58.7 MB | 13 stories + angel, 264 MB before the new voices `[A · local 2026-11-22]` |
+| iPad | not discussed | UI size rule needed: every size is `min(screen)/12.5` (`UI.cs InitStyles`), so buttons are about twice as big on an iPad `[D · from the formula]`; cap the size in physical units (phase 1) |
+
+Owner decisions taken on 2026-11-22: phase order as in §6 (platform layer on Android first, then iOS); more languages
+now (`docs/I18N.md`). Still open: test device model, personal vs organisation developer accounts, iOS minimum version
+(proposal 16.0), packs inside the binary for now (proposal: yes).
+
 Companions: `docs/STORY-ARCHITECTURE.md` (packs), `docs/STORY-ENGINE.md` (how a pack plays),
 `docs/VOICE-SYSTEM.md` (voice packs; being written in parallel; this file defines only how voice packs are
 **delivered, versioned and stored**, never their format).
@@ -16,7 +34,7 @@ Evidence tags follow the owner's rule: `[A · domain · checked date]` = officia
 | # | Decision | Why (short) |
 |---|---|---|
 | D1 | **One Unity 6.3 project, one scene, one codebase** for Android and iOS. The web three.js app stays a prototype and is not shipped to stores. | AR Foundation already abstracts ARCore and ARKit; the story engine is data-driven. |
-| D2 | A thin **platform layer** (`DoodLive.Platform`) with six small interfaces: camera permission, haptics, audio session, storage paths, share/links, launch arguments. All `#if UNITY_ANDROID / UNITY_IOS` code lives there and nowhere else. | Today Android-only calls sit inside `ARColoringController` (section 3.1). |
+| D2 | A thin **platform layer** (`DoodLive.Platform`) with seven small interfaces: camera permission, haptics, sheet actions, audio session, launch arguments, external actions, storage. All `#if UNITY_ANDROID / UNITY_IOS` code lives there and nowhere else. **Built 2026-11-22.** | Before: Android-only calls sat inside `ARColoringController` (section 3.1). |
 | D3 | **The marker path (`SheetFinder` + `Vision/`) is the primary sheet finder on both platforms**; image tracking (ARCore / ARKit) stays a second path for coloured sheets. | The marker path is pure C# on the camera picture, so it is platform-neutral. ARKit, like ARCore, will not lock onto a blank white page (LESSONS L49), and ARKit needs a fixed physical size (section 3.2). |
 | D4 | **Content delivery: packs ship inside the app first; when there are more than ~5, use Addressables with a remote catalog on our own CDN**, the same files for every store. Not Play Asset Delivery as the main path, not iOS On-Demand Resources. | PAD works only on Google Play; On-Demand Resources is deprecated from iOS 27 (section 2.2). One CDN pipeline serves Play, App Store and any other Android store. |
 | D5 | **Offline-first.** The app never needs the network to play anything it already has. No account, no login, no server-side user data. | Kids policies on both stores and the product promise "nothing leaves the phone". |

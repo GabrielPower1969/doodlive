@@ -44,8 +44,12 @@ namespace DoodLive
         static int ShotOf(string id) => PlayerPrefs.GetInt(Key("shot", id), 0);
         static bool Done(string id) => PlayerPrefs.GetInt(Key("done", id), 0) == 1;
         static bool Opened(string id) => PlayerPrefs.GetInt(Key("open", id), 0) == 1;
-        string BookTitle(LibBook b) => L10n.IsZh ? b.zh : b.en;
-        string ShotTitle(LibShot s) => L10n.IsZh ? s.zh : s.en;
+        string BookTitle(LibBook b) => L10n.Show(StoryText.Title(b.id, b.zh, b.en));
+        string ShotTitle(LibBook b, int i) => L10n.Show(StoryText.ShotAt(b.id, i, b.shots[i].zh, b.shots[i].en));
+        // Chinese and English keep the shelf's original two-line look (Chinese big, English small); the other languages
+        // show one line in their own face (docs/I18N.md)
+        static bool Pair => L10n.Lang == "zh" || L10n.Lang == "en";
+        string Bilingual(string zhEn, string key, string e = null) => Pair ? zhEn : (e == null ? L10n.T(key) : L10n.T(key, e));
 
         // ---------------- progress: called every frame from Update ----------------
         string lastSavedShotKey;
@@ -112,12 +116,17 @@ namespace DoodLive
         bool Tap(bool clicked) => clicked && !libDragged;
 
         // ---------------- drawing ----------------
-        GUIStyle LS(bool zh, float size, Color c, TextAnchor a = TextAnchor.MiddleLeft, bool display = false)
+        GUIStyle LS(bool zh, float size, Color c, TextAnchor a = TextAnchor.MiddleLeft, bool display = false) => LSL(zh ? "zh" : "en", size, c, a, display);
+        /// <summary>A label style in the face of `lang` (Chinese, Japanese, Arabic or Latin).</summary>
+        GUIStyle LSL(string lang, float size, Color c, TextAnchor a = TextAnchor.MiddleLeft, bool display = false)
         {
-            string k = $"{zh}{size:0.0}{c}{a}{display}";
-            if (!libStyles.TryGetValue(k, out var s)) libStyles[k] = s = Text(display ? fDisplay : zh ? fZh : fUi, size, c, a, true);
+            if (lang == "ar" && a == TextAnchor.MiddleLeft) a = TextAnchor.MiddleRight;   // right to left
+            string k = $"{lang}{size:0.0}{c}{a}{display}";
+            if (!libStyles.TryGetValue(k, out var s)) libStyles[k] = s = Text(display && L10n.Script(lang) == "latin" ? fDisplay : FontOf(lang), size, c, a, true);
             return s;
         }
+        /// <summary>The current language's face: Chinese for zh, Latin for en, the language's own face otherwise.</summary>
+        GUIStyle LSC(float size, Color c, TextAnchor a = TextAnchor.MiddleLeft) => LSL(L10n.Lang, size, c, a);
 
         void FramedCover(Rect r, string id, float tilt)
         {
@@ -141,6 +150,11 @@ namespace DoodLive
         }
 
         // a heading in both languages: Chinese in the Chinese face, then the English in the Latin face
+        void BiKey(Rect r, string key, float size, Color c)
+        {
+            if (Pair) { Bi(r, L10n.In("zh", key), L10n.In("en", key), size, c); return; }
+            GUI.Label(r, L10n.T(key), LSC(size, c));
+        }
         void Bi(Rect r, string zh, string en, float size, Color c)
         {
             var sz = LS(true, size, c); var se = LS(false, size * 0.78f, c);
@@ -175,12 +189,10 @@ namespace DoodLive
 
         void LangChip(Rect r)
         {
-            if (Tap(PaperButton(r, "", boxPaper, txtTag, lip * 0.6f))) { Cue(cueClick); L10n.Toggle(); }
-            float half = r.width / 2;
-            var on = new Rect(r.x + (L10n.IsZh ? 0 : half) + r.height * 0.12f, r.y + r.height * 0.14f, half - r.height * 0.24f, r.height * 0.72f);
-            Tinted(dot, on, DesignTokens.Sun);
-            GUI.Label(new Rect(r.x, r.y, half, r.height), "中文", LS(true, r.height * 0.4f, DesignTokens.Ink, TextAnchor.MiddleCenter));
-            GUI.Label(new Rect(r.x + half, r.y, half, r.height), "EN", LS(false, r.height * 0.4f, DesignTokens.Ink, TextAnchor.MiddleCenter));
+            // eight languages: the chip names the current one in itself and opens the picker (UI.cs LangPickerGUI)
+            if (Tap(PaperButton(r, "", boxPaper, txtTag, lip * 0.6f))) { Cue(cueClick); langPickerOpen = true; langPickerT = Time.unscaledTime; }
+            Tinted(dot, new Rect(r.x + r.height * 0.12f, r.y + r.height * 0.14f, r.width - r.height * 0.24f, r.height * 0.72f), DesignTokens.Sun);
+            GUI.Label(r, LangName(L10n.Lang), LSL(L10n.Lang, r.height * 0.36f, DesignTokens.Ink, TextAnchor.MiddleCenter));
         }
 
         void Shelf(float w, float h, float top, float bottom, float edge, float chip, bool land)
@@ -199,8 +211,12 @@ namespace DoodLive
             float cy = -libScroll + u * 0.1f;
 
             // greeting, both languages
-            GUI.Label(new Rect(x0, cy, x1 - x0, u * 0.8f), "今天想读哪个故事？", LS(true, u * 0.62f, DesignTokens.Ink));
-            GUI.Label(new Rect(x0, cy + u * 0.72f, x1 - x0, u * 0.6f), "Which story shall we read today?", LS(false, u * 0.4f, DesignTokens.InkSoft));
+            if (Pair)
+            {
+                GUI.Label(new Rect(x0, cy, x1 - x0, u * 0.8f), "今天想读哪个故事？", LS(true, u * 0.62f, DesignTokens.Ink));
+                GUI.Label(new Rect(x0, cy + u * 0.72f, x1 - x0, u * 0.6f), "Which story shall we read today?", LS(false, u * 0.4f, DesignTokens.InkSoft));
+            }
+            else GUI.Label(new Rect(x0, cy + u * 0.2f, x1 - x0, u * 0.9f), L10n.T("libGreeting"), LSC(u * 0.55f, DesignTokens.Ink));
             cy += u * 1.6f;
 
             // how to play (first run only; afterwards the "?" chip): ARColoringController.Howto.cs
@@ -216,12 +232,16 @@ namespace DoodLive
                 float cw = ch * 0.62f; FramedCover(new Rect(card.x + u * 0.3f, card.y + (ch - cw * 4f / 3f * 0.92f) / 2, cw * 0.92f, cw * 4f / 3f * 0.92f), lb.id, -3);
                 float tx = card.x + u * 0.3f + cw + u * 0.35f, tw = card.xMax - tx - u * 2.1f;
                 int sh = ShotOf(lb.id), n = lb.shots != null ? lb.shots.Length : 0; bool fin = Done(lb.id) && sh == 0;
-                Bi(new Rect(tx, card.y + u * 0.25f, tw, u * 0.5f), fin ? "再读一遍" : "接着读", fin ? "Read it again" : "Keep reading", u * 0.36f, DesignTokens.InkSoft);
-                GUI.Label(new Rect(tx, card.y + u * 0.72f, tw, u * 0.75f), lb.zh, LS(true, u * 0.62f, DesignTokens.Ink));
-                GUI.Label(new Rect(tx, card.y + u * 1.38f, tw, u * 0.5f), lb.en, LS(false, u * 0.38f, DesignTokens.Ink));
+                BiKey(new Rect(tx, card.y + u * 0.25f, tw, u * 0.5f), fin ? "libReadAgain" : "libKeepReading", u * 0.36f, DesignTokens.InkSoft);
+                if (Pair)
+                {
+                    GUI.Label(new Rect(tx, card.y + u * 0.72f, tw, u * 0.75f), lb.zh, LS(true, u * 0.62f, DesignTokens.Ink));
+                    GUI.Label(new Rect(tx, card.y + u * 1.38f, tw, u * 0.5f), lb.en, LS(false, u * 0.38f, DesignTokens.Ink));
+                }
+                else GUI.Label(new Rect(tx, card.y + u * 0.72f, tw, u * 1.1f), BookTitle(lb), LSC(u * 0.5f, DesignTokens.Ink));
                 if (n > 0 && !fin)
                 {
-                    GUI.Label(new Rect(tx, card.y + u * 1.95f, tw, u * 0.5f), (L10n.IsZh ? $"第 {sh + 1}/{n} 幕 · " : $"Part {sh + 1} of {n} · ") + ShotTitle(lb.shots[Mathf.Min(sh, n - 1)]), LS(L10n.IsZh, u * 0.34f, DesignTokens.Ink));
+                    GUI.Label(new Rect(tx, card.y + u * 1.95f, tw, u * 0.5f), (L10n.IsZh ? $"第 {sh + 1}/{n} 幕 · " : L10n.Lang == "en" ? $"Part {sh + 1} of {n} · " : L10n.T("libPartOf", $"{sh + 1}/{n}") + " · ") + ShotTitle(lb, Mathf.Min(sh, n - 1)), LSC(u * 0.34f, DesignTokens.Ink));
                     Bar(new Rect(tx, card.y + u * 2.55f, tw, u * 0.26f), (sh + 0.5f) / n, DesignTokens.Leaf);
                 }
                 float ps = u * 1.6f; var play = new Rect(card.xMax - ps - u * 0.3f, card.center.y - ps / 2, ps, ps);
@@ -230,7 +250,7 @@ namespace DoodLive
             }
 
             // the bookshelf
-            Bi(new Rect(x0, cy, x1 - x0, u * 0.7f), "我的书架", "My bookshelf", u * 0.5f, DesignTokens.Ink);
+            BiKey(new Rect(x0, cy, x1 - x0, u * 0.7f), "libShelf", u * 0.5f, DesignTokens.Ink);
             cy += u * 0.95f;
             int cols = land ? 4 : 2; float gap = u * 0.55f, bw = (x1 - x0 - gap * (cols - 1)) / cols;
             if (land) bw = Mathf.Min(bw, view.height * 0.62f * 3f / 4f);   // landscape: a whole row of covers in view
@@ -250,10 +270,14 @@ namespace DoodLive
                 FramedCover(new Rect(cover.x, cover.y - u * 0.15f, cover.width, cover.height), b.id, (i % 2 == 0 ? -1f : 1f));
                 // mark: new / finished / reading
                 float bs = u * 1.05f;
-                if (!Opened(b.id)) Badge(new Rect(cover.xMax - bs * 0.8f, cover.y - bs * 0.3f, bs, bs), L10n.IsZh ? "新" : "NEW", DesignTokens.Red);
+                if (!Opened(b.id)) Badge(new Rect(cover.xMax - bs * 0.8f, cover.y - bs * 0.3f, bs, bs), L10n.T("libNew"), DesignTokens.Red);
                 else if (Done(b.id)) { Chip(new Rect(cover.xMax - bs * 0.8f, cover.y - bs * 0.3f, bs, bs), Icon("check"), DesignTokens.Ok, 0.55f, false); }
-                GUI.Label(new Rect(bx, by + bh + u * 0.2f, bw, u * 0.7f), b.zh, LS(true, u * 0.52f, DesignTokens.Ink, TextAnchor.MiddleCenter));
-                GUI.Label(new Rect(bx, by + bh + u * 0.82f, bw, u * 0.5f), b.en, LS(false, u * 0.36f, DesignTokens.InkSoft, TextAnchor.MiddleCenter));
+                if (Pair)
+                {
+                    GUI.Label(new Rect(bx, by + bh + u * 0.2f, bw, u * 0.7f), b.zh, LS(true, u * 0.52f, DesignTokens.Ink, TextAnchor.MiddleCenter));
+                    GUI.Label(new Rect(bx, by + bh + u * 0.82f, bw, u * 0.5f), b.en, LS(false, u * 0.36f, DesignTokens.InkSoft, TextAnchor.MiddleCenter));
+                }
+                else GUI.Label(new Rect(bx - u * 0.2f, by + bh + u * 0.15f, bw + u * 0.4f, u * 1.2f), BookTitle(b), LSC(u * 0.4f, DesignTokens.Ink, TextAnchor.MiddleCenter));
                 int n = b.shots != null ? b.shots.Length : 0, s = ShotOf(b.id);
                 if (n > 0 && Opened(b.id) && s > 0) Bar(new Rect(bx + bw * 0.2f, by + bh + u * 1.42f, bw * 0.6f, u * 0.18f), (s + 0.5f) / n, DesignTokens.Leaf);
                 if (Tap(GUI.Button(new Rect(bx, by, bw, bh + u * 1.4f), GUIContent.none, GUIStyle.none))) { Cue(cueClick); libOpen = b.id; }
@@ -269,8 +293,12 @@ namespace DoodLive
             var sb = new Rect(x0, h - bottom - scanH - u * 0.45f, x1 - x0, scanH);
             if (Tap(PaperButton(sb, "", boxSun, txtTag))) { Cue(cueClick); startShot = 0; Go(State.Permission); }
             float ic = scanH * 0.62f; GUI.DrawTexture(new Rect(sb.x + u * 0.5f, sb.y + (scanH - ic) / 2, ic, ic), Icon("camera"), ScaleMode.ScaleToFit);
-            GUI.Label(new Rect(sb.x + u * 0.5f + ic + u * 0.3f, sb.y, sb.width - ic - u, scanH * 0.6f), "扫一扫我的画", LS(true, u * 0.55f, DesignTokens.Ink));
-            GUI.Label(new Rect(sb.x + u * 0.5f + ic + u * 0.3f, sb.y + scanH * 0.5f, sb.width - ic - u, scanH * 0.42f), "Scan my colouring", LS(false, u * 0.36f, DesignTokens.Ink));
+            if (Pair)
+            {
+                GUI.Label(new Rect(sb.x + u * 0.5f + ic + u * 0.3f, sb.y, sb.width - ic - u, scanH * 0.6f), "扫一扫我的画", LS(true, u * 0.55f, DesignTokens.Ink));
+                GUI.Label(new Rect(sb.x + u * 0.5f + ic + u * 0.3f, sb.y + scanH * 0.5f, sb.width - ic - u, scanH * 0.42f), "Scan my colouring", LS(false, u * 0.36f, DesignTokens.Ink));
+            }
+            else GUI.Label(new Rect(sb.x + u * 0.5f + ic + u * 0.3f, sb.y, sb.width - ic - u, scanH), L10n.T("libScan"), LSC(u * 0.48f, DesignTokens.Ink));
             if (statusKey == "noPerm" || statusKey == "noAR") GUI.Label(new Rect(u, sb.y - u * 1.1f, w - 2 * u, u), L10n.T(statusKey), T(false));
         }
 
@@ -283,12 +311,24 @@ namespace DoodLive
             float tx = land ? cx + cw + u * 1.0f : pad, tw = land ? w - tx - pad : w - 2 * pad, ty = land ? top + edge + chip * 0.3f : y + chh + u * 0.5f;
             var center = land ? TextAnchor.MiddleLeft : TextAnchor.MiddleCenter;
             if (!string.IsNullOrEmpty(b.pinyin)) GUI.Label(new Rect(tx, ty, tw, u * 0.45f), b.pinyin, LS(false, u * 0.34f, DesignTokens.Red, center));
-            GUI.Label(new Rect(tx, ty + u * 0.4f, tw, u * 1.0f), b.zh, LS(true, u * 0.9f, DesignTokens.Ink, center));
-            GUI.Label(new Rect(tx, ty + u * 1.35f, tw, u * 0.6f), b.en, LS(false, u * 0.5f, DesignTokens.Ink, center));
             float by = ty + u * 2.05f;
-            GUI.Label(new Rect(tx, by, tw, u * 0.9f), b.blurbZh, LS(true, u * 0.38f, DesignTokens.InkSoft, center));
-            GUI.Label(new Rect(tx, by + u * 0.85f, tw, u * 0.8f), b.blurbEn, LS(false, u * 0.32f, DesignTokens.InkSoft, center));
-            if (b.minutes > 0) GUI.Label(new Rect(tx, by + u * 1.55f, tw, u * 0.5f), $"约 {b.minutes:0.#} 分钟 · about {b.minutes:0.#} min", LS(true, u * 0.3f, DesignTokens.InkSoft, center));
+            if (Pair)
+            {
+                GUI.Label(new Rect(tx, ty + u * 0.4f, tw, u * 1.0f), b.zh, LS(true, u * 0.9f, DesignTokens.Ink, center));
+                GUI.Label(new Rect(tx, ty + u * 1.35f, tw, u * 0.6f), b.en, LS(false, u * 0.5f, DesignTokens.Ink, center));
+                GUI.Label(new Rect(tx, by, tw, u * 0.9f), b.blurbZh, LS(true, u * 0.38f, DesignTokens.InkSoft, center));
+                GUI.Label(new Rect(tx, by + u * 0.85f, tw, u * 0.8f), b.blurbEn, LS(false, u * 0.32f, DesignTokens.InkSoft, center));
+                if (b.minutes > 0) GUI.Label(new Rect(tx, by + u * 1.55f, tw, u * 0.5f), $"约 {b.minutes:0.#} 分钟 · about {b.minutes:0.#} min", LS(true, u * 0.3f, DesignTokens.InkSoft, center));
+            }
+            else
+            {
+                var stT = LSC(u * 0.72f, DesignTokens.Ink, center); var stB = LSC(u * 0.34f, DesignTokens.InkSoft, center);
+                GUI.Label(new Rect(tx, ty + u * 0.4f, tw, u * 1.55f), BookTitle(b), stT);
+                string blurb = StoryText.Blurb(b.id, b.blurbZh, b.blurbEn);
+                blurb = L10n.IsRtl ? ArabicText.Wrap(blurb, stB, tw) : blurb;
+                GUI.Label(new Rect(tx, by, tw, u * 1.5f), blurb, stB);
+                if (b.minutes > 0) GUI.Label(new Rect(tx, by + u * 1.55f, tw, u * 0.5f), L10n.T("libAbout", b.minutes.ToString("0.#")), LSC(u * 0.3f, DesignTokens.InkSoft, center));
+            }
             y = by + u * 2.15f;
 
             // actions: watch from the start, continue where you stopped, scan your own sheet
@@ -296,20 +336,20 @@ namespace DoodLive
             float btnW = land ? Mathf.Min(tw, u * 7) : tw, bx = land ? tx : w / 2 - btnW / 2, bh = u * 1.1f;
             if (sh > 0 && n > 0)
             {
-                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), L10n.IsZh ? $"▶  接着看第 {sh + 1} 幕 · Continue" : $"▶  Continue from part {sh + 1} · 接着看", boxSun, txtTag))) OpenBook(b, sh);
+                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), Pair ? (L10n.IsZh ? $"▶  接着看第 {sh + 1} 幕 · Continue" : $"▶  Continue from part {sh + 1} · 接着看") : L10n.T("libContinue", (sh + 1).ToString()), boxSun, txtTag))) OpenBook(b, sh);
                 y += bh + u * 0.45f;
-                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), "从头看 · Start from the beginning", boxPaper, txtTag))) OpenBook(b, 0);
+                if (Tap(PaperButton(new Rect(bx, y, btnW, bh), Bilingual("从头看 · Start from the beginning", "libFromStart"), boxPaper, txtTag))) OpenBook(b, 0);
             }
-            else if (Tap(PaperButton(new Rect(bx, y, btnW, bh), "▶  看故事 · Watch the story", boxSun, txtTag))) OpenBook(b, 0);
+            else if (Tap(PaperButton(new Rect(bx, y, btnW, bh), Bilingual("▶  看故事 · Watch the story", "libWatch"), boxSun, txtTag))) OpenBook(b, 0);
             y += bh + u * 0.45f;
-            if (Tap(PaperButton(new Rect(bx, y, btnW, bh), "扫我画的这张 · Scan my sheet", boxPaper, txtTag))) { Cue(cueClick); libOpen = null; startShot = 0; Go(State.Permission); }
+            if (Tap(PaperButton(new Rect(bx, y, btnW, bh), Bilingual("扫我画的这张 · Scan my sheet", "libScanSheet"), boxPaper, txtTag))) { Cue(cueClick); libOpen = null; startShot = 0; Go(State.Permission); }
             y += bh + u * 0.7f;
 
             // chapters: the timeline's shots; read ones are green, the next one is sun-yellow
             float actH = SheetRowHeight(b);   // save / share / print row at the bottom (ARColoringController.SheetActions.cs)
             if (n > 0 && y < h - bottom - actH - u * 1.5f)
             {
-                Bi(new Rect(land ? tx : w / 2 - u * 2.1f, y, u * 6, u * 0.6f), "章节", "Chapters", u * 0.42f, DesignTokens.Ink);
+                BiKey(new Rect(land ? tx : w / 2 - u * 2.1f, y, u * 6, u * 0.6f), "libChapters", u * 0.42f, DesignTokens.Ink);
                 y += u * 0.75f;
                 int cols = land ? 4 : 3; float gap = u * 0.25f, cwid = (tw - gap * (cols - 1)) / cols, chH = u * 0.95f;
                 // every chapter must fit above the grown-ups' row: shrink the buttons (not below 0.62 u) before dropping any
@@ -322,7 +362,7 @@ namespace DoodLive
                     var fill = i < sh || Done(b.id) ? boxLeaf : i == sh && sh > 0 ? boxSun : boxPaper;
                     if (Tap(PaperButton(r, "", fill, txtTag, lip * 0.5f))) OpenBook(b, i);
                     GUI.Label(new Rect(r.x + u * 0.12f, r.y, u * 0.5f, chH), (i + 1).ToString(), LS(false, u * 0.36f, DesignTokens.Ink, TextAnchor.MiddleCenter));
-                    GUI.Label(new Rect(r.x + u * 0.55f, r.y, r.width - u * 0.65f, chH), ShotTitle(b.shots[i]), LS(L10n.IsZh, u * (L10n.IsZh ? 0.3f : 0.26f), DesignTokens.Ink));
+                    GUI.Label(new Rect(r.x + u * 0.55f, r.y, r.width - u * 0.65f, chH), ShotTitle(b, i), LSC(u * (L10n.IsZh ? 0.3f : 0.26f), DesignTokens.Ink));
                 }
             }
             if (actH > 0) SheetActionsRow(b, new Rect(tx, h - bottom - actH, tw, actH - u * 0.45f));

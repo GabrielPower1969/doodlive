@@ -178,6 +178,9 @@ def tts_edge(text, voice, rate, pitch, out):
 
 
 _QWEN = {}
+# Qwen3-TTS language names (talker_config.codec_language_id in the model config; no Arabic)
+QWEN_LANGS = {"zh": "chinese", "en": "english", "fr": "french", "de": "german", "ja": "japanese", "es": "spanish",
+              "pt": "portuguese", "it": "italian", "ko": "korean", "ru": "russian"}
 
 
 def tts_qwen(text, voice, instruct, lang, out, seed=None, model=QWEN_MODEL):
@@ -191,7 +194,7 @@ def tts_qwen(text, voice, instruct, lang, out, seed=None, model=QWEN_MODEL):
     if seed is not None:
         mx.random.seed(int(seed))
     kw = {"voice": voice} if voice else {}
-    res = list(m.generate(text=text, instruct=instruct or None, lang_code={"zh": "chinese", "en": "english"}[lang],
+    res = list(m.generate(text=text, instruct=instruct or None, lang_code=QWEN_LANGS[lang],
                           verbose=False, **kw))
     sf.write(out, np.concatenate([np.array(r.audio) for r in res]), m.sample_rate)
 
